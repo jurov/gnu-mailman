@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -37,7 +37,7 @@ from email.Generator import Generator
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from email.MIMEMessage import MIMEMessage
-from email.Utils import getaddresses
+from email.Utils import getaddresses, formatdate
 from email.Header import decode_header, make_header, Header
 from email.Charset import Charset
 
@@ -150,6 +150,7 @@ def send_i18n_digests(mlist, mboxfp):
     digestsubj = Header(digestid, lcset, header_name='Subject')
     # Set things up for the MIME digest.  Only headers not added by
     # CookHeaders need be added here.
+    # Date/Message-ID should be added here also.
     mimemsg = Message.Message()
     mimemsg['Content-Type'] = 'multipart/mixed'
     mimemsg['MIME-Version'] = '1.0'
@@ -157,6 +158,8 @@ def send_i18n_digests(mlist, mboxfp):
     mimemsg['Subject'] = digestsubj
     mimemsg['To'] = mlist.GetListEmail()
     mimemsg['Reply-To'] = mlist.GetListEmail()
+    mimemsg['Date'] = formatdate(localtime=1)
+    mimemsg['Message-ID'] = Utils.unique_message_id(mlist)
     # Set things up for the rfc1153 digest
     plainmsg = StringIO()
     rfc1153msg = Message.Message()
@@ -164,6 +167,8 @@ def send_i18n_digests(mlist, mboxfp):
     rfc1153msg['Subject'] = digestsubj
     rfc1153msg['To'] = mlist.GetListEmail()
     rfc1153msg['Reply-To'] = mlist.GetListEmail()
+    rfc1153msg['Date'] = formatdate(localtime=1)
+    rfc1153msg['Message-ID'] = Utils.unique_message_id(mlist)
     separator70 = '-' * 70
     separator30 = '-' * 30
     # In the rfc1153 digest, the masthead contains the digest boilerplate plus
