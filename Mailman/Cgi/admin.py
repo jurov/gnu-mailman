@@ -51,6 +51,12 @@ i18n.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
 NL = '\n'
 OPTCOLUMNS = 11
 
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
+
 
 
 def main():
@@ -678,7 +684,7 @@ def get_item_gui_value(mlist, category, kind, varname, params, extra):
         # and a delete button.  Yeesh!  params are ignored.
         table = Table(border=0)
         # This adds the html for the entry widget
-        def makebox(i, name, pattern, desc, empty=0, table=table):
+        def makebox(i, name, pattern, desc, empty=False, table=table):
             deltag   = 'topic_delete_%02d' % i
             boxtag   = 'topic_box_%02d' % i
             reboxtag = 'topic_rebox_%02d' % i
@@ -718,7 +724,71 @@ def get_item_gui_value(mlist, category, kind, varname, params, extra):
         # Add one more non-deleteable widget as the first blank entry, but
         # only if there are no real entries.
         if i == 1:
-            makebox(i, '', '', '', empty=1)
+            makebox(i, '', '', '', empty=True)
+        return table
+    elif kind == mm_cfg.HeaderFilter:
+        # A complex and specialized widget type that allows for setting of a
+        # spam filter rule including, a mark button, a regexp text box, an
+        # "add after mark", up and down buttons, and a delete button.  Yeesh!
+        # params are ignored.
+        table = Table(border=0)
+        # This adds the html for the entry widget
+        def makebox(i, pattern, action, empty=False, table=table):
+            deltag    = 'hdrfilter_delete_%02d' % i
+            reboxtag  = 'hdrfilter_rebox_%02d' % i
+            actiontag = 'hdrfilter_action_%02d' % i
+            wheretag  = 'hdrfilter_where_%02d' % i
+            addtag    = 'hdrfilter_add_%02d' % i
+            newtag    = 'hdrfilter_new_%02d' % i
+            uptag     = 'hdrfilter_up_%02d' % i
+            downtag   = 'hdrfilter_down_%02d' % i
+            if empty:
+                table.AddRow([Center(Bold(_('Spam Filter Rule %(i)d'))),
+                              Hidden(newtag)])
+            else:
+                table.AddRow([Center(Bold(_('Spam Filter Rule %(i)d'))),
+                              SubmitButton(deltag, _('Delete'))])
+            table.AddRow([Label(_('Spam Filter Regexp:')),
+                          TextArea(reboxtag, text=pattern,
+                                   rows=4, cols=30, wrap='off')])
+            values = [mm_cfg.DEFER, mm_cfg.HOLD, mm_cfg.REJECT,
+                      mm_cfg.DISCARD, mm_cfg.ACCEPT]
+            try:
+                checked = values.index(action)
+            except ValueError:
+                checked = 0
+            radio = RadioButtonArray(
+                actiontag,
+                (_('Defer'), _('Hold'), _('Reject'),
+                 _('Discard'), _('Accept')),
+                values=values,
+                checked=checked).Format()
+            table.AddRow([Label(_('Action:')), radio])
+            if not empty:
+                table.AddRow([SubmitButton(addtag, _('Add new item...')),
+                              SelectOptions(wheretag, ('before', 'after'),
+                                            (_('...before this one.'),
+                                             _('...after this one.')),
+                                            selected=1),
+                              ])
+                # BAW: IWBNI we could disable the up and down buttons for the
+                # first and last item respectively, but it's not easy to know
+                # which is the last item, so let's not worry about that for
+                # now.
+                table.AddRow([SubmitButton(uptag, _('Move rule up')),
+                              SubmitButton(downtag, _('Move rule down'))])
+            table.AddRow(['<hr>'])
+            table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=2)
+        # Now for each element in the existing data, create a widget
+        i = 1
+        data = getattr(mlist, varname)
+        for pattern, action, empty in data:
+            makebox(i, pattern, action, empty)
+            i += 1
+        # Add one more non-deleteable widget as the first blank entry, but
+        # only if there are no real entries.
+        if i == 1:
+            makebox(i, '', mm_cfg.DEFER, empty=True)
         return table
     elif kind == mm_cfg.Checkbox:
         return CheckBoxArray(varname, *params)
