@@ -38,6 +38,7 @@ from types import *
 
 import email.Iterators
 from email.Utils import getaddresses, formataddr, parseaddr
+from email.Header import Header
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -206,10 +207,23 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             'cookie': cookie,
             } + '@' + self.host_name
 
-
-    def GetConfirmSubject(self, listname, cookie, verb):
+    def GetConfirmJoinSubject(self, listname, cookie):
         if mm_cfg.VERP_CONFIRMATIONS and cookie:
-            return _( 'Your confirmation is required to %(verb)s the %(listname)s mailing list' )
+            cset = Utils.GetCharSet(self.preferred_language)
+            subj = Header(
+     _('Your confirmation is required to join the %(listname)s mailing list'),
+                          cset, header_name='subject')
+            return subj
+        else:
+            return 'confirm ' + cookie
+
+    def GetConfirmLeaveSubject(self, listname, cookie):
+        if mm_cfg.VERP_CONFIRMATIONS and cookie:
+            cset = Utils.GetCharSet(self.preferred_language)
+            subj = Header(
+     _('Your confirmation is required to leave the %(listname)s mailing list'),
+                          cset, header_name='subject')
+            return subj
         else:
             return 'confirm ' + cookie
 
@@ -755,7 +769,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # list name to prevent invitees from cross-subscribing.
         userdesc.invitation = self.internal_name()
         cookie = self.pend_new(Pending.SUBSCRIPTION, userdesc)
-        requestaddr = self.GetRequestEmail(cookie)
+        requestaddr = self.getListAddress('request')
         confirmurl = '%s/%s' % (self.GetScriptURL('confirm', absolute=1),
                                 cookie)
         listname = self.real_name
@@ -769,11 +783,13 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
              'cookie'     : cookie,
              'listowner'  : self.GetOwnerEmail(),
              }, mlist=self)
-        subj = self.GetConfirmSubject(listname, cookie, 'join')
         sender = self.GetRequestEmail(cookie)
         msg = Message.UserNotification(
-            invitee, sender, subj,
-            text, lang=self.preferred_language)
+            invitee, sender,
+            text=text, lang=self.preferred_language)
+        subj = self.GetConfirmJoinSubject(listname, cookie)
+        del msg['subject']
+        msg['Subject'] = subj
         msg.send(self)
 
     def AddMember(self, userdesc, remote=None):
@@ -880,7 +896,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                  'listaddr'    : self.GetListEmail(),
                  'listname'    : realname,
                  'cookie'      : cookie,
-                 'requestaddr' : self.GetRequestEmail(cookie),
+                 'requestaddr' : self.getListAddress('request'),
                  'remote'      : remote,
                  'listadmin'   : self.GetOwnerEmail(),
                  'confirmurl'  : confirmurl,
@@ -890,7 +906,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 text=text, lang=lang)
             # BAW: See ChangeMemberAddress() for why we do it this way...
             del msg['subject']
-            msg['Subject'] = self.GetConfirmSubject(realname, cookie, 'join')
+            msg['Subject'] = self.GetConfirmJoinSubject(realname, cookie)
             msg['Reply-To'] = self.GetRequestEmail(cookie)
             msg.send(self)
             who = formataddr((name, email))
@@ -1068,7 +1084,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
              'listaddr'   : self.GetListEmail(),
              'listname'   : realname,
              'cookie'     : cookie,
-             'requestaddr': self.GetRequestEmail(cookie),
+             'requestaddr': self.getListAddress('request'),
              'remote'     : '',
              'listadmin'  : self.GetOwnerEmail(),
              'confirmurl' : confirmurl,
@@ -1084,7 +1100,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             newaddr, self.GetRequestEmail(cookie),
             text=text, lang=lang)
         del msg['subject']
-        msg['Subject'] = self.GetConfirmSubject(realname, cookie, 'join')
+        msg['Subject'] = self.GetConfirmJoinSubject(realname, cookie)
         msg['Reply-To'] = self.GetRequestEmail(cookie)
         msg.send(self)
 
@@ -1267,7 +1283,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
              'listaddr'    : self.GetListEmail(),
              'listname'    : realname,
              'cookie'      : cookie,
-             'requestaddr' : self.GetRequestEmail(cookie),
+             'requestaddr' : self.getListAddress('request'),
              'remote'      : remote,
              'listadmin'   : self.GetOwnerEmail(),
              'confirmurl'  : confirmurl,
@@ -1277,7 +1293,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             text=text, lang=lang)
             # BAW: See ChangeMemberAddress() for why we do it this way...
         del msg['subject']
-        msg['Subject'] = self.GetConfirmSubject(realname, cookie, 'leave')
+        msg['Subject'] = self.GetConfirmLeaveSubject(realname, cookie)
         msg['Reply-To'] = self.GetRequestEmail(cookie)
         msg.send(self)
 

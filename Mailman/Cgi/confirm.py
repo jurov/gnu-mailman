@@ -781,7 +781,8 @@ def reenable_prompt(mlist, doc, cookie, list, member):
         <a href="%(listinfourl)s">list information page</a>.""")])
         return
 
-    date = time.strftime('%A, %B %d, %Y', info.date + (0,) * 6)
+    date = time.strftime('%A, %B %d, %Y', 
+                         time.localtime(time.mktime(info.date + (0,)*6)))
     daysleft = int(info.noticesleft *
                    mlist.bounce_you_are_disabled_warnings_interval /
                    mm_cfg.days(1))

@@ -128,7 +128,7 @@ class Bouncer:
             # We've already scored any bounces for this day, so ignore it.
             syslog('bounce', '%s: %s already scored a bounce for date %s',
                    self.internal_name(), member,
-                   time.strftime('%d-%b-%Y', day + (0,)*6))
+                   time.strftime('%d-%b-%Y', day + (0,0,0,0,1,0)))
             # Continue to check phase below
         else:
             # See if this member's bounce information is stale.
