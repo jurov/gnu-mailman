@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 INTRODUCTION
@@ -97,37 +97,34 @@ FEATURES
 
 REQUIREMENTS
 
-    The default mail delivery mechanism uses a direct SMTP connection
-    to whatever mail transport agent you have running on port 25.  You
-    can thus use Mailman with any such MTA, however with certain MTAs
-    (e.g. Exim and Postfix), Mailman will support thru-the-web
-    creation and removal of mailing lists.
+    The default mail delivery mechanism uses a direct SMTP connection to
+    whatever mail transport agent you have running on port 25.  You can thus
+    use Mailman with any such MTA, however with certain MTAs (e.g. Exim and
+    Postfix), Mailman will support thru-the-web creation and removal of
+    mailing lists.
 
-    Mailman works with any web server that supports CGI/1.1.  The HTML
-    it generates is quite pedestrian and stingy on the graphics so it
-    should be friendly to most web browsers and network connections.
-    It is regularly tested with IE 5.5, Netscape 4.7x, and Mozilla on
-    Windows and Netscape 4.7x and Mozilla on Linux (and occasionally
-    Lynx on Linux and Netscape and Mozilla on MacOS too!).
+    Mailman works with any web server that supports CGI/1.1.  The HTML it
+    generates is quite pedestrian and stingy on the graphics so it should be
+    friendly to most web browsers and network connections.
 
-    You will need root access on the machine hosting your Mailman
-    installation in order to complete some of the configuration
-    steps.  See the INSTALL file for details.
+    You will need root access on the machine hosting your Mailman installation
+    in order to complete some of the configuration steps.  See the INSTALL
+    file for details.
 
-    Mailman's web and email user interface should be compatible with
-    just about any mail reader or web browser, although a mail reader
-    that is MIME aware will be a big help.  You do not need Java,
-    JavaScript, or any other fancy plugins.
+    Mailman's web and email user interface should be compatible with just
+    about any mail reader or web browser, although a mail reader that is MIME
+    aware will be a big help.  You do not need Java, JavaScript, or any other
+    fancy plugins.
 
 
 CREATE YOUR FIRST LIST
 
-    These instructions assume that you've installed and configured
-    Mailman according to the instructions in the INSTALL file.  To
-    create and test your first list, try the following:
+    These instructions assume that you've installed and configured Mailman
+    according to the instructions in the INSTALL file.  To create and test
+    your first list, try the following:
 
-    - First, initialize the site administrator's password by cd'ing to
-      the install directory (by default /usr/local/mailman) and typing
+    - First, initialize the site administrator's password by cd'ing to the
+      install directory (by default /usr/local/mailman) and typing
 
       % bin/mmsitepass
       New site password: [yourpassword]
@@ -138,27 +135,23 @@ CREATE YOUR FIRST LIST
 
         http://my.dom.ain/mailman/create
 
-      Fill out the form as described in the on-screen instructions, and
-      in the "List creator's password" field, type the password you
-      entered above.  Type your own email address for the "Initial
-      list owner address", and select "Yes" to notify the list
-      administrator.
+      Fill out the form as described in the on-screen instructions, and in the
+      "List creator's password" field, type the password you entered above.
+      Type your own email address for the "Initial list owner address", and
+      select "Yes" to notify the list administrator.
 
     - Hit "Create List"
 
-    - Check your email for a message from Mailman informing you that
-      your new mailing list was created.
+    - Check your email for a message from Mailman informing you that your new
+      mailing list was created.
 
-    - NOTE: If you are using an MTA other than Exim or Postfix
-      (e.g. Sendmail or qmail), then you'll need to do the extra step
-      of installing the mailing list aliases manually.  Follow the
-      instructions in an email message that you should have received
-      (you'll need to know how to do this for your particular MTA, see
-      the README for your MTA for more information).
+    - NOTE: You should consult the README for the specific MTA you are using.
+      Most can be set up to provide through-the-web creation of mailing lists,
+      but each configuration is different.
 
-    - Now visit the list's admin page (either by following the link on
-      the web page or entering the link from the email Mailman just
-      sent you).  Typically the url will be something like
+    - Now visit the list's admin page (either by following the link on the web
+      page or entering the link from the email Mailman just sent you).
+      Typically the url will be something like
 
         http://my.dom.ain/mailman/admin/mysitelist
 
@@ -166,16 +159,16 @@ CREATE YOUR FIRST LIST
 
     - Click on "Membership Management" and then on "Mass Subscription".
 
-    - Enter your email address in the big text field, and click on
-      "Submit Your Changes"
+    - Enter your email address in the big text field, and click on "Submit
+      Your Changes"
 
-    - Now go to your email and send a message to yourlist@my.dom.ain.
-      Within a minute or two you should see your message reflected
-      back to you via Mailman.
+    - Now go to your email and send a message to yourlist@my.dom.ain.  Within
+      a minute or two you should see your message reflected back to you via
+      Mailman.
 
-    Congratulations!  You've just set up and tested your first Mailman
-    mailing list.  If you had any problems along the way, please see
-    the section below on FOR MORE INFORMATION.
+    Congratulations!  You've just set up and tested your first Mailman mailing
+    list.  If you had any problems along the way, please see the section below
+    on FOR MORE INFORMATION.
 
 
 FOR MORE INFORMATION
@@ -195,43 +188,47 @@ FOR MORE INFORMATION
     to help you get going with Mailman.
 
     Mailman-Users
-        An list for users of Mailman, for posting questions or
-        problems related to installation, use, etc.  We'll try to keep
-        the deep technical discussions off this list.
+        An list for users of Mailman, for posting questions or problems
+        related to installation, use, etc.  We'll try to keep the deep
+        technical discussions off this list.
 
         http://mail.python.org/mailman/listinfo/mailman-users
 
     Listowners
         This mailing list with a non-technical focus, specifically for
-        discussions from the perspective of listowners and moderators
-        who do not have "shell access" to the mailing list server
-        where the Mailman software runs.
+        discussions from the perspective of listowners and moderators who do
+        not have "shell access" to the mailing list server where the Mailman
+        software runs.
 
         http://listowner.org
 
     Mailman-Announce
-        A read-only list for release announcements an other important
-        news.
+        A read-only list for release announcements an other important news.
 
         http://mail.python.org/mailman/listinfo/mailman-announce
 
     Mailman-Developers
-        A list for those of you interested in helping develop
-        Mailman's future direction.  This list will contain in-depth
-        technical discussions.
+        A list for those of you interested in helping develop Mailman 2's
+        future direction.  This list will contain in-depth technical
+        discussions.
 
         http://mail.python.org/mailman/listinfo/mailman-developers
 
+    Mailman3-Dev
+        Get involved now in the development of Mailman 3!
+
+        http://mail.python.org/mailman/listinfo/mailman3-dev
+
     Mailman-I18N
         A list for the discussion of the Mailman internationalization
-        effort.  Mailman 2.1 will be fully multi-lingual.
+        effort.  Mailman 2.1 is fully multi-lingual.
 
         http://mail.python.org/mailman/listinfo/mailman-i18n
 
     Mailman-Checkins
-        A read-only list which is an adjunct to the public anonymous
-        CVS repository.  You can stay on the bleeding edge of Mailman
-        development by subscribing to this list.
+        A read-only list which is an adjunct to the public anonymous CVS
+        repository.  You can stay on the bleeding edge of Mailman development
+        by subscribing to this list.
 
         http://mail.python.org/mailman/listinfo/mailman-checkins
 
