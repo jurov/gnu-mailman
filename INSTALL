@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2003 Free Software Foundation, Inc.
+Copyright (C) 1998-2004 Free Software Foundation, Inc.
 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 This file contains installation instructions for GNU Mailman, which is
@@ -214,6 +214,16 @@ upgrade.
             extension (some web servers require an extension).
             <extension> must include the dot.
 
+      --with-mailhost
+            Specify the fully qualified host name part for outgoing email.
+            After the installation is complete, this value can be overriden in
+            $prefix/Mailman/mm_cfg.py.
+
+      --with-urlhost
+            Specify the fully qualified host name part of urls.  After the
+            installation is complete, this value can be overriden in
+            $prefix/Mailman/mm_cfg.py.
+
       --with-gcc=no
             Don't use gcc, even if it is found.  In this case, `cc'
             must be found on your $PATH.
@@ -332,7 +342,7 @@ upgrade.
       information.
 
       Now configure your site list.  There is a convenient template
-      for a generic site list in misc/sitelist.cfg to help you with
+      for a generic site list in data/sitelist.cfg to help you with
       this.  The template can be applied to your site list by running:
 
           % bin/config_list -i data/sitelist.cfg mailman
