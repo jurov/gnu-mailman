@@ -117,7 +117,7 @@ class _Switchboard:
         data['version'] = mm_cfg.QFILE_SCHEMA_VERSION
         # Filter out volatile entries
         for k in data.keys():
-            if k[0] == '_':
+            if k.startswith('_'):
                 del data[k]
         # Now write the message text to one file and the metadata to another
         # file.  The metadata is always written second to avoid race
@@ -129,6 +129,8 @@ class _Switchboard:
         finally:
             os.umask(omask)
         msgfp.write(msgsave)
+        msgfp.flush()
+        os.fsync(msgfp.fileno())
         msgfp.close()
         # Now write the metadata using the appropriate external metadata
         # format.  We play rename-switcheroo here to further plug the race
