@@ -173,8 +173,7 @@ def process(mlist, msg, msgdata):
     else:
         desc = ''
     listid_h = formataddr((desc, listid))
-    # We always add a List-ID: header.  Do an parse/format roundtrip to
-    # properly quote any funny characters in the description.
+    # BAW: I think the message object should handle any necessary wrapping.
     del msg['list-id']
     msg['List-Id'] = listid_h
     # For internally crafted messages, we
