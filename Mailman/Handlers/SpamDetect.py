@@ -102,21 +102,25 @@ def process(mlist, msg, msgdata):
                 # we've detected spam, so throw the message away
                 raise SpamDetected
     # Now do header_filter_rules
-    g = HeaderGenerator(StringIO())
-    g.flatten(msg)
-    headers = g.header_text()
     # TK: Collect headers in sub-parts because attachment filename
     #     extension may be a clue to possible virus/spam.
     # Check also 'X-List-Administrivia' header if the message was owner
     # notification. Held message may be attached and have matching header
     # which may cause infinite loop of holding.
     if msg.is_multipart() and not msg.get('x-list-administrivia',''):
+        headers = ''
         for p in msg.walk():
             g = HeaderGenerator(StringIO())
             g.flatten(p)
-    headers = g.header_text()
-    headers = re.sub('\n+', '\n', headers) # remove extra cr
-    headers = re.sub('\n\s', ' ', headers) # connect multiline
+            headers += g.header_text()
+    else:
+        # Only the top level header should be checked.
+        g = HeaderGenerator(StringIO())
+        g.flatten(msg)
+        headers = g.header_text()
+    # Now reshape headers (remove extra CR and connect multiline).
+    headers = re.sub('\n+', '\n', headers)
+    headers = re.sub('\n\s', ' ', headers)
     for patterns, action, empty in mlist.header_filter_rules:
         if action == mm_cfg.DEFER:
             continue
