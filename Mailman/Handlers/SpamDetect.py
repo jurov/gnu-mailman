@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -96,17 +96,27 @@ def process(mlist, msg, msgdata):
     # First do site hard coded header spam checks
     for header, regex in mm_cfg.KNOWN_SPAMMERS:
         cre = re.compile(regex, re.IGNORECASE)
-        value = msg[header]
-        if not value:
-            continue
-        mo = cre.search(value)
-        if mo:
-            # we've detected spam, so throw the message away
-            raise SpamDetected
+        for value in msg.get_all(header, []):
+            mo = cre.search(value)
+            if mo:
+                # we've detected spam, so throw the message away
+                raise SpamDetected
     # Now do header_filter_rules
     g = HeaderGenerator(StringIO())
     g.flatten(msg)
     headers = g.header_text()
+    # TK: Collect headers in sub-parts because attachment filename
+    #     extension may be a clue to possible virus/spam.
+    # Check also 'X-List-Administrivia' header if the message was owner
+    # notification. Held message may be attached and have matching header
+    # which may cause infinite loop of holding.
+    if msg.is_multipart() and not msg.get('x-list-administrivia',''):
+        for p in msg.walk():
+            g = HeaderGenerator(StringIO())
+            g.flatten(p)
+    headers = g.header_text()
+    headers = re.sub('\n+', '\n', headers) # remove extra cr
+    headers = re.sub('\n\s', ' ', headers) # connect multiline
     for patterns, action, empty in mlist.header_filter_rules:
         if action == mm_cfg.DEFER:
             continue

@@ -384,7 +384,13 @@ class Privacy(GUIBase):
 
              You can have more than one filter rule for your list.  In that
              case, each rule is matched in turn, with processing stopped after
-             the first match.""")),
+             the first match.
+
+             Note that headers are collected from all the attachments 
+             (except for the mailman administrivia message) and
+             matched against the regular expressions. With this feature,
+             you can effectively sort out messages with dangerous file
+             types or file name extensions.""")),
 
             _('Legacy anti-spam filters'),
 
