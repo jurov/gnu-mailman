@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>%(realname)s 私人信件档案库的认证</title>
+</head>
+<body bgcolor="#ffffff">
+<FORM METHOD=POST ACTION="%(action)s/">
+%(message)s
+  <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+    <TR>
+      <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER">
+	<B><FONT COLOR="#000000" SIZE="+1">%(realname)s 私人信件档案库
+    的认证</FONT></B>
+      </TD>
+    </TR>
+    <tr>
+        <TD><div ALIGN="Right">Email 地址:</div></TD>
+        <TD><INPUT TYPE="text" NAME="username" SIZE="30"></TD>
+    </tr>
+    <tr>
+      <TD><div ALIGN="Right">暗码:</div></TD>
+      <TD><INPUT TYPE="password" NAME="password" SIZE="30"></TD>
+    </tr>
+    <tr>
+      <td colspan=2 align="middle"><INPUT type="SUBMIT"
+                                          name="submit"
+					  value="认证...">
+      </td>
+    </tr>
+  </TABLE>
+      <p><strong><em>重要:</em></strong> 在此基点上，你的
+      浏览器要有有效的关于用户自己的信息，否则管理设定变更无效。
+
+      <p>因为关于用户自己的信息用在管理接口上，所以你不须再一一证实
+       每个管理操作。当你退出浏览器 或（有意要停止的情况下）点击
+      <em>退出</em> 键，用户自己的信息会自动失效。链接下面 
+      <em>别的管理项目</em> (你只要见到其中一个即说明你已登记成功)。
+</FORM>
+</body>
+</html>

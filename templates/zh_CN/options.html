@@ -1,0 +1,275 @@
+<!-- $Revision: 7239 $ -->
+<html>
+<head>
+    <title><MM-Presentable-User> 会员关系的配置 <MM-List-Name>
+    </title>
+</head>
+<BODY BGCOLOR="#ffffff">
+    <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5">
+    <TR><TD WIDTH="100%" BGCOLOR="#99CCFF"><B>
+        <FONT COLOR="#000000" SIZE=+1>
+        <MM-List-Name> 信址列表的会员关系配置
+        <MM-Presentable-User>
+	</FONT></B></TD></TR>
+    </TABLE>
+<MM-Form-Start>
+<p>
+<table width="100%" border="0" cellspacing="5" cellpadding="5">
+    <tr><td>
+        <b><MM-Presentable-User></b>的注册的身分，
+        暗码，信址列表的选择项 <MM-List-Name> 。
+        </td><td><mm-logout-button></td>
+    </tr><tr>
+        <td colspan="2">
+        <MM-Case-Preserved-User>
+
+        <MM-Disabled-Notice>
+
+        <p><mm-results>
+        </td>
+    </tr>
+</table>
+
+<p>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5">
+    <TR><TD WIDTH="100%" BGCOLOR="#FFF0D0" colspan="2">
+        <FONT COLOR="#000000">
+        <B>改变你的 <MM-List-Name> 会员关系的信息</B>
+	</FONT></TD></TR>
+    <tr><td colspan="2">你可以在下面的栏目里填写新的地址，这样能
+        变更你原来在这个信址列表登记的地址。注意，确认Email会送到
+        信地址，并且变更必须在它执行之前被认可。
+
+        <p>批准时间的期限 <mm-pending-days>.
+
+        <p>你也可以选择设定或变为你的真名
+        (例如 <em>郭静</em>).
+
+        <p>如果你要改变所有列表的会员关系，(那些你已登记过的)
+         <mm-host>, 请用
+        <em>全部变更</em> 。
+
+        </td></tr>
+    <tr><td><center>
+        <table border="0" cellspacing="2" cellpadding="2" width="80%" cols="2">
+        <tr><td bgcolor="#dddddd"><div align="right">新地址:</div></td>
+            <td><mm-new-address-box></td>
+            </tr>
+        <tr><td bgcolor="#dddddd"><div align="right">再次
+            确认:</div></td> 
+            <td><mm-confirm-address-box></td>
+            </tr>
+        </tr></table></center>
+        </td>
+        <td><center>
+        <table border="0" cellspacing="2" cellpadding="2" width="80%" cols="2">
+            <tr><td bgcolor="#dddddd"><div align="right">你的名字
+            (随意):</div></td>
+            <td><mm-fullname-box></td>
+            </tr>
+        </table></center>
+        </td>
+        </tr>
+    <tr><td colspan="2"><center><mm-change-address-button>
+        <p><mm-global-change-of-address>全部变更</center></td>
+    </tr>
+</table>
+
+<p>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="5" CELLPADDING="5">
+    <TR><TD WIDTH="50%" BGCOLOR="#FFF0D0"><FONT COLOR="#000000">
+        <B>退会 <MM-List-Name></B></td>
+
+	<TD WIDTH="50%" BGCOLOR="#FFF0D0"><FONT COLOR="#000000">
+        <B>你的别的 <MM-Host> 登记</B>
+	</FONT></TD></TR>
+
+    <tr><td>
+        打开认可「确认盒」并敲击此键从这个新址列表中退会。
+          <strong>警告:</strong>
+        这个指令将会立即得到执行!!
+        <p>
+        <center><MM-Unsubscribe-Button></center></td>
+    <td>
+        你可以看到其他所有你作为成员已登记在册
+        <mm-host> 的信址列表的清单。你用这个也可同样的
+        变更这些别的登记。
+
+        <p>
+        <center><MM-Other-Subscriptions-Submit></center>
+	</TD></TR>
+</table>
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5">
+    <TR><TD COLSPAN=2 WIDTH="100%" BGCOLOR="#FFF0D0"><FONT COLOR="#000000">
+        <B>你的 <MM-List-Name> 暗码</B>
+	</FONT></TD></TR>
+
+    <tr valign="TOP"><td WIDTH="50%">
+        <a name=reminder>
+        <center>
+        <h3>你忘记了暗码吗？</h3>
+        </center>
+        敲击此键后会给你的登记地址用Email
+        发送你的暗码。
+        <p><MM-Umbrella-Notice>
+        <center>
+        <MM-Email-My-Pw>
+        </center>
+        </td>
+
+    <td WIDTH="50%">
+        <a name=changepw>
+        <center>
+        <h3>变更你的暗码</h3>
+        <TABLE BORDER="0" CELLSPACING="2" CELLPADDING="2" WIDTH="70%" COLS=2>
+            <TR><TD BGCOLOR="#dddddd"><div align="right">新
+                暗码:</div></TD>
+                <TD><MM-New-Pass-Box></TD>
+                </TR>
+            <TR>
+                <TD BGCOLOR="#dddddd"><div align="right">再次
+                确认:</div></TD>
+                <TD><MM-Confirm-Pass-Box></TD>
+            </TR>
+        </table>
+
+        <MM-Change-Pass-Button>
+        <p><center><mm-global-pw-changes-button>全部变更。
+        </center>
+</TABLE>
+
+<p>
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5">
+    <TR><TD WIDTH="100%" BGCOLOR="#FFF0D0"><FONT COLOR="#000000">
+        <B>你的 <MM-List-Name> 登记会员选择项</B>
+	</FONT></TD></TR>
+</table>
+
+<p>
+<i><strong>现在的设定正在被查证</strong></i>
+
+<p>请注意一些选择项里有 <em>全部设定</em>
+的确认部分。这些会改变你已登记的每个列表的登记 <mm-host>。在
+<em>其他的列表登记情况</em> 能知道你在其他信址列表的登记状况。
+<p>
+<TABLE BORDER="0" CELLSPACING="3" CELLPADDING="4" WIDTH="100%">
+    <tr><TD BGCOLOR="#cccccc">
+        <a name="disable">
+        <strong>Mail 的配送</strong></a><p>
+        设定这个选择项 <em>有效</em> 使这个信址列表可以接收投稿。
+        可设定 <em>停止</em> ，当你在一定时期内不想收发Mail时
+         (例如你要休假等)。如果你停止了收发功能，休假归来后不要
+        忘记再把它打开。
+        </td><td bgcolor="#cccccc">
+        <mm-delivery-enable-button>有效<br>
+        <mm-delivery-disable-button>停止<p>
+        <mm-global-deliver-button><i>全部设定</i>
+        </td></tr>
+
+    <tr><TD BGCOLOR="#cccccc">
+        <strong>设定汇总摘要方式</strong><p>
+        如果你打开汇总摘要，你每天将收到一件总摘要，而不是一封封的收。
+        如果你关闭汇总摘要，你可以收到一件最后的总摘要。
+        </td><td bgcolor="#cccccc">
+        <MM-Undigest-Radio-Button>关<br>
+        <MM-Digest-Radio-Button>开
+        </td></tr>
+        
+    <tr><TD BGCOLOR="#cccccc">
+        <strong>用平信还是MIME形式发汇总摘要？</strong><p>
+        你的阅读器支持不支持MIME方式的摘要。
+        一般情况下，MIME形式的摘要比较好，但如果你的阅读器对此
+        有问题的话，请选择平信的形式。
+        </td><td bgcolor="#cccccc">
+        <MM-Mime-Digests-Button>MIME<br>
+        <MM-Plain-Digests-Button>平信
+        </td></tr>
+        
+    <tr><TD BGCOLOR="#cccccc">
+        <strong>你还需要收你自己向列表投的信件吗？</strong><p>
+        通常情况下，你将收到你向列表投的每封信的复印件，
+        若是你不想要这些复印件，可以选择
+         <em>不要</em>.
+        </td><td bgcolor="#cccccc">
+        <mm-dont-receive-own-mail-button>不要<br>
+        <mm-receive-own-mail-button>要
+        </td></tr>
+
+    <tr><TD BGCOLOR="#cccccc">
+        <strong>你向列表发送Mail后需要列表返回收到通知吗？
+        </strong><p>
+        </td><td bgcolor="#cccccc">
+        <mm-dont-ack-posts-button>不要<br>
+        <mm-ack-posts-button>要
+        </td></tr>
+
+    <tr><td bgcolor="#cccccc">
+        <strong>这个列表领收提醒暗码用的Email吗？</strong><p>
+        每个月，作为会员你都会收到每个列表发给你的信箱的Email
+        包含有提示暗码。你可以选择<em>不要</em>关闭列表（一个）
+        的这个功能。如果你关闭所有你已登记的列表的暗码提示接收
+        选择的话，就没有提示Email发给你
+        </td><td bgcolor="#cccccc">
+        <mm-dont-get-password-reminder-button>不要<br>
+        <mm-get-password-reminder-button>要<p>
+        <mm-global-remind-button><i>全部设定</i>
+        </td></tr>
+
+    <tr><TD BGCOLOR="#cccccc">
+        <strong>在会员名录上不显示你吗？</strong><p>
+        当某人看列表会员关系时，你的地址通常是显示的(为了防止
+        大量收集mail地址用于恶用，而采取模糊处理)。如果你不希望
+        你的地址出现在这个会员关系名册上，可选择<em>不显示</em>。
+        </td><td bgcolor="#cccccc">
+        <MM-Public-Subscription-Button>不要<br>
+        <MM-Hide-Subscription-Button>要
+        </td></tr>
+
+    <tr><TD BGCOLOR="#cccccc">
+        <strong>希望使用何种语言？</strong><p>
+        </td><td bgcolor="#cccccc">
+        <MM-list-langs>
+        </td></tr>
+
+    <tr><td bgcolor="#cccccc">
+        <strong>你想订阅的题目分类是什么形式的？</strong><p>
+                你可以从信址列表上筛选出一个或几个题目，也即是只接收
+                其中的一部分的邮件。如果信件合于你的题目，就送给你，
+                否则就不给你。
+ 
+
+                <p>如果没有信件合于题目，收寄的规则基于下面选择项的
+                设定不同而不同。如果你没选择感兴趣的题目的话，你会接
+                到所有的信件。
+        </td><td bgcolor="#cccccc">
+        <mm-topics>
+        </td></tr>
+
+    <tr><td bgcolor="#cccccc">
+        <strong>你要收与任何题目的筛选都不符的信件吗？</strong><p>
+
+                这个选择项只有在至少选了一个题目的基础上才有效。
+                如果没有一个信件合于题目的筛选的话，说明违反了
+                信件收寄规则。选择 <em>不</em> 即你不接收不合于
+               任何题目的邮件，若选 <em>是</em> 则接收。
+
+                <p>如果你一个题目也没选，那么你将收到所有的
+                投向信址列表的稿件。
+        </td><td bgcolor="#cccccc">
+        <mm-suppress-nonmatching-topics>不<br>
+        <mm-receive-nonmatching-topics>是
+        </td></tr>
+
+    <tr><TD colspan="2">
+        <center><MM-options-Submit-button></center>
+        </td></tr>
+
+</table>
+</center>
+<p>
+<MM-Form-End>
+
+<MM-Mailman-Footer>
+</body>
+</html>
