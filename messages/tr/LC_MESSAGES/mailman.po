@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: Thu Dec 30 16:44:13 2004\n"
+"POT-Creation-Date: Wed Jan 12 17:21:06 2005\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kerem Erkan <kerem.erkan@hacettepe.edu.tr>\n"
 "Language-Team: Turkish <LL@li.org>\n"
@@ -1214,7 +1214,7 @@ msgid "Size:"
 msgstr "Boyut:"
 
 #: Mailman/Cgi/admindb.py:498 Mailman/Handlers/Scrubber.py:199
-#: Mailman/Handlers/Scrubber.py:295 Mailman/Handlers/Scrubber.py:296
+#: Mailman/Handlers/Scrubber.py:296 Mailman/Handlers/Scrubber.py:297
 msgid "not available"
 msgstr "kullanýlamýyor"
 
@@ -7640,7 +7640,7 @@ msgstr ""
 "Boyut: %(size)s\n"
 "Url: %(url)s\n"
 
-#: Mailman/Handlers/Scrubber.py:300
+#: Mailman/Handlers/Scrubber.py:301
 msgid ""
 "A non-text attachment was scrubbed...\n"
 "Name: %(filename)s\n"
@@ -7656,12 +7656,12 @@ msgstr ""
 "Taným: %(desc)s\n"
 "Url: %(url)s\n"
 
-#: Mailman/Handlers/Scrubber.py:334
+#: Mailman/Handlers/Scrubber.py:336
 #, fuzzy
 msgid "Skipped content of type %(partctype)s\n"
 msgstr "Ýçerik türü %(partctype)s atlandý"
 
-#: Mailman/Handlers/Scrubber.py:369
+#: Mailman/Handlers/Scrubber.py:371
 msgid "-------------- next part --------------\n"
 msgstr "-------------- sonraki bölüm --------------\n"
 
@@ -7876,7 +7876,7 @@ msgstr "%(name)s listesine üyelikler moderatör onayý gerektirir"
 msgid "Last autoresponse notification for today"
 msgstr "Bugün için son otomatik yanýt bildirimi"
 
-#: Mailman/Queue/BounceRunner.py:302
+#: Mailman/Queue/BounceRunner.py:298
 msgid ""
 "The attached message was received as a bounce, but either the bounce format\n"
 "was not recognized, or no member addresses could be extracted from it.  "
@@ -7898,7 +7898,7 @@ msgstr ""
 "%(adminurl)s\n"
 "\n"
 
-#: Mailman/Queue/BounceRunner.py:312
+#: Mailman/Queue/BounceRunner.py:308
 msgid "Uncaught bounce notification"
 msgstr "Algýlanamamýþ geri dönüþ bildirimi"
 
@@ -8728,7 +8728,7 @@ msgstr ""
 msgid "Saving list"
 msgstr ""
 
-#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw:57 bin/reset_pw.~1~:65
+#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw.py:57
 msgid "%%%"
 msgstr ""
 
@@ -9678,7 +9678,7 @@ msgstr ""
 msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr ""
 
-#: bin/reset_pw:21
+#: bin/reset_pw.py:21
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -9691,41 +9691,20 @@ msgid ""
 "\n"
 "This script is intended to be run as a bin/withlist script, i.e.\n"
 "\n"
-"% bin/withlist -l -r reset_pw [options]\n"
+"% bin/withlist -l -r reset_pw listname [options]\n"
 "\n"
 "Options:\n"
 "    -v / --verbose\n"
 "        Print what the script is doing.\n"
 msgstr ""
 
-#: bin/reset_pw:77 bin/reset_pw.~1~:90
+#: bin/reset_pw.py:77
 #, fuzzy
 msgid "Changing passwords for list: %(listname)s"
 msgstr "%(listname)s mesaj listesi için silme isteði"
 
-#: bin/reset_pw.~1~:21
-msgid ""
-"Reset the passwords for members of a mailing list.\n"
-"\n"
-"This script resets all the passwords of a mailing list's members.  It can "
-"also\n"
-"be used to reset the lists of all members of all mailing lists, and to\n"
-"(optionally) send password reminders to list members who have had their\n"
-"passwords changed.\n"
-"\n"
-"This script is intended to be run as a bin/withlist script, i.e.\n"
-"\n"
-"% bin/withlist -l -r reset_pw [options]\n"
-"\n"
-"Options:\n"
-"    -s / --send-reminders\n"
-"        Send password reminders for every list that has had its passwords\n"
-"        reset.  Without this, users will have to be notified that their\n"
-"        passwords have changed, and then request their own individual\n"
-"        reminders.\n"
-"\n"
-"    -v / --verbose\n"
-"        Print what the script is doing.\n"
+#: bin/reset_pw.py:83
+msgid "New password for member %(member)40s: %(randompw)s"
 msgstr ""
 
 #: bin/rmlist:19
@@ -10295,14 +10274,14 @@ msgid ""
 "    --run [module.]callable\n"
 "    -r [module.]callable\n"
 "        This can be used to run a script with the opened MailList object.\n"
-"        This works by attempting to import `module' (which must already be\n"
-"        accessible on your sys.path), and then calling `callable' from the\n"
-"        module.  callable can be a class or function; it is called with the\n"
-"        MailList object as the first argument.  If additional args are "
-"given\n"
-"        on the command line, they are passed as subsequent positional args "
-"to\n"
-"        the callable.\n"
+"        This works by attempting to import `module' (which must be in the\n"
+"        directory containing withlist, or already be accessible on your\n"
+"        sys.path), and then calling `callable' from the module.  callable "
+"can\n"
+"        be a class or function; it is called with the MailList object as "
+"the\n"
+"        first argument.  If additional args are given on the command line,\n"
+"        they are passed as subsequent positional args to the callable.\n"
 "\n"
 "        Note that `module.' is optional; if it is omitted then a module "
 "with\n"
@@ -10367,10 +10346,10 @@ msgid ""
 "        print 'No address matched:', addr\n"
 "\n"
 "and run this from the command line:\n"
-"%% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
+" %% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
 msgstr ""
 
-#: bin/withlist:151
+#: bin/withlist:163
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -10381,47 +10360,47 @@ msgid ""
 "    "
 msgstr ""
 
-#: bin/withlist:162
+#: bin/withlist:174
 msgid "Unlocking (but not saving) list: %(listname)s"
 msgstr ""
 
-#: bin/withlist:166
+#: bin/withlist:178
 msgid "Finalizing"
 msgstr ""
 
-#: bin/withlist:175
+#: bin/withlist:187
 msgid "Loading list %(listname)s"
 msgstr ""
 
-#: bin/withlist:177
+#: bin/withlist:189
 msgid "(locked)"
 msgstr ""
 
-#: bin/withlist:179
+#: bin/withlist:191
 msgid "(unlocked)"
 msgstr ""
 
-#: bin/withlist:184
+#: bin/withlist:196
 msgid "Unknown list: %(listname)s"
 msgstr ""
 
-#: bin/withlist:223
+#: bin/withlist:236
 msgid "No list name supplied."
 msgstr ""
 
-#: bin/withlist:226
+#: bin/withlist:245
 msgid "--all requires --run"
 msgstr ""
 
-#: bin/withlist:246
+#: bin/withlist:265
 msgid "Importing %(module)s..."
 msgstr ""
 
-#: bin/withlist:249
+#: bin/withlist:268
 msgid "Running %(module)s.%(callable)s()..."
 msgstr ""
 
-#: bin/withlist:270
+#: bin/withlist:289
 msgid "The variable `m' is the %(listname)s MailList instance"
 msgstr ""
 

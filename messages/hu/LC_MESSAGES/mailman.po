@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman\n"
-"POT-Creation-Date: Thu Dec 30 16:44:13 2004\n"
+"POT-Creation-Date: Wed Jan 12 17:21:06 2005\n"
 "PO-Revision-Date: 2004-03-23 14:55--100\n"
 "Last-Translator: Szilárd Vizi <vizisz@freemail.hu>\n"
 "Language-Team: Hungarian <LL@li.org>\n"
@@ -1191,7 +1191,7 @@ msgid "Size:"
 msgstr "Méret:"
 
 #: Mailman/Cgi/admindb.py:498 Mailman/Handlers/Scrubber.py:199
-#: Mailman/Handlers/Scrubber.py:295 Mailman/Handlers/Scrubber.py:296
+#: Mailman/Handlers/Scrubber.py:296 Mailman/Handlers/Scrubber.py:297
 msgid "not available"
 msgstr "nem elérhetõ"
 
@@ -7421,7 +7421,7 @@ msgstr ""
 "Méret: %(size)s\n"
 "Url : %(url)s\n"
 
-#: Mailman/Handlers/Scrubber.py:300
+#: Mailman/Handlers/Scrubber.py:301
 msgid ""
 "A non-text attachment was scrubbed...\n"
 "Name: %(filename)s\n"
@@ -7437,12 +7437,12 @@ msgstr ""
 "Leírás: %(desc)s\n"
 "Url : %(url)s\n"
 
-#: Mailman/Handlers/Scrubber.py:334
+#: Mailman/Handlers/Scrubber.py:336
 #, fuzzy
 msgid "Skipped content of type %(partctype)s\n"
 msgstr "%(partctype)s típusú részek figyelmen kívül hagyva"
 
-#: Mailman/Handlers/Scrubber.py:369
+#: Mailman/Handlers/Scrubber.py:371
 msgid "-------------- next part --------------\n"
 msgstr "--------- következõ rész ---------\n"
 
@@ -7658,7 +7658,7 @@ msgstr ""
 msgid "Last autoresponse notification for today"
 msgstr "A mai napra az utolsó automatikus válasz"
 
-#: Mailman/Queue/BounceRunner.py:302
+#: Mailman/Queue/BounceRunner.py:298
 msgid ""
 "The attached message was received as a bounce, but either the bounce format\n"
 "was not recognized, or no member addresses could be extracted from it.  "
@@ -7680,7 +7680,7 @@ msgstr ""
 "%(adminurl)s\n"
 "\n"
 
-#: Mailman/Queue/BounceRunner.py:312
+#: Mailman/Queue/BounceRunner.py:308
 msgid "Uncaught bounce notification"
 msgstr "Ismeretlen visszapattanási értesítés"
 
@@ -8844,7 +8844,7 @@ msgstr ""
 msgid "Saving list"
 msgstr "Lista mentése"
 
-#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw:57 bin/reset_pw.~1~:65
+#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw.py:57
 msgid "%%%"
 msgstr "%%%"
 
@@ -10351,7 +10351,7 @@ msgstr "Nincs ilyen listatag: %(addr)s"
 msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr "`%(addr)s' felhasználó címének törlése a(z) %(listname)s listáról."
 
-#: bin/reset_pw:21
+#: bin/reset_pw.py:21
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -10364,41 +10364,20 @@ msgid ""
 "\n"
 "This script is intended to be run as a bin/withlist script, i.e.\n"
 "\n"
-"% bin/withlist -l -r reset_pw [options]\n"
+"% bin/withlist -l -r reset_pw listname [options]\n"
 "\n"
 "Options:\n"
 "    -v / --verbose\n"
 "        Print what the script is doing.\n"
 msgstr ""
 
-#: bin/reset_pw:77 bin/reset_pw.~1~:90
+#: bin/reset_pw.py:77
 #, fuzzy
 msgid "Changing passwords for list: %(listname)s"
 msgstr "Kérelem a(z) %(listname)s levelezõlista törlésére"
 
-#: bin/reset_pw.~1~:21
-msgid ""
-"Reset the passwords for members of a mailing list.\n"
-"\n"
-"This script resets all the passwords of a mailing list's members.  It can "
-"also\n"
-"be used to reset the lists of all members of all mailing lists, and to\n"
-"(optionally) send password reminders to list members who have had their\n"
-"passwords changed.\n"
-"\n"
-"This script is intended to be run as a bin/withlist script, i.e.\n"
-"\n"
-"% bin/withlist -l -r reset_pw [options]\n"
-"\n"
-"Options:\n"
-"    -s / --send-reminders\n"
-"        Send password reminders for every list that has had its passwords\n"
-"        reset.  Without this, users will have to be notified that their\n"
-"        passwords have changed, and then request their own individual\n"
-"        reminders.\n"
-"\n"
-"    -v / --verbose\n"
-"        Print what the script is doing.\n"
+#: bin/reset_pw.py:83
+msgid "New password for member %(member)40s: %(randompw)s"
 msgstr ""
 
 #: bin/rmlist:19
@@ -11141,6 +11120,7 @@ msgid "Using Mailman version:"
 msgstr "Mailman verziószáma:"
 
 #: bin/withlist:19
+#, fuzzy
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -11182,14 +11162,14 @@ msgid ""
 "    --run [module.]callable\n"
 "    -r [module.]callable\n"
 "        This can be used to run a script with the opened MailList object.\n"
-"        This works by attempting to import `module' (which must already be\n"
-"        accessible on your sys.path), and then calling `callable' from the\n"
-"        module.  callable can be a class or function; it is called with the\n"
-"        MailList object as the first argument.  If additional args are "
-"given\n"
-"        on the command line, they are passed as subsequent positional args "
-"to\n"
-"        the callable.\n"
+"        This works by attempting to import `module' (which must be in the\n"
+"        directory containing withlist, or already be accessible on your\n"
+"        sys.path), and then calling `callable' from the module.  callable "
+"can\n"
+"        be a class or function; it is called with the MailList object as "
+"the\n"
+"        first argument.  If additional args are given on the command line,\n"
+"        they are passed as subsequent positional args to the callable.\n"
 "\n"
 "        Note that `module.' is optional; if it is omitted then a module "
 "with\n"
@@ -11254,7 +11234,7 @@ msgid ""
 "        print 'No address matched:', addr\n"
 "\n"
 "and run this from the command line:\n"
-"%% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
+" %% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
 msgstr ""
 "Általános kezelõprogram levelezõlista objektum kezeléséhez.\n"
 "\n"
@@ -11377,7 +11357,7 @@ msgstr ""
 "Ekkor a következõ paranccsal tudjuk a jelszót megváltoztatni:\n"
 "%% bin/withlist -l -r changepw mylist valaki@valahol.hu foobar\n"
 
-#: bin/withlist:151
+#: bin/withlist:163
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -11394,47 +11374,47 @@ msgstr ""
 "fel, akkor lefut ez a rész.\n"
 "     "
 
-#: bin/withlist:162
+#: bin/withlist:174
 msgid "Unlocking (but not saving) list: %(listname)s"
 msgstr "Zárolása megszüntetése (mentés nélkül) a(z) %(listname)s listán"
 
-#: bin/withlist:166
+#: bin/withlist:178
 msgid "Finalizing"
 msgstr "Véglegesítés"
 
-#: bin/withlist:175
+#: bin/withlist:187
 msgid "Loading list %(listname)s"
 msgstr "%(listname)s lista betöltése"
 
-#: bin/withlist:177
+#: bin/withlist:189
 msgid "(locked)"
 msgstr "(zárolva)"
 
-#: bin/withlist:179
+#: bin/withlist:191
 msgid "(unlocked)"
 msgstr "(zárolás megszüntetve)"
 
-#: bin/withlist:184
+#: bin/withlist:196
 msgid "Unknown list: %(listname)s"
 msgstr "Ismeretlen lista: %(listname)s"
 
-#: bin/withlist:223
+#: bin/withlist:236
 msgid "No list name supplied."
 msgstr "Nem lett listanév megadva."
 
-#: bin/withlist:226
+#: bin/withlist:245
 msgid "--all requires --run"
 msgstr "--all használatához --run is szükséges"
 
-#: bin/withlist:246
+#: bin/withlist:265
 msgid "Importing %(module)s..."
 msgstr "%(module)s beolvasása..."
 
-#: bin/withlist:249
+#: bin/withlist:268
 msgid "Running %(module)s.%(callable)s()..."
 msgstr "Folyamatban %(module)s.%(callable)s()..."
 
-#: bin/withlist:270
+#: bin/withlist:289
 msgid "The variable `m' is the %(listname)s MailList instance"
 msgstr "A(z) %(listname)s listára az `m' változó hivatkozik a MailListben"
 
