@@ -1,15 +1,17 @@
+# translation of mailman.po to Italian
 # Mailman
+# Simone Piunno <pioppo@ferrara.linux.it>, 2003
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailman HEAD\n"
+"Project-Id-Version: mailman\n"
 "POT-Creation-Date: Sat Sep 13 09:21:50 2003\n"
-"PO-Revision-Date: 2003-04-22 21:21GMT\n"
+"PO-Revision-Date: 2003-09-22 10:52GMT\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team: Italian <mailman-it@ferrara.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.0.1\n"
 
 # /home/mailman/Mailman/MailCommandHandler.py:405
 #: Mailman/Archiver/HyperArch.py:119
@@ -1253,9 +1255,8 @@ msgid "<em>The sender is now a member of this list</em>"
 msgstr "<em>Il mittente ora &egrave; un iscritto di questa lista</em>"
 
 #: Mailman/Cgi/admindb.py:434
-#, fuzzy
 msgid "Add <b>%(esender)s</b> to one of these sender filters:"
-msgstr "Aggiungi <b>%(esender)s</b> ad un filtro mittenti"
+msgstr "Aggiungi <b>%(esender)s</b> ad uno di questi filtri mittenti"
 
 #: Mailman/Cgi/admindb.py:439
 msgid "Accepts"
@@ -2360,13 +2361,12 @@ msgid "the list admin overview page"
 msgstr "la pagina di supervisione per gli amministratori"
 
 #: Mailman/Cgi/listinfo.py:124
-#, fuzzy
 msgid ""
 " to find the management interface for your list.\n"
 "         <p>If you are having trouble using the lists, please contact "
 msgstr ""
 " per trovare l'interfaccia di gestione della tua lista.\n"
-"         <p>Invia domande o commenti a "
+"         <p>Se hai difficolt&agrave;, invia domande o commenti a "
 
 # /home/mailman/Mailman/HTMLFormatter.py:255
 #: Mailman/Cgi/listinfo.py:189
@@ -3877,9 +3877,8 @@ msgid "Russian"
 msgstr "Russo"
 
 #: Mailman/Defaults.py:1277
-#, fuzzy
 msgid "Serbian"
-msgstr "Tedesco"
+msgstr "Serbo"
 
 #: Mailman/Defaults.py:1278
 msgid "Swedish"
@@ -3887,7 +3886,7 @@ msgstr "Svedese"
 
 #: Mailman/Defaults.py:1279
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraino"
 
 # /home/mailman/Mailman/Deliverer.py:208
 #: Mailman/Deliverer.py:51
@@ -5858,9 +5857,8 @@ msgstr ""
 # /home/mailman/Mailman/Cgi/admin.py:39
 # /home/mailman/Mailman/Cgi/admin.py:524
 #: Mailman/Gui/Membership.py:26
-#, fuzzy
 msgid "Membership&nbsp;Management..."
-msgstr "Gestione&nbsp;Iscritti"
+msgstr "Gestione&nbsp;Iscritti..."
 
 # /home/mailman/Mailman/Cgi/admin.py:529
 #: Mailman/Gui/Membership.py:30
@@ -6087,9 +6085,8 @@ msgstr "Password"
 
 # /home/mailman/Mailman/Cgi/admin.py:40
 #: Mailman/Gui/Privacy.py:28
-#, fuzzy
 msgid "Privacy options..."
-msgstr "Opzioni per la privacy"
+msgstr "Opzioni per la privacy..."
 
 # /home/mailman/Mailman/Cgi/admindb.py:289
 #: Mailman/Gui/Privacy.py:32
@@ -7064,14 +7061,12 @@ msgstr "Configurazione del news server"
 
 # /home/mailman/Mailman/GatewayManager.py:48
 #: Mailman/Gui/Usenet.py:40
-#, fuzzy
 msgid "The hostname of the machine your news server is running on."
 msgstr ""
 "L'indirizzo internet della macchina sulla quale gira il\n"
 "             tuo news server."
 
 #: Mailman/Gui/Usenet.py:41
-#, fuzzy
 msgid ""
 "This value may be either the name of your news server, or\n"
 "             optionally of the format name:port, where port is a port "
@@ -7083,7 +7078,10 @@ msgid ""
 "             recognize the machine this mailing list runs on as a machine\n"
 "             capable of reading and posting news."
 msgstr ""
-"Il server news non &egrave; parte di Mailman.  Devi gi&agrave;\n"
+"Questo valore pu&ograve; essere il nome del tuo server news,\n"
+"             oppure opzionalmente nella forma nome:porta, dove posta\n"
+"             &egrave; un numero di porta.\n"
+"             Il server news non &egrave; parte di Mailman.  Devi gi&agrave;\n"
 "             avere accesso a un server NNTP e questo server deve\n"
 "             abilitarci alla lettura e all'invio."
 
@@ -9738,7 +9736,6 @@ msgid "matching mailing lists found:"
 msgstr "liste corrispondenti trovate:"
 
 #: bin/list_members:19
-#, fuzzy
 msgid ""
 "List all the members of a mailing list.\n"
 "\n"
@@ -9830,6 +9827,13 @@ msgstr ""
 "        Riporta gli indirizzi inalterati, con le maiuscole e le minuscole\n"
 "        originali di quando furono inseriti.  Altrimenti, gli indirizzi\n"
 "        vengono riportati in minuscolo.\n"
+"\n"
+"    --invalid / -i\n"
+"        Riporta soltanto gli indirizzi che non sono validi.\n"
+"        Ignora -r, -d e -n. \n"
+"    --unicode / -u\n"
+"        Riporta soltanto gli indirizzi che sono conservati in formato\n"
+"        Unicode invece che come normali stringhe.  Ignora -r, -d e -n.\n"
 "\n"
 "    --help / -h\n"
 "        Scrive questo messaggio d'aiuto ed esce.\n"
@@ -10281,14 +10285,41 @@ msgid ""
 "    --version\n"
 "        Display version information and exit.\n"
 msgstr ""
+"Genera un catalogo messaggi binario a partire da una descrizione\n"
+"testuale della traduzione.\n"
+"\n"
+"Questo programma converte un catalogo messaggi dalla forma Uniforum "
+"testuale\n"
+"(file .po) inun catalogo binario GNU (file .mo).  Si tratta sostanzialmente\n"
+"della stessa funzione realizzata dal comando GNU msgfmt, tuttavia questa è\n"
+"una implementazione più semplice.\n"
+"\n"
+"Uso: msgfmt.py [OPZIONI] nomefile.po \n"
+"\n"
+"Opzioni:\n"
+"\n"
+"    -o file\n"
+"    --output-file=file\n"
+"        Specifica il nome del file in cui scrivere il risultato.  Se omesso\n"
+"        il risultato sarà scritto in un file di nome filename.mo (basato "
+"sul\n"
+"        nome del file di input).\n"
+"\n"
+"    -h\n"
+"    --help\n"
+"        Scrive questo messaggio d'aiuto ed esce.\n"
+"\n"
+"    -V\n"
+"    --version\n"
+"        Mostra informazioni sulla versione ed esce.\n"
 
 #: bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
-msgstr ""
+msgstr "Aggiunge una traduzione non-fuzzy nel dizionario."
 
 #: bin/msgfmt.py:57
 msgid "Return the generated output."
-msgstr ""
+msgstr "Restituisce l'output generato."
 
 #: bin/newlist:19
 msgid ""
@@ -11973,52 +12004,3 @@ msgstr ""
 "        Invia il digest soltanto per la lista indicata, altrimenti viene\n"
 "        inviato per tutte.\n"
 
-#~ msgid ""
-#~ "Fix the MM2.1b4 archives.\n"
-#~ "\n"
-#~ "Usage: %(PROGRAM)s [options] file ...\n"
-#~ "\n"
-#~ "Where options are:\n"
-#~ "    -h / --help\n"
-#~ "        Print this help message and exit.\n"
-#~ msgstr ""
-#~ "Corregge gli archivi generati da MM2.1b4\n"
-#~ "\n"
-#~ "Uso: %(PROGRAM)s [opzioni] file ...\n"
-#~ "\n"
-#~ "Dove le opzioni sono:\n"
-#~ "\n"
-#~ "    -h/--help\n"
-#~ "        Scrive questo messaggio di aiuto ed esce.\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "To finish creating your mailing list, you must edit your /etc/aliases "
-#~ "(or\n"
-#~ "equivalent) file by adding the following lines, and possibly running the\n"
-#~ "`newaliases' program:\n"
-#~ "\n"
-#~ "## %(listname)s mailing list"
-#~ msgstr ""
-#~ "\n"
-#~ "Per completare la rimozione della lista, devi editare il file /etc/"
-#~ "aliases\n"
-#~ "(o equivalente) rimuovendo le seguenti righe e probabilmente eseguire il\n"
-#~ "comando newaliases:\n"
-#~ "\n"
-#~ "## lista %(listname)s"
-
-#~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
-#~ msgstr "Grossa variazione nella lista %(listname)s@%(listhost)s"
-
-#~ msgid "Bad argument to -c/--changes-msg: %(arg)s"
-#~ msgstr "Argomento errato per il parametro -c/--changes-msg: %(arg)s"
-
-#~ msgid ""
-#~ "Invoked by cron, this checks for pending moderation requests and mails "
-#~ "the\n"
-#~ "list moderators if necessary.\n"
-#~ msgstr ""
-#~ "Invocato da cron, controlla se esistono richieste di moderazione "
-#~ "pendenti\n"
-#~ "e se necessario le inoltra ai moderatori della lista.\n"
