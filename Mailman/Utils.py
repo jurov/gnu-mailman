@@ -36,6 +36,7 @@ import cgi
 import htmlentitydefs
 import email.Header
 import email.Iterators
+from email.Errors import HeaderParseError
 from types import UnicodeType
 from string import whitespace, digits
 try:
@@ -816,6 +817,6 @@ def oneline(s, cset):
         ustr = h.__unicode__()
         line = UEMPTYSTRING.join(ustr.splitlines())
         return line.encode(cset, 'replace')
-    except (LookupError, UnicodeError):
+    except (LookupError, UnicodeError, ValueError, HeaderParseError):
         # possibly charset problem. return with undecoded string in one line.
         return EMPTYSTRING.join(s.splitlines())
