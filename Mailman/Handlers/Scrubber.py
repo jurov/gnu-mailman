@@ -309,7 +309,7 @@ Url : %(url)s
     # We still have to sanitize multipart messages to flat text because
     # Pipermail can't handle messages with list payloads.  This is a kludge;
     # def (n) clever hack ;).
-    if msg.is_multipart():
+    if msg.is_multipart() and sanitize <> 2:
         # By default we take the charset of the first text/plain part in the
         # message, but if there was none, we'll use the list's preferred
         # language's charset.
@@ -402,7 +402,8 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     # For safety, we should confirm this is valid ext for content-type
     # but we can use fnext if we introduce fnext filtering
     if mm_cfg.SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION:
-        ext = fnext
+        # HTML message doesn't have filename :-(
+        ext = fnext or guess_extension(ctype, fnext)
     else:
         ext = guess_extension(ctype, fnext)
     if not ext:

@@ -217,7 +217,8 @@ class Article:
                 self.headers[i] = message[i]
 
         # Read the message body
-        s = StringIO(message.get_payload())
+        s = StringIO(message.get_payload(decode=1)\
+                     or message.as_string().split('\n\n',1)[1])
         self.body = s.readlines()
 
     def _set_date(self, message):

@@ -314,7 +314,8 @@ def send_i18n_digests(mlist, mboxfp):
                 uh = '\n\t'.join(uh.split('\n'))
                 print >> plainmsg, uh
         print >> plainmsg
-        payload = msg.get_payload(decode=True)
+        payload = msg.get_payload(decode=True)\
+                  or msg.as_string().split('\n\n',1)[1]
         print >> plainmsg, payload
         if not payload.endswith('\n'):
             print >> plainmsg
