@@ -542,7 +542,15 @@ class Article(pipermail.Article):
         body = EMPTYSTRING.join(self.body)
         if isinstance(body, types.UnicodeType):
             body = body.encode(Utils.GetCharSet(self._lang), 'replace')
-        return NL.join(headers) % d + '\n\n' + body
+        if mm_cfg.ARCHIVER_OBSCURES_EMAILADDRS:
+            otrans = i18n.get_translation()
+            try:
+                i18n.set_language(self._lang)
+                body = re.sub(r'([-+,.\w]+)@([-+.\w]+)',
+                              '\g<1>' + _(' at ') + '\g<2>', body)
+            finally:
+                i18n.set_translation(otrans)
+        return NL.join(headers) % d + '\n\n' + body + '\n'
 
     def _set_date(self, message):
         self.__super_set_date(message)
