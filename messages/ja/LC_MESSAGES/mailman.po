@@ -1,13 +1,13 @@
 # Mailman Japanese Translation
 # Copyright (C) 2002-2004
-# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2004
+# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2005
 # Yukihiro Yasuda <yukihiro@poem.co.jp>, 2004
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailman 2.1.5+\n"
-"POT-Creation-Date: Fri Feb 11 21:18:16 2005\n"
-"PO-Revision-Date: 2004-12-04 14:30+09:00\n"
+"Project-Id-Version: Mailman 2.1.6\n"
+"POT-Creation-Date: Wed Mar 23 09:55:34 2005\n"
+"PO-Revision-Date: 2005-03-23 11:30+09:00\n"
 "Last-Translator: Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>\n"
 "Language-Team: Japanese <mmjp-users@mm.tkikuchi.net>\n"
 "MIME-Version: 1.0\n"
@@ -264,7 +264,7 @@ msgstr ""
 "メーリングリストは機能しません. "
 
 #: Mailman/Cgi/admin.py:183 Mailman/Cgi/admin.py:189 Mailman/Cgi/admin.py:194
-#: Mailman/Cgi/admin.py:1433 Mailman/Gui/GUIBase.py:190
+#: Mailman/Cgi/admin.py:1433 Mailman/Gui/GUIBase.py:191
 msgid "Warning: "
 msgstr "警告: "
 
@@ -4351,15 +4351,15 @@ msgstr "まとめ読みを発送しました."
 msgid "There was no digest to send."
 msgstr "発送すべき, まとめ読みがありません."
 
-#: Mailman/Gui/GUIBase.py:155
+#: Mailman/Gui/GUIBase.py:156
 msgid "Invalid value for variable: %(property)s"
 msgstr "変数値が無効: %(property)s"
 
-#: Mailman/Gui/GUIBase.py:159
+#: Mailman/Gui/GUIBase.py:160
 msgid "Bad email address for option %(property)s: %(val)s"
 msgstr "%(property)s オプションのメールアドレスが間違っています: %(val)s"
 
-#: Mailman/Gui/GUIBase.py:185
+#: Mailman/Gui/GUIBase.py:186
 msgid ""
 "The following illegal substitution variables were\n"
 "                found in the <code>%(property)s</code> string:\n"
@@ -4372,7 +4372,7 @@ msgstr ""
 " <code>%(bad)s</code>\n"
 "<p>問題を修正するまでは, メーリングリストは正常に機能しません."
 
-#: Mailman/Gui/GUIBase.py:199
+#: Mailman/Gui/GUIBase.py:200
 msgid ""
 "Your <code>%(property)s</code> string appeared to\n"
 "                    have some correctable problems in its new value.\n"
@@ -6229,7 +6229,7 @@ msgstr ""
 " しかしたとえばエスケープやブラケットを用いて, 多くの\n"
 " 方法で回避できます."
 
-#: Mailman/Gui/Privacy.py:478
+#: Mailman/Gui/Privacy.py:481
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
@@ -6237,7 +6237,7 @@ msgstr ""
 "へッダフィルタ規則には必ずパターンを指定してください.\n"
 "不完全なフィルタは無視されます."
 
-#: Mailman/Gui/Privacy.py:486
+#: Mailman/Gui/Privacy.py:489
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
@@ -7127,7 +7127,7 @@ msgstr "-------------- next part --------------\n"
 msgid "The message headers matched a filter rule"
 msgstr "メールへッダがフィルタ規則に合致しました"
 
-#: Mailman/Handlers/SpamDetect.py:131
+#: Mailman/Handlers/SpamDetect.py:135
 msgid "Message rejected by filter rule match"
 msgstr "フィルタ規則に合致したメールを拒否しました"
 
@@ -7304,31 +7304,31 @@ msgstr "%(listname)s メーリングリストに入会するには, あなたの確認が必要です"
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
 msgstr "%(listname)s メーリングリストから退会するには, あなたの確認が必要です"
 
-#: Mailman/MailList.py:887 Mailman/MailList.py:1276
+#: Mailman/MailList.py:888 Mailman/MailList.py:1277
 msgid " from %(remote)s"
 msgstr " %(remote)s から"
 
-#: Mailman/MailList.py:921
+#: Mailman/MailList.py:922
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "%(realname)s への入会には管理者の承認が必要です"
 
-#: Mailman/MailList.py:985 bin/add_members:242
+#: Mailman/MailList.py:986 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "%(realname)s 入会通知"
 
-#: Mailman/MailList.py:1004
+#: Mailman/MailList.py:1005
 msgid "unsubscriptions require moderator approval"
 msgstr "退会には管理者の承認が必要です"
 
-#: Mailman/MailList.py:1024
+#: Mailman/MailList.py:1025
 msgid "%(realname)s unsubscribe notification"
 msgstr "%(realname)s 退会通知"
 
-#: Mailman/MailList.py:1185
+#: Mailman/MailList.py:1186
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr "%(name)s への入会には管理者の承認が必要です"
 
-#: Mailman/MailList.py:1448
+#: Mailman/MailList.py:1449
 msgid "Last autoresponse notification for today"
 msgstr "今日最後に送られた自動応答の通知"
 
@@ -10016,7 +10016,8 @@ msgstr ""
 "メーリングリストの全会員のパスワードを再設定します.\n"
 "\n"
 "このスクリプトは指定したメーリングリストの全会員のパスワードを再設定\n"
-"します. 全リストの全会員のパスワード変更にも使用できます. しかし, パスワード\n"
+"します. 全リストの全会員のパスワード変更にも使用できます. しかし, パスワー"
+"ド\n"
 "が変更されたことを会員に通知するのは, あなたの役目となります.\n"
 "\n"
 "このスクリプトは bin/withlist の下で実行することを想定しています. つまり,\n"
@@ -11369,15 +11370,3 @@ msgstr ""
 "        リスト名をあげたリストについてだけ, まとめ読みを送信する.\n"
 "        これが無い場合, すべてのリストの処理をする.\n"
 
-#~ msgid ""
-#~ "Approval notices are sent when mail triggers certain of the\n"
-#~ "             limits <em>except</em> routine list moderation and spam "
-#~ "filters,\n"
-#~ "             for which notices are <em>not</em> sent.  This option "
-#~ "overrides\n"
-#~ "             ever sending the notice."
-#~ msgstr ""
-#~ "通知を<em>送信しない</em>ように設定されている\n"
-#~ "通常の司会(モデレート)とSPAMフィルタによる保留<em>以外の</em>\n"
-#~ "何らかの設定によって発生した承認要求の通知を送信します.\n"
-#~ "この設定は, 他の通知設定に優先します. "

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman v2.1.5\n"
-"POT-Creation-Date: Fri Feb 11 21:18:16 2005\n"
+"POT-Creation-Date: Wed Mar 23 09:55:34 2005\n"
 "PO-Revision-Date: 2005-02-24 17:37+0200\n"
 "Last-Translator: Maxim Dzumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -264,7 +264,7 @@ msgstr ""
 "                випадку список буде неможливо використовувати."
 
 #: Mailman/Cgi/admin.py:183 Mailman/Cgi/admin.py:189 Mailman/Cgi/admin.py:194
-#: Mailman/Cgi/admin.py:1433 Mailman/Gui/GUIBase.py:190
+#: Mailman/Cgi/admin.py:1433 Mailman/Gui/GUIBase.py:191
 msgid "Warning: "
 msgstr "Попередження: "
 
@@ -2952,8 +2952,7 @@ msgid ""
 msgstr ""
 "\n"
 "    lists\n"
-"        Показати перелік публічних списків розсилки на цьому "
-"сервері.\n"
+"        Показати перелік публічних списків розсилки на цьому сервері.\n"
 
 #: Mailman/Commands/cmd_lists.py:44
 msgid "Public mailing lists at %(hostname)s:"
@@ -3713,8 +3712,7 @@ msgstr "публічний"
 
 #: Mailman/Gui/Archive.py:37
 msgid "Is archive file source for public or private archival?"
-msgstr ""
-"Чи архівний файл є джерелом для приватних чи публічних архівів?"
+msgstr "Чи архівний файл є джерелом для приватних чи публічних архівів?"
 
 #: Mailman/Gui/Archive.py:40 Mailman/Gui/Digest.py:78
 msgid "Monthly"
@@ -4518,15 +4516,15 @@ msgstr "Збірку надіслано."
 msgid "There was no digest to send."
 msgstr "Збірка порожня, надсилання не буде."
 
-#: Mailman/Gui/GUIBase.py:155
+#: Mailman/Gui/GUIBase.py:156
 msgid "Invalid value for variable: %(property)s"
 msgstr "Неправильне значення змінної: %(property)s"
 
-#: Mailman/Gui/GUIBase.py:159
+#: Mailman/Gui/GUIBase.py:160
 msgid "Bad email address for option %(property)s: %(val)s"
 msgstr "Неправильна адреса для параметра %(property)s: %(val)s"
 
-#: Mailman/Gui/GUIBase.py:185
+#: Mailman/Gui/GUIBase.py:186
 msgid ""
 "The following illegal substitution variables were\n"
 "                found in the <code>%(property)s</code> string:\n"
@@ -4541,7 +4539,7 @@ msgstr ""
 "                <p>Ваш список не буде працювали відповідним чином, доки ви\n"
 "                не усунете цю проблему."
 
-#: Mailman/Gui/GUIBase.py:199
+#: Mailman/Gui/GUIBase.py:200
 msgid ""
 "Your <code>%(property)s</code> string appeared to\n"
 "                    have some correctable problems in its new value.\n"
@@ -4792,8 +4790,9 @@ msgstr ""
 "             надсилатимуться до списку, щоб у поштових скриньках відрізняти\n"
 "             повідомлення зі списку від інших. Тут важлива стислість,\n"
 "             непогано буде скоротити довгі назви поштових висків до\n"
-"             чогось більш стислого, що все ще ідентифікує список розсилки."
-"             Також можна додати серійний номер, використовуючи директиву %%d\n"
+"             чогось більш стислого, що все ще ідентифікує список "
+"розсилки.             Також можна додати серійний номер, використовуючи "
+"директиву %%d\n"
 "             наприклад; [listname %%d] -> [listname 123]\n"
 "                            (listname %%05d) -> (listname 00123)\n"
 "             "
@@ -5723,7 +5722,8 @@ msgstr ""
 "Коли ви вичищаєте вкладення, вони зберігаються у архівній області,\n"
 "             та на них робляться посилання у повідомленні, тож кожен\n"
 "             учасник списку може відкрити його веб-переглядачем. Якщо ви\n"
-"             бажаєте повністю позбутись вкладень, слід використовувати фільтр вмісту."
+"             бажаєте повністю позбутись вкладень, слід використовувати "
+"фільтр вмісту."
 
 #: Mailman/Gui/Passwords.py:27
 msgid "Passwords"
@@ -6473,12 +6473,12 @@ msgstr ""
 "\n"
 "             Кожен список може мати більше ніж одне правило.  У цьому\n"
 "             випадку, кожне правило перевіряється по черзі, обробка\n"
-"             припиняється при виявленні першої відповідності."
-"\n"
+"             припиняється при виявленні першої відповідності.\n"
 "             Зауважте, заголовки збираються з усіх вкладень \n"
 "             (за винятком повідомлень з адміністративними директивами) та\n"
 "             перевіряється відповідність регулярному виразу. Ця властивість\n"
-"             дозволяє ефективно фільтрувати повідомлення з небезпечними типами файлів\n"
+"             дозволяє ефективно фільтрувати повідомлення з небезпечними "
+"типами файлів\n"
 "             чи розширеннями."
 
 #: Mailman/Gui/Privacy.py:401
@@ -6524,7 +6524,7 @@ msgstr ""
 "             відкидаються. Це можна обійти декількома шляхами, наприклад\n"
 "             маскуючи їх, чи оточуючи їх дужками."
 
-#: Mailman/Gui/Privacy.py:478
+#: Mailman/Gui/Privacy.py:481
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
@@ -6532,7 +6532,7 @@ msgstr ""
 "Правила фільтру заголовків вимагає вказування шаблону.\n"
 "                Незавершені правила фільтру будуть ігноруватись."
 
-#: Mailman/Gui/Privacy.py:486
+#: Mailman/Gui/Privacy.py:489
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
@@ -7457,7 +7457,7 @@ msgstr "---------- наступна частина -----------\n"
 msgid "The message headers matched a filter rule"
 msgstr "Заголовки повідомлення відповідають правилу фільтра"
 
-#: Mailman/Handlers/SpamDetect.py:131
+#: Mailman/Handlers/SpamDetect.py:135
 msgid "Message rejected by filter rule match"
 msgstr "Повідомлення відкинуте правилом фільтру"
 
@@ -7626,37 +7626,39 @@ msgstr "власником %(dbfile)s є %(owner)s (повинен бути %(us
 
 #: Mailman/MailList.py:214
 msgid "Your confirmation is required to join the %(listname)s mailing list"
-msgstr "Для приєднання до списку розсилки %(listname)s потрібне ваше підтвердження"
+msgstr ""
+"Для приєднання до списку розсилки %(listname)s потрібне ваше підтвердження"
 
 #: Mailman/MailList.py:224
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
-msgstr "Для виключення зі списку розсилки %(listname)s потрібне ваше підтвердження"
+msgstr ""
+"Для виключення зі списку розсилки %(listname)s потрібне ваше підтвердження"
 
-#: Mailman/MailList.py:887 Mailman/MailList.py:1276
+#: Mailman/MailList.py:888 Mailman/MailList.py:1277
 msgid " from %(remote)s"
 msgstr " з %(remote)s"
 
-#: Mailman/MailList.py:921
+#: Mailman/MailList.py:922
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "підписка на %(realname)s вимагає схвалення керівником"
 
-#: Mailman/MailList.py:985 bin/add_members:242
+#: Mailman/MailList.py:986 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "%(realname)s сповіщення про підписку"
 
-#: Mailman/MailList.py:1004
+#: Mailman/MailList.py:1005
 msgid "unsubscriptions require moderator approval"
 msgstr "видалення підписки вимагає схвалення керівником"
 
-#: Mailman/MailList.py:1024
+#: Mailman/MailList.py:1025
 msgid "%(realname)s unsubscribe notification"
 msgstr "%(realname)s сповіщення про припинення підписки"
 
-#: Mailman/MailList.py:1185
+#: Mailman/MailList.py:1186
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr "підписка на %(name)s вимагає схвалення керівником"
 
-#: Mailman/MailList.py:1448
+#: Mailman/MailList.py:1449
 msgid "Last autoresponse notification for today"
 msgstr "Автоматична відповідь сповіщення на сьогодні"
 
@@ -10026,20 +10028,23 @@ msgstr ""
 "www.mydom.ain має бути ключем у VIRTUAL_HOSTS у файлі mm_cfg.py/Defaults."
 "py.\n"
 "Якщо ви бажаєте, щоб ел.адреса вузла відрізнялась від визначеної у\n"
-"VIRTUAL_HOSTS або якщо urlhost не зареєстровано у VIRTUAL_HOSTS, можна вказати\n"
+"VIRTUAL_HOSTS або якщо urlhost не зареєстровано у VIRTUAL_HOSTS, можна "
+"вказати\n"
 "`emailhost' таким чином:\n"
 "\n"
 "    newlist --urlhost=www.mydom.ain --emailhost=mydom.ain mylist\n"
 "\n"
 "де `mydom.ain' - назва поштового домену. Якщо ви не вкажете emailhost,\n"
-"але urlhost відсутня у списку віртуальних вузлів, тоді mm_cfg.DEFAULT_EMAIL_HOST\n"
+"але urlhost відсутня у списку віртуальних вузлів, тоді mm_cfg."
+"DEFAULT_EMAIL_HOST\n"
 "для поштового інтерфейсу буде використовуватись.\n"
 "Для зворотної сумісності, ви також можете вказати домен для створення\n"
 "вашого нового списку подібним чином:\n"
 "\n"
 "    mylist@www.mydom.ain\n"
 "\n"
-"де www.mydom.ain використовується для `urlhost', але також буде використовуватись для\n"
+"де www.mydom.ain використовується для `urlhost', але також буде "
+"використовуватись для\n"
 "`emailhost', якщо вона відсутня у таблиці віртуальних вузлів. Зауважте, що\n"
 "'--urlhost' та '--emailhost' мають перевагу у цій нотації.\n"
 "\n"
@@ -10386,7 +10391,8 @@ msgstr ""
 "Скинути паролі учасників списку розсилки.\n"
 "\n"
 "Цей сценарій скидає усі паролі учасників списку розсилки.  Також він може\n"
-"використовуватись для скидання списків усіх учасників усіх списків розсилання,\n"
+"використовуватись для скидання списків усіх учасників усіх списків "
+"розсилання,\n"
 "але на ви відповідальні за сповіщення користувачів про зміну їх паролів.\n"
 "\n"
 "Сценарій призначений для запуску як bin/withlist, наприклад\n"
