@@ -179,7 +179,7 @@ def main():
         admindburl = mlist.GetScriptURL('admindb', absolute=1)
         form = Form(admindburl)
         # Add the instructions template
-        if details:
+        if details == 'instructions':
             doc.AddItem(Header(
                 2, _('Detailed instructions for the administrative database')))
         else:
@@ -187,13 +187,14 @@ def main():
                 2,
                 _('Administrative requests for mailing list:')
                 + ' <em>%s</em>' % mlist.real_name))
-        if not details:
+        if details <> 'instructions':
             form.AddItem(Center(SubmitButton('submit', _('Submit All Data'))))
-        form.AddItem(Center(
-            CheckBox('discardalldefersp', 0).Format() +
-            '&nbsp;' +
-            _('Discard all messages marked <em>Defer</em>')
-            ))
+        if not (sender or msgid):
+            form.AddItem(Center(
+                CheckBox('discardalldefersp', 0).Format() +
+                '&nbsp;' +
+                _('Discard all messages marked <em>Defer</em>')
+                ))
         # Add a link back to the overview, if we're not viewing the overview!
         adminurl = mlist.GetScriptURL('admin', absolute=1)
         d = {'listname'  : mlist.real_name,
@@ -236,11 +237,12 @@ def main():
         if addform:
             doc.AddItem(form)
             form.AddItem('<hr>')
-            form.AddItem(Center(
-                CheckBox('discardalldefersp', 0).Format() +
-                '&nbsp;' +
-                _('Discard all messages marked <em>Defer</em>')
-                ))
+            if not (sender or msgid):
+                form.AddItem(Center(
+                    CheckBox('discardalldefersp', 0).Format() +
+                    '&nbsp;' +
+                    _('Discard all messages marked <em>Defer</em>')
+                    ))
             form.AddItem(Center(SubmitButton('submit', _('Submit All Data'))))
         doc.AddItem(mlist.GetMailmanFooter())
         print doc.Format()
