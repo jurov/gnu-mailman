@@ -1385,13 +1385,17 @@ bad regexp in bounce_matching_header line: %s
                     return line
         return 0
 
-    def autorespondToSender(self, sender):
+    def autorespondToSender(self, sender, lang=None):
         """Return true if Mailman should auto-respond to this sender.
 
         This is only consulted for messages sent to the -request address, or
         for posting hold notifications, and serves only as a safety value for
         mail loops with email 'bots.
         """
+        # language setting
+        if lang == None:
+            lang = self.preferred_language
+        i18n.set_language(lang)
         # No limit
         if mm_cfg.MAX_AUTORESPONSES_PER_DAY == 0:
             return 1
@@ -1419,11 +1423,12 @@ bad regexp in bounce_matching_header line: %s
                  'listname': '%s@%s' % (self.real_name, self.host_name),
                  'num' : count,
                  'owneremail': self.GetOwnerEmail(),
-                 })
+                 },
+                lang=lang)
             msg = Message.UserNotification(
                 sender, self.GetOwnerEmail(),
                 _('Last autoresponse notification for today'),
-                text)
+                text, lang=lang)
             msg.send(self)
             return 0
         self.hold_and_cmd_autoresponses[sender] = (today, count+1)

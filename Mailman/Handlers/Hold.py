@@ -232,7 +232,7 @@ def hold_for_approval(mlist, msg, msgdata, exc):
     # bounce processing that might be needed.
     cookie = mlist.pend_new(Pending.HELD_MESSAGE, id)
     if not fromusenet and ackp(msg) and mlist.respond_to_post_requests and \
-           mlist.autorespondToSender(sender):
+           mlist.autorespondToSender(sender, mlist.getMemberLanguage(sender)):
         # Get a confirmation cookie
         d['confirmurl'] = '%s/%s' % (mlist.GetScriptURL('confirm', absolute=1),
                                      cookie)
