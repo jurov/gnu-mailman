@@ -1041,7 +1041,13 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         msg.send(self)
 
     def ApprovedChangeMemberAddress(self, oldaddr, newaddr, globally):
-        self.changeMemberAddress(oldaddr, newaddr)
+        # It's possible they were a member of this list, but choose to change
+        # their membership globally.  In that case, we simply remove the old
+        # address.
+        if self.isMember(newaddr):
+            self.removeMember(oldaddr)
+        else:
+            self.changeMemberAddress(oldaddr, newaddr)
         # If globally is true, then we also include every list for which
         # oldaddr is a member.
         if not globally:
@@ -1057,7 +1063,11 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 continue
             mlist.Lock()
             try:
-                mlist.changeMemberAddress(oldaddr, newaddr)
+                # Same logic as above, re newaddr is already a member
+                if mlist.isMember(newaddr):
+                    mlist.removeMember(oldaddr)
+                else:
+                    mlist.changeMemberAddress(oldaddr, newaddr)
                 mlist.Save()
             finally:
                 mlist.Unlock()
