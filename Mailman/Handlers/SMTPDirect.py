@@ -337,7 +337,7 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
         refused = e.recipients
     # MTA not responding, or other socket problems, or any other kind of
     # SMTPException.  In that case, nothing got delivered
-    except (socket.error, smtplib.SMTPException), e:
+    except (socket.error, smtplib.SMTPException, IOError), e:
         # BAW: should this be configurable?
         syslog('smtp', 'All recipients refused: %s', e)
         # If the exception had an associated error code, use it, otherwise,
