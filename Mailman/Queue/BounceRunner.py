@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2004 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -68,7 +68,7 @@ class BounceRunner(Runner):
         # All messages to list-owner@vdom.ain have their envelope sender set
         # to site-owner@dom.ain (no virtual domain).  Is this a bounce for a
         # message to a list owner, coming to the site owner?
-        if msg.get('to', '') == Utils.get_site_email(extra='-owner'):
+        if msg.get('to', '') == Utils.get_site_email(extra='owner'):
             # Send it on to the site owners, but craft the envelope sender to
             # be the -loop detection address, so if /they/ bounce, we won't
             # get stuck in a bounce loop.
