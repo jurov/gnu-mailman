@@ -6,7 +6,10 @@ Here is a history of user visible changes to Mailman.
 
 2.1.4 (XX-Dec-2003)
 
-    - New languages: Catalan, Croatian, Esperanto, Romanian, Slovenian.
+    - Close some cross-site scripting vulnerabilities in the admin pages
+      (CAN-2003-0965).
+
+    - New languages: Catalan, Croatian, Romanian, Slovenian.
 
     - CJKCodecs-1.0 now replace JapaneseCodecs-1.4.9 and KoreanCodecs-2.0.5
 
@@ -49,7 +52,9 @@ Here is a history of user visible changes to Mailman.
       DiscardMessage exceptions during digest scrubbing), 828811 (reduce
       process size for list and admin overviews), 864674/864676 (problems
       accessing private archives and rosters with admin password), 865661
-      (Tokio Kikuchi's i18n patches), 862906 (unicode prefix leak in admindb)
+      (Tokio Kikuchi's i18n patches), 862906 (unicode prefix leak in admindb),
+      841445 (setting new_member_options via config_list), n/a (fixed email
+      command 'set delivery')
 
 2.1.3 (28-Sep-2003)
 
