@@ -268,6 +268,8 @@ class Bouncer:
         # provided in the exception argument.
         sender = msg.get_sender()
         subject = msg.get('subject', _('(no subject)'))
+        subject = Utils.oneline(subject,
+                                Utils.GetCharSet(self.preferred_language))
         if e is None:
             notice = _('[No bounce details are available]')
         else:
