@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -56,6 +56,7 @@ from Mailman.HTMLFormatter import HTMLFormatter
 from Mailman.ListAdmin import ListAdmin
 from Mailman.SecurityManager import SecurityManager
 from Mailman.TopicMgr import TopicMgr
+from Mailman import Pending
 
 # gui components package
 from Mailman import Gui
@@ -64,7 +65,6 @@ from Mailman import Gui
 from Mailman import MemberAdaptor
 from Mailman.OldStyleMemberships import OldStyleMemberships
 from Mailman import Message
-from Mailman import Pending
 from Mailman import Site
 from Mailman import i18n
 from Mailman.Logging.Syslog import syslog
@@ -84,7 +84,7 @@ except NameError:
 # Use mixins here just to avoid having any one chunk be too large.
 class MailList(HTMLFormatter, Deliverer, ListAdmin,
                Archiver, Digester, SecurityManager, Bouncer, GatewayManager,
-               Autoresponder, TopicMgr):
+               Autoresponder, TopicMgr, Pending.Pending):
 
     #
     # A MailList object's basic Python object model support
@@ -366,7 +366,6 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # 2-tuple of the date of the last autoresponse and the number of
         # autoresponses sent on that date.
         self.hold_and_cmd_autoresponses = {}
-
         # Only one level of mixin inheritance allowed
         for baseclass in self.__class__.__bases__:
             if hasattr(baseclass, 'InitVars'):
@@ -702,7 +701,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # admin approval, even if the list is so configured.  The flag is the
         # list name to prevent invitees from cross-subscribing.
         userdesc.invitation = self.internal_name()
-        cookie = Pending.new(Pending.SUBSCRIPTION, userdesc)
+        cookie = self.pend_new(Pending.SUBSCRIPTION, userdesc)
         confirmurl = '%s/%s' % (self.GetScriptURL('confirm', absolute=1),
                                 cookie)
         listname = self.real_name
@@ -815,7 +814,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         elif self.subscribe_policy == 1 or self.subscribe_policy == 3:
             # User confirmation required.  BAW: this should probably just
             # accept a userdesc instance.
-            cookie = Pending.new(Pending.SUBSCRIPTION, userdesc)
+            cookie = self.pend_new(Pending.SUBSCRIPTION, userdesc)
             # Send the user the confirmation mailback
             if remote is None:
                 by = remote = ''
@@ -1009,8 +1008,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         if newaddr == self.GetListEmail().lower():
             raise Errors.MMBadEmailError
         # Pend the subscription change
-        cookie = Pending.new(Pending.CHANGE_OF_ADDRESS,
-                             oldaddr, newaddr, globally)
+        cookie = self.pend_new(Pending.CHANGE_OF_ADDRESS,
+                               oldaddr, newaddr, globally)
         confirmurl = '%s/%s' % (self.GetScriptURL('confirm', absolute=1),
                                 cookie)
         realname = self.real_name
@@ -1078,7 +1077,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     # Confirmation processing
     #
     def ProcessConfirmation(self, cookie, context=None):
-        rec = Pending.confirm(cookie)
+        rec = self.pend_confirm(cookie)
         if rec is None:
             raise Errors.MMBadConfirmation, 'No cookie record for %s' % cookie
         try:
@@ -1183,7 +1182,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 else:
                     # The password didn't match.  Re-pend the message and
                     # inform the list moderators about the problem.
-                    Pending.repend(cookie, rec)
+                    self.pend_repend(cookie, rec)
                     raise Errors.MMBadPasswordError
             else:
                 action = mm_cfg.DISCARD
@@ -1204,7 +1203,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     def ConfirmUnsubscription(self, addr, lang=None, remote=None):
         if lang is None:
             lang = self.getMemberLanguage(addr)
-        cookie = Pending.new(Pending.UNSUBSCRIPTION, addr)
+        cookie = self.pend_new(Pending.UNSUBSCRIPTION, addr)
         confirmurl = '%s/%s' % (self.GetScriptURL('confirm', absolute=1),
                                 cookie)
         realname = self.real_name
