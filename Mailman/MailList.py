@@ -610,16 +610,18 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # copy the fallback into the primary so that the logic in Save() will
         # still work.  For giggles, we'll copy it to a safety backup.  Note we
         # MUST do this with the underlying list lock acquired.
-        unlock = True
-        try:
+        if file == plast or file == dlast:
+            syslog('error', 'fixing corrupt config files')
+            unlock = True
             try:
-                self.__lock.lock()
-            except LockFile.AlreadyLockedError:
-                unlock = False
-            self.__fix_corrupt_pckfile(file, pfile, plast, dfile, dlast)
-        finally:
-            if unlock:
-                self.__lock.unlock()
+                try:
+                    self.__lock.lock()
+                except LockFile.AlreadyLockedError:
+                    unlock = False
+                self.__fix_corrupt_pckfile(file, pfile, plast, dfile, dlast)
+            finally:
+                if unlock:
+                    self.__lock.unlock()
         # Copy the loaded dictionary into the attributes of the current
         # mailing list object, then run sanity check on the data.
         self.__dict__.update(dict)
