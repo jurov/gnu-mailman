@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 2001,2002 by the Free Software Foundation, Inc.
+Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 
@@ -9,21 +9,33 @@ GENERAL SETUP INFORMATION
     Postfix installation.  As of this writing I've tested it with
     Postfix 19991231 up to pl13, and with 200010228 up to pl08.
 
-    It is recommended that you set "owner_request_special = no" in
-    your main.cf config file so that Postfix won't treat -owner and
-    -request addresses specially (we want Postfix to simply deliver
-    such messages to the Mailman wrapper).  The default is "yes" I
-    believe.
+    By default, Postfix treats -owner and -request addresses
+    specially.  Since we want Postfix to deliver such messages to
+    Mailman, you should turn off this option by adding this to your
+    main.cf file:
+
+        owner_request_special = no
 
     In order to support Mailman's optional VERP delivery, you will
     want to disable luser_relay (the default) and you will want to set
-    recipient_delimiter for extended address semantics.  Here, my
-    recommendations are to comment out any luser_relay value in your
-    main.cf and just go with the defaults.  Also, set
-    "recipient_delimiter = +" so that the symbol used to separate an
-    address from its extended semantics is a + sign.  This will work
-    well with the default values for VERP_FORMAT and VERP_REGEXP in
-    Defaults.py.
+    recipient_delimiter for extended address semantics.  You should
+    comment out any luser_relay value in your main.cf and just go with
+    the defaults.  Also, add this to your main.cf file:
+
+        recipient_delimiter = +
+
+    Using + as the delimiter works well with the default values for
+    VERP_FORMAT and VERP_REGEXP in Defaults.py.
+
+    When attempting to deliver a message to a non-existent local
+    address, Postfix may return a 450 error code.  Since this is a
+    non-transient error code, Mailman will continue to attempt to
+    delivery the message for DELIVERY_RETRY_PERIOD (5 days by
+    default).  You might want to set Postfix up so that it returns
+    permanent error codes for non-existent local users by adding the
+    following to your main.cf file:
+
+        unknown_local_recipient_reject_code = 550
 
     Finally, if you are using Postfix-style virtual domains, read the
     section on virtual domain support below.
@@ -98,7 +110,7 @@ INTEGRATING POSTFIX AND MAILMAN
     that it will take about a minute for Postfix to notice the change
     to the aliases.db file and update its tables.  I consider this a
     minor inconvenience.
-  
+
 
 VIRTUAL DOMAINS
 
@@ -160,7 +172,7 @@ VIRTUAL DOMAINS
     breaking the delivery of any dom1.ain mailing list.
 
     However, you would include dom2.ain and dom3.ain in mm_cfg.py:
-    
+
         POSTFIX_STYLE_VIRTUAL_DOMAINS = ['dom2.ain', 'dom3.ain']
 
     Now, any list that Mailman creates in either of those two domains,
