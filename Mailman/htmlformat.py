@@ -334,12 +334,12 @@ class Document(Container):
             output.append('%s</HTML>' % tab)
         return NL.join(output)
 
-    def addError(self, errmsg, tag=None, *args):
+    def addError(self, errmsg, tag=None):
         if tag is None:
             tag = _('Error: ')
         self.AddItem(Header(3, Bold(FontAttr(
             _(tag), color=mm_cfg.WEB_ERROR_COLOR, size='+2')).Format() +
-                            Italic(errmsg % args).Format()))
+                            Italic(errmsg).Format()))
 
 
 class HeadlessDocument(Document):
