@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-04-01 19:52+0300\n"
+"PO-Revision-Date: 2004-05-04 21:03+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@informatia.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1692,6 +1692,24 @@ msgid ""
 "    <p>Or hit <em>Cancel and discard</em> to cancel this change of address\n"
 "    request."
 msgstr ""
+"Este necesarã confirmarea dumneavoastrã pentru a completa\n"
+"    cererea de modificare a adresei la lista de discuþii <em>%(listname)s</em>.\n"
+"În prezent sunteþi abonat cu urmãtoarele date:\n"
+"\n"
+"    <ul><li><b>Numele real:</b> %(fullname)s\n"
+"        <li>Vechea adresã de e-mail:</b> %(oldaddr)s\n"
+"    </ul>\n"
+"\n"
+"    ºi aþi cerut modificarea %(globallys)s a adresei de e-mail în\n"
+"\n"
+"    <ul><li><b>Noua adresã de e-mail:</b> %(newaddr)s\n"
+"    </ul>\n"
+"\n"
+"    Apãsaþi butonul <em>Modificã adresa</em> de mai jos pentru \n"
+"a completa procesul de confirmare.\n"
+"\n"
+"    Sau apãsaþi butonul <em>Renunþã ºi anuleazã</em> pentru \n"
+"a anula cererea de modificare a adresei."
 
 #: Mailman/Cgi/confirm.py:578
 #, fuzzy
@@ -2522,6 +2540,11 @@ msgid ""
 "    also confirm by email; see the instructions in the confirmation\n"
 "    message)."
 msgstr ""
+"Dupã apãsarea butonului <em>Dezabonare</em>, veþi primi un mesaj\n"
+"    de confirmare prin e-mail. Acest mesaj va conþine un link de confirmare\n"
+"    care trebuie vizitat pentru a completa procesul de pãrãsire a listei. (puteþi\n"
+"    trimite confirmarea ºi prin e-mail; urmãriþi instrucþiunile din mesajul de confirmare\n"
+"    primit). "
 
 #: Mailman/Cgi/options.py:849
 #, fuzzy
@@ -2732,6 +2755,10 @@ msgid ""
 "%(email)s.  Please note your subscription will not start until you confirm\n"
 "your subscription."
 msgstr ""
+"Este necesarã confirmarea adresei dumneavoastrã de e-mail,\n"
+"pentru a preveni abonarea dumneavoastrã abuzivã.  Instrucþiunile\n"
+"vã sunt trimise la %(email)s.  Nu uitaþi cã abonamentul dumneavoastrã\n"
+"începe doar în momentul confirmãrii adresei de e-mail cu care v-aþi abonat."
 
 #: Mailman/Cgi/subscribe.py:209
 msgid ""
@@ -2978,6 +3005,16 @@ msgid ""
 "the\n"
 "        response is always sent to the subscribed address.\n"
 msgstr ""
+"\n"
+"    password [<parolaveche> <parolanoua>] [address=<adresaabonata>]\n"
+"        Afiºeazã sau modificã parola dumneavoastrã.  Fãrã argumente, va returna\n"
+"        parola dumneavoastrã curentã.  Folosind argumentele <parolaveche> ºi <parolanoua>\n"
+"        puteþi schimba parola dumneavoastrã.\n"
+"\n"
+"        dacã trimiteþi aceastã cerere de la o adresã alta decât cea de abonament,\n"
+"        specificaþi adresa abonatã cu parametrul 'address=<adresaabonata>' (fãrã paranteze\n"
+"        la adresaabonata ºi fãrã ghilimele!).  Notaþi cã în acest caz, rãspunsul este întotdeauna\n"
+"        trimis la adresa de abonament.\n"
 
 #: Mailman/Commands/cmd_password.py:51 Mailman/Commands/cmd_password.py:64
 msgid "Your password is: %(password)s"
@@ -3025,6 +3062,14 @@ msgid ""
 "        Use `set show' (without the quotes) to view your current option\n"
 "        settings.\n"
 msgstr ""
+"\n"
+"    set ...\n"
+"        Seteazã sau afiºeazã opþiunile dumneavoastrã de abonament.\n"
+"\n"
+"        Folosiþi 'set help' (fãrã ghilimele) pentru a obþine o listã mai detaliatã a \n"
+"        opþiunilor pe care le puteþi modifica. \n"
+"\n"
+"        Folosiþi 'set show' (fãrã ghilimele) pentru a afiºa opþiunile curente.\n"
 
 #: Mailman/Commands/cmd_set.py:37
 msgid ""
@@ -3815,6 +3860,9 @@ msgid ""
 "             subscription is disabled.  This value can be a floating point\n"
 "             number."
 msgstr ""
+"Scorul maxim de eºec pentru membrul abonat, peste care\n"
+"            abonamentul este dezactivat.  Aceastã valoare poate fi\n"
+"            un numãr real."
 
 #: Mailman/Gui/Bounce.py:88
 msgid ""
@@ -4060,18 +4108,21 @@ msgid ""
 msgstr ""
 
 #: Mailman/Gui/ContentFilter.py:104
+#, fuzzy
 msgid ""
 "Should Mailman convert <tt>text/html</tt> parts to plain\n"
 "             text?  This conversion happens after MIME attachments have "
 "been\n"
 "             stripped."
 msgstr ""
+"Sã converteascã Mailman pãrþile <tt>text/html</tt> în text simplu?\n"
+"Aceastã conversie se realizeazã dupã ce toate ataºamentele MIME au fost eliminate."
 
 #: Mailman/Gui/ContentFilter.py:110
 msgid ""
 "Action to take when a message matches the content filtering\n"
 "             rules."
-msgstr ""
+msgstr "Acþiunea ce va fi executatã când un mesaj îndeplineºte condiþiile de filtrare a conþinutului."
 
 #: Mailman/Gui/ContentFilter.py:113
 msgid ""
@@ -4203,7 +4254,7 @@ msgstr ""
 msgid ""
 "Should Mailman send the next digest right now, if it is not\n"
 "             empty?"
-msgstr ""
+msgstr "Sã trimitã Mailman urmãtorul volum chiar acum, dacã nu este gol ?"
 
 #: Mailman/Gui/Digest.py:145
 msgid ""
@@ -4460,12 +4511,15 @@ msgid "This list"
 msgstr "Aceastã listã"
 
 #: Mailman/Gui/General.py:164
+#, fuzzy
 msgid ""
 "Where are replies to list messages directed?\n"
 "             <tt>Poster</tt> is <em>strongly</em> recommended for most "
 "mailing\n"
 "             lists."
 msgstr ""
+"Unde sunt trimise replicile la mesajele listei ?\n"
+"            <tt>Poster</tt> este <em>recomandat</em> pentru majoritatea listelor de discuþii."
 
 #: Mailman/Gui/General.py:169
 msgid ""
@@ -4559,10 +4613,11 @@ msgid "Umbrella list settings"
 msgstr "Setãrile umbrelei listei"
 
 #: Mailman/Gui/General.py:235
+#, fuzzy
 msgid ""
 "Send password reminders to, eg, \"-owner\" address instead of\n"
 "             directly to user."
-msgstr ""
+msgstr "Trimit mesajele de reamintire a parolei la adresa \"-owner\" în loc sã le trimit direct la utilizator."
 
 #: Mailman/Gui/General.py:238
 msgid ""
@@ -4693,7 +4748,7 @@ msgstr ""
 
 #: Mailman/Gui/General.py:318
 msgid "Send mail to poster when their posting is held for approval?"
-msgstr ""
+msgstr "Trimit o notã cãtre expeditor când mesajul acestuia este reþinut pentru aprobare?"
 
 #: Mailman/Gui/General.py:320
 msgid ""
@@ -4957,14 +5012,15 @@ msgid "Non-digest&nbsp;options"
 msgstr "Opþiuni mesaje individuale"
 
 #: Mailman/Gui/NonDigest.py:42
+#, fuzzy
 msgid "Policies concerning immediately delivered list traffic."
-msgstr ""
+msgstr "Politici de gestionare a mesajelor livrate imediat listei."
 
 #: Mailman/Gui/NonDigest.py:45
 msgid ""
 "Can subscribers choose to receive mail immediately, rather\n"
 "             than in batched digests?"
-msgstr ""
+msgstr "Pot alege utilizatorii sã primeascã mesajele imediat, în loc de volume de rezumat?"
 
 #: Mailman/Gui/NonDigest.py:52
 #, fuzzy
@@ -5168,6 +5224,11 @@ msgid ""
 "            <a href=\"%(admin)s/archive\">Archival Options</a> section for\n"
 "            separate archive-related privacy settings."
 msgstr ""
+"Aceastã secþiune vã permite configurarea politicii de\n"
+"afiºare a datelor de abonare. De asemenea, puteþi decide dacã aceasta\n"
+"este o listã publicã sau nu.  Vezi ºi secþiunea\n"
+"<a href=\"%(admin)s/archive\">Opþiuni de arhivare</a> pentru setãri\n"
+"separate ale confidenþialitãþii arhivelor."
 
 #: Mailman/Gui/Privacy.py:109
 #, fuzzy
@@ -5228,7 +5289,7 @@ msgid ""
 "Add\n"
 "             addresses one per line; start the line with a ^ character to\n"
 "             designate a regular expression match."
-msgstr ""
+msgstr "Adresele din aceastã listã"
 
 #: Mailman/Gui/Privacy.py:141
 msgid "Membership exposure"
@@ -7124,7 +7185,7 @@ msgstr ""
 
 #: bin/check_perms:141
 msgid "source perms must be %(octperms)s: %(path)s"
-msgstr ""
+msgstr "permisiunile pe surse trebuie sã fie %(octperms)s: %(path)s"
 
 #: bin/check_perms:152
 msgid "article db files must be %(octperms)s: %(path)s"
@@ -7249,7 +7310,7 @@ msgstr ""
 
 #: bin/cleanarch:82
 msgid "Unix-From line changed: %(lineno)d"
-msgstr ""
+msgstr "Linia Unix-From a fost modificatã: %(lineno)d"
 
 #: bin/cleanarch:110
 msgid "Bad status number: %(arg)s"
@@ -7339,11 +7400,11 @@ msgstr "    adresa nu a fost gãsitã:"
 
 #: bin/clone_member:139
 msgid "    clone address added:"
-msgstr ""
+msgstr "    adresa clonã a fost adãugatã:"
 
 #: bin/clone_member:142
 msgid "    clone address is already a member:"
-msgstr ""
+msgstr "    adresa clonã este deja înregistratã ca membru:"
 
 #: bin/clone_member:145
 msgid "    original address removed:"
@@ -7358,6 +7419,8 @@ msgid ""
 "Error opening list \"%(listname)s\", skipping.\n"
 "%(e)s"
 msgstr ""
+"Eroare la deschiderea listei \"%(listname)s\", sar mai departe.. "
+"%(e)s"
 
 #: bin/config_list:19
 msgid ""
@@ -7504,11 +7567,11 @@ msgstr ""
 
 #: bin/discard:94
 msgid "Ignoring non-held message: %(f)s"
-msgstr ""
+msgstr "Ignor mesajul ne-reþinut: %(f)s"
 
 #: bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
-msgstr ""
+msgstr "Ignor mesajul reþinut cu id eronat: %(f)s"
 
 #: bin/discard:112
 msgid "Discarded held msg #%(id)s for list %(listname)s"
@@ -7991,8 +8054,9 @@ msgid "No child with pid: %(pid)s"
 msgstr "Nici un copil cu pid: %(pid)s"
 
 #: bin/mailmanctl:161
+#, fuzzy
 msgid "Stale pid file removed."
-msgstr ""
+msgstr "Fiºierul stale lock pid a fost ºters."
 
 #: bin/mailmanctl:219
 msgid ""
@@ -8482,19 +8546,20 @@ msgstr "Lista aceata nu existã (sau a fost ºtearsã deja): %(listname)s"
 
 #: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
-msgstr ""
+msgstr "Nu existã lista: %(listname)s.  ªterg arhivele ei reziduale."
 
 #: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
-msgstr ""
+msgstr "Nu ºterg arhivele.  Reinvocaþi folosind parametrul -a pentru a le ºterge."
 
 #: bin/rmlist:124
 msgid "list info"
 msgstr "info listã"
 
 #: bin/rmlist:132
+#, fuzzy
 msgid "stale lock file"
-msgstr ""
+msgstr "fiºier stale lock"
 
 #: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
@@ -8632,7 +8697,7 @@ msgstr "Invalid :  %(addr)30s"
 
 #: bin/sync_members:215
 msgid "You must fix the preceding invalid addresses first."
-msgstr ""
+msgstr "Trebuie sã corectaþi mai întâi adresa incalidã precedentã."
 
 #: bin/sync_members:260
 msgid "Added  : %(s)s"
@@ -8671,8 +8736,9 @@ msgid "scan a translated string"
 msgstr "scanez un string tradus"
 
 #: bin/transcheck:90
+#, fuzzy
 msgid "check for differences between checked in and checked out"
-msgstr ""
+msgstr "cerific diferenþele dintre intrãri ºi ieºiri"
 
 #: bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
@@ -8764,7 +8830,7 @@ msgstr ""
 
 #: bin/update:221
 msgid "Updating the held requests database."
-msgstr ""
+msgstr "Actualizez baza de date a cererilor reþinute."
 
 #: bin/update:243
 msgid ""
@@ -8798,10 +8864,18 @@ msgid ""
 "You can integrate that into the archives if you want by using the 'arch'\n"
 "script.\n"
 msgstr ""
+"%s are atãt arhive mbox publice, cât ºi private.  Devreme ce aceastã listã\n"
+"foloseºte în mod curent arhivele publice, voi instala fiºierul public mbox, "
+"fiºierul arhivã (%s) ca fiind activ, ºi voi redenumi\n"
+"        %s\n"
+"    în\n"
+"        %s.preb6\n"
+"\n"
+"Veþi putea integra asta în arhive dacã doriþi, folosind scriptul 'arch'.\n"
 
 #: bin/update:287
 msgid "- updating old private mbox file"
-msgstr ""
+msgstr " actualizez vechiul fiºier privat mbox"
 
 #: bin/update:295
 msgid ""
@@ -8810,6 +8884,10 @@ msgid ""
 "    to\n"
 "        %(newname)s"
 msgstr ""
+"    fiºier necunoscut în cale, mut\n"
+"        %(o_pri_mbox_file)s\n"
+"    în\n"
+"        %(newname)s"
 
 #: bin/update:302 bin/update:325
 msgid ""
@@ -8837,7 +8915,7 @@ msgstr ""
 
 #: bin/update:350
 msgid "- This list looks like it might have <= b4 list templates around"
-msgstr ""
+msgstr "- Aceasta aratã de parcã ar avea ºabloane de listã <= b4"
 
 #: bin/update:358
 msgid "- moved %(o_tmpl)s to %(n_tmpl)s"
@@ -8845,7 +8923,7 @@ msgstr "- am mutat %(o_tmpl)s în %(n_tmpl)s"
 
 #: bin/update:360
 msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
-msgstr ""
+msgstr "- atât %(o_tmpl)s cât ºi %(n_tmpl)s existã; termin execuþia fãrã intervenþie"
 
 #: bin/update:363
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
@@ -8888,11 +8966,11 @@ msgstr "Actualizez vechea bazã de date pending_subscriptions.db"
 
 #: bin/update:573
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
-msgstr ""
+msgstr "Ignor date în aºteptare eronate: %(key)s: %(val)s"
 
 #: bin/update:589
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
-msgstr ""
+msgstr "ATENÞIE: Ignor ID duplicat în aºteptare: %(id)s."
 
 #: bin/update:642
 msgid "getting rid of old source files"
@@ -8907,6 +8985,8 @@ msgid ""
 "fixing all the perms on your old html archives to work with b6\n"
 "If your archives are big, this could take a minute or two..."
 msgstr ""
+"refac toate permisiunile la vechile arhive html, pentru a putea funcþiona cu b6\n"
+"Dacã arhivele sunt mari, aceasta va dura un minut sau douã..."
 
 #: bin/update:664
 msgid "done"
@@ -9373,6 +9453,25 @@ msgid ""
 "    -h/--help\n"
 "        Print this message and exit.\n"
 msgstr ""
+"Trimite mesaje de reamintire a parolelor pentru toate listele ºi pentru toþi utilizatorii.\n"
+"\n"
+"Acest program scaneazã toate listele de discuþii, colecteazã utilizatorii ºi parolele lor,\n"
+"grupaþi dupã parametrul de listã host_name dacã mm_cfg.VIRTUAL_HOST_OVERVIEW este adevãrat.\n"
+"Apoi este trimis câte un mesaj la fiecare utilizator (pentru fiecare domeniu virtual),\n"
+"conþinând parolele listei ºi adresele URL de opþiuni pentru utilizator Mesajul de reamintire\n"
+"a parolei este trimis de la mm_cfg.MAILMAN_SITE_LIST, care trebuie sã existe.\n"
+"\n"
+"Folosire: %(PROGRAM)s [opþiuni]\n"
+"\n"
+"Opþiuni:\n"
+"    -l listname\n"
+"    --listname=listname\n"
+"        Trimite mesaje de reamintire a parolei nuami pentru lista indicatã.\n"
+"        Dacã este omis, mesajele vor fi trimise pentru toate listele.\n"
+"        Sunt permise opþiuni multiple -l/--listname.\n"
+"\n"
+"    -h/--help\n"
+"        Afiºeazã acest mesaj de ajutor ºi terminã execuþia.\n"
 
 #: cron/mailpasswds:198
 msgid "Password // URL"
@@ -9445,6 +9544,19 @@ msgid ""
 "all\n"
 "        lists are sent out.\n"
 msgstr ""
+"Distribuie volumele pentru listele cu mesaje în aºteptare ºi parametrul\n"
+"digest_send_periodic activat.\n"
+"\n"
+"Folosire: %(PROGRAM)s [opþiuni]\n"
+"\n"
+"Opþiuni: "
+"    -h / --help "
+"        Afiºeazã acest mesaj de ajutor ºi terminã execuþia.\n"
+"\n"
+"    -l listname\n"
+"    --listname=listname\n"
+"        Trimite volumele de rezumate numai din lista datã;\n"
+"        altfel sunt trimise volumele restante de rezumate pentru toate listele.\n"
 
 #, fuzzy
 #~ msgid "delivery option set"
