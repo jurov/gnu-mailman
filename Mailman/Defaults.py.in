@@ -983,6 +983,9 @@ PLAIN_DIGEST_KEEP_HEADERS = [
 # Should we do any bounced mail response at all?
 DEFAULT_BOUNCE_PROCESSING = Yes
 
+# How often should the bounce qrunner process queued detected bounces?
+REGISTER_BOUNCES_EVERY = minutes(15)
+
 # Bounce processing works like this: when a bounce from a member is received,
 # we look up the `bounce info' for this member. If there is no bounce info,
 # this is the first bounce we've received from this member.  In that case, we
