@@ -112,19 +112,27 @@ your membership administrative address, %(addr)s.'''))
         cpuser = self.getMemberCPAddress(user)
         recipient = self.GetMemberAdminEmail(cpuser)
         subject = _('%(listfullname)s mailing list reminder')
+        # Get user's language and charset
+        lang = self.getMemberLanguage(user)
+        cset = Utils.GetCharSet(lang)
+        password = self.getMemberPassword(user)
+        # TK: Make unprintables to ?
+        # The list owner should allow users to set language options if they
+        # want to use non-us-ascii characters in password and send it back.
+        password = unicode(password, cset, 'replace').encode(cset, 'replace')
         # get the text from the template
         text = Utils.maketext(
             'userpass.txt',
             {'user'       : cpuser,
              'listname'   : self.real_name,
              'fqdn_lname' : self.GetListEmail(),
-             'password'   : self.getMemberPassword(user),
+             'password'   : password,
              'options_url': self.GetOptionsURL(user, absolute=True),
              'requestaddr': requestaddr,
              'owneraddr'  : self.GetOwnerEmail(),
-            }, lang=self.getMemberLanguage(user), mlist=self)
+            }, lang=lang, mlist=self)
         msg = Message.UserNotification(recipient, adminaddr, subject, text,
-                                       self.getMemberLanguage(user))
+                                       lang)
         msg['X-No-Archive'] = 'yes'
         msg.send(self, verp=mm_cfg.VERP_PERSONALIZED_DELIVERIES)
 
