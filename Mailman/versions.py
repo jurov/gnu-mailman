@@ -400,6 +400,8 @@ def NewVars(l):
     add_only_if_missing('filter_filename_extensions',
         mm_cfg.DEFAULT_FILTER_FILENAME_EXTENSIONS)
     add_only_if_missing('pass_filename_extensions', [])
+    # automatic discard
+    add_only_if_missing('max_days_to_hold', 0)
 
 
 

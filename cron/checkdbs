@@ -52,6 +52,8 @@ PROGRAM = sys.argv[0]
 _ = i18n._
 i18n.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
 
+now = time.time()
+
 
 
 def usage(code, msg=''):
@@ -99,16 +101,24 @@ def main():
             if count:
                 i18n.set_language(mlist.preferred_language)
                 realname = mlist.real_name
-                text = Utils.maketext(
-                    'checkdbs.txt',
-                    {'count'    : count,
-                     'host_name': mlist.host_name,
-                     'adminDB'  : mlist.GetScriptURL('admindb', absolute=1),
-                     'real_name': realname,
-                     }, mlist=mlist)
-                text += '\n' + pending_requests(mlist)
+                discarded = auto_discard(mlist)
+                if discarded:
+                    count = count - discarded
+                    text = _(
+             'Notice: %(discarded)d old request(s) automatically expired.\n\n')
+                else:
+                    text = ''
+                if count:
+                    text += Utils.maketext(
+                        'checkdbs.txt',
+                        {'count'    : count,
+                         'host_name': mlist.host_name,
+                         'adminDB'  : mlist.GetScriptURL('admindb', absolute=1),
+                         'real_name': realname,
+                         }, mlist=mlist)
+                    text += '\n' + pending_requests(mlist)
                 subject = _(
-                    '%(count)d %(realname)s moderator request(s) waiting')
+                    '%(realname)s moderator requests notice')
                 msg = Message.UserNotification(mlist.GetOwnerEmail(),
                                                mlist.GetBouncesEmail(),
                                                subject, text,
@@ -121,6 +131,7 @@ def main():
 
 
 def pending_requests(mlist):
+    lcset = Utils.GetCharSet(mlist.preferred_language)
     # Must return a byte string
     lcset = Utils.GetCharSet(mlist.preferred_language)
     pending = []
@@ -172,6 +183,18 @@ Cause: %(reason)s"""))
     utext = unicode(text, incodec, 'replace')
     return utext.encode(outcodec, 'replace')
 
+def auto_discard(mlist):
+    # Discard old held messages
+    discard_count = 0
+    expire = mlist.max_days_to_hold * 86400 # days
+    heldmsgs = mlist.GetHeldMessageIds()
+    if expire and len(heldmsgs):
+        for id in heldmsgs:
+            if now - mlist.GetRecord(id)[0] > expire:
+                mlist.HandleRequest(id, mm_cfg.DISCARD)
+                discard_count += 1
+        mlist.Save()
+    return discard_count
 
 
 if __name__ == '__main__':

@@ -409,6 +409,13 @@ class General(GUIBase):
              headers.)"""))
             )
 
+        # Discard held messages after this number of days
+        rtn.append(
+            ('max_days_to_hold', mm_cfg.Number, 7, 0,
+            _("""Discard held messages older than this number of days.
+            Use 0 for no automatic discarding."""))
+            )
+
         return rtn
 
     def _setValue(self, mlist, property, val, doc):

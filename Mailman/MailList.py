@@ -387,6 +387,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             self.encode_ascii_prefixes = 2
         # scrub regular delivery
         self.scrub_nondigest = mm_cfg.DEFAULT_SCRUB_NONDIGEST
+        # automatic discarding
+        self.max_days_to_hold = mm_cfg.DEFAULT_MAX_DAYS_TO_HOLD
 
 
     #
