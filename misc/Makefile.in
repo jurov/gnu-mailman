@@ -50,6 +50,7 @@ SETUPINSTOPTS=	--install-lib $(DESTDIR)$(PYTHONLIBDIR) \
 		--install-purelib $(DESTDIR)$(PYTHONLIBDIR) \
 		--install-data $(DESTDIR)$(PYTHONLIBDIR)
 SETUPCMD=	setup.py --quiet install $(SETUPINSTOPTS)
+PKGDIR= 	$(srcdir)
 
 EMAILPKG=	email-2.5.4
 JACODECSPKG=	JapaneseCodecs-1.4.9
@@ -88,8 +89,8 @@ install-other:
 install-packages:
 	for p in $(PACKAGES); \
 	do \
-	    gunzip -c $(srcdir)/$$p.tar.gz | tar xf -; \
-	    (cd $$p ; umask 02 ; PYTHONPATH=$(PYTHONLIBDIR) $(PYTHON) $(SETUPCMD)); \
+	    gunzip -c $(srcdir)/$$p.tar.gz | (cd $(PKGDIR) ; tar xf -); \
+	    (cd $(PKGDIR)/$$p ; umask 02 ; PYTHONPATH=$(PYTHONLIBDIR) $(PYTHON) $(SETUPCMD)); \
 	done
 
 finish:
