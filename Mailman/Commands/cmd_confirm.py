@@ -1,4 +1,4 @@
-# Copyright (C) 2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2003 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,7 +17,7 @@
 """
     confirm <confirmation-string>
         Confirm an action.  The confirmation-string is required and should be
-        supplied with in mailback confirmation notice.
+        supplied by a mailback confirmation notice.
 """
 
 from Mailman import mm_cfg
@@ -63,6 +63,10 @@ Your request has been forwarded to the list moderator for approval."""))
         res.results.append(_("""\
 You are not current a member.  Have you already unsubscribed or changed
 your email address?"""))
+    except Errors.HostileSubscriptionError:
+        res.results.append(_("""\
+You were not invited to this mailing list.  The invitation has been discarded,
+and both list administrators have been alerted."""))
     else:
         if ((results[0] == Pending.SUBSCRIPTION and mlist.send_welcome_msg)
             or

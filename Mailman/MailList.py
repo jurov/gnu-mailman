@@ -66,10 +66,18 @@ from Mailman.OldStyleMemberships import OldStyleMemberships
 from Mailman import Message
 from Mailman import Pending
 from Mailman import Site
-from Mailman.i18n import _
+from Mailman import i18n
 from Mailman.Logging.Syslog import syslog
 
+_ = i18n._
+
 EMPTYSTRING = ''
+
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
 
 
 
@@ -93,25 +101,27 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.InitTempVars(name)
         # Default membership adaptor class
         self._memberadaptor = OldStyleMemberships(self)
-        if name:
-            if lock:
-                # This will load the database.
-                self.Lock()
-            else:
-                self.Load()
-            # This extension mechanism allows list-specific overrides of any
-            # method (well, except __init__(), InitTempVars(), and InitVars()
-            # I think).
-            filename = os.path.join(self.fullpath(), 'extend.py')
-            dict = {}
-            try:
-                execfile(filename, dict)
-            except IOError, e:
-                if e.errno <> errno.ENOENT: raise
-            else:
-                func = dict.get('extend')
-                if func:
-                    func(self)
+        # This extension mechanism allows list-specific overrides of any
+        # method (well, except __init__(), InitTempVars(), and InitVars()
+        # I think).  Note that fullpath() will return None when we're creating
+        # the list, which will only happen when name is None.
+        if name is None:
+            return
+        filename = os.path.join(self.fullpath(), 'extend.py')
+        dict = {}
+        try:
+            execfile(filename, dict)
+        except IOError, e:
+            if e.errno <> errno.ENOENT: raise
+        else:
+            func = dict.get('extend')
+            if func:
+                func(self)
+        if lock:
+            # This will load the database.
+            self.Lock()
+        else:
+            self.Load()
 
     def __getattr__(self, name):
         # Because we're using delegation, we want to be sure that attribute
@@ -677,8 +687,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # Hack alert!  Squirrel away a flag that only invitations have, so
         # that we can do something slightly different when an invitation
         # subscription is confirmed.  In those cases, we don't need further
-        # admin approval, even if the list is so configured
-        userdesc.invitation = 1
+        # admin approval, even if the list is so configured.  The flag is the
+        # list name to prevent invitees from cross-subscribing.
+        userdesc.invitation = self.internal_name()
         cookie = Pending.new(Pending.SUBSCRIPTION, userdesc)
         confirmurl = '%s/%s' % (self.GetScriptURL('confirm', absolute=1),
                                 cookie)
@@ -890,17 +901,25 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             self.SendSubscribeAck(email, self.getMemberPassword(email),
                                   digest, text)
         if admin_notif:
-            realname = self.real_name
-            subject = _('%(realname)s subscription notification')
+            lang = self.preferred_language
+            otrans = i18n.get_translation()
+            i18n.set_language(lang)
+            try:
+                realname = self.real_name
+                subject = _('%(realname)s subscription notification')
+            finally:
+                i18n.set_translation(otrans)
+            if isinstance(name, UnicodeType):
+                name = name.encode(Utils.GetCharSet(lang), 'replace')
             text = Utils.maketext(
                 "adminsubscribeack.txt",
-                {"listname" : self.real_name,
+                {"listname" : realname,
                  "member"   : formataddr((name, email)),
                  }, mlist=self)
             msg = Message.OwnerNotification(self, subject, text)
             msg.send(self)
 
-    def DeleteMember(self, name, whence=None, admin_notif=0, userack=1):
+    def DeleteMember(self, name, whence=None, admin_notif=None, userack=True):
         realname, email = parseaddr(name)
         if self.unsubscribe_policy == 0:
             self.ApprovedDeleteMember(name, whence, admin_notif, userack)
@@ -1059,11 +1078,18 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             except ValueError:
                 raise Errors.MMBadConfirmation, 'bad subscr data %s' % (data,)
             # Hack alert!  Was this a confirmation of an invitation?
-            invitation = getattr(userdesc, 'invitation', 0)
+            invitation = getattr(userdesc, 'invitation', False)
             # We check for both 2 (approval required) and 3 (confirm +
             # approval) because the policy could have been changed in the
             # middle of the confirmation dance.
-            if not invitation and self.subscribe_policy in (2, 3):
+            if invitation:
+                if invitation <> self.internal_name():
+                    # Not cool.  The invitee was trying to subscribe to a
+                    # different list than they were invited to.  Alert both
+                    # list administrators.
+                    self.SendHostileSubscriptionNotice(invitation, addr)
+                    raise Errors.HostileSubscriptionError
+            elif self.subscribe_policy in (2, 3):
                 self.HoldSubscription(addr, fullname, password, digest, lang)
                 name = self.real_name
                 raise Errors.MMNeedApproval, _(
