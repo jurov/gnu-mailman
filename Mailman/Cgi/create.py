@@ -93,7 +93,7 @@ def process_request(doc, cgidata):
     auth     = cgidata.getvalue('auth', '').strip()
     langs    = cgidata.getvalue('langs', [mm_cfg.DEFAULT_SERVER_LANGUAGE])
 
-    if type(langs) <> ListType:
+    if not isinstance(langs, ListType):
         langs = [langs]
     # Sanity check
     safelistname = Utils.websafe(listname)
@@ -152,6 +152,15 @@ def process_request(doc, cgidata):
             doc, cgidata,
             _('You are not authorized to create new mailing lists'))
         return
+    # Make sure the web hostname matches one of our virtual domains
+    hostname = Utils.get_domain()
+    if mm_cfg.VIRTUAL_HOST_OVERVIEW and \
+           not mm_cfg.VIRTUAL_HOSTS.has_key(hostname):
+        safehostname = Utils.websafe(hostname)
+        request_creation(doc, cgidata,
+                         _('Unknown virtual host: %(safehostname)s'))
+        return
+    emailhost = mm_cfg.VIRTUAL_HOSTS.get(hostname, mm_cfg.DEFAULT_EMAIL_HOST)
     # We've got all the data we need, so go ahead and try to create the list
     # See admin.py for why we need to set up the signal handler.
     mlist = MailList.MailList()
@@ -175,7 +184,7 @@ def process_request(doc, cgidata):
         oldmask = os.umask(002)
         try:
             try:
-                mlist.Create(listname, owner, pw, langs)
+                mlist.Create(listname, owner, pw, langs, emailhost)
             finally:
                 os.umask(oldmask)
         except Errors.MMBadEmailError, s:
@@ -199,11 +208,9 @@ def process_request(doc, cgidata):
 
         # Initialize the host_name and web_page_url attributes, based on
         # virtual hosting settings and the request environment variables.
-        hostname = Utils.get_domain()
         mlist.default_member_moderation = moderate
         mlist.web_page_url = mm_cfg.DEFAULT_URL_PATTERN % hostname
-        mlist.host_name = mm_cfg.VIRTUAL_HOSTS.get(
-            hostname, mm_cfg.DEFAULT_EMAIL_HOST)
+        mlist.host_name = emailhost
         mlist.Save()
     finally:
         # Now be sure to unlock the list.  It's okay if we get a signal here
