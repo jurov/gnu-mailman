@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-05-25 20:46+0300\n"
+"PO-Revision-Date: 2004-05-30 22:12+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4164,6 +4164,15 @@ msgid ""
 "            >convert_html_to_plaintext</a> is enabled and the site is\n"
 "            configured to allow these conversions."
 msgstr ""
+"Politicile ce guverneazã traficul listei.\n"
+"\n"
+"<p>Filtrarea de conþinut funcþioneazã cam aºa: ori de câte ori un mesaj este recepþionat de listã ºi dumneavoastrã aveþi filtrarea de conþinut activatã, ataºamentele mesajului sunt mai întâi comparate cu <a href=\"?VARHELP=contentfilter/filter_mime_types\">tipurile filtrate</a>.  Dacã un ataºament se încadreazã în aceastã listã, este automat ignorat.\n"
+"\n"
+"<p>Maiapoi, dacã sunt definite <a href=\"?VARHELP=contentfilter/pass_mime_types\">tipuri permise</a>, orice ataºament ce nu se încadreazã în lista acestora este de asemenea ignorat.  Dacã nu sunt tipuri permise definite, acest pas este sãrit.\n"
+"\n"
+"<p>Dupã aceastã filtrare iniþialã, orice ataºamente <tt>multipart</tt> nule sunt ignorate.  Apoi, fiecare secþiune <tt>multipart/alternative</tt> va fi înlocuitã cu prima alternativã nenulã rãmasã dupã filtrare.\n"
+"\n"
+"<p>La final, toate pãrþile <tt>text/html</tt> rãmaseîn mesaj pot fi convertite în <tt>text/plain</tt> dacã <a href=\"?VARHELP=contentfilter/convert_html_to_plaintext\">convert_html_to_plaintext</a> este activatã ºi dacã site-ul este configurat sã permitã aceste conversii."
 
 #: Mailman/Gui/ContentFilter.py:71
 msgid ""
@@ -4277,6 +4286,9 @@ msgid ""
 "             option is only available if enabled by the site\n"
 "             administrator."
 msgstr ""
+"Una din aceste acþiuni este aplicatã atunci când mesajul îndeplineºte cel puþin una din regulile de filtrare a conþinutului, însemnând cã tipul top-level este în lista <a href=\"?VARHELP=contentfilter/filter_mime_types\">filter_mime_types</a>, sau tupil top-level <strong>nu</strong> este în lista <a href=\"?VARHELP=contentfilter/pass_mime_types\">pass_mime_types</a>, sau în cazul în care dupã filtrarea conþinutului, mesajul devine nul. "
+"<p>Notaþi faptul cã acþiunea nu este aplicatã dacã dupã filtrare, mesajul mai are conþinut.  În acest caz, mesajul este întotdeauna re-trimis listei.\n"
+"<p>Când mesajele sunt ignorate, este înregistrat un mesaj în jurnal (log), conþinând Message-ID-ulmesajului ignorat.  Când mesajele sunt respinse sau retrimise proprietarului listei, este inclus motivul acestei acþiuni în notificarea de eºec (bounce) trimisã.  Atunci când mesajele sunt reþinute, ele sunt salvate într-un director special pentru revizuirea (ºi eventuala salvare) de cãtre administrator, dar altfel sunt ignorate.  Aceastã ultimã opþiune este disponibilã numai dacã este activatã de cãtre administratorul site-ului."
 
 #: Mailman/Gui/ContentFilter.py:154
 msgid "Bad MIME type ignored: %(spectype)s"
@@ -4792,7 +4804,7 @@ msgid ""
 "             typical choice.  This setting has no effect when \"umbrella_list"
 "\"\n"
 "             is \"No\"."
-msgstr ""
+msgstr "Când parametrul \"umbrella_list\" etse setat, indicând faptul cã aceastã lista are alte liste ca ºi membri, notificãrile administrative precum confirmãrile ºi notificãrile de reamintire a parolei nu trebuie sã fie trimise membrilor, ci mai degrabã proprietarilor acelor liste.  În acest caz, valoarea acestui parametru este adãugatã la adresa de abonament a membrilor.  '-owner' este opþiunea tipicã.  Acestã opþiune nu are nici un efect dacã parametrul \"umbrella_list\" este setat pe \"Nu\"."
 
 #: Mailman/Gui/General.py:262
 msgid "Send monthly password reminders?"
@@ -5411,6 +5423,8 @@ msgid ""
 "employees\n"
 "             are required to be members of."
 msgstr ""
+"Când abonaþii vor sã pãrãseascã lista, vor face o cerere de dezabonare, fie prin e-mail, fie pe web. În mod normal, cel mai bine e sã permiteþi pãrãsirea liberã a listei, astfel încât abonaþii sã se poatã dezabona cu uºurinþã (uneori devii foarte iritat dacã nu poþi pãrãsi o listã de discuþii!).\n"
+"<p>În cazul anumitor liste, totuºi, puteþi impune aprobarea moderatorului înainte ca cererea de pãrãsire a listei sã fie procesatã.  Exemple de astfel de liste sunt cele impuse de marile companii, la care toþi angajaþii sunt obligaþi sã subscrie."
 
 #: Mailman/Gui/Privacy.py:131
 msgid "Ban list"
@@ -6092,7 +6106,7 @@ msgid ""
 "off\n"
 "             normal <tt>Subject:</tt> prefixes, they won't be prefixed for\n"
 "             gated messages either."
-msgstr ""
+msgstr "Mailman prefixeazã headerele <tt>Subject:</tt> cu un <a href=\"?VARHELP=general/subject_prefix\">text configurabil</a> ºi în mod normal, acest mesaj apare în mesajele dirijate cãtre Usenet.  Puteþi seta aceastã opþiune pe <em>Nu</em> pentru a dezactiva prefixarea mesajelor dirijate.  Bineînþeles, dacã dezactivaþi prefixarea headerelor <tt>Subject:</tt>, acestea nu vor fi modificate nici pentru mesajele dirijate."
 
 #: Mailman/Gui/Usenet.py:103
 msgid "Mass catch up"
@@ -6261,7 +6275,7 @@ msgid ""
 "approval\n"
 "            by the list moderator.  You will be notified of the moderator's\n"
 "            decision by email."
-msgstr ""
+msgstr "Veþi primi un mesaj prin care vi se cere confirmarea, pentru a preveni abonarea dumneavoastrã abuzivã de cãtre alte persoane.  De îndatã ce confirmarea este primitã, cererea dumneavoastrã va fi reþinutã pentru aprobare de cãtre un moderator al listei.  Veþi fi anunþat(ã) despre decizia moderatorului prin e-mail."
 
 #: Mailman/HTMLFormatter.py:206
 msgid ""
@@ -6302,7 +6316,7 @@ msgid ""
 "            have only other mailing lists as members.  Among other things,\n"
 "            this means that your confirmation request will be sent to the\n"
 "            `%(sfx)s' account for your address.)"
-msgstr ""
+msgstr "<p>Notaþi cã aceasta este o listã-umbrelã, ce are ca ºi membrii abonaþi doar alte liste de discuþii.  Printre altele, asta înseamnã cã cererea de confirmare va fi trimisã la contul '%(sfx)s' pentru adresa dumneavoastrã.)"
 
 #: Mailman/HTMLFormatter.py:249
 #, fuzzy
@@ -6537,7 +6551,7 @@ msgid ""
 "the\n"
 "message will be approved for posting to the list.  The Approved: header can\n"
 "also appear in the first line of the body of the reply."
-msgstr ""
+msgstr "Dacã rãspundeþi la acest mesaj, pãstrând headerul Subject: intact, Mailman va ignora mesajul reþinut.  Faceþi asta dacã mesajul primit este spam.  Dacã rãspundeþi la acest mesaj ºi includeþi un header Approved:, împreunã cu parola listei inclusã, mesajul va fi aprobat pentru publicare pe listã.  Headerul Approved: poate apare ºi în prima linie a corpului mesajului replicã."
 
 #: Mailman/Handlers/MimeDel.py:56
 msgid "The message's content type was explicitly disallowed"
@@ -6560,6 +6574,8 @@ msgid ""
 "are receiving the only remaining copy of the discarded message.\n"
 "\n"
 msgstr ""
+"Mesajul ataºat se încadreazã în regulile de filtrare de conþinut ale listei %(listname)s ºi a fost blocat. Dumneavoastrã aþi primit singura copie a mesajului ignorat.\n"
+"\n"
 
 #: Mailman/Handlers/MimeDel.py:214
 msgid "Content filtered message notification"
@@ -6779,6 +6795,9 @@ msgid ""
 "\n"
 "Here are the entries in the /etc/aliases file that should be removed:\n"
 msgstr ""
+"ista de discuþii '%(listname)s' a fost ºtearsã prin intermediul interfeþei web.  Pentru a încheia dezactivarea acestei liste de discuþii, fiºierele corespunzãtoare /etc/aliases (sau echivalente) trebuie actualizate.  De asemenea, s-ar putea sã trebuiascã sã rulaþi programul 'newaliases'.\n"
+"\n"
+"Iatã liniile din fiºierul /etc/aliases ce trebuie ºterse:\n"
 
 #: Mailman/MTA/Manual.py:122
 msgid ""
@@ -6789,6 +6808,10 @@ msgid ""
 "\n"
 "## %(listname)s mailing list"
 msgstr ""
+"\n"
+"Pentru a încheia ºtergerea listei dumneavoastrã, trebuie sã modificaþi fiºierul /etc/aliases (sau echivalentul acestuia), pentru a ºterge urmãtoarele linii, ºi eventual sã rulaþi programul 'newaliases':\n"
+"\n"
+"## %(listname)s mailing list"
 
 #: Mailman/MTA/Manual.py:141
 msgid "Mailing list removal request for list %(listname)s"
@@ -6864,6 +6887,10 @@ msgid ""
 "%(adminurl)s\n"
 "\n"
 msgstr ""
+"Mesajul ataºat a fost recepþionat ca un eºec, însã formatul de notificare de eºec nu este recunoscut, sau nu am putut extrage nici o adresã de abonat din sursã.  Aceastã listã de discuþii a fost configuratã sã trimitã toate mesajele de eºec nerecunoscute cãtre administratorii listei.\n"
+"\n"
+"Pentru mai multe detalii, urmãriþi: %(adminurl)s\n"
+"\n"
 
 #: Mailman/Queue/BounceRunner.py:308
 #, fuzzy
@@ -7707,6 +7734,11 @@ msgid ""
 "\n"
 "% bin/withlist -l -r convert <mylist>\n"
 msgstr ""
+"Converteºte stringurile de interpolare ale unei liste de la %-strings to $-strings.\n"
+"\n"
+"Acest script trebuie rulat ca un script bin/withlist, astfel:\n"
+"\n"
+"% bin/withlist -l -r convert <mylist>\n"
 
 #: bin/convert.py:38 bin/fix_url.py:85
 msgid "Saving list"
@@ -8775,6 +8807,19 @@ msgid ""
 "\n"
 "Example: show_qfiles qfiles/shunt/*.pck\n"
 msgstr ""
+"Afiºeazã conþinutul unuia sau mai multor fiºiere queue Mailman.\n"
+"\n"
+"Folosire: show_qfiles [opþiuni] qfile ...\n"
+"\n"
+"Opþiuni:\n"
+"\n"
+"    -q / --quiet\n"
+"        Nu tipãri delimitatorii de ajutor în mesaj;\n"
+"\n"
+"    -h / --help\n"
+"        Tipãreºte acest mesaj de ajutor ºi terminã execuþia progrsmului\n"
+"\n"
+"Exeplu: show_qfiles qfiles/shunt/*.pck\n"
 
 #: bin/sync_members:19
 msgid ""
@@ -9018,8 +9063,9 @@ msgid "WARNING: could not acquire lock for list: %(listname)s"
 msgstr "ATENÞIE: nu am putut asigura asigura lista: %(listname)s"
 
 #: bin/update:215
+#, fuzzy
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
-msgstr ""
+msgstr "Resetarea a %(n)s BYBOUNCE-uri duce la  dezactivarea adreselor fãrã informaþii despre eºecuri"
 
 #: bin/update:221
 msgid "Updating the held requests database."
@@ -9046,6 +9092,10 @@ msgid ""
 "You can integrate that into the archives if you want by using the 'arch'\n"
 "script.\n"
 msgstr ""
+"\n"
+"%(listname)s are atât arhive mbox publice, cât ºi private.  Devreme ce aceastã listã foloseºte acum arhivele private, voi instala arhiva mbox privatã -- %(o_pri_mbox_file)s -- ca ºi arhivã curentã, ºi voi redenumi %(o_pub_mbox_file)s în %(o_pub_mbox_file)s.preb6\n"
+"\n"
+"Veþi putea integra aceastã arhivã în arhivele curente folosind scriptul arch.\n"
 
 #: bin/update:270
 msgid ""
