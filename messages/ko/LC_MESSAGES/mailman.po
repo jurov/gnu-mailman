@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: Tue Nov 16 09:26:46 2004\n"
+"POT-Creation-Date: Sat Dec  4 14:06:08 2004\n"
 "PO-Revision-Date: 2002-03-28 19:21+09:00\n"
 "Last-Translator: Hyejin Soang, Wongyo Jung<redcloak@igrus.inha.ac.kr, "
 "andsoon@igrus.inha.ac.kr>\n"
@@ -1762,11 +1762,11 @@ msgstr ""
 "려면 <a href=\"%(listinfourl)s\">메일링 리스트 정보 페이지</a>를 방문하시기 "
 "바랍니다."
 
-#: Mailman/Cgi/confirm.py:793
+#: Mailman/Cgi/confirm.py:794
 msgid "<em>not available</em>"
 msgstr "<em>이용 할 수 없습니다.</em>"
 
-#: Mailman/Cgi/confirm.py:797
+#: Mailman/Cgi/confirm.py:798
 msgid ""
 "Your membership in the %(realname)s mailing list is\n"
 "    currently disabled due to excessive bounces.  Your confirmation is\n"
@@ -1802,11 +1802,11 @@ msgstr ""
 "em> 를 누르세요. 혹은 회원으로 재활동하길 연기하실려면 <em>취소하기</em>를 누"
 "르세요."
 
-#: Mailman/Cgi/confirm.py:817
+#: Mailman/Cgi/confirm.py:818
 msgid "Re-enable membership"
 msgstr "회원으로 재활동하기"
 
-#: Mailman/Cgi/confirm.py:818
+#: Mailman/Cgi/confirm.py:819
 msgid "Cancel"
 msgstr "취소하기"
 
@@ -3437,14 +3437,6 @@ msgstr ""
 
 #: Mailman/Defaults.py:1312
 msgid "Ukrainian"
-msgstr ""
-
-#: Mailman/Defaults.py:1313
-msgid "Chinese (China)"
-msgstr ""
-
-#: Mailman/Defaults.py:1314
-msgid "Chinese (Taiwan)"
 msgstr ""
 
 #: Mailman/Deliverer.py:52
@@ -6942,36 +6934,41 @@ msgstr ""
 "%(dbfile)s 는 %(owner)s 에 의해 소유되어야 합니다. (Mailman 의 소유여야 합니"
 "다."
 
-#: Mailman/MailList.py:212
+#: Mailman/MailList.py:214
 #, fuzzy
-msgid "Your confirmation is required to %(verb)s the %(listname)s mailing list"
+msgid "Your confirmation is required to join the %(listname)s mailing list"
 msgstr "%(realname)s 메일링 리스트에서 탈퇴되셨습니다."
 
-#: Mailman/MailList.py:871 Mailman/MailList.py:1260
+#: Mailman/MailList.py:224
+#, fuzzy
+msgid "Your confirmation is required to leave the %(listname)s mailing list"
+msgstr "%(realname)s 메일링 리스트에서 탈퇴되셨습니다."
+
+#: Mailman/MailList.py:887 Mailman/MailList.py:1276
 msgid " from %(remote)s"
 msgstr "%(remote)s 부터"
 
-#: Mailman/MailList.py:905
+#: Mailman/MailList.py:921
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "%(realname)s 에 가입하기 위해서는 글관리자의 승인이 필요합니다."
 
-#: Mailman/MailList.py:969 bin/add_members:242
+#: Mailman/MailList.py:985 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "%(realname)s 가입 공지"
 
-#: Mailman/MailList.py:988
+#: Mailman/MailList.py:1004
 msgid "unsubscriptions require moderator approval"
 msgstr "탈퇴하기는 글관리자의 승인이 필요합니다."
 
-#: Mailman/MailList.py:1008
+#: Mailman/MailList.py:1024
 msgid "%(realname)s unsubscribe notification"
 msgstr "%(realname)s 탈퇴 공지"
 
-#: Mailman/MailList.py:1169
+#: Mailman/MailList.py:1185
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr "%(name)s 에 가입하기 위해서는 관리자의 승인이 필요합니다."
 
-#: Mailman/MailList.py:1434
+#: Mailman/MailList.py:1450
 msgid "Last autoresponse notification for today"
 msgstr ""
 

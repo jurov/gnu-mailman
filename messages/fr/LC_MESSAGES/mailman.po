@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b6\n"
-"POT-Creation-Date: Tue Nov 16 09:26:46 2004\n"
+"POT-Creation-Date: Sat Dec  4 14:06:08 2004\n"
 "PO-Revision-Date: 2003-01-22 12:50-0500\n"
 "Last-Translator: Pascal George <george@lyon.inserm.fr>\n"
 "Language-Team: fr <traduc@traduc.org>\n"
@@ -1803,11 +1803,11 @@ msgstr ""
 "        résilié. Pour vous réabonner, veuillez visiter la <a\n"
 "        href=\"%(listinfourl)s\">la page d'informations de la liste</a>."
 
-#: Mailman/Cgi/confirm.py:793
+#: Mailman/Cgi/confirm.py:794
 msgid "<em>not available</em>"
 msgstr "<em>non disponible</em>"
 
-#: Mailman/Cgi/confirm.py:797
+#: Mailman/Cgi/confirm.py:798
 msgid ""
 "Your membership in the %(realname)s mailing list is\n"
 "    currently disabled due to excessive bounces.  Your confirmation is\n"
@@ -1846,11 +1846,11 @@ msgstr ""
 "    abonnement.\n"
 "    "
 
-#: Mailman/Cgi/confirm.py:817
+#: Mailman/Cgi/confirm.py:818
 msgid "Re-enable membership"
 msgstr "Réactivez l'abonnement"
 
-#: Mailman/Cgi/confirm.py:818
+#: Mailman/Cgi/confirm.py:819
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -3657,14 +3657,6 @@ msgstr ""
 #: Mailman/Defaults.py:1312
 msgid "Ukrainian"
 msgstr "Ukrainien"
-
-#: Mailman/Defaults.py:1313
-msgid "Chinese (China)"
-msgstr "Chinois (Chine)"
-
-#: Mailman/Defaults.py:1314
-msgid "Chinese (Taiwan)"
-msgstr "Chinois (Taiwan)"
 
 #: Mailman/Deliverer.py:52
 msgid ""
@@ -7968,37 +7960,42 @@ msgstr "Vérification de la propriété de %(dbfile)s"
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "%(dbfile)s appartient à %(owner)s (doit appartenir à %(user)s)"
 
-#: Mailman/MailList.py:212
+#: Mailman/MailList.py:214
 #, fuzzy
-msgid "Your confirmation is required to %(verb)s the %(listname)s mailing list"
+msgid "Your confirmation is required to join the %(listname)s mailing list"
 msgstr "Vous n'êtes pas abonné à la liste %(listname)s"
 
-#: Mailman/MailList.py:871 Mailman/MailList.py:1260
+#: Mailman/MailList.py:224
+#, fuzzy
+msgid "Your confirmation is required to leave the %(listname)s mailing list"
+msgstr "Vous n'êtes pas abonné à la liste %(listname)s"
+
+#: Mailman/MailList.py:887 Mailman/MailList.py:1276
 msgid " from %(remote)s"
 msgstr " à partir de %(remote)s"
 
-#: Mailman/MailList.py:905
+#: Mailman/MailList.py:921
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "les abonnements à %(realname)s nécessitent l'approbation du modérateur"
 
-#: Mailman/MailList.py:969 bin/add_members:242
+#: Mailman/MailList.py:985 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "notification d'abonnement de %(realname)s"
 
-#: Mailman/MailList.py:988
+#: Mailman/MailList.py:1004
 msgid "unsubscriptions require moderator approval"
 msgstr "Les résiliations d'abonnements nécessitent l'approbation du modérateur"
 
-#: Mailman/MailList.py:1008
+#: Mailman/MailList.py:1024
 msgid "%(realname)s unsubscribe notification"
 msgstr "notification de résiliation de %(realname)s"
 
-#: Mailman/MailList.py:1169
+#: Mailman/MailList.py:1185
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr ""
 "L'abonnement à la liste %(name)s requiert une approbation de l'administrateur"
 
-#: Mailman/MailList.py:1434
+#: Mailman/MailList.py:1450
 msgid "Last autoresponse notification for today"
 msgstr "Dernier avis d'envoi de réponse automatique pour la journée"
 
@@ -12111,6 +12108,12 @@ msgstr ""
 "    --listname=nomdeliste\n"
 "\t Envoi le résumé à la liste spécifiée, sinon les résumés pour toutes\n"
 "\t les listes sont envoyés.\n"
+
+#~ msgid "Chinese (China)"
+#~ msgstr "Chinois (Chine)"
+
+#~ msgid "Chinese (Taiwan)"
+#~ msgstr "Chinois (Taiwan)"
 
 #~ msgid "You have been invited to join the %(listname)s mailing list"
 #~ msgstr "Vous êtes invité à vous abonner à la liste %(listname)s"
