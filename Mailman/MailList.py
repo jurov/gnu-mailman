@@ -807,7 +807,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # means the user must confirm; 2 means the admin must approve; 3 means
         # the user must confirm and then the admin must approve
         if self.subscribe_policy == 0:
-            self.ApprovedAddMember(userdesc)
+            self.ApprovedAddMember(userdesc, whence=remote or '')
         elif self.subscribe_policy == 1 or self.subscribe_policy == 3:
             # User confirmation required.  BAW: this should probably just
             # accept a userdesc instance.
@@ -854,7 +854,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             raise Errors.MMNeedApproval, _(
                 'subscriptions to %(realname)s require moderator approval')
 
-    def ApprovedAddMember(self, userdesc, ack=None, admin_notif=None, text=''):
+    def ApprovedAddMember(self, userdesc, ack=None, admin_notif=None, text='',
+                          whence=''):
         """Add a member right now.
 
         The member's subscription must be approved by what ever policy the
@@ -903,8 +904,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             kind = ' (digest)'
         else:
             kind = ''
-        syslog('subscribe', '%s: new%s %s', self.internal_name(),
-               kind, formataddr((email, name)))
+        syslog('subscribe', '%s: new%s %s, %s', self.internal_name(),
+               kind, formataddr((email, name)), whence)
         if ack:
             self.SendSubscribeAck(email, self.getMemberPassword(email),
                                   digest, text)
@@ -1072,6 +1073,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         except ValueError:
             raise Errors.MMBadConfirmation, 'op-less data %s' % (data,)
         if op == Pending.SUBSCRIPTION:
+            whence = 'via email confirmation'
             try:
                 userdesc = data[0]
                 # If confirmation comes from the web, context should be a
@@ -1080,6 +1082,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 # context is a Message and isn't relevant, so ignore it.
                 if isinstance(context, UserDesc):
                     userdesc += context
+                    whence = 'via web confirmation'
                 addr = userdesc.address
                 fullname = userdesc.fullname
                 password = userdesc.password
@@ -1104,7 +1107,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 name = self.real_name
                 raise Errors.MMNeedApproval, _(
                     'subscriptions to %(name)s require administrator approval')
-            self.ApprovedAddMember(userdesc)
+            self.ApprovedAddMember(userdesc, whence=whence)
             return op, addr, password, digest, lang
         elif op == Pending.UNSUBSCRIPTION:
             addr = data[0]
