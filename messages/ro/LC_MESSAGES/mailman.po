@@ -1,19 +1,13 @@
 # translation of mailman.po to Romanian
-# translation of mailman.po to
-# translation of mailman.po to
-# translation of mailman.po to
-# translation of mailman.po to
-# translation of mailman.po to romanian
-# Copyright (C) YEAR ORGANIZATION.
+# Copyright (C) 2003-2004
 # Stefaniu Criste <webmaster@dizain.ro>, 2003.
-# root <root@hangar.ro>, 2003.
 # Stefaniu Criste <gupi@informatia.ro>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-03-24 19:55+0200\n"
+"PO-Revision-Date: 2004-04-01 19:52+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@informatia.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1603,6 +1597,7 @@ msgid "<em>Not available</em>"
 msgstr "<em>Nu este disponibil</em>"
 
 #: Mailman/Cgi/confirm.py:463
+#, fuzzy
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    unsubscription request from the mailing list <em>%(listname)s</em>.  "
@@ -1619,6 +1614,20 @@ msgid ""
 "    <p>Or hit <em>Cancel and discard</em> to cancel this unsubscription\n"
 "    request."
 msgstr ""
+"Este necesarã confirmarea dumneavoatrã pentru a finaliza decerea\n"
+"    de pãrãsire a listei de discuþii <em>%(listname)s</em>.  "
+"În prezent\n"
+"    aveþi datele urmãtoare de abonament:\n"
+"\n"
+"    <ul><li><b>Real name:</b> %(fullname)s\n"
+"        <li><b>Email address:</b> %(addr)s\n"
+"    </ul>\n"
+"\n"
+"    Apãsaþi pe butonul <em>Unsubscribe</em> de mai jos\n"
+"    pentru a finaliza procesul de confirmare.\n"
+"\n"
+"    <sau apãsaþi <em>Cancel and discard</em> pentru a anula aceastã\n"
+"    cerere."
 
 #: Mailman/Cgi/confirm.py:479 Mailman/Cgi/options.py:696
 #: Mailman/Cgi/options.py:837 Mailman/Cgi/options.py:847
@@ -1639,6 +1648,7 @@ msgid "Change of address request confirmed"
 msgstr "Cererea de modificare a adresei a fost confirmatã"
 
 #: Mailman/Cgi/confirm.py:523
+#, fuzzy
 msgid ""
 "            You have successfully changed your address on the %(listname)s\n"
 "            mailing list from <b>%(oldaddr)s</b> to <b>%(newaddr)s</b>.  "
@@ -1646,6 +1656,10 @@ msgid ""
 "            can now <a href=\"%(optionsurl)s\">proceed to your membership\n"
 "            login page</a>."
 msgstr ""
+"            Aþi modificat cu succes adresa de email pe lista %(listname)s\n"
+"            din <b>%(oldaddr)s</b> în <b>%(newaddr)s</b>.  "
+"Puteþi trece acum\n"
+"            la <a href=\"%(optionsurl)s\">pagina de acces a secþiunii de abonament.</a>."
 
 #: Mailman/Cgi/confirm.py:535
 msgid "Confirm change of address request"
@@ -1757,6 +1771,19 @@ msgid ""
 "    <p>Or hit the <em>Continue awaiting approval</em> button to continue to\n"
 "    allow the list moderator to approve or reject the message."
 msgstr ""
+"Este necesarã confirmarea dumneavoastrã pentru a putea anula\n"
+"    publicarea mesajului trimis cãtre lista <em>%(listname)s</em>:\n"
+"\n"
+"    <ul><li><b>Expeditor:</b> %(sender)s\n"
+"        <li><b>Subiect:</b> %(subject)s\n"
+"        <li><b>Motiv:</b> %(reason)s\n"
+"    </ul>\n"
+"\n"
+"    Apãsaþi butonul <em>Anuleazã publicarea</em> pentru a nu mai publica\n"
+"    acest mesaj pe listã.\n"
+"\n"
+"    <p>Sau apãsaþi butonul <em>Aºteaptã aprobarea</b> pentru a continua\n"
+"    ºi a permite moderatorului listei sã aprobe sau sã respingã mesajul."
 
 #: Mailman/Cgi/confirm.py:700
 msgid "Cancel posting"
@@ -2175,6 +2202,8 @@ msgid ""
 " to find the management interface for your list.\n"
 "         <p>If you are having trouble using the lists, please contact "
 msgstr ""
+" pentru a gãsi intaerfaþa de administrare a listei dumneavoastrã.\n"
+"         <p>Dacã aveþi probleme la folosirea listelor, vã rugãm sã contactaþi "
 
 #: Mailman/Cgi/listinfo.py:190
 #, fuzzy
@@ -2370,6 +2399,11 @@ msgid ""
 "However\n"
 "            your other options have been set successfully."
 msgstr ""
+"Administratorul listei a dezactivat livrarea individualã (non-digest)\n"
+"            pentru aceastã listã, astfel încât opþiunea dumneavoastrã\n"
+"de livrare nu a fost salvatã. "
+"Totuºi,\n"
+"            celelalte opþiuni v-au fost setate cu succes."
 
 #: Mailman/Cgi/options.py:623
 msgid "You have successfully set your options."
@@ -2624,8 +2658,9 @@ msgid "Invalid options to CGI script"
 msgstr "Opþiuni invalide pentru scriptul CGI"
 
 #: Mailman/Cgi/roster.py:97
+#, fuzzy
 msgid "%(realname)s roster authentication failed."
-msgstr ""
+msgstr "autentificare eºuatã pentru %(realname)s."
 
 #: Mailman/Cgi/roster.py:125 Mailman/Cgi/roster.py:126
 #: Mailman/Cgi/subscribe.py:49 Mailman/Cgi/subscribe.py:60
@@ -2657,6 +2692,12 @@ msgid ""
 "moderator.  If confirmation is required, you will soon get a confirmation\n"
 "email which contains further instructions."
 msgstr ""
+"Cererea dumneavoastrã de abonare a fost recepþionatã,\n"
+"ºi va fi luatã în considerare în scurt timp. În funcþie de\n"
+"configuraþia acestei liste, cererea dumneavoastrã de abonare\n"
+"va trebui probabil confirmatã prin email, sau aprobatã de cãtre\n"
+"moderatorul listei.  Dacã este necesarã o confirmare, în scurt timp\n"
+"veþi primi un mesaj cu instrucþiuni suplimentare."
 
 #: Mailman/Cgi/subscribe.py:181
 msgid ""
@@ -2700,6 +2741,9 @@ msgid ""
 "the\n"
 "moderator's decision when they get to your request."
 msgstr ""
+"Cererea dumneavoastrã de abonare a fost amânatã datoritã %(x)s.\n"
+"Cererea dumneavoastrã a fost înaintatã cãtre moderatorul listei.  Veþi primi un mesaj\n"
+"informativ privind decizia moderatorului, de îndatã ce acesta vã va prelua cererea."
 
 #: Mailman/Cgi/subscribe.py:216 Mailman/Commands/cmd_confirm.py:60
 msgid "You are already subscribed."
@@ -2798,7 +2842,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_confirm.py:71
 msgid "Bad approval password given.  Held message is still being held."
-msgstr ""
+msgstr "Parolã de aprobare eronatã.  Mesajul blocate este reþinut în continuare."
 
 #: Mailman/Commands/cmd_confirm.py:80
 msgid "Confirmation succeeded"
@@ -2823,6 +2867,10 @@ msgid ""
 "automatically\n"
 "        adds a signature file.\n"
 msgstr ""
+"\n"
+"    end\n"
+"        Opreºte procesarea comenzilor.  Folosiþi asta în cazul în care\n"
+"programul dumneavoastrã de email adaugã automat un fiºier de semnãturã.\n"
 
 #: Mailman/Commands/cmd_help.py:17
 msgid ""
@@ -2948,6 +2996,9 @@ msgid ""
 "your\n"
 "current password, then try again."
 msgstr ""
+"Nu aþi introdus corect vechea parolã, aºa cã parola dumneavoastrã\n"
+"nu a fost schimbatã.  Folosiþi versiunea de comandã fãrã argumente pentru a\n"
+"obþine parola curentã, ºi apoi încercaþi din nou."
 
 #: Mailman/Commands/cmd_password.py:85 Mailman/Commands/cmd_password.py:111
 msgid ""
@@ -3070,8 +3121,9 @@ msgid "on"
 msgstr "activat"
 
 #: Mailman/Commands/cmd_set.py:154
+#, fuzzy
 msgid "    ack %(onoff)s"
-msgstr ""
+msgstr "    ack %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:160
 #, fuzzy
@@ -3112,20 +3164,24 @@ msgid "    %(status)s (%(how)s on %(date)s)"
 msgstr "    %(status)s (%(how)s la %(date)s)"
 
 #: Mailman/Commands/cmd_set.py:192
+#, fuzzy
 msgid "    myposts %(onoff)s"
-msgstr ""
+msgstr "    myposts %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:195
+#, fuzzy
 msgid "    hide %(onoff)s"
-msgstr ""
+msgstr "    hide %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:199
+#, fuzzy
 msgid "    duplicates %(onoff)s"
-msgstr ""
+msgstr "    duplicates %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:203
+#, fuzzy
 msgid "    reminders %(onoff)s"
-msgstr ""
+msgstr "    reminders %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:224
 msgid "You did not give the correct password"
@@ -3140,8 +3196,9 @@ msgid "Not authenticated"
 msgstr "Neautentificat"
 
 #: Mailman/Commands/cmd_set.py:254
+#, fuzzy
 msgid "ack option set"
-msgstr ""
+msgstr "opþiunea ack a fost setatã"
 
 #: Mailman/Commands/cmd_set.py:286
 #, fuzzy
@@ -3160,19 +3217,21 @@ msgstr "; a fost dezactivatã de cãtre dumneavoastrã"
 
 #: Mailman/Commands/cmd_set.py:316
 msgid "myposts option set"
-msgstr ""
+msgstr "opþiunea myposts a fost setatã"
 
 #: Mailman/Commands/cmd_set.py:327
+#, fuzzy
 msgid "hide option set"
-msgstr ""
+msgstr "opþiunea hide a fost setatã"
 
 #: Mailman/Commands/cmd_set.py:339
+#, fuzzy
 msgid "duplicates option set"
-msgstr ""
+msgstr "opþiunea duplicates a fost setatã"
 
 #: Mailman/Commands/cmd_set.py:351
 msgid "reminder option set"
-msgstr ""
+msgstr "opþiunea reminder a fost setatã"
 
 #: Mailman/Commands/cmd_stop.py:17
 msgid "stop is synonymous with the end command.\n"
@@ -3388,7 +3447,7 @@ msgstr "Francezã"
 
 #: Mailman/Defaults.py:1259
 msgid "Croatian"
-msgstr ""
+msgstr "Croatã"
 
 #: Mailman/Defaults.py:1260
 msgid "Hungarian"
@@ -3458,11 +3517,11 @@ msgstr "Ucrainianã"
 
 #: Mailman/Defaults.py:1276
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Chinezã (China)"
 
 #: Mailman/Defaults.py:1277
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Chinezã (Taiwan)"
 
 #: Mailman/Deliverer.py:52
 msgid ""
@@ -3510,6 +3569,10 @@ msgid ""
 "you\n"
 "is required."
 msgstr ""
+"Aþi invitat %(address)s pe lista dumneavoastrã, dar printr-o\n"
+"tentativã deliberat maliþioasã, cineva a încercat sã confirme invitaþia\n"
+"pe o altã listã.  Ne-am gândit cã poate doriþi sã ºtiþi asta, devreme ce nu este\n"
+"necesarã nici o acþiune suplimentarã din partea dumneavoastrã."
 
 #: Mailman/Deliverer.py:212
 #, fuzzy
@@ -3647,6 +3710,10 @@ msgid ""
 "             Mailman to discard the original email, or forward it on to the\n"
 "             system as a normal mail command."
 msgstr ""
+"Sã trimitã Mailman un rãspuns automat la emailurile trimise cãtre\n"
+"             adresa -request?  Dacã da, veþi decide dacã Mailman va\n"
+"             ignora mesajul original, sau îl va înainta sistemului ca ºi "
+"             comandã mail normalã."
 
 #: Mailman/Gui/Autoresponse.py:79
 msgid "Auto-response text to send to -request emails."
@@ -3727,7 +3794,7 @@ msgstr ""
 
 #: Mailman/Gui/Bounce.py:75
 msgid "Bounce detection sensitivity"
-msgstr ""
+msgstr "Sensibilitatea detectorului de eºecuri (bounces)"
 
 #: Mailman/Gui/Bounce.py:78
 msgid "Should Mailman perform automatic bounce processing?"
@@ -3773,6 +3840,9 @@ msgid ""
 "             is discarded, if no new bounces have been received in the\n"
 "             interim.  This value must be an integer."
 msgstr ""
+"Numãrul de zile dupã care informaþiile relative la eºecurile de livrare\n"
+"            (bounces) pentru un membru sunt ignorate, dacã nu au mai apãrut\n"
+"            altele noi între timp.  Aceastã valoare trebuie sã fie un întreg."
 
 #: Mailman/Gui/Bounce.py:107
 msgid ""
@@ -3790,6 +3860,8 @@ msgid ""
 "The number of days between sending the <em>Your Membership\n"
 "             Is Disabled</em> warnings.  This value must be an integer."
 msgstr ""
+"Numãrul de zile dintre avertismentele <em>Abonamentul dumneavoastrã\n"
+"            este dezactivat</em>.  Trebuie sã fie o valoare întreagã."
 
 #: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:259
 msgid "Notifications"
@@ -3839,6 +3911,9 @@ msgid ""
 "Should Mailman notify you, the list owner, when bounces\n"
 "             cause a member's subscription to be disabled?"
 msgstr ""
+"Sã vã atenþioneze Mailman, în calitate de proprietar al listei,\n"
+"            cãnd eºecurile de livrare (bounces) vor duce la dezactivarea\n"
+"            abonamentului unui utilizator?"
 
 #: Mailman/Gui/Bounce.py:149
 msgid ""
@@ -3848,12 +3923,20 @@ msgid ""
 "             when a member's delivery is disabled due to excessive bounces.\n"
 "             An attempt to notify the member will always be made."
 msgstr ""
+"Prin setarea acestei valori la <em>Nu</em>, veþi opri\n"
+"            notificãrile ce sunt trimise în mod normal proprietarilor\n"
+"            listei când abonamentul unui membru este dezactivat din cauza\n"
+"            eºecurilor excesive de livrare (bounces).\n"
+"            O încercare de contactare a abonatului va fi fãcutã oricum."
 
 #: Mailman/Gui/Bounce.py:156
 msgid ""
 "Should Mailman notify you, the list owner, when bounces\n"
 "             cause a member to be unsubscribed?"
 msgstr ""
+"Doriþi ca Mailman sã vã notifice, în calitate de proprietar al listei, "
+"             în momentul în care un membru este dezabonat din cauza\n"
+"             eºecurilor de transmitere (bounces) ?"
 
 #: Mailman/Gui/Bounce.py:158
 msgid ""
@@ -3928,12 +4011,14 @@ msgid ""
 "Should Mailman filter the content of list traffic according\n"
 "             to the settings below?"
 msgstr ""
+"Sã filtreze Mailman conþinutul traficului listei\n"
+"             conform regulilor de mai jos?"
 
 #: Mailman/Gui/ContentFilter.py:75
 msgid ""
 "Remove message attachments that have a matching content\n"
 "             type."
-msgstr ""
+msgstr "ªterge ataºamentele mesajelor cu un anume conþinut (content-type)."
 
 #: Mailman/Gui/ContentFilter.py:78
 msgid ""
@@ -3956,6 +4041,9 @@ msgid ""
 "             content type.  Leave this field blank to skip this filter\n"
 "             test."
 msgstr ""
+"Eliminã ataºamentele mesajelor care nu au un content-type\n"
+"            corespunzãtor.  Lãsaþi acest câmp gol pentru a sãri peste\n"
+"            acest test de filtrare."
 
 #: Mailman/Gui/ContentFilter.py:94
 msgid ""
@@ -4140,7 +4228,7 @@ msgstr "Valoare invalidã pentru parametrul: %(property)s"
 
 #: Mailman/Gui/GUIBase.py:159
 msgid "Bad email address for option %(property)s: %(val)s"
-msgstr ""
+msgstr "Adresã de email eronatã pentru opþiunea %(property)s: %(val)s"
 
 #: Mailman/Gui/GUIBase.py:185
 msgid ""
@@ -4179,7 +4267,7 @@ msgstr "Nu trimite un duplicat al mesajului propriu al utilizatorului"
 
 #: Mailman/Gui/General.py:52
 msgid "Filter out duplicate messages to list members (if possible)"
-msgstr ""
+msgstr "Filtreazã mesajele duplicate cãtre membrii listei (dacã este posibil)"
 
 #: Mailman/Gui/General.py:59
 msgid ""
@@ -4305,6 +4393,11 @@ msgid ""
 "             page.  Carriage returns will end a paragraph - see the details\n"
 "             for more info."
 msgstr ""
+"O descriere introductivã - cãteva paragrafe - despre listã.\n"
+"             Va fi inclusã, ca ºi cod HTML, la începutul paginii\n"
+"             de informaþii generale despre listã.  Carriage return\n"
+"             separã paragrafele - vedeþi detaliile pentru mai multe\n"
+"             informaþii."
 
 #: Mailman/Gui/General.py:135
 msgid ""
@@ -4565,6 +4658,9 @@ msgid ""
 "Text sent to people leaving the list.  If empty, no special\n"
 "             text will be added to the unsubscribe message."
 msgstr ""
+"Textul trimis persoanelor care pãrãsesc lista.  Dacã lipseºte,\n"
+"             nici un text special nu va fi adãugat la mesajul de\n"
+"             confirmare a dezabonãrii."
 
 #: Mailman/Gui/General.py:300
 msgid "Send goodbye message to members when they are unsubscribed?"
@@ -6383,12 +6479,13 @@ msgid "Posting of your message titled \"%(subject)s\""
 msgstr ""
 
 #: Mailman/ListAdmin.py:326
+#, fuzzy
 msgid "Forward of moderated message"
-msgstr ""
+msgstr "Forward-area mesajului moderat"
 
 #: Mailman/ListAdmin.py:382
 msgid "New subscription request to list %(realname)s from %(addr)s"
-msgstr ""
+msgstr "Cerere nouã de abonare la lista %(realname)s de la %(addr)s"
 
 #: Mailman/ListAdmin.py:405
 msgid "Subscription request"
@@ -6758,11 +6855,11 @@ msgstr "A fost abonat: %(member)s"
 
 #: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
-msgstr ""
+msgstr "Argument eronat pentru -w/--welcome-msg: %(arg)s"
 
 #: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
-msgstr ""
+msgstr "Argument eronat pentru -a/--admin-notify: %(arg)s"
 
 #: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
@@ -7031,11 +7128,11 @@ msgstr ""
 
 #: bin/check_perms:152
 msgid "article db files must be %(octperms)s: %(path)s"
-msgstr ""
+msgstr "fiºierele articol db trebuie sã fie %(octperms)s: %(path)s"
 
 #: bin/check_perms:164
 msgid "checking mode for %(prefix)s"
-msgstr ""
+msgstr "verific permisiunile pentru %(prefix)s"
 
 #: bin/check_perms:174
 msgid "WARNING: directory does not exist: %(d)s"
@@ -7058,8 +7155,9 @@ msgid "mbox file must be at least 0660:"
 msgstr "Permisiunile fiºierului mbox trebuie sã fie mãcar 0660"
 
 #: bin/check_perms:237
+#, fuzzy
 msgid "%(dbdir)s \"other\" perms must be 000"
-msgstr ""
+msgstr "\"restul\" permisiunilor %(dbdir)s trebuie sã fie 000"
 
 #: bin/check_perms:247
 msgid "checking cgi-bin permissions"
@@ -7067,19 +7165,19 @@ msgstr "verific permisiunile cgi-bin"
 
 #: bin/check_perms:252
 msgid "    checking set-gid for %(path)s"
-msgstr ""
+msgstr "    verific set-gid pentru %(path)s"
 
 #: bin/check_perms:256
 msgid "%(path)s must be set-gid"
-msgstr ""
+msgstr "%(path)s trebuie sã aibã set-gid"
 
 #: bin/check_perms:266
 msgid "checking set-gid for %(wrapper)s"
-msgstr ""
+msgstr "verific set-gid pentru %(wrapper)s"
 
 #: bin/check_perms:270
 msgid "%(wrapper)s must be set-gid"
-msgstr ""
+msgstr "%(wrapper)s trebuie sã aibã set-gid"
 
 #: bin/check_perms:280
 msgid "checking permissions on %(pwfile)s"
@@ -7097,11 +7195,11 @@ msgstr "verific permisiunile pe datele listei"
 
 #: bin/check_perms:319
 msgid "    checking permissions on: %(path)s"
-msgstr ""
+msgstr "    verific permisiunile la: %(path)s"
 
 #: bin/check_perms:327
 msgid "file permissions must be at least 660: %(path)s"
-msgstr ""
+msgstr "permisiunile de fiºier trebuie sã fie cel puþin 660: %(path)s"
 
 #: bin/check_perms:372
 msgid "No problems found"
@@ -7225,11 +7323,11 @@ msgstr "procesez lista:"
 
 #: bin/clone_member:101
 msgid "    scanning list owners:"
-msgstr ""
+msgstr "    caut proprietarii listei:"
 
 #: bin/clone_member:119
 msgid "    new list owners:"
-msgstr ""
+msgstr "    noii proprietari ai listei:"
 
 #: bin/clone_member:121
 msgid "(no change)"
@@ -7249,11 +7347,11 @@ msgstr ""
 
 #: bin/clone_member:145
 msgid "    original address removed:"
-msgstr ""
+msgstr "    adresa originalã a fost ºtearsã:"
 
 #: bin/clone_member:196
 msgid "Not a valid email address: %(toaddr)s"
-msgstr ""
+msgstr "Adresã de email invalidã: %(toaddr)s"
 
 #: bin/clone_member:209
 msgid ""
@@ -7467,15 +7565,15 @@ msgstr "Specificaþi ori -p ori -m"
 
 #: bin/dumpdb:135
 msgid "[----- start pickle file -----]"
-msgstr ""
+msgstr "[----- start pickle file -----]"
 
 #: bin/dumpdb:140
 msgid "[----- end pickle file -----]"
-msgstr ""
+msgstr "[----- end pickle file -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
-msgstr ""
+msgstr "<----- start object %(cnt)s ----->"
 
 #: bin/find_member:19
 msgid ""
@@ -7523,7 +7621,7 @@ msgstr ""
 
 #: bin/find_member:159
 msgid "Search regular expression required"
-msgstr ""
+msgstr "Expresie regularã de cãutare obligatorie"
 
 #: bin/find_member:164
 msgid "No lists to search"
@@ -7682,11 +7780,11 @@ msgstr ""
 
 #: bin/list_lists:105
 msgid "No matching mailing lists found"
-msgstr ""
+msgstr "Nu am gãsit liste de discuþii conforme cererii"
 
 #: bin/list_lists:109
 msgid "matching mailing lists found:"
-msgstr ""
+msgstr "liste de discuþii gãsite:"
 
 #: bin/list_members:19
 msgid ""
@@ -7749,11 +7847,11 @@ msgstr ""
 
 #: bin/list_members:191
 msgid "Bad --nomail option: %(why)s"
-msgstr ""
+msgstr "Opþiune eronatã --nomail: %(why)s"
 
 #: bin/list_members:202
 msgid "Bad --digest option: %(kind)s"
-msgstr ""
+msgstr "Opþiune eronatã --digest: %(kind)s"
 
 #: bin/list_members:224
 msgid "Could not open file for writing:"
@@ -8055,7 +8153,7 @@ msgstr "Adãugaþi o nouã traducere non-fuzzy în dicþionar"
 
 #: bin/msgfmt.py:57
 msgid "Return the generated output."
-msgstr ""
+msgstr "Returnez ieºirea generatã."
 
 #: bin/newlist:19
 msgid ""
@@ -8341,11 +8439,11 @@ msgstr "Eroare la deschiderea listei %(listname)s... trec mai departe."
 
 #: bin/remove_members:173
 msgid "No such member: %(addr)s"
-msgstr "Nu existã un astfel de membru: %(addr)s"
+msgstr "Nu existã acest membru: %(addr)s"
 
 #: bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
-msgstr ""
+msgstr "Userul `%(addr)s' a fost ºters din lista: %(listname)s."
 
 #: bin/rmlist:19
 msgid ""
@@ -8374,12 +8472,13 @@ msgid "Removing %(msg)s"
 msgstr "ªterg %(msg)s"
 
 #: bin/rmlist:80
+#, fuzzy
 msgid "%(listname)s %(msg)s not found as %(filename)s"
-msgstr ""
+msgstr "nu am gãsit %(listname)s %(msg)s ca ºi %(filename)s"
 
 #: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
-msgstr ""
+msgstr "Lista aceata nu existã (sau a fost ºtearsã deja): %(listname)s"
 
 #: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
@@ -8497,7 +8596,7 @@ msgstr "Opþiune eronatã: %(yesno)s"
 
 #: bin/sync_members:138
 msgid "Dry run mode"
-msgstr ""
+msgstr "Mod dry run"
 
 #: bin/sync_members:159
 msgid "Only one -f switch allowed"
@@ -8521,7 +8620,7 @@ msgstr "Trebuie sã aveþi un nume de listã ºi un nume de fiºier"
 
 #: bin/sync_members:191
 msgid "Cannot read address file: %(filename)s: %(msg)s"
-msgstr ""
+msgstr "Nu pot citi fiºierul cu adrese: %(filename)s: %(msg)s"
 
 #: bin/sync_members:203
 msgid "Ignore  :  %(addr)30s"
@@ -8561,7 +8660,7 @@ msgstr ""
 
 #: bin/transcheck:57
 msgid "check a translation comparing with the original string"
-msgstr ""
+msgstr "verificã o traducere prin comparare cu stringul original"
 
 #: bin/transcheck:67
 msgid "scan a string from the original file"
@@ -9102,7 +9201,7 @@ msgstr "Rulez %(module)s.%(callable)s()..."
 
 #: bin/withlist:270
 msgid "The variable `m' is the %(listname)s MailList instance"
-msgstr "Parametrul 'm' sete instanþa listei %(listname)s"
+msgstr "Parametrul 'm' este instanþa listei %(listname)s"
 
 #: cron/bumpdigests:19
 msgid ""
@@ -9131,6 +9230,14 @@ msgid ""
 "    -h/--help\n"
 "        Print this message and exit.\n"
 msgstr ""
+"Verificã existenþa cererilor administrative ºi notificã proprietarii listei dacã e necesar.\n"
+"\n"
+"Folosire: %(PROGRAM)s [opþiuni]\n"
+"\n"
+"Opþiuni:\n"
+"\n"
+"    -h/--help\n"
+"        Afiºeazã acest mesaj de ajutor ºi terminã execuþia.\n"
 
 #: cron/checkdbs:110
 msgid "%(count)d %(realname)s moderator request(s) waiting"
@@ -9212,8 +9319,9 @@ msgstr ""
 "\n"
 
 #: cron/disabled:144
+#, fuzzy
 msgid "[disabled by periodic sweep and cull, no message available]"
-msgstr ""
+msgstr "[dezactivatã de întreþinerea periodicã, nu sunt mesaje disponibile]"
 
 #: cron/gate_news:19
 msgid ""
