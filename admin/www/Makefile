@@ -23,6 +23,11 @@ faq.ht: ../../FAQ
 todo.ht: ../../TODO
 	../bin/mm2do $< $@
 
+install:
+	-rsync -Cavz . www.list.org:mailman.list.org
+	-rsync -Cavz . mailman.sf.net:mailman/htdocs
+	-rsync -Cavz . $(HOME)/projects/mailman-gnu
+
 clean:
 	-rm $(GENERATED_HTML)
 	-rm faq.ht todo.ht
