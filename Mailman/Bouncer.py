@@ -52,9 +52,9 @@ _ = i18n._
 
 
 class _BounceInfo:
-    def __init__(self, member, score, date, noticesleft, cookie):
+    def __init__(self, member, score, date, noticesleft):
         self.member = member
-        self.cookie = cookie
+        self.cookie = None
         self.reset(score, date, noticesleft)
 
     def reset(self, score, date, noticesleft):
@@ -111,11 +111,8 @@ class Bouncer:
             day = time.localtime()[:3]
         if not isinstance(info, _BounceInfo):
             # This is the first bounce we've seen from this member
-            cookie = Pending.new(Pending.RE_ENABLE, self.internal_name(),
-                                 member)
             info = _BounceInfo(member, weight, day,
-                               self.bounce_you_are_disabled_warnings,
-                               cookie)
+                               self.bounce_you_are_disabled_warnings)
             self.setBounceInfo(member, info)
             syslog('bounce', '%s: %s bounce score: %s', self.internal_name(),
                    member, info.score)
@@ -157,6 +154,10 @@ class Bouncer:
             self.disableBouncingMember(member, info, msg)
 
     def disableBouncingMember(self, member, info, msg):
+        # Initialize their confirmation cookie.  If we do it when we get the
+        # first bounce, it'll expire by the time we get the disabling bounce.
+        cookie = Pending.new(Pending.RE_ENABLE, self.internal_name(), member)
+        info.cookie = cookie
         # Disable them
         syslog('bounce', '%s: %s disabling due to bounce score %s >= %s',
                self.internal_name(), member,
