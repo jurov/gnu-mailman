@@ -300,8 +300,16 @@ def prefix_subject(mlist, msg, msgdata):
                 h = h.encode('us-ascii')
             else:
                 h = unicode(h, 'us-ascii').encode('us-ascii')
+            h = uheader(mlist, h, 'Subject', continuation_ws=ws)
             del msg['subject']
             msg['Subject'] = h
+            ss = ' '.join([recolon, subject])
+            if _isunicode(ss):
+                ss = ss.encode('us-ascii')
+            else:
+                ss = unicode(ss, 'us-ascii').encode('us-ascii')
+            ss = uheader(mlist, ss, 'Subject', continuation_ws=ws)
+            msgdata['stripped_subject'] = ss
             return
         except UnicodeError:
             pass
@@ -324,6 +332,9 @@ def prefix_subject(mlist, msg, msgdata):
     h.append(subject, cset)
     del msg['subject']
     msg['Subject'] = h
+    ss = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
+    ss.append(subject, cset)
+    msgdata['stripped_subject'] = ss
 
 
 def ch_oneline(s):
