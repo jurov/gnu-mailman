@@ -35,6 +35,13 @@ CONTINUATION = ',\n\t'
 COMMASPACE = ', '
 MAXLINELEN = 78
 
+# True/False
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
+
 
 
 def _isunicode(s):
@@ -251,14 +258,23 @@ def prefix_subject(mlist, msg, msgdata):
     # sequential number format allows '%05d' like pattern.
     p = re.compile('%\d*d')
     if p.search(prefix,1):
-        # prefix have number, so we should search prefix w/number
-        # in subject.
+        # prefix have number, so we should search prefix w/number in subject.
+        # Also, old_style is forced to False
         prefix_pattern = p.sub(r'\s*\d+\s*', prefix)
+        old_style = False
     else:
         prefix_pattern = prefix
+        old_style = mm_cfg.OLD_STYLE_PREFIXING
+    # Convert [ ( { ) --> \\[ \\( \\{ \\) to feed into re module.
+    # TK: Something magic should be here but after trial and error...
     prefix_pattern = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pattern)
     subject = re.sub(prefix_pattern, '', subject)
-    subject = re.compile('(RE:\s*)+', re.I).sub('Re: ', subject, 1)
+    rematch = re.match('((RE|AW)(\[\d+\])?:\s*)+', subject, re.I)
+    if rematch:
+        subject = subject[rematch.end():]
+        recolon = 'Re:'
+    else:
+        recolon = ''
     # At this point, subject may become null if someone post mail with
     # subject: [subject prefix]
     if subject.strip() == '':
@@ -273,7 +289,10 @@ def prefix_subject(mlist, msg, msgdata):
     # is some weirdness in Header module (TK)
     if cset == 'us-ascii':
         try:
-            h = prefix + ' ' + subject
+            if old_style:
+                h = ' '.join([recolon, prefix, subject])
+            else:
+                h = ' '.join([prefix, recolon, subject])
             if type(h) == UnicodeType:
                 h = h.encode('us-ascii')
             else:
@@ -284,7 +303,12 @@ def prefix_subject(mlist, msg, msgdata):
         except UnicodeError:
             pass
     # Get the header as a Header instance, with proper unicode conversion
-    h = uheader(mlist, prefix, 'Subject', continuation_ws=ws)
+    if old_style:
+        h = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
+        h.append(prefix)
+    else:
+        h = uheader(mlist, prefix, 'Subject', continuation_ws=ws)
+        h.append(recolon)
     # in seq version, subject header is already concatnated
     if not _isunicode(subject):
         try:

@@ -53,7 +53,10 @@ Here is a history of user visible changes to Mailman.
     - New feature: subject_prefix can be configured to include a sequence
       number which is taken from the post_id variable.  Also, the prefix is
       always put at the start of the subject, i.e. "[list-name] Re: original
-      subject"
+      subject", if mm_cfg.OLD_STYLE_PREFIXING is set No.  The default style
+      is "Re: [list-name]" if numbering is not set, for backward compatibility.
+      If the list owner is using numbering feature by "%d" directive, the new
+      style, "[list-name 123] Re:", is always used.
 
     - List owners can now use Scrubber to get the attachments scrubbed (held
       in the web archive), if the site admin permits it in mm_cfg.py.  New

@@ -820,12 +820,22 @@ DEFAULT_MAX_MESSAGE_SIZE = 40           # KB
 # These format strings will be expanded w.r.t. the dictionary for the
 # mailing list instance.
 DEFAULT_SUBJECT_PREFIX  = "[%(real_name)s] "
+# DEFAULT_SUBJECT_PREFIX = "[%(real_name)s %%d]" # for numbering
 DEFAULT_MSG_HEADER = ""
 DEFAULT_MSG_FOOTER = """_______________________________________________
 %(real_name)s mailing list
 %(real_name)s@%(host_name)s
 %(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s
 """
+
+# Where to put subject prefix for 'Re:' messages:
+#     old style: Re: [prefix] test
+#     new style: [prefix 123] Re: test ... (number is optional)
+# Old style is default for backward compatibility. New style is forced if
+# a list owner set %d (numbering) in prefix. If the site owner had applied 
+# new style patch (from SF patch area) before, he/she may want to set this
+# No in mm_cfg.py.
+OLD_STYLE_PREFIXING = Yes
 
 # Scrub regular delivery
 DEFAULT_SCRUB_NONDIGEST = False
