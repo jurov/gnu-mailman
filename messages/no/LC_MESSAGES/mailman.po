@@ -4,11 +4,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailman 2.1b4+\n"
+"Project-Id-Version: Mailman 2.1.5\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2003-12-31 00:21+0100\n"
+"PO-Revision-Date: 2004-04-26 14:28+0200\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
-"Language-Team: Norwegian <no@li.org>\n"
+"Language-Team: Norwegian <i18n-no@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: quoted-printable\n"
@@ -3708,9 +3708,8 @@ msgstr ""
 "selvsagt ikke lyktes."
 
 #: Mailman/Deliverer.py:212
-#, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "Påminnelse fra epostlisten %(listfullname)s"
+msgstr "Kontrollmelding fra epostlisten %(listname)s"
 
 #: Mailman/Errors.py:114
 msgid "For some unknown reason"
@@ -4030,6 +4029,16 @@ msgid ""
 "             score, above which they are automatically disabled, but not\n"
 "             removed from the mailing list."
 msgstr ""
+"Hvert medlem av listen får et returtall, som er et flyttall.\n"
+"Når Mailman mottar en returmelding som følge av å ha sendt en epost til et medlem,\n"
+"økes returtallet.\n"
+"Returmeldinger med alvorlige feil fører til at returtallet økes med 1,\n"
+"men returmeldinger med midlertidige feil fører til at returtallet økes med 0,5.\n"
+"Returtallet økes kun én gang pr. dag, så selv om Mailman mottar 10 returmeldinger\n"
+"fra epostadressen til et medlem så vil returtallet kun økes med 1 (eller 0,5).\n"
+"\n"
+"Denne variabelen beskriver en øvre grense. Dersom returtallet til et medlem overstiger denne grensen,\n"
+"vil levering av epost til medlemmet stoppes, men medlemmet vil ikke bli meldt ut av listen."
 
 #: Mailman/Gui/Bounce.py:102
 msgid ""
@@ -4852,7 +4861,6 @@ msgstr ""
 "epostlister."
 
 #: Mailman/Gui/General.py:169
-#, fuzzy
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -4893,44 +4901,31 @@ msgid ""
 "             <tt>Reply-To:</tt> address below to point to the parallel\n"
 "             list."
 msgstr ""
-"Denne innstilllingen forteller hva Mailman skal gj&oslash;re med <tt>Reply-"
-"To:</tt>\n"
-"feltet i meldingshodet p&aring; epost som sendes til listen. Er den satt "
-"til\n"
+"Denne innstilllingen forteller hva Mailman skal gj&oslash;re med <tt>Reply-To:</tt>\n"
+"feltet i meldingshodet p&aring; epost som sendes til listen. Er den satt til\n"
 "<em>Avsender</em>, vil ikke Mailman legge til noe <tt>Reply-To:</tt> felt,\n"
 "men finnes det et slikt felt allerede, vil det ikke bli fjernet.\n"
 "Settes innstillingen til enten <em>Eposlistens adresse</em> eller\n"
 "<em>Egendefinert adresse</em>, vil Mailman legge til, evt. erstatte,\n"
-"et <tt>Reply-To:</tt> felt. (<em>Egendefinert adresse</em> setter inn "
-"verdien\n"
-"av innstillingen <a href=\"?VARHELP=general/reply_to_address"
-"\">reply_to_address</a>).\n"
+"et <tt>Reply-To:</tt> felt. (<em>Egendefinert adresse</em> setter inn verdien\n"
+"av innstillingen <a href=\"?VARHELP=general/reply_to_address\">reply_to_address</a>).\n"
 "\n"
-"<p>Det finnes mange grunner til &aring; ikke innf&oslash;re eller erstatte "
-"<tt>Reply-To:</tt>\n"
-"felter. En grunn kan v&aelig;re at noen av de som sender epost til listen "
-"er\n"
-"avhengige av &aring; selv sette <tt>Reply-To:</tt> adressen. En annen grunn "
-"er at\n"
-"modifikasjon av <tt>Reply-To:</tt> adressen gj&oslash;r det vanskeligere "
-"&aring; sende\n"
+"<p>Det finnes mange grunner til &aring; ikke innf&oslash;re eller erstatte <tt>Reply-To:</tt>\n"
+"felter. En grunn kan v&aelig;re at noen av de som sender epost til listen er\n"
+"avhengige av &aring; selv sette <tt>Reply-To:</tt> adressen. En annen grunn er at\n"
+"modifikasjon av <tt>Reply-To:</tt> adressen gj&oslash;r det vanskeligere &aring; sende\n"
 "svar kun til avsender.\n"
-"Se <a href=\"http://www.unicom.com/pw/reply-to-harmful.html\">'Reply-To' "
-"Munging Considered Harmful</a>\n"
+"Se <a href=\"http://www.unicom.com/pw/reply-to-harmful.html\">'Reply-To' Munging Considered Harmful</a>\n"
 "for en diskusjon rundt temaet.\n"
-"Se <a href=\"http://www.metasystema.org/essays/reply-to-useful.mhtml\">Reply-"
-"To Munging Considered Useful</a>\n"
+"Se <a href=\"http://www.metasystema.org/essays/reply-to-useful.mhtml\">Reply-To Munging Considered Useful</a>\n"
 "for motsatte meninger.\n"
 "\n"
 "<p>Noen epostlister har begrenset tilgang, med en egen parallell liste\n"
-"beregnet for diskusjoner. Eksempler p&aring; dette er 'patcher' eller "
-"'checkin' lister,\n"
+"beregnet for diskusjoner. Eksempler p&aring; dette er 'patcher' eller 'checkin' lister,\n"
 "som system for revisjonskontroll sender endringer i programvare til, men\n"
 "diskusjoner rundt utvikling av programvaren sendes til utviklerenes egen\n"
-"epostliste. For &aring; st&oslash;tte slike epostlister, velg "
-"<em>Egendefinert adresse</em>\n"
-"og sett <tt>Reply-To:</tt> adressen i innstillingen <tt>reply_to_address</"
-"tt> til &aring; peke til\n"
+"epostliste. For &aring; st&oslash;tte slike epostlister, velg <tt>Egendefinert adresse</tt>\n"
+"og sett <tt>Reply-To:</tt> adressen nedenfor til &aring; peke til\n"
 "den parallelle diskusjonslisten."
 
 #: Mailman/Gui/General.py:201
@@ -7505,7 +7500,7 @@ msgstr "Dagens emner (%(msgcount)d meldinger)"
 
 #: Mailman/Handlers/ToDigest.py:308
 msgid "[Message discarded by content filter]"
-msgstr ""
+msgstr "[Meldingen er forkastet av innholdsfiltreringen]"
 
 #: Mailman/Handlers/ToDigest.py:323
 msgid "digest footer"
@@ -10792,9 +10787,8 @@ msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- både %(o_tmpl)s og %(n_tmpl)s eksisterer, rører ikke disse"
 
 #: bin/update:363
-#, fuzzy
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
-msgstr "- både %(o_tmpl)s og %(n_tmpl)s eksisterer, rører ikke disse"
+msgstr "- %(o_tmpl)s eksisterer ikke, rører ikke denne"
 
 #: bin/update:393
 msgid "removing directory %(src)s and everything underneath"
@@ -10818,25 +10812,23 @@ msgstr "oppdaterer gamle qfiler"
 
 #: bin/update:509
 msgid "message is unparsable: %(filebase)s"
-msgstr ""
+msgstr "kan ikke tolke melding: %(filebase)s"
 
 #: bin/update:538
-#, fuzzy
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
-msgstr "Oppdaterer den gamle pending_subscriptions.db databasen"
+msgstr "Oppdaterer pending_subscriptions.db databasen fra Mailman 2.0"
 
 #: bin/update:549
-#, fuzzy
 msgid "Updating Mailman 2.1.4 pending.pck database"
-msgstr "Oppdaterer den gamle pending_subscriptions.db databasen"
+msgstr "Oppdaterer pending.pck databasen fra Mailman 2.1.4"
 
 #: bin/update:573
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
-msgstr ""
+msgstr "Ser bort i fra feildata: %(key)s: %(val)s"
 
 #: bin/update:589
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
-msgstr ""
+msgstr "ADVARSEL: Ser bort i fra duplikatmelding som venter: %(id)s"
 
 #: bin/update:642
 msgid "getting rid of old source files"
