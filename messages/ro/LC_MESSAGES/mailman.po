@@ -2,19 +2,20 @@
 # Copyright (C) 2003-2004
 # Stefaniu Criste <webmaster@dizain.ro>, 2003.
 # Stefaniu Criste <gupi@informatia.ro>, 2004.
+# Stefaniu Criste <gupi@hangar.ro>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-05-10 20:35+0300\n"
-"Last-Translator: Stefaniu Criste <gupi@informatia.ro>\n"
+"PO-Revision-Date: 2004-05-22 10:07+0300\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.4\n"
-"X-Generator: KBabel 1.3\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: Mailman/Archiver/HyperArch.py:119
 msgid "size not available"
@@ -966,7 +967,7 @@ msgstr ""
 "modifice\n"
 "orice parametru de configurare, prin intermediul acestor pagini web.\n"
 "\n"
-"<p><em>Moderatorii listei</em>au permisiuni mai limitate; ei nu pot\n"
+"<p><em>Moderatorii listei</em> au permisiuni mai limitate; ei nu pot\n"
 "modifica orice parametru de configurare a listei, dar au dreptul sã "
 "proceseze\n"
 "cererile în aºteptare, inclusiv aprobarea sau respingerea cererilor de "
@@ -1062,7 +1063,7 @@ msgstr "Ignor modificãrile în cazul membrului ºters: %(user)s"
 
 #: Mailman/Cgi/admin.py:1474
 msgid "Successfully Removed:"
-msgstr "Åžters cu succes:"
+msgstr "Au fost dezabonaþi cu succes:"
 
 #: Mailman/Cgi/admin.py:1478
 msgid "Error Unsubscribing:"
@@ -2847,6 +2848,9 @@ msgid ""
 "message\n"
 "to the list administrator at %(listowner)s.\n"
 msgstr ""
+"Cineva a încercat sã abonese adresa dumneavoastrã la lista de discuþii\n"
+"%(listaddr)s.  Aceastã adresã este deja abonatã la aceastã listã.\n"
+"\n"
 
 #: Mailman/Cgi/subscribe.py:250
 msgid "This list does not support digest delivery."
@@ -3190,6 +3194,23 @@ msgid ""
 "        Use `set reminders off' if you want to disable the monthly password\n"
 "        reminder for this mailing list.\n"
 msgstr ""
+"\n"
+"    set help\n"
+"        afiºeazã acest text de ajutor.\n"
+"\n"
+"    set show [address=<adresa>]\n"
+"        afiºeazã opþiunile dumneavoastrã curente.  Dacã trimiteþi comanda\n"
+"        de la o altã adresã decât cea abonatã, specificaþi adresa de abonament\n"
+"        folosind parametrul 'address=<adresa>' (fãrã ghilimele ºi fãrã paranteze ascuþite!)\n"
+"\n"
+"    set authenticate <parola> [address=<adresa>]\n"
+"        pentru a face orice modificãri, trebuie sã includeþi mai întâi acestã comandã\n"
+"        împreunã cu parola dumneavoastrã de acces.  Dacã trimiteþi comanda\n"
+"        de la o altã adresã decât cea abonatã, specificaþi adresa de abonament\n"
+"        folosind parametrul 'address=<adresa>' (fãrã ghilimele ºi fãrã paranteze ascuþite!)\n"
+"\n"
+"    set ack on\n"
+"    set ack off\n"
 
 #: Mailman/Commands/cmd_set.py:122
 msgid "Bad set command: %(subcmd)s"
@@ -3347,6 +3368,18 @@ msgid ""
 "        this request from, you may specify `address=<address>' (no brackets\n"
 "        around the email address, and no quotes!)\n"
 msgstr ""
+"\n"
+"    subscribe [parola] [digest|nodigest] [address=<adresamea>]\n"
+"        Vã abonaþi la aceastã listã.  Trebuie sã introduceþi o parolã, \n"
+"        ce va fi folositã în cazul modificãrii opþiunilor sau a dezabonãrii,\n"
+"        dar dacã omiteþi parola, va fi automat generatã pentru dumneavoastrã.\n"
+"        Puteþi solicita un mesaj periodic de reamintire a parolei.\n"
+"\n"
+"        Urmãtorul argument este 'nodigest' sau 'digest' (fãrã ghilimele!).\n"
+"\n"
+"        Puteþi face abonamentul pe o altã adresã decât cea de la care trimiteþi\n"
+"        aceastã cerere, ºi în acest caz trebuie sã specificaþi 'address=<adresamea>'\n"
+"        (fãrã paranteze la adresa de email ºi fãrã ghilimele!)\n"
 
 #: Mailman/Commands/cmd_subscribe.py:62
 msgid "Bad digest specifier: %(arg)s"
@@ -3419,6 +3452,9 @@ msgid ""
 "        `address=<address>' (no brackets around the email address, and no\n"
 "        quotes!)\n"
 msgstr ""
+"\n"
+"    unsubscribe [parola] [address=<adresa>]\n"
+"        \n"
 
 #: Mailman/Commands/cmd_unsubscribe.py:62
 msgid "%(address)s is not a member of the %(listname)s mailing list"
@@ -3632,7 +3668,7 @@ msgstr " (Mod rezumat)"
 
 #: Mailman/Deliverer.py:78
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
-msgstr "Bun venit la lista de discuþii \"%(realname)s\" - (digmode)s"
+msgstr "Bun venit la lista de discuþii \"%(realname)s\" - list%(digmode)s"
 
 #: Mailman/Deliverer.py:87
 msgid "You have been unsubscribed from the %(realname)s mailing list"
@@ -3970,6 +4006,9 @@ msgid ""
 "em>\n"
 "             is recommended."
 msgstr ""
+"Sã trimitã Mailman cãtre dumneavoastrã, proprietarul listei, orice mesaje de eºec\n"
+"ce nu au fost detectate de procesorul de alerte (bounce processor)?\n"
+"<em>Da</em> este recomandat."
 
 #: Mailman/Gui/Bounce.py:124
 msgid ""
@@ -4042,24 +4081,23 @@ msgid ""
 "             when a member is unsubscribed due to excessive bounces.  An\n"
 "             attempt to notify the member will always be made."
 msgstr ""
+"Setând aceastã valoare pe <em>Nu</em>, veþi dezactiva mesajele de notificare\n"
+"ce sunt trimise în mod normal proprietarilor listei la dezabonarea unui membru din cauza\n"
+"eºecurilor excesive.  Întotdeauna se va încesrca notificarea membrului dezabonat."
 
 #: Mailman/Gui/Bounce.py:185
 msgid ""
 "Bad value for <a href=\"?VARHELP=bounce/%(property)s\"\n"
 "                >%(property)s</a>: %(val)s"
-msgstr ""
-"Valoare eronatã pentru <a href=\"?VARHELP=bounce/%(property)s\"\n"
-"                >%(property)s</a>: %(val)s"
+msgstr "Valoare eronatã pentru <a href=\"?VARHELP=bounce/%(property)s\">%(property)s</a>: %(val)s"
 
 #: Mailman/Gui/ContentFilter.py:30
-#, fuzzy
 msgid "Content&nbsp;filtering"
-msgstr "Filtrare&nbsp;conþinut"
+msgstr "Filtrare de conþinut"
 
 #: Mailman/Gui/ContentFilter.py:37
-#, fuzzy
 msgid "Forward to List Owner"
-msgstr "ÃŽnainteazã (forward) cãtre proprietarul listei"
+msgstr "Înainteazã proprietarului listei"
 
 #: Mailman/Gui/ContentFilter.py:39
 msgid "Preserve"
@@ -4107,14 +4145,14 @@ msgid ""
 "Should Mailman filter the content of list traffic according\n"
 "             to the settings below?"
 msgstr ""
-"Sã filtreze Mailman conþinutul traficului listei\n"
-"             conform regulilor de mai jos?"
+"Sã filtreze Mailman traficul listei\n"
+"conform regulilor de mai jos?"
 
 #: Mailman/Gui/ContentFilter.py:75
 msgid ""
 "Remove message attachments that have a matching content\n"
 "             type."
-msgstr "ªterge ataºamentele mesajelor cu un anume conþinut (content-type)."
+msgstr "ªterge ataºamentele mesajelor cu conþinutul (content-type) specificat."
 
 #: Mailman/Gui/ContentFilter.py:78
 msgid ""
@@ -4130,6 +4168,15 @@ msgid ""
 "             <p>See also <a href=\"?VARHELP=contentfilter/pass_mime_types\"\n"
 "             >pass_mime_types</a> for a content type whitelist."
 msgstr ""
+"Folosiþi aceastã opþiune pentu a ºterge orice ataºament din lista\n"
+"prezentatã. Fiecare rând trebuie sã conþinã un string care sã denumeascã\n"
+"un tip MIME, dupã principiul <tt>tip/subtip</tt>.  Lãsaþi subtipul necompletat\n"
+"pentru a ºterge toate ataºamentele din tipul major (de ex. <tt>image</tt>.\n"
+"\n"
+"Liniile goale sunt ignorate\n"
+"\n"
+"Vedeþi, de asemenea, <a href=\"?VARHELP=contentfilter/pass_mime_types\">pass_mime_types</a>\n"
+"pentru lista tipurilor de conþinut acceptate."
 
 #: Mailman/Gui/ContentFilter.py:90
 msgid ""
@@ -4299,29 +4346,28 @@ msgid ""
 "Setting this option instructs Mailman to start a new volume\n"
 "             with the next digest sent out."
 msgstr ""
+"Aceastã opþiune va determina Mailman sã înceapã un nou volum\n"
+"la trimiterea urmãtoarei ediþii."
 
 #: Mailman/Gui/Digest.py:90
 msgid ""
 "Should Mailman send the next digest right now, if it is not\n"
 "             empty?"
-msgstr "Sã trimitã Mailman urmãtorul volum chiar acum, dacã nu este gol ?"
+msgstr "Sã trimitã Mailman urmãtoarea ediþie chiar acum, dacã nu este goalã ?"
 
 #: Mailman/Gui/Digest.py:145
 msgid ""
 "The next digest will be sent as volume\n"
 "            %(volume)s, number %(number)s"
-msgstr ""
-"Urmãtorul rezumat va fi trimis ca ºi volum\n"
-"            %(volume)s, numãrul %(number)s"
+msgstr "Urmãtoarea ediþie va fi trimisã în volumul %(volume)s, numãrul %(number)s"
 
 #: Mailman/Gui/Digest.py:150
-#, fuzzy
 msgid "A digest has been sent."
-msgstr "A fost trimis un rezumat."
+msgstr "Ediþia a fost trimisã."
 
 #: Mailman/Gui/Digest.py:152
 msgid "There was no digest to send."
-msgstr "Nu au fost rezumate de trimis."
+msgstr "Nu au fost ediþii de trimis."
 
 #: Mailman/Gui/GUIBase.py:155
 msgid "Invalid value for variable: %(property)s"
@@ -4485,6 +4531,8 @@ msgid ""
 "what\n"
 "                the list is."
 msgstr ""
+"Descrierea este folositã când lista de discuþii este prezentatã împreunã cu alte liste,\n"
+"în headere, ºi aºa mai departe.  Trebuie sã fie cât mai succintã, dar sã identifice lista."
 
 #: Mailman/Gui/General.py:131
 msgid ""
@@ -6243,7 +6291,7 @@ msgstr ""
 msgid ""
 "(<i>%(which)s is only available to the list\n"
 "            administrator.</i>)"
-msgstr ""
+msgstr "(<i>%(which)s este disponibil numai la administratratorul listei.</i>)"
 
 #: Mailman/HTMLFormatter.py:289
 msgid "Click here for the list of "
@@ -6342,7 +6390,7 @@ msgstr "Persoanele neabonate nu au permisiunea de a publica mesaje pe aceastã li
 
 #: Mailman/Handlers/Hold.py:65
 msgid "Posting to a restricted list by sender requires approval"
-msgstr ""
+msgstr "Publicarea pe o listã restricþionatã dupã expeditor necesitã aprobare"
 
 #: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
@@ -6469,6 +6517,8 @@ msgid ""
 "in\n"
 "error, contact the mailing list owner at %(listowner)s."
 msgstr ""
+"Nu aveþi dreptul de a publica mesaje pe aceastã listã, iar mesajul dumneavoastrã a fost respins automat.\n"
+"Dacã credeþi cã mesajele dumneavoastrã sunt respinse in mod eronat, contactaþi proprietarul listei la %(listowner)s.s"
 
 #: Mailman/Handlers/Moderate.py:154
 msgid "Auto-discard notification"
@@ -6534,7 +6584,7 @@ msgstr ""
 
 #: Mailman/Handlers/Scrubber.py:301
 msgid "Skipped content of type %(partctype)s"
-msgstr ""
+msgstr "Am sãrit conþinutul de tipul %(partctype)s"
 
 #: Mailman/Handlers/Scrubber.py:327
 #, fuzzy
@@ -6543,11 +6593,11 @@ msgstr "-------------- partea urmãtoare --------------\n"
 
 #: Mailman/Handlers/SpamDetect.py:54
 msgid "The message headers matched a filter rule"
-msgstr ""
+msgstr "Headerele mesajului se potrivesc cu o regulã de filtrare"
 
 #: Mailman/Handlers/SpamDetect.py:121
 msgid "Message rejected by filter rule match"
-msgstr ""
+msgstr "Mesaj respins prin activarea unei reguli de filtrare"
 
 #: Mailman/Handlers/ToDigest.py:146
 msgid "%(realname)s Digest, Vol %(volume)d, Issue %(issue)d"
@@ -6571,15 +6621,15 @@ msgstr "Topicile de azi: (%(msgcount)d mesaje)"
 
 #: Mailman/Handlers/ToDigest.py:308
 msgid "[Message discarded by content filter]"
-msgstr ""
+msgstr "[Mesaj ignorat de filtrul de conþinut]s"
 
 #: Mailman/Handlers/ToDigest.py:323
 msgid "digest footer"
-msgstr "încheiere rezumat"
+msgstr "text de încheiere al ediþiei"
 
 #: Mailman/Handlers/ToDigest.py:326
 msgid "Digest Footer"
-msgstr "Încheierea rezumatului"
+msgstr "Textul de încheiere al ediþiei"
 
 #: Mailman/Handlers/ToDigest.py:340
 msgid "End of "
@@ -6587,7 +6637,7 @@ msgstr "Sfârºitul "
 
 #: Mailman/ListAdmin.py:287
 msgid "Posting of your message titled \"%(subject)s\""
-msgstr ""
+msgstr "Public mesajul dumneavoastrã intitulat: \"%(subject)s\""
 
 #: Mailman/ListAdmin.py:326
 #, fuzzy
@@ -6973,8 +7023,9 @@ msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Argument eronat pentru -a/--admin-notify: %(arg)s"
 
 #: bin/add_members:204
+#, fuzzy
 msgid "Cannot read both digest and normal members from standard input."
-msgstr ""
+msgstr "Nu pot citi atãt membrii normali cât ºi membrii 'dist' din datele standard de intrare."
 
 #: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:232 bin/sync_members:222
@@ -7231,7 +7282,7 @@ msgstr ""
 
 #: bin/check_perms:132
 msgid "directory permissions must be %(octperms)s: %(path)s"
-msgstr ""
+msgstr "permisiunile de director trebuie sã fie %(octperms)s: %(path)s"
 
 #: bin/check_perms:141
 msgid "source perms must be %(octperms)s: %(path)s"
@@ -7531,6 +7582,8 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
 "## captured on %(when)s\n"
 msgstr ""
+"## Setãrile de configurare pentru lista de discuþii \"%(listname)s\" -*- python -*-\n"
+"## capturate în %(when)s\n"
 
 #: bin/config_list:131
 msgid "options"
@@ -7625,7 +7678,7 @@ msgstr "Ignor mesajul reþinut cu id eronat: %(f)s"
 
 #: bin/discard:112
 msgid "Discarded held msg #%(id)s for list %(listname)s"
-msgstr ""
+msgstr "Am aruncat mesajul reþinut: msg #%(id)s pentru lista %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -7801,6 +7854,18 @@ msgid ""
 "    -h/--help\n"
 "        Print this message and exit.\n"
 msgstr ""
+"Regenereazã aliasurile specifice Mailman de la zero.\n"
+"\n"
+"Rezultatul actual depinde de valoarea variabilei MTA din fiºierul dumneavoastrã mm_cfg.py.\n"
+"\n"
+"Folosire: genaliases [opþiuni]\n"
+"Opþiuni:\n"
+"\n"
+"    -q/--quiet\n"
+"        Rezultatele date de unii MTA pot include texte explicative mai detaliate.  Folosiþi aceastã comandã pentru a reduce detaliile afiºate.\n"
+"\n"
+"    -h/--help\n"
+"        Afiºeazã acest mesaj de ajutor ºi terminã execuþia.\n"
 
 #: bin/inject:19
 msgid ""
@@ -8420,8 +8485,9 @@ msgid "%(name)s runs the %(runnername)s qrunner"
 msgstr "%(name)s ruleazã qrunner-ul %(runnername)s"
 
 #: bin/qrunner:177
+#, fuzzy
 msgid "All runs all the above qrunners"
-msgstr ""
+msgstr "Toate funcþioneazã peste instanþele qrunners de mai sus."
 
 #: bin/qrunner:213
 #, fuzzy
@@ -8841,10 +8907,13 @@ msgid ""
 msgstr ""
 
 #: bin/unshunt:81
+#, fuzzy
 msgid ""
 "Cannot unshunt message %(filebase)s, skipping:\n"
 "%(e)s"
 msgstr ""
+"Cannot unshunt message %(filebase)s, skipping:\n"
+"%(e)s"
 
 #: bin/update:19
 msgid ""
@@ -8887,6 +8956,8 @@ msgid ""
 "For some reason, %(mbox_dir)s exists as a file.  This won't work with\n"
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
 msgstr ""
+"Din diverse motive, %(mbox_dir)s existã ca ºi fiºier.  Acesta nu funcþioneazã cu b6,\n"
+"aºa cã îl voi redenumi în %(mbox_dir)s.tmp ºi voi continua."
 
 #: bin/update:255
 msgid ""
@@ -9277,6 +9348,7 @@ msgid ""
 msgstr ""
 
 #: bin/withlist:151
+#, fuzzy
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -9286,6 +9358,9 @@ msgid ""
 "though.\n"
 "    "
 msgstr ""
+"Deblocheazã o listã blocatã, dar nu executã implicit Save().\n"
+"\n"
+"    "
 
 #: bin/withlist:162
 msgid "Unlocking (but not saving) list: %(listname)s"
@@ -9348,6 +9423,17 @@ msgid ""
 "given,\n"
 "all lists are bumped.\n"
 msgstr ""
+"Incrementeazã numãrul volumului ºi reseteazã numãrul ediþiei la unu.\n"
+"\n"
+"Folosire: %(PROGRAM)s [opþiuni] [numelistã ...]\n"
+"\n"
+"Opþiuni:\n"
+"\n"
+"    --help/-h "
+"        Afiºeazã acest mesaj de ajutor ºi terminã execuþia.\n"
+"\n"
+"Listele indicate în linia de comandã sunt prelucrate.\n"
+"Dacã nu indicaþi nici un nume de listã, atunci toate listele vor fi prelucrate.\n"
 
 #: cron/checkdbs:19
 msgid ""
@@ -9607,14 +9693,4 @@ msgstr ""
 "    --listname=listname\n"
 "        Trimite volumele de rezumate numai din lista datã;\n"
 "        altfel sunt trimise volumele restante de rezumate pentru toate listele.\n"
-
-#, fuzzy
-#~ msgid "delivery option set"
-#~ msgstr "opþiunea de livrare setatã"
-
-#~ msgid "Traditional Chinese"
-#~ msgstr "Chineza tradiþionalã"
-
-#~ msgid "Simplified Chinese"
-#~ msgstr "Chineza simplificatã"
 
