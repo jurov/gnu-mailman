@@ -610,9 +610,19 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # copy the fallback into the primary so that the logic in Save() will
         # still work.  For giggles, we'll copy it to a safety backup.
         if file == plast:
+            # Move aside any existing pickle file
+            try:
+                os.rename(pfile, pfile + '.corrupt')
+            except OSError, e:
+                if e.errno <> errno.ENOENT: raise
             shutil.copy(file, pfile)
             shutil.copy(file, pfile + '.safety')
         elif file == dlast:
+            # Move aside any existing marshal file
+            try:
+                os.rename(dfile, dfile + '.corrupt')
+            except OSError, e:
+                if e.errno <> errno.ENOENT: raise
             shutil.copy(file, dfile)
             shutil.copy(file, pfile + '.safety')
         # Copy the loaded dictionary into the attributes of the current
