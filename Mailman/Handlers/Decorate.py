@@ -53,10 +53,10 @@ def process(mlist, msg, msgdata):
             # BAW: Hmm, should we allow this?
             d['user_password'] = mlist.getMemberPassword(member)
             d['user_language'] = mlist.getMemberLanguage(member)
-            username = mlist.getMemberName(member)
-            if username:
+            username = mlist.getMemberName(member) or None
+            try:
                 username = username.encode(Utils.GetCharSet(d['user_language']))
-            else:
+            except (AttributeError, UnicodeEncodeError):
                 username = member
             d['user_name'] = username
             d['user_optionsurl'] = mlist.GetOptionsURL(member)
