@@ -4,6 +4,50 @@ Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.3 (XX-Sep-2003)
+
+    - New languages Ukrainian, Serbian, Danish, Euskara/Basque.
+
+    - Improvements in the performance of the bounce processor.  Now,
+      instead of processing each bounce immediately (which can cause
+      severe lock contention), bounce events are queued.  Every 15
+      minutes by default, the queued bounce events are processed en
+      masse, on a list-per-list basis, so that each list only needs to
+      be locked once.
+
+    - When some or all of a message's recipients have temporary
+      delivery failures, the message is moved to a "retry" queue.
+      This queue wakes up occasionally and moves the file back to the
+      outgoing queue for attempted redelivery.  This should fix most
+      observed OutgoingRunner 100% cpu consumption, especially for
+      bounces to local recipients when using the Postfix MTA.
+
+    - A first draft of member documentation by Terri Oda.  There is
+      also a Japanese translation of this manual by Mr. Ikeda.
+
+    - In the configuration variables PUBLIC_EXTERNAL_ARCHIVER, and
+      PRIVATE_EXTERNAL_ARCHIVER, %(hostname)s has been added to the
+      list of allowable substitution variables.
+
+    - In the News/Mail gateway admin page, the configuration variable
+      nntp_host can now be a name:port pair.
+
+    - email 2.5.4 is included.
+
+    - WEB_LINK_COLOR in Defaults.py/mm_cfg.py should now work.
+
+    - Fixes to cron/disabled for NotAMemberError crashes.
+
+    - New script bin/show_qfiles which prints the contents of .pck
+      message files.  New script bin/discard which can be used to mass
+      discard held messages.
+
+    - Fixes so that shunted message file names actually match those
+      logged in log/errors.
+
+    - .mo files (for internationalization) are now generated at build
+      time instead of coming as part of the source distribution.
+
 2.1.2 (22-Apr-2003)
 
     - New languages Portuguese (Portugal) and Polish.
