@@ -27,11 +27,12 @@ import errno
 import binascii
 import tempfile
 from cStringIO import StringIO
-from types import IntType
+from types import IntType, StringType
 
 from email.Utils import parsedate
 from email.Parser import HeaderParser
 from email.Generator import Generator
+from email.Charset import Charset
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -170,6 +171,7 @@ def process(mlist, msg, msgdata=None):
     dir = calculate_attachments_dir(mlist, msg, msgdata)
     charset = None
     lcset = Utils.GetCharSet(mlist.preferred_language)
+    lcset_out = Charset(lcset).output_charset or lcset
     # Now walk over all subparts of this message and scrub out various types
     for part in msg.walk():
         ctype = part.get_type(part.get_default_type())
@@ -180,11 +182,29 @@ def process(mlist, msg, msgdata=None):
             # message.
             if charset is None:
                 charset = part.get_content_charset(lcset)
+            # TK: if part is attached then check charset and scrub if none
+            if part.get('content-disposition') and \
+               not part.get_content_charset():
+                omask = os.umask(002)
+                try:
+                    url = save_attachment(mlist, part, dir)
+                finally:
+                    os.umask(omask)
+                filename = part.get_filename(_('not available'))
+                filename = Utils.oneline(filename, lcset)
+                del part['content-type']
+                del part['content-transfer-encoding']
+                part.set_payload(_("""\
+An embedded and charset-unspecified text was scrubbed...
+Name: %(filename)s
+Url: %(url)s
+"""), lcset)
         elif ctype == 'text/html' and isinstance(sanitize, IntType):
             if sanitize == 0:
                 if outer:
                     raise DiscardMessage
                 del part['content-type']
+                del part['content-transfer-encoding']
                 part.set_payload(_('HTML attachment scrubbed and removed'),
                                  # Adding charset arg and removing content-tpe
                                  # sets content-type to text/plain
@@ -202,6 +222,7 @@ def process(mlist, msg, msgdata=None):
                 finally:
                     os.umask(omask)
                 del part['content-type']
+                del part['content-transfer-encoding']
                 part.set_payload(_("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
@@ -267,6 +288,7 @@ Url: %(url)s
                 os.umask(omask)
             desc = part.get('content-description', _('not available'))
             filename = part.get_filename(_('not available'))
+            filename = Utils.oneline(filename, lcset)
             del part['content-type']
             del part['content-transfer-encoding']
             part.set_payload(_("""\
@@ -285,8 +307,8 @@ Url : %(url)s
         # By default we take the charset of the first text/plain part in the
         # message, but if there was none, we'll use the list's preferred
         # language's charset.
-        if charset is None or charset == 'us-ascii':
-            charset = lcset
+        if not charset or charset == 'us-ascii':
+            charset = lcset_out
         # We now want to concatenate all the parts which have been scrubbed to
         # text/plain, into a single text/plain payload.  We need to make sure
         # all the characters in the concatenated string are in the same
@@ -294,17 +316,27 @@ Url : %(url)s
         # BAW: Martin's original patch suggested we might want to try
         # generalizing to utf-8, and that's probably a good idea (eventually).
         text = []
-        for part in msg.get_payload():
+        for part in msg.walk():
+            if part.get_content_maintype() == 'multipart':
+                continue
             # All parts should be scrubbed to text/plain by now.
             partctype = part.get_content_type()
             if partctype <> 'text/plain':
-                text.append(_('Skipped content of type %(partctype)s'))
+                text.append(_('Skipped content of type %(partctype)s\n'))
                 continue
             try:
                 t = part.get_payload(decode=True)
             except binascii.Error:
                 t = part.get_payload()
-            partcharset = part.get_content_charset()
+            # TK: get_content_charset() returns 'iso-2022-jp' for internally
+            # crafted (scrubbed) 'euc-jp' text part. So, first try 
+            # get_charset(), then get_content_charset() for the parts
+            # which are already embeded in the incoming message.
+            partcharset = part.get_charset()
+            if partcharset:
+                partcharset = str(partcharset)
+            else:
+                partcharset = part.get_content_charset()
             if partcharset and partcharset <> charset:
                 try:
                     t = unicode(t, partcharset, 'replace')
@@ -320,9 +352,10 @@ Url : %(url)s
                 except (UnicodeError, LookupError, ValueError):
                     t = t.encode(lcset, 'replace')
             # Separation is useful
-            if not t.endswith('\n'):
-                t += '\n'
-            text.append(t)
+            if isinstance(t, StringType):
+                if not t.endswith('\n'):
+                    t += '\n'
+                text.append(t)
         # Now join the text and set the payload
         sep = _('-------------- next part --------------\n')
         del msg['content-type']
@@ -376,7 +409,7 @@ def save_attachment(mlist, msg, dir, filter_html=True):
         # Now base the filename on what's in the attachment, uniquifying it if
         # necessary.
         filename = msg.get_filename()
-        if not filename:
+        if not filename or mm_cfg.SCRUBBER_DONT_USE_ATTACHMENT_FILENAME:
             filebase = 'attachment'
         else:
             # Sanitize the filename given in the message headers

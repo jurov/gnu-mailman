@@ -256,6 +256,11 @@ PRIVATE_EXTERNAL_ARCHIVER = No
 # should modify the Message object as necessary.
 ARCHIVE_SCRUBBER = 'Mailman.Handlers.Scrubber'
 
+# Mailman.Handlers.Scrubber uses attachment's filename as is.
+# If you don't like this (extremely long mime-encoded filename) then set 
+# this True.
+SCRUBBER_DONT_USE_ATTACHMENT_FILENAME = False
+
 # This variable defines what happens to text/html subparts.  They can be
 # stripped completely, escaped, or filtered through an external program.  The
 # legal values are:
