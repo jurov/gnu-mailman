@@ -108,6 +108,8 @@ class GUIBase:
             return val
         if wtype == mm_cfg.Topics:
             return val
+        if wtype == mm_cfg.HeaderFilter:
+            return val
         # Should never get here
         assert 0, 'Bad gui widget type: %s' % wtype
 
