@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: Mon Sep 22 10:07:56 2003\n"
-"PO-Revision-Date: 2003-04-15\n"
+"PO-Revision-Date: 2003-09-25\n"
 "Last-Translator: Bartosz Sawicki <bartek@kajak.org.pl>\n"
 "Language-Team: Polish <wanted@linux.gda.pl>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr " %(size)i bajtów "
 #: Mailman/Archiver/HyperArch.py:279 Mailman/Archiver/HyperArch.py:438
 #: Mailman/Archiver/HyperArch.py:999 Mailman/Archiver/HyperArch.py:1164
 msgid " at "
-msgstr " at "
+msgstr " w "
 
 #: Mailman/Archiver/HyperArch.py:467
 msgid "Previous message:"
@@ -141,7 +141,7 @@ msgstr "%(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:883
 msgid "The Week Of Monday %(day)i %(month)s %(year)i"
-msgstr ""
+msgstr "Tydzieñ zaczynaj±cy siê od poniedzia³ku %(day)i %(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:887
 msgid "%(day)i %(month)s %(year)i"
@@ -157,7 +157,7 @@ msgstr "Aktualizacja pliku HTML dla wiadomo¶ci %(seq)s"
 
 #: Mailman/Archiver/HyperArch.py:1251
 msgid "article file %(filename)s is missing!"
-msgstr ""
+msgstr "brakuje pliku archiwum %(filename)s !"
 
 #: Mailman/Archiver/pipermail.py:168 Mailman/Archiver/pipermail.py:169
 msgid "No subject"
@@ -314,7 +314,7 @@ msgid ""
 msgstr ""
 "<p>Poni¿ej wymieniono publicznie dostêpne\n"
 "            %(mailmanlink)s listy na serwerze %(hostname)s. Kliknij\n"
-"            w nazwê listy aby zobaczyæ jej opcje konfiguracyjne."
+"            w nazwê listy, aby przej¶æ do jej konfiguracji. "
 
 #: Mailman/Cgi/admin.py:261
 msgid "right "
@@ -336,11 +336,11 @@ msgstr ""
 "        i nazwê %(extra)slisty. Posiadaj±c odpowiednie uprawnienia,\n"
 "        mo¿na <a href=\"%(creatorurl)s\">za³o¿yæ now± listê dyskusyjn±</a>.\n"
 "\n"
-"        <p>Ogólne dane o li¶cie dyskusyjnej dostêpne s± na "
+"        <p>Ogólne dane o listach dyskusyjnych dostêpne s± na "
 
 #: Mailman/Cgi/admin.py:270
 msgid "the mailing list overview page"
-msgstr "stronie informacyjnej."
+msgstr "stronie informacyjnej"
 
 #: Mailman/Cgi/admin.py:272
 msgid "<p>(Send questions and comments to "
@@ -440,7 +440,7 @@ msgstr "Wyloguj siê"
 
 #: Mailman/Cgi/admin.py:468
 msgid "Emergency moderation of all list traffic is enabled"
-msgstr ""
+msgstr "Awaryjne moderowanie wszystkich list jest w³±czone"
 
 #: Mailman/Cgi/admin.py:479
 msgid ""
@@ -448,7 +448,7 @@ msgid ""
 "        using the <em>Submit Your Changes</em> button below."
 msgstr ""
 "Wprowad¼ zmiany w poni¿szej sekcji, a nastêpnie zapisz je\n"
-"        naciskaj±c poni¿szy przycisk <em>Zapisz zmiany</em>."
+"        naciskaj±c przycisk <em>Zapisz zmiany</em>."
 
 #: Mailman/Cgi/admin.py:497
 msgid "Additional Member Tasks"
@@ -459,6 +459,8 @@ msgid ""
 "<li>Set everyone's moderation bit, including\n"
 "            those members not currently visible"
 msgstr ""
+"<li>Ustaw wszystkim znacznik moderatora, ³±cznie\n"
+"            z aktualnie niewidocznymi cz³onkami"
 
 #: Mailman/Cgi/admin.py:507
 msgid "Off"
@@ -560,7 +562,7 @@ msgstr "(pomoc)"
 
 #: Mailman/Cgi/admin.py:787
 msgid "Find member %(link)s:"
-msgstr "Znajd¼ cz³onka %(link)s:"
+msgstr "Znajd¼ subskrybenta %(link)s:"
 
 #: Mailman/Cgi/admin.py:790
 msgid "Search..."
@@ -568,7 +570,7 @@ msgstr "Szukaj..."
 
 #: Mailman/Cgi/admin.py:807
 msgid "Bad regular expression: "
-msgstr ""
+msgstr "B³êdne wyra¿enie regularne: "
 
 #: Mailman/Cgi/admin.py:863
 msgid "%(allcnt)s members total, %(membercnt)s shown"
@@ -592,20 +594,19 @@ msgstr "ukryj"
 
 #: Mailman/Cgi/admin.py:891
 msgid "mod"
-msgstr "mod"
+msgstr "mod."
 
 #: Mailman/Cgi/admin.py:892
 msgid "nomail<br>[reason]"
-msgstr ""
+msgstr "wy³. <br>[powód]"
 
 #: Mailman/Cgi/admin.py:893
 msgid "ack"
-msgstr "potwierdzanie"
+msgstr "powiadom."
 
-# FIXME
 #: Mailman/Cgi/admin.py:893
 msgid "not metoo"
-msgstr "beze mnie"
+msgstr "mnie nie"
 
 #: Mailman/Cgi/admin.py:894
 msgid "nodupes"
@@ -637,7 +638,7 @@ msgstr "A"
 
 #: Mailman/Cgi/admin.py:910
 msgid "B"
-msgstr "B"
+msgstr "Z"
 
 #: Mailman/Cgi/admin.py:981
 msgid "<b>unsub</b> -- Click on this to unsubscribe the member."
@@ -649,6 +650,8 @@ msgid ""
 "        set, postings from them will be moderated, otherwise they will be\n"
 "        approved."
 msgstr ""
+"<b>mod.</b> -- Znacznik moderowania. Je¶li jest ustawiony, "
+" wszystkie wiadomo¶ci wysy³ane z tego adresu bed± moderowane."
 
 #: Mailman/Cgi/admin.py:987
 msgid ""
@@ -676,35 +679,43 @@ msgid ""
 "                    in older versions of Mailman.\n"
 "            </ul>"
 msgstr ""
+"<b>wy³.</b> -- Czy dostarczanie wiadomo¶ci jest wy³±czone? Je¶li tak, "
+" skrót okre¶lna powód wy³aczenia:\n"
+"<ul><li><b>U</b> -- U¿ytkownik sam wy³±czy³ sobie dostarczanie."
+"<li><b>A</b> -- Wy³±czenie zrobione przez Administratora."
+"<li><b>Z</b> -- Wy³±czenie spowodowane przez zbyt wiele zwrotów z adresu."
+"<li><b>?</b> -- Powód wy³±czenia nieznany. \n"
+"</ul>"
 
 #: Mailman/Cgi/admin.py:1004
 msgid ""
 "<b>ack</b> -- Does the member get acknowledgements of their\n"
 "        posts?"
 msgstr ""
-"<b>potwierdzenie</b> -- Wysy³anie potwierdzeñ listów\n"
-"        kierowanych na listê dyskusyjn±?"
+"<b>powiadom.</b> -- Nadawca jest powiadamiany o przyjêciu przez listê\n"
+"                    jego wiadomo¶ci."
 
 #: Mailman/Cgi/admin.py:1007
 msgid ""
 "<b>not metoo</b> -- Does the member want to avoid copies of their\n"
 "        own postings?"
 msgstr ""
-"<b>beze mnie</b> -- Wy³±czenie wysy³ania do nadawcy kopii listów\n"
-"        kierowanych na listê dyskusyjn±?"
+"<b>mnie nie</b> -- Nadawca nie dostaje kopii listów\n"
+"                   wys³anych przez siebie na listê."
 
 #: Mailman/Cgi/admin.py:1010
 msgid ""
 "<b>nodupes</b> -- Does the member want to avoid duplicates of the\n"
 "        same message?"
-msgstr "<b>bez duplikatów</b> -- Unikanie duplikatów listów ?"
+msgstr ""
+"<b>bez dupl.</b> -- Nadawca nie dostaje duplikatów tej samej wiadomo¶ci."
 
 #: Mailman/Cgi/admin.py:1013
 msgid ""
 "<b>digest</b> -- Does the member get messages in digests?\n"
 "        (otherwise, individual messages)"
 msgstr ""
-"<b>paczka</b> -- W³±czenie dostarczania listów w paczek\n"
+"<b>paczka</b> -- Dostarczanie listów w paczkach\n"
 "        (domy¶lnie: ka¿dy list osobno)"
 
 #: Mailman/Cgi/admin.py:1016
@@ -826,6 +837,9 @@ msgid ""
 "least\n"
 "    one blank line at the end..."
 msgstr ""
+"Poni¿ej wprowad¼ tekst, który zostanie dodany do zaproszenia, b±d¼ "
+"powiadomienia o subskrybcji. Dodaj conajmniej jedn± pust± liniê na "
+"koñcu..."
 
 #: Mailman/Cgi/admin.py:1115
 msgid "Send unsubscription acknowledgement to the user?"
@@ -1071,7 +1085,7 @@ msgstr "Od:"
 
 #: Mailman/Cgi/admindb.py:385
 msgid "Action to take on all these held messages:"
-msgstr ""
+msgstr "Co zrobiæ z tymi wszystkimi wiadomo¶ciami:"
 
 #: Mailman/Cgi/admindb.py:389 Mailman/Gui/Privacy.py:281
 msgid "Accept"
@@ -1083,20 +1097,19 @@ msgstr "Zachowaj list dla administratora serwera"
 
 #: Mailman/Cgi/admindb.py:403
 msgid "Forward messages (individually) to:"
-msgstr ""
+msgstr "Prze¶lij wiadomo¶ci (pojedyñczo) do:"
 
 #: Mailman/Cgi/admindb.py:421
 msgid "Clear this member's <em>moderate</em> flag"
-msgstr ""
+msgstr "Wyczy¶æ <em>znacznik moderowania</em> dla tego adresu"
 
 #: Mailman/Cgi/admindb.py:425
 msgid "<em>The sender is now a member of this list</em>"
-msgstr ""
+msgstr "<em>Nadawca jest teraz cz³onkiem tej listy</em>"
 
 #: Mailman/Cgi/admindb.py:434
-#, fuzzy
 msgid "Add <b>%(esender)s</b> to one of these sender filters:"
-msgstr "Dodaj <b>%(esender)s</b> do filtra wysy³aj±cych"
+msgstr "Dodaj <b>%(esender)s</b> do filtra nadawców"
 
 #: Mailman/Cgi/admindb.py:439
 msgid "Accepts"
@@ -1119,16 +1132,18 @@ msgid ""
 "Ban <b>%(esender)s</b> from ever subscribing to this\n"
 "                    mailing list"
 msgstr ""
+"Zablokowanie mo¿liwo¶ci zapisania siê z adresu <b>%(esender)s</b>"
 
 #: Mailman/Cgi/admindb.py:453
 msgid ""
 "Click on the message number to view the individual\n"
 "            message, or you can "
 msgstr ""
+"Kliknij na numerze wiadomo¶ci, ¿eby j± zobaczyæ. Mo¿esz te¿ "
 
 #: Mailman/Cgi/admindb.py:455
 msgid "view all messages from %(esender)s"
-msgstr ""
+msgstr "zobaczyæ wszystkie wiadomo¶ci od %(esender)s"
 
 #: Mailman/Cgi/admindb.py:475 Mailman/Cgi/admindb.py:599
 msgid "Subject:"
@@ -1140,12 +1155,12 @@ msgstr " bajtów "
 
 #: Mailman/Cgi/admindb.py:478
 msgid "Size:"
-msgstr ""
+msgstr "Rozmiar:"
 
 #: Mailman/Cgi/admindb.py:482 Mailman/Handlers/Decorate.py:50
 #: Mailman/Handlers/Scrubber.py:260 Mailman/Handlers/Scrubber.py:261
 msgid "not available"
-msgstr ""
+msgstr "nie znany"
 
 #: Mailman/Cgi/admindb.py:483 Mailman/Cgi/admindb.py:601
 msgid "Reason:"
@@ -1502,7 +1517,7 @@ msgstr ""
 "        <li><b>Adres e-mail:</b> %(addr)s\n"
 "    </ul>\n"
 "\n"
-"    Naci¶nij poni¿szy przycisk <em>Wypisz</em> aby zakoñczyæ proces\n"
+"    Naci¶nij poni¿szy przycisk <em>Wypisz</em>, aby zakoñczyæ proces\n"
 "    potwierdzania.\n"
 "\n"
 "    <p>Alternatywnie mo¿esz nacisn±æ <em>Anuluj</em> aby zrezygnowaæ\n"
@@ -1913,7 +1928,7 @@ msgstr ""
 
 #: Mailman/Cgi/create.py:309
 msgid "List Identity"
-msgstr ""
+msgstr "Dane listy dyskusyjnej"
 
 #: Mailman/Cgi/create.py:312
 msgid "Name of list:"
@@ -1937,7 +1952,7 @@ msgstr "Potwierd¼ has³o:"
 
 #: Mailman/Cgi/create.py:348
 msgid "List Characteristics"
-msgstr ""
+msgstr "Dodatkowe ustawienia listy"
 
 #: Mailman/Cgi/create.py:352
 msgid ""
@@ -1946,6 +1961,9 @@ msgid ""
 "hold\n"
 "    new member postings for moderator approval by default."
 msgstr ""
+"Czy wstrzymywaæ do moderowania wiadomo¶ci od nowo zapisanych osób?"
+"Odpowied¼ <em>Tak</em> oznacza, ¿e domy¶lnie wiadomo¶ci od wszystkich "
+"nowych cz³onków listy bêd± moderowane."
 
 #: Mailman/Cgi/create.py:381
 msgid ""
@@ -2080,12 +2098,11 @@ msgid "the list admin overview page"
 msgstr "g³ówn± stronê administracyjn±"
 
 #: Mailman/Cgi/listinfo.py:124
-#, fuzzy
 msgid ""
 " to find the management interface for your list.\n"
 "         <p>If you are having trouble using the lists, please contact "
 msgstr ""
-" aby zarz±dzaæ list± dyskusyjn± przez WWW.\n"
+", aby zarz±dzaæ list± dyskusyjn± przez WWW.\n"
 "         <p>Pytania i komentarze kieruj do "
 
 #: Mailman/Cgi/listinfo.py:189
@@ -2103,7 +2120,7 @@ msgstr "B³±d skryptu CGI"
 
 #: Mailman/Cgi/options.py:54
 msgid "Invalid options to CGI script."
-msgstr "Nieprawid³owe opcje do skryptu CGI"
+msgstr "Nieprawid³owe opcje do skryptu CGI."
 
 #: Mailman/Cgi/options.py:98
 msgid "No address given"
@@ -2666,7 +2683,6 @@ msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Zosta³e¶ zapisany na listê %(realname)s."
 
 #: Mailman/Commands/cmd_confirm.py:17
-#, fuzzy
 msgid ""
 "\n"
 "    confirm <confirmation-string>\n"
@@ -2704,7 +2720,6 @@ msgid "Your request has been forwarded to the list moderator for approval."
 msgstr "Twoja pro¶ba zosta³a przekazana do moderatora w celu potwierdzenia."
 
 #: Mailman/Commands/cmd_confirm.py:63
-#, fuzzy
 msgid ""
 "You are not currently a member.  Have you already unsubscribed or changed\n"
 "your email address?"
@@ -3285,9 +3300,8 @@ msgid "Czech"
 msgstr "Czeski"
 
 #: Mailman/Defaults.py:1262
-#, fuzzy
 msgid "Danish"
-msgstr "Fiñski"
+msgstr "Duñski"
 
 #: Mailman/Defaults.py:1263
 msgid "German"
@@ -3307,7 +3321,7 @@ msgstr "Estoñski"
 
 #: Mailman/Defaults.py:1267
 msgid "Euskara"
-msgstr ""
+msgstr "Baskijski"
 
 #: Mailman/Defaults.py:1268
 msgid "Finnish"
@@ -3354,9 +3368,8 @@ msgid "Polish"
 msgstr "Polski"
 
 #: Mailman/Defaults.py:1279
-#, fuzzy
 msgid "Portuguese"
-msgstr "Portugalski (Brazylia)"
+msgstr "Portugalski"
 
 #: Mailman/Defaults.py:1280
 msgid "Portuguese (Brazil)"
@@ -3367,9 +3380,8 @@ msgid "Russian"
 msgstr "Rosyjski"
 
 #: Mailman/Defaults.py:1282
-#, fuzzy
 msgid "Serbian"
-msgstr "Niemiecki"
+msgstr "Serbski"
 
 #: Mailman/Defaults.py:1283
 msgid "Swedish"
@@ -3377,7 +3389,7 @@ msgstr "Szwedzki"
 
 #: Mailman/Defaults.py:1284
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukraiñski"
 
 #: Mailman/Deliverer.py:51
 msgid ""
@@ -3670,6 +3682,8 @@ msgid ""
 "             subscription is disabled.  This value can be a floating point\n"
 "             number."
 msgstr ""
+"Maksymalna ilo¶æ punktów zwrotu, powy¿ej której subskrybcja zostaje "
+"zablokowana. Warto¶æ ta jest liczb± rzeczywist±."
 
 #: Mailman/Gui/Bounce.py:90
 msgid ""
@@ -3677,6 +3691,9 @@ msgid ""
 "             is discarded, if no new bounces have been received in the\n"
 "             interim.  This value must be an integer."
 msgstr ""
+"Ilo¶æ dni, po której licznik zwrotów jest kasowany, w przypadku braku\n"
+"kolejnych. Warto¶æ ta jest liczb± ca³kowit±."
+
 
 #: Mailman/Gui/Bounce.py:95
 msgid ""
@@ -3688,12 +3705,19 @@ msgid ""
 "             the list once their bounce score exceeds the threshold.  This\n"
 "             value must be an integer."
 msgstr ""
+"Ile ostrze¿eñ typu <em>Twoja subskrybcja jest zablokowana</em>"
+" ma zostaæ wys³anych przed usuniêciem adresu z listy dyskusyjnej. Zero (0)"
+" oznacza, ¿e adres zostanie usuniêty natychmiast po przekroczeniu "
+" ustalonego poziomu zwrotów. Warto¶æ ta jest liczb± ca³kowit±."
 
 #: Mailman/Gui/Bounce.py:102
 msgid ""
 "The number of days between sending the <em>Your Membership\n"
 "             Is Disabled</em> warnings.  This value must be an integer."
 msgstr ""
+"Ilo¶c dni pomiêdzy wysy³aniem kolejnych ostrze¿eñ typu"
+" <em>Twoja subskrybcja jest zablokowana</em>. Warto¶æ ta "
+"musi byæ liczb± ca³kowit±."
 
 #: Mailman/Gui/Bounce.py:105 Mailman/Gui/General.py:257
 msgid "Notifications"
@@ -3706,6 +3730,8 @@ msgid ""
 "em>\n"
 "             is recommended."
 msgstr ""
+"Czy Mailman powinien wysy³aæ Tobie, jako opiekunowi listy, powiadomienia "
+" o nierozpoznanych zwrotach? <em>Tak</em> jest zalecane." 
 
 #: Mailman/Gui/Bounce.py:112
 msgid ""
@@ -3743,6 +3769,8 @@ msgid ""
 "Should Mailman notify you, the list owner, when bounces\n"
 "             cause a member's subscription to be disabled?"
 msgstr ""
+"Czy Mailman ma powiadamiaæ Ciebie, jako opiekuna listy, gdy "
+" z powodu zwrotów zostanie zablokowana jaka¶ subskrybcja?"
 
 #: Mailman/Gui/Bounce.py:137
 msgid ""
@@ -3758,6 +3786,8 @@ msgid ""
 "Should Mailman notify you, the list owner, when bounces\n"
 "             cause a member to be unsubscribed?"
 msgstr ""
+"Czy Mailman ma powiadamiaæ Ciebie, jako opiekuna listy, gdy "
+" z powodu zwrotów kto¶ zostaje automatycznie wypisany?"
 
 #: Mailman/Gui/Bounce.py:146
 msgid ""
@@ -3773,10 +3803,12 @@ msgid ""
 "Bad value for <a href=\"?VARHELP=bounce/%(property)s\"\n"
 "                >%(property)s</a>: %(val)s"
 msgstr ""
+"Niepoprawna warto¶æ dla <a href=\"?VARHELP=bounce/%(property)s\"\n"
+"                >%(property)s</a>: %(val)s"
 
 #: Mailman/Gui/ContentFilter.py:30
 msgid "Content&nbsp;filtering"
-msgstr "Filtrowanie&nbsp;tre¶ci"
+msgstr "Filtrowanie&nbsp;formy"
 
 #: Mailman/Gui/ContentFilter.py:37
 msgid "Forward to List Owner"
@@ -3828,12 +3860,13 @@ msgid ""
 "Should Mailman filter the content of list traffic according\n"
 "             to the settings below?"
 msgstr ""
-
+"Czy chcesz w³±czyæ filtrowanie formy wiadomo¶ci?"
 #: Mailman/Gui/ContentFilter.py:75
 msgid ""
 "Remove message attachments that have a matching content\n"
 "             type."
 msgstr ""
+"Usuñ automatycznie za³±czniki nastêpuj±cych typów."
 
 #: Mailman/Gui/ContentFilter.py:78
 msgid ""
@@ -3856,6 +3889,8 @@ msgid ""
 "             content type.  Leave this field blank to skip this filter\n"
 "             test."
 msgstr ""
+"Usuñ za³±czniki, które nie pasuj± do nastêpuj±cych typów. Puste pole "
+"oznacza pominiêcie tego stopnia filtrowania."
 
 #: Mailman/Gui/ContentFilter.py:94
 msgid ""
@@ -3878,12 +3913,15 @@ msgid ""
 "been\n"
 "             stripped."
 msgstr ""
+"Czy Mailman ma automatycznie konwertowaæ <tt>text/html</tt> do czystego\n"
+" tekstu?  Konwersja przeprowadzana jest po usuniêciu za³±czników MIME."
 
 #: Mailman/Gui/ContentFilter.py:110
 msgid ""
 "Action to take when a message matches the content filtering\n"
 "             rules."
 msgstr ""
+"Co zrobiæ, je¶li wiadomo¶æ zosta³a pusta po filtrowaniu formy?"
 
 #: Mailman/Gui/ContentFilter.py:113
 msgid ""
@@ -3918,7 +3956,7 @@ msgstr ""
 
 #: Mailman/Gui/ContentFilter.py:154
 msgid "Bad MIME type ignored: %(spectype)s"
-msgstr ""
+msgstr "Zignorowano b³êdny typ MIME: %(spectype)s"
 
 #: Mailman/Gui/Digest.py:36
 msgid "Digest options"
@@ -4068,19 +4106,19 @@ msgstr "Opcje ogólne"
 
 #: Mailman/Gui/General.py:46
 msgid "Conceal the member's address"
-msgstr ""
+msgstr "Ukryj adres"
 
 #: Mailman/Gui/General.py:47
 msgid "Acknowledge the member's posting"
-msgstr ""
+msgstr "Powiadamiaj o przyjêtych postach"
 
 #: Mailman/Gui/General.py:48
 msgid "Do not send a copy of a member's own post"
-msgstr ""
+msgstr "Nie wysy³aj kopii wiadomo¶ci do nadawcy"
 
 #: Mailman/Gui/General.py:50
 msgid "Filter out duplicate messages to list members (if possible)"
-msgstr ""
+msgstr "Unikaj wysy³ania duplikatów"
 
 #: Mailman/Gui/General.py:57
 msgid ""
@@ -4309,6 +4347,9 @@ msgid ""
 "             regardless of whether an explict <tt>Reply-To:</tt> header is\n"
 "             added by Mailman or not."
 msgstr ""
+"Czy usun±æ pole nag³ówka <tt>Reply-To</tt> z wiadomo¶ci? Je¶li tak, to "
+" bêdzie ono usuniête niezale¿nie od tego, czy zosta³o ustawione przez "
+" Mailmana, czy nie."
 
 #: Mailman/Gui/General.py:161
 msgid "Explicit address"
@@ -4682,7 +4723,7 @@ msgstr "Dodatkowe ustawienia"
 
 #: Mailman/Gui/General.py:326
 msgid "Emergency moderation of all list traffic."
-msgstr ""
+msgstr "Moderowanie awaryjne."
 
 #: Mailman/Gui/General.py:327
 msgid ""
@@ -4692,18 +4733,24 @@ msgid ""
 "off\n"
 "             period."
 msgstr ""
+"Po w³±czeniu tej opcji wszystkie wiadomo¶ci zatrzymywane s± do"
+"moderowania. Mo¿na jej u¿yæ w celu np. ostudzenia gor±cej dyskusji."
 
 #: Mailman/Gui/General.py:339
 msgid ""
 "Default options for new members joining this list.<input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
 msgstr ""
+"Domy¶lne ustawienia dla nowych cz³onków."
+"<input type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
 
 #: Mailman/Gui/General.py:342
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
 "             set of options is taken from the this variable's setting."
 msgstr ""
+"Podczas zapisywania siê nowej osoby, jej opcje s± ustawiane zgodnie z"
+" ustatawionymi tutaj."
 
 #: Mailman/Gui/General.py:346
 msgid ""
@@ -4805,7 +4852,7 @@ msgstr ""
 
 #: Mailman/Gui/General.py:397
 msgid "Should postings include the <tt>List-Post:</tt> header?"
-msgstr ""
+msgstr "Czy wiadomo¶ci maj± zawieraæ pole nag³ówka <tt>List-Post:</tt>?"
 
 #: Mailman/Gui/General.py:398
 msgid ""
@@ -4890,15 +4937,15 @@ msgstr ""
 
 #: Mailman/Gui/Language.py:90
 msgid "Always"
-msgstr ""
+msgstr "Zawsze"
 
 #: Mailman/Gui/Language.py:90
 msgid "As needed"
-msgstr ""
+msgstr "Je¶li potrzebne"
 
 #: Mailman/Gui/Language.py:90
 msgid "Never"
-msgstr ""
+msgstr "Nigdy"
 
 #: Mailman/Gui/Language.py:91
 msgid ""
@@ -4906,6 +4953,9 @@ msgid ""
 "             <a href=\"?VARHELP=general/subject_prefix\">subject\n"
 "             prefix</a> even when it consists of only ASCII characters?"
 msgstr ""
+"Czy kodowaæ "
+"<a href=\"?VARHELP=general/subject_prefix\">prefiks tematu</a>"
+" wiadomo¶ci, nawet je¶li zawiera on tylko znaki ASCII?"
 
 #: Mailman/Gui/Language.py:95
 msgid ""
@@ -4936,9 +4986,8 @@ msgid ""
 msgstr ""
 
 #: Mailman/Gui/Membership.py:26
-#, fuzzy
 msgid "Membership&nbsp;Management..."
-msgstr "Zarz±dzanie&nbsp;subskrybcjami"
+msgstr "Zarz±dzanie&nbsp;subskrybcjami..."
 
 #: Mailman/Gui/Membership.py:30
 msgid "Membership&nbsp;List"
@@ -5126,9 +5175,8 @@ msgid "Passwords"
 msgstr "Has³a"
 
 #: Mailman/Gui/Privacy.py:28
-#, fuzzy
 msgid "Privacy options..."
-msgstr "Opcje prywatno¶ci"
+msgstr "Opcje prywatno¶ci..."
 
 #: Mailman/Gui/Privacy.py:32
 msgid "Subscription&nbsp;rules"
@@ -5136,15 +5184,15 @@ msgstr "Zasady&nbsp;subskrybcji"
 
 #: Mailman/Gui/Privacy.py:33
 msgid "Sender&nbsp;filters"
-msgstr "Filtry&nbsp;nadawców"
+msgstr "Filtry&nbsp;nadawcy"
 
 #: Mailman/Gui/Privacy.py:34
 msgid "Recipient&nbsp;filters"
-msgstr "Filtry&nbsp;odbiorców"
+msgstr "Filtry&nbsp;odbiorcy"
 
 #: Mailman/Gui/Privacy.py:35
 msgid "Spam&nbsp;filters"
-msgstr "Filtry&nbsp;antyspamowe"
+msgstr "Filtry&nbsp;spamu"
 
 #: Mailman/Gui/Privacy.py:49 Mailman/Gui/Usenet.py:63
 msgid "None"
@@ -5238,7 +5286,7 @@ msgstr ""
 
 #: Mailman/Gui/Privacy.py:100
 msgid "Subscribing"
-msgstr "Zapisywanie"
+msgstr "Subskrybcja"
 
 #: Mailman/Gui/Privacy.py:102
 msgid ""
@@ -5275,13 +5323,14 @@ msgstr ""
 
 #: Mailman/Gui/Privacy.py:122
 msgid "Ban list"
-msgstr ""
+msgstr "Adresy zabronione"
 
 #: Mailman/Gui/Privacy.py:124
 msgid ""
 "List of addresses which are banned from membership in this\n"
 "             mailing list."
 msgstr ""
+"Lista adresów, z których subskrybcja jest zabroniona."
 
 #: Mailman/Gui/Privacy.py:127
 msgid ""
@@ -5292,8 +5341,7 @@ msgid ""
 "             designate a regular expression match."
 msgstr ""
 
-# ##
-# sawickib - begin
+
 #: Mailman/Gui/Privacy.py:132
 msgid "Membership exposure"
 msgstr "Ogl±danie listy subskrybentów"
@@ -5308,7 +5356,7 @@ msgstr "Tylko administrator listy"
 
 #: Mailman/Gui/Privacy.py:134
 msgid "List members"
-msgstr "Subskrybenci listy"
+msgstr "Tylko cz³onkowie listy"
 
 #: Mailman/Gui/Privacy.py:135
 msgid "Who can view subscription list?"
@@ -5319,8 +5367,8 @@ msgid ""
 "When set, the list of subscribers is protected by member or\n"
 "             admin password authentication."
 msgstr ""
-"Gdy w³±czone, lista subskrybentów jest chroniona przez has³o.\n"
-"                                           "
+"Gdy w³±czone, lista subskrybentów jest chroniona przez has³o."
+
 
 #: Mailman/Gui/Privacy.py:141
 msgid ""
@@ -5384,28 +5432,36 @@ msgid ""
 "\n"
 "            <p>Note that non-regexp matches are always done first."
 msgstr ""
-"Po wys³aniu wiadomo¶æi na listê rozpoczyna siê proces moderowania. \n"
-"            Ta sekcja s³u¿y do kontroli moderowania.\n"
+"Po wys³aniu wiadomo¶ci na listê rozpoczyna siê proces okre¶lania \n"
+" na podstawie adresu nadawcy co nale¿y dalej z ni± zrobiæ."
+"            Ta sekcja s³u¿y do kontroli na podstawie adresu nadawcy.\n"
 "\n"
-"            <p>Je¶li <b>znacznik moderowania</b> jest aktywny oznacza \n"
-"            to ,¿e listy listy sybskrybentów bêd± zatrzymywane do \n"
-"            moderowania/\n"
+"            <p>Je¶li <b>znacznik moderowania</b> jest aktywny dla "
+"subskrybenta oznacza \n"
+"            to, ¿e jego listy bêd± zatrzymywane do \n"
+"            moderowania.\n"
 "\n"
-"            <p>Listy nie-subskrybentów mog± byæ automatycznie\n"
+"            <p>Listy osób nie zapisanych mog± byæ automatycznie\n"
 "            <a href=\"?VARHELP=privacy/sender/accept_these_nonmembers\"\n"
 "            >akceptowane</a>,\n"
 "            <a href=\"?VARHELP=privacy/sender/hold_these_nonmembers\">\n"
 "            zatrzymywane do moderowania</a>,\n"
 "            <a href=\"?VARHELP=privacy/sender/reject_these_nonmembers\"\n"
-"            >odrzucane</a> (odbite), lub\n"
+"            >odrzucane</a> (odbite) lub\n"
 "            <a href=\"?VARHELP=privacy/sender/discard_these_nonmembers\"\n"
 "            >kasowane</a>,\n"
 "            zarówno indywidualnie jak i grupowo. Ka¿dy list wys³any \n"
-"            przez nie-subskrybenta, który nie zosta³ wprost\n"
+"            przez nie subskrybenta, który nie zosta³ wprost\n"
 "            zaakceptowany, odrzucony lub skasowany, podlega ogólnej\n"
 "            <a href=\"?VARHELP=privacy/sender/generic_nonmember_action"
 "\">ogólnej\n"
-"            zasadzie dla nie-subskrybentów</a>."
+"            zasadzie dla nie subskrybentów</a>."
+"<p>W polach nale¿y wpisywaæ po jednym adresie w linii. Znak ^ na"
+"pocz±tku nowej linii oznacza "
+"<a href=\"http://www.python.org/doc/current/lib/module-re.html\"> "
+"wyra¿enie regularne w Pythonie</a>. "
+"<p>Pamiêtaj, ¿e linie bez u¿ycia wyra¿eñ regularnych s± dopasowywane "
+"wcze¶niej."
 
 #: Mailman/Gui/Privacy.py:186
 msgid "Member filters"
@@ -5464,6 +5520,7 @@ msgid ""
 "Action to take when a moderated member posts to the\n"
 "             list."
 msgstr ""
+"Co zrobiæ z wiadomo¶ciami wys³anymi przez cz³onka moderowanego." 
 
 #: Mailman/Gui/Privacy.py:210
 msgid ""
@@ -5490,6 +5547,10 @@ msgid ""
 "             >rejection notice</a> to\n"
 "             be sent to moderated members who post to this list."
 msgstr ""
+"Tekst, który zostanie do³±czony do ka¿dego "
+" <a href=\"?VARHELP/privacy/sender/member_moderation_action\">"
+"powiadomienia o odrzuceniu</a> wiadomo¶ci od moderowanego subskrybenta"
+"listy."
 
 #: Mailman/Gui/Privacy.py:229
 msgid "Non-member filters"
@@ -5602,7 +5663,7 @@ msgid ""
 "Action to take for postings from non-members for which no\n"
 "             explicit action is defined."
 msgstr ""
-"Reakcja na list od niesubskrybenta dla którego nie \n"
+"Reakcja na list od nie subskrybenta, dla którego nie \n"
 "             okre¶lono dzia³ania."
 
 #: Mailman/Gui/Privacy.py:285
@@ -5646,10 +5707,12 @@ msgid ""
 "This section allows you to configure various filters based on\n"
 "            the recipient of the message."
 msgstr ""
+"Sekcja ta zawiera ustawienia filtrowanie wiadomo¶ci na podstawie"
+" adresu jej odbiorcy."
 
 #: Mailman/Gui/Privacy.py:306
 msgid "Recipient filters"
-msgstr ""
+msgstr "Fitry odbiorcy"
 
 #: Mailman/Gui/Privacy.py:310
 msgid ""
@@ -5766,13 +5829,13 @@ msgid ""
 "            your list members end up receiving.\n"
 "            "
 msgstr ""
-"W tym miejscu mo¿na zdefiniowaæ ró¿ne filtry przeciw-spamowe,\n"
-"            które mog± mog± pomóc Ci zmiejszyæ ilo¶æ spamu\n"
+"W tym miejscu mo¿na zdefiniowaæ ró¿ne filtry,\n"
+"            które mog± mog± pomóc Ci zmniejszyæ ilo¶æ spamu\n"
 "            przekazywanego przez listê."
 
 #: Mailman/Gui/Privacy.py:364
 msgid "Anti-Spam filters"
-msgstr "Filtry przeciw-spamowe"
+msgstr "Filtry antyspamowe"
 
 #: Mailman/Gui/Privacy.py:367
 msgid "Hold posts with header value matching a specified regexp."
@@ -5816,7 +5879,7 @@ msgstr "Tematy"
 
 #: Mailman/Gui/Topics.py:36
 msgid "List topic keywords"
-msgstr "Lista s³ów tematu"
+msgstr "Tematy na li¶cie wydzielone wed³ug s³ów kluczowych"
 
 #: Mailman/Gui/Topics.py:38
 msgid "Disabled"
@@ -5882,7 +5945,7 @@ msgstr ""
 #: Mailman/Gui/Topics.py:62
 msgid "How many body lines should the topic matcher scan?"
 msgstr ""
-"Ile linii z tre¶ci wiadomo¶ci bêdzie przeszukiwane w celudopasowania filtru "
+"Ile linii z tre¶ci wiadomo¶ci bêdzie przeszukiwane w celu dopasowania filtru "
 "tematycznego?"
 
 #: Mailman/Gui/Topics.py:64
@@ -5957,15 +6020,13 @@ msgstr "Obustronna bramka do sieci USENET (niusy)"
 
 #: Mailman/Gui/Usenet.py:37
 msgid "News server settings"
-msgstr "Ustawienia serwera News"
+msgstr "Ustawienia serwera NNTP"
 
 #: Mailman/Gui/Usenet.py:40
-#, fuzzy
 msgid "The hostname of the machine your news server is running on."
-msgstr "Internetowy adres Twojego serwera News."
+msgstr "Internetowy adres Twojego serwera NNTP."
 
 #: Mailman/Gui/Usenet.py:41
-#, fuzzy
 msgid ""
 "This value may be either the name of your news server, or\n"
 "             optionally of the format name:port, where port is a port "
@@ -5977,6 +6038,9 @@ msgid ""
 "             recognize the machine this mailing list runs on as a machine\n"
 "             capable of reading and posting news."
 msgstr ""
+"Warto¶æ w tym polu mo¿e byæ nazw± serwera NNTP lub \n"
+"          w formacie nazwa:port, gdzie port jest numerem portu.\n"
+"\n"
 "Serwer News nie jest czê¶cia programu Mailman. Musisz mieæ dostêp\n"
 "do dzia³aj±cego serwera NNTP. Wymagana jest mo¿liwo¶æ czytania i \n"
 "wysy³ania postów do serwera."
@@ -6011,11 +6075,11 @@ msgstr "Moderowane"
 
 #: Mailman/Gui/Usenet.py:63
 msgid "Open list, moderated group"
-msgstr ""
+msgstr "Lista otwarta, grupa moderowana"
 
 #: Mailman/Gui/Usenet.py:66
 msgid "The moderation policy of the newsgroup."
-msgstr ""
+msgstr "Typ moderowania grupy dyskusyjnej."
 
 #: Mailman/Gui/Usenet.py:68
 msgid ""
@@ -6056,7 +6120,8 @@ msgstr ""
 
 #: Mailman/Gui/Usenet.py:94
 msgid "Prefix <tt>Subject:</tt> headers on postings gated to news?"
-msgstr ""
+msgstr "Czy dodawaæ przedrostek do tematów wiadomo¶ci przekazywanych "
+" do niusów?"
 
 #: Mailman/Gui/Usenet.py:95
 msgid ""
@@ -6073,7 +6138,7 @@ msgstr ""
 
 #: Mailman/Gui/Usenet.py:103
 msgid "Mass catch up"
-msgstr ""
+msgstr "Przechwycenie grupy"
 
 #: Mailman/Gui/Usenet.py:106
 msgid "Should Mailman perform a <em>catchup</em> on the newsgroup?"
@@ -6098,7 +6163,7 @@ msgstr ""
 
 #: Mailman/Gui/Usenet.py:121
 msgid "Mass catchup completed"
-msgstr ""
+msgstr "Przechwytywanie grupy zakoñczone"
 
 #: Mailman/Gui/Usenet.py:133
 msgid ""
@@ -6542,9 +6607,8 @@ msgid "The attached message has been automatically discarded."
 msgstr ""
 
 #: Mailman/Handlers/Replybot.py:74
-#, fuzzy
 msgid "Auto-response for your message to the \"%(realname)s\" mailing list"
-msgstr "Nie jeste¶ cz³onkiem listy %(listname)s"
+msgstr "Automatyczna odpowied¼ z listy dyskusyjnej \"%(realname)s\" "
 
 #: Mailman/Handlers/Replybot.py:107
 msgid "The Mailman Replybot"
@@ -6680,15 +6744,17 @@ msgid ""
 "equivalent) file by adding the following lines, and possibly running the\n"
 "`newaliases' program:\n"
 msgstr ""
+"¯eby zakoñczyæ proces tworzenia listy dyskusyjnej musisz jeszcze dodaæ \n"
+"poni¿sze linie do pliku /etc/aliases (lub odpowiednika), oraz od¶wie¿yæ \n"
+"bazê aliasów poleceniem 'newaliases' (szczegó³y zale¿± od Twojego MTA):\n"
 
 #: Mailman/MTA/Manual.py:80
-#, fuzzy
 msgid "## %(listname)s mailing list"
-msgstr "Listy dyskusyjne na serwerze %(hostname)s"
+msgstr "## Lista dyskusyjna %(listname)s"
 
 #: Mailman/MTA/Manual.py:97
 msgid "Mailing list creation request for list %(listname)s"
-msgstr ""
+msgstr "Pro¶ba o stworzenie listy dyskusyjnej %(listname)s"
 
 #: Mailman/MTA/Manual.py:112
 msgid ""
@@ -7642,18 +7708,16 @@ msgid ""
 msgstr ""
 
 #: bin/discard:94
-#, fuzzy
 msgid "Ignoring non-held message: %(f)s"
-msgstr "Nie znaleziono subskrybenta: %(user)s."
+msgstr "Zignorowano niewstrzynan± wiadomo¶æ: %(f)s."
 
 #: bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
-msgstr ""
+msgstr "Zignorowano wstrzyman± wiadomo¶æ ze z³ym id: %(f)s"
 
 #: bin/discard:112
-#, fuzzy
 msgid "Discarded held msg #%(id)s for list %(listname)s"
-msgstr "Zapisz siê na listê %(listname)s"
+msgstr "Odrzucone wstrzymanie wiadomo¶ci #%(id)s na li¶cie %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -8275,11 +8339,11 @@ msgstr ""
 
 #: bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
-msgstr ""
+msgstr "Dodaj t³umacznia nie-fuzzy do s³ownika."
 
 #: bin/msgfmt.py:57
 msgid "Return the generated output."
-msgstr ""
+msgstr "Wygenerowane wyniki."
 
 #: bin/newlist:19
 msgid ""
@@ -8341,19 +8405,19 @@ msgstr ""
 
 #: bin/newlist:118
 msgid "Unknown language: %(lang)s"
-msgstr ""
+msgstr "Nieznany jêzyk: %(lang)s"
 
 #: bin/newlist:123
 msgid "Enter the name of the list: "
-msgstr ""
+msgstr "Podaj nazwê listy: "
 
 #: bin/newlist:140
 msgid "Enter the email of the person running the list: "
-msgstr ""
+msgstr "Podaj email osoby opiekuj±cej siê list±: "
 
 #: bin/newlist:145
 msgid "Initial %(listname)s password: "
-msgstr ""
+msgstr "Pocz±tkowe has³o listy %(listname)s: "
 
 #: bin/newlist:149
 msgid "The list password cannot be empty"
@@ -8361,7 +8425,7 @@ msgstr "Has³o listy nie mo¿e byæ puste"
 
 #: bin/newlist:190
 msgid "Hit enter to notify %(listname)s owner..."
-msgstr ""
+msgstr "Naci¶nij Enter powiadomiæ opiekuna listy %(listname)s..."
 
 #: bin/qrunner:19
 msgid ""
@@ -8525,12 +8589,11 @@ msgstr ""
 
 #: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
-msgstr ""
+msgstr "Usuwanie %(msg)s"
 
 #: bin/rmlist:80
-#, fuzzy
 msgid "%(listname)s %(msg)s not found as %(filename)s"
-msgstr "Nazwa listy nie mo¿e zawieraæ znaku \"@\": %(listname)s"
+msgstr "%(listname)s %(msg)s nie znalezione jako %(filename)s"
 
 #: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
@@ -8538,15 +8601,15 @@ msgstr "Nie ma takiej listy (lub lista zosta³a ju¿ skasowana): %(listname)s"
 
 #: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
-msgstr ""
+msgstr "Nie ma takiej listy: %(listname)s. Usuwanie pozosta³ych archiwów."
 
 #: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
-msgstr ""
+msgstr "Nie usuniêto archiwum. Uruchom ponownie z opcj± -a."
 
 #: bin/rmlist:124
 msgid "list info"
-msgstr ""
+msgstr "informacja o li¶cie"
 
 #: bin/rmlist:132
 msgid "stale lock file"
@@ -8554,11 +8617,11 @@ msgstr ""
 
 #: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
-msgstr ""
+msgstr "prywatne archiwum"
 
 #: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
-msgstr ""
+msgstr "publiczne archiwum"
 
 #: bin/show_qfiles:3
 msgid ""

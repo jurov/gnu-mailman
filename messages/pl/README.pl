@@ -18,8 +18,13 @@ przy³±czania siê do projektu):
 
 
 W chwili obecnej przet³umaczone jest 99% interfejsu subskrybenta i oko³o 
-50% interfejsu administracyjnego.
+80% interfejsu administracyjnego. Najbardziej aktualnej wersji szukajcie w
+oficjalnych CVS Mailmana. 
 
-2003-04-19, sawickib
+Do zrobienia:
+- przet³umaczenie README.*
+- szlifowanie, polerowania :)
+
+2003-09-25, sawickib
 
 
