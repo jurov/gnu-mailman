@@ -5,6 +5,10 @@ HTALLFLAGS = -f -s $(HTSTYLE)
 HTROOT = .
 HTFLAGS = $(HTALLFLAGS) -r $(HTROOT)
 HTRELDIR = .
+# Use args for rsync like -a without the permission setting flag.  I want to
+# keep the permissions set the way they are on the destination files, not on
+# my source files.  Also add verbosity, compression, and ignoring CVS.
+RSYNC_ARGS = -rltgoDCvz
 
 SOURCES =	$(shell echo *.ht)
 EXTRA_TARGETS = faq.html todo.html
@@ -24,9 +28,9 @@ todo.ht: ../../TODO
 	../bin/mm2do $< $@
 
 install:
-	-rsync -Cavz . www.list.org:mailman.list.org
-	-rsync -Cavz . mailman.sf.net:mailman/htdocs
-	-rsync -Cavz . $(HOME)/projects/mailman-gnu
+	-rsync $(RSYNC_ARGS) . www.list.org:mailman.list.org
+	-rsync $(RSYNC_ARGS) . mailman.sf.net:mailman/htdocs
+	-rsync $(RSYNC_ARGS) . $(HOME)/projects/mailman-gnu
 
 clean:
 	-rm $(GENERATED_HTML)
