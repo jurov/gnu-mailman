@@ -25,6 +25,7 @@ archival.
 import os
 import errno
 import traceback
+import re
 from cStringIO import StringIO
 
 from Mailman import mm_cfg
@@ -135,15 +136,15 @@ class Archiver:
                             self.internal_name() + '.mbox')
 
     def GetBaseArchiveURL(self):
+        url = self.GetScriptURL('private', absolute=1) + '/'
         if self.archive_private:
-            return self.GetScriptURL('private', absolute=1) + '/'
+            return url
         else:
-            inv = {}
-            for k, v in mm_cfg.VIRTUAL_HOSTS.items():
-                inv[v] = k
+            hostname = re.match('[^:]*://([^/]*)/.*', url).group(1)\
+                       or mm_cfg.DEFAULT_URL_HOST
             url = mm_cfg.PUBLIC_ARCHIVE_URL % {
                 'listname': self.internal_name(),
-                'hostname': inv.get(self.host_name, mm_cfg.DEFAULT_URL_HOST),
+                'hostname': hostname
                 }
             if not url.endswith('/'):
                 url += '/'
