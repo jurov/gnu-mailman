@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -14,9 +14,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-"""Process and produce the list-administration options forms.
-
-"""
+"""Process and produce the list-administration options forms."""
 
 # For Python 2.1.x compatibility
 from __future__ import nested_scopes
@@ -413,7 +411,7 @@ def show_results(mlist, doc, category, subcat, cgidata):
     otherlinks.AddItem(Link(mlist.GetScriptURL('listinfo'),
                             _('Go to the general list information page')))
     otherlinks.AddItem(Link(mlist.GetScriptURL('edithtml'),
-                            _('Edit the public HTML pages')))
+                            _('Edit the public HTML pages and text files')))
     otherlinks.AddItem(Link(mlist.GetBaseArchiveURL(),
                             _('Go to list archives')).Format() +
                        '<br>&nbsp;<br>')
