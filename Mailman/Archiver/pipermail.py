@@ -7,7 +7,7 @@ import os
 import re
 import sys
 import time
-from email.Utils import parseaddr, parsedate_tz, mktime_tz
+from email.Utils import parseaddr, parsedate_tz, mktime_tz, formatdate
 import cPickle as pickle
 from cStringIO import StringIO
 from string import lowercase
@@ -240,6 +240,9 @@ class Article:
             date = self._last_article_time + 1
         self._last_article_time = date
         self.date = '%011i' % date
+        self.datestr = message.get('date') \
+                       or message.get('x-list-received-date') \
+                       or formatdate(date)
 
     def __repr__(self):
         return '<Article ID = '+repr(self.msgid)+'>'
