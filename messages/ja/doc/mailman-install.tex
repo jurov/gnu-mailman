@@ -1,0 +1,1830 @@
+\documentclass{howto}
+
+\title{GNU Mailman - インストールマニュアル}
+\author{Barry Warsaw}
+\authoraddress{\email{barry(at)python.org}}
+
+\date{\today}
+\release{2.1}                   % software release, not documentation
+\setreleaseinfo{}               % empty for final release
+\setshortversion{2.1}           % major.minor only for software
+
+\begin{document}
+
+\maketitle
+
+% This makes the Abstract go on a separate page in the HTML version;
+% if a copyright notice is used, it should go immediately after this.
+%
+\ifhtml
+\chapter*{序\label{front}}
+\fi
+
+\begin{abstract}
+\noindent
+この文書は GNU Mailman を POSIX システム (例: \UNIX{}, MacOSX, GNU/Linux)
+にインストールする方法を説明するものです. 基本的なインストール手順
+だけでなく, あなたが使用するウェブとメールサーバに統合するための
+ガイドラインを含んでいます\footnote{
+訳注：現時点で翻訳は訳者の環境において確認できる部分に限られています.
+}.
+
+
+
+\noindent
+GNU Mailman のウェブサイトは \url{http://www.list.org} です.
+\end{abstract}
+
+% The ugly "%begin{latexonly}" pseudo-environment supresses the table
+% of contents for HTML generation.
+%
+%begin{latexonly}
+\tableofcontents
+%end{latexonly}
+
+
+\section{インストールの必要事項}
+
+GNU Mailman は \UNIX{} や MacOSX, GNU/Linux といった POSIX に基くシステム
+のほとんどで稼動します. 現在のところ Windows では動きません. あなたが
+メールを送信できるメールサーバを必要とし, CGI/1.1 API を備えたウェブ
+サーバが必要です. ウェブサーバには
+\ulink{Apache}{http://httpd.apache.org} が, ぴったりです. メールサーバには
+例えば,
+\ulink{Postfix}{http://www.postfix.org},
+\ulink{Exim}{http://www.exim.org},
+\ulink{Sendmail}{http://www.sendmail.org}, 
+\ulink{qmail}{http://cr.yp.to/qmail.html} 
+などはどれも使えます.
+
+Mailman をソースからインストールするには, セキュリティ向上のために
+用いられている ラップ\footnote{訳註: wrapper ... ○○ラップ(商品名)と同じ
+「包む」という意味なので, こう訳してみました}
+プログラムを構築するときに, ANSI C コンパイラーが
+必要です. \ulink{GNU C コンパイラ gcc}{http://gcc.gnu.org} の 2.8.1 以降の
+バージョンでうまくいきます.
+
+システムには \ulink{Python}{http://www.python.org} インタプリタが
+どこかにインストールされていなければなりません.
+Mailman 2.1 には Python 2.1 またはそれよりも新しいものが必要です.
+Python 2.3 以上を推奨します.
+
+\section{システムセットアップ}
+
+Mailman ソフトウェアのインストールの前に，特定のユーザとグループを
+追加登録することでシステムの準備をする必要があります.
+このため, この節のステップを実行するには root になる必要があります.
+
+\subsection{グループとユーザの追加}
+
+Mailman は, ファイルを所有し, プロセスを走らせるために, 他で使用されていない
+ユーザとグループの名前を必要とします. Mailman の基本的なセキュリティは
+グループ所有権の許可(パーミッション)に基いています. 従って, このステップを
+きちんとしておくことが重要です\footnote{インストールが完了してから
+パーミッションをチェックして修正することができます.}. 典型的には,
+\code{mailman} という名前のユーザとグループを作成することになります.
+\code{mailman} ユーザは \code{mailman} グループのメンバーでなければ
+なりません. Mailman は \code{mailman} ユーザとグループの下に,
+set-group-id (setgid) ビットを立ててインストールされます.
+
+もし, この名前が既に使われていたなら, 別のユーザとグループ名を選ぶことが
+できますが, \program{configure} を走らせるときに覚えておかないといけません.
+もし, 別のユーザ名を選んだなら, これを \program{configure} の
+\longprogramopt{with-username} オプションで指定します. また, 別の
+グループ名を選んだ場合には, \program{configure} の 
+\longprogramopt{with-username} オプションで指定してください.
+
+Linux システムでは, 次のコマンドでこれらのアカウントを作成することが
+できます. ご利用のシステムのマニュアルで詳細を確認してください:
+
+\begin{verbatim}
+    % groupadd mailman
+    % useradd -c''GNU Mailman'' -s /no/shell -d /no/home -g mailman mailman
+\end{verbatim}
+
+\subsection{インストールディレクトリの作成\label{create-install-dir}}
+通常, Mailman は単一のディレクトリにインストールされ, そこには
+Mailman ソースコードと, 実行時のデータ(リストと保存書庫)の両方が入ります.
+静的なプログラムファイルと変化するデータファイルを分離して, 別のディレクトリ
+に入れることも可能です. ここではこのことに関するオプションを説明します.
+
+Mailman のデフォルトのインストールディレクトリは
+\file{/usr/local/mailman}\footnote{これは Mailman 2.1 のデフォルトです.
+以前のバージョンでは, /home/mailman に全てインストールしていました.}
+このインストールディレクトリ(\var{\$prefix} で参照します) を変更するには
+configure で \longprogramopt{prefix} オプションを使います.
+以前のバージョンから更新するには, インストールディレクトリを変更す
+るので無い限り, \longprogramopt{prefix} を設定する必要があります.
+
+\begin{notice}[警告]
+Mailman を \code{nosuid} オプションでマウントされたファイルシステムに
+インストールすることはできません. これがあると Mailman のインストールに
+失敗します. というのは, セキュリティ上の理由で setgid プログラムの利用を
+前提としているからです. もし, これがあてはまるようでしたら, 単純に,
+setgid プログラムを許している場所に Maiman をインストールしてください.
+\end{notice}
+
+インストールのディレクトリが \code{mailman} グループに設定されて
+いることを確認してください (あるいは \longprogramopt{with-groupname} で指定
+しようとしているグループ). そして, setgid ビットがセットされ
+ていることを確認してください\footnote{もし, BSD システムを使うなら
+\ref{bsd-issues} も読んでください} また, このディレクトリが全ての
+ユーザに読み取りと実行(移動)可能であることを保証したいと思う
+でしょう. 以下のシェルコマンドでこれらのことが設定できます:
+
+\begin{verbatim}
+    % cd $prefix
+    % chgrp mailman .
+    % chmod a+rx,g+ws .
+\end{verbatim}
+
+これで, Mailman ソフトウェアを configure しインストールする
+準備ができました.
+
+\section{Mailman の構築とインストール\label{building}}
+
+\subsection{\program{configure} を実行}
+
+Mailman をインストールする前に \program{configure} を実行して, システム
+で必要になるいろいろなインストールオプションを設定しなければなりません.
+
+\begin{notice}[注意]
+下にある，\longprogramopt{with-mail-gid} と \longprogramopt{with-cgi-gid}
+のオプションに特に注意. 多分これが必要になります.
+\end{notice}
+
+この節に書いてある手順を実行する間は, あなたは root に
+なるべきではあり \strong{ません}. 自分自身のログイン名か, 他のソフトを
+インストールするときに使うアカウントを使ってください. また,
+\code{mailman} ユーザになる必要はありませんが, そうしても構いません.
+但し, 前の手順で作成した \var{\$prefix} ディレクトリの書き込み許可を
+得るためには, そのアカウントが \code{mailman} グループに所属している
+必要があります.
+ターゲットのインストールディレクトリに書き込み権限があることと,
+そこに setgid ファイルを作成できることを確認してください.
+(NFS や他のマウント方式で setgid を禁止している場合があります)
+
+もし, 他の GNU ソフトをインストールしたことがあるなら, \program{configure}
+スクリプトにはおなじみでしょう. Mailman の tarball を開いた
+ディレクトリに \program{cd} して, \program{configure} を引数を付けずに実行して
+ください:
+
+\begin{verbatim}
+  % cd mailman-<version>
+  % ./configure
+  % make install
+\end{verbatim}
+
+以下のオプションで Mailman のインストールをカスタマイズできます.
+
+\begin{description}
+\item[\longprogramopt{prefix}=\var{dir}]
+    標準的な GNU configure のオプションで Mailman がインス
+    トールされることになるベースのディレクトリを変更します．
+    デフォルトでは \var{\$prefix} は \file{/usr/local/mailman} です．この
+    ディレクトリはその時点で存在していなければならず, 
+    \ref{create-install-dir} で説明したようにセットアップされていなけれ
+    ばなりません．
+
+\item[\longprogramopt{exec-prefix}=\var{dir}]
+    標準的な GNU configure のオプションでアーキテクチャに
+    依存したバイナリのインストールディレクトリを指定できます．
+
+\item[\longprogramopt{with-var-prefix}=\var{dir}]
+    交換可能なデータを \var{\$prefix} や \var{\$exec-prefix} の代わりに
+    \var{dir} の下に保存します. このようなデータの例としては,
+    リストの保存書庫やリスト設定データベースがあります.
+
+\item[\longprogramopt{with-python}=\file{/path/to/python}]
+    ラッププログラムで使用する Python インタプリタを変更
+    して指定することができます．デフォルトはシェルの \var{\$PATH}
+    の中で最初に見つかったものを使います.
+
+\item[\longprogramopt{with-username}=\var{username-or-uid}]
+    \code{mailman} でないユーザ名を使う場合に指定する.
+    このオプションの値には整数のユーザID またはユーザ名を使うことができます.
+    \var{\$prefix} ディレクトリがこのユーザの所有であることを確認してください.
+
+\item[\longprogramopt{with-groupname}=\var{groupname-or-gid}]
+    \code{mailman} でないグループ名を使う場合に指定する.
+    このオプションの値には整数のグループID またはグループ名を使うことができます.
+    \var{\$prefix} ディレクトリがこのグループの所有であることを確認してください.
+
+\item[\longprogramopt{with-mail-gid}=\var{group-or-groups}]
+    メールラップ を介してスクリプトを実行する際のグループを
+    指定します．\var{group-or-groups} は，１個または複数の整数
+    のグループID でも，グループの名前であっても可です．リス
+    トの最初の値で実際に存在 するグループの値が使用されます．
+    デフォルトでは，これは \code{mailman} \code{other} \code{mail}
+    \code{daemon} のリストになっています.
+
+    \begin{notice}[note]
+    これは高度にシステム依存であり，正しい値を知っておく必
+    要があります．というのは，グループ ID が メールラップ プロ
+    グラムにコンパイルされてセキュリティを高めるからです．
+    \program{Sendmail} を使っているシステムでは, \file{sendmail.cf} に 
+    \var{DefaultUser} を使って \program{sendmail} プロセスの gid が 設定
+    されています．(もし，コメントアウトされていたら，それで
+    もデフォルトを示しているかもしれません)
+    \end{notice}
+
+    このスイッチの正しい値を知るために, 使用しているメールサーバの
+    説明や設定ファイルをチェックしてください.
+
+\item[\longprogramopt{with-cgi-gid}=\var{group-or-groups}]
+    CGI ラップ を介してスクリプトを実行する際のグループを
+    指定します. \var{group-or-groups} は, 1個または複数の整数
+    のグループID でも，グループの名前であっても可です．リス
+    トの最初の値で実際に存在 するグループの値が使用されます．
+    デフォルトでは，これは \code{www} \code{www-data} \code{nobody} の リスト
+    になっています．
+
+    \begin{notice}[note]
+    この値は Web サーバの設定に依存します．正しい値を知っ
+    ておく必要があります． というのは，グループIDがCGI ラップ
+    プログラムにコンパイルされてセキュリティを高めるからで
+    す．これが違っていると Mailman CGI スクリプトは 動きま
+    せん．
+    \end{notice}
+
+    もし Apache を使っていれば，\file{httpd.conf} に書かれている 
+    \var{Group} オプション の値をチェックしてください．
+
+\item[\longprogramopt{with-cgi-ext}=\var{extension}]
+    cgi プログラムの拡張子を指定します. \file{\var{\$prefix}/cgi-bin} に
+    置かれた CGI ラップ はこの拡張子を持ちます．(ウェブサーバ
+    によっては 拡張子が必要です) \var{extension} には区切りの . (dot) 
+    を入れておくこと．
+
+\item[\longprogramopt{with-mailhost}=\var{hostname}]
+    メールが出て行く時のホスト名(FQDN)を指定します. インストール
+    が完了すれば, この値は \file{\var{\$prefix}/Mailman/mm_cfg.py} で上書き
+    することができます.
+
+\item[\longprogramopt{with-urlhost}=\var{hostname}]
+    ウェブ URL のホスト名 (FQDN) を指定します. インストールが
+    完了すれば, この値は \file{\var{\$prefix}/Mailman/mm_cfg.py} で上書き
+    することができます.
+
+\item[\longprogramopt{with-gcc}=no]
+    gcc が見つかっても使いません．\program{cc} が \var{\$PATH} に無いとい
+    けません．
+
+\end{description}
+
+\subsection{Make とインストール}
+
+\program{configure} を実行したら, \program{make} を走らせ, 次に
+\program{make install} とすることで, Mailman を構築しインストールする
+ことができます.
+
+\section{インストールのチェック}
+
+\program{make install} を実行した後, 正しいパーミッションとグループ
+所有権が設定されていることを \program{check_perms} スクリプトで
+確かめてください. まずインストールディレクトリ(\var{\$prefix})に移動します.
+そして, \program{bin/check_perms} プログラムを実行します. 
+ソースディレクトリで \program{bin/check_perms} を実行しようとしないでく
+ださい. インストールディレクトリでのみ実行可能です.
+
+これが問題を報告しなければ, あなたのインストールは正しく設定さ
+れていた可能性が高い <ウィンク> です. もし, 問題点が報告されたら,
+手で修正するか, もう一度インストールをやりなおすか, \program{check_perms}
+を使って(多分, 一番簡単)修正することが出来ます.
+
+\begin{itemize}
+\item インストールを行ったユーザ (\var{\$prefix} のファイルの所有権を持つ
+      ユーザ) になるか, root になります.
+
+\item \program{bin/check_perms -f} を実行します.
+
+\item エラーの報告がなくなるまで, 上の手順を繰り返す!
+\end{itemize}
+
+\section{ウェブサーバの設定}
+
+おめでとう！Mailman ソフトウェアのインストールが完了しました． 
+しかし，実際に全てをうまく動かすには，Mailman を ウェブサーバと
+メールシステムの 両方に接続しないといけません．
+
+もし，メールとウェブサーバを別のマシンで動かして，Mailman を NFS 
+経由で 共有したいと考えていたら，その２つのマシンの時計が同期
+していることを 確かめてください．この手の環境では，
+\file{Mailman/LockFile.py} に定義された \var{CLOCK_SLOP} という定数を使って，
+時計のずれを補償したファイルロック機構 にすることができます．
+
+この節では Mailman のウェブインタフェースをウェブサーバに接続するために
+必要な事柄を説明します. ここでの手順は Apache ウェブサーバ向けになって
+いますので, 詳細についてはご利用のウェブサーバの説明書を参照してください.
+
+ウェブサーバの設定で \file{\var{\$prefix}/cgi-bin} に CGI スクリプトの
+実行許可を与えてください. 書き加える行は以下のようなものになる
+はずです. (もちろん, \var{\$prefix} のところは実際の絶対パスに
+してください.)
+
+\begin{verbatim}
+    Exec        /mailman/*      $prefix/cgi-bin/*
+\end{verbatim}
+% $ - emacs turd
+
+  又は:
+
+\begin{verbatim}
+    ScriptAlias /mailman/       $prefix/cgi-bin/
+\end{verbatim}
+% $ - emacs turd
+
+\begin{notice}[警告]
+CGIスクリプトを実行する ユーザIDが \code{mailman} グループに入って
+\strong{いない}ことをよく確認してください．でないと，非公開の保存書庫
+が誰にでも見られてしまいます.
+\end{notice}
+
+Mailman, Python, GNU のロゴをWebサーバのアクセス可能なところに
+コピーしてください．例えば Apacheの場合，画像ファイルを入れて
+おくのに \file{icons} ディレクトリが用意されているはずです．例:
+
+\begin{verbatim}
+    % cp $prefix/icons/*.{jpg,png} /path/to/apache/icons
+\end{verbatim}
+
+\file{\var{\$prefix}/Mailman/mm_cfg.py} にロゴのベースディレクトリを書いた
+行を追加してください．例えば:
+
+\begin{verbatim}
+  IMAGE_LOGOS = '/images/'
+\end{verbatim}
+
+\var{IMAGE_LOGOS} のデフォルト値は \file{/icons/} です. 
+\file{Defaults.py.in} に書かれたコメントを読んでください.
+
+Pipermail の公開メーリングリスト保存書庫を参照できるように 
+Web サーバを 設定してください. 例えば Apache の場合:
+
+\begin{verbatim}
+    Alias   /pipermail/     $varprefix/archives/public/
+\end{verbatim}
+% $ - emacs turd
+
+ここで, \var{\$varprefix} は通常は \var{\$prefix} と同じで,
+\longprogramopt{with-var-prefix} オプションを付けて \program{configure}
+した場合にはその値となります. また,
+このディレクトリでシンボリックリンクをたどることができるように 
+ウェブサーバを設定してください．でないと，Pipermail の書庫にアク
+セスできません. Apache のユーザは \var{FollowSymLinks} オプションを 
+調べてください.
+
+また, もし公開保存書庫を国際化したいのであれば, Pipermail
+ディレクトリのデフォルト文字集合の指示をオフにした方がよいかも
+しれません. でないと, 多言語の保存書庫は正しく見ることができな
+いでしょう. Apache の標準のインストールについての設定例は:
+
+\begin{verbatim}
+    <Directory "/usr/local/mailman/archives/public/">
+        AddDefaultCharset Off
+    </Directory>
+\end{verbatim}
+
+ここで, ウェブサーバを再起動してください.
+
+\section{メールサーバの設定\label{mail-server}}
+
+この節では Mailman のメールインタフェースをメールサーバに
+接続するのに必要な事柄を説明します. ここでの手順はメールサーバによって
+異なりますが; もしあなたのメールサーバが次の小節に見当たらない
+場合は, ここにある文書から一般化することを試してください. そして, 文書の更新を
+Mailman 開発者にプレゼントすることも考えてください.
+
+\subsection{Postfix メールサーバを使う場合}
+
+Mailman は標準の Postfix インストールとうまく合うようになっています.
+Postfix 2.1.5 (を含む) までの各種バージョンで試験済みです.
+
+デフォルトでは, Postfix は \code{-owner} と \code{-request} のアドレスを
+特殊扱いします. このようなメールも Mailman に届けてもらうために, 
+次のように \file{main.cf} に追加してこのオプションをオフにします:
+
+\begin{verbatim}
+    owner_request_special = no
+\end{verbatim}
+
+Mailman のオプションである VERP 配送をサポートするためには, (デフォルトの)
+\code{luser_relay} を無効にしたままで, \code{recipient_delimiter} を
+設定してアドレスの意味拡張を有効にします.
+\file{main.cf} の \code{luser_relay} の値をどれもコメントアウトし,
+デフォルトのままにします. また, 次のように \file{main.cf} ファイルに
+追加します.
+
+\begin{verbatim}
+    recipient_delimiter = +
+\end{verbatim}
+
+区切り記号として \samp{+} を使うと \file{Defaults.py} にある
+\var{VERP_FORMAT} と \var{VERP_REGEXP} のデフォルト値とうまく合います.
+
+存在しないローカルアドレスにメールを送信しようとすると, Postfix は
+450 のエラーコードを返すかもしれません. これは一時的なエラーを表す
+コードなので, Mailman はデフォルトで \var{DELIVERY_RETRY_PERIOD} -- 5
+日間メールを送信しようとし続けます. 次のように \file{main.cf} に
+設定することで, 存在しないローカルユーザについて恒久的なエラーコード
+を返させることができます.
+
+\begin{verbatim}
+    unknown_local_recipient_reject_code = 550
+\end{verbatim}
+
+最後に, もし Postfix スタイルの仮想ドメインを使っているなら,
+下の仮想ドメインサポートの節を読んでください.
+
+\subsubsection{Postfix と Mailman の統合}
+
+Postfix と Mailman を統合すると, 新しいリストを作成したり,
+リストを削除したときに, Postfix のエイリアスデータベースが自動的に
+更新されるようになります. これを実現するための手順は以下のとおりです.
+
+以下の説明では, Mailman がデフォルトの位置, つまり \file{/usr/local/mailman}
+にインストールされているものと仮定します. もし, そうでなければ,
+\program{configure} で用いた \longprogramopt{prefix} と
+\longprogramopt{with-var-prefix} のオプションに従って読み替えてください.
+
+\begin{notice}[注意]
+もし, 仮想ドメインを使っていて, 仮想ドメインの設定を優先させたいと
+いう場合には, \ref{postfix-virtual} 節を先に読んでください!
+\end{notice}
+
+\begin{itemize}
+\item \file{\var{\$prefix}/Mailman/mm_cfg.py} ファイルの最後に次のように
+      追加してください:
+
+      \begin{verbatim}
+        MTA = 'Postfix'
+      \end{verbatim}
+
+      変数 MTA は \file{Mailman/MTA} ディレクトリにあるモジュールの
+      名前を指定します. ここには, リストが作成／削除されるときに
+      実行される, メールサーバ固有の関数が入っています.
+
+\item \file{Defaults.py} ファイルを見て, \var{POSTFIX_ALIAS_CMD} と
+      \var{POSTFIX_MAP_CMD} コマンド変数の値を確認してください.
+      これらは, それぞれ \program{postalias} と \program{postmap} プログラム
+      を指していなければなりません. もし変更が必要の場合は \file{mm_cfg.py}
+      の中で行うようにしてください.
+
+\item \program{bin/genaliases} スクリプトを実行して \file{aliases} 
+      ファイルを初期化してください.
+
+      \begin{verbatim}
+        % cd /usr/local/mailman
+        % bin/genaliases
+      \end{verbatim}
+
+      \file{data/aliases} と \file{data/aliases.db} の所有者が
+      \code{mailman} で, グループ所有者が \code{mailman} であることを
+      確認してください. これらは configure コマンドで設定したユーザ
+      グループです:
+
+      \begin{verbatim}
+        % su
+        % chown mailman:mailman data/aliases*
+      \end{verbatim}
+
+\item Postfix の \file{main.cf} ファイルの \var{alias_maps} 変数が
+      次のパスを含むように書き換えてください:
+
+      \begin{verbatim}
+          /usr/local/mailman/data/aliases
+      \end{verbatim}
+
+      最後の \code{.db} が付いていないことにも注意してください. 
+      \var{alias_database} にこれを入れてはいけません. なぜなら, Postfix
+      の \program{newaliases} コマンドが Mailman の \file{aliases.db} 
+      ファイルを書き換えてしまうからです. しかし, ローカルアドレスを探索する
+      ときには \file{aliases.db} を見てもらいます.
+
+      このエントリについて \code{hash:} スタイルのデータベースを作りたい
+      と思うでしょう. これが記入例です:
+
+      \begin{verbatim}
+        alias_maps = hash:/etc/postfix/aliases,
+            hash:/usr/local/mailman/data/aliases
+      \end{verbatim}
+
+\item Mailman を configure するときに, \longprogramopt{with-mail-gid=mailman}
+      スイッチを使用してください; これは \code{mailman} ユーザを追加した
+      後で Mailman を configure していればデフォルトになります.
+      \file{aliases.db} ファイルの所有者が \code{mailman} なので,
+      Postfix は Mailman の ラッププログラムを \code{mailman} の uid と gid で
+      実行します.
+
+\end{itemize}
+
+これで完了! 問題がひとつ: リストを作成したり削除すると, \file{aliases.db}
+は更新されますが, \program{postfix reload} を自動的に実行するわけでは
+ありません. これを実行するには root にならなければなりませんが, root に
+suid したスクリプトは安全でないからです. Postfix が \file{aliases.db}
+ファイルの変更とテーブルの更新に気が付くのに 1分ほどかかるだけです.
+
+\subsubsection{仮想ドメイン\label{postfix-virtual}}
+
+Postfix 2.0 は ``virtual alias domains'' をサポートしています. これは
+基本的に以前``Postfix-style virtual domains'' と呼ばれていたものです.
+%
+%Postfix 2.0 supports ``virtual alias domains'', essentially what used to be
+%called ``Postfix-style virtual domains'' in earlier Postfix versions.  
+To make
+virtual alias domains work with Mailman, you need to do some setup in both
+Postfix and Mailman.  Mailman will write all virtual alias mappings to a file
+called, by default, \file{/usr/local/mailman/data/virtual-mailman}.  It will
+also use \program{postmap} to create the \program{virtual-mailman.db} file
+that Postfix will actually use.
+
+First, you need to set up the Postfix virtual alias domains as described in
+the Postfix documentation (see Postfix's \code{virtual(5)} manpage).  Note
+that it's your responsibility to include the \code{virtual-alias.domain
+anything} line as described manpage; Mailman will not include this line in
+\file{virtual-mailman}.  You are highly encouraged to make sure your virtual
+alias domains are working properly before integrating with Mailman.
+
+Next, add a path to Postfix's \var{virtual_alias_maps} variable, pointing to
+the virtual-mailman file, e.g.:
+
+\begin{verbatim}
+    virtual_alias_maps = <your normal virtual alias files>,
+        hash:/usr/local/mailman/data/virtual-mailman
+\end{verbatim}
+
+assuming you've installed Mailman in the default location.  If you're using an
+older version of Postfix which doesn't have the \var{virtual_alias_maps}
+variable, use the \var{virtual_maps} variable instead.
+
+Next, in your \file{mm_cfg.py} file, you will want to set the variable
+\var{POSTFIX_STYLE_VIRTUAL_DOMAINS} to the list of virtual domains that Mailman
+should update.  This may not be all of the virtual alias domains that your
+Postfix installation supports!  The values in this list will be matched
+against the \var{host_name} attribute of mailing lists objects, and must be an
+exact match.
+
+Here's an example.  Say that Postfix is configured to handle the virtual
+domains \code{dom1.ain}, \code{dom2.ain}, and \code{dom3.ain}, and further
+that in your \file{main.cf} file you've got the following settings:
+
+\begin{verbatim}
+    myhostname = mail.dom1.ain
+    mydomain = dom1.ain
+    mydestination = $myhostname, localhost.$mydomain
+    virtual_alias_maps =
+        hash:/some/path/to/virtual-dom1,
+        hash:/some/path/to/virtual-dom2,
+        hash:/some/path/to/virtual-dom2
+\end{verbatim}
+
+If in your \file{virtual-dom1} file, you've got the following lines:
+
+\begin{verbatim}
+    dom1.ain  IGNORE
+    @dom1.ain @mail.dom1.ain
+\end{verbatim}
+
+this tells Postfix to deliver anything addressed to \code{dom1.ain} to the
+same mailbox at \code{mail.dom1.com}, its default destination.
+
+In this case you would not include \code{dom1.ain} in
+\var{POSTFIX_STYLE_VIRTUAL_DOMAINS} because otherwise Mailman will write
+entries for mailing lists in the dom1.ain domain as
+
+\begin{verbatim}
+    mylist@dom1.ain         mylist
+    mylist-request@dom1.ain mylist-request
+    # and so on...
+\end{verbatim}
+
+The more specific entries trump your more general entries, thus breaking the
+delivery of any \code{dom1.ain} mailing list.
+
+However, you would include \code{dom2.ain} and \code{dom3.ain} in
+\file{mm_cfg.py}:
+
+\begin{verbatim}
+    POSTFIX_STYLE_VIRTUAL_DOMAINS = ['dom2.ain', 'dom3.ain']
+\end{verbatim}
+
+Now, any list that Mailman creates in either of those two domains, will have
+the correct entries written to \file{/usr/local/mailman/data/virtual-mailman}.
+
+As above with the \file{data/aliases*} files, you want to make sure that both
+\file{data/virtual-mailman} and \file{data/virtual-mailman.db} are user and
+group owned by \code{mailman}.
+
+\subsubsection{An alternative approach}
+
+Fil \email{fil@rezo.net} has an alternative approach based on virtual maps and
+regular expressions, as described at:
+
+\begin{itemize}
+\item (French)  \url{http://listes.rezo.net/comment.php}
+\item (English) \url{http://listes.rezo.net/how.php}
+\end{itemize}
+
+This is a good (and simpler) alternative if you don't mind exposing an
+additional hostname in the domain part of the addresses people will use to
+contact your list.  I.e. if people should use \code{mylist@lists.dom.ain}
+instead of \code{mylist@dom.ain}.
+
+\subsection{Using the Exim mail server}
+
+\begin{notice}[note]
+This section is derived from Nigel Metheringham's ``HOWTO - Using Exim and
+Mailman together'', which covers Mailman 2.0.x and Exim 3.  It has been
+updated to cover Mailman 2.1 and Exim 4.  The original document is here:
+\url{http://www.exim.org/howto/mailman.html}.
+\end{notice}
+
+There is no Mailman configuration needed other than the standard options
+detailed in the Mailman install documentation.  The Exim configuration is
+transparent to Mailman.  The user and group settings for Mailman must match
+those in the config fragments given below.
+
+\subsubsection{Exim configuration}
+
+The Exim configuration is built so that a list created within Mailman
+automatically appears to Exim without the need for defining any additional
+aliases.
+
+The drawback of this configuration is that it will work poorly on systems
+supporting lists in several different mail domains.  While Mailman handles
+virtual domains, it does not yet support having two distinct lists with the
+same name in different virtual domains, using the same Mailman installation.
+This will eventually change.  (But see below for a variation on this scheme
+that should accommodate virtual domains better.)
+
+The configuration file excerpts below are for use in an already functional
+Exim configuration, which accepts mail for the domain in which the list
+resides.  If this domain is separate from the others handled by your Exim
+configuration, then you'll need to:
+
+\begin{itemize}
+\item add the list domain, ``my.list.domain'' to \var{local_domains}
+
+\item add a ``domains=my.list.domain'' option to the director (router) for the
+      list
+
+\item (optional) exclude that domain from your other directors (routers)
+\end{itemize}
+
+\begin{notice}[note]
+The instructions in this document should work with either Exim 3 or Exim 4.
+In Exim 3, you must have a \var{local_domains} configuration setting; in Exim
+4, you most likely have a \var{local_domains} domainlist.  If you don't, you
+probably know what you're doing and can adjust accordingly.  Similarly, in
+Exim 4 the concept of ``directors'' has disappeared -- there are only routers
+now.  So if you're using Exim 4, whenever this document says ``director'',
+read ``router''.
+\end{notice}
+
+Whether you are using Exim 3 or Exim 4, you will need to add some macros to
+the main section of your Exim config file.  You will also need to define one
+new transport.  With Exim 3, you'll need to add a new director; with Exim 4, a
+new router plays the same role.
+
+Finally, the configuration supplied here should allow co-habiting Mailman 2.0
+and 2.1 installations, with the proviso that you'll probably want to use
+\code{mm21} in place of \code{mailman} -- e.g., \var{MM21_HOME},
+\var{mm21_transport}, etc.
+
+\subsubsection{Main configuration settings}
+
+First, you need to add some macros to the top of your Exim config file.  These
+just make the director (router) and transport below a bit cleaner.  Obviously,
+you'll need to edit these based on how you configured and installed Mailman.
+
+\begin{verbatim}
+    # Home dir for your Mailman installation -- aka Mailman's prefix
+    # directory.
+    MAILMAN_HOME=/usr/local/mailman
+    MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
+
+    # User and group for Mailman, should match your --with-mail-gid
+    # switch to Mailman's configure script.
+    MAILMAN_USER=mailman
+    MAILMAN_GROUP=mailman
+\end{verbatim}
+
+\subsubsection{Transport for Exim 3\label{exim3-transport}}
+
+Add this to the transports section of your Exim config file,
+i.e. somewhere between the first and second ``end'' line:
+
+\begin{verbatim}
+  mailman_transport:
+    driver = pipe
+    command = MAILMAN_WRAP \
+              '${if def:local_part_suffix \
+                    {${sg{$local_part_suffix}{-(\\w+)(\\+.*)?}{\$1}}} \
+                    {post}}' \
+              $local_part
+    current_directory = MAILMAN_HOME
+    home_directory = MAILMAN_HOME
+    user = MAILMAN_USER
+    group = MAILMAN_GROUP
+\end{verbatim}
+
+\subsubsection{Director for Exim 3}
+
+If you're using Exim 3, you'll need to add the following director to your
+config file (directors go between the second and third ``end'' lines).  Also,
+don't forget that order matters -- e.g. you can make Mailman lists take
+precedence over system aliases by putting this director in front of your
+aliasfile director, or vice-versa.
+
+\begin{verbatim}
+  # Handle all addresses related to a list 'foo': the posting address.
+  # Automatically detects list existence by looking
+  # for lists/$local_part/config.pck under MAILMAN_HOME.
+  mailman_director:
+    driver = smartuser
+    require_files = MAILMAN_HOME/lists/$local_part/config.pck
+    suffix_optional
+    suffix = -bounces : -bounces+* : \
+             -confirm+* : -join : -leave : \
+             -owner : -request : -admin
+    transport = mailman_transport
+\end{verbatim}
+
+\subsubsection{Router for Exim 4}
+
+In Exim 4, there's no such thing as directors -- you need to add a new router
+instead.  Also, the canonical order of the configuration file was changed so
+routers come before transports, so the router for Exim 4 comes first here.
+Put this router somewhere after the ``begin routers'' line of your config
+file, and remember that order matters.
+
+\begin{verbatim}
+  mailman_router:
+    driver = accept
+    require_files = MAILMAN_HOME/lists/$local_part/config.pck
+    local_part_suffix_optional
+    local_part_suffix = -bounces : -bounces+* : \
+                        -confirm+* : -join : -leave : \
+                        -owner : -request : -admin
+    transport = mailman_transport
+\end{verbatim}
+% $ - emacs turds
+
+\subsubsection{Transports for Exim 4}
+
+The transport for Exim 4 is the same as for Exim 3 (see \ref{exim3-transport};
+just copy the transport given above to somewhere under the ``begin
+transports'' line of your Exim config file.
+
+\subsubsection{Additional notes}
+
+Exim should be configured to allow reasonable volume -- e.g. don't set
+\var{max_recipients} down to a silly value -- and with normal degrees of
+security -- specifically, be sure to allow relaying from 127.0.0.1, but pretty
+much nothing else.  Parallel deliveries and other tweaks can also be used if
+you like; experiment with your setup to see what works.  Delay warning
+messages should be switched off or configured to only happen for non-list
+mail, unless you like receiving tons of mail when some random host is down.
+
+\subsubsection{Problems}
+
+\begin{itemize}
+
+\item Mailman will send as many \code{MAIL FROM}/\code{RCPT TO} as it needs.
+      It may result in more than 10 or 100 messages sent in one connection,
+      which will exceed the default value of Exim's
+      \var{smtp_accept_queue_per_connection} value.  This is bad because it
+      will cause Exim to switch into queue mode and severely delay delivery of
+      your list messages.  The way to fix this is to set Mailman's
+      \var{SMTP_MAX_SESSIONS_PER_CONNECTION} (in
+      \file{\var{\$prefix}/Mailman/mm_cfg.py}) to a smaller value than Exim's
+      \var{smtp_accept_queue_per_connection}.
+
+\item Mailman should ignore Exim delay warning messages, even though Exim
+      should never send this to list messages.  Mailman 2.1's general bounce
+      detection and VERP support should greatly improve the bounce detector's
+      hit rates.
+
+\item List existence is determined by the existence of a \file{config.pck}
+      file for a list.  If you delete lists by foul means, be aware of this.
+
+\item If you are getting Exim or Mailman complaining about user ids when you
+      send mail to a list, check that the \var{MAILMAN_USER} and
+      \var{MAILMAN_GROUP} match those of Mailman itself (i.e. what were used
+      in the \program{configure} script).  Also make sure you do not have
+      aliases in the main alias file for the list.
+\end{itemize}
+
+\subsubsection{Receiver Verification}
+
+Exim's receiver verification feature is very useful -- it lets Exim reject
+unrouteable addresses at SMTP time.  However, this is most useful for
+externally-originating mail that is addressed to mail in one of your local
+domains.  For Mailman list traffic, mail originates on your server, and is
+addressed to random external domains that are not under your control.
+Furthermore, each message is addressed to many recipients
+-- up to 500 if you use Mailman's default configuration and don't tweak
+\var{SMTP_MAX_RCPTS}.
+
+Doing receiver verification on Mailman list traffic is a recipe for trouble.
+In particular, Exim will attempt to route every recipient addresses in
+outgoing Mailman list posts.  Even though this requires nothing more than a
+few DNS lookups for each address, it can still introduce significant delays.
+Therefore, you should disable recipient verification for Mailman traffic.
+
+Under Exim 3, put this in your main configuration section:
+
+\begin{verbatim}
+    receiver_verify_hosts = !127.0.0.1
+\end{verbatim}
+
+Under Exim 4, this is probably already taken care of for you by the default
+recipient verification ACL statement (in the \code{RCPT TO} ACL):
+
+\begin{verbatim}
+  accept  domains       = +local_domains
+          endpass
+          message       = unknown user
+          verify        = recipient
+\end{verbatim}
+
+which only does recipient verification on addresses in your domain.  (That's
+not exactly the same as doing recipient verification only on messages coming
+from non-127.0.0.1 hosts, but it should do the trick for Mailman.)
+
+\subsubsection{SMTP Callback}
+
+Exim's SMTP callback feature is an even more powerful way to detect bogus
+sender addresses than normal sender verification.  Unfortunately, lots of
+servers send bounce messages with a bogus address in the header, and there are
+plenty that send bounces with bogus envelope senders (even though they're
+supposed to just use an empty envelope sender for bounces).
+
+In order to ensure that Mailman can disable/remove bouncing addresses, you
+generally want to receive bounces for Mailman lists, even if those bounces are
+themselves not bounceable.  Thus, you might want to disable SMTP callback on
+bounce messages.
+
+With Exim 4, you can accomplish this using something like the following in
+your \code{RCPT TO} ACL:
+
+\begin{verbatim}
+  # Accept bounces to lists even if callbacks or other checks would fail
+  warn     message      = X-WhitelistedRCPT-nohdrfromcallback: Yes
+           condition    = \
+           ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
+                     {exists {MAILMAN_HOME/lists/$1/config.pck}}} \
+                {yes}{no}}
+                {yes}{no}}
+
+  accept   condition    = \
+           ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
+                     {exists {MAILMAN_HOME/lists/$1/config.pck}}} \
+                {yes}{no}}
+                {yes}{no}}
+
+  # Now, check sender address with SMTP callback.
+  deny   !verify = sender/callout=90s
+\end{verbatim}
+
+If you also do SMTP callbacks on header addresses, you'll want something like
+this in your \code{DATA} ACL:
+
+\begin{verbatim}
+  deny   !condition = $header_X-WhitelistedRCPT-nohdrfromcallback:
+         !verify = header_sender/callout=90s
+\end{verbatim}
+% $ - emacs turd
+
+\subsubsection{Doing VERP with Exim and Mailman}
+
+VERP will send one email, with a separate envelope sender (return path), for
+each of your subscribers -- read the information in
+\file{\var{\$prefix}/Mailman/Default.py} for the options that start with VERP.
+In a nutshell, all you need to do to enable VERP with Exim is to add these lines to \file{\var{\$prefix}/Mailman/mm_cfg.py}:
+
+\begin{verbatim}
+    VERP_PASSWORD_REMINDERS = Yes
+    VERP_PERSONALIZED_DELIVERIES = Yes
+    VERP_DELIVERY_INTERVAL = Yes
+    VERP_CONFIRMATIONS = Yes
+\end{verbatim}
+
+(The director (router) above is smart enough to deal with VERP bounces.)
+
+\subsubsection{Virtual Domains}
+
+One approach to handling virtual domains is to use a separate Mailman
+installation for each virtual domain.  Currently, this is the only way to have
+lists with the same name in different virtual domains handled by the same
+machine.
+
+In this case, the \var{MAILMAN_HOME} and \var{MAILMAN_WRAP} macros are useless
+-- you can remove them.  Change your director (router) to something like this:
+
+\begin{verbatim}
+  require_files = /virtual/${domain}/mailman/lists/${lc:$local_part}/config.pck
+\end{verbatim}
+% $ - emacs turd
+
+and change your transport like this:
+
+\begin{verbatim}
+  command = /virtual/${domain}/mailman/mail/mailman \
+            ${if def:local_part_suffix \
+                 {${sg{$local_part_suffix}{-(\\w+)(\\+.*)?}{\$1}}}
+                 {post}} \
+              $local_part
+  current_directory = /virtual/${domain}/mailman
+  home_directory = /virtual/${domain}/mailman
+\end{verbatim}
+% $ - emacs turd
+
+\subsubsection{List Verification}
+
+This is how a set of address tests for the Exim lists look on a working
+system.  The list in question is \email{quixote-users@mems-exchange.org}, and
+these commands were run on the \code{mems-exchange.org} mail server ("% "
+indicates the Unix shell prompt):
+
+\begin{verbatim}
+  % exim -bt quixote-users
+  quixote-users@mems-exchange.org
+    router = mailman_main_router, transport = mailman_transport
+
+  % exim -bt quixote-users-request
+  quixote-users-request@mems-exchange.org
+    router = mailman_router, transport = mailman_transport
+
+  % exim -bt quixote-users-bounces
+  quixote-users-bounces@mems-exchange.org
+    router = mailman_router, transport = mailman_transport
+
+  % exim -bt quixote-users-bounces+luser=example.com
+  quixote-users-bounces+luser=example.com@mems-exchange.org
+    router = mailman_router, transport = mailman_transport
+\end{verbatim}
+
+If your \program{exim -bt} output looks something like this, that's a start:
+at least it means Exim will pass the right messages to the right Mailman
+commands.  It by no means guarantees that your Exim/Mailman installation is
+functioning perfectly, though!
+
+\subsubsection{Document History}
+
+Originally written by Nigel Metheringham \email{postmaster@exim.org}.  Updated
+by Marc Merlin \email{marc_soft@merlins.org} for Mailman 2.1, Exim 4.
+Overhauled/reformatted/clarified/simplified by Greg Ward
+\email{gward@python.net}.
+
+\subsection{Sendmail メールサーバを使う場合}
+
+\begin{notice}[警告]
+Sendmail メールサーバを使うとき, 
+\file{mm_cfg.py} の中に \var{DELIVERY_MODULE} 設定変数として \code{'Sendmail'}
+を入れたいと思うかもしれませんが, \file{Sendmail.py} のモジュール名は
+間違って付けられています.
+デフォルトの \file{SMTPDirect.py} で使う SMTP 方式に対して, コマンドラインで
+メッセージを渡す方式を表しています.
+\file{Sendmail.py} ファイルには既知のセキュリティホールがあり
+概念的可能性を証明するために提供されています\footnote{実際, Mailman の
+最近のバージョンでは意図的に更新をサボっています. もしこれを有効に
+したいのであれば, よく知って置いてください.}.
+もし \file{SMTPDirect.py} の利用で問題があるなら \file{Sendmail.py} を
+使うのでなく, 問題を直すことです. でないとセキュリティ悪用にさらす
+ことになりかねません.
+\end{notice}
+
+\subsubsection{Sendmail の ``smrsh'' との適合}
+
+新しいバージョンの Sendmail は Sendmail がメールプログラムとして
+使うことを制限するために ``smrsh'' という制限実行ユーティリティが
+付いてきます. 明示的に Mailman のラッププログラムが smrsh で使える
+ようにしてあげないと Mailman は動作しません. もしメールが Mailman の
+ラッププログラムに届かず, ``operating system error'' がメールの
+ログに記録されていれば, この問題に突き当たっていることになります.
+
+これを解決するのによい方法は:
+
+\begin{itemize}
+    \item Sendmail が smrsh ラッププログラムをどこで実行しているかを探す:
+
+          \begin{verbatim}
+            % grep smrsh /etc/mail/sendmail.cf
+          \end{verbatim}
+
+    \item 実行許可するメールプログラムを smrsh がどこにシンボリック
+          リンクしているかを探す. 次のコマンドの最初のほうでどこかの
+          ディレクトリ(例えば \file{/var/adm/sm.bin} みたいな)のパス
+          が出てくるでしょう:
+
+          \begin{verbatim}
+            % strings $path_to_smrsh | less
+          \end{verbatim}
+
+    \item \file{/var/adm/sm.bin} あるいは自分のシステムで見つけた
+          ディレクトリ (\file{/etc/smrsh} とか \file{/var/smrsh} とか
+          \file{/usr/local/smrsh} とか...) へ移って:
+
+          \begin{verbatim}
+            % cd /var/adm/sm.bin
+          \end{verbatim}
+
+    \item Mailman のラッププログラムへのシンボリックリンクを作成します:
+
+          \begin{verbatim}
+            % ln -s /usr/local/mailman/mail/mailman mailman
+          \end{verbatim}
+\end{itemize}
+
+\subsubsection{Sendmail と Mailman の統合}
+
+David Champion は Sendmail と Mailman をより密接に統合する, つまり
+リストが作成されたときにエイリアステーブルを手で編集しなくても, 
+Sendmail が自動的に認識し新しいリストに配送するようにするための
+レシピを寄贈してくれました.
+
+Mailman のソース配布物 \file{contrib} ディレクトリに次の4つの
+ファイルがあります:
+
+\begin{itemize}
+\item \file{mm-handler.readme} - セットアップする方法の説明
+\item \file{mm-handler}        - メール配送エージェント (MDA)
+\item \file{mailman.mc}        - 設定ファイルの例
+\item \file{virtusertable}     - RFC 2142 アドレス例外についての例
+\end{itemize}
+
+\subsubsection{性能について}
+
+Sendmail で性能を落とす要因として確実なのは, 受信者のホストを DNS 
+で同時に検証するように設定されている場合です. Mailman からサーバに
+メールが送信されるときにこれをやると非常に性能が落ちます.
+Mailman は \code{localhost} (つまり, 127.0.0.1) から Sendmail の
+SMTP ポートに接続しますので, ローカルホストからの接続については
+DNS での同時検証を\strong{しない}ように Sendmail を設定してください.
+
+\subsection{Using the Qmail mail server\label{qmail-issues}}
+
+There are some issues that users of the qmail mail transport agent have
+encountered.  None of the core maintainers use qmail, so all of this
+information has been contributed by the Mailman user community, especially
+Martin Preishuber and Christian Tismer, with notes by Balazs Nagy (BN) and
+Norbert Bollow (NB).
+
+\begin{itemize}
+\item You might need to set the mail-gid user to either \code{qmail},
+      \code{mailman}, or \code{nofiles} by using the
+      \longprogramopt{with-mail-gid} \program{configure} option.
+
+      \emph{BN:} it highly depends on your mail storing policy.  For example
+      if you use the simple \file{~alias/.qmail-*} files, you can use
+      \program{`id -g alias`}.  But if you use \file{/var/qmail/users}, the
+      specified mail gid can be used.
+
+      If you are going to be directing virtual domains directly to the
+      \code{mailman} user (using ``virtualdomains'' on a list-only domain, for
+      example), you will have to use \longprogramopt{with-mail-gid}=\var{gid
+      of mailman user's group}.  This is incompatible with having list aliases
+      in \file{~alias}, unless that alias simply forwards to
+      \code{mailman-listname*}.
+
+\item If there is a user \code{mailman} on your system, the alias
+      \code{mailman-owner} will work only in \file{~mailman}.  You have to do
+      a \program{touch .qmail-owner} in \file{~mailman} directory to create
+      this alias.
+
+      \emph{NB:} An alternative, IMHO better solution is to \program{chown
+      root ~mailman}, that will stop qmail from considering \code{mailman} to
+      be a user to whom mail can be delivered.  (See ``man 8 qmail-getpw''.)
+
+\item In a related issue, if you have any users with the same name as one of
+      your mailing lists, you will have problems if list names contain
+      \samp{-} in them.  Putting \file{.qmail} redirections into the user's
+      home directory doesn't work because the Mailman wrappers will not get
+      spawned with the proper GID.  The solution is to put the following lines
+      in the \file{/var/qmail/users/assign} file:
+
+\begin{verbatim}
+  +zope-:alias:112:11:/var/qmail/alias:-:zope-:
+  .
+\end{verbatim}
+
+      where in this case the listname is e.g. \code{zope-users}.
+
+      \emph{NB:} Alternatively, you could host the lists on a virtual domain,
+      and use the \file{/var/qmail/control/virtualdomains} file to put the
+      \code{mailman} user in charge of this virtual domain.
+
+\item \emph{BN:}If inbound messages are delivered by another user than
+      \code{mailman}, it's necessary to allow it to access \file{~mailman}.
+      Be sure that \file{~mailman} has group writing access and setgid bit is
+      set.  Then put the delivering user to \code{mailman} group, and you can
+      deny access to \file{~mailman} to others.  Be sure that you can do the
+      same with the WWW service.
+
+      By the way the best thing is to make a virtual mail server to handle all
+      of the mail.  \emph{NB:} E.g. make an additional "A" DNS record for the
+      virtual mailserver pointing to your IP address, add the line
+      \code{lists.kva.hu:mailman} to \file{/var/qmail/control/virtualdomains}
+      and a \code{lists.kva.hu} line to \file{/var/qmail/control/rcpthosts}
+      file.  Don't forget to HUP the qmail-send after modifying
+      ``virtualdomains''.  Then every mail to lists.kva.hu will arrive to
+      mail.kva.hu's mailman user.
+
+      Then make your aliases:
+
+\begin{verbatim}
+          .qmail              => mailman@...'s letters
+          .qmail-owner        => mailman-owner's letters
+\end{verbatim}
+
+      For list aliases, you can either create them manually:
+
+\begin{verbatim}
+          .qmail-list         => posts to the 'list' list
+          .qmail-list-admin   => posts to the 'list's owner
+          .qmail-list-request => requests to 'list'
+          etc
+\end{verbatim}
+
+      or for automatic list alias handling (when using the lists.kva.hu
+      virtual as above), see \file{contrib/qmail-to-mailman.py} in the Mailman
+      source distribution.  Modify the \file{~mailman/.qmail-default} to
+      include:
+
+\begin{verbatim}
+          |/path/to/python /path/to/qmail-to-mailman.py
+\end{verbatim}
+
+      and new lists will automatically be picked up.
+
+\item You have to make sure that the localhost can relay.  If you start qmail
+      via inetd and tcpenv, you need some line the following in your
+      \file{/etc/hosts.allow} file:
+
+\begin{verbatim}
+      tcp-env: 127. 10.205.200 : setenv RELAYCLIENT
+\end{verbatim}
+
+      where 10.205.200. is your IP address block.  If you use tcpserver, then
+      you need something like the following in your \file{/etc/tcp.smtp} file:
+
+\begin{verbatim}
+      10.205.200.:allow,RELAYCLIENT=""
+      127.:allow,RELAYCLIENT=""
+\end{verbatim}
+
+\item \emph{BN:} Bigger \file{/var/qmail/control/concurrencyremote} values
+      work better sending outbound messages, within reason.  Unless you know
+      your system can handle it (many if not most cannot) this should not be
+      set to a value greater than 120.
+
+\item More information about setting up qmail and relaying can be found in the
+      qmail documentation.
+\end{itemize}
+
+\emph{BN:} Last but not least, here's a little script to generate aliases to
+your lists (if for some reason you can/will not have them automatically picked
+up using \file{contrib/qmail-to-mailman.py}):
+
+This script is for the Mailman 2.0 series:
+
+\begin{verbatim}
+#!/bin/sh
+if [ $# = 1 ]; then
+    i=$1
+    echo Making links to $i in the current directory...
+    echo "|preline /home/mailman/mail/mailman post $i" > .qmail-$i
+    echo "|preline /home/mailman/mail/mailman mailowner $i" > .qmail-$i-admin
+    echo "|preline /home/mailman/mail/mailman mailowner $i" > .qmail-$i-owner
+    echo "|preline /home/mailman/mail/mailman mailowner $i" > .qmail-owner-$i
+    echo "|preline /home/mailman/mail/mailman mailcmd $i" > .qmail-$i-request
+fi
+\end{verbatim}
+% $ - emacs turd
+
+\begin{notice}[note]
+This is for a new Mailman 2.1 installation.  Users upgrading from
+Mailman 2.0 would most likely change \file{/usr/local/mailman} to
+\file{/home/mailman}.  If in doubt, refer to the \longprogramopt{prefix}
+option passed to \program{configure} during compile time.
+\end{notice}
+
+\begin{verbatim}
+#!/bin/sh
+if [ $# = 1 ]; then
+    i=$1
+    echo Making links to $i in the current directory...
+    echo "|preline /usr/local/mailman/mail/mailman post $i" > .qmail-$i
+    echo "|preline /usr/local/mailman/mail/mailman admin $i" > .qmail-$i-admin
+    echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bounces
+    # The following line is for VERP
+    # echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bounces-default
+    echo "|preline /usr/local/mailman/mail/mailman confirm $i" > .qmail-$i-confirm
+    echo "|preline /usr/local/mailman/mail/mailman join $i" > .qmail-$i-join
+    echo "|preline /usr/local/mailman/mail/mailman leave $i" > .qmail-$i-leave
+    echo "|preline /usr/local/mailman/mail/mailman owner $i" > .qmail-$i-owner
+    echo "|preline /usr/local/mailman/mail/mailman request $i" > .qmail-$i-request
+    echo "|preline /usr/local/mailman/mail/mailman subscribe $i" > .qmail-$i-subscribe
+    echo "|preline /usr/local/mailman/mail/mailman unsubscribe $i" > .qmail-$i-unsubscribe
+fi
+\end{verbatim}
+% $ - emacs turd
+
+\subsubsection{Information on VERP}
+
+You will note in the alias generating script for 2.1 above, there is a line
+for VERP that has been commented out.  If you are interested in VERP there are
+two options.  The first option is to allow Mailman to do the VERP formatting.
+To activate this, uncomment that line and add the following lines to your
+\file{mm_cfg.py} file:
+
+\begin{verbatim}
+    VERP_FORMAT = '%(bounces)s-+%(mailbox)s=%(host)s'
+    VERP_REGEXP = r'^(?P<bounces>.*?)-\+(?P<mailbox>[^=]+)=(?P<host>[^@]+)@.*$'
+\end{verbatim}
+% $ - emacs turd
+
+The second option is a patch on SourceForge located at:
+
+\url{http://sourceforge.net/tracker/?func=detail\&atid=300103\&aid=645513\&group_id=103}
+
+This patch currently needs more testing and might best be suitable for
+developers or people well familiar with qmail.  Having said that, this patch
+is the more qmail-friendly approach resulting in large performance gains.
+
+\subsubsection{Virtual mail server}
+
+As mentioned in the \ref{qmail-issues} section for a virtual mail server, a
+patch under testing is located at:
+
+\url{http://sf.net/tracker/index.php?func=detail\&aid=621257\&group_id=103\&atid=300103}
+
+Again, this patch is for people familiar with their qmail installation.
+
+\subsubsection{More information}
+
+You might be interested in some information on modifying footers that Norbert
+Bollow has written about Mailman and qmail, available here:
+
+    \url{http://mailman.cis.to/qmail-verh/}
+
+\section{サイトのデフォルトを点検\label{customizing}}
+
+Mailman には沢山のサイト全体の設定オプションがありますので, ここで点検し, 
+必要に応じて変更してください.
+オプションのいくつかは Mailman があなたの環境でどう動作するかを制御し,
+あるいは新規に作成したリストのデフォルトを選びます\footnote{
+一般的に, ここで変更したリストのデフォルトは既に作成済みのリストには
+適用されません. リストが作成された後に変更を加えるには, ウェブインタフェース
+を使うか \program{bin/withlist} や \program{bin/config_list} のような
+コマンド行スクリプトを使います.}.
+またシステムチューニングのパラメータや統合のオプションがあります.
+
+\file{\var{\$prefix}/Mailman/Defaults.py} ファイルにサイト全体の
+デフォルトの全部が入っています. しかし, \strong{絶対} このファイルを
+変更してはいけません. その代わり, 同じディレクトリにある,
+\file{mm_cfg.py} ファイルを変更してください. \file{Defaults.py} に
+入っているのと違うものだけ \file{mm_cfg.py} に書き加えればよいだけです.
+将来 Mailman をバージョンアップする時に, \file{mm_cfg.py} が書き換えられる
+ことはありません.
+
+\file{Defaults.py} ファイルにはコメントが沢山書いてあります. そこで
+オプションをここで説明することはしません. \file{Defaults.py} と \file{mm_cfg.py}
+はどちらも \ulink{Python}{http://www.python.org} ファイルなので
+Python の文法を守るようにしないといけません. でないと Mailman は動きません.
+
+\begin{notice}[注意]
+\var{HOME_DIR} と \var{MAILMAN_DIR} 変数を変えては \strong{いけません}.
+これらは \program{configure} スクリプトで自動的に設定されます.
+もし変えると Mailman のインストールが壊れます.
+\end{notice}
+
+\file{mm_cfg.py} の変更は \ref{building} 節で Mailman を
+インストールしたときのユーザでおこなう必要があります.
+
+\section{サイト全体のメーリングリストを作る}
+
+Mailman とメールサーバの統合を完成させたら, 次に ``サイト全体'' の
+メーリングリストを作る必要があります. これはパスワード備忘通知の発信者
+として現れるものであり, Mailman を正しく運用するのに必要なものです.
+通常, これは \code{mailman} という名前のリストですが, 変更する必要が
+ある場合は, \file{mm_cfg.py} の中で \var{MAILMAN_SITE_LIST} 変数を
+変更してください. 次のプロンプトに続くコマンドでこのサイトリストを
+作成することができます.
+
+\begin{verbatim}
+    % bin/newlist mailman
+\end{verbatim}
+
+ここで, サイトリストの設定をします. これの助けになるように,
+サイトリストの便利なひな形が \file{data/sitelist.cfg} に作って
+あります. このひな形の設定オプションについて見ておいてください.
+\file{sitelist.cfg} ファイルに名前が出ていないオプションについては
+変更されないことも注意してください.
+
+このひな形を適用するには次のようにします:
+
+\begin{verbatim}
+    % bin/config_list -i data/sitelist.cfg mailman
+\end{verbatim}
+
+\file{sitelist.cfg} のオプションを適用の後で, リストの管理ページで
+設定を見ておくことを忘れないでください.
+ください.
+
+サイトリストには自分自身を登録しておいてください.
+
+\section{Cron の設定}
+
+多くの Mailman の仕事は定常的なスケジュールで発生します. そのため,
+正しい時刻に正しいプログラムを実行するよう \program{cron} を設定しなければ
+なりません\footnote{以前のバージョンから更新するときには, 新しい
+crontab を入れないといけないかもしれません. しかし, 複数の Mailman を
+インストールしている場合には注意が必要です. crontab を変更すると
+他の平行した Mailman を壊すかもしれません.}.
+
+もし, あなたの crontab が \programopt{-u} オプションをサポートして
+いたら, root になって次のステップを実行してください. 
+次のコマンドを実行して \file{\var{\$prefix}/cron/crontab.in} を
+crontab のエントリに入れます.
+
+\begin{verbatim}
+    % cd $prefix/cron
+    % crontab -u mailman crontab.in
+\end{verbatim}
+
+もし, \longprogramopt{with-username} オプションを使っていたら, \programopt{-u}
+の引数には \code{mailman} の代わりにそのユーザ名を使います.
+もし, crontab が \programopt{-u} オプションをサポートしていなければ,
+次のようにしてください:
+
+\begin{verbatim}
+    % cd $prefix/cron
+    % su - mailman
+    % crontab crontab.in
+\end{verbatim}
+
+\section{Mailman の qrunner を起動する}
+
+Mailman は全てのメール配送に ``qrunner'' と呼ばれるプロセスを使います.
+\var{\$prefix} に移動して, 次のコマンドを実行することで qrunner を
+起動する必要があります:
+
+\begin{verbatim}
+    % bin/mailmanctl start
+\end{verbatim}
+
+システムをリブートするたびに Mailman を起動したほうがよいでしょう.
+実際にどうするかは使用するオペレーティングシステムに依存します.
+OS が \program{chkconfig} コマンドをサポートしていれば (例えば Red Hat
+や Mandrake の Linux) 次のようにしてください (Mailman の
+インストールディレクトリから, root になって):
+
+\begin{verbatim}
+    % cp scripts/mailman /etc/init.d/mailman
+    % chkconfig --add mailman
+\end{verbatim}
+
+\file{/etc/init.d} はシステムによっては \file{/etc/rc.d/init.d} かも
+しれません.
+
+Gentoo Linux では次のようにします:
+
+\begin{verbatim}
+    % cp scripts/mailman /etc/init.d/mailman
+    % rc-update add mailman default
+\end{verbatim}
+
+Debian ではこうするとよいでしょう:
+
+\begin{verbatim}
+    % update-rc.d mailman defaults
+\end{verbatim}
+
+\program{chkconfig} をサポートしない \UNIX{} では次の一連のコマンド
+を試してみるとよいかもしれません:
+
+\begin{verbatim}
+    % cp scripts/mailman /etc/init.d/mailman
+    % cp misc/mailman /etc/init.d
+    % cd /etc/rc.d/rc0.d
+    % ln -s ../init.d/mailman K12mailman
+    % cd ../rc1.d
+    % ln -s ../init.d/mailman K12mailman
+    % cd ../rc2.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc3.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc4.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc5.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc6.d
+    % ln -s ../init.d/mailman K12mailman
+\end{verbatim}
+
+\section{ホスト名の設定をチェックする}
+
+\file{Defaults.py} の中の \var{DEFAULT_EMAIL_HOST} と \var{DEFAULT_URL_HOST}
+をチェックしてください. 変更が必要な場合は \file{Defaults.py} で \strong{なく}
+\file{mm_cfg.py} に書きます. 
+また, どちらかの値を変更したときには, \file{mm_cfg.py} の変更の後に,
+次のように追加してください.
+
+\begin{verbatim}
+    add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
+\end{verbatim}
+
+もし既に作成したリストがあったら, \program{bin/fix_url.py} を使って
+ドメイン名を変更してください.
+
+\section{サイトパスワードの作成}
+
+\program{bin/mmsitepass} スクリプトを使用すると, コマンドラインから
+２つのサイト全体のパスワードを作成できます.
+一つ目は, ``サイトパスワード'' でシステム上でパスワードが必要の
+場合はどこでも使うことができます. サイトパスワードはどのリストの
+管理ページへも入ることができますし, どのユーザとしてもログインできます.
+Unix システムでの \code{root} を考えてください. このパスワードは
+賢く考えて選んでください.
+
+２番目のパスワードはサイト全体の ``リスト作成'' パスワードです.
+これを使うと, サイトパスワードの全ての特権を与えずに, 新しいリストを
+作成するだけの権限を持たせることができます.
+もちろん, サイトパスワードでも新しいメーリングリストを作成できますが,
+リスト作成パスワードは特別の役割だけに限定するものです.
+
+サイトパスワードの設定には次のコマンドを使います:
+
+\begin{verbatim}
+    % $prefix/bin/mmsitepass <あなたのサイトパスワード>
+\end{verbatim}
+
+リスト作成パスワードの設定は次のコマンドを使ってください:
+
+\begin{verbatim}
+    % $prefix/bin/mmsitepass -c <リスト作成パスワード>
+\end{verbatim}
+
+リスト作成パスワードを設定しなくても結構ですが, サイトパスワードは
+必要になるはずです.
+
+\section{初めてリストを作成する}
+
+Mailman を使うに当たってリストを作成したり設定したりといった詳しい情報
+については, Mailman リスト管理マニュアルを参照してください.
+ここでは, ウェブインタフェースを使って最初のメーリングリストを作成
+するための簡単なガイドを説明します:
+
+\begin{itemize}
+\item まず URL \code{http://my.dom.ain/mailman/create} を開いてください.
+
+\item 画面に出ている指示に従ってフォームに記入して, ``リスト作成者の
+      パスワード'' のところに \ref{customizing} 節で作成した
+      パスワードを入れてください. 自分のメールアドレスを
+      ``リスト管理者アドレスの初期設定'' のところに入れ, 
+      ``「リスト作成完了」をメールで管理者に知らせますか'' で ``はい'' を
+      選んでください.
+
+\item ``リストを作成する'' ボタンをクリックしてください.
+
+\item Mailman からあなた宛に新しいメーリングリストが作成されたことを
+      メールで知らせますのでチェックしてください.
+
+\item 確認のウェブページか Mailman が送信したメールに書かれたリンクを
+      たどって, リストの管理ページへ行って下さい. たいがいは, URL は
+      \code{http://my.dom.ain/mailman/admin/mylist} みたいになってる
+      はずです.
+
+\item リストのパスワードを入れて, ``ログイン...'' をクリックします.
+
+\item ``会員管理'' をクリックし, 続いて ``まとめて入会登録'' へ行って
+      ください.
+
+\item 大きいテキスト入力エリアに自分のメールアドレスを入れ,
+      ``変更を送信する'' をクリックしてください.
+
+\item 自分のメールソフトで, \code{mylist@my.dom.ain} 宛てにメールを
+      出してください. 1,2分のうちに, Mailman 経由で自分のメールが返って
+      来るでしょう.
+\end{itemize}
+
+おめでとう! あなたの最初のメーリングリストの設定とテストが完了しました.
+何か問題が起こったら, \ref{troubleshooting} 節を見てください.
+
+\section{トラブルと対策\label{troubleshooting}}
+
+もし, Mailman の実行で問題が発生したら, まず以下の「一般的な
+問題」の節をチェックしましょう．もし，問題がそこに含
+まれていなければ，\ulink{オンラインヘルプ}{http://www.list.org/help.html}
+を見てください. そこから, \ulink{FAQ}{http://www.list.org/faq.html}
+と \ulink{インタラクティブな FAQ ウィザード}{http://www.python.org/cgi-bin/faqw-mm.py}
+へ行くことができます.
+
+それから，システムの syslog と, Mailman の
+\file{\var{\$prefix}/logs/error} ファイルにエラーが入っていないかもチェック
+しましょう．
+それでも問題があれば, \email{mailman-users@python.org} メーリングリスト
+\footnote{メールを投稿するにはこメーリングリストに入らないといけませんが,
+リストの保存書庫は一般公開されています.} に質問を書いてください.
+\url{http://mail.python.org/mailman/listinfo/mailman-users} に詳しい
+案内があります.
+
+オペレーティングシステムや, 使用している Python のバージョン,
+インストール中の Mailman のバージョンなどについての情報も
+忘れずに入れてください.
+
+以下は, 一般的な質問と回答のリストです:
+Here is a list of some common questions and answers:
+
+\begin{itemize}
+
+\item \strong{問題:} Mailman の ウェブページが全て 404 File not found エラーに
+      なります.
+
+      \strong{解決法:} ウェブサーバの設定で Mailman の CGI コマンドを正しく
+      扱えるように設定できていません. 以下を確認:
+
+      \begin{enumerate}
+      \item ウェブサーバで \file{\var{\$prefix}/cgi-bin} に正しく許可
+            (パーミッション) を設定する.
+
+      \item ウェブサーバを正しく再起動する.
+      \end{enumerate}
+
+      ウェブサーバの説明書をよく読んでどうしたらよいか調べてください.
+
+\item \strong{問題:} Mailman のウェブページが全て "Internal Server
+      Error" になります.
+
+      \strong{解決法:} 間違ったユーザまたはグループを使って CGI を
+      実行しようとしている可能性があります. ウェブサーバのログをチェックして
+      ください. 例えば以下のような行があったら,
+
+      \begin{verbatim}
+            Attempt to exec script with invalid gid 51, expected 99
+      \end{verbatim}
+
+      Mailman を再インストールしなければなりません. \label{building} 
+      節に書かれていたように, 正しい CGI グループ ID を指定して
+      ください.
+
+\item \strong{問題:} メールをリストに送ったら, リストが見つからないという
+      メールを受け取りました.
+
+      \strong{解決法:} 多分, システムのエイリアスデータベースに必要な
+      エイリアスを登録していなかったのでしょう. あるいは, Mailman と
+      メールサーバの組み合わせが正しく行われていないのかもしれません.
+      エイリアスデータベースを更新していないか, あなたのシステムでは
+      \program{newaliases} を明示的に実行する必要があるのかしれません.
+      あなたがご利用のサーバについて\ref{mail-server}節で
+      確認してください.
+
+\item \strong{問題:} リストにメールを送ったら, ``unknown mailer error''
+      が帰ってきました.
+
+      \strong{解決法:} メールラップで間違ったユーザまたはグループID
+      を使っている可能性があります. メールサーバのログをチェックして
+      ください. 次のような行があったら,
+
+      \begin{verbatim}
+            Attempt to exec script with invalid gid 51, expected 99
+      \end{verbatim}
+
+      Mailman を再インストールしなければなりません. \label{building}
+      節に書かれていたように, 正しいメールグループ ID を指定して
+      ください.
+
+\item \strong{問題:} 私は Postfix をメールサーバに使っています.
+      そして, メールラッププログラムは GID が違っていると不平をログに残します.
+
+      \strong{解決法:} \file{\var{\$prefix}/data/aliases.db} ファイルの
+      所有者が \code{mailman} (又は \program{configure} コマンドで使った名前) 
+      であることを確認してください. もし \code{mailman} 以外のユーザに
+      所有されている場合は, Postfix は正しいユーザでメールプログラムを
+      実行しません.
+
+\item \strong{問題:} 私は Sendmail をメールサーバに使っています.
+      そして, メールをリストに送ると 
+      ``sh: mailman not available for
+      sendmail programs'' というメールが返ってきます.
+
+      \strong{解決法:} あなたのシステムでは Sendmail restricted shell
+      (smrsh) が使われています. メールラッププログラム
+      (\file{\var{\$prefix}/mail/mailman}) から smrsh で実行が許可されて
+      いるディレクトリにシンボリックリンクを張る必要があります.
+
+      一般的にこのディレクトリは \file{/var/admin/sm.bin},
+      \file{/usr/admin/sm.bin}, \file{/etc/smrsh} などに設定されています.
+
+      Debian Linux ではシステムは \file{/usr/lib/sm.bin} を作成します
+      が，これは間違っています. \file{/usr/admin/sm.bin} を 作ってそ
+      こへリンクを作成する必要があります. 
+      注：\program{newaliases} が吐き出すどのエイリアスもラップへの
+      安全なリンクを指す必要があります．
+
+\item \strong{問題:}  \program{configure} を呼び出すときに散らかして
+      しまいました. 掃除をして再インストールするにはどうしたらいいですか?
+
+      \strong{解決法:}
+
+      \begin{verbatim}
+        % make clean
+        % ./configure --with-the-right-options
+        % make install
+      \end{verbatim}
+
+\end{itemize}
+
+\section{Platform and operating system notes}
+
+Generally, Mailman runs on any POSIX-based system, such as Solaris, the
+various BSD variants, Linux systems, MacOSX, and other generic \UNIX{}
+systems.  It doesn't run on Windows.  For the most part, the generic
+instructions given in this document should be sufficient to get Mailman
+working on any supported platform.  Some operating systems have additional
+recommended installation or configuration instructions.
+
+\subsection{GNU/Linux issues}
+
+Linux seems to be the most popular platform for running Mailman.  Here are
+some hints on getting Mailman to run on Linux:
+
+\begin{itemize}
+\item If you are getting errors with hard link creations and/or you are using
+      a special secure kernel (securelinux/openwall/grsecurity), see the file
+      \file{contrib/README.check_perms_grsecurity} in the Mailman source
+      distribution.
+
+      Note that if you are using Linux Mandrake in secure mode, you are
+      probably concerned by this.
+
+\item Apparently Mandrake 9.0 changed the permissions on gcc, so if you build
+      as the \code{mailman} user, you need to be sure \code{mailman} is in the
+      \code{cctools} group.
+
+\item If you installed Python from your Linux distribution's package manager
+      (e.g. .rpms for Redhat-derived systems or .deb for Debian), you must
+      install the ``development'' package of Python, or you may not get
+      everything you need.
+
+      For example, using Python 2.2 on Debian, you will need to install the
+      \code{python2.2-dev} package.  On Redhat, you probably need the
+      \code{python2-devel} package.
+
+      If you install Python from source, you should be fine.
+
+      One symptom of this problem, although for unknown reasons, is that you
+      might get an error such as this during your install:
+
+      \begin{verbatim}
+          Traceback (most recent call last):
+            File "bin/update", line 44, in ?
+              import paths
+          ImportError: No module named paths
+          make: *** [update] Error 1
+      \end{verbatim}
+
+      If this happens, install the Python development package and try
+      \program{configure} and \program{make install} again.  Or install the
+      latest version of Python from source, available from
+      \url{http://www.python.org}.
+
+      This problem can manifest itself in other Linux distributions in
+      different ways, although usually it appears as \code{ImportErrors}.
+\end{itemize}
+
+\subsection{BSD issues\label{bsd-issues}}
+
+Vivek Khera writes that some BSDs do nightly security scans for setuid file
+changes.  setgid directories also come up on the scan when they change.  Also,
+the setgid bit is not necessary on BSD systems because group ownership is
+automatically inherited on files created in directories.  On other \UNIX{}es,
+this only happens when the directory has the setgid bit turned on.
+
+To install without turning on the setgid bit on directories, simply pass in
+the \var{DIRSETGID} variable to \program{make}, after you've run
+\program{configure}:
+
+\begin{verbatim}
+    % make DIRSETGID=: install
+\end{verbatim}
+
+This disables the \program{chmod g+s} command on installed directories.
+
+\subsection{MacOSX issues}
+
+Many people run Mailman on MacOSX.  Here are some pointers that have been
+collected on getting Mailman to run on MacOSX.
+
+\begin{itemize}
+\item Jaguar (MacOSX 10.2) comes with Python 2.2.  While this isn't the very
+      latest stable version of Python, it ought to be sufficient to run
+      Mailman 2.1.
+
+\item David B. O'Donnell has a web page describing his configuration of
+      Mailman 2.0.13 and Postfix on MacOSX Server.
+
+      \url{http://www.afp548.com/Articles/mail/python-mailman.html}
+
+\item Kathleen Webb posted her experiences in getting Mailman running on
+      Jaguar using Sendmail.
+
+      \url{http://mail.python.org/pipermail/mailman-users/2002-October/022944.html}
+
+\item Panther server (MacOSX 10.3) comes with Mailman; Your operating system
+      should contain documentation that will help you, and Apple has a tech
+      document about a problem you might encounter running Mailman on Mac OS X
+      Server 10.3:
+
+      \url{http://docs.info.apple.com/article.html?artnum=107889}
+\end{itemize}
+
+Terry Allen provides the following detailed instructions on running Mailman on
+the 'client' version of OSX, or in earlier versions of OSX:
+
+Mac OSX 10.3 and onwards has the basics for a successful Mailman installation.
+Users of earlier versions of Mac OSX contains Sendmail and those users should
+look at the Sendmail installation section for tips.  You should follow the
+basic installation steps as described earlier in this manual, substituting as
+appropriate, the steps outlined in this section.
+
+By default, Mac OSX 10.3 'client' version does not have a fully functional
+version of Postfix.  Setting up a working MTA such as Postfix is beyond the
+scope of this guide and you should refer to \url{http://www.postfix.org} for
+tips on getting Postfix running.  An easy way to set Postfix up is to install
+and run Postfix Enabler, a stand-alone tool for configuring Postfix on Mac
+OSX, available from 
+\url{http://www.roadstead.com/weblog/Tutorials/PostfixEnabler.html}.
+
+Likewise, Mac OSX 'client' version from 10.1 onwards includes a working Apache
+webserver.  This is switched on using the System Preferences control panel
+under the 'Sharing tab'.  A useful tool for configuring the Apache on Mac OSX
+is Webmin, which can be obtained from
+\url{http://www.webmin.com}.
+
+Webmin can also perform configuration for other system tasks, including
+Postfix, adding jobs to your crontab, adding user and groups, plus adding
+startup and shutdown jobs.
+
+In a stock installation of OSX, the requirement for Mailman is to have Python
+installed.  Python is not installed by default, so it is advised that you
+install the developer's tools package, which may have been provided with your
+system.  It can also be downloaded from the Apple developer site at
+\url{http://connect.apple.com}.  Not only is the developer tools package an
+essential requirement for installing Mailman, but it will come in handy at a
+later date should you need other tools.  The developer's tools are also know
+by the name XCode tools.
+
+As a minimum, the Python version should be 2.2, but 2.3 is recommended.
+
+If you wish to add a user and group using the command line in OSX instead of
+via Webmin or another GUI interface, open your terminal application and follow
+the commands as indicated below - do not type the comments following the
+\samp{\#} since they are just notes:
+
+\begin{verbatim}
+sudo tcsh
+niutil -create / /users/mailman
+niutil -createprop / /users/mailman name mailman
+# Note that xxx is a free group ID number on your system
+niutil -createprop / /users/mailman uid xxx
+niutil -createprop / /users/mailman home /usr/local/mailman
+mkdir -p /usr/local/mailman
+niutil -createprop / /users/mailman shell /bin/tcsh
+passwd mailman
+# To prevent malicious hacking, supply a secure password here
+niutil -create / /groups/mailman
+niutil -createprop / /groups/mailman name mailman
+# Note that xxx is a free group ID number on your system
+niutil -createprop / /groups/mailman gid xxx
+niutil -createprop / /groups/mailman passwd '*'
+niutil -createprop / /groups/mailman users 'mailman'
+chown mailman:mailman /usr/local/mailman
+cd /usr/local/mailman
+chmod a+rx,g+ws .
+exit
+su mailman
+\end{verbatim}
+
+For setting up Apache on OSX to handle Mailman, the steps are almost identical
+and the configuration file on a stock Mac OSX Client version is stored in the
+nearly standard location of \file{/etc/httpd/httpd.conf}.
+
+The \url{AFP548.com} site has a time-saving automated startup item creator for
+Mailman, which can be found at 
+\url{http://www.afp548.com/Software/MailmanStartup.tar.gz}
+
+To install it, copy it into your \file{/Library/StartupItems} directory. As
+the root or superuser, from the terminal, enter the following:
+
+\begin{verbatim}
+gunzip MailmanStartup.tar.gz
+tar xvf MailmanStartup.tar
+\end{verbatim}
+
+It will create the startup item for you so that when you reboot, Mailman will
+start up.
+
+\end{document}
