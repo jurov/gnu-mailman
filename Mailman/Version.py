@@ -30,7 +30,7 @@ MINOR_REV = 1
 MICRO_REV = 6
 REL_LEVEL = BETA
 # at most 15 beta releases!
-REL_SERIAL = 4
+REL_SERIAL = 5
 
 HEX_VERSION = ((MAJOR_REV << 24) | (MINOR_REV << 16) | (MICRO_REV << 8) |
                (REL_LEVEL << 4)  | (REL_SERIAL << 0))
