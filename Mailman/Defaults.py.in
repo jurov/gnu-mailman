@@ -146,6 +146,10 @@ def add_virtualhost(urlhost, emailhost=None):
 # And set the default
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
+# Note that you will want to run bin/fix_url.py to change the domain of an
+# existing list.  bin/fix_url.py must be run within the bin/withlist script,
+# like so: bin/withlist -l -r bin/fix_url.py <listname>
+
 
 
 #####
