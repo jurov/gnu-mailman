@@ -4,7 +4,50 @@ Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.2 (31-Mar-2003)
+2.1.2 (19-Apr-2003)
+
+    - New languages Portuguese (Portugal) and Polish.
+
+    - Many convenient constants have been added to the Defaults.py
+      module to (hopefully) make it more readable.
+
+    - The semantics for the extend.py hook to MailList objects has
+      changed slightly.  The hook is now called before attempting to
+      lock and load the database.
+
+    - Email addresses which contain 8-bit characters in them are now
+      rejected and won't be subscribed.  This is not the same as 8-bit
+      characters in the realname, which is still allowed.
+
+    - When running make to build Mailman, you can specify $DESTDIR to
+      the install target to specify an alternative location for
+      installation, without influencing the paths stored in
+      e.g. Defaults.py.  This is useful to package managers.
+
+    - New Defaults.py variable DELIVERY_RETRY_WAIT which controls how
+      long the outgoing qrunner will wait before it retries a
+      tempfailure delivery.
+
+    - Mailman now uses the email package version 2.5.1
+
+    - bin/transcheck now checks for double-%'s
+
+    - bin/genaliases grew a -q / --quiet flag
+
+    - cron/checkdbs grew a -h / --help option.
+
+    - The -c / --change-msg option has been removed from bin/add_members
+
+    - A new file misc/sitelist.cfg which can be used with
+      bin/config_list provides a small number of recommended settings
+      for your site list.  Be sure to read it over before applying!
+      sitelist.cfg is installed into the data directory.
+
+    - Many bug fixes, including these SourceForge bugs closed and
+      patches applied: 677668, 690448, 700538, 700537, 673294, 683906,
+      671294, 522080, 521124, 534297, 699900, 697321, 695526, 703941,
+      658261, 710678, 707608, 671303, 717096, 694912, 707624, 716755,
+      661138, 716754, 716702, 667167
 
 
 2.1.1 (08-Feb-2003)
