@@ -120,6 +120,7 @@ class Topics(GUIBase):
                 a pattern.  Incomplete topics will be ignored."""))
                 continue
             # Make sure the pattern was a legal regular expression
+            name = Utils.websafe(name)
             try:
                 re.compile(pattern)
             except (re.error, TypeError):
