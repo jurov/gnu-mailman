@@ -123,7 +123,8 @@ class GUIBase:
         pass
 
     def _escape(self, property, value):
-        return Utils.websafe(value)
+        value = value.replace('<', '&lt;')
+        return value
 
     def handleForm(self, mlist, category, subcat, cgidata, doc):
         for item in self.GetConfigInfo(mlist, category, subcat):
