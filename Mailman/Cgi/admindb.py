@@ -236,6 +236,11 @@ def main():
         if addform:
             doc.AddItem(form)
             form.AddItem('<hr>')
+            form.AddItem(Center(
+                CheckBox('discardalldefersp', 0).Format() +
+                '&nbsp;' +
+                _('Discard all messages marked <em>Defer</em>')
+                ))
             form.AddItem(Center(SubmitButton('submit', _('Submit All Data'))))
         doc.AddItem(mlist.GetMailmanFooter())
         print doc.Format()
