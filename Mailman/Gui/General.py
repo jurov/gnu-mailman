@@ -145,7 +145,11 @@ class General(GUIBase):
              posted to the list, to distinguish mailing list messages in in
              mailbox summaries.  Brevity is premium here, it's ok to shorten
              long mailing list names to something more concise, as long as it
-             still identifies the mailing list.""")),
+             still identifies the mailing list.
+             You can also add a sequencial number by %%d substitution
+             directive. eg.; [listname %%d] -> [listname 123]
+                            (listname %%05d) -> (listname 00123)
+             """)),
 
             ('anonymous_list', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Hide the sender of a message, replacing it with the list
