@@ -4,12 +4,52 @@ Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.4 (XX-XXX-200X)
+2.1.4 (XX-Dec-2003)
+
+    - New languages: Catalan, Croatian, Esperanto, Romanian, Slovenian.
+
+    - CJKCodecs-1.0 now replace JapaneseCodecs-1.4.9 and KoreanCodecs-2.0.5
+
+    - New mm_cfg.py/Defaults.py variable PUBLIC_MBOX which allows the site
+      administrator to disable public access to all the raw list mbox files
+      (this is not a per-list configuration).
+
+    - Expanded header filter rules under Privacy -> Spam Filters.  Now you can
+      specify regular expression matches against any header, with specific
+      actions tied to those matches.
+
+    - Rework the SMTP error handling in SMTPDirect.py to avoid scoring bounces
+      for all recipients when a permanent error code is returned by the mail
+      server (e.g. because of content restrictions).
 
     - Promoted SYNC_AFTER_WRITE to a Default.py/mm_cfg.py variable and
-      make it control syncing on the config.pck file.
+      make it control syncing on the config.pck file.  Also, we always flush
+      and sync message files.
 
-    - Integrated Catalan support from Robert Garrigós and Toni Panadès.
+    - Reduce archive bloat by not storing the HTML body of Article objects in
+      the Pipermail database.  A new script bin/rb-archfix was added to clean
+      up older archives.
+
+    - Proper RFC quoting for List-ID descriptions.
+
+    - PKGDIR can be passed to the make command in order to specify a different
+      directory to unpack the distutils packages in misc.  (SF bug 784700).
+
+    - Improved logging of the origin of subscription requests.
+
+    - Bugs and patches: 832748 (unsubscribe_policy ignored for unsub button on
+      member login page), 846681 (bounce disabled cookie was always out of
+      date), 835870 (check VIRTUAL_HOST_OVERVIEW on through the web list
+      creation), 835036 (global address change when the new address is already
+      a member of one of the lists), 833384 (incorrect admin password on a
+      hold message confirmation attachment would discard the message), 835012
+      (fix permission on empty archive index), 816410 (confirmation page
+      consistency), 834486 (catch empty charsets in the scrubber), 777444 (set
+      the process's supplemental groups if possible), 860135 (ignore
+      DiscardMessage exceptions during digest scrubbing), 828811 (reduce
+      process size for list and admin overviews), 864674/864676 (problems
+      accessing private archives and rosters with admin password), 865661
+      (Tokio Kikuchi's i18n patches)
 
 2.1.3 (28-Sep-2003)
 
