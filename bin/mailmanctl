@@ -288,6 +288,13 @@ def check_privs():
     uid = pwd.getpwnam(mm_cfg.MAILMAN_USER)[2]
     myuid = os.getuid()
     if myuid == 0:
+        groups = [x[2] for x in grp.getgrall() if mm_cfg.MAILMAN_USER in x[3]]
+        groups.append(gid)
+        try:
+            os.setgroups(groups)
+        except AttributeError:
+            # Python 2.1 doesn't have setgroups
+            syslog('error', 'Warning: unable to setgroups(%s)' % groups)
         os.setgid(gid)
         os.setuid(uid)
     elif myuid <> uid:
