@@ -1,6 +1,7 @@
 # translation of mailman.po to 
 # translation of mailman.po to
 # translation of mailman.po to
+# translation of mailman.po to
 # translation of mailman.po to deutsch
 # translation of mailman.po to Deutsch
 # Deutsche Übersetzung der Mailman messages
@@ -14,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Wed Jan 12 17:21:06 2005\n"
-"PO-Revision-Date: 2005-01-19 01:06+0100\n"
+"PO-Revision-Date: 2005-01-19 14:58+0100\n"
 "Last-Translator: Peer Heinlein <p.heinlein@jpberlin.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -5332,7 +5333,6 @@ msgstr ""
 
 # Mailman/Gui/General.py:154
 #: Mailman/Gui/General.py:173
-#, fuzzy
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -10432,7 +10432,6 @@ msgid "Return the generated output."
 msgstr "Gibt die erzeugte Ausgabe zurück."
 
 #: bin/newlist:19
-#, fuzzy
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -10530,6 +10529,15 @@ msgstr ""
 "        Setzt `language' als Standard-Sprache der Liste an. Geben Sie dazu\n"
 "        den zwei Buchstaben langen Ländercode an (z.B. 'de' oder 'en').\n"
 "\n"
+"\n"
+"    -u urlhost\n"
+"    --urlhost=urlhost\n"
+"        Setzt den Hostnamen der Liste für das Webinterface.\n"
+"\n"
+"    -e emailhost\n"
+"    --emailhost=emailhost\n"
+"        Setzt den Hostnamen der Liste für die e-Mails..\n"
+"\n"
 "    -q/--quiet\n"
 "        Normalerweise erhält der Administrator eine e-Mail, wenn eine neue\n"
 "        Mailingliste angelegt wurde. Diese Option unterdrückt diese e-Mail.\n"
@@ -10549,15 +10557,21 @@ msgstr ""
 "Die Domäne, die zur Erzeugung neuer Listen benutzt wird, kann wie folgt\n"
 "angegeben werden:\n"
 "\n"
+"    newlist --urlhost=www.mydom.ain mylist\n"
+"wobei `www.mydom.ain` der Hostname der URL dieser Mailingliste sein sollte. Bei virtuellen Mailinglisten muss eine entsprechende Zuordnung im VIRTUAL_HOST-Mapping in mm_cfg.py/Defaults.py eingetragen sein, wenn der Mail-Hostname automatisch bestimmt werden soll. Wird keine Zuordnung gefunden, so wird der eingetragene DEFAULT_EMAIL_HOST genutzt.\n"
+"\n"
+"Wenn der Mail-Hostname vom autmatischen Mapping abweichen soll, so können Sie die Liste wie folgt angeben:\n"
+"\n"
+"    newlist --urlhost=www.mydom.ain --emailhost=mydom.ain mylist\n"
+"\n"
+"Abwärtskompatibel zu älteren Versionen können Sie auch die Variante\n"
+"\n"
 "    mylist@www.mydom.ain\n"
 "\n"
-"wobei `www.mydom.ain' der Basis-Hostname der virtuellen Hosts sein sollte.\n"
-"In diesem Beispiel wäre die generelle Listenübersicht erreichbar unter\n"
-"http://www.mydom.ain/mailman/listinfo. Ebenso sollte www.mydom.ain einen\n"
-"Eintrag im VIRTUAL_HOSTS-Mapping in der Datei mm_cfg.py/Defaults.py haben,\n"
-"die zum Nachschlagen der Hostnamen für ausgehende e-Mail benutzt wird. Ist\n"
-"kein solcher Eintrag vorhanden, wird www.mydom.ain sowohl für die Web-, als\n"
-"auch für die e-Mailschnittstelle herangezogen.\n"
+"nutzen, wobei `www.mydom.ain' wieder der URL-Hostname sein sollte. "
+"der Basis-Hostname der virtuellen Hosts sein sollte.\n"
+"\n"
+"Werden beie Varianten parallel genutzt, so haben die Angaben von --urlhost und --emailhost Vorrang.\n"
 "\n"
 "Bei Angabe eines einfachen Listennamens (`mylist'), wird der e-Mail-"
 "Hostname\n"
@@ -11231,7 +11245,7 @@ msgstr "Sucht nach Abweichungen in eingecheckter und ausgecheckter Fassung"
 
 #: bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
-msgstr ""
+msgstr "Extrahiert msgids und msgstrs aus einer .po-Datei"
 
 #: bin/transcheck:142
 msgid ""
@@ -11625,7 +11639,6 @@ msgid "Using Mailman version:"
 msgstr "Benutze Mailman-Version:"
 
 #: bin/withlist:19
-#, fuzzy
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -11977,6 +11990,8 @@ msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
 msgstr ""
+"Zur Information: %(discarded)d alte Moderations-Anfragen wurden wegen Zeitablaufs verworfen..\n"
+"\n"
 
 #: cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
