@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b4+\n"
-"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
-"PO-Revision-Date: 2003-04-21 22:50+0200\n"
+"POT-Creation-Date: Mon Apr 21 11:13:43 2003\n"
+"PO-Revision-Date: 2003-02-10 10:31+0100\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2783,6 +2783,7 @@ msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Du er n&aring; meldt p&aring; epostlisten %(realname)s."
 
 #: Mailman/Commands/cmd_confirm.py:17
+#, fuzzy
 msgid ""
 "\n"
 "    confirm <confirmation-string>\n"
@@ -2822,6 +2823,7 @@ msgstr ""
 "godkjenning."
 
 #: Mailman/Commands/cmd_confirm.py:63
+#, fuzzy
 msgid ""
 "You are not currently a member.  Have you already unsubscribed or changed\n"
 "your email address?"
@@ -7662,6 +7664,7 @@ msgid ""
 msgstr ""
 
 #: bin/add_members:26
+#, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -7919,6 +7922,28 @@ msgid ""
 "\n"
 "You will need to run `bin/check_perms -f' after running this script.\n"
 msgstr ""
+
+#: bin/b4b5-archfix.~1~:19 bin/b4b5-archfix.~2~:19
+#, fuzzy
+msgid ""
+"Fix the MM2.1b4 archives.\n"
+"\n"
+"Usage: %(PROGRAM)s [options] file ...\n"
+"\n"
+"Where options are:\n"
+"    -h / --help\n"
+"        Print this help message and exit.\n"
+msgstr ""
+"Genererer Postfix filene data/aliases og data/aliases.db på nytt.\n"
+"\n"
+"Brukes slik:\n"
+"\n"
+"    genaliases [valg]\n"
+"\n"
+"Valg:\n"
+"\n"
+"    --help / -h\n"
+"        Viser denne hjelpeteksten.\n"
 
 #: bin/change_pw:19
 msgid ""
@@ -9792,6 +9817,7 @@ msgid "No runner name given."
 msgstr "Ingen runner navn ble angitt."
 
 #: bin/remove_members:19
+#, fuzzy
 msgid ""
 "Remove members from a list.\n"
 "\n"
@@ -10764,6 +10790,7 @@ msgstr ""
 "volume nummer for alle lister.\n"
 
 #: cron/checkdbs:19
+#, fuzzy
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"

@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1\n"
-"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
-"PO-Revision-Date: 2003-04-21 14:17GMT\n"
+"POT-Creation-Date: Mon Apr 21 11:13:43 2003\n"
+"PO-Revision-Date: 2003-02-04 21:01GMT\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team: Italian <mailman-it@ferrara.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -3051,6 +3051,7 @@ msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Sei stato correttamente iscritto alla lista %(realname)s."
 
 #: Mailman/Commands/cmd_confirm.py:17
+#, fuzzy
 msgid ""
 "\n"
 "    confirm <confirmation-string>\n"
@@ -3093,6 +3094,7 @@ msgstr ""
 # /home/mailman/Mailman/MailCommandHandler.py:558
 # /home/mailman/Mailman/MailCommandHandler.py:606
 #: Mailman/Commands/cmd_confirm.py:63
+#, fuzzy
 msgid ""
 "You are not currently a member.  Have you already unsubscribed or changed\n"
 "your email address?"
@@ -3106,6 +3108,13 @@ msgid ""
 msgstr ""
 "Non eri stato invitato in questa lista.  L'invito è stato scartato e gli "
 "amministratori di entrambe le liste sono stati avvisati."
+
+#: Mailman/Commands/cmd_confirm.py:67
+msgid ""
+"You were not invited to this mailing list.  The invitation has been "
+"discarded,\n"
+"and both list administrators have been alerted."
+msgstr ""
 
 #: Mailman/Commands/cmd_confirm.py:77
 msgid "Confirmation succeeded"
@@ -7928,6 +7937,12 @@ msgstr ""
 msgid "## %(listname)s mailing list"
 msgstr "## lista %(listname)s"
 
+# /home/mailman/Mailman/Deliverer.py:236
+#: Mailman/MTA/Manual.py:80
+#, fuzzy
+msgid "## %(listname)s mailing list"
+msgstr "la lista \"%(realname)s\""
+
 # /home/mailman/Mailman/Cgi/admindb.py:262
 #: Mailman/MTA/Manual.py:97
 msgid "Mailing list creation request for list %(listname)s"
@@ -8219,6 +8234,7 @@ msgid "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04
 msgstr "%(wday)s %(day)2i %(mon)s %(year)04i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s"
 
 #: bin/add_members:26
+#, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8499,6 +8515,28 @@ msgstr ""
 "(nota che le virgolette rovesciate sono necessarie)\n"
 "\n"
 "Ad operazione completata dovrai eseguire `bin/check_perms -f'.\n"
+
+#: bin/b4b5-archfix.~1~:19 bin/b4b5-archfix.~2~:19
+#, fuzzy
+msgid ""
+"Fix the MM2.1b4 archives.\n"
+"\n"
+"Usage: %(PROGRAM)s [options] file ...\n"
+"\n"
+"Where options are:\n"
+"    -h / --help\n"
+"        Print this help message and exit.\n"
+msgstr ""
+"Rigenera i file data/aliases e data/aliases.db (usati da Postfix).\n"
+"\n"
+"Uso:\n"
+"\n"
+"    genaliases [opzioni]\n"
+"\n"
+"Opzioni:\n"
+"\n"
+"    -h/--help\n"
+"        Scrive questo messaggio di aiuto ed esce.\n"
 
 #: bin/change_pw:19
 msgid ""
@@ -10479,6 +10517,7 @@ msgid "No runner name given."
 msgstr "Non è stato fornito un nome di qrunner."
 
 #: bin/remove_members:19
+#, fuzzy
 msgid ""
 "Remove members from a list.\n"
 "\n"
@@ -11272,6 +11311,7 @@ msgid "Using Mailman version:"
 msgstr "Mailman versione:"
 
 #: bin/withlist:19
+#, fuzzy
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -11587,6 +11627,7 @@ msgstr ""
 "oppure per tutte se non è stata specificata nessuna lista.\n"
 
 #: cron/checkdbs:19
+#, fuzzy
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"

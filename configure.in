@@ -1,4 +1,4 @@
-# Copyright (C) 1998,1999,2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -15,7 +15,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 dnl Process this file with autoconf to produce a configure script.
-AC_REVISION($Revision: 6353 $)
+AC_REVISION($Revision: 6389 $)
 AC_PREREQ(2.0)
 AC_INIT(src/common.h)
 
@@ -97,9 +97,9 @@ except ImportError:
     res = "no"
 else:
     try:
-	distutils.sysconfig.get_config_vars()
+        distutils.sysconfig.get_config_vars()
     except distutils.errors.DistutilsPlatformError:
-	res = "no"
+        res = "no"
     else:
         res = "yes"
 fp = open("conftest.out", "w")
@@ -562,6 +562,7 @@ bin/list_members \
 bin/list_owners \
 bin/mailmanctl \
 bin/mmsitepass \
+bin/msgfmt.py \
 bin/newlist \
 bin/pygettext.py \
 bin/qrunner \
@@ -616,7 +617,7 @@ AC_OUTPUT([misc/paths.py Mailman/Defaults.py Mailman/mm_cfg.py.dist
            cron/crontab.in misc/mailman Makefile
            tests/Makefile tests/bounces/Makefile tests/msgs/Makefile
            $SCRIPTS],
-	echo "configuration completed at" `date`)
+        echo "configuration completed at" `date`)
 
 # Make sure all the build scripts are executable.
 chmod -R +x build
