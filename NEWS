@@ -6,47 +6,109 @@ Here is a history of user visible changes to Mailman.
 
 2.1.3 (XX-Sep-2003)
 
-    - New languages Ukrainian, Serbian, Danish, Euskara/Basque.
+    Performance and Reliability
 
-    - Improvements in the performance of the bounce processor.  Now,
-      instead of processing each bounce immediately (which can cause
-      severe lock contention), bounce events are queued.  Every 15
-      minutes by default, the queued bounce events are processed en
-      masse, on a list-per-list basis, so that each list only needs to
-      be locked once.
+        - Improvements in the performance of the bounce processor.
+          Now, instead of processing each bounce immediately (which
+          can cause severe lock contention), bounce events are queued.
+          Every 15 minutes by default, the queued bounce events are
+          processed en masse, on a list-per-list basis, so that each
+          list only needs to be locked once.
 
-    - When some or all of a message's recipients have temporary
-      delivery failures, the message is moved to a "retry" queue.
-      This queue wakes up occasionally and moves the file back to the
-      outgoing queue for attempted redelivery.  This should fix most
-      observed OutgoingRunner 100% cpu consumption, especially for
-      bounces to local recipients when using the Postfix MTA.
+        - When some or all of a message's recipients have temporary
+          delivery failures, the message is moved to a "retry" queue.
+          This queue wakes up occasionally and moves the file back to
+          the outgoing queue for attempted redelivery.  This should
+          fix most observed OutgoingRunner 100% cpu consumption,
+          especially for bounces to local recipients when using the
+          Postfix MTA.
 
-    - A first draft of member documentation by Terri Oda.  There is
-      also a Japanese translation of this manual by Ikeda Soji.
+        - Optional support for fsync()'ing qfile data after writing.
+          Under some catastrophic system failures (e.g. power lose),
+          it would be possible to lose messages because the data
+          wasn't sync'd to disk.  By setting SYNC_AFTER_WRITE to True
+          in Mailman/Queue/Switchboard.py, you can force Mailman to
+          fsync() queue files after flushing them.  The benefits are
+          debatable for most operating environments, and you must
+          ensure that your Python has the os.fsync() function defined
+          before enabling this feature (it isn't, even on all
+          Unix-like operating systems).
 
-    - In the configuration variables PUBLIC_EXTERNAL_ARCHIVER, and
-      PRIVATE_EXTERNAL_ARCHIVER, %(hostname)s has been added to the
-      list of allowable substitution variables.
+    Internationalization
 
-    - In the News/Mail gateway admin page, the configuration variable
-      nntp_host can now be a name:port pair.
+        - New languages Ukrainian, Serbian, Danish, Euskara/Basque.
 
-    - email 2.5.4 is included.
+        - Fixes to template lookup.  Lists with local overriding
+          templates would find the wrong template.
 
-    - WEB_LINK_COLOR in Defaults.py/mm_cfg.py should now work.
+        - .mo files (for internationalization) are now generated at
+          build time instead of coming as part of the source
+          distribution.
 
-    - Fixes to cron/disabled for NotAMemberError crashes.
+    Documentation
 
-    - New script bin/show_qfiles which prints the contents of .pck
-      message files.  New script bin/discard which can be used to mass
-      discard held messages.
+        - A first draft of member documentation by Terri Oda.  There
+          is also a Japanese translation of this manual by Ikeda Soji.
 
-    - Fixes so that shunted message file names actually match those
-      logged in log/errors.
+    Archiver / Pipermail
 
-    - .mo files (for internationalization) are now generated at build
-      time instead of coming as part of the source distribution.
+        - In the configuration variables PUBLIC_EXTERNAL_ARCHIVER, and
+          PRIVATE_EXTERNAL_ARCHIVER, %(hostname)s has been added to
+          the list of allowable substitution variables.
+
+        - The timezone is now taken into account when figuring the
+          posting date for an article.
+
+    Scripts / Cron
+
+        - Fixes to cron/disabled for NotAMemberError crashes.
+
+        - New script bin/show_qfiles which prints the contents of .pck
+          message files.  New script bin/discard which can be used to
+          mass discard held messages.
+
+        - Fixes to cron/mailpasswds to account for old password-less
+          subscriptions.
+
+        - bin/list_members has grown two new options: --invalid/-i
+          prints only the addresses in the member database that are
+          invalid (which could have snuck in via old releases);
+          --unicode/-u prints addresses which are stored as Unicode
+          objects instead of as normal strings.
+
+    Miscellaneous
+
+        - Fixes to problems in some configurations where Python wouldn't
+          be able to find its standard library.
+
+        - Fixes to the digest which could cause MIME-losing missing
+          newlines when parts are scrubbed via the content filters.
+
+        - In the News/Mail gateway admin page, the configuration variable
+          nntp_host can now be a name:port pair.
+
+        - When messages are pulled from NNTP, the member moderation checks
+          are short-circuited.
+
+        - email 2.5.4 is included.  This fixes an RFC 2231 bug, among
+          possibly others.
+
+        - Fixed some extra spaces that could appear in the List-ID header.
+
+        - Fixes to ensure that invalid email addresses can't be invited.
+
+        - WEB_LINK_COLOR in Defaults.py/mm_cfg.py should now work.
+
+        - Fixes so that shunted message file names actually match
+          those logged in log/errors.
+
+        - An improved pending action cookie generation algorithm has
+          been added.
+
+        - Fixes to the DSN bounce detector.
+
+        - The usual additional u/i, internationalization, unicode, and
+          other miscellaneous fixes.
 
 2.1.2 (22-Apr-2003)
 
