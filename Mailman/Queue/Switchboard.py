@@ -164,7 +164,7 @@ class Switchboard:
             when, digest = filebase.split('+')
             # Throw out any files which don't match our bitrange.  BAW: test
             # performance and end-cases of this algorithm.
-            if not lower or (lower <= long(digest, 16) < upper):
+            if lower is None or (lower <= long(digest, 16) < upper):
                 times[float(when)] = filebase
         # FIFO sort
         keys = times.keys()
