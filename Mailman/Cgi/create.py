@@ -227,7 +227,7 @@ def process_request(doc, cgidata):
 
     # And send the notice to the list owner.
     if notify:
-        siteadmin = Utils.get_site_email(mlist.host_name, 'admin')
+        siteowner = Utils.get_site_email(mlist.host_name, 'owner')
         text = Utils.maketext(
             'newlist.txt',
             {'listname'    : listname,
@@ -235,10 +235,10 @@ def process_request(doc, cgidata):
              'admin_url'   : mlist.GetScriptURL('admin', absolute=1),
              'listinfo_url': mlist.GetScriptURL('listinfo', absolute=1),
              'requestaddr' : mlist.GetRequestEmail(),
-             'siteowner'   : siteadmin,
+             'siteowner'   : siteowner,
              }, mlist=mlist)
         msg = Message.UserNotification(
-            owner, siteadmin,
+            owner, siteowner,
             _('Your new mailing list: %(listname)s'),
             text, mlist.preferred_language)
         msg.send(mlist)
