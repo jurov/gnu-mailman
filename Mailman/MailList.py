@@ -567,7 +567,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 if type(dict) <> DictType:
                     return None, 'Load() expected to return a dictionary'
             except (EOFError, ValueError, TypeError, MemoryError,
-                    cPickle.PicklingError), e:
+                    cPickle.PicklingError, cPickle.UnpicklingError), e:
                 return None, e
         finally:
             fp.close()
