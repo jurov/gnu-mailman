@@ -427,6 +427,9 @@ def update_qfiles():
     # data out and re-queue them.
     for dirname in os.listdir(mm_cfg.QUEUE_DIR):
         dirpath = os.path.join(mm_cfg.QUEUE_DIR, dirname)
+        if dirpath == mm_cfg.BADQUEUE_DIR:
+            # The files in qfiles/bad can't possibly be pickles
+            continue
         sb = Switchboard(dirpath)
         for filename in os.listdir(dirpath):
             filepath = os.path.join(dirpath, filename)
