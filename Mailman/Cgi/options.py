@@ -163,22 +163,23 @@ def main():
         # Because they can't supply a password for unsubscribing, we'll need
         # to do the confirmation dance.
         if mlist.isMember(user):
-            # If unsubs require admin approval, then this request has to be
-            # held.  Otherwise, send a confirmation.
-            if mlist.unsubscribe_policy:
-                try:
-                    mlist.Lock()
+            # We must acquire the list lock in order to pend a request.
+            try:
+                mlist.Lock()
+                # If unsubs require admin approval, then this request has to
+                # be held.  Otherwise, send a confirmation.
+                if mlist.unsubscribe_policy:
                     mlist.HoldUnsubscription(user)
                     doc.addError(_("""Your unsubscription request has been
                     forwarded to the list administrator for approval."""),
                                  tag='')
-                    mlist.Save()
-                finally:
-                    mlist.Unlock()
-            else:
-                mlist.ConfirmUnsubscription(user, userlang)
-                doc.addError(_('The confirmation email has been sent.'),
-                             tag='')
+                else:
+                    mlist.ConfirmUnsubscription(user, userlang)
+                    doc.addError(_('The confirmation email has been sent.'),
+                                 tag='')
+                mlist.Save()
+            finally:
+                mlist.Unlock()
         else:
             # Not a member
             if mlist.private_roster == 0:
