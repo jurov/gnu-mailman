@@ -53,10 +53,9 @@ SETUPCMD=	setup.py --quiet install $(SETUPINSTOPTS)
 PKGDIR= 	$(srcdir)
 
 EMAILPKG=	email-2.5.4
-JACODECSPKG=	JapaneseCodecs-1.4.9
-KOCODECSPKG=	KoreanCodecs-2.0.5
+CJKCODECSPKG=	CJKCodecs-1.0
 
-PACKAGES= $(EMAILPKG) $(JACODECSPKG) $(KOCODECSPKG)
+PACKAGES= $(EMAILPKG) $(CJKCODECSPKG)
 
 # Modes for directories and executables created by the install
 # process.  Default to group-writable directories but

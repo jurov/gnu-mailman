@@ -1,19 +1,19 @@
 # -*- python -*-
 
-# Copyright (C) 1998,1999,2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software 
+# along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 # This file becomes paths.py which is installed in may directories.  By
@@ -49,12 +49,8 @@ sitedir = os.path.join(sys.prefix, 'lib', 'python'+sys.version[:3],
 sys.path.append(sitedir)
 
 
-# In a normal interactive Python environment, the japanese.pth and korean.pth
-# files would be imported automatically.  But because we inhibit the importing
-# of the site module, we need to be explicit about importing these codecs.
-import japanese
-# As of KoreanCodecs 2.0.5, you had to do the second import to get the Korean
-# codecs installed, however leave the first import in there in case an upgrade
-# changes this.
-import korean
-import korean.aliases
+# We explicitly import CJKCodecs here since we inhibit the importing of the
+# site module.  As of CJKCodecs-1.0, you have to do the second import.  We may
+# have to re-activate the first line if an upgrade changes this.
+#import cjkcodecs
+import cjkcodecs.aliases
