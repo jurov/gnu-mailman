@@ -1,5 +1,6 @@
 # translation of mailman.po to 
 # translation of mailman.po to
+# translation of mailman.po to
 # translation of mailman.po to deutsch
 # translation of mailman.po to Deutsch
 # Deutsche Übersetzung der Mailman messages
@@ -13,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Wed Jan 12 17:21:06 2005\n"
-"PO-Revision-Date: 2005-01-18 18:27+0100\n"
+"PO-Revision-Date: 2005-01-19 01:06+0100\n"
 "Last-Translator: Peer Heinlein <p.heinlein@jpberlin.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4049,7 +4050,7 @@ msgstr "Estonian"
 
 #: Mailman/Defaults.py:1307
 msgid "Euskara"
-msgstr ""
+msgstr "Euskarisch"
 
 #: Mailman/Defaults.py:1308
 msgid "Finnish"
@@ -4131,7 +4132,7 @@ msgstr "Schwedisch"
 
 #: Mailman/Defaults.py:1326
 msgid "Turkish"
-msgstr ""
+msgstr "Türkisch"
 
 #: Mailman/Defaults.py:1327
 msgid "Ukrainian"
@@ -4503,6 +4504,9 @@ msgid ""
 "             score, above which they are automatically disabled, but not\n"
 "             removed from the mailing list."
 msgstr ""
+"Jeder Teilnehmer besitzt einen \"Bounce Score\", eine Fließkommazahl. Wannimmer Mailman einen Bounce eines Teilnehmers erhält, wird dessen Bounce Score erhöht: Ein Hard Bounce (fatale Fehler) erhöhen den Wert um 1, ein Soft Bounce (temporäre Fehler) erhöhen den Bounce Score nur um 0,5. "
+"Nur ein Bounce am Tag zählt -- 10 Bounces am gleichen Tag erhöhen den Wert also nur um 1. \n"
+"Dieser Wert hier beschreibt das obere Limit für den Bounce Score eines Mitglieds. Wird er überschritten, so wird der Teilnehmer deaktiviert und erhält keine weiteren Mails mehr, wird aber noch nicht aus der Liste ausgetragen. "
 
 #: Mailman/Gui/Bounce.py:102
 msgid ""
@@ -5252,7 +5256,6 @@ msgstr "Präfix für Betreffzeile der Listennachrichten"
 
 # Mailman/Gui/General.py:117
 #: Mailman/Gui/General.py:144
-#, fuzzy
 msgid ""
 "This text will be prepended to subject lines of messages\n"
 "             posted to the list, to distinguish mailing list messages in in\n"
@@ -5270,7 +5273,9 @@ msgstr ""
 "vorangestellt, um die Mitteilungen innerhalb der Mailbox-Zusammenfassungen "
 "unterscheiden zu können. Hierbei gilt: In der Kürze liegt die Würze! Es ist "
 "eine gute Idee, lange Listennamen durch etwas knapperes zu ersetzen, solange "
-"dies die Liste immer noch einwandfrei identifiziert."
+"dies die Liste immer noch einwandfrei identifiziert.\n"
+"Sie können mit dem Platzhalter %%d auch eine laufende Nummer einfügen lassen. Ein [listname %%d] wird beispielsweise zu [listname 123], ein (listname %%05d) wird zu (listname 00123).\n"
+" "
 
 # Mailman/Gui/Privacy.py:222
 #: Mailman/Gui/General.py:155
@@ -6153,6 +6158,13 @@ msgid ""
 "        page.\n"
 "</ul>\n"
 msgstr ""
+"Wenn <a href=\"?VARHELP=nondigest/personalize\">Personalisierte Mails</a> aktiviert sind, werden zusätzliche Variablen in den Headern und Footern möglich:\n"
+"<ul><li><b>user_address</b> - Die Mail-Adresse des Users in Kleinbuchstaben\n"
+"    <li><b>user_delivered_to</b> - Die Orginal-Adresse mit der der User eingetragen ist.\n"
+"    <li><b>user_password</b> - Das Passwort des Users.\n"
+"    <li><b>user_name</b> - Der Realname des Users.\n"
+"    <li><b>user_optionsurl</b> - Die URL zur persönlichen Optionsseite des Users."
+"</ul>\n"
 
 # Mailman/Gui/NonDigest.py:41
 #: Mailman/Gui/NonDigest.py:128
@@ -6180,7 +6192,7 @@ msgstr "Der Text wurde ans Ende jeder sofort zuzustellenden Nachricht hinzugefüg
 
 #: Mailman/Gui/NonDigest.py:140
 msgid "Scrub attachments of regular delivery message?"
-msgstr ""
+msgstr "Attachments und e-Mails aufsplitten?"
 
 #: Mailman/Gui/NonDigest.py:141
 msgid ""
@@ -6188,7 +6200,7 @@ msgid ""
 "             area and links are made in the message so that the member can\n"
 "             access via web browser. If you want the attachments totally\n"
 "             disappear, you can use content filter options."
-msgstr ""
+msgstr "Wenn Sie Mails und Attachments aufsplitten, werden die Anhänge in den Mailarchiven separat gespeichert und in die Nachricht selbst wird ein Link eingefüt, der auf das Attachment verweist. Wenn Sie Attachments vollständig weglöschen lassen wollen, so können Sie dafür die Content Filter nutzen."
 
 # Mailman/Cgi/confirm.py:203 Mailman/Cgi/options.py:658
 #: Mailman/Gui/Passwords.py:27
@@ -6917,9 +6929,8 @@ msgstr "Header-Filter"
 
 # Mailman/Gui/Topics.py:70
 #: Mailman/Gui/Privacy.py:376
-#, fuzzy
 msgid "Filter rules to match against the headers of a message."
-msgstr "Stichwörter (eines pro Zeile), nach denen in jeder Nachricht gesucht wird."
+msgstr "Filter-Regeln die auf den Header der Nachricht angewandt werden."
 
 #: Mailman/Gui/Privacy.py:378
 msgid ""
@@ -6986,14 +6997,10 @@ msgstr ""
 "<em>forbidden_posters</em>. "
 
 #: Mailman/Gui/Privacy.py:472
-#, fuzzy
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
-msgstr ""
-"Die Definition eines Themens benötigt die Angabe eines Namens und\n"
-"eines entsprechenden Suchmusters. Unvollständige Themendefinitionen\n"
-"werden ignoriert."
+msgstr "Header Filter bestehen aus einem Musterausdruck. Unvollständige Filter-Regeln werden ignoriert."
 
 #: Mailman/Gui/Privacy.py:480
 msgid ""
@@ -7321,6 +7328,9 @@ msgid ""
 "                the <a href=\"?VARHELP=gateway/linked_newsgroup\">linked\n"
 "                newsgroup</a> fields are filled in."
 msgstr ""
+"Sie können nicht die Konvertierung aktivieren, solange nicht sowohl das"
+"Feld mit dem <a href=\"?VARHELP=gateway/nntp_host\">Newsserver</a> "
+"als auch das Feld mit der <a href=\"?VARHELP=gateway/linked_newsgroup\">Newsgruppe</a> ausgefüllt sind."
 
 #: Mailman/HTMLFormatter.py:47
 msgid "%(listinfo_link)s list run by %(owner_link)s"
@@ -7902,6 +7912,9 @@ msgid ""
 "Name: %(filename)s\n"
 "Url: %(url)s\n"
 msgstr ""
+"Ein eingebundener Text mit undefiniertem Zeichensatz wurde abgetrennt.\n"
+"Name: %(filename)s\n"
+"URL: %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:214
 msgid "HTML attachment scrubbed and removed"
@@ -8934,7 +8947,6 @@ msgid "   %(file)s: okay"
 msgstr "   %(file)s: in Ordnung"
 
 #: bin/check_perms:19
-#, fuzzy
 msgid ""
 "Check the permissions for the Mailman installation.\n"
 "\n"
@@ -8944,7 +8956,7 @@ msgid ""
 "permissions or group ownership.  With -f (and run as root), fix all the\n"
 "permission problems found.  With -v be verbose.\n"
 msgstr ""
-"Überprüfe die Dateizugriffsrechte für die Mailman-Installation.\n"
+"Überprüft die Dateizugriffsrechte einer Mailman-Installation.\n"
 "\n"
 "Benutzung: %(PROGRAM)s [-f] [-v] [-h]\n"
 "\n"
@@ -9390,7 +9402,7 @@ msgstr "Attribut \"%(k)s\" wurde geändert"
 
 #: bin/config_list:264
 msgid "Non-standard property restored: %(k)s"
-msgstr ""
+msgstr "Nicht-Standard-Einstellung wurde wiederhergestellt: %(k)s"
 
 #: bin/config_list:272
 msgid "Invalid value for property: %(k)s"
@@ -11971,9 +11983,8 @@ msgid "%(count)d %(realname)s moderator request(s) waiting"
 msgstr "%(count)d %(realname)s Moderatoranforderung(en) warten"
 
 #: cron/checkdbs:123
-#, fuzzy
 msgid "%(realname)s moderator request check result"
-msgstr "%(count)d %(realname)s Moderatoranforderung(en) warten"
+msgstr "%(realname)s Moderatoranforderungen warten"
 
 # Mailman/Cgi/admin.py:707
 #: cron/checkdbs:143
