@@ -355,7 +355,7 @@ def check_global_password(response, siteadmin=True):
 
 
 def websafe(s):
-    return cgi.escape(s, quote=1)
+    return cgi.escape(s, quote=True)
 
 
 def nntpsplit(s):
