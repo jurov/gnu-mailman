@@ -283,7 +283,8 @@ Url: %(url)s
         # If the message isn't a multipart, then we'll strip it out as an
         # attachment that would have to be separately downloaded.  Pipermail
         # will transform the url into a hyperlink.
-        elif not part.is_multipart():
+        # TK: Confirm also part is not None. (bug-id: 1099138)
+        elif part and not part.is_multipart():
             payload = part.get_payload(decode=True)
             ctype = part.get_type()
             size = len(payload)
@@ -326,7 +327,8 @@ Url : %(url)s
         # generalizing to utf-8, and that's probably a good idea (eventually).
         text = []
         for part in msg.walk():
-            if part.get_content_maintype() == 'multipart':
+            # TK: bug-id 1099138 and multipart
+            if not part or part.is_multipart():
                 continue
             # All parts should be scrubbed to text/plain by now.
             partctype = part.get_content_type()
