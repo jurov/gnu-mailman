@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-03-08 11:50+0100\n"
+"PO-Revision-Date: 2004-05-31 17:36+0200\n"
 "Last-Translator: David Martínez Moreno <ender@rediris.es>\n"
 "Language-Team: Español <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1197,7 +1197,7 @@ msgid ""
 msgstr ""
 "Pulsar sobre el número\n"
 "            de mensajes para ver el mensaje\n"
-"            indivudualmente, o puede"
+"            individualmente, o puede "
 
 #: Mailman/Cgi/admindb.py:457
 msgid "view all messages from %(esender)s"
@@ -2477,7 +2477,7 @@ msgstr "%(days)d %(units)s"
 
 #: Mailman/Cgi/options.py:738
 msgid "Change My Address and Name"
-msgstr "Cambar mi dirección y mi nombre"
+msgstr "Cambiar mi dirección y mi nombre"
 
 #: Mailman/Cgi/options.py:762
 msgid "<em>No topics defined</em>"
@@ -2528,7 +2528,7 @@ msgstr ""
 "    se le envíe por correo electrónico dándole con el\n"
 "    ratón al botón que está más abajo. Si solo\n"
 "    quiere anular su suscripción de esta lista, déle con el\n"
-"    ratón al botón <em>Desuscribirs</em>, se le mandará\n"
+"    ratón al botón <em>Desuscribir</em>, se le mandará\n"
 "    um mensaje de confirmación.\n"
 "\n"
 "    <p><strong><em>Importante:</em></strong> A partir de este instante, "
@@ -3790,7 +3790,7 @@ msgid ""
 "invitation to your list.  We just thought you'd like to know.  No further\n"
 "action by you is required."
 msgstr ""
-"%(address)s fué invitada a una lista de distribución diferente, pero en\n"
+"%(address)s fue invitada a una lista de distribución diferente, pero en\n"
 "un deliberado intento malintencionado trataron de confirmar la invitación\n"
 "a su lista. Hemos pensado que le gustaría saberlo. No hace falta que\n"
 "haga nada por su parte."
@@ -3809,9 +3809,8 @@ msgstr ""
 "parte."
 
 #: Mailman/Deliverer.py:212
-#, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "Recordatorio de la lista de distribución %(listfullname)s"
+msgstr "Mensaje de prueba de la lista de distribución %(listname)s"
 
 #: Mailman/Errors.py:114
 msgid "For some unknown reason"
@@ -4160,6 +4159,21 @@ msgid ""
 "             score, above which they are automatically disabled, but not\n"
 "             removed from the mailing list."
 msgstr ""
+"A cada suscriptor se le asigna un tanteo de rechazo, almacenado en\n"
+"             un número en punto flotante.   Siempre que mailman recibe un\n"
+"             mensaje rebotado de un suscriptor de la lista, incrementa el\n"
+"             tanteo correspondiente de dicho suscriptor.  Los rebotes\n"
+"             severos (errores fatales) incrementan el tanteo en 1,\n"
+"             mientras que los rebotes leves (errores temporales) lo\n"
+"             incrementan en 0.5. El tanteo de un suscriptor solo se ve\n"
+"             afectado al día como mucho por un mensaje de rebote, de\n"
+"             manera que aún recibiendo 10 mensajes de rebote el mismo\n"
+"             día, su tanteo solo se incrementará en 1.\n"
+"\n"
+"             Esta variable describe el límite superior del tanteo de rechazo\n"
+"             (o rebote) del subscriptor, por encima del cual, se le\n"
+"             inhabilitará la recepción del correo, pero no se le dará\n"
+"             de baja de la lista de distribución."
 
 #: Mailman/Gui/Bounce.py:102
 msgid ""
@@ -5052,7 +5066,6 @@ msgstr ""
 "recomienda <em> enérgicamente</em>."
 
 #: Mailman/Gui/General.py:169
-#, fuzzy
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5101,39 +5114,28 @@ msgstr ""
 "             quitará Poniendo este valor a <em>Esta lista</em> o a\n"
 "             <em>Dirección explícita</em> hace que Mailman inserte una\n"
 "             cabecera específica en todos los mensajes, sobreescribiendo la\n"
-"             cabecera del mensaje original si fuese necesario "
-"(<em>Dirección\n"
+"             cabecera del mensaje original si fuese necesario (<em>Dirección\n"
 "             explícita</em> inserta el valor \n"
-"             <a href=\"?VARHELP=general/reply_to_address\">reply_to_address</"
-"a>)\n"
+"             <a href=\"?VARHELP=general/reply_to_address\">reply_to_address</a>)\n"
 " \n"
-"             <p>Hay muchas razones para no presentar o sobresescribir la "
-"cabecera              <tt>Reply-To:</tt>. Una de ellas es porque algunos "
-"envíos a la lista\n"
+"             <p>Hay muchas razones para no presentar o sobresescribir la cabecera\n"
+"             <tt>Reply-To:</tt>. Una de ellas es porque algunos remitentes\n"
 "             dependen de su propia configuración <tt>Reply-To:</tt> para\n"
-"             conseguir que las respuestas lleguen. Otra razón se debe a que\n"
-"             modificando la cabecera <tt>Reply-To:</tt> hace que sea más "
-"dificil\n"
+"             conseguir transmitir su dirección de respuesta. Otra razón se debe a que\n"
+"             modificando la cabecera <tt>Reply-To:</tt> hace que sea más dificil\n"
 "             mandar respuestas privadas. Véase \n"
-"             <a href=\"http://www.unicom.com/pw/reply-to-harmful.html"
-"\">`Reply-To' Munging\n"
-"             Considered Harmful </a> para una discusión general sobre este "
-"tema\n"
+"             <a href=\"http://www.unicom.com/pw/reply-to-harmful.html\">`Reply-To' Munging\n"
+"             Considered Harmful </a> para una discusión general sobre este tema\n"
 "             \n"
-"             <p>Algunas listas de distribución tienen restringida la "
-"capacidad de\n"
+"             <p>Algunas listas de distribución tienen restringida la capacidad de\n"
 "             mandar mensajes, \n"
 "             con una lista paralela dedicada a discusiones. Como ejemplo\n"
-"             están las listas `patches' o `checkin', donde los cambios al "
-"software\n"
-"             se envían por un sistema de control de versiones, pero las "
-"discusiones\n"
-"             sobre los cambios ocurren en una lista de distribución de "
-"desarrolladores.\n"
-"             Para poder tratar estos tipos de listas de distribución, "
-"seleccione\n"
-"             <tt>Direccioón explícita</tt> e indique la dirección\n"
-"             <tt>Reply-To:</tt> debajo para apuntar a la lista paralela"
+"             están las listas `patches' o `checkin', donde los cambios al software\n"
+"             se envían por un sistema de control de versiones, pero las discusiones\n"
+"             sobre los cambios ocurren en una lista de distribución de desarrolladores.\n"
+"             Para poder tratar estos tipos de listas de distribución, seleccione\n"
+"             <tt>Dirección explícita</tt> e indique la dirección\n"
+"             <tt>Reply-To:</tt> debajo para apuntar a la lista paralela."
 
 #: Mailman/Gui/General.py:201
 msgid "Explicit <tt>Reply-To:</tt> header."
@@ -7274,23 +7276,23 @@ msgstr ""
 
 #: Mailman/HTMLFormatter.py:138
 msgid "; it was disabled by you"
-msgstr "; fué inhabilitada por ti"
+msgstr "; fue inhabilitada por usted"
 
 #: Mailman/HTMLFormatter.py:140
 msgid "; it was disabled by the list administrator"
-msgstr "; fué inhabilitada por el administrador de su lista"
+msgstr "; fue inhabilitada por el administrador de su lista"
 
 #: Mailman/HTMLFormatter.py:144
 msgid ""
 "; it was disabled due to excessive bounces.  The\n"
 "            last bounce was received on %(date)s"
 msgstr ""
-"; fué inhabilitada por demasiados mensajes rebotados. El\n"
+"; fue inhabilitada por demasiados mensajes rebotados. El\n"
 "        último mensaje rebotado se recibió el %(date)s"
 
 #: Mailman/HTMLFormatter.py:147
 msgid "; it was disabled for unknown reasons"
-msgstr "; fué inhabilitado por algún motivo desconocido"
+msgstr "; fue inhabilitado por algún motivo desconocido"
 
 #: Mailman/HTMLFormatter.py:149
 msgid "Note: your list delivery is currently disabled%(reason)s."
@@ -7852,7 +7854,7 @@ msgstr "Today's Topics (%(msgcount)d mensajes)"
 
 #: Mailman/Handlers/ToDigest.py:308
 msgid "[Message discarded by content filter]"
-msgstr ""
+msgstr "[Mensaje descartado por el filtro de contenido]"
 
 #: Mailman/Handlers/ToDigest.py:323
 msgid "digest footer"
@@ -9406,15 +9408,15 @@ msgstr "Por favor, especifique -p o -m."
 
 #: bin/dumpdb:135
 msgid "[----- start pickle file -----]"
-msgstr ""
+msgstr "[----- principio del fichero pickle -----]"
 
 #: bin/dumpdb:140
 msgid "[----- end pickle file -----]"
-msgstr ""
+msgstr "[----- final del fichero pickle -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
-msgstr ""
+msgstr "<----- principio del objecto %(cnt)s ----->"
 
 #: bin/find_member:19
 msgid ""
@@ -10705,6 +10707,33 @@ msgid ""
 "\n"
 "This script is provided for convenience purposes only.  It isn't supported.\n"
 msgstr ""
+"\n"
+"Reduce el espacio usado en disco de los archivos de pipermail.\n"
+"\n"
+"Sintaxis: %(PROGRAM)s [opciones] fichero ...\n"
+"\n"
+"Donde las opciones son:\n"
+"    -h / --help\n"
+"       Muestra este mensaje y sale.\n"
+"\n"
+"Utilice esto solo para 'corregir' el archivo de la base de datos de los\n"
+"artículos que se hayan escrito con mailman 2.1.3 o anterior y tengan\n"
+"atributos html_body dentre de ellos.   Estos atributos puenden causar\n"
+"problemas de memoria y afectar el rendimiento en aquellas listas que tengan\n"
+"un tasa de actividad alta, particularmente en aquellas donde se hayan\n"
+"enviado mensajes con un contenido grande.\n"
+"\n"
+"Ejemplo:\n"
+"\n"
+"%% ls -1 archives/private/*/database/*-article | xargs %(PROGRAM)s\n"
+"\n"
+"Debería ejecutar `bin/check_perms -f' después de ejectuar este guión.\n"
+"\n"
+"Posiblemente querrá borrar los ficheros -article.bak creados por este\n"
+"guión cuando esté satisfecho con los resultados.\n"
+"\n"
+"Este guión se suministra únicamente por motivos de conveniencia. No\n"
+"está soportado."
 
 #: bin/rb-archfix.~1~:21
 msgid ""
@@ -10742,6 +10771,33 @@ msgid ""
 "script\n"
 "when you are satisifed the upad\n"
 msgstr ""
+"Reduce el espacio usado en disco de los ficheros de Pipermail.\n"
+"\n"
+"Use únicamente este guión si ha instalado correctamente el parche\n"
+"fixarchiver-2.1.3-0.1.patch con el que venía este fichero. Si lo usa\n"
+"sin haber instalado el resto del parche (incluyendo rearrancar mailmanctl)\n"
+"le echará por alto del día entero.\n"
+"\n"
+"Sintaxis: %(PROGRAM)s [opciones] fichero ...\n"
+"\n"
+"Donde las opciones son:\n"
+"      -h / --help\n"
+"       Muestra este mensaje y sale.\n"
+"\n"
+"Utilice esto solo para 'corregir' el archivo de la base de datos de los\n"
+"artículos que se hayan escrito con mailman 2.1.3 o anterior y tengan\n"
+"atributos html_body dentre de ellos.   Estos atributos puenden causar\n"
+"problemas de memoria y afectar el rendimiento en aquellas listas que tengan\n"
+"un tasa de actividad alta, particularmente en aquellas donde se hayan\n"
+"enviado mensajes con un contenido grande. Uselo de esta manera estando\n"
+"situado en su directorio $PREFIX.\n"
+"\n"
+"%% ls -1 archives/private/*/database/*-article | xargs %(PROGRAM)s\n"
+"\n"
+"(observe que las comillas invertidas hacen falta)\n"
+"\n"
+"Posiblemente querrá borrar los ficheros -article.bak creados por este\\n\"\n"
+"\"guión cuando esté satisfecho con los resultados."
 
 #: bin/remove_members:19
 msgid ""
@@ -11424,9 +11480,8 @@ msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- tanto %(o_tmpl)s como %(n_tmpl)s existen, dejándolo intacto"
 
 #: bin/update:363
-#, fuzzy
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
-msgstr "- tanto %(o_tmpl)s como %(n_tmpl)s existen, dejándolo intacto"
+msgstr "- %(o_tmpl)s no existe, dejándolo intacto"
 
 #: bin/update:393
 msgid "removing directory %(src)s and everything underneath"
@@ -11450,25 +11505,23 @@ msgstr "actualizando los qfiles antiguos"
 
 #: bin/update:509
 msgid "message is unparsable: %(filebase)s"
-msgstr ""
+msgstr "El mensaje es inanalizable: %(filebase)s"
 
 #: bin/update:538
-#, fuzzy
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
-msgstr "Actualizando la base de datos de peticiones pendientes antigua"
+msgstr "Actualizando la base de datos de peticiones pendientes de Mailman 2.0"
 
 #: bin/update:549
-#, fuzzy
 msgid "Updating Mailman 2.1.4 pending.pck database"
-msgstr "Actualizando la base de datos de peticiones pendientes antigua"
+msgstr "Actualizando la base de datos pending.pck de Mailman 2.1.4"
 
 #: bin/update:573
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
-msgstr ""
+msgstr "Ignorando los datos pendientes corruptos: %(key)s: %(val)s"
 
 #: bin/update:589
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
-msgstr ""
+msgstr "ATENCION: Ignorando el ID  pendiente duplicado: %(id)s."
 
 #: bin/update:642
 msgid "getting rid of old source files"
