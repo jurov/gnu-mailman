@@ -1262,7 +1262,8 @@ def change_options(mlist, category, subcat, cgidata, doc):
                         mlist.InviteNewMember(userdesc, invitation)
                 else:
                     mlist.ApprovedAddMember(userdesc, send_welcome_msg,
-                                            send_admin_notif, invitation)
+                                            send_admin_notif, invitation,
+                                            whence='admin mass sub')
             except Errors.MMAlreadyAMember:
                 subscribe_errors.append((entry, _('Already a member')))
             except Errors.MMBadEmailError:
@@ -1353,7 +1354,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
         for user in users:
             if cgidata.has_key('%s_unsub' % user):
                 try:
-                    mlist.ApprovedDeleteMember(user)
+                    mlist.ApprovedDeleteMember(user, whence='member mgt page')
                     removes.append(user)
                 except Errors.NotAMemberError:
                     errors.append((user, _('Not subscribed')))
