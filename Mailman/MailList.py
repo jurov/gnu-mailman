@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -1303,20 +1303,19 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     #
     def HasExplicitDest(self, msg):
         """True if list name or any acceptable_alias is included among the
-        to or cc addrs."""
-        # BAW: fall back to Utils.ParseAddr if the first test fails.
-        # this is the list's full address
+        addresses in the recipient headers.
+        """
+        # This is the list's full address.
         listfullname = '%s@%s' % (self.internal_name(), self.host_name)
         recips = []
-        # check all recipient addresses against the list's explicit addresses,
+        # Check all recipient addresses against the list's explicit addresses,
         # specifically To: Cc: and Resent-to:
         to = []
         for header in ('to', 'cc', 'resent-to', 'resent-cc'):
             to.extend(getaddresses(msg.get_all(header, [])))
         for fullname, addr in to:
-            # It's possible that if the header doesn't have a valid
-            # (i.e. RFC822) value, we'll get None for the address.  So skip
-            # it.
+            # It's possible that if the header doesn't have a valid RFC 2822
+            # value, we'll get None for the address.  So skip it.
             if addr is None:
                 continue
             addr = addr.lower()
@@ -1325,40 +1324,39 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                     localpart == self.internal_name() or
                     # exact match against the complete list address
                     addr == listfullname):
-                return 1
+                return True
             recips.append((addr, localpart))
-        #
-        # helper function used to match a pattern against an address.  Do it
+        # Helper function used to match a pattern against an address.
         def domatch(pattern, addr):
             try:
-                if re.match(pattern, addr):
-                    return 1
+                if re.match(pattern, addr, re.IGNORECASE):
+                    return True
             except re.error:
                 # The pattern is a malformed regexp -- try matching safely,
                 # with all non-alphanumerics backslashed:
-                if re.match(re.escape(pattern), addr):
-                    return 1
-        #
+                if re.match(re.escape(pattern), addr, re.IGNORECASE):
+                    return True
+            return False
         # Here's the current algorithm for matching acceptable_aliases:
         #
         # 1. If the pattern does not have an `@' in it, we first try matching
         #    it against just the localpart.  This was the behavior prior to
-        #    2.0beta3, and is kept for backwards compatibility.
-        #    (deprecated).
+        #    2.0beta3, and is kept for backwards compatibility.  (deprecated).
         #
         # 2. If that match fails, or the pattern does have an `@' in it, we
         #    try matching against the entire recip address.
+        aliases = self.acceptable_aliases.splitlines()
         for addr, localpart in recips:
-            for alias in self.acceptable_aliases.split('\n'):
+            for alias in aliases:
                 stripped = alias.strip()
                 if not stripped:
-                    # ignore blank or empty lines
+                    # Ignore blank or empty lines
                     continue
                 if '@' not in stripped and domatch(stripped, localpart):
-                    return 1
+                    return True
                 if domatch(stripped, addr):
-                    return 1
-        return 0
+                    return True
+        return False
 
     def parse_matching_header_opt(self):
         """Return a list of triples [(field name, regex, line), ...]."""
