@@ -103,7 +103,7 @@ class SecurityManager:
                 # A bad system error
                 raise TypeError, 'No user supplied for AuthUser context'
             secret = self.getMemberPassword(user)
-            key += 'user+%s' % Utils.ObscureEmail(user)
+            key += 'user+%s' % Utils.ObscureEmail(user).replace('/','%2f')
         elif authcontext == mm_cfg.AuthListModerator:
             secret = self.mod_password
             key += 'moderator'

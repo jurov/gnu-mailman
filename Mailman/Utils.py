@@ -199,7 +199,7 @@ def LCDomain(addr):
 
 
 # TBD: what other characters should be disallowed?
-_badchars = re.compile(r'[][()<>|;^,/\200-\377]')
+_badchars = re.compile(r'[][()<>|;^,\000-\037\177-\377]')
 
 def ValidateEmail(s):
     """Verify that the an email address isn't grossly evil."""
