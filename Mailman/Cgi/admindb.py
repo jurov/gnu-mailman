@@ -155,7 +155,7 @@ def main():
         realname = mlist.real_name
         if not cgidata.keys():
             # If this is not a form submission (i.e. there are no keys in the
-            # form), then all we don't need to do much special.
+            # form), then we don't need to do much special.
             doc.SetTitle(_('%(realname)s Administrative Database'))
         elif not details:
             # This is a form submission
