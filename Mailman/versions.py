@@ -402,6 +402,7 @@ def NewVars(l):
     add_only_if_missing('pass_filename_extensions', [])
     # automatic discard
     add_only_if_missing('max_days_to_hold', 0)
+    add_only_if_missing('nonmember_rejection_notice', '')
 
 
 

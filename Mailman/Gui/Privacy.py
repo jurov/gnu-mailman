@@ -306,6 +306,12 @@ class Privacy(GUIBase):
              _("""Should messages from non-members, which are automatically
              discarded, be forwarded to the list moderator?""")),
 
+            ('nonmember_rejection_notice', mm_cfg.Text, (10, WIDTH), 1,
+             _("""Text to include in any rejection notice to be sent to
+             non-members who post to this list. This notice can include
+             the list's owner address by %%(listowner)s and replaces the
+             internally crafted default message.""")),
+
             ]
 
         recip_rtn = [
