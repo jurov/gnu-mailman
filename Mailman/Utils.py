@@ -34,6 +34,7 @@ import errno
 import time
 import cgi
 import htmlentitydefs
+import email.Header
 import email.Iterators
 from types import UnicodeType
 from string import whitespace, digits
@@ -57,6 +58,7 @@ except NameError:
     False = 0
 
 EMPTYSTRING = ''
+UEMPTYSTRING = u''
 NL = '\n'
 DOT = '.'
 IDENTCHARS = ascii_letters + digits + '_'
@@ -794,6 +796,7 @@ def uncanonstr(s, lang=None):
         # Nope, it contains funny characters, so html-ref it
         return uquote(s)
 
+
 def uquote(s):
     a = []
     for c in s:
@@ -804,3 +807,15 @@ def uquote(s):
             a.append(c)
     # Join characters together and coerce to byte string
     return str(EMPTYSTRING.join(a))
+
+
+def oneline(s, cset):
+    # Decode header string in one line and convert into specified charset
+    try:
+        h = email.Header.make_header(email.Header.decode_header(s))
+        ustr = h.__unicode__()
+        line = UEMPTYSTRING.join(ustr.splitlines())
+        return line.encode(cset, 'replace')
+    except (LookupError, UnicodeError):
+        # possibly charset problem. return with undecoded string in one line.
+        return EMPTYSTRING.join(s.splitlines())
