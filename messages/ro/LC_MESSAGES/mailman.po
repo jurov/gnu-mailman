@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-05-30 22:12+0300\n"
+"PO-Revision-Date: 2004-07-11 17:50+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr "%(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:890
 msgid "The Week Of Monday %(day)i %(month)s %(year)i"
-msgstr "Luni, %(day)i %(month)s %(year)i"
+msgstr "Sãptãmâna ce începe Luni, %(day)i %(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:894
 msgid "%(day)i %(month)s %(year)i"
@@ -171,7 +171,7 @@ msgstr "Fãrã subiect"
 
 #: Mailman/Archiver/pipermail.py:276
 msgid "Creating archive directory "
-msgstr "Creez directorul pentru arhivã "
+msgstr "Creez directorul arhivei "
 
 #: Mailman/Archiver/pipermail.py:288
 #, fuzzy
@@ -196,7 +196,7 @@ msgstr "#%(counter)05d %(msgid)s"
 
 #: Mailman/Bouncer.py:44
 msgid "due to excessive bounces"
-msgstr "datoritã eºecurilor (bounces) excesive"
+msgstr "datoritã eºecurilor de livrare (bounces) excesive"
 
 #: Mailman/Bouncer.py:45
 msgid "by yourself"
@@ -218,11 +218,11 @@ msgstr "dezactivat"
 
 #: Mailman/Bouncer.py:190
 msgid "Bounce action notification"
-msgstr "Notificare de eºec (bounce)"
+msgstr "Notificare de eºec la livrare (bounce)"
 
 #: Mailman/Bouncer.py:245
 msgid " The last bounce received from you was dated %(date)s"
-msgstr "Ultimul eºec email din partea dumneavoastrã este datat %(date)s"
+msgstr "Ultimul eºec la livrarea mesajelor cãtre adresa dumneavoastrã este datat %(date)s"
 
 #: Mailman/Bouncer.py:270 Mailman/Deliverer.py:136
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:233
@@ -257,7 +257,6 @@ msgid "Authorization failed."
 msgstr "Autorizarea a eºuat."
 
 #: Mailman/Cgi/admin.py:181
-#, fuzzy
 msgid ""
 "You have turned off delivery of both digest and\n"
 "                non-digest messages.  This is an incompatible state of\n"
@@ -265,12 +264,10 @@ msgid ""
 "                non-digest delivery or your mailing list will basically be\n"
 "                unusable."
 msgstr ""
-"Aþi dezactivat atât livrarea rezumatelor, cât ºi\n"
+"Aþi dezactivat atât livrarea pe volume, cât ºi\n"
 "a mesajelor normale.  Aceasta este o stare inacceptabilã.\n"
-"Trebuie sã activaþi una din metodele de livrare (rezumat "
-"sau\n"
-"mesaje normale), altfel lista dumneavoastrã devine practic\n"
-"inutilizabilã."
+"Trebuie sã activaþi mãcar una din metodele de livrare (volume de mesaje sau\n"
+"mesaje normale), altfel lista dumneavoastrã devine practic inutilizabilã."
 
 #: Mailman/Cgi/admin.py:185 Mailman/Cgi/admin.py:191 Mailman/Cgi/admin.py:196
 #: Mailman/Cgi/admin.py:1435 Mailman/Gui/GUIBase.py:190
@@ -282,9 +279,8 @@ msgid ""
 "You have digest members, but digests are turned\n"
 "                off. Those people will not receive mail."
 msgstr ""
-"Aveþi membrii ce vor doar rezumate zilnice, dar livrarea\n"
-"rezumatelor este anulatã. Aceºti membrii\n"
-"vor primi mesaje."
+"Aveþi abonaþi ce doresc doar volume zilnice ale mesajelor, dar livrarea de volume este anulatã.\n"
+"Aceºti membri nu vor putea primi mesaje."
 
 #: Mailman/Cgi/admin.py:194
 msgid ""
@@ -292,9 +288,8 @@ msgid ""
 "                turned off.  They will receive mail until you fix this\n"
 "                problem."
 msgstr ""
-"Aveþi membri ce doresc sã primeascã mesajele individual, dar\n"
-"                acestea sunt dezactivare.  Ei nu vor primi mesaje pânã\n"
-"                la rezolvarea acestei probleme."
+"Aveþi abonaþi ce doresc livrarea de mesaje individuale, dar acestea sunt dezactivate.\n"
+"Ei nu vor primi mesaje pânã la rezolvarea acestei probleme."
 
 #: Mailman/Cgi/admin.py:218
 msgid "%(hostname)s mailing lists - Admin Links"
@@ -312,9 +307,7 @@ msgstr "Mailman"
 msgid ""
 "<p>There currently are no publicly-advertised %(mailmanlink)s\n"
 "            mailing lists on %(hostname)s."
-msgstr ""
-"<p>În acest moment nu sunt liste de discuþii %(mailmanlink)s\n"
-"publice la %(hostname)s."
+msgstr "<p>Nu sunt liste de discuþii %(mailmanlink)s publice la adresa %(hostname)s.</p>"
 
 #: Mailman/Cgi/admin.py:261
 msgid ""
@@ -322,9 +315,8 @@ msgid ""
 "            %(mailmanlink)s mailing lists on %(hostname)s.  Click on a list\n"
 "            name to visit the configuration pages for that list."
 msgstr ""
-"<p>Mai jos aveþi toate listele de discuþii %(mailmanlink)s publice la\n"
-"la %(hostname)s.  Faceþi click pe numele listei pentru a-i\n"
-"accesa pagina de configurare."
+"<p>Mai jos sunt toate listele de discuþii %(mailmanlink)s publice la %(hostname)s.\n"
+"Clic pe numele listei pentru a-i accesa pagina de configurare.</p>"
 
 #: Mailman/Cgi/admin.py:268
 msgid "right "
@@ -341,13 +333,9 @@ msgid ""
 "\n"
 "        <p>General list information can be found at "
 msgstr ""
-"Pentru a accesa paginile de configurare administrative în cazul\n"
-"        unei liste nepublicate, deschideþi un URL similar cu acesta,\n"
-"        dar având un '/' ºi numele %(extra)sal listei adãugate.  Dacã aveþi\n"
-"        autoritatea necesarã, puteþi de asemenea, <a href=\"%(creatorurl)s"
-"\">crea o nouã listã de discuþii</a>.\n"
+"Pentru a accesa paginile de configurare administrative în cazul unei liste nepublicate, deschideþi un URL similar cu acesta, dar având un '/' ºi numele %(extra)s al listei adãugate.  Dacã aveþi autoritatea necesarã, puteþi de asemenea, <a href=\"%(creatorurl)s\">crea o nouã listã de discuþii</a>.\n"
 "\n"
-"        <p>Informaþii generale despre listã puteþi gãsi la "
+"<p>Puteþi gãsi informaþii generale despre listã la "
 
 #: Mailman/Cgi/admin.py:277
 msgid "the mailing list overview page"
@@ -359,7 +347,7 @@ msgstr "<p>(Trimiteþi întrebãrile ºi comentariile la "
 
 #: Mailman/Cgi/admin.py:289 Mailman/Cgi/listinfo.py:135 cron/mailpasswds:198
 msgid "List"
-msgstr "Lista"
+msgstr "Lista de discuþii"
 
 #: Mailman/Cgi/admin.py:290 Mailman/Cgi/admin.py:556
 #: Mailman/Cgi/listinfo.py:136
@@ -375,13 +363,12 @@ msgid "No valid variable name found."
 msgstr "Nu am gãsit un nume valid de variabilã."
 
 #: Mailman/Cgi/admin.py:339
-#, fuzzy
 msgid ""
 "%(realname)s Mailing list Configuration Help\n"
 "    <br><em>%(varname)s</em> Option"
 msgstr ""
 "Ajutor la configurarea listei de discuþii %(realname)s\n"
-"    Opþiunea<br><em>%(varname)s</em>"
+"Opþiunea<br><em>%(varname)s</em>"
 
 #: Mailman/Cgi/admin.py:346
 #, fuzzy
@@ -4527,13 +4514,18 @@ msgid ""
 "             addresses of the list moderators</a>.  Note that the field you\n"
 "             are changing here specifies the list administrators."
 msgstr ""
+"Existã douã roluri de proprietate  asociate cu fiecare listã.\n"
+"<p><em>Administratorii listei</em> sunt persoane care au controlul absolut asupra tuturor parametrilor acestei liste. Aceºtia au dreptul ºi posibilitatea de a modifica orice variabile de configurare prin intermediul acestor pagini web.</p> "
+"<p><em>Moderatorii listei</em> au permisiuni limitate, ei neavând dreptul de a modifica nici o variabilã de configurare a listei, dar au permisiunea de a procesa cererile în aºteptare, inclusiv aprobarea sau respingerea cererilor de abonare ºi procesarea mesajelor din coada de moderare.  Desigur, ºi <em>administratorii listei</em> au acest drept.</p>\n"
+"\n"
+"<p>Pentru a putea separa sarcinile de proprietate în categoriile administrative ºi de moderare, trebuie sã <a href=\"passwords\">setaþi o parolã separate de moderare</a>, ºi de asemenea sã publicaþi <a href=\"?VARHELP=general/moderator\">adresele de e-mail ale moderatorilor listei</a>.  Nu uitaþi cã acest câmp la care faceþi modificãri specificã administratorii listei.</p>"
 
 #: Mailman/Gui/General.py:99
 msgid ""
 "The list moderator email addresses.  Multiple\n"
 "             moderator addresses, each on separate line is okay."
 msgstr ""
-"Adresele de email ale moderatorilor listei.  Adresele\n"
+"Adresele de e-mail ale moderatorilor listei.  Adresele\n"
 "multiple trebuie scrise separat, câte una pe rând."
 
 #: Mailman/Gui/General.py:102
@@ -4562,6 +4554,12 @@ msgid ""
 "             this section.  Note that the field you are changing here\n"
 "             specifies the list moderators."
 msgstr ""
+"Existã douã roluri de proprietate  asociate cu fiecare listã.\n"
+"<p><em>Administratorii listei</em> sunt persoane care au controlul absolut asupra tuturor parametrilor acestei liste. Aceºtia au dreptul ºi posibilitatea de a modifica orice variabile de configurare prin intermediul acestor pagini web.</p>\n"
+"\n"
+"<p><em>Moderatorii listei</em> au permisiuni limitate, ei neavând dreptul de a modifica nici o variabilã de configurare a listei, dar au permisiunea de a procesa cererile în aºteptare, inclusiv aprobarea sau respingerea cererilor de abonare ºi procesarea mesajelor din coada de moderare.  Desigur, ºi <em>administratorii listei</em> au acest drept.</p>\n"
+"\n"
+"<p>Pentru a putea separa sarcinile de proprietate în categoriile administrative ºi de moderare, trebuie sã <a href=\"passwords\">setaþi o parolã separate de moderare</a>, ºi de asemenea sã publicaþi <a href=\"?VARHELP=general/moderator\">adresele de e-mail ale moderatorilor listei</a>.  Nu uitaþi cã acest câmp la care faceþi modificãri specificã moderatorii listei.</p>"
 
 #: Mailman/Gui/General.py:123
 msgid "A terse phrase identifying this list."
@@ -4588,10 +4586,10 @@ msgid ""
 "             for more info."
 msgstr ""
 "O descriere introductivã - cãteva paragrafe - despre listã.\n"
-"             Va fi inclusã, ca ºi cod HTML, la începutul paginii\n"
-"             de informaþii generale despre listã.  Carriage return\n"
-"             separã paragrafele - vedeþi detaliile pentru mai multe\n"
-"             informaþii."
+"Va fi inclusã, ca ºi cod HTML, la începutul paginii\n"
+"de informaþii generale despre listã.  Carriage return\n"
+"separã paragrafele - vedeþi detaliile pentru mai multe\n"
+"informaþii."
 
 #: Mailman/Gui/General.py:135
 msgid ""
@@ -4606,7 +4604,7 @@ msgid ""
 "             display of the entire listinfo page."
 msgstr ""
 "Textul va fi tratat ca  cod HTML <em>exceptând</em> faptul cã\n"
-"rândurile noi vor fi traduse în &lt;br&gt; - deci puteþi folosi link-uri,\n"
+"rândurile noi vor fi traduse în <strong>&lt;br&gt;</strong> - deci puteþi folosi link-uri,\n"
 "text formatat, etc. , dar nu introduceþi CR (rând nou) decât în cazurile\n"
 "în care doriþi separarea paragrafelor.  ªi nu uitaþi sã revizuiþi toate modificãrile;\n"
 "codul HTML eronat (precum unele link-uri cu cod neterminat) pot împiedica\n"
@@ -4653,7 +4651,7 @@ msgstr "Sã ºterg orice header de genul <tt>Reply-To:</tt> din mesajul original ?
 
 #: Mailman/Gui/General.py:163
 msgid "Explicit address"
-msgstr "Adresa explicitã"
+msgstr "Adresã explicitã"
 
 #: Mailman/Gui/General.py:163
 msgid "Poster"
@@ -4664,7 +4662,6 @@ msgid "This list"
 msgstr "Aceastã listã"
 
 #: Mailman/Gui/General.py:164
-#, fuzzy
 msgid ""
 "Where are replies to list messages directed?\n"
 "             <tt>Poster</tt> is <em>strongly</em> recommended for most "
@@ -4672,7 +4669,7 @@ msgid ""
 "             lists."
 msgstr ""
 "Unde sunt trimise replicile la mesajele listei ?\n"
-"            <tt>Poster</tt> este <em>recomandat</em> pentru majoritatea listelor de discuþii."
+"<tt>Expeditor</tt> este <em>recomandat</em> pentru majoritatea listelor de discuþii."
 
 #: Mailman/Gui/General.py:169
 msgid ""
@@ -4715,6 +4712,28 @@ msgid ""
 "             <tt>Reply-To:</tt> address below to point to the parallel\n"
 "             list."
 msgstr ""
+"Aceastã opþiune controleazã ce va face Mailman cu headerul <tt>Reply-To:</tt>\n"
+"în mesajele publicate pe aceastã listã.\n"
+"Atunci când are valoarea <em>Expeditor</em>,\n"
+"nici un header <tt>Reply-To:</tt> nu este adãugat,\n"
+"deºi dacã acest header existã în mesajul original, nu va fi eliminat.\n"
+"\n"
+"Setarea acestui parametru la oricare din valorile\n"
+"<em>Aceastã listã</em> sau <em>Adresã explicitã</em>\n"
+"va determina Mailman sã insereze un header specific <tt>Reply-To:</tt>\n"
+"în toate mesajele, suprascriind orice header anterior.\n"
+"(<em>Explicit address</em> va insera valoarea adresei <a href=\"?VARHELP=general/reply_to_address\">reply_to_address</a>).\n"
+"\n"
+"<p>Existã multe motive pentru a nu introduce sau modifica headerul <tt>Reply-To:</tt>\n"
+"Unul dintre ele ar fi faptul cã anumiþi expeditori depind de propriul lor header <tt>Reply-To:</tt>\n"
+"pentru a publica o adresã validã de retur.  Un alt motiv ar fi acela cã modificarea headerului\n"
+"<tt>Reply-To:</tt> face foarte dificilã trimiterea de replici private.\n"
+"Urmãriþi link-ul <a href=\"http://www.unicom.com/pw/reply-to-harmful.html\">'Reply-"
+"To' Munging Considered Harmful</a> pentru o discuþie generalã privind acest aspect.\n"
+"Vizitaþi apoi ºi link-ul <a href=\"http://www.metasystema.org/essays/reply-to-useful.mhtml\">'Reply-To' Munging Considered Useful</a> pentru o opinie contrarã.</p>\n"
+"\n"
+"<p>Unele liste de discuþii au restricþii de publicare, cu liste paralele dedicate pentru discuþii.\n"
+"Exemplu sunt listele 'patches' sau 'checkin', unde modificãrile de software se fac de cãtre un sistem de control al reviziilor, iar discuþiile se poartã pe o listã a dezvoltatorilor.  Pentru a permite funcþionarea acestor tipuri de liste, selectaþi <tt>Adresã explicitã</tt> ºi setaþi adresa <tt>Reply-To:</tt> de mai jos spre lista paralelã."
 
 #: Mailman/Gui/General.py:201
 msgid "Explicit <tt>Reply-To:</tt> header."
@@ -4759,6 +4778,13 @@ msgid ""
 "             <p>Note that if the original message contains a\n"
 "             <tt>Reply-To:</tt> header, it will not be changed."
 msgstr ""
+"Aceasta este adresa stabilitã în headerul <tt>Reply-To:</tt> când opþiunea <a href=\"?VARHELP=general/reply_goes_to_list\">reply_goes_to_list</a> este setatã pentru o adresã explicitã (<em>Explicit address</em>).\n"
+"\n"
+"<p>Existã multe motive pentru a nu introduce sau suprascrie headerul <tt>Reply-To:</tt>.  Unul ar fi acela cã anumiþi abonaþi depind de setãrile proprii <tt>Reply-To:</tt> pentru a anunþa o adresã validã de returnare.  Un alt motiv ar fi acela cã modificarea headerului <tt>Reply-To:</tt> face foarte dificilã trimiterea de rãspunsuri personale.  Vizitaþi link-ul <a href=\"http://www.unicom.com/pw/reply-to-harmful.html\">'Reply-To' Munging Considered Harmful</a> pentru o discuþie generalã despre acest subiect. Apoi vizitaþi link-ul <a href=\"http://www.metasystema.org/essays/reply-to-useful.mhtml\">Reply-To Munging Considered Useful</a> pentru a studia ºi o opinie contrarã.</p>\n"
+"\n"
+"<p>Unele liste de discuþii au restricþii de publicare a mesajelor cu liste paralele dedicate discuþiilor.  Exemple de asemenea liste ar fi listele de actualizare (patch lists) sau de verificare (checkin lists), unde modificãrile de software sunt publicate de un sistem de control al reviziilor, dar discuþiile despre modificãri se poartã pe olistã de discuþii de dezvoltare.  Pentru a veni în sprijinul acestui tip de liste, specificaþi adresa explicitã <tt>Reply-To:</tt> aici.  Trebuie, de asemenea, sã specificaþi ºi <tt>Explicit address</tt> în variabila <tt>reply_goes_to_list</tt></p>\n"
+"\n"
+"<p>Notaþi cã în cazul în care mesajul original conþine un header <tt>Reply-To:</tt> explicit, acesta nu va fi modificat."
 
 #: Mailman/Gui/General.py:232
 #, fuzzy
@@ -4848,6 +4874,14 @@ msgid ""
 "                 <li>A blank line separates paragraphs.\n"
 "             </ul>"
 msgstr ""
+"Acest text (dacã existã), va fi adãugat înaintea mesajului de bun venit pentru fiecare nou abonat.  Restul mesajului specificã adresele importante ºi URL-urile pentru aceastã listã de discuþii, deci nu trebuie sã adãugaþi aceste informaþii aici.  Acest text trebuie sã conþinã doar detalii specifice, precum regulile de etichetã sau de orientare a listei.\n"
+"\n"
+"<p>Notaþi cã acest text va fi formatat conform urmãtoarelor reguli:\n"
+"<ul> "
+"<li>Fiecare paragraf este completat astfel încât rândurile nu sunt mai lungi de 70 de caractere.</li> "
+"<li>Orice rând care începe cu spaþii nu este completat;</li> "
+"<li>O linie goalã separã douã paragrafe</li> "
+"</ul>"
 
 #: Mailman/Gui/General.py:289
 msgid "Send welcome message to newly subscribed members?"
@@ -5143,6 +5177,14 @@ msgid ""
 "             extra, or missing spaces between the prefix and the original\n"
 "             header."
 msgstr ""
+"Dacã limba implicitã a listei dumneavoastrã foloseºte un set de caractere non-ASCII\n"
+"ºi prefixul conþine caractere non-ASCII, atunci prefixul va fi totdeauna encodat folosind\n"
+"cele mai apropiate standarde.  Totuºi, dacã prefixul dumneavoastrã conþine doar caractere ASCII\n"
+"puteþi seta aceastã opþiune la valoarea <em>Niciodatã</em> pentru a dezactiva encodarea prefixului.\n"
+"Acest fapt poate duce la headere de subiect ceva mai inteligibile pentru clienþii de e-mail ce nu suportã corect encodãrile non-ASCII.\n"
+"\n"
+"<p>Notaþi faptul cã totuºi, dacã lista dumneavoastrã primeºte atât headere de subiect encodate, cât ºi ne-encodate, va trebui sã alegeþi <em>Dupã caz</em>.  Folosind aceastã opþiune, Mailman nu va encoda\n"
+"prefixele ASCII atunci când restul headerului conþine doar caractere ASCII, dar va encoda prefixul dacã headerul conþine ºi caractere non-ASCII.  Astfel se eliminã o ambiguitate în standarde, ce ar putea determina unii clienþi de e-mail sã afiºeze spaþii în plus sau lipsã între prefix ºi headerul original."
 
 #: Mailman/Gui/Membership.py:26
 msgid "Membership&nbsp;Management..."
@@ -5192,6 +5234,7 @@ msgid ""
 msgstr "Sã personalizeze Mailman fiecare livrare individualã (non-digest)?. Acest fapt este deseori util în cazul listelor de anunþuri, dar citiþi <a href=\"?VARHELP=nondigest/personalize\">secþiunea de detalii</a> pentru a vedea implicaþiile în performanþã."
 
 #: Mailman/Gui/NonDigest.py:60
+#, fuzzy
 msgid ""
 "Normally, Mailman sends the regular delivery messages to\n"
 "                 the mail server in batches.  This is much more efficent\n"
@@ -5248,6 +5291,13 @@ msgid ""
 "                 </ul>\n"
 "                 "
 msgstr ""
+"În mod normal, Mailman trimite mesajele normale în pachete cãtre serverul de mail.  Acest mod este mai eficient, deoarece reduce traficul dintre Mailman ºi server.\n"
+"\n"
+"<p>Totuºi, unele liste pot câºtiga de pe urma unei abordãri mai personale.  În acest caz, Mailman va genera câte un mesaj nou pentru fiecare abonat al listei.  Activarea acestei opþiuni poate scãdea performanþele listei dumneavoastrã deci va trebui sã luaþi în calcul dacã acest tip de personalizare meritã aplicat, sau dacã nu existã ºi alte metode de a obþine rezultatul dorit.  De asemenea, va trebui sã monitorizaþi încãrcarea sistemului dumneavoastrã, pentru a vã asigura cã este î?n limite acceptabile.</p>\n"
+"\n"
+"<p>Alegeþi <em>Nu</em> pentru a dezactiva personalizarea mesajelor ºi a le trimite în pachete.  Alegeþi <em>Da</em> pentru a personaliza livrarea ºi a permite adãugarea de variabile suplimentare în headere ºi footere. (vezi mai jos).  În plus, selecând opþiunea <em>Personalizare completã</em>, headerul <code>To:</code> al mesajului publicat va fi modificat pentru a conþine adresa abonatului, în loc de adresa de publicare a listei.</p>\n"
+"\n"
+"<p>"
 
 #: Mailman/Gui/NonDigest.py:109
 msgid ""
@@ -5267,6 +5317,15 @@ msgid ""
 "        page.\n"
 "</ul>\n"
 msgstr ""
+"Când esse activatã <a href=\"?VARHELP=nodigest/personalize\">personalizarea</a> pentru aceastã listã, sunt permise variabile de substituþie suplimentare în header ºi footer:\n"
+"\n"
+"<ul>\n"
+"<li><b>user_address</b> - adresa utilizatorului, forþatã la caractere minuscule;</li>\n"
+"<li><b>user_delivered_to</b> - adresa de abonare, cu caracterele iniþiale folosite la abonare;</li> "
+"<li><b>user_password</b> - parola utilizatorului;</li>\n"
+"<li><b>user_name</b> - numele întreg al utilizatorului;</li> "
+"<li><b>user_optionsurl</b> - adresa url cãtre pagina de opþiuni a utilizatorului;</li> "
+"</ul>\n"
 
 #: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
@@ -5334,6 +5393,7 @@ msgid "What steps are required for subscription?<br>"
 msgstr "Ce paºi sunt necesari pentru abonare?<br>"
 
 #: Mailman/Gui/Privacy.py:64
+#, fuzzy
 msgid ""
 "None - no verification steps (<em>Not\n"
 "                           Recommended </em>)<br>\n"
@@ -5353,6 +5413,9 @@ msgid ""
 "                           from creating subscriptions for others without\n"
 "                           their consent."
 msgstr ""
+"Nimic - nu existã paºi de verificare (<em>Nu se recomandã!</em>)<br  />\n"
+"Confirmare (*) - este necesarã confirmarea adresei de email;<br />\n"
+"Confirmare ºi aprobare"
 
 #: Mailman/Gui/Privacy.py:87
 msgid ""
@@ -5369,6 +5432,11 @@ msgid ""
 "                           mischievous (or malicious) people from creating\n"
 "                           subscriptions for others without their consent."
 msgstr ""
+"Confirnare (*) - confirmarea e-mailului este necesarã <br>\n"
+"Aprobarea este necesarã - necesitã aprobarea abonãrii de cãtre administratorul listei <br>\n"
+"Confirmare ºi aprobare - atât confirmarea e-mailului, cât ºi aprobarea administratorului listei sunt necesare.<br>\n"
+"\n"
+"<p>(*) când cineva solicitã o abonare, Mailman îi trimite o notã de confirmare, conþinând un cod unic de confirmare; pentru a se abona, utilizatorul trebuie sã rãspundã la aceastã notã de confirmare.<br /> Astfel se previne abonarea abuzivã, fãrã acordul utilizatorului."
 
 #: Mailman/Gui/Privacy.py:103
 msgid ""
@@ -5528,13 +5596,14 @@ msgid ""
 "            use a single backslash).\n"
 "\n"
 "            <p>Note that non-regexp matches are always done first."
-msgstr ""
+msgstr "Când un mesaj este publicat "
 
 #: Mailman/Gui/Privacy.py:195
 msgid "Member filters"
 msgstr "Filtre membri"
 
 #: Mailman/Gui/Privacy.py:198
+#, fuzzy
 msgid "By default, should new list member postings be moderated?"
 msgstr "În mod implicit, mesajele noilor membri sunt moderate?"
 
@@ -5562,6 +5631,9 @@ msgid ""
 "             <a href=\"%(adminurl)s/members\">membership management\n"
 "             screens</a>."
 msgstr ""
+"Fiecare membru abonal al listei are un <em>fanion de moderare</em> care indicã dacã mesajele de la acest abonat pot fi publicate direct pe listã, sau trebuie mai întâi aprobate de moderatorul listei.  Atunci când fanionul de moderare este activat, mesajele trimise spre publicare trebuie mai întâi aprobate.  Dumnevoastrã, în calitate de administrator, puteþi decide dacã mesajele unui anumit abonat sã fie moderate sau nu.\n"
+"\n"
+"<p>Când un nou membru se aboneazã, starea iniþialã a fanionului sãu de moderare ia valoarea acestei opþiuni.  Dezactivaþi aceastã opþiune pentru a accepta implicit mesajele noilor abonaþi.  Activaþi aceastã opþiune pentru a modera implicit primele mesaje ale noilor abonaþi.  Veþi putea seta oricând manual fanionul de moderare pentru fiecare abonat în parte, folosind <a href=\"%(adminurl)s/members\">paginile de administrare ale abonamentelor</a>."
 
 #: Mailman/Gui/Privacy.py:217
 msgid ""
@@ -5674,6 +5746,9 @@ msgid ""
 "             <p>Add member addresses one per line; start the line with a ^\n"
 "             character to designate a regular expression match."
 msgstr ""
+"Mesajele trimise de oricare dintre aceºti non-membri vor fi automat respinse.  Cu alte cuvinte, mesajele lor vor fi returnate expeditorului, cu o notificare a respingerii automate.  Aceastã opþiune nu este cea mai potrivitã în cazul spammerilor recunoscuþi, în cazul lor mesajele trebuind <a href=\"?VARHELP=privacy/sender/discard_these_nonmembers\">ignorate automat</a>.\n"
+"\n"
+"<p>Adãugaþi adresele câte una pe linie; începeþi fiecare linie cu un caracter <strong>^</strong> pentru a desemna o expresie regulatã</p>."
 
 #: Mailman/Gui/Privacy.py:276
 msgid ""
@@ -5695,6 +5770,10 @@ msgid ""
 "             <p>Add member addresses one per line; start the line with a ^\n"
 "             character to designate a regular expression match."
 msgstr ""
+"Mesajele trimise de oricare dintre aceºti non-membri vor fi automat ignorate.  Cu alte cuvinte, mesajele vor fi ºterse fãrã nici o procesare sau notificare ulterioarã.  Deºi expeditorul nu va primi nici o notificare sau vreun mesaj returnat, moderatorii listei au opþiunea de a <a href=\"?VARHELP=privacy/sender/"
+"forward_auto_discards\">primi copii ale mesajelor auto-ignorate</a>.\n"
+"\n"
+"<p>Adãugaþi adresele câte una pe linie; începeþi fiecare linie cu un caracter <strong>^</strong> pentru a desemna o expresie regulatã</p>."
 
 #: Mailman/Gui/Privacy.py:291
 msgid ""
@@ -5717,12 +5796,19 @@ msgid ""
 "action\n"
 "             is taken."
 msgstr ""
+"Când este recepþionat un mesaj de la un expeditor neabonat,\n"
+"adresa expeditorului este comparatã cu adresele din listele adreselor explicit\n"
+"<a href=\"?VARHELP=privacy/sender/accept_these_nonmembers\">acceptate</a>,\n"
+"<a href=\"?VARHELP=privacy/sender/hold_these_nonmembers\">reþinute</a>,\n"
+"<a href=\"?VARHELP=privacy/sender/reject_these_nonmembers\">respinse</a> (bounced),\n"
+"ºi respectiv <a href=\"?VARHELP=privacy/sender/discard_these_nonmembers\">ignorate</a>.\n"
+"Dacã nu este gãsitã nici o corespondenþã, atunci este aplicatã aceastã acþiune."
 
 #: Mailman/Gui/Privacy.py:306
 msgid ""
 "Should messages from non-members, which are automatically\n"
 "             discarded, be forwarded to the list moderator?"
-msgstr "Sã fie mesajele de la expeditori neabonaþi, care sunt automat ignorate, trimise ºi la moderatorul listei?"
+msgstr "Sã trimit moderatorior listei o copie a mesajelor de la expeditori neabonaþi, care sunt automat ignorate?"
 
 #: Mailman/Gui/Privacy.py:312
 msgid ""
@@ -5741,6 +5827,7 @@ msgid ""
 msgstr "Trebuie mesajele sã aibã adresa listei la destinatar (câmpurile to, cc), sau sã fie printre alias-urile acceptate, specificate mai jos ?"
 
 #: Mailman/Gui/Privacy.py:322
+#, fuzzy
 msgid ""
 "Many (in fact, most) spams do not explicitly name their\n"
 "             myriad destinations in the explicit destination addresses - in\n"
@@ -5759,7 +5846,7 @@ msgid ""
 "                 specifies acceptable aliases for the list.\n"
 "\n"
 "             </ol>"
-msgstr ""
+msgstr "Multe (de fapt majoritatea) mesajelor spam nu afiºeazã în mod explicit miliardele de destinaþii gestionate în câmpurile explicite de adresã de destinaþie."
 
 #: Mailman/Gui/Privacy.py:340
 msgid ""
@@ -5839,6 +5926,9 @@ msgid ""
 "after\n"
 "             the first match."
 msgstr ""
+"Fiecare regulã a filtrelor de headere are douã pãrþi, o listã de expresii regulate --câte una pe linie --, ºi o acþiune de urmat.  Mailman comparã headerele mesajelor cu fiecare expresie regulatã din regulã, ºi dacã se potrivesc, mesajul este respins, reþinut sau ignorat, conform acþiunii specificate.  Folosiþi <em>Amânã</em> pentru a dezactiva temporar o regulã.\n"
+"\n"
+"PPuteþi avea mai mult de o regulã de filtrare pentru lista dumneavoastrã.  În acest caz, fiecare regulã este comparatã pe rând, procesul oprindu-se la prima  concordanþã."
 
 #: Mailman/Gui/Privacy.py:389
 #, fuzzy
@@ -5870,12 +5960,20 @@ msgid ""
 "             can be circumvented in a number of ways, e.g. by escaping or\n"
 "             bracketing it."
 msgstr ""
+"Folosiþi aceastã opþiune pentru a interzice publicarea mesajelor, pe baza unor valori specifice ale headerelor.  Valoarea þintã este o expresie regulatã ce va fi comparatã cu headerul specificat.  Comparaþia se face neþinând cont de tipul literelor (majuscule sau minuscule).  Liniile care încep cu # sunt ignorate, fiind considerate comentarii.\n"
+"\n"
+"<p>De exemplu:\n"
+"<pre>to: .*@public.com </pre> spune sã reþin toate mesajele cu un header e-mail care conþine '@public.com' orinude printre adrese. </p>\n"
+"\n"
+"<p>Notaþi cã spaþiile goale de la începutul regexp-ului sunt eliminate. Acest fapt poate fi evitat prin mai multe moduri, de exemplu punându-l în paranteze sau prin escape.</p>"
 
 #: Mailman/Gui/Privacy.py:465
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
-msgstr "Regulile de filtrare la headere necesitã un ºablon. Regulile de filtrare incomplete vor fi ignorate."
+msgstr ""
+"Regulile de filtrare la headere necesitã un ºablon.\n"
+"Regulile de filtrare incomplete vor fi ignorate."
 
 #: Mailman/Gui/Privacy.py:473
 msgid ""
@@ -5955,6 +6053,8 @@ msgid ""
 "             until a non-header-like line is encountered.\n"
 "             "
 msgstr ""
+"Comparatorul de topici va scana acest numãr de linii din mesaj,\n"
+"cãutând cuvinte cheie care sã se potriveascã. Scanarea corpului mesajului se terminã la atingerea numãrului de linii specificat, sau la întâlnirea unei linii de tip non-header.  Setând aceastã valoare la zero, nici o linie din corpul mesajului nu va fi scanatã (adicã doar headerele <code>Keywords:</code> ºi <code>Subject:</code> vor fi scanate.  Setând valoarea la un numãr negativ, atunci toate liniile mesajului vor fi scanate, pânã la întâlnirea unei linii non-header."
 
 #: Mailman/Gui/Topics.py:82
 msgid "Topic keywords, one per line, to match against each message."
@@ -5974,6 +6074,8 @@ msgid ""
 "             contain a <code>Keywords:</code> and <code>Subject:</code>\n"
 "             \"header\" on which matching is also performed."
 msgstr ""
+"Fiecare cuvânt cheie de topicã este de fapt o expresie regulatã, ºi care este comparatã cu anumite pãrþi ale unui mesaj e-mail, cel puþin headerele <code>Keywords:</code> ºi <code>Subject:</code>.\n"
+"Notaþi cã primele câteva linii ale copului mesajului pot conþine, de asemenea, un \"header\" <code>Keywords:</code> ºi <code>Subject:</code>, care va fi de asemenea parcurs pentru comparare."
 
 #: Mailman/Gui/Topics.py:119
 msgid ""
@@ -6126,7 +6228,7 @@ msgid ""
 "             the newsgroup yourself, and you marked all current messages as\n"
 "             <em>read</em>.  By catching up, your mailing list members will\n"
 "             not see any of the earlier messages."
-msgstr ""
+msgstr "Când spuneþi agentului Mailman sã facã o preluare (catchup) de pe un newsgroup, asta înseamnã cã doriþi sã începeþi direcþionarea mesajelor cãtre lista de discuþii, de la primul mesaj nou gãsit.  Toate mesajele anterioare de pe newsgroup vor fi ignorate.  Asta e ca ºi cum aþi fi citit singur newsgroup-ul ºi aþi fi marcat toate mesajele curente ca fiind <em>citite</em>.  Prin preluare, membrii listei dumneavoastrã nu vor putea vedea nici unul din mesajele anterioare."
 
 #: Mailman/Gui/Usenet.py:121
 msgid "Mass catchup completed"
@@ -6235,7 +6337,7 @@ msgid ""
 "to\n"
 "            this address.  Your bounce score will be automatically reset if\n"
 "            the problems are corrected soon."
-msgstr ""
+msgstr "<p>Recent am primit câteva notificãri de eºec în cazul livrãrii mesajelor la adresa dumneavoastrã.  <em>Scorul de eºec</em> în cazul dumneavoastrã este de %(score)s faþã de maximul admis %(total)s.  Vã rugãm sã verificaþi corectitudinea adresei dumneavoastrã de abonare, precum ºi faptul cã nu sunt probleme de livrare la aceastã adresã.  Scorul dumneavoastrã de eºec va fi resetat automat dacã problemele se rezolvã în timp scurt.</p>"
 
 #: Mailman/HTMLFormatter.py:179
 msgid ""
@@ -7306,6 +7408,15 @@ msgid ""
 "\n"
 "    %(adminurl)s\n"
 msgstr ""
+"Administratorul site-ului de la adresa %(hostname)s v-a modificat parola de acces la lista de discuþii %(listname)s.  Aceasta este acum\n"
+"\n"
+"    %(notifypassword)s\n"
+"\n"
+"Asiguraþi-vã cã o veþi folosi pentru administrarea ulterioarã a listei.\n"
+"Puteþi intra acum în secþiunea de administrare a listei dumneavoastrã,\n"
+"pentru a schimba parola cu una mai convenabilã.\n"
+"\n"
+"Pagina de administrare a listei dumneavoastrã este %(adminurl)s\n"
 
 #: bin/check_db:19
 msgid ""
@@ -8142,6 +8253,7 @@ msgid "Could not open file for writing:"
 msgstr "Nu am putut deschide fiºierul pentru scriere:"
 
 #: bin/list_owners:19
+#, fuzzy
 msgid ""
 "List the owners of a mailing list, or all mailing lists.\n"
 "\n"
@@ -8166,6 +8278,12 @@ msgid ""
 "of\n"
 "        all the lists will be displayed.\n"
 msgstr ""
+"Lista proprietarilor unei liste de discuþii, sau a tuturor listelor de discuþii\n"
+"\n"
+"Folosire: %(PROGRAM)s [opþiuni] [numelistã ...]\n"
+"Opþiuni:\n"
+"\n"
+"    "
 
 #: bin/mailmanctl:19
 msgid ""
@@ -8280,20 +8398,29 @@ msgid "Stale pid file removed."
 msgstr "Fiºierul stale lock pid a fost ºters."
 
 #: bin/mailmanctl:219
+#, fuzzy
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if "
 "another\n"
 "master qrunner is already running.\n"
 msgstr ""
+"The master qrunner lock could not be acquired because it appears as if "
+"another\n"
+"master qrunner is already running.\n"
 
 #: bin/mailmanctl:225
+#, fuzzy
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there "
 "is\n"
 "a stale master qrunner lock.  Try re-running mailmanctl with the -s flag.\n"
 msgstr ""
+"The master qrunner lock could not be acquired.  It appears as though there "
+"is\n"
+"a stale master qrunner lock.  Try re-running mailmanctl with the -s flag.\n"
 
 #: bin/mailmanctl:231
+#, fuzzy
 msgid ""
 "The master qrunner lock could not be acquired, because it appears as if "
 "some\n"
@@ -8307,6 +8434,17 @@ msgid ""
 "\n"
 "Exiting."
 msgstr ""
+"The master qrunner lock could not be acquired, because it appears as if "
+"some\n"
+"process on some other host may have acquired it.  We can't test for stale\n"
+"locks across host boundaries, so you'll have to do this manually.  Or, if "
+"you\n"
+"know the lock is stale, re-run mailmanctl with the -s flag.\n"
+"\n"
+"Lock file: %(LOCKFILE)s\n"
+"Lock host: %(status)s\n"
+"\n"
+"Exiting."
 
 #: bin/mailmanctl:278 cron/mailpasswds:119
 msgid "Site list is missing: %(sitelistname)s"
@@ -8596,9 +8734,8 @@ msgid "All runs all the above qrunners"
 msgstr "Toate funcþioneazã peste instanþele qrunners de mai sus."
 
 #: bin/qrunner:213
-#, fuzzy
 msgid "No runner name given."
-msgstr "Lipseºte numele."
+msgstr "Lipseºte numele runner-ului."
 
 #: bin/rb-archfix:21
 msgid ""
@@ -8633,6 +8770,7 @@ msgid ""
 msgstr ""
 
 #: bin/rb-archfix.~1~:21
+#, fuzzy
 msgid ""
 "Reduce disk space usage for Pipermail archives.\n"
 "\n"
@@ -8668,6 +8806,37 @@ msgid ""
 "script\n"
 "when you are satisifed the upad\n"
 msgstr ""
+"Reduce spaþiul folosit pentru arhivele Pipermail.\n"
+"\n"
+"Folosiþi acest script doar dacã aþi instalat corect fiºierul patch\n"
+"fixarchiver-2.1.3-0.1.patch care este distribuit cu acest fiºier. Folosind\n"
+"acest script fãrã sã aveþi rectul patch-ului instalat (inclusiv restartarea mailmanctl)\n"
+"vã va ruina întreaga zi.\n"
+"\n"
+"Folosire:%(PROGRAM)s [opþiuni] fiºier ...\n"
+"\n"
+"Unde opþiunile sunt:\n"
+"    -h ? --help\n"
+"        Afiºeazã acest mesaj de ajutor ºi terminã execuþia programului\n"
+"\n"
+"Only use this to 'fix' archive -article database files that have been "
+"written\n"
+"with Mailman 2.1.3 or earlier and have html_body attributes in them . These\n"
+"attributes can cause huge amounts of memory bloat and impact performance "
+"for\n"
+"high activity lists, particularly those having large text postings made to\n"
+"them. Use like this from your $PREFIX directory:\n"
+"\n"
+"\n"
+"%% ls -1 archives/private/*/database/*-article | xargs %(PROGRAM)s\n"
+"\n"
+"(note the backquotes are required)\n"
+"\n"
+"You will need to run `bin/check_perms -f' after running this script.\n"
+"\n"
+"You will probably want to delete the -article.bak files created by this "
+"script\n"
+"when you are satisifed the upad\n"
 
 #: bin/remove_members:19
 msgid ""
@@ -8717,7 +8886,7 @@ msgstr ""
 
 #: bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
-msgstr "Nu am putut deschide un fiºier pentru citire: %(filename)s."
+msgstr "Nu am putut deschide fiºierul pentru citire: %(filename)s."
 
 #: bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
@@ -8729,7 +8898,7 @@ msgstr "Nu existã acest membru: %(addr)s"
 
 #: bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
-msgstr "Userul `%(addr)s' a fost ºters din lista: %(listname)s."
+msgstr "Utilizatorul '%(addr)s' a fost ºters din lista: %(listname)s."
 
 #: bin/rmlist:19
 msgid ""
@@ -8889,6 +9058,58 @@ msgid ""
 "    listname\n"
 "        Required.  This specifies the list to synchronize.\n"
 msgstr ""
+"Sincronizeazã lista membrilor unei liste cu un fiºier.\n"
+"\n"
+"Acest script este util când aveþi o listã de discuþii Mailman ºi o listã de adrese în stilul :include: (folosit de asemena ºi în Majordomo).  Pentru fiecare adresã din fiºier care nu se regãseºte în lista abonaþilor, aceasta este adãugatã.  Pentru fiecare adresã din lista abonaþilor, ºi care nu se regãseºte în fiºier, aceasta este ºtearsã.  Alte opþiuni controleazã ce se întâmplã când o adresã nouã este adãugatã sau ºtearsã.\n"
+"\n"
+"Folosire:%(PROGRAM)s [opþiuni] -f fiºier numelistã\n"
+"\n"
+"Unde opþiunile sunt:\n"
+"\n"
+"    --no-change\n"
+"    -n\n"
+"        Nu face nici o modificare; în schimb, afiºeazã\n"
+"        ce trebuie modificat în listã.\n"
+"\n"
+"    --welcome-msg[=<yes|no>]\n"
+"    -w[=<yes|no>]\n"
+"        Alege dacã va fi sau nu trimis noilor abonaþi un mesaj de întâmpinare,\n"
+"        indiferent de valoarea parametrului listei 'send_welcome_msg'.  Folosind\n"
+"        -w=yes sau doar -w, mesajul este trimis; folosind -w=no, nu se trimite nici un mesaj.\n"
+"\n"
+"    --goodbye-msg[=<yes|no>]\n"
+"    -g[=<yes|no>]\n"
+"        Alege dacã va fi sau nu trimis un mesaj de rãmas bun celor de pãrãsesc lista,\n"
+"        indiferent de valoarea parametrului 'send_goodbye_message'.  Folosind\n"
+"        -g=yes sau doar -g, mesajul va fi trimis; folosind -g=no, nu se trimite nici un mesaj.\n"
+"\n"
+"    --digest[=<yes|no>]\n"
+"    -d[=<yes|no>]\n"
+"        Alege modul de livrare a mesajelor pentru noii abonaþi.  Folosind -d=yes sau doar -d,\n"
+"        noii abonaþi vor primi mesajele adunate în volume (digest), iar cu parametrul -d=no\n"
+"        (sau dacã opþiunea -d lipseºte) noii abonaþi vor primi mesajele individual.\n"
+"\n"
+"    --notofyadmin[=<yes|no>]\n"
+"    -a[=<yes|no>]\n"
+"        Specificã dacã administratorul listei va fi sau nu notificat pentru fiecare abonare\n"
+"        sau pãrãsire a listei.  Dacã adãugaþi un numãr foarte mare de adrese, cu siguranþã\n"
+"        veþi dori sã dezactivaþi aceastã opþiune!  Folosind -a=yes sau doar -a,\n"
+"        administratorul este notificat.  Dacã nu adãugaþi opþiunea -a, este folositã valoarea implicitã\n"
+"        pentru listã.\n"
+"\n"
+"    --file <fiºier | ->\n"
+"    -f <fiºier | ->\n"
+"        Acest parametru este obligatoriu.  El specificã fiºierul cu care se va face sincronizarea.\n"
+"        Adresele de e-mail trebuie scrise câte una pe linie.  Dacã numele fiºierului este '-', atunci\n"
+"        este folosit stdin.\n"
+"\n"
+"    --help\n"
+"    -h\n"
+"        Afiºeazã acest mesaj.\n"
+"\n"
+"    numelistã\n"
+"        Necesar; acesta este numele listei de sincronizat.\n"
+"\n"
 
 #: bin/sync_members:115
 msgid "Bad choice: %(yesno)s"
@@ -8932,7 +9153,7 @@ msgstr "Invalid :  %(addr)30s"
 
 #: bin/sync_members:215
 msgid "You must fix the preceding invalid addresses first."
-msgstr "Trebuie sã corectaþi mai întâi adresa incalidã precedentã."
+msgstr "Trebuie sã corectaþi mai întâi adresa invalidã precedentã."
 
 #: bin/sync_members:260
 msgid "Added  : %(s)s"
@@ -8957,10 +9178,20 @@ msgid ""
 "Where <lang> is your country code (e.g. 'it' for Italy) and -q is\n"
 "to ask for a brief summary.\n"
 msgstr ""
+"\n"
+"Verificã o traducere la Mailman existentã, asigurându-se cã variabilele ºi tag-urile referite în traducere sunt aceleaºi cu cele din versiunea originalã a ºabloanelor ºi catalogului.\n"
+"\n"
+"Folosire:\n"
+"\n"
+"cd $MAILMAN_DIR\n"
+"%(program)s [-q] <lang>\n"
+"\n"
+"Unde <lang> este codul þãrii dumneavoastrã (de ex. 'ro' pentru România),\n"
+"iar parametrul  -q este pentru a afiºa un scurt sumar.\n"
 
 #: bin/transcheck:57
 msgid "check a translation comparing with the original string"
-msgstr "verificã o traducere prin comparare cu stringul original"
+msgstr "verific o traducere prin comparare cu stringul original"
 
 #: bin/transcheck:67
 msgid "scan a string from the original file"
@@ -8971,9 +9202,8 @@ msgid "scan a translated string"
 msgstr "scanez un string tradus"
 
 #: bin/transcheck:90
-#, fuzzy
 msgid "check for differences between checked in and checked out"
-msgstr "cerific diferenþele dintre intrãri ºi ieºiri"
+msgstr "verific diferenþele dintre intrãri ºi ieºiri"
 
 #: bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
@@ -8989,7 +9219,7 @@ msgid ""
 "            4  end\n"
 "        "
 msgstr ""
-"Tabelul de stare pentru parserul inite-states-machine:\n"
+"Tabelul de stare pentru parserul finite-states-machine:\n"
 "            0  idle\n"
 "            1  nume de fiºier sau comentariu\n"
 "            2  msgid\n"
@@ -9024,6 +9254,15 @@ msgid ""
 "Optional `directory' specifies a directory to dequeue from other than\n"
 "qfiles/shunt.\n"
 msgstr ""
+"Mutã un mesaj din coada shunt în coada originalã.\n"
+"\n"
+"Folosire: %(PROGRAM)s [opþiuni] [director]\n"
+"Unde:\n"
+"\n"
+"    -h / --help\n"
+"        afiºeazã acest mesaj de ajutor ºi terminã execuþia programului\n"
+"\n"
+"Variabila opþionalã 'director' specificã un director de de-codare din altã parte decât qfiles/shunt.\n"
 
 #: bin/unshunt:81
 #, fuzzy
