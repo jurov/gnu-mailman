@@ -26,7 +26,7 @@ responsibility to let the users know that their passwords have been changed.
 
 This script is intended to be run as a bin/withlist script, i.e.
 
-% bin/withlist -l -r reset_pw [options]
+% bin/withlist -l -r reset_pw listname [options]
 
 Options:
     -v / --verbose
@@ -72,13 +72,17 @@ def reset_pw(mlist, *args):
         if opt in ('-v', '--verbose'):
             verbose = True
 
-    listname = mlist.listname()
+    listname = mlist.internal_name()
     if verbose:
         print _('Changing passwords for list: %(listname)s')
 
     for member in mlist.getMembers():
         randompw = Utils.MakeRandomPassword()
         mlist.setMemberPassword(member, randompw)
+        if verbose:
+            print _('New password for member %(member)40s: %(randompw)s')
+
+    mlist.Save()
 
 
 
