@@ -49,8 +49,12 @@ sitedir = os.path.join(sys.prefix, 'lib', 'python'+sys.version[:3],
 sys.path.append(sitedir)
 
 
-# We explicitly import CJKCodecs here since we inhibit the importing of the
-# site module.  As of CJKCodecs-1.0, you have to do the second import.  We may
-# have to re-activate the first line if an upgrade changes this.
-#import cjkcodecs
-import cjkcodecs.aliases
+# In a normal interactive Python environment, the japanese.pth and korean.pth
+# files would be imported automatically.  But because we inhibit the importing
+# of the site module, we need to be explicit about importing these codecs.
+import japanese
+# As of KoreanCodecs 2.0.5, you had to do the second import to get the Korean
+# codecs installed, however leave the first import in there in case an upgrade
+# changes this.
+import korean
+import korean.aliases
