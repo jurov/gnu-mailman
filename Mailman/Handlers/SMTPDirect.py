@@ -345,15 +345,17 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     msgtext = msg.as_string()
     refused = {}
     recips = msgdata['recips']
+    msgid = msg['message-id']
     try:
         # Send the message
         refused = conn.sendmail(envsender, recips, msgtext)
     except smtplib.SMTPRecipientsRefused, e:
-        syslog('smtp-failure', 'All recipients refused: %s', e)
+        syslog('smtp-failure', 'All recipients refused: %s, msgid: %s',
+               e, msgid
         refused = e.recipients
     except smtplib.SMTPResponseException, e:
-        syslog('smtp-failure', 'SMTP session failure: %s, %s',
-               e.smtp_code, smtp_error)
+        syslog('smtp-failure', 'SMTP session failure: %s, %s, msgid: %s',
+               e.smtp_code, smtp_error, msgid)
         # If this was a permanent failure, don't add the recipients to the
         # refused, because we don't want them to be added to failures.
         # Otherwise, if the MTA rejects the message because of the message
@@ -368,7 +370,7 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
         # MTA not responding, or other socket problems, or any other kind of
         # SMTPException.  In that case, nothing got delivered, so treat this
         # as a temporary failure.
-        syslog('smtp-failure', 'Low level smtp connection error: %s', e)
+        syslog('smtp-failure', 'Low level smtp error: %s, msgid: %s', e, msgid)
         error = str(e)
         for r in recips:
             refused[r] = (-1, error)
