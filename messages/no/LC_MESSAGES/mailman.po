@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b4+\n"
 "POT-Creation-Date: Sat Dec 13 14:40:28 2003\n"
-"PO-Revision-Date: 2003-09-24 11:35+0200\n"
+"PO-Revision-Date: 2003-12-31 00:21+0100\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -530,11 +530,11 @@ msgstr "...etter denne."
 
 #: Mailman/Cgi/admin.py:746 Mailman/Cgi/admin.py:749
 msgid "Spam Filter Rule %(i)d"
-msgstr ""
+msgstr "Spamfilter regel %(i)d"
 
 #: Mailman/Cgi/admin.py:751
 msgid "Spam Filter Regexp:"
-msgstr ""
+msgstr "Spamfilter regexp:"
 
 #: Mailman/Cgi/admin.py:762 Mailman/Cgi/admindb.py:289
 #: Mailman/Cgi/admindb.py:346 Mailman/Cgi/admindb.py:389
@@ -572,11 +572,11 @@ msgstr "Avgj&oslash;relse:"
 
 #: Mailman/Cgi/admin.py:778
 msgid "Move rule up"
-msgstr ""
+msgstr "Flytt regel oppover"
 
 #: Mailman/Cgi/admin.py:779
 msgid "Move rule down"
-msgstr ""
+msgstr "Flytt regel nedover"
 
 #: Mailman/Cgi/admin.py:812
 msgid "<br>(Edit <b>%(varname)s</b>)"
@@ -1346,7 +1346,6 @@ msgid "Confirm subscription request"
 msgstr "Bekreft s&oslash;knad om medlemskap"
 
 #: Mailman/Cgi/confirm.py:227
-#, fuzzy
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    subscription request to the mailing list <em>%(listname)s</em>.  Your\n"
@@ -1364,20 +1363,14 @@ msgid ""
 "to\n"
 "    subscribe to this list."
 msgstr ""
-"Din bekreftelse er n&oslash;dvendig for &aring; fullf&oslash;re din p&aring;"
-"melding p&aring; epostlisten <em>%(listname)s</em>.\n"
-"Dine innstillinger vises nedenfor; gj&oslash;r eventuelle endringer du "
-"m&aring;tte &oslash;nske &aring; gj&oslash;re og klikk\n"
-"deretter \"Meld meg p&aring;\" knappen dersom du virkelig &oslash;nsker "
-"&aring; melde deg p&aring; listen.\n"
-"Gj&oslash;r du det vil din personlige medlemsside vises, der du kan "
-"gj&oslash;re ytterligere endringer p&aring; ditt medlemskap.\n"
+"Din bekreftelse er n&oslash;dvendig for &aring; fullf&oslash;re din p&aring;melding p&aring; epostlisten <em>%(listname)s</em>.\n"
+"Dine innstillinger vises nedenfor; gj&oslash;r eventuelle endringer du m&aring;tte &oslash;nske &aring; gj&oslash;re og klikk\n"
+"deretter \"Meld meg p&aring;\" knappen dersom du virkelig &oslash;nsker &aring; melde deg p&aring; listen.\n"
+"Gj&oslash;r du det vil din personlige medlemsside vises, der du kan gj&oslash;re ytterligere endringer p&aring; ditt medlemskap.\n"
 "\n"
-"<p>Merk: du vil få tilsendt passordet straks du har bekreftet din påmelding. "
-"Du kan skifte passord ved å gå inn på din personlige medlemsside.\n"
+"<p>Merk: du vil få tilsendt passordet straks du har bekreftet din påmelding. Du kan skifte passord ved å gå inn på din personlige medlemsside.\n"
 "\n"
-"<p>Eller klikk <em>Trekke min s&oslash;knad</em> for &aring; trekke s&oslash;"
-"knaden din."
+"<p>Eller klikk <em>Trekke min s&oslash;knad</em> hvis du ikke &oslash;nsker &aring; melde deg p&aring; listen.."
 
 #: Mailman/Cgi/confirm.py:242
 msgid ""
@@ -1871,14 +1864,12 @@ msgid "administrative list overview"
 msgstr "administrativ side for epostlisten"
 
 #: Mailman/Cgi/create.py:102
-#, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Listenavnet m&aring; ikke inneholde \"@\": %(listname)s"
+msgstr "Listenavnet m&aring; ikke inneholde \"@\": %(safelistname)s"
 
 #: Mailman/Cgi/create.py:109
-#, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "Listen finnes allerede: %(listname)s !"
+msgstr "Listen finnes allerede: %(safelistname)s"
 
 #: Mailman/Cgi/create.py:113
 msgid "You forgot to enter the list name"
@@ -1911,9 +1902,8 @@ msgid "You are not authorized to create new mailing lists"
 msgstr "Du har ikke tilgang til &aring; opprette nye epostlister"
 
 #: Mailman/Cgi/create.py:161
-#, fuzzy
 msgid "Unknown virtual host: %(safehostname)s"
-msgstr "Ukjent liste: %(listname)s"
+msgstr "Ukjent virtuell host: %(safehostname)s"
 
 #: Mailman/Cgi/create.py:192 bin/newlist:166
 msgid "Bad owner email address: %(s)s"
@@ -1921,7 +1911,7 @@ msgstr "Ugyldig epostadresse: %(s)s"
 
 #: Mailman/Cgi/create.py:196 bin/newlist:134 bin/newlist:168
 msgid "List already exists: %(listname)s"
-msgstr "Listen finnes allerede: %(listname)s !"
+msgstr "Listen finnes allerede: %(listname)s"
 
 #: Mailman/Cgi/create.py:200 bin/newlist:164
 msgid "Illegal list name: %(s)s"
@@ -2236,7 +2226,6 @@ msgid "No such member: %(safeuser)s."
 msgstr "Medlemmet finnes ikke: %(safeuser)s."
 
 #: Mailman/Cgi/options.py:172
-#, fuzzy
 msgid ""
 "Your unsubscription request has been\n"
 "                    forwarded to the list administrator for approval."
@@ -2885,7 +2874,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_confirm.py:71
 msgid "Bad approval password given.  Held message is still being held."
-msgstr ""
+msgstr "Ugyldig passord angitt. Melding vil fremdeles holdes tilbake."
 
 #: Mailman/Commands/cmd_confirm.py:80
 msgid "Confirmation succeeded"
@@ -3318,14 +3307,12 @@ msgid "digest option set"
 msgstr "sammendrag-modus er valgt"
 
 #: Mailman/Commands/cmd_set.py:301
-#, fuzzy
 msgid "delivery enabled"
 msgstr "epostlevering på"
 
 #: Mailman/Commands/cmd_set.py:304
-#, fuzzy
 msgid "delivery disabled by user"
-msgstr "; etter ditt eget &oslash;nske"
+msgstr "epostlevering er slått av etter ditt eget ønske"
 
 #: Mailman/Commands/cmd_set.py:316
 msgid "myposts option set"
@@ -3543,9 +3530,8 @@ msgid "Digest members:"
 msgstr "Medlemmer i sammendrag-modus:"
 
 #: Mailman/Defaults.py:1271
-#, fuzzy
 msgid "Catalan"
-msgstr "Italiensk"
+msgstr "Katalansk"
 
 #: Mailman/Defaults.py:1272
 msgid "Czech"
@@ -3585,7 +3571,7 @@ msgstr "Fransk"
 
 #: Mailman/Defaults.py:1281
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisk"
 
 #: Mailman/Defaults.py:1282
 msgid "Hungarian"
@@ -3628,9 +3614,8 @@ msgid "Portuguese (Brazil)"
 msgstr "Portugisisk (Brasil)"
 
 #: Mailman/Defaults.py:1292
-#, fuzzy
 msgid "Romanian"
-msgstr "Estisk"
+msgstr "Rumensk"
 
 #: Mailman/Defaults.py:1293
 msgid "Russian"
@@ -3641,9 +3626,8 @@ msgid "Serbian"
 msgstr "Serbisk"
 
 #: Mailman/Defaults.py:1295
-#, fuzzy
 msgid "Slovenian"
-msgstr "Serbisk"
+msgstr "Slovakisk"
 
 #: Mailman/Defaults.py:1296
 msgid "Swedish"
@@ -3655,11 +3639,11 @@ msgstr "Ukrainsk"
 
 #: Mailman/Defaults.py:1298
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Kinesisk (Kina)"
 
 #: Mailman/Defaults.py:1299
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Kinesisk (Taiwan)"
 
 #: Mailman/Deliverer.py:51
 msgid ""
@@ -6471,15 +6455,12 @@ msgstr ""
 "for å redusere mengden spam som distribueres via epostlisten."
 
 #: Mailman/Gui/Privacy.py:373
-#, fuzzy
 msgid "Header filters"
-msgstr "Filtrering av epost fra medlemmer"
+msgstr "Filtrering på meldingshode"
 
 #: Mailman/Gui/Privacy.py:376
-#, fuzzy
 msgid "Filter rules to match against the headers of a message."
-msgstr ""
-"Emneord, ett per linje, som gj&oslash;r at en epost g&aring;r under emnet."
+msgstr "Regler som skal passe mot meldingshodet en melding."
 
 #: Mailman/Gui/Privacy.py:378
 msgid ""
@@ -6497,11 +6478,15 @@ msgid ""
 "after\n"
 "             the first match."
 msgstr ""
+"Hver meldingshodefilter regel har to deler, en liste med regexp uttrykk (ett uttrykk per linje), og én handling som skal utføres.\n"
+"Mailman sammenligner meldingshodene mot hver regexp, og utfører den valgte handlingen dersom én av reglene passer.\n"
+"Bruk <em>Avvent</em> for å midlertidig skru av en regel.\n"
+"\n"
+"Du kan ha mer enn étt filter for listen din. Har du det, vil handlingen for det første filteret som passer bli utført."
 
 #: Mailman/Gui/Privacy.py:389
-#, fuzzy
 msgid "Legacy anti-spam filters"
-msgstr "Anti-Spam filtre"
+msgstr "Anti-spam filtre"
 
 #: Mailman/Gui/Privacy.py:392
 msgid "Hold posts with header value matching a specified regexp."
@@ -6544,22 +6529,18 @@ msgstr ""
 "bruke escape-tegn eller klammeparenteser."
 
 #: Mailman/Gui/Privacy.py:465
-#, fuzzy
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
-msgstr ""
-"Et emne krever både et navn og et uttrykk. Ufullstendige emner vil ikke bli "
-"tatt i bruk."
+msgstr "Filter på meldingshode krever et uttrykk. Ufullstendige filtre vil ikke bli tatt i bruk."
 
 #: Mailman/Gui/Privacy.py:473
-#, fuzzy
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"Emnefilteret '%(pattern)s' er ikke en gyldig regexp.\n"
+"Filteret '%(safepattern)s' er ikke en gyldig regexp.\n"
 "Det vil bli forkastet."
 
 #: Mailman/Gui/Topics.py:35
@@ -6697,12 +6678,11 @@ msgstr ""
 "tatt i bruk."
 
 #: Mailman/Gui/Topics.py:128
-#, fuzzy
 msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"Emnefilteret '%(pattern)s' er ikke en gyldig regexp.\n"
+"Emnefilteret '%(safepattern)s' er ikke en gyldig regexp.\n"
 "Det vil bli forkastet."
 
 #: Mailman/Gui/Usenet.py:25
@@ -7462,11 +7442,11 @@ msgstr "-------------- neste del --------------\n"
 
 #: Mailman/Handlers/SpamDetect.py:54
 msgid "The message headers matched a filter rule"
-msgstr ""
+msgstr "Meldingshodet passer med et filter"
 
 #: Mailman/Handlers/SpamDetect.py:121
 msgid "Message rejected by filter rule match"
-msgstr ""
+msgstr "Meldingen ble avvist av et filter"
 
 #: Mailman/Handlers/ToDigest.py:145
 msgid "%(realname)s Digest, Vol %(volume)d, Issue %(issue)d"
@@ -7832,7 +7812,7 @@ msgstr "Lokal tid"
 #: Mailman/i18n.py:139
 msgid ""
 "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
-msgstr ""
+msgstr "%(wday)s %(day)2i. %(mon)s %(year)04i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s"
 
 #: bin/add_members:26
 msgid ""
