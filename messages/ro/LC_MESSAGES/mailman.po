@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-05-22 10:07+0300\n"
+"PO-Revision-Date: 2004-05-23 14:29+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3466,9 +3466,8 @@ msgid ""
 "for\n"
 "approval."
 msgstr ""
-"Cererea dumneavoastrã de dezabonare a fost înaintatã administratorului "
-"listei\n"
-"pentru aprobare."
+"Cererea dumneavoastrã de dezabonare\n"
+"a fost înaintatã administratorului listei pentru aprobare."
 
 #: Mailman/Commands/cmd_unsubscribe.py:84
 msgid "You gave the wrong password"
@@ -3499,6 +3498,13 @@ msgid ""
 "        `address=<address>' (no brackets around the email address, and no\n"
 "        quotes!)\n"
 msgstr ""
+"\n"
+"    who parola [address=<adresa>]\n"
+"        afiºeazã lista tuturor abonaþilor acestei liste.  Lista este disponibilã\n"
+"        doar membrilor înscriºi, ºi trebuie sã furnizaþi parola de acces pentru\n"
+"        a o putea obþine.  Dacã trimiteþi cererea de la o altã adresã decât cea\n"
+"        cu care sunteþi abonat(ã), specificaþi adresa de abonare prin parametrul\n"
+"        'address=<adresa>' (fãrã paranteze ascuþite ºi fãrã ghilimele!)\n"
 
 #: Mailman/Commands/cmd_who.py:44
 msgid ""
@@ -3937,6 +3943,10 @@ msgid ""
 "administrator\n"
 "             isn't inundated with them."
 msgstr ""
+"Setând aceastã valoare la <em>No</em>, veþi dezactiva toate\n"
+"procesãrile automate ale eºecurilor de livrare ale acestei listeº totuºi,\n"
+"mesajele nelivrate vor fi în continuare ignorate, astfel încât\n"
+"administratorul listei nu va fi inundat de acestea."
 
 #: Mailman/Gui/Bounce.py:85
 msgid ""
@@ -4386,6 +4396,9 @@ msgid ""
 "this\n"
 "                problem."
 msgstr ""
+"Urmãtoarele substituiri ilegale ale variabilelor au fost gãsite în ºirul de caractere <code>%(property)s</code>:\n"
+"<code>%(bad)s</code>\n"
+"<p>Este posibil ca lista dumneavoastrã sã funcþioneze defectuos pânã la remedierea problemei."
 
 #: Mailman/Gui/GUIBase.py:199
 msgid ""
@@ -4394,7 +4407,7 @@ msgid ""
 "                    The fixed value will be used instead.  Please\n"
 "                    double check that this is what you intended.\n"
 "                    "
-msgstr ""
+msgstr "Codul dumneavoastrã <code>%(property)s</code> pare sã aibã câteva erori corectabile la noile valori. Valorile fixe vor fi folosite în locul acestora; vã rugãm sã re-verificaþi cã valorile sunt cele dorite."
 
 #: Mailman/Gui/General.py:34
 msgid "General Options"
@@ -4402,7 +4415,7 @@ msgstr "Opþiuni generale"
 
 #: Mailman/Gui/General.py:48
 msgid "Conceal the member's address"
-msgstr "Ascunde adresa membrului"
+msgstr "Ascund adresa utilizatorului"
 
 #: Mailman/Gui/General.py:49
 msgid "Acknowledge the member's posting"
@@ -4410,11 +4423,11 @@ msgstr "Confirmaþi mesajul utilizatorului"
 
 #: Mailman/Gui/General.py:50
 msgid "Do not send a copy of a member's own post"
-msgstr "Nu trimite un duplicat al mesajului propriu al utilizatorului"
+msgstr "Nu trimit duplicate ale mesajului utilizatorului"
 
 #: Mailman/Gui/General.py:52
 msgid "Filter out duplicate messages to list members (if possible)"
-msgstr "Filtreazã mesajele duplicate cãtre membrii listei (dacã este posibil)"
+msgstr "Filtrez mesajele duplicate cãtre membrii listei (dacã este posibil)"
 
 #: Mailman/Gui/General.py:59
 msgid ""
@@ -4422,7 +4435,7 @@ msgid ""
 "            info and basic behaviors."
 msgstr ""
 "Caracteristici fundamentale ale listei, incluzând\n"
-"            informaþii descriptive ºi comportamente de bazã."
+"informaþii descriptive ºi comportamente de bazã."
 
 #: Mailman/Gui/General.py:62
 #, fuzzy
@@ -4446,6 +4459,8 @@ msgid ""
 "             addresses are not case sensitive, but they are sensitive to\n"
 "             almost everything else :-)"
 msgstr ""
+"Modificarea acestui nume folosind majuscule sau minuscule poate fi realizatã în caz de nevoie: substantiv comun, acronim, parte dintr-un titlu unde toate literele sunt majuscule, etc.  Totuºi, nu uitaþi cã acest nume va fi folosit ca ºi adresã de e-mail (de ex. în mesajele de confirmare a abonãrii), deci este recomandat sã <em>nu</em> faceþi alte modificãri.\n"
+"(Adresele de e-mail nu sunt afectate de tipul caracterelor - majuscule sau miuscule - dar sunt afectate de orice alte modificãri :-)"
 
 #: Mailman/Gui/General.py:75
 msgid ""
@@ -4453,7 +4468,7 @@ msgid ""
 "             administrator addresses, each on separate line is okay."
 msgstr ""
 "Adresele de email ale administratorilor listei.  Adresele\n"
-"             multiple trebuie scrise separat, câte una pe rând."
+"multiple trebuie scrise separat, câte una pe rând."
 
 #: Mailman/Gui/General.py:78
 msgid ""
@@ -4489,7 +4504,7 @@ msgid ""
 "             moderator addresses, each on separate line is okay."
 msgstr ""
 "Adresele de email ale moderatorilor listei.  Adresele\n"
-"             multiple trebuie scrise separat, câte una pe rând."
+"multiple trebuie scrise separat, câte una pe rând."
 
 #: Mailman/Gui/General.py:102
 msgid ""
@@ -4560,6 +4575,12 @@ msgid ""
 "             bad html (like some unterminated HTML constructs) can prevent\n"
 "             display of the entire listinfo page."
 msgstr ""
+"Textul va fi tratat ca  cod HTML <em>exceptând</em> faptul cã\n"
+"rândurile noi vor fi traduse în &lt;br&gt; - deci puteþi folosi link-uri,\n"
+"text formatat, etc. , dar nu introduceþi CR (rând nou) decât în cazurile\n"
+"în care doriþi separarea paragrafelor.  ªi nu uitaþi sã revizuiþi toate modificãrile;\n"
+"codul HTML eronat (precum unele link-uri cu cod neterminat) pot împiedica\n"
+"afiºarea corectã a întregii pagini de prezentare a listei."
 
 #: Mailman/Gui/General.py:143
 msgid "Prefix for subject line of list postings."
@@ -4575,14 +4596,18 @@ msgid ""
 "it\n"
 "             still identifies the mailing list."
 msgstr ""
+"Acest text va fi introdus înaintea subiectului mesajelor trimise listei,\n"
+"pentru a distinge mesajele listei de discuþii în cãsuþa poºtalã a abonaþilor.\n"
+"Trebuie sã fiþi cât mai concis(ã), astfel încât puteþi prescurta numele de liste lungi\n"
+"în tutluri scurte, dar care sã identifice clar lista."
 
 #: Mailman/Gui/General.py:151
 msgid ""
 "Hide the sender of a message, replacing it with the list\n"
 "             address (Removes From, Sender and Reply-To fields)"
 msgstr ""
-"Ascunde adresa expeditorului, înlocuind-o cu\n"
-"             adresa listei (sunt ºterse câmpurile From, Sender ºi Reply-To)"
+"Ascund adresa expeditorului, înlocuind-o cu\n"
+"adresa listei (sunt ºterse câmpurile From, Sender ºi Reply-To)"
 
 #: Mailman/Gui/General.py:154
 msgid "<tt>Reply-To:</tt> header munging"
@@ -4594,7 +4619,7 @@ msgid ""
 "             original message be stripped?  If so, this will be done\n"
 "             regardless of whether an explict <tt>Reply-To:</tt> header is\n"
 "             added by Mailman or not."
-msgstr ""
+msgstr "Sã ºterg orice header de genul <tt>Reply-To:</tt> din mesajul original ?  Dacã da, acesta va fi ºters chiar dacã adãugaþi sau nu din Mailman un header explicit <tt>Reply-To:</tt>."
 
 #: Mailman/Gui/General.py:163
 msgid "Explicit address"
@@ -4733,6 +4758,8 @@ msgid ""
 "             lists, according to setting of previous \"umbrella_list\"\n"
 "             setting."
 msgstr ""
+"Sufixul folosit atunci când aceastã listã este o umbrelã pentru alte liste\n"
+"conform parametrului anterior \"umbrella_list\"."
 
 #: Mailman/Gui/General.py:250
 msgid ""
@@ -4759,7 +4786,7 @@ msgid ""
 "             per month to your members.  Note that members may disable "
 "their\n"
 "             own individual password reminders."
-msgstr ""
+msgstr "Activaþi aceastã opþiune dacã doriþi sã trimiteþi membrilor listei notificãri lunare de aducere aminte a parolei.  Utilizatorii pot sã dezactiveze aceste individual notificãri."
 
 #: Mailman/Gui/General.py:269
 msgid ""
@@ -4767,7 +4794,7 @@ msgid ""
 "             message"
 msgstr ""
 "Textul specific listei care va fi inserat înaintea mesajului de bun venit\n"
-"             pentru orice membru nou"
+"pentru orice utilizator nou abonat"
 
 #: Mailman/Gui/General.py:272
 msgid ""
@@ -4804,16 +4831,13 @@ msgid ""
 "             useful for transparently migrating lists from some other "
 "mailing\n"
 "             list manager to Mailman."
-msgstr ""
+msgstr "Dezactivaþi aceastã opþiune numai dacã aþi planificat abonarea manualã a utilizatorilor ºi nu doriþi ca ei sã ºtie asta.  Aceastã opþiune este foarte utilã pentru migrarea transparentã a altor liste de discuþii cãtre Mailman."
 
 #: Mailman/Gui/General.py:296
 msgid ""
 "Text sent to people leaving the list.  If empty, no special\n"
 "             text will be added to the unsubscribe message."
-msgstr ""
-"Textul trimis persoanelor care pãrãsesc lista.  Dacã lipseºte,\n"
-"             nici un text special nu va fi adãugat la mesajul de\n"
-"             confirmare a dezabonãrii."
+msgstr "Textul trimis persoanelor care pãrãsesc lista.  Dacã lipseºte, nici un text special nu va fi adãugat la mesajul de confirmare a dezabonãrii."
 
 #: Mailman/Gui/General.py:300
 msgid "Send goodbye message to members when they are unsubscribed?"
@@ -4823,7 +4847,7 @@ msgstr "Trimit mesajul de bun rãmas membrilor la pãrãsirea listei?"
 msgid ""
 "Should the list moderators get immediate notice of new\n"
 "             requests, as well as daily notices about collected ones?"
-msgstr ""
+msgstr "Sã primeascã moderatorii listei notificãri imediate despre cererile noi, precum ºi note zilnice despre cele adunate?"
 
 #: Mailman/Gui/General.py:306
 msgid ""
@@ -4834,15 +4858,13 @@ msgid ""
 "or\n"
 "             another.  Setting this option causes notices to be sent\n"
 "             immediately on the arrival of new requests as well."
-msgstr ""
+msgstr "Moderatorii listei (ºi administratorii acesteia) primesc zilnic mesaje de notificare a cererilor ce necesitã aprobare, precum cererile de abonare la listele moderate, sau mesajele reþinute pentru aprobare din diverse motive.  Activarea acestei opþiuni va avea ca urmare trimiterea de notificãri pentru fiecare eveniment ce necesitã aprobare."
 
 #: Mailman/Gui/General.py:313
 msgid ""
 "Should administrator get notices of subscribes and\n"
 "             unsubscribes?"
-msgstr ""
-"Trebuie administratorii sã primeascã notificãri ale\n"
-"             abonãrilor ºi dezabonãrilor?"
+msgstr "Trebuie administratorii sã primeascã notificãri ale abonãrilor ºi dezabonãrilor?"
 
 #: Mailman/Gui/General.py:318
 msgid "Send mail to poster when their posting is held for approval?"
@@ -4888,13 +4910,13 @@ msgstr ""
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
 "             set of options is taken from the this variable's setting."
-msgstr ""
+msgstr "Când un nou membru este abonat la aceastã listã, setul iniþial de opþiuni este preluat din valorile acestei variabile."
 
 #: Mailman/Gui/General.py:348
 msgid ""
 "(Administrivia filter) Check postings and intercept ones\n"
 "             that seem to be administrative requests?"
-msgstr ""
+msgstr "(Filtru administrativ) Verific mesajele trimise ºi interceptez cererile administrative?"
 
 #: Mailman/Gui/General.py:351
 msgid ""
@@ -4915,11 +4937,11 @@ msgstr ""
 "             0 înseamnã fãrã limitã."
 
 #: Mailman/Gui/General.py:362
-#, fuzzy
 msgid "Host name this list prefers for email."
-msgstr "Numele serverului (host) preferat pentru email."
+msgstr "Numele serverului (host name) preferat pentru email."
 
 #: Mailman/Gui/General.py:364
+#, fuzzy
 msgid ""
 "The \"host_name\" is the preferred name for email to\n"
 "             mailman-related addresses on this host, and generally should "
@@ -4929,7 +4951,7 @@ msgid ""
 "             useful for selecting among alternative names of a host that "
 "has\n"
 "             multiple addresses."
-msgstr ""
+msgstr "\"Numele serverului\" (host name) este numele folosit pentru toate adresele de e-mail relative la lista mailman pe acest server ºi în general este adresa definitã în înregistrãrile MX. Acest parametru se dovedeºte  util în cazul selectãrii dintre nume de servere ce au adrese multiple."
 
 #: Mailman/Gui/General.py:376
 msgid ""
@@ -4939,8 +4961,11 @@ msgid ""
 "                 (i.e. <tt>List-*</tt>) headers?  <em>Yes</em> is highly\n"
 "                 recommended."
 msgstr ""
+"Sã includã mesajele acestei liste ºi headerele <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</"
+"a> (de ex: <tt>List-*</tt>) ?  <em>Da</em> este foarte recomandat."
 
 #: Mailman/Gui/General.py:381
+#, fuzzy
 msgid ""
 "RFC 2369 defines a set of List-* headers that are\n"
 "                 normally added to every message sent to the list "
@@ -4962,7 +4987,7 @@ msgid ""
 "                 this is not recommended (and in fact, your ability to "
 "disable\n"
 "                 these headers may eventually go away)."
-msgstr ""
+msgstr "RFC 2369 defineºte un set de headere List-* ce sunt adãugate în mod normal oricãrui mesaj al listei."
 
 #: Mailman/Gui/General.py:399
 msgid "Should postings include the <tt>List-Post:</tt> header?"
@@ -5000,7 +5025,7 @@ msgstr ""
 msgid ""
 "You cannot add a Reply-To: to an explicit\n"
 "            address if that address is blank.  Resetting these values."
-msgstr ""
+msgstr "Nu puteþi adãuga un header Reply-To la o adresã explicitã dacã acea adresã este goalã.  Resetz valorile."
 
 #: Mailman/Gui/Language.py:34
 msgid "Language&nbsp;options"
@@ -5058,7 +5083,7 @@ msgid ""
 "Encode the\n"
 "             <a href=\"?VARHELP=general/subject_prefix\">subject\n"
 "             prefix</a> even when it consists of only ASCII characters?"
-msgstr ""
+msgstr "Encodez <a href=\"?VARHELP=general/subject_prefix\">prefixul subiectului</a> chiar ºi dacã el constã doar din caractere ASCII?"
 
 #: Mailman/Gui/Language.py:95
 msgid ""
@@ -5090,11 +5115,11 @@ msgstr ""
 
 #: Mailman/Gui/Membership.py:26
 msgid "Membership&nbsp;Management..."
-msgstr "Gestionarea abonamentelor..."
+msgstr "Abonamente"
 
 #: Mailman/Gui/Membership.py:30
 msgid "Membership&nbsp;List"
-msgstr "Lista abonaþilor"
+msgstr "Abonaþi"
 
 #: Mailman/Gui/Membership.py:31
 msgid "Mass&nbsp;Subscription"
@@ -5413,13 +5438,13 @@ msgstr "Cine poate afiºa lista abonaþilor?"
 msgid ""
 "When set, the list of subscribers is protected by member or\n"
 "             admin password authentication."
-msgstr ""
+msgstr "Odatã setat acest parametru, lista abonaþilor este protejatã prin acces cu parolã de abonat sau de administrator."
 
 #: Mailman/Gui/Privacy.py:150
 msgid ""
 "Show member addresses so they're not directly recognizable\n"
 "             as email addresses?"
-msgstr ""
+msgstr "Afiºez adresele membrilor astfel încât sã nu fie direct recunoscute ca fiind adrese de email?"
 
 #: Mailman/Gui/Privacy.py:152
 msgid ""
