@@ -37,6 +37,12 @@ COMMASPACE = ', '
 
 REGISTER_BOUNCES_EVERY = mm_cfg.minutes(15)
 
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
+
 
 
 class BounceRunner(Runner):
@@ -82,8 +88,21 @@ class BounceRunner(Runner):
         # Try VERP detection first, since it's quick and easy
         addrs = verp_bounce(mlist, msg)
         if not addrs:
+            # See if this was a probe message.
+            token = verp_probe(mlist, msg)
+            if token:
+                # The list must be locked to perform these operations
+                mlist.Lock()
+                try:
+                    op, addr, bmsg = mlist.pend_confirm(token)
+                    info = mlist.getBounceInfo(addr)
+                    mlist.disableBouncingMember(addr, info, bmsg)
+                    mlist.Save()
+                finally:
+                    mlist.Unlock()
+                return
             # That didn't give us anything useful, so try the old fashion
-            # bounce matching modules
+            # bounce matching modules.
             addrs = BouncerAPI.ScanMessages(mlist, msg)
         # If that still didn't return us any useful addresses, then send it on
         # or discard it.
@@ -170,6 +189,41 @@ def verp_bounce(mlist, msg):
                    mm_cfg.VERP_REGEXP)
             return []
         return [addr]
+
+
+
+def verp_probe(mlist, msg):
+    bmailbox, bdomain = Utils.ParseEmail(mlist.GetBouncesEmail())
+    # Sadly not every MTA bounces VERP messages correctly, or consistently.
+    # Fall back to Delivered-To: (Postfix), Envelope-To: (Exim) and
+    # Apparently-To:, and then short-circuit if we still don't have anything
+    # to work with.  Note that there can be multiple Delivered-To: headers so
+    # we need to search them all (and we don't worry about false positives for
+    # forwarded email, because only one should match VERP_REGEXP).
+    vals = []
+    for header in ('to', 'delivered-to', 'envelope-to', 'apparently-to'):
+        vals.extend(msg.get_all(header, []))
+    for field in vals:
+        to = parseaddr(field)[1]
+        if not to:
+            continue                          # empty header
+        mo = re.search(mm_cfg.VERP_PROBE_REGEXP, to)
+        if not mo:
+            continue                          # no match of regexp
+        try:
+            if bmailbox <> mo.group('bounces'):
+                continue                      # not a bounce to our list
+            # Extract the token and see if there's an entry
+            token = mo.group('token')
+            data = mlist.pend_confirm(token, expunge=False)
+            if data is not None:
+                return token
+        except IndexError:
+            syslog(
+                'error',
+                "VERP_PROBE_REGEXP doesn't yield the right match groups: %s",
+                mm_cfg.VERP_PROBE_REGEXP)
+    return None
 
 
 
