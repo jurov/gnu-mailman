@@ -92,14 +92,16 @@ def process(mlist, msg, msgdata):
     elif msg.get_type() == 'multipart/mixed':
         # The next easiest thing to do is just prepend the header and append
         # the footer as additional subparts
-        mimehdr = MIMEText(header, 'plain', lcset)
-        mimeftr = MIMEText(footer, 'plain', lcset)
         payload = msg.get_payload()
         if not isinstance(payload, ListType):
             payload = [payload]
         if footer:
+            mimeftr = MIMEText(footer, 'plain', lcset)
+            mimeftr['Content-Disposition'] = 'inline'
             payload.append(mimeftr)
         if header:
+            mimehdr = MIMEText(header, 'plain', lcset)
+            mimehdr['Content-Disposition'] = 'inline'
             payload.insert(0, mimehdr)
         msg.set_payload(payload)
         wrap = 0
@@ -137,9 +139,11 @@ def process(mlist, msg, msgdata):
     payload = [inner]
     if header:
         mimehdr = MIMEText(header, 'plain', lcset)
+        mimehdr['Content-Disposition'] = 'inline'
         payload.insert(0, mimehdr)
     if footer:
         mimeftr = MIMEText(footer, 'plain', lcset)
+        mimeftr['Content-Disposition'] = 'inline'
         payload.append(mimeftr)
     msg.set_payload(payload)
     del msg['content-type']
