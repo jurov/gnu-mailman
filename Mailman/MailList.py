@@ -385,6 +385,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.discard_these_nonmembers = []
         self.forward_auto_discards = mm_cfg.DEFAULT_FORWARD_AUTO_DISCARDS
         self.generic_nonmember_action = mm_cfg.DEFAULT_GENERIC_NONMEMBER_ACTION
+        self.nonmember_rejection_notice = ''
         # Ban lists
         self.ban_list = []
         # BAW: This should really be set in SecurityManager.InitVars()
