@@ -337,8 +337,8 @@ class ListAdmin:
 \tSubject: %(subject)s''' % {
                 'listname' : self.internal_name(),
                 'rejection': rejection,
-                'sender'   : sender.replace('%', '%%'),
-                'subject'  : subject.replace('%', '%%'),
+                'sender'   : str(sender).replace('%', '%%'),
+                'subject'  : str(subject).replace('%', '%%'),
                 }
             if comment:
                 note += '\n\tReason: ' + comment.replace('%', '%%')
