@@ -432,7 +432,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     #
     # List creation
     #
-    def Create(self, name, admin, crypted_password, langs=None):
+    def Create(self, name, admin, crypted_password,
+               langs=None, emailhost=None):
         if Utils.list_exists(name):
             raise Errors.MMListAlreadyExistsError, name
         # Validate what will be the list's posting address.  If that's
@@ -440,7 +441,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # part doesn't really matter, since that better already be valid.
         # However, most scripts already catch MMBadEmailError as exceptions on
         # the admin's email address, so transform the exception.
-        postingaddr = '%s@%s' % (name, mm_cfg.DEFAULT_EMAIL_HOST)
+        if emailhost is None:
+            emailhost = mm_cfg.DEFAULT_EMAIL_HOST
+        postingaddr = '%s@%s' % (name, emailhost)
         try:
             Utils.ValidateEmail(postingaddr)
         except Errors.MMBadEmailError:
