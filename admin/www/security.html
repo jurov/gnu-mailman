@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd" >
 <html>
 <!-- THIS PAGE IS AUTOMATICALLY GENERATED.  DO NOT EDIT. -->
-<!-- Thu Feb 10 08:31:48 2005 -->
+<!-- Thu Feb 10 09:10:56 2005 -->
 <!-- USING HT2HTML 2.0 -->
 <!-- SEE http://ht2html.sf.net -->
 <!-- User-specified headers:
@@ -164,15 +164,20 @@ entire article is permitted in any medium, provided this notice is preserved.
 
 The GNU Mailman developers take security very seriously.  All Mailman security
 concerns should be emailed to
-<mailto:mailman-security@python.org>mailman-security@python.org</a>.  This is
-a closed list that reaches the core Mailman developers.
+<a href="mailto:%6D%61%69%6C%6D%61%6E%2D%73%65%63%75%72%69%74%79%40%70%79%74%68%6F%6E%2E%6F%72%67">mailman-security at python dot org</a>.
+This is a closed list that reaches the core Mailman developers.
 
 <h3>Known issues and fixes</h3>
 
 <ul>
-<li><b>CAN-2005-0202</b> -- This is a very serious issue affecting
-the Mailman 2.1 serious up to and including version 2.1.5.  Mailman 2.1.6 is
-not vulnerable.  This issue can allow for the leakage of member passwords.
+
+<li><b>CAN-2005-0202</b> -- This is a very serious issue affecting the Mailman
+2.1 series up to and including version 2.1.5.  Mailman 2.1.6 is not
+affected.  This issue can allow for the leakage of member passwords.
+
+<p>A quick, immediate fix is to remove the /usr/local/mailman/cgi-bin/private
+executable.  However, this will break any private archives your lists may be
+using.  See below for a proper patch.
 
 <p>The extent of your exposure to this vulnerability depends on factors such
 as which version of Apache you are running and how you have it configured.  We
