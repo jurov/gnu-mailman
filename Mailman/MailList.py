@@ -1386,4 +1386,6 @@ bad regexp in bounce_matching_header line: %s
         # preferred language.
         if mm_cfg.DEFAULT_SERVER_LANGUAGE not in langs:
             langs.append(mm_cfg.DEFAULT_SERVER_LANGUAGE)
-        return langs
+        # When testing, it's possible we've disabled a language, so just
+        # filter things out so we don't get tracebacks.
+        return [lang for lang in langs if mm_cfg.LC_DESCRIPTIONS.has_key(lang)]
