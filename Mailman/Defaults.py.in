@@ -233,7 +233,11 @@ DEFAULT_DIGEST_VOLUME_FREQUENCY = 1
 # attributes) the internal Pipermail archiver is used.  This is the default if
 # both of these variables are set to No.  When either is set, the value should
 # be a shell command string which will get passed to os.popen().  This string
-# can contain %(listname)s for dictionary interpolation.  The name of the list
+# can contain the following substitution strings:
+#
+#     %(listname)s -- gets the internal name of the list
+#     %(hostname)s -- gets the email hostname for the list
+#
 # being archived will be substituted for this.  Please note that os.popen() is
 # used.
 #
@@ -646,6 +650,7 @@ QRUNNERS = [
     ('NewsRunner',     1), # outgoing messages to the nntpd
     ('OutgoingRunner', 1), # outgoing messages to the smtpd
     ('VirginRunner',   1), # internally crafted (virgin birth) messages
+    ('RetryRunner',    1), # retry temporarily failed deliveries
     ]
 
 # Set this to Yes to use the `Maildir' delivery option.  If you change this
@@ -1227,6 +1232,7 @@ ARCHQUEUE_DIR   = os.path.join(QUEUE_DIR, 'archive')
 SHUNTQUEUE_DIR  = os.path.join(QUEUE_DIR, 'shunt')
 VIRGINQUEUE_DIR = os.path.join(QUEUE_DIR, 'virgin')
 BADQUEUE_DIR    = os.path.join(QUEUE_DIR, 'bad')
+RETRYQUEUE_DIR  = os.path.join(QUEUE_DIR, 'retry')
 MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
 
 # Other useful files
@@ -1271,6 +1277,8 @@ add_language('pl',   _('Polish'),              'iso-8859-2')
 add_language('pt',   _('Portuguese'),          'iso-8859-1')
 add_language('pt_BR', _('Portuguese (Brazil)'), 'iso-8859-1')
 add_language('ru',   _('Russian'),             'koi8-r')
+add_language('sr',   _('Serbian'),             'utf-8')
 add_language('sv',   _('Swedish'),             'iso-8859-1')
+add_language('uk',   _('Ukrainian'),           'utf-8')
 
 del _
