@@ -89,6 +89,8 @@ class ListAdmin:
             except IOError, e:
                 if e.errno <> errno.ENOENT: raise
                 self.__db = {}
+                # put version number in new database
+                self.__db['version'] = IGN, mm_cfg.REQUESTS_FILE_SCHEMA_VERSION
 
     def __closedb(self):
         if self.__db is not None:
@@ -128,7 +130,7 @@ class ListAdmin:
 
     def NumRequestsPending(self):
         self.__opendb()
-        # Subtrace one for the version pseudo-entry
+        # Subtract one for the version pseudo-entry
         return len(self.__db) - 1
 
     def __getmsgids(self, rtype):
