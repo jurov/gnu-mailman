@@ -308,8 +308,12 @@ def subscription_prompt(mlist, doc, cookie, userdesc):
 
 
 def subscription_cancel(mlist, doc, cookie):
-    # Discard this cookie
-    userdesc = mlist.pend_confirm(cookie)[1]
+    mlist.Lock()
+    try:
+        # Discard this cookie
+        userdesc = mlist.pend_confirm(cookie)[1]
+    finally:
+        mlist.Unlock()
     lang = userdesc.language
     i18n.set_language(lang)
     doc.set_language(lang)
