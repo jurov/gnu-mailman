@@ -487,7 +487,8 @@ def NewRequestsDatabase(l):
             #
             # See the note above; the same holds true.
             for ign, ign, digest, addr, password in v:
-                l.HoldSubscription(addr, password, digest)
+                l.HoldSubscription(addr, '', password, digest,
+                                   mm_cfg.DEFAULT_SERVER_LANGUAGE)
             del r[k]
         else:
             syslog('error', """\
