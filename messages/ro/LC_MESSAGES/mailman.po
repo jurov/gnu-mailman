@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-05-04 21:03+0300\n"
+"PO-Revision-Date: 2004-05-10 20:35+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@informatia.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "data"
 
 #: Mailman/Archiver/HyperArch.py:723
 msgid "<P>Currently, there are no archives. </P>"
-msgstr "<P>În acest moment nu sunt arhive. </P>"
+msgstr "<P>Nu sunt arhive în acest moment </P>"
 
 #: Mailman/Archiver/HyperArch.py:761
 #, fuzzy
@@ -69,7 +69,7 @@ msgstr "Text%(sz)s"
 
 #: Mailman/Archiver/HyperArch.py:856
 msgid "figuring article archives\n"
-msgstr "pregãtesc arhivele articolelor\n"
+msgstr "pregãtesc arhivele\n"
 
 #: Mailman/Archiver/HyperArch.py:866
 msgid "April"
@@ -145,7 +145,7 @@ msgstr "%(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:890
 msgid "The Week Of Monday %(day)i %(month)s %(year)i"
-msgstr "Ziua de Luni, %(day)i %(month)s %(year)i"
+msgstr "Luni, %(day)i %(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:894
 msgid "%(day)i %(month)s %(year)i"
@@ -1875,10 +1875,23 @@ msgid ""
 "    re-enabling your membership.\n"
 "    "
 msgstr ""
+"Abonamentul dumneavoastrã la lista de discuþii %(realname)s este în acest moment dezactivat\n"
+"din cauza eºecurilor de livrare (bounces) excesive.  Este necesarã confirmarea dumneavoastrã\n"
+"pentru a reactiva livrarea mesajelor la adresa dumneavoastrã.  Urmãtoarele informaþii suplimentare\n"
+"sunt disponibile:\n"
+"\n"
+"<ul>\n"
+"<li><b>Adresa:</b> %(member)s\n"
+"<li><b>Numele:</b> %(username)s\n"
+"<li><b>Data ultimului eºec:</b> %(date)s\n"
+"<li><b>Numãrul de zile (aproximativ) pânã când veþi fi ºters definitiv din aceastã listã:</b> %(daysleft)s\n"
+"</ul>\n"
+"\n"
+"Apãsaþi pe butonul <em>Reactiveazã</em> pentru reactivarea abonamentului."
 
 #: Mailman/Cgi/confirm.py:813
 msgid "Re-enable membership"
-msgstr "Reactiveazã abonamentul"
+msgstr "Reactiveazã"
 
 #: Mailman/Cgi/confirm.py:814
 msgid "Cancel"
@@ -2036,15 +2049,31 @@ msgid ""
 "    password can also be used for authentication.\n"
 "    "
 msgstr ""
+"Puteþi crea o nouã listã de discuþii introducând informaþiile relevante în formularul de mai jos.\n"
+"Numele listei de email va fi folosit ca ºi adresã primarã pentru publicarea mesajelor pe listã,\n"
+"deci ar trebui sã fie scris cu minuscule. Nu veþi mai putea modifica acest nume de îndatã\n"
+"ce lista este creatã.\n"
+"<p>Va trebui, de asemenea, sã furnizaþi adresa de e-mail a proprietarului iniþial al listei.\n"
+"De îndatã ce lista este creatã, proprietarul acesteia va primi o notificare,\n"
+"împreunã cu parola de administrare a listei.  Proprietarul listei va putea apoi modifica parola\n"
+"ºi adãga sau ºterge ºi alþi proprietari de listã.\n"
+"\n"
+"<p>Dacã doriþi ca Mailman sã genereze automat parola iniþialã de administrare a listei,\n"
+"alegeþi 'Da' în câmpul de autogenerare de mai jos ºi nu completaþi câmpurile parolei iniþiale.\n"
+"\n"
+"<p>Trebuie sã aveþi autorizarea necesarã pentru a puteacrea noi liste de discuþie.\n"
+"Fiecare site trebuie sã aibã o parolã a <em>creatorului de liste</em>, ce trebuie introdusã\n"
+"în ultimul câmp al formularului.  Notaþi cã ºi parola de administrator de site poate fi folositã\n"
+"pentru autentificare.\n"
+"   "
 
 #: Mailman/Cgi/create.py:318
-#, fuzzy
 msgid "List Identity"
-msgstr "Identitatea listei"
+msgstr "Date de identitate"
 
 #: Mailman/Cgi/create.py:322
 msgid "Name of list:"
-msgstr "Numele listei"
+msgstr "Numele listei:"
 
 #: Mailman/Cgi/create.py:328
 msgid "Initial list owner address:"
@@ -2115,9 +2144,8 @@ msgid "Subscribe results page"
 msgstr "Abonamente - pagina de rezultate"
 
 #: Mailman/Cgi/edithtml.py:45
-#, fuzzy
 msgid "User specific options page"
-msgstr "Pagina de opþiuni specifice utilizatorilor"
+msgstr "Opþiuni specifice utilizatorilor"
 
 #: Mailman/Cgi/edithtml.py:57
 msgid "List name is required."
@@ -2176,8 +2204,8 @@ msgid ""
 "<p>There currently are no publicly-advertised\n"
 "            %(mailmanlink)s mailing lists on %(hostname)s."
 msgstr ""
-"<p>ÃŽn acest moment nu sunt liste de discuþii\n"
-"            %(mailmanlink)s publice la %(hostname)s."
+"<p>Nu sunt disponibile liste de discuþii\n"
+"%(mailmanlink)s publice la %(hostname)s."
 
 #: Mailman/Cgi/listinfo.py:110
 msgid ""
@@ -2256,14 +2284,12 @@ msgid "No such member: %(safeuser)s."
 msgstr "Nu existã un astfel de membru: %(safeuser)s."
 
 #: Mailman/Cgi/options.py:173
-#, fuzzy
 msgid ""
 "Your unsubscription request has been\n"
 "                    forwarded to the list administrator for approval."
 msgstr ""
-"Cererea dumneavoastrã de dezabonare a fost înaintatã administratorului "
-"listei\n"
-"pentru aprobare."
+"Cererea dumneavoastrã de dezabonare\n"
+"a fost înaintatã administratorului listei pentru aprobare."
 
 #: Mailman/Cgi/options.py:178 Mailman/Cgi/options.py:192
 msgid "The confirmation email has been sent."
@@ -2519,6 +2545,14 @@ msgid ""
 "    effect.\n"
 "    "
 msgstr ""
+"Pentru a vã modifica opþiunile de abonament, trebuie mai întâi sã vã\n"
+"autentificaþi cu parola %(extra)smembership în secþiunea de mai jos.\n"
+"Dacã nu vã reamintiþi parola de acces, o puteþi recupera prin e-mail\n"
+"apãsând pe butonul de mai jos.  Dacã doriþi sã pãrãsiþi aceastã listã,\n"
+"apãsaþi butonul <em>Dezabonare</em> ºi vã va fi trimis un mesaj de confirmare.\n"
+"\n"
+"<p><strong><em>Important:</em></strong> Din acest punct începând, trebuie\n"
+"sã aveþi activate cookie-urile în browser, altfel nici o modificare nu va fi aplicatã."
 
 #: Mailman/Cgi/options.py:827
 msgid "Email address:"
@@ -2530,7 +2564,7 @@ msgstr "Parola:"
 
 #: Mailman/Cgi/options.py:833
 msgid "Log in"
-msgstr "Autentificare (log-in)"
+msgstr "Autentificare"
 
 #: Mailman/Cgi/options.py:841
 msgid ""
@@ -2659,6 +2693,20 @@ msgid ""
 "    <p>For your safety, you will be asked to reconfirm the list password.\n"
 "    "
 msgstr ""
+"Aceastã paginã vã faciliteazã, ca ºi proprietar al listei, de a ºterge definitiv\n"
+"aceastã listã de discuþii din sistem.  <strong>Aceastã acþiune nu este reversibilã</strong>,\n"
+"aºa cã vã sfãtuim sã apelaþi la ea numai dacã aveþi cetitudinea absolutã\n"
+"cã lista ºi-a servit scopul ºi nu mai este necesarã.\n"
+"\n"
+"<p>Notaþi cã nu vor fi trimise notificãri de atenþionare cãtre membrii listei,\n"
+"iar dupã aceastã acþiune orice mesaje trimise cãtre listã sau adresele adiacente\n"
+"vor fi returnate ca ºi eºecuri.\n"
+"\n"
+"<p>Aveþi, de asemenea, opþiunea ºtergerii arhivelor acestei liste de discuþii în acest moment.\n"
+"Apropate întotdeauna este recomandat sã <strong>nu</strong> ºtergeþi arhivele,\n"
+"devreme ce acestea servesc ca ºi dovezi ale listei.\n"
+"\n"
+"<p>Pentru siguranþã, vi se va cere reconfirmarea parolei de administrare a listei."
 
 #: Mailman/Cgi/rmlist.py:223
 msgid "List password:"
@@ -4239,6 +4287,8 @@ msgid ""
 "When a new digest volume is started, the volume number is\n"
 "             incremented and the issue number is reset to 1."
 msgstr ""
+"La generarea unui nou volum de rezumate, numãrul volumului este incrementat\n"
+"iar numãrul ediþiei este readus la valoarea 1."
 
 #: Mailman/Gui/Digest.py:85
 msgid "Should Mailman start a new digest volume?"
