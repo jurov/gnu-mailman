@@ -351,11 +351,11 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
         refused = conn.sendmail(envsender, recips, msgtext)
     except smtplib.SMTPRecipientsRefused, e:
         syslog('smtp-failure', 'All recipients refused: %s, msgid: %s',
-               e, msgid
+               e, msgid)
         refused = e.recipients
     except smtplib.SMTPResponseException, e:
         syslog('smtp-failure', 'SMTP session failure: %s, %s, msgid: %s',
-               e.smtp_code, smtp_error, msgid)
+               e.smtp_code, e.smtp_error, msgid)
         # If this was a permanent failure, don't add the recipients to the
         # refused, because we don't want them to be added to failures.
         # Otherwise, if the MTA rejects the message because of the message
