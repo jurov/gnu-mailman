@@ -575,7 +575,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.__timestamp = mtime
         return dict, None
 
-    def Load(self, check_version=1):
+    def Load(self, check_version=True):
         if not Utils.list_exists(self.internal_name()):
             raise Errors.MMUnknownListError
         # We first try to load config.pck, which contains the up-to-date
@@ -608,7 +608,26 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             raise Errors.MMCorruptListDatabaseError, e
         # Now, if we didn't end up using the primary database file, we want to
         # copy the fallback into the primary so that the logic in Save() will
-        # still work.  For giggles, we'll copy it to a safety backup.
+        # still work.  For giggles, we'll copy it to a safety backup.  Note we
+        # MUST do this with the underlying list lock acquired.
+        unlock = True
+        try:
+            try:
+                self.__lock.lock()
+            except LockFile.AlreadyLockedError:
+                unlock = False
+            self.__fix_corrupt_pckfile(file, pfile, plast, dfile, dlast)
+        finally:
+            if unlock:
+                self.__lock.unlock()
+        # Copy the loaded dictionary into the attributes of the current
+        # mailing list object, then run sanity check on the data.
+        self.__dict__.update(dict)
+        if check_version:
+            self.CheckVersion(dict)
+            self.CheckValues()
+
+    def __fix_corrupt_pckfile(self, file, pfile, plast, dfile, dlast):
         if file == plast:
             # Move aside any existing pickle file and delete any existing
             # safety file.  This avoids EPERM errors inside the shutil.copy()
@@ -637,12 +656,6 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 if e.errno <> errno.ENOENT: raise
             shutil.copy(file, dfile)
             shutil.copy(file, dfile + '.safety')
-        # Copy the loaded dictionary into the attributes of the current
-        # mailing list object, then run sanity check on the data.
-        self.__dict__.update(dict)
-        if check_version:
-            self.CheckVersion(dict)
-            self.CheckValues()
 
 
     #
