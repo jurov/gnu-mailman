@@ -298,7 +298,9 @@ def show_pending_subs(mlist, form):
         if addr not in mlist.ban_list:
             radio += '<br>' + CheckBox('ban-%d' % id, 1).Format() + \
                      '&nbsp;' + _('Permanently ban from this list')
-        table.AddRow(['%s<br><em>%s</em>' % (addr, fullname),
+        # While the address may be a unicode, it must be ascii
+        paddr = addr.encode('us-ascii', 'replace')
+        table.AddRow(['%s<br><em>%s</em>' % (paddr, fullname),
                       radio,
                       TextBox('comment-%d' % id, size=40)
                       ])
