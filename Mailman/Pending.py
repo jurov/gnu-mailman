@@ -62,10 +62,9 @@ def new(*content):
     # It's a programming error if this assertion fails!  We do it this way so
     # the assert test won't fail if the sequence is empty.
     assert content[:1] in _ALLKEYS
-
     # Get a lock handle now, but only lock inside the loop.
-    lock = LockFile.LockFile(LOCKFILE,
-                             withlogging=mm_cfg.PENDINGDB_LOCK_DEBUGGING)
+    lock = LockFile.LockFile(
+        LOCKFILE, withlogging=mm_cfg.PENDINGDB_LOCK_DEBUGGING)
     # We try the main loop several times. If we get a lock error somewhere
     # (for instance because someone broke the lock) we simply try again.
     retries = mm_cfg.PENDINGDB_LOCK_ATTEMPTS
@@ -128,7 +127,6 @@ def confirm(cookie, expunge=True):
         if content is missing:
             return None
         return content
-
     # Get a lock handle now, but only lock inside the loop.
     lock = LockFile.LockFile(LOCKFILE,
                              withlogging=mm_cfg.PENDINGDB_LOCK_DEBUGGING)
@@ -166,6 +164,22 @@ def confirm(cookie, expunge=True):
 
 
 
+def repend(cookie, data):
+    # Get a lock
+    lock = LockFile.LockFile(
+        LOCKFILE, withlogging=mm_cfg.PENDINGDB_LOCK_DEBUGGING)
+    lock.lock()
+    try:
+        # Load the database
+        db = _load()
+        db[cookie] = data
+        db['evictions'][cookie] = time.time() + mm_cfg.PENDING_REQUEST_LIFE
+        _save(db, lock)
+    finally:
+        lock.unlock()
+
+
+
 def _load():
     # The list's lock must be acquired if you wish to alter data and save.
     #
@@ -190,6 +204,7 @@ def _load():
             fp.close()
 
 
+
 def _save(db, lock):
     # Lock must be acquired before loading the data that is now being saved.
     if not lock.locked():
