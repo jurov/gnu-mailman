@@ -1,4 +1,5 @@
 # translation of mailman.po to 
+# translation of mailman.po to
 # translation of mailman.po to deutsch
 # translation of mailman.po to Deutsch
 # Deutsche Übersetzung der Mailman messages
@@ -12,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Wed Jan 12 17:21:06 2005\n"
-"PO-Revision-Date: 2004-11-03 08:07+0100\n"
+"PO-Revision-Date: 2005-01-18 18:27+0100\n"
 "Last-Translator: Peer Heinlein <p.heinlein@jpberlin.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -487,9 +488,8 @@ msgstr "Zur allgemeinen Listen-Informationsseite gehen"
 
 # Mailman/Cgi/admin.py:371
 #: Mailman/Cgi/admin.py:414
-#, fuzzy
 msgid "Edit the public HTML pages and text files"
-msgstr "Öffentliche HTML-Seiten anpassen"
+msgstr "Texte und öffentliche HTML-Seiten anpassen"
 
 # Mailman/Cgi/admin.py:373
 #: Mailman/Cgi/admin.py:416
@@ -618,11 +618,11 @@ msgstr "...nach diesem Eintrag."
 
 #: Mailman/Cgi/admin.py:745 Mailman/Cgi/admin.py:748
 msgid "Spam Filter Rule %(i)d"
-msgstr ""
+msgstr "Spam-Filter Regel %(i)d"
 
 #: Mailman/Cgi/admin.py:750
 msgid "Spam Filter Regexp:"
-msgstr ""
+msgstr "Spam-Filter Regexp:"
 
 # Mailman/Cgi/admindb.py:180 Mailman/Cgi/admindb.py:280
 #: Mailman/Cgi/admin.py:761 Mailman/Cgi/admindb.py:301
@@ -664,11 +664,11 @@ msgstr "Aktion:"
 
 #: Mailman/Cgi/admin.py:777
 msgid "Move rule up"
-msgstr ""
+msgstr "Regel hoch schieben"
 
 #: Mailman/Cgi/admin.py:778
 msgid "Move rule down"
-msgstr ""
+msgstr "Regel tiefer schieben"
 
 #: Mailman/Cgi/admin.py:811
 msgid "<br>(Edit <b>%(varname)s</b>)"
@@ -1252,7 +1252,7 @@ msgstr "Alle Daten senden"
 
 #: Mailman/Cgi/admindb.py:196 Mailman/Cgi/admindb.py:244
 msgid "Discard all messages marked <em>Defer</em>"
-msgstr ""
+msgstr "Alle mit <em>Verschieben</em> markierten Nachrichten verwerfen."
 
 #: Mailman/Cgi/admindb.py:210
 msgid "all of %(esender)s's held messages."
@@ -2393,7 +2393,7 @@ msgstr "Benutzerspezifische Optionen"
 
 #: Mailman/Cgi/edithtml.py:46
 msgid "Welcome email text file"
-msgstr ""
+msgstr "Text-Datei der Willkommens-Mail"
 
 # Mailman/Cgi/edithtml.py:57
 #: Mailman/Cgi/edithtml.py:58
@@ -4719,7 +4719,7 @@ msgid ""
 "Remove message attachments that have a matching content\n"
 "             type."
 msgstr ""
-"Entfernt Mail-Attachements, die einen entsprechenden MIME-\n"
+"Entfernt Mail-Attachments, die einen entsprechenden MIME-\n"
 "Content-Type haben."
 
 #: Mailman/Gui/ContentFilter.py:78
@@ -4736,11 +4736,11 @@ msgid ""
 "             <p>See also <a href=\"?VARHELP=contentfilter/pass_mime_types\"\n"
 "             >pass_mime_types</a> for a content type whitelist."
 msgstr ""
-"Nutzen Sie diese Option um jedes Attachement einer e-Mail zu entfernen, \n"
+"Nutzen Sie diese Option um jedes Attachment einer e-Mail zu entfernen, \n"
 "das auf einen der folgenden MIME content-types paßt. Jede Zeile muß einen \n"
 "Eintrag enthalten, der einen MIME content-type benennt, z.B. \n"
 "<tt>image/gif</tt>. \n"
-"Wenn Sie den Untertyp weglassen, können Sie alle Attachements des \n"
+"Wenn Sie den Untertyp weglassen, können Sie alle Attachments des \n"
 "Haupttyps entfernen lassen, z.B. <tt>image</tt>.\n"
 "\n"
 "             <p>Leere Einträge werden ignoriert.\n"
@@ -4755,7 +4755,7 @@ msgid ""
 "             content type.  Leave this field blank to skip this filter\n"
 "             test."
 msgstr ""
-"Entfernt Attachements, die keinen passenden content-typ haben. \n"
+"Entfernt Attachments, die keinen passenden content-typ haben. \n"
 "Lassen Sie dieses Feld leer um hier nicht zu filtern und\n"
 "alles durchzulassen. "
 
@@ -4782,23 +4782,19 @@ msgstr ""
 "mit Attachment geblocket werden!"
 
 #: Mailman/Gui/ContentFilter.py:104
-#, fuzzy
 msgid ""
 "Remove message attachments that have a matching filename\n"
 "             extension."
-msgstr ""
-"Entfernt Mail-Attachements, die einen entsprechenden MIME-\n"
-"Content-Type haben."
+msgstr "Entfernt Mail-Attachments, die auf die Datei-Endung passen."
 
 #: Mailman/Gui/ContentFilter.py:108
-#, fuzzy
 msgid ""
 "Remove message attachments that don't have a matching\n"
 "             filename extension.  Leave this field blank to skip this "
 "filter\n"
 "             test."
 msgstr ""
-"Entfernt Attachements, die keinen passenden content-typ haben. \n"
+"Entfernt Attachments, die keinen passenden content-typ haben. \n"
 "Lassen Sie dieses Feld leer um hier nicht zu filtern und\n"
 "alles durchzulassen. "
 
@@ -5858,6 +5854,8 @@ msgid ""
 "Discard held messages older than this number of days.\n"
 "            Use 0 for no automatic discarding."
 msgstr ""
+"Verwerfe gehaltene Nachrichten, die seit mehr als X Tage hier liegen.\n"
+"Bei 0 werden die Nachrichten nie automatisch gelöscht."
 
 # Mailman/Cgi/admin.py:1188
 #: Mailman/Gui/General.py:429
@@ -6947,9 +6945,8 @@ msgid ""
 msgstr ""
 
 #: Mailman/Gui/Privacy.py:395
-#, fuzzy
 msgid "Legacy anti-spam filters"
-msgstr "Anti-Spam Filter"
+msgstr "Anti-Spam Filter "
 
 # Mailman/Gui/Privacy.py:203
 #: Mailman/Gui/Privacy.py:398
@@ -7835,14 +7832,12 @@ msgid "The message's content type was not explicitly allowed"
 msgstr "Der MIME-Typ der Nachricht wurde vom Moderator nicht erlaubt."
 
 #: Mailman/Handlers/MimeDel.py:71
-#, fuzzy
 msgid "The message's file extension was explicitly disallowed"
-msgstr "Der MIME-Typ der Nachricht wurde vom Moderator ausdrücklich verboten."
+msgstr "Die Datei-Endung des Attachments  wurde vom Moderator ausdrücklich verboten."
 
 #: Mailman/Handlers/MimeDel.py:74
-#, fuzzy
 msgid "The message's file extension was not explicitly allowed"
-msgstr "Der MIME-Typ der Nachricht wurde vom Moderator nicht erlaubt."
+msgstr "Die Datei-Endung des Attachments wurde vom Moderator nicht ausdrücklich erlaubt."
 
 #: Mailman/Handlers/MimeDel.py:86
 msgid "After content filtering, the message was empty"
@@ -7968,9 +7963,8 @@ msgstr ""
 "URL         : %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:336
-#, fuzzy
 msgid "Skipped content of type %(partctype)s\n"
-msgstr "Übersprungener Inhalt vom Typ %(partctype)s"
+msgstr "Weggelassener Inhalt vom Typ %(partctype)s\n"
 
 #: Mailman/Handlers/Scrubber.py:371
 msgid "-------------- next part --------------\n"
@@ -8187,15 +8181,13 @@ msgstr "%(dbfile)s ist Eigentum von %(owner)s (sollte aber %(user)s gehören)"
 
 # Mailman/Deliverer.py:76
 #: Mailman/MailList.py:214
-#, fuzzy
 msgid "Your confirmation is required to join the %(listname)s mailing list"
-msgstr "Sie sind kein Mitglied der Liste %(listname)s"
+msgstr "Ihre Bestätigung ist nötig um die Liste %(listname)s zu abonnieren."
 
 # Mailman/Deliverer.py:76
 #: Mailman/MailList.py:224
-#, fuzzy
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
-msgstr "Sie sind kein Mitglied der Liste %(listname)s"
+msgstr "Ihre Bestätigung ist nötig um die Liste %(listname)s abzubestellen."
 
 # Mailman/MailList.py:614 Mailman/MailList.py:886
 #: Mailman/MailList.py:887 Mailman/MailList.py:1276
@@ -9566,15 +9558,15 @@ msgstr "Bitte entweder -p oder -m angeben."
 
 #: bin/dumpdb:135
 msgid "[----- start pickle file -----]"
-msgstr ""
+msgstr "[----- start pickle file -----]"
 
 #: bin/dumpdb:140
 msgid "[----- end pickle file -----]"
-msgstr ""
+msgstr "[----- end pickle file -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
-msgstr ""
+msgstr "<----- start object %(cnt)s ----->"
 
 #: bin/find_member:19
 msgid ""
@@ -10876,13 +10868,12 @@ msgstr ""
 
 # Mailman/MTA/Manual.py:109
 #: bin/reset_pw.py:77
-#, fuzzy
 msgid "Changing passwords for list: %(listname)s"
-msgstr "Löschanforderung für Liste  %(listname)s"
+msgstr "Ändere Passwort für die Liste  %(listname)s"
 
 #: bin/reset_pw.py:83
 msgid "New password for member %(member)40s: %(randompw)s"
-msgstr ""
+msgstr "Neues Passwort für das Mitglied %(member)40s: %(randompw)s"
 
 #: bin/rmlist:19
 msgid ""
