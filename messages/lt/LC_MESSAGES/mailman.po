@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1\n"
-"POT-Creation-Date: Sat Sep 13 09:21:50 2003\n"
+"POT-Creation-Date: Mon Sep 22 10:07:56 2003\n"
 "PO-Revision-Date: 2002-12-26 09:07+0200\n"
 "Last-Translator: Mantas Kriauciunas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <info@akl.lt>\n"
@@ -3253,97 +3253,106 @@ msgstr ""
 msgid "Digest members:"
 msgstr ""
 
-#: Mailman/Defaults.py:1257
+#: Mailman/Defaults.py:1260
 msgid "Traditional Chinese"
 msgstr "Kinø tradicinë"
 
-#: Mailman/Defaults.py:1258
+#: Mailman/Defaults.py:1261
 msgid "Czech"
 msgstr "Èekø"
 
-#: Mailman/Defaults.py:1259
+#: Mailman/Defaults.py:1262
+#, fuzzy
+msgid "Danish"
+msgstr "Suomiø"
+
+#: Mailman/Defaults.py:1263
 msgid "German"
 msgstr "Vokieèiø"
 
-#: Mailman/Defaults.py:1260
+#: Mailman/Defaults.py:1264
 msgid "English (USA)"
 msgstr "Anglø (JAV)"
 
-#: Mailman/Defaults.py:1261
+#: Mailman/Defaults.py:1265
 msgid "Spanish (Spain)"
 msgstr "Ispanø (Ispanija)"
 
-#: Mailman/Defaults.py:1262
+#: Mailman/Defaults.py:1266
 msgid "Estonian"
 msgstr "Estø"
 
-#: Mailman/Defaults.py:1263
+#: Mailman/Defaults.py:1267
+msgid "Euskara"
+msgstr ""
+
+#: Mailman/Defaults.py:1268
 msgid "Finnish"
 msgstr "Suomiø"
 
-#: Mailman/Defaults.py:1264
+#: Mailman/Defaults.py:1269
 msgid "French"
 msgstr "Prancûzø"
 
-#: Mailman/Defaults.py:1265
+#: Mailman/Defaults.py:1270
 msgid "Simplified Chinese"
 msgstr "Kinø supaprastinta"
 
-#: Mailman/Defaults.py:1266
+#: Mailman/Defaults.py:1271
 msgid "Hungarian"
 msgstr "Vengrø"
 
-#: Mailman/Defaults.py:1267
+#: Mailman/Defaults.py:1272
 msgid "Italian"
 msgstr "Italø"
 
-#: Mailman/Defaults.py:1268
+#: Mailman/Defaults.py:1273
 msgid "Japanese"
 msgstr "Japonø"
 
-#: Mailman/Defaults.py:1269
+#: Mailman/Defaults.py:1274
 msgid "Korean"
 msgstr "Korëjieèiø"
 
-#: Mailman/Defaults.py:1270
+#: Mailman/Defaults.py:1275
 msgid "Lithuanian"
 msgstr "Lietuviø"
 
-#: Mailman/Defaults.py:1271
+#: Mailman/Defaults.py:1276
 msgid "Dutch"
 msgstr "Olandø"
 
-#: Mailman/Defaults.py:1272
+#: Mailman/Defaults.py:1277
 msgid "Norwegian"
 msgstr "Norvegø"
 
-#: Mailman/Defaults.py:1273
+#: Mailman/Defaults.py:1278
 msgid "Polish"
 msgstr ""
 
-#: Mailman/Defaults.py:1274
+#: Mailman/Defaults.py:1279
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portugalø (Brazilija)"
 
-#: Mailman/Defaults.py:1275
+#: Mailman/Defaults.py:1280
 msgid "Portuguese (Brazil)"
 msgstr "Portugalø (Brazilija)"
 
-#: Mailman/Defaults.py:1276
+#: Mailman/Defaults.py:1281
 msgid "Russian"
 msgstr "Rusø"
 
-#: Mailman/Defaults.py:1277
+#: Mailman/Defaults.py:1282
 #, fuzzy
 msgid "Serbian"
 msgstr "Vokieèiø"
 
-#: Mailman/Defaults.py:1278
+#: Mailman/Defaults.py:1283
 msgid "Swedish"
 msgstr "Ðvedø"
 
-#: Mailman/Defaults.py:1279
+#: Mailman/Defaults.py:1284
 msgid "Ukrainian"
 msgstr ""
 
@@ -6469,8 +6478,8 @@ msgstr ""
 msgid "No such list: %(listname)s"
 msgstr "Nëra tokio forumo: %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
-#: cron/bumpdigests:78
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
+#: bin/sync_members:244 cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr ""
 
@@ -7068,6 +7077,35 @@ msgstr ""
 #: bin/convert.py:44 bin/fix_url.py:51
 msgid "%%%"
 msgstr ""
+
+#: bin/discard:19
+msgid ""
+"Discard held messages.\n"
+"\n"
+"Usage:\n"
+"    discard [options] file ...\n"
+"\n"
+"Options:\n"
+"    --help / -h\n"
+"        Print this help message and exit.\n"
+"\n"
+"    --quiet / -q\n"
+"        Don't print status messages.\n"
+msgstr ""
+
+#: bin/discard:94
+#, fuzzy
+msgid "Ignoring non-held message: %(f)s"
+msgstr "Ignoring changes to deleted member: %(user)s"
+
+#: bin/discard:100
+msgid "Ignoring held msg w/bad id: %(f)s"
+msgstr ""
+
+#: bin/discard:112
+#, fuzzy
+msgid "Discarded held msg #%(id)s for list %(listname)s"
+msgstr "Uþsisakyti %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -7973,6 +8011,23 @@ msgstr ""
 #: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "Vieði archyvai"
+
+#: bin/show_qfiles:3
+msgid ""
+"Show the contents of one or more Mailman queue files.\n"
+"\n"
+"Usage: show_qfiles [options] qfile ...\n"
+"\n"
+"Options:\n"
+"\n"
+"    -q / --quiet\n"
+"        Don't print `helpful' message delimiters.\n"
+"\n"
+"    -h / --help\n"
+"        Print this text and exit.\n"
+"\n"
+"Example: show_qfiles qfiles/shunt/*.pck\n"
+msgstr ""
 
 #: bin/sync_members:19
 msgid ""

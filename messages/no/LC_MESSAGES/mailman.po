@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b4+\n"
-"POT-Creation-Date: Sat Sep 13 09:21:50 2003\n"
+"POT-Creation-Date: Mon Sep 22 10:07:56 2003\n"
 "PO-Revision-Date: 2003-09-18 15:57+0200\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
@@ -3488,95 +3488,104 @@ msgstr "Medlemmer i normal-modus:"
 msgid "Digest members:"
 msgstr "Medlemmer i sammendrag-modus:"
 
-#: Mailman/Defaults.py:1257
+#: Mailman/Defaults.py:1260
 msgid "Traditional Chinese"
 msgstr "Kinesisk (Traditional)"
 
-#: Mailman/Defaults.py:1258
+#: Mailman/Defaults.py:1261
 msgid "Czech"
 msgstr "Tsjekkisk"
 
-#: Mailman/Defaults.py:1259
+#: Mailman/Defaults.py:1262
+#, fuzzy
+msgid "Danish"
+msgstr "Finsk"
+
+#: Mailman/Defaults.py:1263
 msgid "German"
 msgstr "Tysk"
 
-#: Mailman/Defaults.py:1260
+#: Mailman/Defaults.py:1264
 msgid "English (USA)"
 msgstr "Engelsk (USA)"
 
-#: Mailman/Defaults.py:1261
+#: Mailman/Defaults.py:1265
 msgid "Spanish (Spain)"
 msgstr "Spansk (Spania)"
 
-#: Mailman/Defaults.py:1262
+#: Mailman/Defaults.py:1266
 msgid "Estonian"
 msgstr "Estisk"
 
-#: Mailman/Defaults.py:1263
+#: Mailman/Defaults.py:1267
+msgid "Euskara"
+msgstr ""
+
+#: Mailman/Defaults.py:1268
 msgid "Finnish"
 msgstr "Finsk"
 
-#: Mailman/Defaults.py:1264
+#: Mailman/Defaults.py:1269
 msgid "French"
 msgstr "Fransk"
 
-#: Mailman/Defaults.py:1265
+#: Mailman/Defaults.py:1270
 msgid "Simplified Chinese"
 msgstr "Kinesisk (Simplified)"
 
-#: Mailman/Defaults.py:1266
+#: Mailman/Defaults.py:1271
 msgid "Hungarian"
 msgstr "Ungarsk"
 
-#: Mailman/Defaults.py:1267
+#: Mailman/Defaults.py:1272
 msgid "Italian"
 msgstr "Italiensk"
 
-#: Mailman/Defaults.py:1268
+#: Mailman/Defaults.py:1273
 msgid "Japanese"
 msgstr "Japansk"
 
-#: Mailman/Defaults.py:1269
+#: Mailman/Defaults.py:1274
 msgid "Korean"
 msgstr "Koreansk"
 
-#: Mailman/Defaults.py:1270
+#: Mailman/Defaults.py:1275
 msgid "Lithuanian"
 msgstr "Litauisk"
 
-#: Mailman/Defaults.py:1271
+#: Mailman/Defaults.py:1276
 msgid "Dutch"
 msgstr "Nederlandsk"
 
-#: Mailman/Defaults.py:1272
+#: Mailman/Defaults.py:1277
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: Mailman/Defaults.py:1273
+#: Mailman/Defaults.py:1278
 msgid "Polish"
 msgstr "Polsk"
 
-#: Mailman/Defaults.py:1274
+#: Mailman/Defaults.py:1279
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: Mailman/Defaults.py:1275
+#: Mailman/Defaults.py:1280
 msgid "Portuguese (Brazil)"
 msgstr "Portugisisk (Brasil)"
 
-#: Mailman/Defaults.py:1276
+#: Mailman/Defaults.py:1281
 msgid "Russian"
 msgstr "Russisk"
 
-#: Mailman/Defaults.py:1277
+#: Mailman/Defaults.py:1282
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: Mailman/Defaults.py:1278
+#: Mailman/Defaults.py:1283
 msgid "Swedish"
 msgstr "Svensk"
 
-#: Mailman/Defaults.py:1279
+#: Mailman/Defaults.py:1284
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
@@ -6607,13 +6616,15 @@ msgid ""
 "             recognize the machine this mailing list runs on as a machine\n"
 "             capable of reading and posting news."
 msgstr ""
-"Navnet kan enten være kun internettnavnet på nyhetsgruppetjeneren din, eller\n"
+"Navnet kan enten være kun internettnavnet på nyhetsgruppetjeneren din, "
+"eller\n"
 "på formatet navn:port der port er portnummeret.\n"
 "\n"
 "\n"
 "Nyhetsgruppe-tjeneste er ikke en del av Mailman.\n"
 "Du m&aring; ha tilgang til en eksisterende NNTP tjener,\n"
-"og maskinen som denne epostlisten kj&oslash;rer p&aring;, m&aring; ha tilgang til &aring; lese og sende meldinger til den NNTP tjeneren."
+"og maskinen som denne epostlisten kj&oslash;rer p&aring;, m&aring; ha "
+"tilgang til &aring; lese og sende meldinger til den NNTP tjeneren."
 
 #: Mailman/Gui/Usenet.py:50
 msgid "The name of the Usenet group to gateway to and/or from."
@@ -7827,8 +7838,8 @@ msgstr ""
 msgid "No such list: %(listname)s"
 msgstr "Listen finnes ikke: %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
-#: cron/bumpdigests:78
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
+#: bin/sync_members:244 cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Ingenting å gjøre."
 
@@ -8707,6 +8718,35 @@ msgstr "Lagrer listen"
 #: bin/convert.py:44 bin/fix_url.py:51
 msgid "%%%"
 msgstr ""
+
+#: bin/discard:19
+msgid ""
+"Discard held messages.\n"
+"\n"
+"Usage:\n"
+"    discard [options] file ...\n"
+"\n"
+"Options:\n"
+"    --help / -h\n"
+"        Print this help message and exit.\n"
+"\n"
+"    --quiet / -q\n"
+"        Don't print status messages.\n"
+msgstr ""
+
+#: bin/discard:94
+#, fuzzy
+msgid "Ignoring non-held message: %(f)s"
+msgstr "Ser bort i fra endring av et medlem som er utmeldt: %(user)s"
+
+#: bin/discard:100
+msgid "Ignoring held msg w/bad id: %(f)s"
+msgstr ""
+
+#: bin/discard:112
+#, fuzzy
+msgid "Discarded held msg #%(id)s for list %(listname)s"
+msgstr "Melde meg på listen %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -10065,6 +10105,23 @@ msgstr "private arkiv"
 #: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "offentlige arkiv"
+
+#: bin/show_qfiles:3
+msgid ""
+"Show the contents of one or more Mailman queue files.\n"
+"\n"
+"Usage: show_qfiles [options] qfile ...\n"
+"\n"
+"Options:\n"
+"\n"
+"    -q / --quiet\n"
+"        Don't print `helpful' message delimiters.\n"
+"\n"
+"    -h / --help\n"
+"        Print this text and exit.\n"
+"\n"
+"Example: show_qfiles qfiles/shunt/*.pck\n"
+msgstr ""
 
 #: bin/sync_members:19
 msgid ""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.1b5\n"
-"POT-Creation-Date: Sat Sep 13 09:21:50 2003\n"
+"POT-Creation-Date: Mon Sep 22 10:07:56 2003\n"
 "PO-Revision-Date: 2003-05-20 15:51-0300\n"
 "Last-Translator: Gleydson Mazioli da Silva <gleydson@debian.org>\n"
 "Language-Team: Portuguese <debian-l10n-portuguese@lists.debian.org>\n"
@@ -3485,96 +3485,105 @@ msgstr "Membros regulares não-digest:"
 msgid "Digest members:"
 msgstr "Membros Digest:"
 
-#: Mailman/Defaults.py:1257
+#: Mailman/Defaults.py:1260
 msgid "Traditional Chinese"
 msgstr "Chinês Tradicional"
 
-#: Mailman/Defaults.py:1258
+#: Mailman/Defaults.py:1261
 msgid "Czech"
 msgstr "tcheco"
 
-#: Mailman/Defaults.py:1259
+#: Mailman/Defaults.py:1262
+#, fuzzy
+msgid "Danish"
+msgstr "Finlandês"
+
+#: Mailman/Defaults.py:1263
 msgid "German"
 msgstr "Alemão"
 
-#: Mailman/Defaults.py:1260
+#: Mailman/Defaults.py:1264
 msgid "English (USA)"
 msgstr "Inglês (EUA)"
 
-#: Mailman/Defaults.py:1261
+#: Mailman/Defaults.py:1265
 msgid "Spanish (Spain)"
 msgstr "Espanhol (Espanha)"
 
-#: Mailman/Defaults.py:1262
+#: Mailman/Defaults.py:1266
 msgid "Estonian"
 msgstr "Estonian"
 
-#: Mailman/Defaults.py:1263
+#: Mailman/Defaults.py:1267
+msgid "Euskara"
+msgstr ""
+
+#: Mailman/Defaults.py:1268
 msgid "Finnish"
 msgstr "Finlandês"
 
-#: Mailman/Defaults.py:1264
+#: Mailman/Defaults.py:1269
 msgid "French"
 msgstr "Francês"
 
-#: Mailman/Defaults.py:1265
+#: Mailman/Defaults.py:1270
 msgid "Simplified Chinese"
 msgstr "Chinês simplificado"
 
-#: Mailman/Defaults.py:1266
+#: Mailman/Defaults.py:1271
 msgid "Hungarian"
 msgstr "Húmgaro"
 
-#: Mailman/Defaults.py:1267
+#: Mailman/Defaults.py:1272
 msgid "Italian"
 msgstr "Italiano"
 
-#: Mailman/Defaults.py:1268
+#: Mailman/Defaults.py:1273
 msgid "Japanese"
 msgstr "Japonês"
 
-#: Mailman/Defaults.py:1269
+#: Mailman/Defaults.py:1274
 msgid "Korean"
 msgstr "Coreano"
 
-#: Mailman/Defaults.py:1270
+#: Mailman/Defaults.py:1275
 msgid "Lithuanian"
 msgstr "Lituania"
 
-#: Mailman/Defaults.py:1271
+#: Mailman/Defaults.py:1276
 msgid "Dutch"
 msgstr "Holandês"
 
-#: Mailman/Defaults.py:1272
+#: Mailman/Defaults.py:1277
 msgid "Norwegian"
 msgstr "Norueguês"
 
-#: Mailman/Defaults.py:1273
+#: Mailman/Defaults.py:1278
 msgid "Polish"
 msgstr "Polonesa"
 
-#: Mailman/Defaults.py:1274
+#: Mailman/Defaults.py:1279
 msgid "Portuguese"
 msgstr "Portugues"
 
-#: Mailman/Defaults.py:1275
+#: Mailman/Defaults.py:1280
 msgid "Portuguese (Brazil)"
 msgstr "Portugues (Brasil)"
 
-#: Mailman/Defaults.py:1276
+#: Mailman/Defaults.py:1281
 msgid "Russian"
 msgstr "Russo"
 
-#: Mailman/Defaults.py:1277
+#: Mailman/Defaults.py:1282
 #, fuzzy
 msgid "Serbian"
 msgstr "Alemão"
 
-#: Mailman/Defaults.py:1278
+#: Mailman/Defaults.py:1283
 msgid "Swedish"
 msgstr "Suéco"
 
-#: Mailman/Defaults.py:1279
+#: Mailman/Defaults.py:1284
 msgid "Ukrainian"
 msgstr ""
 
@@ -7815,8 +7824,8 @@ msgstr "Não é possível ler ambos os membros normais e digest da entrada parão."
 msgid "No such list: %(listname)s"
 msgstr "Lista inexistente: %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
-#: cron/bumpdigests:78
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
+#: bin/sync_members:244 cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Nada a ser feito."
 
@@ -8716,6 +8725,46 @@ msgstr "Salvando lista"
 #: bin/convert.py:44 bin/fix_url.py:51
 msgid "%%%"
 msgstr "%%%"
+
+#: bin/discard:19
+#, fuzzy
+msgid ""
+"Discard held messages.\n"
+"\n"
+"Usage:\n"
+"    discard [options] file ...\n"
+"\n"
+"Options:\n"
+"    --help / -h\n"
+"        Print this help message and exit.\n"
+"\n"
+"    --quiet / -q\n"
+"        Don't print status messages.\n"
+msgstr ""
+"Regenera os arquivos data/aliases e data/aliases.db do nada.\n"
+"\n"
+"Uso:\n"
+"\n"
+"     genaliases [opções]\n"
+"\n"
+"Opções:\n"
+"\n"
+"   -h/--help\n"
+"        Mostra esta mensagem e sai.\n"
+
+#: bin/discard:94
+#, fuzzy
+msgid "Ignoring non-held message: %(f)s"
+msgstr "Ignorando modificações no membro apagado: %(user)s"
+
+#: bin/discard:100
+msgid "Ignoring held msg w/bad id: %(f)s"
+msgstr ""
+
+#: bin/discard:112
+#, fuzzy
+msgid "Discarded held msg #%(id)s for list %(listname)s"
+msgstr "Se inscrever na lista %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -10180,6 +10229,23 @@ msgstr "arquivos privados"
 msgid "public archives"
 msgstr "arquivos públicos"
 
+#: bin/show_qfiles:3
+msgid ""
+"Show the contents of one or more Mailman queue files.\n"
+"\n"
+"Usage: show_qfiles [options] qfile ...\n"
+"\n"
+"Options:\n"
+"\n"
+"    -q / --quiet\n"
+"        Don't print `helpful' message delimiters.\n"
+"\n"
+"    -h / --help\n"
+"        Print this text and exit.\n"
+"\n"
+"Example: show_qfiles qfiles/shunt/*.pck\n"
+msgstr ""
+
 #: bin/sync_members:19
 msgid ""
 "Synchronize a mailing list's membership with a flat file.\n"
@@ -11405,26 +11471,6 @@ msgstr ""
 "\n"
 "As listas especificadas na linha de comando são conferidas. Se nenhum nome \n"
 "de lista for especificado, todas as listas são conferidas.\n"
-
-#~ msgid ""
-#~ "Fix the MM2.1b4 archives.\n"
-#~ "\n"
-#~ "Usage: %(PROGRAM)s [options] file ...\n"
-#~ "\n"
-#~ "Where options are:\n"
-#~ "    -h / --help\n"
-#~ "        Print this help message and exit.\n"
-#~ msgstr ""
-#~ "Regenera os arquivos data/aliases e data/aliases.db do nada.\n"
-#~ "\n"
-#~ "Uso:\n"
-#~ "\n"
-#~ "     genaliases [opções]\n"
-#~ "\n"
-#~ "Opções:\n"
-#~ "\n"
-#~ "   -h/--help\n"
-#~ "        Mostra esta mensagem e sai.\n"
 
 #~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
 #~ msgstr ""
