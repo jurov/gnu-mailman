@@ -610,21 +610,33 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # copy the fallback into the primary so that the logic in Save() will
         # still work.  For giggles, we'll copy it to a safety backup.
         if file == plast:
-            # Move aside any existing pickle file
+            # Move aside any existing pickle file and delete any existing
+            # safety file.  This avoids EPERM errors inside the shutil.copy()
+            # calls if those files exist with different ownership.
             try:
                 os.rename(pfile, pfile + '.corrupt')
+            except OSError, e:
+                if e.errno <> errno.ENOENT: raise
+            try:
+                os.remove(pfile + '.safety')
             except OSError, e:
                 if e.errno <> errno.ENOENT: raise
             shutil.copy(file, pfile)
             shutil.copy(file, pfile + '.safety')
         elif file == dlast:
-            # Move aside any existing marshal file
+            # Move aside any existing marshal file and delete any existing
+            # safety file.  This avoids EPERM errors inside the shutil.copy()
+            # calls if those files exist with different ownership.
             try:
                 os.rename(dfile, dfile + '.corrupt')
             except OSError, e:
                 if e.errno <> errno.ENOENT: raise
+            try:
+                os.remove(dfile + '.safety')
+            except OSError, e:
+                if e.errno <> errno.ENOENT: raise
             shutil.copy(file, dfile)
-            shutil.copy(file, pfile + '.safety')
+            shutil.copy(file, dfile + '.safety')
         # Copy the loaded dictionary into the attributes of the current
         # mailing list object, then run sanity check on the data.
         self.__dict__.update(dict)
