@@ -238,8 +238,9 @@ def admin_overview(msg=''):
                 # List is for different identity of this host - skip it.
                 continue
             else:
-                advertised.append(mlist)
-
+                advertised.append((mlist.GetScriptURL('admin'),
+                                   mlist.real_name,
+                                   mlist.description))
     # Greeting depends on whether there was an error or not
     if msg:
         greeting = FontAttr(msg, color="ff5060", size="+1")
@@ -289,10 +290,10 @@ def admin_overview(msg=''):
                       Bold(FontAttr(_('Description'), size='+2'))
                       ])
         highlight = 1
-        for mlist in advertised:
+        for url, real_name, description in advertised:
             table.AddRow(
-                [Link(mlist.GetScriptURL('admin'), Bold(mlist.real_name)),
-                 mlist.description or Italic(_('[no description available]'))])
+                [Link(url, Bold(real_name)),
+                      description or Italic(_('[no description available]'))])
             if highlight and mm_cfg.WEB_HIGHLIGHT_COLOR:
                 table.AddRowInfo(table.GetCurrentRowIndex(),
                                  bgcolor=mm_cfg.WEB_HIGHLIGHT_COLOR)
