@@ -53,6 +53,7 @@ import time
 import Cookie
 import marshal
 import binascii
+import urllib
 from types import StringType, TupleType
 from urlparse import urlparse
 
@@ -103,7 +104,8 @@ class SecurityManager:
                 # A bad system error
                 raise TypeError, 'No user supplied for AuthUser context'
             secret = self.getMemberPassword(user)
-            key += 'user+%s' % Utils.ObscureEmail(user).replace('/','%2f')
+            userdata = urllib.quote(Utils.ObscureEmail(user), safe='')
+            key += 'user+%s' % userdata
         elif authcontext == mm_cfg.AuthListModerator:
             secret = self.mod_password
             key += 'moderator'
