@@ -60,6 +60,12 @@ LOST = 2
 DASH = '-'
 NL = '\n'
 
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
+
 
 
 class ListAdmin:
