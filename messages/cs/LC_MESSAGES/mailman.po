@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0rc3\n"
-"POT-Creation-Date: Fri Apr 18 23:56:34 2003\n"
+"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
 "PO-Revision-Date: 2002-12-15 00:39+0100\n"
 "Last-Translator: Dan Ohnesorg <dan@ohnesorg.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -3439,79 +3439,88 @@ msgstr "Bì¾ní úèastníci:"
 msgid "Digest members:"
 msgstr "Úèastnící odebírající Digest verzi:"
 
-#: Mailman/Defaults.py:1204
+#: Mailman/Defaults.py:1254
 msgid "Traditional Chinese"
 msgstr "Tradièní èín¹tina"
 
-#: Mailman/Defaults.py:1205
+#: Mailman/Defaults.py:1255
 msgid "Czech"
 msgstr "Èe¹tina"
 
-#: Mailman/Defaults.py:1206
+#: Mailman/Defaults.py:1256
 msgid "German"
 msgstr "Nìmèina"
 
-#: Mailman/Defaults.py:1207
+#: Mailman/Defaults.py:1257
 msgid "English (USA)"
 msgstr "Anglicky (USA)"
 
-#: Mailman/Defaults.py:1208
+#: Mailman/Defaults.py:1258
 msgid "Spanish (Spain)"
 msgstr "©panìlsky (Spain)"
 
-#: Mailman/Defaults.py:1209
+#: Mailman/Defaults.py:1259
 msgid "Estonian"
 msgstr "Eston¹tina"
 
-#: Mailman/Defaults.py:1210
+#: Mailman/Defaults.py:1260
 msgid "Finnish"
 msgstr "Fin¹tina"
 
-#: Mailman/Defaults.py:1211
+#: Mailman/Defaults.py:1261
 msgid "French"
 msgstr "Francouzsky"
 
-#: Mailman/Defaults.py:1212
+#: Mailman/Defaults.py:1262
 msgid "Simplified Chinese"
 msgstr "Zjednodu¹ená èín¹tina"
 
-#: Mailman/Defaults.py:1213
+#: Mailman/Defaults.py:1263
 msgid "Hungarian"
 msgstr "Maïar¹tina"
 
-#: Mailman/Defaults.py:1214
+#: Mailman/Defaults.py:1264
 msgid "Italian"
 msgstr "Italsky"
 
-#: Mailman/Defaults.py:1215
+#: Mailman/Defaults.py:1265
 msgid "Japanese"
 msgstr "Japonsky"
 
-#: Mailman/Defaults.py:1216
+#: Mailman/Defaults.py:1266
 msgid "Korean"
 msgstr "Korej¹tina"
 
-#: Mailman/Defaults.py:1217
+#: Mailman/Defaults.py:1267
 msgid "Lithuanian"
 msgstr "Litev¹tina"
 
-#: Mailman/Defaults.py:1218
+#: Mailman/Defaults.py:1268
 msgid "Dutch"
 msgstr "Dán¹tina"
 
-#: Mailman/Defaults.py:1219
+#: Mailman/Defaults.py:1269
 msgid "Norwegian"
 msgstr "Nor¹tina"
 
-#: Mailman/Defaults.py:1220
+#: Mailman/Defaults.py:1270
+msgid "Polish"
+msgstr ""
+
+#: Mailman/Defaults.py:1271
+#, fuzzy
+msgid "Portuguese"
+msgstr "Brazilská portugal¹tina"
+
+#: Mailman/Defaults.py:1272
 msgid "Portuguese (Brazil)"
 msgstr "Brazilská portugal¹tina"
 
-#: Mailman/Defaults.py:1221
+#: Mailman/Defaults.py:1273
 msgid "Russian"
 msgstr "Ru¹tina"
 
-#: Mailman/Defaults.py:1222
+#: Mailman/Defaults.py:1274
 msgid "Swedish"
 msgstr "©véd¹tina"
 
@@ -5457,21 +5466,40 @@ msgstr ""
 "konfiguraèní stránku úèastníka.\n"
 "                 </ul>"
 
-#: Mailman/Gui/NonDigest.py:108
+#: Mailman/Gui/NonDigest.py:109
+msgid ""
+"When <a href=\"?VARHELP=nondigest/personalize\">personalization</a> is "
+"enabled\n"
+"for this list, additional substitution variables are allowed in your "
+"headers\n"
+"and footers:\n"
+"\n"
+"<ul><li><b>user_address</b> - The address of the user,\n"
+"        coerced to lower case.\n"
+"    <li><b>user_delivered_to</b> - The case-preserved address\n"
+"        that the user is subscribed with.\n"
+"    <li><b>user_password</b> - The user's password.\n"
+"    <li><b>user_name</b> - The user's full name.\n"
+"    <li><b>user_optionsurl</b> - The url to the user's option\n"
+"        page.\n"
+"</ul>\n"
+msgstr ""
+
+#: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
 msgstr "Hlavièka pøidávaná do pøíspìvkù zasílaných ne-digest úèastníkùm."
 
-#: Mailman/Gui/NonDigest.py:109
+#: Mailman/Gui/NonDigest.py:129
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
 msgstr "Text pøidaný na zaèátek ka¾dé ihned distribuované zprávy."
 
-#: Mailman/Gui/NonDigest.py:114
+#: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
 msgstr "Patièka pøidaná ke ka¾dé ihned distribuované zprávì."
 
-#: Mailman/Gui/NonDigest.py:115
+#: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
@@ -7262,7 +7290,7 @@ msgstr "od %(remote)s"
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "pøihlá¹ky do konference %(realname)s vy¾adují souhlas moderátora"
 
-#: Mailman/MailList.py:909 bin/add_members:281
+#: Mailman/MailList.py:909 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "%(realname)s zpráva o pøihlá¹ení."
 
@@ -7476,12 +7504,6 @@ msgid ""
 "    -d file\n"
 "        Similar to above, but these people become digest members.\n"
 "\n"
-"    --changes-msg=<y|n>\n"
-"    -c <y|n>\n"
-"        Set whether or not to send the list members the `there's going to "
-"be\n"
-"        big changes to your list' message. defaults to no.\n"
-"\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
 "        Set whether or not to send the list members a welcome message,\n"
@@ -7506,55 +7528,47 @@ msgid ""
 "files can be `-'.\n"
 msgstr ""
 
-#: bin/add_members:134
-msgid "Big change in %(listname)s@%(listhost)s mailing list"
-msgstr "Velká zmìna v konferenci %(listname)s@%(listhost)s."
-
-#: bin/add_members:167
+#: bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Je ji¾ úèastníkem %(member)s"
 
-#: bin/add_members:170
+#: bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Neplatná emailová adresa: prázdný øádek"
 
-#: bin/add_members:172
+#: bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Neplatná emailová adresa: %(member)s"
 
-#: bin/add_members:174
+#: bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Neplatná adresa (obsahuje nepovolené znaky): %(member)s"
 
-#: bin/add_members:176
+#: bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Pøihlá¹en: %(member)s"
 
-#: bin/add_members:223
-msgid "Bad argument to -c/--changes-msg: %(arg)s"
-msgstr "Chybný parametr u -c/--changes-msg: %(arg)s"
-
-#: bin/add_members:230
+#: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Chybný parametr u -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:237
+#: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Chybný parametr u -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:243
+#: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "Nemohu èíst ze standardního vstupu jak bì¾né úèastníky, tak úèastníky "
 "vyu¾ívající digest."
 
-#: bin/add_members:249 bin/config_list:105 bin/find_member:97 bin/inject:90
+#: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:199 bin/sync_members:222
 #: cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Nenalezl jsem konferenci %(listname)s"
 
-#: bin/add_members:269 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
 #: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "®ádný pøíkaz."
@@ -8982,35 +8996,40 @@ msgid ""
 "\n"
 msgstr ""
 
-#: bin/rmlist:66 bin/rmlist:69
+#: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr ""
 
-#: bin/rmlist:72
-msgid "%(listname)s %(msg)s not found as %(dir)s"
-msgstr ""
+#: bin/rmlist:80
+#, fuzzy
+msgid "%(listname)s %(msg)s not found as %(filename)s"
+msgstr "Jméno konference nesmí obsahovat \"@\": %(listname)s"
 
-#: bin/rmlist:96
+#: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "Nenalezl jsem konferenci (tøeba byla smazána) - %(listname)s"
 
-#: bin/rmlist:98
+#: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "Nenalezl jsem konferenci %(listname)s - odstraòuji zbytky archivù."
 
-#: bin/rmlist:102
+#: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr ""
 
-#: bin/rmlist:116
+#: bin/rmlist:124
 msgid "list info"
 msgstr ""
 
-#: bin/rmlist:122 bin/rmlist:124
+#: bin/rmlist:132
+msgid "stale lock file"
+msgstr ""
+
+#: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "soukromé archivy"
 
-#: bin/rmlist:126 bin/rmlist:128
+#: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "veøejné archivy"
 
@@ -9660,7 +9679,7 @@ msgstr ""
 "\n"
 "Èekající pøíspìvky:"
 
-#: cron/checkdbs:143
+#: cron/checkdbs:144
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -9815,6 +9834,12 @@ msgid ""
 "all\n"
 "        lists are sent out.\n"
 msgstr ""
+
+#~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
+#~ msgstr "Velká zmìna v konferenci %(listname)s@%(listhost)s."
+
+#~ msgid "Bad argument to -c/--changes-msg: %(arg)s"
+#~ msgstr "Chybný parametr u -c/--changes-msg: %(arg)s"
 
 #~ msgid "Posts by member are currently quarantined for moderation"
 #~ msgstr ""

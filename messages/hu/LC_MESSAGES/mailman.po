@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman\n"
-"POT-Creation-Date: Fri Apr 18 23:56:34 2003\n"
+"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
 "PO-Revision-Date: 2002-12-12 15:24+0100\n"
 "Last-Translator: Szilard Vizi <vizisz@freemail.hu>\n"
 "Language-Team: Hungarian <LL@li.org>\n"
@@ -3453,79 +3453,88 @@ msgstr "Nem-digest (rendes) listatagok:"
 msgid "Digest members:"
 msgstr "Digest listatagok:"
 
-#: Mailman/Defaults.py:1204
+#: Mailman/Defaults.py:1254
 msgid "Traditional Chinese"
 msgstr "Hagyományos kínai"
 
-#: Mailman/Defaults.py:1205
+#: Mailman/Defaults.py:1255
 msgid "Czech"
 msgstr "Cseh"
 
-#: Mailman/Defaults.py:1206
+#: Mailman/Defaults.py:1256
 msgid "German"
 msgstr "Német"
 
-#: Mailman/Defaults.py:1207
+#: Mailman/Defaults.py:1257
 msgid "English (USA)"
 msgstr "Angol (USA)"
 
-#: Mailman/Defaults.py:1208
+#: Mailman/Defaults.py:1258
 msgid "Spanish (Spain)"
 msgstr "Spanyol"
 
-#: Mailman/Defaults.py:1209
+#: Mailman/Defaults.py:1259
 msgid "Estonian"
 msgstr "Észt"
 
-#: Mailman/Defaults.py:1210
+#: Mailman/Defaults.py:1260
 msgid "Finnish"
 msgstr "Finn"
 
-#: Mailman/Defaults.py:1211
+#: Mailman/Defaults.py:1261
 msgid "French"
 msgstr "Francia"
 
-#: Mailman/Defaults.py:1212
+#: Mailman/Defaults.py:1262
 msgid "Simplified Chinese"
 msgstr "Egyszerûsített kínai"
 
-#: Mailman/Defaults.py:1213
+#: Mailman/Defaults.py:1263
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: Mailman/Defaults.py:1214
+#: Mailman/Defaults.py:1264
 msgid "Italian"
 msgstr "Olasz"
 
-#: Mailman/Defaults.py:1215
+#: Mailman/Defaults.py:1265
 msgid "Japanese"
 msgstr "Japán"
 
-#: Mailman/Defaults.py:1216
+#: Mailman/Defaults.py:1266
 msgid "Korean"
 msgstr "Koreai"
 
-#: Mailman/Defaults.py:1217
+#: Mailman/Defaults.py:1267
 msgid "Lithuanian"
 msgstr ""
 
-#: Mailman/Defaults.py:1218
+#: Mailman/Defaults.py:1268
 msgid "Dutch"
 msgstr "Holland"
 
-#: Mailman/Defaults.py:1219
+#: Mailman/Defaults.py:1269
 msgid "Norwegian"
 msgstr "Norvég"
 
-#: Mailman/Defaults.py:1220
+#: Mailman/Defaults.py:1270
+msgid "Polish"
+msgstr ""
+
+#: Mailman/Defaults.py:1271
+#, fuzzy
+msgid "Portuguese"
+msgstr "Portugál (Brazil)"
+
+#: Mailman/Defaults.py:1272
 msgid "Portuguese (Brazil)"
 msgstr "Portugál (Brazil)"
 
-#: Mailman/Defaults.py:1221
+#: Mailman/Defaults.py:1273
 msgid "Russian"
 msgstr "Orosz"
 
-#: Mailman/Defaults.py:1222
+#: Mailman/Defaults.py:1274
 msgid "Swedish"
 msgstr "Svéd"
 
@@ -5503,21 +5512,40 @@ msgstr ""
 "       </ul>\n"
 "      "
 
-#: Mailman/Gui/NonDigest.py:108
+#: Mailman/Gui/NonDigest.py:109
+msgid ""
+"When <a href=\"?VARHELP=nondigest/personalize\">personalization</a> is "
+"enabled\n"
+"for this list, additional substitution variables are allowed in your "
+"headers\n"
+"and footers:\n"
+"\n"
+"<ul><li><b>user_address</b> - The address of the user,\n"
+"        coerced to lower case.\n"
+"    <li><b>user_delivered_to</b> - The case-preserved address\n"
+"        that the user is subscribed with.\n"
+"    <li><b>user_password</b> - The user's password.\n"
+"    <li><b>user_name</b> - The user's full name.\n"
+"    <li><b>user_optionsurl</b> - The url to the user's option\n"
+"        page.\n"
+"</ul>\n"
+msgstr ""
+
+#: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
 msgstr "Rendes listatagoknak küldött levelekhez csatolandó fejléc"
 
-#: Mailman/Gui/NonDigest.py:109
+#: Mailman/Gui/NonDigest.py:129
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
 msgstr "Szöveg, amely minden kimenõ levél elejére kerül. "
 
-#: Mailman/Gui/NonDigest.py:114
+#: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
 msgstr "Rendes tagoknak küldött levelekhez csatolandó lábléc"
 
-#: Mailman/Gui/NonDigest.py:115
+#: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
@@ -7311,7 +7339,7 @@ msgid "subscriptions to %(realname)s require moderator approval"
 msgstr ""
 "feliratkozáshoz a(z) %(realname)s listára szerkesztõi jóváhagyás szükséges"
 
-#: Mailman/MailList.py:909 bin/add_members:281
+#: Mailman/MailList.py:909 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "Értesítés %(realname)s listára feliratkozásáról"
 
@@ -7527,12 +7555,6 @@ msgid ""
 "    -d file\n"
 "        Similar to above, but these people become digest members.\n"
 "\n"
-"    --changes-msg=<y|n>\n"
-"    -c <y|n>\n"
-"        Set whether or not to send the list members the `there's going to "
-"be\n"
-"        big changes to your list' message. defaults to no.\n"
-"\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
 "        Set whether or not to send the list members a welcome message,\n"
@@ -7604,55 +7626,47 @@ msgstr ""
 "Parancssorban az -n vagy -d kapcsolók legalább egyikét meg kell adni.\n"
 "Legfeljebb az egyik állománynévnek adható meg `-'.\n"
 
-#: bin/add_members:134
-msgid "Big change in %(listname)s@%(listhost)s mailing list"
-msgstr "%(listname)s@%(listhost)s levelezõlista nagyot változott"
-
-#: bin/add_members:167
+#: bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Már tag: %(member)s"
 
-#: bin/add_members:170
+#: bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Hibás/érvénytelen e-mail cím: üres sor"
 
-#: bin/add_members:172
+#: bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Hibás/érvénytelen e-mail cím: %(member)s"
 
-#: bin/add_members:174
+#: bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Tiltott cím (illegális karakterek): %(member)s"
 
-#: bin/add_members:176
+#: bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Felírva: %(member)s"
 
-#: bin/add_members:223
-msgid "Bad argument to -c/--changes-msg: %(arg)s"
-msgstr "Hibás paraméter a -c/--changes-msg kapcsolónál: %(arg)s"
-
-#: bin/add_members:230
+#: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Hibás paraméter a -w/--welcome-msg kapcsolónál: %(arg)s"
 
-#: bin/add_members:237
+#: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Hibás paraméter az -a/--admin-notify kapcsolónál: %(arg)s"
 
-#: bin/add_members:243
+#: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "A standard bemenetrõl nem lehet egyszerre hagyományos és digest tagokat "
 "megadni."
 
-#: bin/add_members:249 bin/config_list:105 bin/find_member:97 bin/inject:90
+#: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:199 bin/sync_members:222
 #: cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Nincs %(listname)s nevû lista"
 
-#: bin/add_members:269 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
 #: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Nincs teendõ."
@@ -9858,36 +9872,41 @@ msgstr ""
 "\t Megjeleníti ezt a súgót és kilép.\n"
 "\n"
 
-#: bin/rmlist:66 bin/rmlist:69
+#: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "Eltávolítva %(msg)s"
 
-#: bin/rmlist:72
-msgid "%(listname)s %(msg)s not found as %(dir)s"
+#: bin/rmlist:80
+#, fuzzy
+msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "%(listname)s %(msg)s üzenetei nem találhatóak a %(dir)s könyvtárban"
 
-#: bin/rmlist:96
+#: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "Nincs %(listname)s nevû lista (vagy már törölték)."
 
-#: bin/rmlist:98
+#: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "Nincs %(listname)s nevû lista. Megmaradt archívuma törölve."
 
-#: bin/rmlist:102
+#: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr ""
 "Archívum törlése nélkül. Törléséhez az -a kapcsolóval indítsd a programot."
 
-#: bin/rmlist:116
+#: bin/rmlist:124
 msgid "list info"
 msgstr "lista információk"
 
-#: bin/rmlist:122 bin/rmlist:124
+#: bin/rmlist:132
+msgid "stale lock file"
+msgstr ""
+
+#: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "privát archívum"
 
-#: bin/rmlist:126 bin/rmlist:128
+#: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "nyilvános archívum"
 
@@ -10865,7 +10884,7 @@ msgstr ""
 "\n"
 "Jóváhagyásra váró levelek:"
 
-#: cron/checkdbs:143
+#: cron/checkdbs:144
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -11133,6 +11152,12 @@ msgstr ""
 "    --listname=listanév\n"
 " \t Csak a megadott lista digestjét küldi el. Ha nem lett lista\n"
 "\t megadva, akkor az összes lista digestjét elküldi.\n"
+
+#~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
+#~ msgstr "%(listname)s@%(listhost)s levelezõlista nagyot változott"
+
+#~ msgid "Bad argument to -c/--changes-msg: %(arg)s"
+#~ msgstr "Hibás paraméter a -c/--changes-msg kapcsolónál: %(arg)s"
 
 #~ msgid ""
 #~ "Invoked by cron, this checks for pending moderation requests and mails "

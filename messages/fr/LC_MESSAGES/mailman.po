@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b6\n"
-"POT-Creation-Date: Fri Apr 18 23:56:34 2003\n"
+"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
 "PO-Revision-Date: 2003-01-22 12:50-0500\n"
 "Last-Translator: Pascal George <george@lyon.inserm.fr>\n"
 "Language-Team: fr <traduc@traduc.org>\n"
@@ -3480,79 +3480,88 @@ msgstr "Abonnés en mode non-groupé (normaux):"
 msgid "Digest members:"
 msgstr "Abonnés en remise groupée:"
 
-#: Mailman/Defaults.py:1204
+#: Mailman/Defaults.py:1254
 msgid "Traditional Chinese"
 msgstr "Chinois Traditionnel"
 
-#: Mailman/Defaults.py:1205
+#: Mailman/Defaults.py:1255
 msgid "Czech"
 msgstr "Tchèque"
 
-#: Mailman/Defaults.py:1206
+#: Mailman/Defaults.py:1256
 msgid "German"
 msgstr "Allemand"
 
-#: Mailman/Defaults.py:1207
+#: Mailman/Defaults.py:1257
 msgid "English (USA)"
 msgstr "Anglais (USA)"
 
-#: Mailman/Defaults.py:1208
+#: Mailman/Defaults.py:1258
 msgid "Spanish (Spain)"
 msgstr "Espagnol (Espagne)"
 
-#: Mailman/Defaults.py:1209
+#: Mailman/Defaults.py:1259
 msgid "Estonian"
 msgstr "Estonien"
 
-#: Mailman/Defaults.py:1210
+#: Mailman/Defaults.py:1260
 msgid "Finnish"
 msgstr "Finlandais"
 
-#: Mailman/Defaults.py:1211
+#: Mailman/Defaults.py:1261
 msgid "French"
 msgstr "Français"
 
-#: Mailman/Defaults.py:1212
+#: Mailman/Defaults.py:1262
 msgid "Simplified Chinese"
 msgstr "Chinois Simplifié"
 
-#: Mailman/Defaults.py:1213
+#: Mailman/Defaults.py:1263
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: Mailman/Defaults.py:1214
+#: Mailman/Defaults.py:1264
 msgid "Italian"
 msgstr "Italien"
 
-#: Mailman/Defaults.py:1215
+#: Mailman/Defaults.py:1265
 msgid "Japanese"
 msgstr "Japonais"
 
-#: Mailman/Defaults.py:1216
+#: Mailman/Defaults.py:1266
 msgid "Korean"
 msgstr "Coréen"
 
-#: Mailman/Defaults.py:1217
+#: Mailman/Defaults.py:1267
 msgid "Lithuanian"
 msgstr ""
 
-#: Mailman/Defaults.py:1218
+#: Mailman/Defaults.py:1268
 msgid "Dutch"
 msgstr "Hollandais"
 
-#: Mailman/Defaults.py:1219
+#: Mailman/Defaults.py:1269
 msgid "Norwegian"
 msgstr "Norvégien"
 
-#: Mailman/Defaults.py:1220
+#: Mailman/Defaults.py:1270
+msgid "Polish"
+msgstr ""
+
+#: Mailman/Defaults.py:1271
+#, fuzzy
+msgid "Portuguese"
+msgstr " Portugais (Brésil)"
+
+#: Mailman/Defaults.py:1272
 msgid "Portuguese (Brazil)"
 msgstr " Portugais (Brésil)"
 
-#: Mailman/Defaults.py:1221
+#: Mailman/Defaults.py:1273
 msgid "Russian"
 msgstr "Russe"
 
-#: Mailman/Defaults.py:1222
+#: Mailman/Defaults.py:1274
 msgid "Swedish"
 msgstr "Suédois"
 
@@ -5534,23 +5543,42 @@ msgstr ""
 "l'utilisateur.\n"
 "        "
 
-#: Mailman/Gui/NonDigest.py:108
+#: Mailman/Gui/NonDigest.py:109
+msgid ""
+"When <a href=\"?VARHELP=nondigest/personalize\">personalization</a> is "
+"enabled\n"
+"for this list, additional substitution variables are allowed in your "
+"headers\n"
+"and footers:\n"
+"\n"
+"<ul><li><b>user_address</b> - The address of the user,\n"
+"        coerced to lower case.\n"
+"    <li><b>user_delivered_to</b> - The case-preserved address\n"
+"        that the user is subscribed with.\n"
+"    <li><b>user_password</b> - The user's password.\n"
+"    <li><b>user_name</b> - The user's full name.\n"
+"    <li><b>user_optionsurl</b> - The url to the user's option\n"
+"        page.\n"
+"</ul>\n"
+msgstr ""
+
+#: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
 msgstr "En-tête ajouté aux messages envoyés aux abonnés réguliers"
 
-#: Mailman/Gui/NonDigest.py:109
+#: Mailman/Gui/NonDigest.py:129
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
 msgstr "Texte ajouté au debut de tout message à émission immédiate."
 
-#: Mailman/Gui/NonDigest.py:114
+#: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
 msgstr ""
 "Les pieds de page sont ajoutés aux messages envoyés par les membres "
 "réguliers de la liste."
 
-#: Mailman/Gui/NonDigest.py:115
+#: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
@@ -7391,7 +7419,7 @@ msgstr " A partir de %(remote)s"
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "les abonnements à %(realname)s nécessitent l'approbation du modérateur"
 
-#: Mailman/MailList.py:909 bin/add_members:281
+#: Mailman/MailList.py:909 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "notification d'abonnement de %(realname)s"
 
@@ -7606,12 +7634,6 @@ msgid ""
 "    -d file\n"
 "        Similar to above, but these people become digest members.\n"
 "\n"
-"    --changes-msg=<y|n>\n"
-"    -c <y|n>\n"
-"        Set whether or not to send the list members the `there's going to "
-"be\n"
-"        big changes to your list' message. defaults to no.\n"
-"\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
 "        Set whether or not to send the list members a welcome message,\n"
@@ -7682,57 +7704,47 @@ msgstr ""
 "Vous devez référencer au moins l'une des options -n ou -d. Un seul des\n"
 "fichiers peut être `-'.\n"
 
-#: bin/add_members:134
-msgid "Big change in %(listname)s@%(listhost)s mailing list"
-msgstr ""
-"Des changements importants sont survenus sur la liste de diffusion %"
-"(listname)s@%(listhost)s"
-
-#: bin/add_members:167
+#: bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Déjà abonné: %(member)s"
 
-#: bin/add_members:170
+#: bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Adresse courriel Mauvaise/Invalide: ligne vide"
 
-#: bin/add_members:172
+#: bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Adresse courriel Mauvaise/Invalide: %(member)s"
 
-#: bin/add_members:174
+#: bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Adresse hostile (caractères illégaux): %(member)s"
 
-#: bin/add_members:176
+#: bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Abonné: %(member)s"
 
-#: bin/add_members:223
-msgid "Bad argument to -c/--changes-msg: %(arg)s"
-msgstr "Mauvais argument fourni à -c/--changes-msg: %(arg)s"
-
-#: bin/add_members:230
+#: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Mauvais argument fourni à -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:237
+#: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Mauvais argument fourni à -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:243
+#: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "Ne peut à la fois lire, à partir de l'entrée standard, les abonnés\n"
 "normaux et les abonnés de type digest."
 
-#: bin/add_members:249 bin/config_list:105 bin/find_member:97 bin/inject:90
+#: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:199 bin/sync_members:222
 #: cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Liste introuvable: %(listname)s"
 
-#: bin/add_members:269 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
 #: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Rien à faire."
@@ -9943,38 +9955,43 @@ msgstr ""
 "    -h\n"
 "        Affiche ce message d'aide puis quitte.\n"
 
-#: bin/rmlist:66 bin/rmlist:69
+#: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "Suppression de %(msg)s"
 
-#: bin/rmlist:72
-msgid "%(listname)s %(msg)s not found as %(dir)s"
+#: bin/rmlist:80
+#, fuzzy
+msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "%(msg)s %(listname)s non trouvé en tant que %(dir)s"
 
-#: bin/rmlist:96
+#: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "Liste introuvable (ou liste déjà supprimée): %(listname)s"
 
-#: bin/rmlist:98
+#: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr ""
 "Liste introuvable: %(listname)s. Suppression de ses archives\n"
 "résiduelles."
 
-#: bin/rmlist:102
+#: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr ""
 "Archives non supprimées. Réinvoquez avec l'option -a pour les supprimer."
 
-#: bin/rmlist:116
+#: bin/rmlist:124
 msgid "list info"
 msgstr "info liste"
 
-#: bin/rmlist:122 bin/rmlist:124
+#: bin/rmlist:132
+msgid "stale lock file"
+msgstr ""
+
+#: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "archives privées"
 
-#: bin/rmlist:126 bin/rmlist:128
+#: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "archives publiques"
 
@@ -10954,7 +10971,7 @@ msgstr ""
 "\n"
 "Envois en attente:"
 
-#: cron/checkdbs:143
+#: cron/checkdbs:144
 #, fuzzy
 msgid ""
 "From: %(sender)s on %(date)s\n"
@@ -11226,6 +11243,14 @@ msgstr ""
 "\n"
 "Les noms de liste fournis en ligne de commande sont traités. Si\n"
 "aucune liste n'est nommée, toutes les listes sont traitées.\n"
+
+#~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
+#~ msgstr ""
+#~ "Des changements importants sont survenus sur la liste de diffusion %"
+#~ "(listname)s@%(listhost)s"
+
+#~ msgid "Bad argument to -c/--changes-msg: %(arg)s"
+#~ msgstr "Mauvais argument fourni à -c/--changes-msg: %(arg)s"
 
 #~ msgid ""
 #~ "Invoked by cron, this checks for pending moderation requests and mails "

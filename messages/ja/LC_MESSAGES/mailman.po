@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: Fri Apr 18 23:56:34 2003\n"
+"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
 "PO-Revision-Date: 2002-12-27 10:00+0900\n"
 "Last-Translator: Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>\n"
 "Language-Team: Japanese <mmjp-users@mm.tkikuchi.net>\n"
@@ -3369,80 +3369,89 @@ msgstr "普通配送会員:"
 msgid "Digest members:"
 msgstr "まとめ読み会員:"
 
-#: Mailman/Defaults.py:1204
+#: Mailman/Defaults.py:1254
 msgid "Traditional Chinese"
 msgstr "中国語(伝統的)"
 
-#: Mailman/Defaults.py:1205
+#: Mailman/Defaults.py:1255
 msgid "Czech"
 msgstr "チェコ語"
 
-#: Mailman/Defaults.py:1206
+#: Mailman/Defaults.py:1256
 msgid "German"
 msgstr "ドイツ語"
 
 # mm_cfg.py
-#: Mailman/Defaults.py:1207
+#: Mailman/Defaults.py:1257
 msgid "English (USA)"
 msgstr "英語 (米国)"
 
-#: Mailman/Defaults.py:1208
+#: Mailman/Defaults.py:1258
 msgid "Spanish (Spain)"
 msgstr "スペイン語 (スペイン)"
 
-#: Mailman/Defaults.py:1209
+#: Mailman/Defaults.py:1259
 msgid "Estonian"
 msgstr "エストニア語"
 
-#: Mailman/Defaults.py:1210
+#: Mailman/Defaults.py:1260
 msgid "Finnish"
 msgstr "フィンランド語"
 
-#: Mailman/Defaults.py:1211
+#: Mailman/Defaults.py:1261
 msgid "French"
 msgstr "フランス語"
 
-#: Mailman/Defaults.py:1212
+#: Mailman/Defaults.py:1262
 msgid "Simplified Chinese"
 msgstr "中国語(簡体字)"
 
-#: Mailman/Defaults.py:1213
+#: Mailman/Defaults.py:1263
 msgid "Hungarian"
 msgstr "ハンガリー語"
 
-#: Mailman/Defaults.py:1214
+#: Mailman/Defaults.py:1264
 msgid "Italian"
 msgstr "イタリア語"
 
-#: Mailman/Defaults.py:1215
+#: Mailman/Defaults.py:1265
 msgid "Japanese"
 msgstr "日本語"
 
-#: Mailman/Defaults.py:1216
+#: Mailman/Defaults.py:1266
 msgid "Korean"
 msgstr "韓国語"
 
-#: Mailman/Defaults.py:1217
+#: Mailman/Defaults.py:1267
 msgid "Lithuanian"
 msgstr "リトアニア語"
 
-#: Mailman/Defaults.py:1218
+#: Mailman/Defaults.py:1268
 msgid "Dutch"
 msgstr "オランダ語"
 
-#: Mailman/Defaults.py:1219
+#: Mailman/Defaults.py:1269
 msgid "Norwegian"
 msgstr "ノルウェー語"
 
-#: Mailman/Defaults.py:1220
+#: Mailman/Defaults.py:1270
+msgid "Polish"
+msgstr ""
+
+#: Mailman/Defaults.py:1271
+#, fuzzy
+msgid "Portuguese"
+msgstr "ポルトガル語(ブラジル)"
+
+#: Mailman/Defaults.py:1272
 msgid "Portuguese (Brazil)"
 msgstr "ポルトガル語(ブラジル)"
 
-#: Mailman/Defaults.py:1221
+#: Mailman/Defaults.py:1273
 msgid "Russian"
 msgstr "ロシア語"
 
-#: Mailman/Defaults.py:1222
+#: Mailman/Defaults.py:1274
 msgid "Swedish"
 msgstr "スウェーデン語"
 
@@ -5300,21 +5309,40 @@ msgstr ""
 "</ul>\n"
 " "
 
-#: Mailman/Gui/NonDigest.py:108
+#: Mailman/Gui/NonDigest.py:109
+msgid ""
+"When <a href=\"?VARHELP=nondigest/personalize\">personalization</a> is "
+"enabled\n"
+"for this list, additional substitution variables are allowed in your "
+"headers\n"
+"and footers:\n"
+"\n"
+"<ul><li><b>user_address</b> - The address of the user,\n"
+"        coerced to lower case.\n"
+"    <li><b>user_delivered_to</b> - The case-preserved address\n"
+"        that the user is subscribed with.\n"
+"    <li><b>user_password</b> - The user's password.\n"
+"    <li><b>user_name</b> - The user's full name.\n"
+"    <li><b>user_optionsurl</b> - The url to the user's option\n"
+"        page.\n"
+"</ul>\n"
+msgstr ""
+
+#: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
 msgstr "普通配送会員へのメールに付けるヘッダ"
 
-#: Mailman/Gui/NonDigest.py:109
+#: Mailman/Gui/NonDigest.py:129
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
 msgstr "個別配送のメールの本文の最初にこの文が付け加え られます. "
 
-#: Mailman/Gui/NonDigest.py:114
+#: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
 msgstr "普通配送会員へのメールに付加されるフッタ"
 
-#: Mailman/Gui/NonDigest.py:115
+#: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
@@ -7053,7 +7081,7 @@ msgstr " %(remote)s から"
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "%(realname)s への入会には管理者の承認が必要です"
 
-#: Mailman/MailList.py:909 bin/add_members:281
+#: Mailman/MailList.py:909 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "%(realname)s 入会通知"
 
@@ -7269,12 +7297,6 @@ msgid ""
 "    -d file\n"
 "        Similar to above, but these people become digest members.\n"
 "\n"
-"    --changes-msg=<y|n>\n"
-"    -c <y|n>\n"
-"        Set whether or not to send the list members the `there's going to "
-"be\n"
-"        big changes to your list' message. defaults to no.\n"
-"\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
 "        Set whether or not to send the list members a welcome message,\n"
@@ -7343,53 +7365,45 @@ msgstr ""
 "少なくとも -n と -d のどちらかのオプションを指定しなければなりません.\n"
 "また, そのうち `-' でもよいのは, 一つだけです.\n"
 
-#: bin/add_members:134
-msgid "Big change in %(listname)s@%(listhost)s mailing list"
-msgstr "%(listname)s@%(listhost)s のメーリングリストに大きな変更がありました"
-
-#: bin/add_members:167
+#: bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "既に会員です: %(member)s"
 
-#: bin/add_members:170
+#: bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "不正/無効なメールアドレス: 空白行"
 
-#: bin/add_members:172
+#: bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "不正無効なメールアドレス: %(member)s"
 
-#: bin/add_members:174
+#: bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "非友好的アドレス (不正な文字): %(member)s"
 
-#: bin/add_members:176
+#: bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "入会しました: %(member)s"
 
-#: bin/add_members:223
-msgid "Bad argument to -c/--changes-msg: %(arg)s"
-msgstr "-c/--change-msg への引数が違います: %(arg)s"
-
-#: bin/add_members:230
+#: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "-w/--welcome-msg への引数が違います: %(arg)s"
 
-#: bin/add_members:237
+#: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "-a/--admin-notify への引数が違います: %(arg)s"
 
-#: bin/add_members:243
+#: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr "まとめ読みと普通の両方の会員を標準入力から読み込むことはできません."
 
-#: bin/add_members:249 bin/config_list:105 bin/find_member:97 bin/inject:90
+#: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:199 bin/sync_members:222
 #: cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "%(listname)s というリストはありません"
 
-#: bin/add_members:269 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
 #: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "なにもすることはありません."
@@ -9552,35 +9566,40 @@ msgstr ""
 "        このヘルプメッセージを出力して終了する.\n"
 "\n"
 
-#: bin/rmlist:66 bin/rmlist:69
+#: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "%(msg)s を削除中"
 
-#: bin/rmlist:72
-msgid "%(listname)s %(msg)s not found as %(dir)s"
+#: bin/rmlist:80
+#, fuzzy
+msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "%(listname)s %(msg)s は %(dir)s に見つかりません"
 
-#: bin/rmlist:96
+#: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "%(listname)s というリストはありません (又は, 既に削除されています)."
 
-#: bin/rmlist:98
+#: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "%(listname)s というリストはありません. 残された保存書庫を削除します."
 
-#: bin/rmlist:102
+#: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr "保存書庫は削除しません. 削除するには -a をつけてもう一度"
 
-#: bin/rmlist:116
+#: bin/rmlist:124
 msgid "list info"
 msgstr "リストの案内"
 
-#: bin/rmlist:122 bin/rmlist:124
+#: bin/rmlist:132
+msgid "stale lock file"
+msgstr ""
+
+#: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "限定公開保存書庫"
 
-#: bin/rmlist:126 bin/rmlist:128
+#: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "公開保存書庫"
 
@@ -10524,7 +10543,7 @@ msgstr ""
 "\n"
 "保留投稿:"
 
-#: cron/checkdbs:143
+#: cron/checkdbs:144
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -10783,6 +10802,13 @@ msgstr ""
 "    --listname=リスト名\n"
 "        リスト名をあげたリストについてだけ, まとめ読みを送信する.\n"
 "        これが無い場合, 全てのリストの処理をする.\n"
+
+#~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
+#~ msgstr ""
+#~ "%(listname)s@%(listhost)s のメーリングリストに大きな変更がありました"
+
+#~ msgid "Bad argument to -c/--changes-msg: %(arg)s"
+#~ msgstr "-c/--change-msg への引数が違います: %(arg)s"
 
 #~ msgid ""
 #~ "Invoked by cron, this checks for pending moderation requests and mails "

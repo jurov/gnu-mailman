@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1\n"
-"POT-Creation-Date: Fri Apr 18 23:56:34 2003\n"
-"PO-Revision-Date: 2003-03-31 23:56GMT\n"
+"POT-Creation-Date: Sun Apr 20 00:05:46 2003\n"
+"PO-Revision-Date: 2003-02-04 21:01GMT\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team: Italian <mailman-it@ferrara.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -1609,10 +1609,6 @@ msgid ""
 "            been discarded, and both list administrators have been\n"
 "            alerted."
 msgstr ""
-"            Non eri stato invitato in questa lista.  L'invito &egrave; "
-"stato\n"
-"            scartato e gli amministratori di entrambe le liste sono stati\n"
-"            avvisati."
 
 # /home/mailman/Mailman/Cgi/admindb.py:289
 #: Mailman/Cgi/confirm.py:362
@@ -3052,6 +3048,7 @@ msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Sei stato correttamente iscritto alla lista %(realname)s."
 
 #: Mailman/Commands/cmd_confirm.py:17
+#, fuzzy
 msgid ""
 "\n"
 "    confirm <confirmation-string>\n"
@@ -3060,7 +3057,7 @@ msgid ""
 "        supplied by a mailback confirmation notice.\n"
 msgstr ""
 "\n"
-"    confirm <stringa-di-conferma>\n"
+"    conferma <stringa-di-conferma>\n"
 "        Conferma un'azione.  La stringa-di-conferma è richiesta e\n"
 "        dovrebbe essere quella fornita nel messaggio di richiesta\n"
 "        conferma.\n"
@@ -3107,8 +3104,6 @@ msgid ""
 "discarded,\n"
 "and both list administrators have been alerted."
 msgstr ""
-"Non eri stato invitato in questa lista.  L'invito è stato scartato e gli "
-"amministratori di entrambe le liste sono stati avvisati."
 
 #: Mailman/Commands/cmd_confirm.py:77
 msgid "Confirmation succeeded"
@@ -3792,82 +3787,91 @@ msgstr "Iscritti in modalità Non-Digest:"
 msgid "Digest members:"
 msgstr "Iscritti digest:"
 
-#: Mailman/Defaults.py:1204
+#: Mailman/Defaults.py:1254
 msgid "Traditional Chinese"
 msgstr "Cinese Tradizionale"
 
-#: Mailman/Defaults.py:1205
+#: Mailman/Defaults.py:1255
 msgid "Czech"
 msgstr "Ceco"
 
-#: Mailman/Defaults.py:1206
+#: Mailman/Defaults.py:1256
 msgid "German"
 msgstr "Tedesco"
 
 # /home/mailman/Mailman/Utils.py:778
-#: Mailman/Defaults.py:1207
+#: Mailman/Defaults.py:1257
 msgid "English (USA)"
 msgstr "Inglese (USA)"
 
 # /home/mailman/Mailman/Utils.py:777
-#: Mailman/Defaults.py:1208
+#: Mailman/Defaults.py:1258
 msgid "Spanish (Spain)"
 msgstr "Spagnolo (Spagna)"
 
-#: Mailman/Defaults.py:1209
+#: Mailman/Defaults.py:1259
 msgid "Estonian"
 msgstr "Estone"
 
-#: Mailman/Defaults.py:1210
+#: Mailman/Defaults.py:1260
 msgid "Finnish"
 msgstr "Finlandese"
 
-#: Mailman/Defaults.py:1211
+#: Mailman/Defaults.py:1261
 msgid "French"
 msgstr "Francese"
 
-#: Mailman/Defaults.py:1212
+#: Mailman/Defaults.py:1262
 msgid "Simplified Chinese"
 msgstr "Cinese Semplificato"
 
-#: Mailman/Defaults.py:1213
+#: Mailman/Defaults.py:1263
 msgid "Hungarian"
 msgstr "Ungherese"
 
 # /home/mailman/Mailman/Utils.py:780
-#: Mailman/Defaults.py:1214
+#: Mailman/Defaults.py:1264
 msgid "Italian"
 msgstr "Italiano"
 
-#: Mailman/Defaults.py:1215
+#: Mailman/Defaults.py:1265
 msgid "Japanese"
 msgstr "Giapponese"
 
-#: Mailman/Defaults.py:1216
+#: Mailman/Defaults.py:1266
 msgid "Korean"
 msgstr "Coreano"
 
-#: Mailman/Defaults.py:1217
+#: Mailman/Defaults.py:1267
 msgid "Lithuanian"
 msgstr "Lituano"
 
-#: Mailman/Defaults.py:1218
+#: Mailman/Defaults.py:1268
 msgid "Dutch"
 msgstr "Olandese"
 
-#: Mailman/Defaults.py:1219
+#: Mailman/Defaults.py:1269
 msgid "Norwegian"
 msgstr "Norvegese"
 
-#: Mailman/Defaults.py:1220
+#: Mailman/Defaults.py:1270
+msgid "Polish"
+msgstr ""
+
+#: Mailman/Defaults.py:1271
+#, fuzzy
+msgid "Portuguese"
+msgstr "Portoghese (Brasile)"
+
+#: Mailman/Defaults.py:1272
 msgid "Portuguese (Brazil)"
 msgstr "Portoghese (Brasile)"
 
-#: Mailman/Defaults.py:1221
+#: Mailman/Defaults.py:1273
 msgid "Russian"
 msgstr "Russo"
 
-#: Mailman/Defaults.py:1222
+#: Mailman/Defaults.py:1274
 msgid "Swedish"
 msgstr "Svedese"
 
@@ -3903,7 +3907,7 @@ msgstr "promemoria della mailing list %(listfullname)s"
 
 #: Mailman/Deliverer.py:157 Mailman/Deliverer.py:176
 msgid "Hostile subscription attempt detected"
-msgstr "Rilevato tentativo ostile di iscrizione alla lista"
+msgstr ""
 
 #: Mailman/Deliverer.py:158
 msgid ""
@@ -3912,11 +3916,6 @@ msgid ""
 "invitation to your list.  We just thought you'd like to know.  No further\n"
 "action by you is required."
 msgstr ""
-"%(address)s era stato invitato in un'altra lista,\n"
-"ma in un malizioso e deliberato tentativo ha provato a confermare\n"
-"l'invito come se fosse relativo alla tua lista.  Abbiamo pensato\n"
-"che tu lo volessi sapere.  Non &egrave; richiesta alcuna azione\n"
-"da parte tua."
 
 #: Mailman/Deliverer.py:177
 msgid ""
@@ -3926,11 +3925,6 @@ msgid ""
 "you\n"
 "is required."
 msgstr ""
-"Hai invitato %(address)s nella tua lista, ma egli ha\n"
-"maliziosamente e deliberatamente tentato di confermare\n"
-"l'invito come se fosse relativo ad un'altra lista.\n"
-"Abbiamo creduto giusto fartelo sapere.  Non sono richieste\n"
-"azioni da parte tua."
 
 #: Mailman/Errors.py:114
 msgid "For some unknown reason"
@@ -6006,12 +6000,31 @@ msgstr ""
 "                 </ul>\n"
 "                 "
 
+#: Mailman/Gui/NonDigest.py:109
+msgid ""
+"When <a href=\"?VARHELP=nondigest/personalize\">personalization</a> is "
+"enabled\n"
+"for this list, additional substitution variables are allowed in your "
+"headers\n"
+"and footers:\n"
+"\n"
+"<ul><li><b>user_address</b> - The address of the user,\n"
+"        coerced to lower case.\n"
+"    <li><b>user_delivered_to</b> - The case-preserved address\n"
+"        that the user is subscribed with.\n"
+"    <li><b>user_password</b> - The user's password.\n"
+"    <li><b>user_name</b> - The user's full name.\n"
+"    <li><b>user_optionsurl</b> - The url to the user's option\n"
+"        page.\n"
+"</ul>\n"
+msgstr ""
+
 # /home/mailman/Mailman/MailList.py:712
-#: Mailman/Gui/NonDigest.py:108
+#: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
 msgstr "Intestazione aggiunta ai messaggi inviati agli iscritti regolari"
 
-#: Mailman/Gui/NonDigest.py:109
+#: Mailman/Gui/NonDigest.py:129
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
@@ -6020,11 +6033,11 @@ msgstr ""
 "             immediatamente."
 
 # /home/mailman/Mailman/MailList.py:718
-#: Mailman/Gui/NonDigest.py:114
+#: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
 msgstr "Testo aggiunto in coda ai messaggi inviati agli iscritti regolari"
 
-#: Mailman/Gui/NonDigest.py:115
+#: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
@@ -7723,8 +7736,9 @@ msgstr "Il messaggio allegato è stato scartato automaticamente."
 
 # /home/mailman/Mailman/ListAdmin.py:146
 #: Mailman/Handlers/Replybot.py:74
+#, fuzzy
 msgid "Auto-response for your message to the \"%(realname)s\" mailing list"
-msgstr "Auto-risposta al tuo messaggio diretto alla lista \"%(realname)s\""
+msgstr "Auto-risposta al tuo messaggio diretto a "
 
 #: Mailman/Handlers/Replybot.py:107
 msgid "The Mailman Replybot"
@@ -7889,20 +7903,24 @@ msgstr ""
 "Di seguito puoi vedere le righe per il file /etc/aliases:\n"
 
 #: Mailman/MTA/Manual.py:75
+#, fuzzy
 msgid ""
 "To finish creating your mailing list, you must edit your /etc/aliases (or\n"
 "equivalent) file by adding the following lines, and possibly running the\n"
 "`newaliases' program:\n"
 msgstr ""
+"\n"
 "Per terminare la creazione della tua lista, devi editare il tuo\n"
 "file /etc/aliases (o equivalente) aggiungendo le seguenti righe\n"
 "e possibilmente eseguendo il comando `newaliases':\n"
 "\n"
+"## lista %(listname)s"
 
 # /home/mailman/Mailman/Deliverer.py:236
 #: Mailman/MTA/Manual.py:80
+#, fuzzy
 msgid "## %(listname)s mailing list"
-msgstr "## lista %(listname)s"
+msgstr "la lista \"%(realname)s\""
 
 # /home/mailman/Mailman/Cgi/admindb.py:262
 #: Mailman/MTA/Manual.py:97
@@ -7984,7 +8002,7 @@ msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "le iscrizioni a %(realname)s richiedono l'approvazione del moderatore"
 
 # /home/mailman/Mailman/Cgi/roster.py:72
-#: Mailman/MailList.py:909 bin/add_members:281
+#: Mailman/MailList.py:909 bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "Notifica di iscrizione a %(realname)s"
 
@@ -8062,9 +8080,6 @@ msgid ""
 "No commands were found in this message.\n"
 "To obtain instructions, send a message containing just the word \"help\".\n"
 msgstr ""
-"Non sono stati trovati comandi in questo messaggio.\n"
-"Per ricevere le istruzioni d'uso, invia un messaggio\n"
-"contenente soltanto la parola \"help\".\n"
 
 #: Mailman/Queue/CommandRunner.py:161
 msgid ""
@@ -8197,6 +8212,7 @@ msgstr ""
 "%(wday)s %(day)2i %(mon)s %(year)04i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s"
 
 #: bin/add_members:26
+#, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8216,12 +8232,6 @@ msgid ""
 "    --digest-members-file=file\n"
 "    -d file\n"
 "        Similar to above, but these people become digest members.\n"
-"\n"
-"    --changes-msg=<y|n>\n"
-"    -c <y|n>\n"
-"        Set whether or not to send the list members the `there's going to "
-"be\n"
-"        big changes to your list' message. defaults to no.\n"
 "\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
@@ -8263,7 +8273,7 @@ msgstr ""
 "        questa opzione.\n"
 "\n"
 "    --digest-members-file=file\n"
-"    -d file\n"
+"    -d=file\n"
 "        Come sopra, tranne che queste persone diverranno iscritti digest.\n"
 "\n"
 "    --changes-msg=<y|n>\n"
@@ -8293,63 +8303,55 @@ msgstr ""
 "        Il nome della lista alla quale vuoi aggiungere nuovi iscritti. Deve\n"
 "        riferirsi ad una lista già esistente.\n"
 "\n"
-"Devi specificare almeno uno tra i parametri -r e -d.  Non più di uno dei\n"
+"Devi specificare almeno uno tra i parametri -n e -d.  Non più di uno dei\n"
 "files può essere `-'.\n"
 
-#: bin/add_members:134
-msgid "Big change in %(listname)s@%(listhost)s mailing list"
-msgstr "Grossa variazione nella lista %(listname)s@%(listhost)s"
-
 # /home/mailman/Mailman/Cgi/admin.py:856
-#: bin/add_members:167
+#: bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Già iscritto: %(member)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: bin/add_members:170
+#: bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Indirizzo email errato/non valido: riga vuota"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: bin/add_members:172
+#: bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Indirizzo email errato/non valido: %(member)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:864
-#: bin/add_members:174
+#: bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Indirizzo con caratteri non permessi: %(member)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:633
-#: bin/add_members:176
+#: bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Iscritto: %(member)s"
 
-#: bin/add_members:223
-msgid "Bad argument to -c/--changes-msg: %(arg)s"
-msgstr "Argomento errato per il parametro -c/--changes-msg: %(arg)s"
-
-#: bin/add_members:230
+#: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Argomento errato per il parametro -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:237
+#: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Argomento errato per il parametro -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:243
+#: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "Non posso leggere sia gli iscritti digest che quelli normali dallo standard "
 "input."
 
-#: bin/add_members:249 bin/config_list:105 bin/find_member:97 bin/inject:90
+#: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:199 bin/sync_members:222
 #: cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Non esiste la lista: %(listname)s"
 
-#: bin/add_members:269 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
+#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/sync_members:244
 #: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Non ho niente da fare."
@@ -8776,8 +8778,9 @@ msgid "checking mode for %(prefix)s"
 msgstr "controllo di modo per %(prefix)s"
 
 #: bin/check_perms:174
+#, fuzzy
 msgid "WARNING: directory does not exist: %(d)s"
-msgstr "ATTENZIONE: la directory %(d)s non esiste"
+msgstr "questa directory deve essere almeno 02775: %(d)s"
 
 #: bin/check_perms:178
 msgid "directory must be at least 02775: %(d)s"
@@ -9516,19 +9519,6 @@ msgid ""
 "    -h/--help\n"
 "        Print this message and exit.\n"
 msgstr ""
-"Rigenera gli alias di Mailman da zero.\n"
-"\n"
-"L'output dipende dal valore della variabile `MTA' nel file mm_cfg.py\n"
-"\n"
-"Uso: genaliases [opzioni]\n"
-"Opzioni:\n"
-"\n"
-"    -q/--quiet\n"
-"        L'output per alcuni MTA può contenere commenti.  Usa questa         "
-"opzione per limitare la verbosità.\n"
-"\n"
-"    -h/--help\n"
-"        Scrive questo messaggio d'aiuto ed esce.\n"
 
 #: bin/inject:19
 msgid ""
@@ -10479,6 +10469,7 @@ msgid "No runner name given."
 msgstr "Non è stato fornito un nome di qrunner."
 
 #: bin/remove_members:19
+#, fuzzy
 msgid ""
 "Remove members from a list.\n"
 "\n"
@@ -10526,7 +10517,7 @@ msgstr ""
 "Rimuove iscritti da una lista.\n"
 "\n"
 "Uso:\n"
-"    remove_members [opzioni] [nomelista] [indir1 ...]\n"
+"    remove_members [opzioni] nomelista [indir1 ...]\n"
 "\n"
 "Opzioni:\n"
 "\n"
@@ -10548,13 +10539,11 @@ msgstr ""
 "\n"
 "    --nouserack\n"
 "    -n\n"
-"        Non inviare conferma all'utente.  Se non specificato,\n"
-"        viene usata l'impostazione di default per la lista\n"
+"        Non inviare conferma all'utente.\n"
 "\n"
 "    --noadminack\n"
 "    -N\n"
-"        Non inviare conferma all'amministratore.  Se non specificato,\n"
-"        viene usata l'impostazione di default per la lista\n"
+"        Non inviare conferma all'amministratore.\n"
 "\n"
 "    --help\n"
 "    -h\n"
@@ -10622,38 +10611,43 @@ msgstr ""
 "        scrive questo messaggio d'aiuto ed esce.\n"
 "\n"
 
-#: bin/rmlist:66 bin/rmlist:69
+#: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "Rimozione di %(msg)s"
 
-#: bin/rmlist:72
-msgid "%(listname)s %(msg)s not found as %(dir)s"
+#: bin/rmlist:80
+#, fuzzy
+msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "non trovato %(listname)s %(msg)s in %(dir)s"
 
-#: bin/rmlist:96
+#: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "Non esiste (o è stata cancellata) la lista: %(listname)s"
 
-#: bin/rmlist:98
+#: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "Non esiste la lista: %(listname)s.  Rimuovo i suoi archivi residui."
 
-#: bin/rmlist:102
+#: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr "Non rimuovo gli archivi.  Rilanciami con -a per rimuoverli."
 
 # /home/mailman/Mailman/MailList.py:593
-#: bin/rmlist:116
+#: bin/rmlist:124
 msgid "list info"
 msgstr "informazioni sulla lista"
 
+#: bin/rmlist:132
+msgid "stale lock file"
+msgstr ""
+
 # /home/mailman/Mailman/Cgi/private.py:65
 # /home/mailman/Mailman/Cgi/private.py:77
-#: bin/rmlist:122 bin/rmlist:124
+#: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "archivi privati"
 
-#: bin/rmlist:126 bin/rmlist:128
+#: bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "archivi pubblici"
 
@@ -11586,6 +11580,7 @@ msgstr ""
 "oppure per tutte se non è stata specificata nessuna lista.\n"
 
 #: cron/checkdbs:19
+#, fuzzy
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"
@@ -11596,10 +11591,11 @@ msgid ""
 "    -h/--help\n"
 "        Print this message and exit.\n"
 msgstr ""
-"Controlla se esistono messaggi pendenti e avvisa gli amministratori\n"
-"di lista se necessario.\n"
+"Rigenera i file data/aliases e data/aliases.db (usati da Postfix).\n"
 "\n"
-"Uso: %(PROGRAM)s [opzioni]\n"
+"Uso:\n"
+"\n"
+"    genaliases [opzioni]\n"
 "\n"
 "Opzioni:\n"
 "\n"
@@ -11623,7 +11619,7 @@ msgstr ""
 "\n"
 "Messaggi pendenti:"
 
-#: cron/checkdbs:143
+#: cron/checkdbs:144
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -11890,6 +11886,12 @@ msgstr ""
 "    --listname=nomelista\n"
 "        Invia il digest soltanto per la lista indicata, altrimenti viene\n"
 "        inviato per tutte.\n"
+
+#~ msgid "Big change in %(listname)s@%(listhost)s mailing list"
+#~ msgstr "Grossa variazione nella lista %(listname)s@%(listhost)s"
+
+#~ msgid "Bad argument to -c/--changes-msg: %(arg)s"
+#~ msgstr "Argomento errato per il parametro -c/--changes-msg: %(arg)s"
 
 #~ msgid ""
 #~ "Invoked by cron, this checks for pending moderation requests and mails "
