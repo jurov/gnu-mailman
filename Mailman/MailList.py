@@ -315,6 +315,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.send_goodbye_msg = mm_cfg.DEFAULT_SEND_GOODBYE_MSG
         self.bounce_matching_headers = \
                 mm_cfg.DEFAULT_BOUNCE_MATCHING_HEADERS
+        self.header_filter_rules = []
         self.anonymous_list = mm_cfg.DEFAULT_ANONYMOUS_LIST
         internalname = self.internal_name()
         self.real_name = internalname[0].upper() + internalname[1:]
@@ -1077,14 +1078,14 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     # Confirmation processing
     #
     def ProcessConfirmation(self, cookie, context=None):
-        data = Pending.confirm(cookie)
-        if data is None:
-            raise Errors.MMBadConfirmation, 'data is None'
+        rec = Pending.confirm(cookie)
+        if rec is None:
+            raise Errors.MMBadConfirmation, 'No cookie record for %s' % cookie
         try:
-            op = data[0]
-            data = data[1:]
+            op = rec[0]
+            data = rec[1:]
         except ValueError:
-            raise Errors.MMBadConfirmation, 'op-less data %s' % (data,)
+            raise Errors.MMBadConfirmation, 'op-less data %s' % (rec,)
         if op == Pending.SUBSCRIPTION:
             whence = 'via email confirmation'
             try:
@@ -1141,8 +1142,10 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             approved = None
             # Confirmation should be coming from email, where context should
             # be the confirming message.  If the message does not have an
-            # Approved: header, this is a discard, otherwise it's an approval
-            # (if the passwords match).
+            # Approved: header, this is a discard.  If it has an Approved:
+            # header that does not match the list password, then we'll notify
+            # the list administrator that they used the wrong password.
+            # Otherwise it's an approval.
             if isinstance(context, Message.Message):
                 # See if it's got an Approved: header, either in the headers,
                 # or in the first text/plain section of the response.  For
@@ -1156,7 +1159,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                         subpart = None
                     if subpart:
                         s = StringIO(subpart.get_payload())
-                        while 1:
+                        while True:
                             line = s.readline()
                             if not line:
                                 break
@@ -1169,11 +1172,19 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                                     # then
                                     approved = line[i+1:].strip()
                             break
-            # Okay, does the approved header match the list password?
-            if approved and self.Authenticate([mm_cfg.AuthListAdmin,
-                                               mm_cfg.AuthListModerator],
-                                              approved) <> mm_cfg.UnAuthorized:
-                action = mm_cfg.APPROVE
+            # Is there an approved header?
+            if approved is not None:
+                # Does it match the list password?  Note that we purposefully
+                # do not allow the site password here.
+                if self.Authenticate([mm_cfg.AuthListAdmin,
+                                      mm_cfg.AuthListModerator],
+                                     approved) <> mm_cfg.UnAuthorized:
+                    action = mm_cfg.APPROVE
+                else:
+                    # The password didn't match.  Re-pend the message and
+                    # inform the list moderators about the problem.
+                    Pending.repend(cookie, rec)
+                    raise Errors.MMBadPasswordError
             else:
                 action = mm_cfg.DISCARD
             try:
@@ -1187,6 +1198,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             member = data[1]
             self.setDeliveryStatus(member, MemberAdaptor.ENABLED)
             return op, member
+        else:
+            assert 0, 'Bad op: %s' % op
 
     def ConfirmUnsubscription(self, addr, lang=None, remote=None):
         if lang is None:
