@@ -1,19 +1,20 @@
 # Danish catalog.
 # Translated 2004, by
-# Jørn Andersen <mm@skernvej.dk> with technical assistence from 
-# Tom G. Christensen <tgc@statsbiblioteket.dk>
+# Jørn Andersen <mm@skernvej.dk> with technical assistance from
+# Tom G. Christensen <mm-da@statsbiblioteket.dk>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1.5\n"
 "POT-Creation-Date: Tue Nov 16 09:26:46 2004\n"
-"PO-Revision-Date: 2004-08-02 10:56+0200\n"
-"Last-Translator: Jørn Andersen <mm@skernvej.dk>\n"
-"Language-Team: Danish \n"
+"PO-Revision-Date: 2004-11-29 09:49+0100\n"
+"Last-Translator: Tom G. Christensen <mm-da@statsbiblioteket.dk>\n"
+"Language-Team: Danish <mm-da@statsbiblioteket.dk>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
-"Content-Transfer-Encoding: quoted-printable\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.3\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: Mailman/Archiver/HyperArch.py:120
 msgid "size not available"
@@ -303,7 +304,8 @@ msgid ""
 "            mailing lists on %(hostname)s."
 msgstr ""
 "<p>Der er i &oslash;jeblikket ingen %(mailmanlink)s maillister tilg&aelig;"
-"ngelige p&aring; %(hostname)s.<br> "
+"ngelige\n"
+"            p&aring; %(hostname)s."
 
 #: Mailman/Cgi/admin.py:261
 msgid ""
@@ -332,9 +334,9 @@ msgid ""
 msgstr ""
 "&Oslash;nsker du at administrere en mailliste som ikke er vist p&aring; "
 "listen nedenfor,\n"
-"tilf&oslash;j '/' og derefter listens %(extra)s navn til denne websides URL ."
+"tilf&oslash;j '/' og derefter listens %(extra)s navn til denne websides URL."
 "<br>\n"
-"Du kan ogs&aring; <a href=\"%(creatorurl)s\">oprette en ny mailliste</a> , "
+"Du kan ogs&aring; <a href=\"%(creatorurl)s\">oprette en ny mailliste</a>, "
 "hvis du har adgang til det.\n"
 "\n"
 "<p>Generel information om listerne finder du p&aring; "
@@ -1293,8 +1295,7 @@ msgstr ""
 "    <p>Bem&aelig;rk at en identifikators gyldighed udl&oslash;ber ca.\n"
 "    %(days)s dage efter at du har modtaget e-mailen med adressen.\n"
 "    Pr&oslash;v at tilmelde dig listen igen, hvis dette er sket.\n"
-"    Eller du kan <a href=\"%(confirmurl)s\">angive identifikatoren     igen</"
-"a>."
+"    Eller du kan <a href=\"%(confirmurl)s\">angive identifikatoren igen</a>."
 
 #: Mailman/Cgi/confirm.py:128
 msgid ""
@@ -2951,7 +2952,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_info.py:39 Mailman/Commands/cmd_lists.py:62
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
 
 #: Mailman/Commands/cmd_info.py:44
 msgid "List name:    %(listname)s"
@@ -4382,22 +4383,23 @@ msgstr ""
 "<tt>multipart</tt>, vil ingen e-mail med vedh&aelig;ftninger blive medtaget."
 
 #: Mailman/Gui/ContentFilter.py:104
-#, fuzzy
 msgid ""
 "Remove message attachments that have a matching filename\n"
 "             extension."
-msgstr "Fjern e-mailvedh&aelig;ftninger med givne MIME typer."
+msgstr ""
+"Fjern e-mailvedh&aelig;ftninger med passende\n"
+"filnavn-endelser."
 
 #: Mailman/Gui/ContentFilter.py:108
-#, fuzzy
 msgid ""
 "Remove message attachments that don't have a matching\n"
 "             filename extension.  Leave this field blank to skip this "
 "filter\n"
 "             test."
 msgstr ""
-"Fjern alle vedh&aelig;ftninger der ikke har en gyldig MIME type.\n"
-"Lad dette felt være tomt hvis alle MIME typer skal være gyldige."
+"Fjern alle vedh&aelig;ftninger der ikke har en passende\n"
+"filnavn-endelse. Lad dette felt være tomt for at udelade\n"
+"dette filter."
 
 #: Mailman/Gui/ContentFilter.py:113
 msgid ""
@@ -4860,7 +4862,6 @@ msgid "Prefix for subject line of list postings."
 msgstr "Tekst foran emnet i mail fra til listen."
 
 #: Mailman/Gui/General.py:144
-#, fuzzy
 msgid ""
 "This text will be prepended to subject lines of messages\n"
 "             posted to the list, to distinguish mailing list messages in in\n"
@@ -4874,13 +4875,18 @@ msgid ""
 "                            (listname %%05d) -> (listname 00123)\n"
 "             "
 msgstr ""
-"Denne tekst placeres foran emnet i mails fra\n"
-"listen. Den gør det nemt at skelne, hvilke mails der kommer fra listen,\n"
-"når man skimmer indboksen i postprogrammet. Denne tekst b&oslash;r holdes "
-"p&aring; et <em>absolut minimum</em>.\n"
-"Hvis du benytter listens navn og navnet er langt, b&oslash;r du pr&oslash;ve "
-"at g&oslash;re det kortere.\n"
-"Men det b&oslash;r stadig v&aelig;re beskrivende for listen."
+"Denne tekst vil blive placeret foran emnet i mails\n"
+"             sendt til listen for nemmere og kunne skelne mail fra listen\n"
+"             i indboksen i postprogrammet. Teksten b&oslash;r holdes kort. "
+"Det er iorden og sk&aelig;re\n"
+"             et langt listenavn ned til et mere kortfattet navn s&aring;"
+"l&aelig;nge\n"
+"             det stadig er beskrivende for listen.\n"
+"             Du kan ogs&aring; tilf&oslash;je et fortl&oslash;bende nummer "
+"ved at bruge %%d substitutions\n"
+"             direktivet f.eks. [listenavn %%d] -> [listenavn 123]\n"
+"                               (listenavn %%05d) -> (listenavn 00123)\n"
+"             "
 
 #: Mailman/Gui/General.py:155
 msgid ""
@@ -5497,6 +5503,8 @@ msgid ""
 "Discard held messages older than this number of days.\n"
 "            Use 0 for no automatic discarding."
 msgstr ""
+"Slet alle tilbageholdte beskeder der er ældre end dette antal dage.\n"
+"Brug 0 for at slå automatisk sletning fra."
 
 #: Mailman/Gui/General.py:429
 msgid ""
@@ -5673,7 +5681,6 @@ msgid ""
 msgstr "Kan medlemmer vælge normal-modus?"
 
 #: Mailman/Gui/NonDigest.py:52
-#, fuzzy
 msgid "Full Personalization"
 msgstr "Fuld personligg&oslash;relse"
 
@@ -5695,7 +5702,6 @@ msgstr ""
 "vurdering med hensyn til ydelse."
 
 #: Mailman/Gui/NonDigest.py:60
-#, fuzzy
 msgid ""
 "Normally, Mailman sends the regular delivery messages to\n"
 "                 the mail server in batches.  This is much more efficent\n"
@@ -5857,7 +5863,7 @@ msgstr ""
 
 #: Mailman/Gui/NonDigest.py:140
 msgid "Scrub attachments of regular delivery message?"
-msgstr ""
+msgstr "Fjern attachments ved almindelig levering af e-mail?"
 
 #: Mailman/Gui/NonDigest.py:141
 msgid ""
@@ -5866,6 +5872,11 @@ msgid ""
 "             access via web browser. If you want the attachments totally\n"
 "             disappear, you can use content filter options."
 msgstr ""
+"Når du fjerner vedh&aelig;ftninger, gemmes de i et arkiv område\n"
+"og der laves istedet links i e-mailen således at medlemmer kan\n"
+"tilgå vedh&aelig;ftninger via en webbrowser. Hvis du vil have vedh&aelig;"
+"ftninger til helt\n"
+"og forsvinde så kan du bruge et indholdsfilter."
 
 #: Mailman/Gui/Passwords.py:27
 msgid "Passwords"
@@ -6596,7 +6607,6 @@ msgid "Filter rules to match against the headers of a message."
 msgstr "Filterregler for brevhoved."
 
 #: Mailman/Gui/Privacy.py:378
-#, fuzzy
 msgid ""
 "Each header filter rule has two parts, a list of regular\n"
 "             expressions, one per line, and an action to take.  Mailman\n"
@@ -6618,10 +6628,9 @@ msgid ""
 "             you can effectively sort out messages with dangerous file\n"
 "             types or file name extensions."
 msgstr ""
-"Hver filterregel best&aring;r af to dele: en liste med  regexp-udtryk,\n"
+"Hver filterregel best&aring;r af to dele: en liste med regexp-udtryk,\n"
 "             et pr. linie, og en aktion der skal udf&oslash;res. Mailman\n"
-"             sammenligner meddelelsens brevhoved med ethvert regexp-udtryk "
-"i\n"
+"             sammenligner meddelelsens brevhoved med alle regexp-udtryk i\n"
 "             reglen, og hvis der er overensstemmelse, vil meddelelsen blive "
 "afvist, tilbageholdt eller\n"
 "             slettet, afh&aelig;ngigt af hvilken aktion du har angivet her. "
@@ -6631,7 +6640,15 @@ msgstr ""
 "             Du kan have flere end en regel for din liste.  I s&aring; fald\n"
 "             vil hver regel blive anvendt efter tur, og processen stopper "
 "f&oslash;rste gang\n"
-"             der findes overensstemmelse."
+"             der findes overensstemmelse.\n"
+"\n"
+"             Bemærk at brevhovedlinier indsamles fra alle vedh&aelig;"
+"ftninger\n"
+"             (undtagen fra mailman administrivia meddelelser) og\n"
+"             sammenlignes med regexp-udtrykkene. Ved brug af denne "
+"funktionalitet\n"
+"             kan du effektivt sortere meddelelser fra med farlige filtyper\n"
+"             eller filnavn-endelser."
 
 #: Mailman/Gui/Privacy.py:395
 msgid "Legacy anti-spam filters"
@@ -7475,21 +7492,19 @@ msgstr ""
 
 #: Mailman/Handlers/MimeDel.py:58
 msgid "The message's content type was explicitly disallowed"
-msgstr "Meddelelsens indholdstype er ikke tilladt"
+msgstr "Meddelelsens indholdstype blev eksplicit afvist"
 
 #: Mailman/Handlers/MimeDel.py:63
 msgid "The message's content type was not explicitly allowed"
-msgstr "Meddelelsens indholdstype er ikke tilladt"
+msgstr "Meddelelsens indholdstype er ikke eksplicit tilladt"
 
 #: Mailman/Handlers/MimeDel.py:71
-#, fuzzy
 msgid "The message's file extension was explicitly disallowed"
-msgstr "Meddelelsens indholdstype er ikke tilladt"
+msgstr "Meddelelsens filnavn-endelse blev eksplicit afvist."
 
 #: Mailman/Handlers/MimeDel.py:74
-#, fuzzy
 msgid "The message's file extension was not explicitly allowed"
-msgstr "Meddelelsens indholdstype er ikke tilladt"
+msgstr "Meddelelsens filnavn-endelse er ikke eksplicit tilladt"
 
 #: Mailman/Handlers/MimeDel.py:86
 msgid "After content filtering, the message was empty"
@@ -7548,6 +7563,9 @@ msgid ""
 "Name: %(filename)s\n"
 "Url: %(url)s\n"
 msgstr ""
+"En indlejret tekst med ukendt tegnsæt er blevet fjernet...\n"
+"Navn: %(filename)s\n"
+"Url: %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:214
 msgid "HTML attachment scrubbed and removed"
@@ -7606,9 +7624,8 @@ msgstr ""
 "URL        : %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:334
-#, fuzzy
 msgid "Skipped content of type %(partctype)s\n"
-msgstr "Ignorerer indhold af typen %(partctype)s"
+msgstr "Ignorerer indhold af typen %(partctype)s\n"
 
 #: Mailman/Handlers/Scrubber.py:369
 msgid "-------------- next part --------------\n"
@@ -7788,9 +7805,9 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "Filen %(dbfile)s ejes af %(owner)s (skal ejes af %(user)s)"
 
 #: Mailman/MailList.py:212
-#, fuzzy
 msgid "Your confirmation is required to %(verb)s the %(listname)s mailing list"
-msgstr "Du er ikke medlem af maillisten %(listname)s"
+msgstr ""
+"Du skal bekræfte kommandoen %(verb)s sendt til %(listname)s mail listen"
 
 #: Mailman/MailList.py:871 Mailman/MailList.py:1260
 msgid " from %(remote)s"
@@ -8495,7 +8512,6 @@ msgid "   %(file)s: okay"
 msgstr "   %(file)s: ok"
 
 #: bin/check_perms:19
-#, fuzzy
 msgid ""
 "Check the permissions for the Mailman installation.\n"
 "\n"
@@ -8509,12 +8525,11 @@ msgstr ""
 "\n"
 "Brug: %(PROGRAM)s [-f] [-v] [-h]\n"
 "\n"
-"Hvis intet valg er angivet, foretages kun en undersøgelse og derrapporteres "
+"Hvis intet flag er angivet, foretages kun en undersøgelse og der rapporteres "
 "om\n"
 "ugyldige rettigheder og ejerskab på filer. Med -f (bør køres som root), "
 "rettes\n"
 "alle fejl undervejs. Med -v vises detaljeret information.\n"
-"\n"
 
 #: bin/check_perms:108
 msgid "    checking gid and mode for %(path)s"
@@ -9148,15 +9163,15 @@ msgstr "Benyt venligst -p eller -m."
 
 #: bin/dumpdb:135
 msgid "[----- start pickle file -----]"
-msgstr ""
+msgstr "[----- start pickle fil -----]"
 
 #: bin/dumpdb:140
 msgid "[----- end pickle file -----]"
-msgstr ""
+msgstr "[----- afslut pickle fil -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
-msgstr ""
+msgstr "<----- start objekt %(cnt)s ----->"
 
 #: bin/find_member:19
 msgid ""
@@ -10081,7 +10096,6 @@ msgid "Return the generated output."
 msgstr "Returner det genererede output."
 
 #: bin/newlist:19
-#, fuzzy
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -10174,10 +10188,16 @@ msgstr ""
 "Valg:\n"
 "\n"
 "    -l sprog\n"
-"    --language sprog\n"
+"    --language=sprog\n"
 "        Sætter standardsproget for listen med parameteren 'sprog', som skal\n"
 "        være en landekode på to bogstaver. Se i templates eller messages\n"
 "        kataloget for tilgængelige landekoder.\n"
+"\n"
+"    -u urlhost     --urlhost=urlhost         Angiv værtsnavnet på maskinen "
+"der huser listens web grænseflade.\n"
+"\n"
+"    -e emailhost     --emailhost=emailhost         Angiv listens email "
+"domæne navn.\n"
 "\n"
 "    -q / --quiet\n"
 "        Normalt vil administrator få meddelelse via e-mail (efter input fra\n"
@@ -10191,7 +10211,7 @@ msgstr ""
 "angiver\n"
 "vil du blive bedt om at angive.\n"
 "\n"
-"Hver Mailman liste har to parametre som bestemmer standard host navn for\n"
+"Hver Mailman liste har to parametre som bestemmer standard værts navn for\n"
 "udgående e-mail, og standard URL for alle tilhørende websider. Da Mailman\n"
 "blev konfigureret, blev disse standardparametrene automatisk beregnet, men\n"
 "hvis du kører flere virtuelle Mailman systemer på samme maskine, kan det\n"
@@ -10199,22 +10219,44 @@ msgstr ""
 "\n"
 "Du kan angive domænet for den nye liste ved at angive listenavnet således:\n"
 "\n"
-"    minliste@www.mittdomene.com\n"
+"    newlist --urlhost=www.mitdomene.com minliste\n"
 "\n"
-"hvor 'www.mittdomene.com' er navnet som skal benyttes i URLer for "
+"hvor 'www.mitdomene.com' er navnet som skal benyttes i URLer for "
 "maillisten.\n"
 "I eksemplet ovenfor vil URLen til oversigt over lister blive:\n"
-"http://www.mittdomene.com/mailman/listinfo. Navnet som angives skal også\n"
-"eksistere i en VIRTUAL_HOSTS mapping i mm_cfg.py/Default.py. Den mapping\n"
-"skal fortælle hvilket domæne der skal benyttes for e-mailadresser til\n"
-"listen. Hvis mappingen ikke eksisterer, vil det navn du angiver\n"
-"blive benyttet både for URLer og for e-mailadresser.\n"
+"http://www.mitdomene.com/mailman/listinfo. Navnet som angives skal også\n"
+"eksistere i en VIRTUAL_HOSTS mapping i mm_cfg.py/Default.py, ellers\n"
+"kan email domæne navnet ikke automatisk bestemmes.\n"
 "\n"
-"Hvis du kun skriver listenavnet som 'minliste', vil \"host_name\" sættes "
-"til\n"
-"DEFAULT_EMAIL_HOST (fra Mailman konfigurastionen) og \"web_page_url\" sættes "
-"til\n"
-"DEFAULT_URL.\n"
+"Hvis du vil have email domænet til at være forskellige fra det som "
+"automatisk fastsættes\n"
+"udfra VIRTUAL_HOSTS eller hvis værtsnavnet ikke er registreret i "
+"VIRTUAL_HOSTS, så kan du\n"
+"angive email domænet således:     newlist --urlhost=www.mitdomene.com --"
+"emailhost=mitdomene.com minliste\n"
+"\n"
+"hvor 'mitdomene.com' er email domæne navnet. Hvis du undlader og angive "
+"emailhost og\n"
+"urlhost ikke er i listen over virtuelle værtsnavne, så vil værdien af mm_cfg."
+"DEFAULT_EMAIL_HOST blive\n"
+"brugt som email domæne.\n"
+"\n"
+"For bevare kompatibiliteten med tidligere versioner af mailman, kan man også "
+"angive\n"
+"listenavnet således:\n"
+"\n"
+"    minliste@www.mitdomene.com\n"
+"\n"
+"hvor www.mitdomene.com er navner som skal benyttes i URLer for maillisten.\n"
+"Hvis det ikke findes i listen over virtuelle værtsnavne, vil det også blive "
+"brugt til 'emailhost'.\n"
+"Bemærk at --urlhost og --emailhost notationen har højere prioritet.\n"
+"\n"
+"Hvis du kun skriver listenavnet som 'minliste', så vil email domæne navnet "
+"komme fra\n"
+"DEFAULT_EMAIL_HOST og URLen vil blive sat til DEFAULT_URL (som\n"
+"defineret i Defaults.py filen eller tilsidesat af indstillinger i mm_cfg."
+"py).\n"
 "\n"
 "Bemærk at listenavn vil blive ændret til små bogstaver.\n"
 
@@ -10400,6 +10442,33 @@ msgid ""
 "\n"
 "This script is provided for convenience purposes only.  It isn't supported.\n"
 msgstr ""
+"Nedsæt Pipermail arkivers diskforbrug.\n"
+"\n"
+"Brug: %(PROGRAMS)s [flag] fil ...\n"
+"\n"
+"Flag kan være:\n"
+"    -h / --hjælp\n"
+"        Udskriv denne hjælpetekst og afslut.\n"
+"\n"
+"Brug kun dette program til at 'rette' arkiv -article database filer skrevet "
+"af\n"
+"Mailman 2.1.3 eller tidligere og som indeholder html_body attributter. "
+"Disse\n"
+"attributter kan afstedkomme et enormt hukommelsesforbrug og kan påvirke "
+"ydelsen\n"
+"af høj-volumen lister, især lister der modtager e-mail med stort indhold af\n"
+"tekst.\n"
+"\n"
+"Eksempel:\n"
+"\n"
+"%% ls -1 archives/private/*/database/*-article | xargs %(PROGRAM)s\n"
+"\n"
+"Du bør udføre `bin/check_perms -f' efter og have brugt dette skript.\n"
+"\n"
+"Når du er tilfreds med resultatet kan du slette de -article.bak filer\n"
+"som skriptet har lavet.\n"
+"\n"
+"Dette skript er inkluderet som en bekvemmelighed. Det er ikke supporteret.\n"
 
 #: bin/remove_members:19
 msgid ""
@@ -11106,11 +11175,11 @@ msgstr "Opdaterer Mailman 2.1.4 pending_subscriptions.db database"
 
 #: bin/update:576
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
-msgstr ""
+msgstr "Ignorerer dårlige udestående data: %(key)s: %(val)s"
 
 #: bin/update:592
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
-msgstr ""
+msgstr "ADVARSEL: Ignorerer duplikeret udestående ID: %(id)s."
 
 #: bin/update:645
 msgid "getting rid of old source files"
@@ -11571,15 +11640,16 @@ msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
 msgstr ""
+"Bemærk: %(discarded)d gamle anmodninger er automatisk udløbet.\n"
+"\n"
 
 #: cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
 msgstr "%(count)d anmodninger venter på behandling på listen %(realname)s"
 
 #: cron/checkdbs:123
-#, fuzzy
 msgid "%(realname)s moderator request check result"
-msgstr "%(count)d anmodninger venter på behandling på listen %(realname)s"
+msgstr "%(realname)s moderator anmodning check resultat"
 
 #: cron/checkdbs:143
 msgid "Pending subscriptions:"
