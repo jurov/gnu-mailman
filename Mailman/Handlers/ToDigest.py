@@ -214,6 +214,7 @@ def send_i18n_digests(mlist, mboxfp):
         if msg == '':
             # It was an unparseable message
             msg = mbox.next()
+            continue
         msgcount += 1
         messages.append(msg)
         # Get the Subject header
