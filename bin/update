@@ -502,7 +502,7 @@ def dequeue(filebase):
                 os.unlink(msgfile)
             except EnvironmentError, e:
                 if e.errno <> errno.ENOENT: raise
-            except email.Errors.MessageParseError, e:
+            except (email.Errors.MessageParseError, ValueError), e:
                 # This message was unparsable, most likely because its
                 # MIME encapsulation was broken.  For now, there's not
                 # much we can do about it.
