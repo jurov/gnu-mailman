@@ -1,4 +1,4 @@
-# Copyright (C) 1998,1999,2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -26,6 +26,7 @@ bindir= 	@bindir@
 prefix=   	@prefix@
 exec_prefix=	@exec_prefix@
 var_prefix=	@VAR_PREFIX@
+DESTDIR=
 
 CC=		@CC@
 CHMOD=  	@CHMOD@
@@ -40,17 +41,17 @@ OPT=		@OPT@
 CFLAGS=		$(OPT) $(DEFS)
 PACKAGEDIR=	$(prefix)/Mailman
 DATADIR=	$(var_prefix)/data
-ICONDIR=        $(prefix)/icons
+ICONDIR=	$(prefix)/icons
 SCRIPTSDIR=	$(prefix)/scripts
 
 SHELL=		/bin/sh
 PYTHONLIBDIR=	$(prefix)/pythonlib
-SETUPINSTOPTS=	--install-lib $(PYTHONLIBDIR) \
-		--install-purelib $(PYTHONLIBDIR) \
-		--install-data $(PYTHONLIBDIR)
+SETUPINSTOPTS=	--install-lib $(DESTDIR)$(PYTHONLIBDIR) \
+		--install-purelib $(DESTDIR)$(PYTHONLIBDIR) \
+		--install-data $(DESTDIR)$(PYTHONLIBDIR)
 SETUPCMD=	setup.py --quiet install $(SETUPINSTOPTS)
 
-EMAILPKG=	email-2.4.3
+EMAILPKG=	email-2.5.1
 JACODECSPKG=	JapaneseCodecs-1.4.9
 KOCODECSPKG=	KoreanCodecs-2.0.5
 
@@ -75,13 +76,14 @@ all:
 install: install-other install-packages
 
 install-other:
-	$(INSTALL) -m $(FILEMODE) $(ICONS) $(ICONDIR)
+	$(INSTALL) -m $(FILEMODE) $(ICONS) $(DESTDIR)$(ICONDIR)
 	for d in $(PATHSDIRS); \
 	do \
-	    dir=$(prefix)/$$d; \
+	    dir=$(DESTDIR)$(prefix)/$$d; \
 	    $(INSTALL) -m $(FILEMODE) paths.py $$dir; \
 	done
-	$(INSTALL) -m $(EXEMODE) mailman $(SCRIPTSDIR)
+	$(INSTALL) -m $(EXEMODE) mailman $(DESTDIR)$(SCRIPTSDIR)
+	$(INSTALL) -m $(FILEMODE) sitelist.cfg $(DESTDIR)$(DATADIR)
 
 install-packages:
 	for p in $(PACKAGES); \
