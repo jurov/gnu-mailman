@@ -141,7 +141,7 @@ def send_i18n_digests(mlist, mboxfp):
     # Prepare common information (first lang/charset)
     lang = mlist.preferred_language
     lcset = Utils.GetCharSet(lang)
-    lcset_out = Charset(lcset).output_charset
+    lcset_out = Charset(lcset).output_charset or lcset
     # Common Information (contd)
     realname = mlist.real_name
     volume = mlist.volume
@@ -321,8 +321,14 @@ def send_i18n_digests(mlist, mboxfp):
                   or msg.as_string().split('\n\n',1)[1]
         mcset = msg.get_content_charset('')
         if mcset and mcset <> lcset and mcset <> lcset_out:
-            payload = unicode(payload, mcset, 'replace'
-                      ).encode(lcset, 'replace')
+            try:
+                payload = unicode(payload, mcset, 'replace'
+                          ).encode(lcset, 'replace')
+            except LookupError:
+                # TK: Message has something unknown charset.
+                #     _out means charset in 'outer world'.
+                payload = unicode(payload, lcset_out, 'replace'
+                          ).encode(lcset, 'replace')
         print >> plainmsg, payload
         if not payload.endswith('\n'):
             print >> plainmsg
