@@ -151,11 +151,15 @@ class Bouncer:
         # Now that we've adjusted the bounce score for this bounce, let's
         # check to see if the disable-by-bounce threshold has been reached.
         if info.score >= self.bounce_score_threshold:
-            syslog('bounce', 'sending %s list probe to: %s (score %s >= %s)',
+            if mm_cfg.VERP_PROBES:
+                syslog('bounce', 
+                   'sending %s list probe to: %s (score %s >= %s)',
                    self.internal_name(), member, info.score,
                    self.bounce_score_threshold)
-            self.sendProbe(member, msg)
-            info.reset(0, info.date, info.noticesleft)
+                self.sendProbe(member, msg)
+                info.reset(0, info.date, info.noticesleft)
+            else:
+                self.disableBouncingMember(member, info, msg)
 
     def disableBouncingMember(self, member, info, msg):
         # Initialize their confirmation cookie.  If we do it when we get the
@@ -163,8 +167,13 @@ class Bouncer:
         cookie = self.pend_new(Pending.RE_ENABLE, self.internal_name(), member)
         info.cookie = cookie
         # Disable them
-        syslog('bounce', '%s: %s disabling due to probe bounce received',
-               self.internal_name(), member)
+        if mm_cfg.VERP_PROBES:
+            syslog('bounce', '%s: %s disabling due to probe bounce received',
+                   self.internal_name(), member)
+        else:
+            syslog('bounce', '%s: %s disabling due to bounce score %s >= %s',
+                   self.internal_name(), member,
+                   info.score, self.bounce_score_threshold)
         self.setDeliveryStatus(member, MemberAdaptor.BYBOUNCE)
         self.sendNextNotification(member)
         if self.bounce_notify_owner_on_disable:

@@ -605,6 +605,8 @@ VERP_REGEXP = r'^(?P<bounces>[^+]+?)\+(?P<mailbox>[^=]+)=(?P<host>[^@]+)@.*$'
 # VERP format and regexp for probe messages
 VERP_PROBE_FORMAT = '%(bounces)s+%(token)s'
 VERP_PROBE_REGEXP = r'^(?P<bounces>[^+]+?)\+(?P<token>[^@]+)@.*$'
+# Set this Yes to activate VERP probe for disabling by bounce
+VERP_PROBES = No
 
 # A perfect opportunity for doing VERP is the password reminders, which are
 # already addressed individually to each recipient.  Set this to Yes to enable
