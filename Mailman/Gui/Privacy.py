@@ -475,6 +475,9 @@ class Privacy(GUIBase):
                 break
             if cgidata.has_key(newtag) and not pattern:
                 # This new entry is incomplete.
+                if i == 2:
+                    # OK it is the first.
+                    continue
                 doc.addError(_("""Header filter rules require a pattern.
                 Incomplete filter rules will be ignored."""))
                 continue
