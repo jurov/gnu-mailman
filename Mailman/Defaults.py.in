@@ -520,7 +520,7 @@ OWNER_PIPELINE = [
 # printing of this log message.
 SMTP_LOG_EVERY_MESSAGE = (
     'smtp',
-    '%(msg_message-id)s smtp for %(#recips)d recips, completed in %(time).3f seconds')
+    '%(msg_message-id)s smtp to %(listname)s for %(#recips)d recips, completed in %(time).3f seconds')
 
 # This will only be printed if there were no immediate smtp failures.
 # Mutually exclusive with SMTP_LOG_REFUSED.
