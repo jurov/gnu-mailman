@@ -611,7 +611,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # still work.  For giggles, we'll copy it to a safety backup.  Note we
         # MUST do this with the underlying list lock acquired.
         if file == plast or file == dlast:
-            syslog('error', 'fixing corrupt config files')
+            syslog('error', 'fixing corrupt config file, using: %s', file)
             unlock = True
             try:
                 try:
