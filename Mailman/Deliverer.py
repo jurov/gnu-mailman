@@ -217,5 +217,7 @@ is required.""")))
         text = MIMEText(text, _charset=Utils.GetCharSet(ulang))
         outer.attach(text)
         outer.attach(MIMEMessage(msg))
-        # Turn off further VERP'ing in the final delivery step
-        outer.send(self, envsender=probeaddr, verp=False)
+        # Turn off further VERP'ing in the final delivery step.  We set
+        # probe_token for the OutgoingRunner to more easily handling local
+        # rejects of probe messages.
+        outer.send(self, envsender=probeaddr, verp=False, probe_token=token)
