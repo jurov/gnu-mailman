@@ -1,4 +1,4 @@
-# Copyright (C) 2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -145,6 +145,7 @@ class _Switchboard:
             os.unlink(dbfile)
         except EnvironmentError, e:
             if e.errno <> errno.ENOENT: raise
+            data = {}
         # Between 2.1b4 and 2.1b5, the `rejection-notice' key in the metadata
         # was renamed to `rejection_notice', since dashes in the keys are not
         # supported in METAFMT_ASCII.
