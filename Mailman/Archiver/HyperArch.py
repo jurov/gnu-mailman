@@ -287,7 +287,7 @@ class Article(pipermail.Article):
         self.ctype = ctype.lower()
         self.cenc = cenc.lower()
         self.decoded = {}
-        charset = message.get_param('charset')
+        charset = message.get_param('charset', 'us-ascii')
         if isinstance(charset, types.TupleType):
             # An RFC 2231 charset
             charset = unicode(charset[2], charset[0])
@@ -298,7 +298,7 @@ class Article(pipermail.Article):
             if charset[0]=="'" and charset[-1]=="'":
                 charset = charset[1:-1]
             try:
-                body = message.get_payload(decode=1)
+                body = message.get_payload(decode=True)
             except binascii.Error:
                 body = None
             if body and charset != Utils.GetCharSet(self._lang):
@@ -1128,6 +1128,10 @@ class HyperArchive(pipermail.T):
         # 1. use lines directly, rather than source and dest
         # 2. make it clearer
         # 3. make it faster
+        # TK: Prepare for unicode obscure.
+        atmark = _(' at ')
+        if lines and isinstance(lines[0], types.UnicodeType):
+            atmark = unicode(atmark, Utils.GetCharSet(self.lang), 'replace')
         source = lines[:]
         dest = lines
         last_line_was_quoted = 0
@@ -1168,7 +1172,7 @@ class HyperArchive(pipermail.T):
                     text = jr.group(1)
                     length = len(text)
                     if mm_cfg.ARCHIVER_OBSCURES_EMAILADDRS:
-                        text = re.sub('@', _(' at '), text)
+                        text = re.sub('@', atmark, text)
                         URL = self.maillist.GetScriptURL(
                             'listinfo', absolute=1)
                     else:
