@@ -107,7 +107,8 @@ doinstall: mofiles
 	    po=$(srcdir)/$$d/LC_MESSAGES/mailman.po; \
 	    mo=$(srcdir)/$$d/LC_MESSAGES/mailman.mo; \
 	    dir=$(DESTDIR)$(prefix)/messages/$$d/LC_MESSAGES; \
-	    $(INSTALL) -m $(FILEMODE) $$po $$mo $$dir; \
+	    $(INSTALL) -m $(FILEMODE) $$po $$dir; \
+ 	    $(INSTALL) -m $(FILEMODE) $$mo $$dir; \
 	done
 
 mofiles: $(MOFILES)
@@ -143,7 +144,7 @@ potfile: marked.files docstring.files
 # .pot file
 %/LC_MESSAGES/mailman.po: mailman.pot
 	@echo "Merging new template file with existing translations"
-	$(MSGMERGE) -U $@ mailman.pot
+	$(MSGMERGE) -U $@ mailman.pot || touch $@
 
 
 FORCE:

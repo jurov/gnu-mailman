@@ -77,7 +77,10 @@ all:
 install: install-other install-packages
 
 install-other:
-	$(INSTALL) -m $(FILEMODE) $(ICONS) $(DESTDIR)$(ICONDIR)
+	for i in $(ICONS); \
+	do \
+	  $(INSTALL) -m $(FILEMODE) $$i $(DESTDIR)$(ICONDIR); \
+	done
 	for d in $(PATHSDIRS); \
 	do \
 	    dir=$(DESTDIR)$(prefix)/$$d; \
