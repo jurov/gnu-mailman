@@ -735,13 +735,14 @@ class HyperArchive(pipermail.T):
                 d["archive_listing"] = EMPTYSTRING.join(accum)
         finally:
             i18n.set_translation(otrans)
-
         # The TOC is always in the charset of the list's preferred language
         d['meta'] += html_charset % Utils.GetCharSet(mlist.preferred_language)
-
-        return quick_maketext(
-            'archtoc.html', d,
-            mlist=mlist)
+        # The site can disable public access to the mbox file.
+        if mm_cfg.PUBLIC_MBOX:
+            template = 'archtoc.html'
+        else:
+            template = 'archtocnombox.html'
+        return quick_maketext(template, d, mlist=mlist)
 
     def html_TOC_entry(self, arch):
         # Check to see if the archive is gzip'd or not
