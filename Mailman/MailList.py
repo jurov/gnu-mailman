@@ -251,7 +251,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         if name:
             self._full_path = Site.get_listpath(name)
         else:
-            self._full_path = None
+            self._full_path = ''
         # Only one level of mixin inheritance allowed
         for baseclass in self.__class__.__bases__:
             if hasattr(baseclass, 'InitTempVars'):
