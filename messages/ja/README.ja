@@ -1,0 +1,78 @@
+
+Mailmanで日本語を扱うときの注意 (English summary in the end)
+
+日本語のメールは ISO-2022-JP を使うことが、RFC1468に定められており、
+その後、MIMEによる使用可能な文字集合の拡張がなされていても、これが
+事実上の標準規則となっています。一方で、Mailmanのようにプログラムの
+中で自然言語を扱う際には、\ や < > といった文字のエスケープが問題と
+なり、最も扱いやすい文字集合は EUC-JP あるいは Unicode (UTF-8) とい
+うことになります。ここでは Mailman 内部と Web については EUC-JP に
+統一することで、問題を解決しようとしています。
+
+日本語のように、いくつかの文字集合が使われている言語は他にもある
+かもしれません。このため、標準文字集合(stdcharset)と別の文字集合
+(altcharset)を考慮して問題解決の一般化を試みます。
+
+このため、外部から入ってくるメールを altcharst から stdcharset へ変換し、
+Mailman から出ていくメールは全て email パッケージに準拠した文字集合へ
+へ変換する必要があります。
+このための変換プログラムを mc_Entry.py および mc_Finish.py として
+用意しました。また、全てのメールが mc_Finish.py を経て出ていくように、
+mc_SMTPDirect.py を作りました。
+
+Mailman/Handlers に mc_SMTPDirect.py, mc_Entry.py, mc_Finish.py を
+入れてください。これらの最新版は http://mm.tkikuchi.net/ から
+ダウンロードできます。
+
+Mailman/mm_cfg.py に以下の行を追加してください。
+##################################################################
+DEFAULT_SERVER_LANGUAGE = 'ja'
+GLOBAL_PIPELINE = [ 'mc_Entry', ] + GLOBAL_PIPELINE
+DELIVERY_MODULE = 'mc_SMTPDirect'
+# for multi charset language
+def _(s):
+    return s
+LC_DESCRIPTIONS['ja'] = ( _('Japanese'),
+                          'euc-jp', ['iso-2022-jp', 'shift_jis'] )
+##################################################################
+
+以上で、メールの文字コード変換が出来るようになります。
+
+なお、templates/ja と messages/ja の最新版も上と同じく
+ http://mm.tkikuchi.net/ からダウンロードできます。CVS が古いと
+感じたら、寄ってみてください。
+
+日本語で Mailman について Q&A したいかたは、mmjp-users メーリングリスト
+があります。これも、上記 URL からたどれますので、ぜひ御参加ください。
+
+注意) 今後の日本語修正について
+Mailman-Developer で若干議論しましたが, 入口と出口でコード変換する
+方法では, ニュースへの中継や, 外部アーカイバへのインターフェースに
+問題が生じる恐れがあります. このため, 方針を見直して内部で Web用の
+stdcharset に変換する方向を探って見たいと考えています. 
+
+by tkikuchi_at_is.kochi-u.ac.jp (2002/03/26)
+rev. for 2.1 final (2002/12/25) 
+
+I18N Jananization Note
+#
+There is one problem in Japanese message handling; Web documents
+are best treated with EUC-JP charset, while Mail messages should
+be in ISO-2022-JP. Under the Mailman directory, I put programs
+for converting messages to EUC-JP/ISO-2022-JP.
+This approach was generalized for multi-charset languages; incoming
+mail may have alternative charset (altcharset) which will be converted
+to mailman standard charset (stdcharset) by mc_Entry.py and will
+be re-converted into the email-defined charset when going out.
+
+  Mailman +- mm.cfg.py.add (Add these lines in your config)
+          +- Handlers +- mc_SMTPDirect.py
+                      +- mc_Entry.py
+                      +- mc_Finish.py
+
+
+Revised 2002/03/26
+Revised for multi-charset 2002/12/10
+
+Please visit http://mm.tkikuchi.net/ for more.
+
