@@ -25,6 +25,7 @@ Note: This file only handles single threaded delivery.  See SMTPThreaded.py
 for a threaded implementation.
 """
 
+import copy
 import time
 import socket
 import smtplib
@@ -268,12 +269,20 @@ def verpdeliver(mlist, msg, msgdata, envsender, failures, conn):
         # they missed due to bouncing.  Neat idea.
         msgdata['recips'] = [recip]
         # Make a copy of the message and decorate + delivery that
-        msgcopy = email.message_from_string(msg.as_string())
+        msgcopy = copy.deepcopy(msg)
         Decorate.process(mlist, msgcopy, msgdata)
         # Calculate the envelope sender, which we may be VERPing
         if msgdata.get('verp'):
             bmailbox, bdomain = Utils.ParseEmail(envsender)
             rmailbox, rdomain = Utils.ParseEmail(recip)
+            if rdomain is None:
+                # The recipient address is not fully-qualified.  We can't
+                # deliver it to this person, nor can we craft a valid verp
+                # header.  I don't think there's much we can do except ignore
+                # this recipient.
+                syslog('smtp', 'Skipping VERP delivery to unqual recip: %s',
+                       recip)
+                continue
             d = {'bounces': bmailbox,
                  'mailbox': rmailbox,
                  'host'   : DOT.join(rdomain),
