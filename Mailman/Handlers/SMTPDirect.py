@@ -45,6 +45,12 @@ from email.Charset import Charset
 
 DOT = '.'
 
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
+
 
 
 # Manage a connection to the SMTP server
@@ -123,7 +129,7 @@ def process(mlist, msg, msgdata):
         # Be sure never to decorate the message more than once!
         if not msgdata.get('decorated'):
             Decorate.process(mlist, msg, msgdata)
-            msgdata['decorated'] = 1
+            msgdata['decorated'] = True
         deliveryfunc = bulkdeliver
     refused = {}
     t0 = time.time()
