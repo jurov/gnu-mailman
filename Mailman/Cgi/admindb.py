@@ -609,7 +609,7 @@ def show_post_requests(mlist, id, info, total, count, form):
     if mcset <> lcset:
         try:
             body = unicode(body, mcset).encode(lcset)
-        except (LookupError, UnicodeError):
+        except (LookupError, UnicodeError, ValueError):
             pass
     hdrtxt = NL.join(['%s: %s' % (k, v) for k, v in msg.items()])
     hdrtxt = Utils.websafe(hdrtxt)

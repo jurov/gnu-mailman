@@ -82,7 +82,10 @@ def process(mlist, msg, msgdata):
     # safely add the header/footer to a plain text message since all
     # charsets Mailman supports are strict supersets of us-ascii --
     # no, UTF-16 emails are not supported yet.
-    mcset = msg.get_content_charset('us-ascii')
+    #
+    # TK: Message with 'charset=' cause trouble. So, instead of 
+    #     mgs.get_content_charset('us-ascii') ...
+    mcset = msg.get_content_charset() or 'us-ascii'
     lcset = Utils.GetCharSet(mlist.preferred_language)
     msgtype = msg.get_content_type()
     # BAW: If the charsets don't match, should we add the header and footer by
