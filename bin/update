@@ -548,6 +548,9 @@ def update_pending():
         else:
             print _('Updating Mailman 2.1.4 pending.pck database')
             db = cPickle.load(fp)
+    if db is None:
+        print _('Nothing to do.')
+        return
     # Now upgrade the database to the 2.1.5 format.  Each list now has its own
     # pending.pck file, but only the RE_ENABLE operation actually recorded the
     # listname in the request.  For the SUBSCRIPTION, UNSUBSCRIPTION, and
