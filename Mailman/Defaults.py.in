@@ -328,6 +328,10 @@ DEFAULT_CHARSET = None
 # HTML-quoted in the archives.
 VERBATIM_ENCODING = ['iso-2022-jp']
 
+# When the archive is public, should Mailman also make the raw Unix mbox file
+# publically available?
+PUBLIC_MBOX = No
+
 
 
 #####
@@ -1151,9 +1155,10 @@ Checkbox    = 12
 # An "extended email list".  Contents must be an email address or a ^-prefixed
 # regular expression.  Used in the sender moderation text boxes.
 EmailListEx = 13
+# Extended spam filter widget
+HeaderFilter  = 14
 
-# Held message disposition actions, for use between admindb.py and
-# ListAdmin.py.
+# Actions
 DEFER = 0
 APPROVE = 1
 REJECT = 2
@@ -1263,34 +1268,34 @@ LC_DESCRIPTIONS = {}
 def add_language(code, description, charset):
     LC_DESCRIPTIONS[code] = (description, charset)
 
-add_language('big5', _('Traditional Chinese'), 'big5')
-add_language('ca',   _('Catalan'),             'iso-8859-1')
-add_language('cs',   _('Czech'),               'iso-8859-2')
-add_language('da',   _('Danish'),              'iso-8859-1')
-add_language('de',   _('German'),              'iso-8859-1')
-add_language('en',   _('English (USA)'),       'us-ascii')
-add_language('es',   _('Spanish (Spain)'),     'iso-8859-1')
-add_language('et',   _('Estonian'),            'iso-8859-15')
-add_language('eu',   _('Euskara'),             'iso-8859-15') # Basque
-add_language('fi',   _('Finnish'),             'iso-8859-1')
-add_language('fr',   _('French'),              'iso-8859-1')
-add_language('gb',   _('Simplified Chinese'),  'gb2312')
-#add_language('hr',   _('Croatian'),            'iso-8859-2')
-add_language('hu',   _('Hungarian'),           'iso-8859-2')
-add_language('it',   _('Italian'),             'iso-8859-1')
-add_language('ja',   _('Japanese'),            'euc-jp')
-add_language('ko',   _('Korean'),              'euc-kr')
-add_language('lt',   _('Lithuanian'),          'iso-8859-13')
-add_language('nl',   _('Dutch'),               'iso-8859-1')
-add_language('no',   _('Norwegian'),           'iso-8859-1')
-add_language('pl',   _('Polish'),              'iso-8859-2')
-add_language('pt',   _('Portuguese'),          'iso-8859-1')
+add_language('ca',    _('Catalan'),             'iso-8859-1')
+add_language('cs',    _('Czech'),               'iso-8859-2')
+add_language('da',    _('Danish'),              'iso-8859-1')
+add_language('de',    _('German'),              'iso-8859-1')
+add_language('en',    _('English (USA)'),       'us-ascii')
+add_language('es',    _('Spanish (Spain)'),     'iso-8859-1')
+add_language('et',    _('Estonian'),            'iso-8859-15')
+add_language('eu',    _('Euskara'),             'iso-8859-15') # Basque
+add_language('fi',    _('Finnish'),             'iso-8859-1')
+add_language('fr',    _('French'),              'iso-8859-1')
+add_language('hr',    _('Croatian'),            'iso-8859-2')
+add_language('hu',    _('Hungarian'),           'iso-8859-2')
+add_language('it',    _('Italian'),             'iso-8859-1')
+add_language('ja',    _('Japanese'),            'euc-jp')
+add_language('ko',    _('Korean'),              'euc-kr')
+add_language('lt',    _('Lithuanian'),          'iso-8859-13')
+add_language('nl',    _('Dutch'),               'iso-8859-1')
+add_language('no',    _('Norwegian'),           'iso-8859-1')
+add_language('pl',    _('Polish'),              'iso-8859-2')
+add_language('pt',    _('Portuguese'),          'iso-8859-1')
 add_language('pt_BR', _('Portuguese (Brazil)'), 'iso-8859-1')
-add_language('ro',   _('Romanian'),             'utf-8')
-add_language('ru',   _('Russian'),             'koi8-r')
-add_language('sr',   _('Serbian'),             'utf-8')
-add_language('sl',   _('Slovenian'),           'iso-8859-2')
-add_language('sv',   _('Swedish'),             'iso-8859-1')
-add_language('uk',   _('Ukrainian'),           'utf-8')
+add_language('ro',    _('Romanian'),            'utf-8')
+add_language('ru',    _('Russian'),             'koi8-r')
+add_language('sr',    _('Serbian'),             'utf-8')
+add_language('sl',    _('Slovenian'),           'iso-8859-2')
+add_language('sv',    _('Swedish'),             'iso-8859-1')
+add_language('uk',    _('Ukrainian'),           'utf-8')
+add_language('zh_CN', _('Chinese (China)'),     'gb2312')
+add_language('zh_TW', _('Chinese (Taiwan)'),    'big5')
 
 del _
