@@ -40,6 +40,7 @@ import weakref
 import binascii
 
 from email.Header import decode_header, make_header
+from email.Errors import HeaderParseError
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -407,7 +408,10 @@ class Article(pipermail.Article):
         if field.find("=?") == -1:
             return None
         # Get the decoded header as a list of (s, charset) tuples
-        pairs = decode_header(field)
+        try:
+            pairs = decode_header(field)
+        except HeaderParseError:
+            return None
         # Use __unicode__() until we can guarantee Python 2.2
         try:
             # Use a large number for maxlinelen so it won't get wrapped
@@ -1003,7 +1007,11 @@ class HyperArchive(pipermail.T):
         subject = self.get_header("subject", article)
         author = self.get_header("author", article)
         if mm_cfg.ARCHIVER_OBSCURES_EMAILADDRS:
-            author = re.sub('@', _(' at '), author)
+            try:
+                author = re.sub('@', _(' at '), author)
+            except UnicodeError:
+                # Non-ASCII author contains '@' ... no valid email anyway
+                pass
         subject = CGIescape(subject, self.lang)
         author = CGIescape(author, self.lang)
 
