@@ -430,81 +430,83 @@ class Privacy(GUIBase):
     # However, to do this we need an awful hack.  _setValue() and
     # _getValidValue() will essentially ignore any hdrfilter_* form variables.
     def handleForm(self, mlist, category, subcat, cgidata, doc):
-        # First deal with
-        rules = []
-        # We start i at 1 and keep going until we no longer find items keyed
-        # with the marked tags.
-        i = 1
-        downi = None
-        while True:
-            deltag    = 'hdrfilter_delete_%02d' % i
-            reboxtag  = 'hdrfilter_rebox_%02d' % i
-            actiontag = 'hdrfilter_action_%02d' % i
-            wheretag  = 'hdrfilter_where_%02d' % i
-            addtag    = 'hdrfilter_add_%02d' % i
-            newtag    = 'hdrfilter_new_%02d' % i
-            uptag     = 'hdrfilter_up_%02d' % i
-            downtag   = 'hdrfilter_down_%02d' % i
-            i += 1
-            # Was this a delete?  If so, we can just ignore this entry
-            if cgidata.has_key(deltag):
-                continue
-            # Get the data for the current box
-            pattern = cgidata.getvalue(reboxtag)
-            try:
-                action  = int(cgidata.getvalue(actiontag))
-                # We'll get a TypeError when the actiontag is missing and the
-                # .getvalue() call returns None.
-            except (ValueError, TypeError):
-                action = mm_cfg.DEFER
-            if pattern is None:
-                # We came to the end of the boxes
-                break
-            if cgidata.has_key(newtag) and not pattern:
-                # This new entry is incomplete.
-                doc.addError(_("""Header filter rules require a pattern.
-                Incomplete filter rules will be ignored."""))
-                continue
-            # Make sure the pattern was a legal regular expression
-            try:
-                re.compile(pattern)
-            except (re.error, TypeError):
-                safepattern = Utils.websafe(pattern)
-                doc.addError(_("""The header filter rule pattern
-                '%(safepattern)s' is not a legal regular expression.  This
-                rule will be ignored."""))
-                continue
-            # Was this an add item?
-            if cgidata.has_key(addtag):
-                # Where should the new one be added?
-                where = cgidata.getvalue(wheretag)
-                if where == 'before':
-                    # Add a new empty rule box before the current one
-                    rules.append(('', mm_cfg.DEFER, True))
+        # do this only for spam subcategory
+        if subcat == 'spam':
+            # First deal with
+            rules = []
+            # We start i at 1 and keep going until we no longer find items keyed
+            # with the marked tags.
+            i = 1
+            downi = None
+            while True:
+                deltag    = 'hdrfilter_delete_%02d' % i
+                reboxtag  = 'hdrfilter_rebox_%02d' % i
+                actiontag = 'hdrfilter_action_%02d' % i
+                wheretag  = 'hdrfilter_where_%02d' % i
+                addtag    = 'hdrfilter_add_%02d' % i
+                newtag    = 'hdrfilter_new_%02d' % i
+                uptag     = 'hdrfilter_up_%02d' % i
+                downtag   = 'hdrfilter_down_%02d' % i
+                i += 1
+                # Was this a delete?  If so, we can just ignore this entry
+                if cgidata.has_key(deltag):
+                    continue
+                # Get the data for the current box
+                pattern = cgidata.getvalue(reboxtag)
+                try:
+                    action  = int(cgidata.getvalue(actiontag))
+                    # We'll get a TypeError when the actiontag is missing and
+                    # the .getvalue() call returns None.
+                except (ValueError, TypeError):
+                    action = mm_cfg.DEFER
+                if pattern is None:
+                    # We came to the end of the boxes
+                    break
+                if cgidata.has_key(newtag) and not pattern:
+                    # This new entry is incomplete.
+                    doc.addError(_("""Header filter rules require a pattern.
+                    Incomplete filter rules will be ignored."""))
+                    continue
+                # Make sure the pattern was a legal regular expression
+                try:
+                    re.compile(pattern)
+                except (re.error, TypeError):
+                    safepattern = Utils.websafe(pattern)
+                    doc.addError(_("""The header filter rule pattern
+                    '%(safepattern)s' is not a legal regular expression.  This
+                    rule will be ignored."""))
+                    continue
+                # Was this an add item?
+                if cgidata.has_key(addtag):
+                    # Where should the new one be added?
+                    where = cgidata.getvalue(wheretag)
+                    if where == 'before':
+                        # Add a new empty rule box before the current one
+                        rules.append(('', mm_cfg.DEFER, True))
+                        rules.append((pattern, action, False))
+                        # Default is to add it after...
+                    else:
+                        rules.append((pattern, action, False))
+                        rules.append(('', mm_cfg.DEFER, True))
+                # Was this an up movement?
+                elif cgidata.has_key(uptag):
+                    # As long as this one isn't the first rule, move it up
+                    if rules:
+                        rules.insert(-1, (pattern, action, False))
+                    else:
+                        rules.append((pattern, action, False))
+                # Was this the down movement?
+                elif cgidata.has_key(downtag):
+                    downi = i - 2
                     rules.append((pattern, action, False))
-                    # Default is to add it after...
+                # Otherwise, just retain this one in the list
                 else:
                     rules.append((pattern, action, False))
-                    rules.append(('', mm_cfg.DEFER, True))
-            # Was this an up movement?
-            elif cgidata.has_key(uptag):
-                # As long as this one isn't the first rule, move it up
-                if rules:
-                    rules.insert(-1, (pattern, action, False))
-                else:
-                    rules.append((pattern, action, False))
-            # Was this the down movement?
-            elif cgidata.has_key(downtag):
-                downi = i - 2
-                rules.append((pattern, action, False))
-            # Otherwise, just retain this one in the list
-            else:
-                rules.append((pattern, action, False))
-        # Move any down button filter rule
-        if downi is not None:
-            rule = rules[downi]
-            del rules[downi]
-            rules.insert(downi+1, rule)
-        mlist.header_filter_rules = rules
+            # Move any down button filter rule
+            if downi is not None:
+                rule = rules[downi]
+                del rules[downi]
+                rules.insert(downi+1, rule)
+            mlist.header_filter_rules = rules
         # Everything else is dealt with by the base handler
         GUIBase.handleForm(self, mlist, category, subcat, cgidata, doc)
