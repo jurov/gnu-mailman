@@ -4,78 +4,75 @@ Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
 
 INTRODUCTION
 
-    This is GNU Mailman, a mailing list management system distributed
-    under the terms of the GNU General Public License (GPL).  The name
-    of this software is spelled "Mailman" with a leading capital `M'
-    but with a lower case second `m'.  Any other spelling is
-    incorrect.
+    This is GNU Mailman, a mailing list management system distributed under
+    the terms of the GNU General Public License (GPL).  The name of this
+    software is spelled "Mailman" with a leading capital `M' but with a lower
+    case second `m'.  Any other spelling is incorrect.
 
-    Mailman is written primarily in Python, a free object-oriented
-    scripting language.  There is some ANSI C code for security
-    purposes.
+    Mailman is written primarily in Python, a free object-oriented scripting
+    language.  There is some ANSI C code for security purposes.
 
-    Mailman was originally developed by John Viega.  Subsequent
-    development (through version 1.0b3) was by Ken Manheimer.  Further
-    work towards the 1.0 final release was a group effort, with the
-    core contributors being: Barry Warsaw, Ken Manheimer, Scott
-    Cotton, Harald Meland, and John Viega.  Version 1.0 and beyond
-    have been primarily maintained by Barry Warsaw with contributions
-    from many; see the ACKNOWLEDGMENTS file for details.  Jeremy
+    Mailman was originally developed by John Viega.  Subsequent development
+    (through version 1.0b3) was by Ken Manheimer.  Further work towards the
+    1.0 final release was a group effort, with the core contributors being:
+    Barry Warsaw, Ken Manheimer, Scott Cotton, Harald Meland, and John Viega.
+    Version 1.0 and beyond have been primarily maintained by Barry Warsaw with
+    contributions from many; see the ACKNOWLEDGMENTS file for details.  Jeremy
     Hylton helped considerably with the Pipermail code in Mailman 2.0.
 
-    The Mailman home page is
+    The Mailman home page is:
 
         http://www.list.org
 
-    with mirrors at
+    with mirrors at:
 
         http://www.gnu.org/software/mailman
         http://mailman.sf.net
 
-    Mailman 2.1 requires Python 2.1.3 or greater, which can be
-    downloaded from
+    Mailman 2.1 requires Python 2.1.3 or greater, which can be downloaded from:
 
         http://www.python.org
 
-    It is recommended that you use Python 2.3.3, the latest release as
-    of this writing (31-Dec-2003).  Mailman will work with Python
-    2.2.3 as well, which is the latest release on the Python 2.2 branch.
-    Mailman 2.1 is not compatible with Python 2.0 or any earlier
-    version.
+    It is recommended that you use Python 2.3.3, the latest release as of this
+    writing (31-Dec-2003).  Update: 15-May-2004, the Python 2.3.4 release is
+    imminent, see:
 
-    You will also need an ANSI C compiler to build both Python and
-    Mailman; gcc (the GNU C compiler) works just fine.  Mailman
-    currently works only on GNU/Linux and other Unix-like operating
-    systems (e.g. Solaris, *BSD, MacOSX, etc.).  It does not run on
-    Windows, although web and mail clients on any platform should be
-    able to interact with Mailman just fine.
+        http://www.python.org/2.3.4
 
-    See the INSTALL file for installation instructions.  If you are
-    upgrading from a previous version of Mailman, you need to read the
-    UPGRADING file for important information.
+    Mailman will work with Python 2.2.3 as well, which is the latest release
+    on the Python 2.2 branch.  Mailman 2.1 is not compatible with Python 2.0
+    or any earlier version.
+
+    You will also need an ANSI C compiler to build both Python and Mailman;
+    gcc (the GNU C compiler) works just fine.  Mailman currently works only on
+    GNU/Linux and other Unix-like operating systems (e.g. Solaris, *BSD,
+    MacOSX, etc.).  It does not run on Windows, although web and mail clients
+    on any platform should be able to interact with Mailman just fine.
+
+    See the INSTALL file for installation instructions.  If you are upgrading
+    from a previous version of Mailman, you need to read the UPGRADING file
+    for important information.
 
 
 FEATURES
 
-    Read the NEWS file for a list of changes since version 0.9.  Read
-    the TODO file for our (extensive) wish list.  You can see Mailman
-    2.1 in action at
+    Read the NEWS file for a list of changes since version 0.9.  Read the TODO
+    file for our (extensive) wish list.  You can see Mailman 2.1 in action at:
 
         http://mail.python.org/mailman-21/listinfo
 
-    Mailman has most of the standard features you'd expect in a
-    mailing list manager, and more:
+    Mailman has most of the standard features you'd expect in a mailing list
+    manager, and more:
 
     - Web based list administration for nearly all tasks.  Web based
-      subscriptions and user configuration management.  A customizable
-      "home page" for each mailing list.
+      subscriptions and user configuration management.  A customizable "home
+      page" for each mailing list.
 
-    - Privacy features such as moderation, open and closed list
-      subscription policies, private membership rosters, and
-      sender-based filters.
+    - Privacy features such as moderation, open and closed list subscription
+      policies, private membership rosters, and sender-based filters.
 
-    - Automatic web based archiving built-in with support for private
-      and public archives, and hooks for external archivers.
+    - Automatic web based archiving built-in with support for private and
+      public archives, and hooks for external archivers.
 
     - Per-user configuration optional digest delivery for either
       MIME-compliant or RFC 1153 style "plain text" digests.
@@ -131,7 +128,7 @@ CREATE YOUR FIRST LIST
       Again to confirm password: [yourpassword]
       Password changed.
 
-    - Visit the url
+    - Visit the url:
 
         http://my.dom.ain/mailman/create
 
