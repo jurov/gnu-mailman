@@ -610,8 +610,14 @@ class T:
             self.write_article(arch, temp, os.path.join(archivedir,
                                                         filename))
 
-            author = fixAuthor(article.author)
-            subject = article.subject.lower()
+            if article.decoded.has_key('author'):
+                author = fixAuthor(article.decoded['author'])
+            else:
+                author = fixAuthor(article.author)
+            if article.decoded.has_key('stripped'):
+                subject = article.decoded['stripped'].lower()
+            else:
+                subject = article.subject.lower()
 
             article.parentID = parentID = self.get_parent_info(arch, article)
             if parentID:

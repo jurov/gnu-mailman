@@ -269,7 +269,7 @@ def prefix_subject(mlist, msg, msgdata):
     # TK: Something magic should be here but after trial and error...
     prefix_pattern = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pattern)
     subject = re.sub(prefix_pattern, '', subject)
-    rematch = re.match('((RE|AW)(\[\d+\])?:\s*)+', subject, re.I)
+    rematch = re.match('((RE|AW|SV)(\[\d+\])?:\s*)+', subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
         recolon = 'Re:'

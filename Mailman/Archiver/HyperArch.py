@@ -41,6 +41,7 @@ import binascii
 
 from email.Header import decode_header, make_header
 from email.Errors import HeaderParseError
+from email.Charset import Charset
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -288,7 +289,9 @@ class Article(pipermail.Article):
         self.ctype = ctype.lower()
         self.cenc = cenc.lower()
         self.decoded = {}
-        charset = message.get_param('charset', 'us-ascii')
+        cset = Utils.GetCharSet(mlist.preferred_language)
+        cset_out = Charset(cset).output_charset or cset
+        charset = message.get_param('charset', cset_out)
         if isinstance(charset, types.TupleType):
             # An RFC 2231 charset
             charset = unicode(charset[2], charset[0])
@@ -403,25 +406,34 @@ class Article(pipermail.Article):
                 self.decoded['email'] = email
         if subject:
             self.decoded['subject'] = subject
+        self.decoded['stripped'] = self.strip_subject(subject or self.subject)
+
+    def strip_subject(self, subject):
+        # Strip subject_prefix and Re: for subject sorting
+        # This part was taken from CookHeaders.py (TK)
+        prefix = self._mlist.subject_prefix.strip()
+        if prefix:
+            prefix_pat = re.sub(r'%\d*d', r'\s*\d+\s*', prefix)
+            prefix_pat = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pat)
+            subject = re.sub(prefix_pat, '', subject)
+        subject = subject.lstrip()
+        strip_pat = re.compile('^((RE|AW|SV)(\[\d+\])?:\s*)+', re.I)
+        stripped = strip_pat.sub('', subject)
+        return stripped
 
     def decode_charset(self, field):
-        if field.find("=?") == -1:
-            return None
-        # Get the decoded header as a list of (s, charset) tuples
+        # TK: This function was rewritten for unifying to Unicode.
+        # Convert 'field' into Unicode one line string.
         try:
             pairs = decode_header(field)
-        except HeaderParseError:
-            return None
-        # Use __unicode__() until we can guarantee Python 2.2
-        try:
-            # Use a large number for maxlinelen so it won't get wrapped
-            h = make_header(pairs, 99999)
-            return h.__unicode__()
-        except (UnicodeError, LookupError):
-            # Unknown encoding
-            return None
-        # The last value for c will have the proper charset in it
-        return EMPTYSTRING.join([s for s, c in pairs])
+            ustr = make_header(pairs).__unicode__()
+        except (LookupError, UnicodeError, ValueError, HeaderParseError):
+            # assume list's language
+            cset = Utils.GetCharSet(self._mlist.preferred_language)
+            if cset == 'us-ascii':
+                cset = 'iso-8859-1' # assume this for English list
+            ustr = unicode(field, cset, 'replace')
+        return u''.join(ustr.splitlines())
 
     def as_html(self):
         d = self.__dict__.copy()
