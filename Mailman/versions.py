@@ -394,6 +394,12 @@ def NewVars(l):
     add_only_if_missing('encode_ascii_prefixes', encode)
     add_only_if_missing('news_moderation', 0)
     add_only_if_missing('header_filter_rules', [])
+    # Scrubber in regular delivery
+    add_only_if_missing('scrub_nondigest', 0)
+    # ContentFilter by file extensions
+    add_only_if_missing('filter_filename_extensions',
+        mm_cfg.DEFAULT_FILTER_FILENAME_EXTENSIONS)
+    add_only_if_missing('pass_filename_extensions', [])
 
 
 

@@ -100,6 +100,15 @@ class ContentFilter(GUIBase):
              <tt>multipart</tt> to this list, any messages with attachments
              will be rejected by the pass filter.""")),
 
+            ('filter_filename_extensions', mm_cfg.Text, (10, WIDTH), 0,
+             _("""Remove message attachments that have a matching filename
+             extension."""),),
+
+            ('pass_filename_extensions', mm_cfg.Text, (10, WIDTH), 0,
+             _("""Remove message attachments that don't have a matching
+             filename extension.  Leave this field blank to skip this filter
+             test."""),),
+
             ('convert_html_to_plaintext', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Should Mailman convert <tt>text/html</tt> parts to plain
              text?  This conversion happens after MIME attachments have been
@@ -158,6 +167,15 @@ class ContentFilter(GUIBase):
                 mlist.filter_mime_types = types
 	    elif property == 'pass_mime_types':
                 mlist.pass_mime_types = types
+        elif property in ('filter_filename_extensions',
+                          'pass_filename_extensions'):
+            fexts = []
+            for ext in [s.strip() for s in val.splitlines()]:
+                fexts.append(ext.lower())
+            if property == 'filter_filename_extensions':
+                mlist.filter_filename_extensions = fexts
+            elif property == 'pass_filename_extensions':
+                mlist.pass_filename_extensions = fexts
         else:
             GUIBase._setValue(self, mlist, property, val, doc)
 
@@ -166,4 +184,8 @@ class ContentFilter(GUIBase):
             return NL.join(mlist.filter_mime_types)
         if property == 'pass_mime_types':
             return NL.join(mlist.pass_mime_types)
+        if property == 'filter_filename_extensions':
+            return NL.join(mlist.filter_filename_extensions)
+        if property == 'pass_filename_extensions':
+            return NL.join(mlist.pass_filename_extensions)
         return None

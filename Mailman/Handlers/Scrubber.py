@@ -168,6 +168,12 @@ def process(mlist, msg, msgdata=None):
     outer = True
     if msgdata is None:
         msgdata = {}
+    if msgdata:
+        # msgdata is available if it is in GLOBAL_PIPELINE
+        # ie. not in digest or archiver
+        # check if the list owner want to scrub regular delivery
+        if not mlist.scrub_nondigest:
+            return
     dir = calculate_attachments_dir(mlist, msg, msgdata)
     charset = None
     lcset = Utils.GetCharSet(mlist.preferred_language)
@@ -389,8 +395,16 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     # e.g. image/jpg (should be image/jpeg).  For now we just store such
     # things as application/octet-streams since that seems the safest.
     ctype = msg.get_content_type()
-    fnext = os.path.splitext(msg.get_filename(''))[1]
-    ext = guess_extension(ctype, fnext)
+    # i18n file name is encoded
+    lcset = Utils.GetCharSet(mlist.preferred_language)
+    filename = Utils.oneline(msg.get_filename(''), lcset)
+    fnext = os.path.splitext(filename)[1]
+    # For safety, we should confirm this is valid ext for content-type
+    # but we can use fnext if we introduce fnext filtering
+    if mm_cfg.SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION:
+        ext = fnext
+    else:
+        ext = guess_extension(ctype, fnext)
     if not ext:
         # We don't know what it is, so assume it's just a shapeless
         # application/octet-stream, unless the Content-Type: is

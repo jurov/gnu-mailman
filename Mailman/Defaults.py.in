@@ -261,6 +261,11 @@ ARCHIVE_SCRUBBER = 'Mailman.Handlers.Scrubber'
 # this True.
 SCRUBBER_DONT_USE_ATTACHMENT_FILENAME = False
 
+# Use of attachment filename extension per se is may be dangerous because
+# virus fakes it. You can set this True if you filter the attachment by
+# filename extension
+SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION = False
+
 # This variable defines what happens to text/html subparts.  They can be
 # stripped completely, escaped, or filtered through an external program.  The
 # legal values are:
@@ -458,6 +463,7 @@ GLOBAL_PIPELINE = [
     'Moderate',
     'Hold',
     'MimeDel',
+    'Scrubber',
     'Emergency',
     'Tagger',
     'CalcRecips',
@@ -800,6 +806,9 @@ DEFAULT_MSG_FOOTER = """_______________________________________________
 %(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s
 """
 
+# Scrub regular delivery
+DEFAULT_SCRUB_NONDIGEST = False
+
 # Mail command processor will ignore mail command lines after designated max.
 DEFAULT_MAIL_COMMANDS_MAX_LINES = 25
 
@@ -922,10 +931,23 @@ DEFAULT_FILTER_CONTENT = No
 # types regardless of subtype (jpeg, gif, etc.).
 DEFAULT_FILTER_MIME_TYPES = []
 
-# DEFAULT_PASS_MIME_TYPES is a list of MIME types to be passed through.  Format is the same as DEFAULT_FILTER_MIME_TYPES
+# DEFAULT_PASS_MIME_TYPES is a list of MIME types to be passed through.
+# Format is the same as DEFAULT_FILTER_MIME_TYPES
 DEFAULT_PASS_MIME_TYPES = ['multipart/mixed',
                            'multipart/alternative',
                            'text/plain']
+
+# DEFAULT_FILTER_FILENAME_EXTENSIONS is a list of filename extensions to be
+# removed. It is useful because many viruses fake their content-type as
+# harmless ones while keep their extension as executable and expect to be
+# executed when victims 'open' them.
+DEFAULT_FILTER_FILENAME_EXTENSIONS = [
+    'exe', 'bat', 'cmd', 'com', 'pif', 'scr', 'vbs', 'cpl'
+    ]
+
+# DEFAULT_PASS_FILENAME_EXTENSIONS is a list of filename extensions to be
+# passed through. Format is the same as DEFAULT_FILTER_FILENAME_EXTENSIONS.
+DEFAULT_PASS_FILENAME_EXTENSIONS = []
 
 # Whether text/html should be converted to text/plain after content filtering
 # is performed.  Conversion is done according to HTML_TO_PLAIN_TEXT_COMMAND

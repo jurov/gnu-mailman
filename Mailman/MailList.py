@@ -335,6 +335,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.include_list_post_header = 1
         self.filter_mime_types = mm_cfg.DEFAULT_FILTER_MIME_TYPES
         self.pass_mime_types = mm_cfg.DEFAULT_PASS_MIME_TYPES
+        self.filter_filename_extensions = \
+            mm_cfg.DEFAULT_FILTER_FILENAME_EXTENSIONS
+        self.pass_filename_extensions = mm_cfg.DEFAULT_PASS_FILENAME_EXTENSIONS
         self.filter_content = mm_cfg.DEFAULT_FILTER_CONTENT
         self.convert_html_to_plaintext = \
             mm_cfg.DEFAULT_CONVERT_HTML_TO_PLAINTEXT
@@ -382,6 +385,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             self.encode_ascii_prefixes = 0
         else:
             self.encode_ascii_prefixes = 2
+        # scrub regular delivery
+        self.scrub_nondigest = mm_cfg.DEFAULT_SCRUB_NONDIGEST
 
 
     #
