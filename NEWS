@@ -6,24 +6,29 @@ Here is a history of user visible changes to Mailman.
 
 2.1.6 (XX-XXX-200X)
 
+    - A potential cross-site scripting hole in the driver script has been
+      closed.  Thanks to Florian Weimer for its discovery.  Also, turn
+      STEALTH_MODE on by default.
+
     - Chinese languages moved from 'big5' and 'gb' to 'zh_TW' and 'zh_CN'
       respectively for compliance to the IANA spec. Note that the both
       languages are not supported yet.
 
-    - Python 2.4 compatibility issue: time.strftime() become strict about the
+    - Python 2.4 compatibility issue: time.strftime() became strict about the
       'day of year' range.  (1078482)
 
-    - List owners can now set how many days to hold the messages in the
-      moderator request queue.  cron/checkdb will automatically discard old
-      messages.  (790494)
+    - New feature: automatic discards of held messages.  List owners can now
+      set how many days to hold the messages in the moderator request queue.
+      cron/checkdb will automatically discard old messages.  (790494)
 
     - Improved mail address sanity check.  (1030228)
 
     - SpamDetect.py now checks attachment header.  (1026977)
 
-    - subject_prefix can be configured to include a sequence number which is
-      taken from the post_id variable.  Also, the prefix is always put at the
-      start of the subject, i.e. "[list-name] Re: original subject"
+    - New feature: subject_prefix can be configured to include a sequence
+      number which is taken from the post_id variable.  Also, the prefix is
+      always put at the start of the subject, i.e. "[list-name] Re: original
+      subject"
 
     - List owners can now use Scrubber to get the attachments scrubbed (held
       in the web archive), if the site admin permits it in mm_cfg.py.  New
