@@ -559,6 +559,12 @@ class Article(pipermail.Article):
                 break
             self.body.append(line)
 
+    def finished_update_article(self):
+        self.body = []
+        try:
+            del self.html_body
+        except AttributeError:
+            pass        
 
 
 class HyperArchive(pipermail.T):
