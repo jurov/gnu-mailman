@@ -194,14 +194,24 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     def GetOwnerEmail(self):
         return self.getListAddress('owner')
 
-    def GetRequestEmail(self):
-        return self.getListAddress('request')
+    def GetRequestEmail(self, cookie=''):
+        if mm_cfg.VERP_CONFIRMATIONS and cookie:
+            return self.GetConfirmEmail(cookie)
+        else:
+            return self.getListAddress('request')
 
     def GetConfirmEmail(self, cookie):
         return mm_cfg.VERP_CONFIRM_FORMAT % {
             'addr'  : '%s-confirm' % self.internal_name(),
             'cookie': cookie,
             } + '@' + self.host_name
+
+
+    def GetConfirmSubject(self, listname, cookie, verb):
+        if mm_cfg.VERP_CONFIRMATIONS and cookie:
+            return _( 'Your confirmation is required to %(verb)s the %(listname)s mailing list' )
+        else:
+            return 'confirm ' + cookie
 
     def GetListEmail(self):
         return self.getListAddress()
@@ -738,7 +748,6 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         """
         invitee = userdesc.address
         Utils.ValidateEmail(invitee)
-        requestaddr = self.GetRequestEmail()
         # Hack alert!  Squirrel away a flag that only invitations have, so
         # that we can do something slightly different when an invitation
         # subscription is confirmed.  In those cases, we don't need further
@@ -746,6 +755,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # list name to prevent invitees from cross-subscribing.
         userdesc.invitation = self.internal_name()
         cookie = self.pend_new(Pending.SUBSCRIPTION, userdesc)
+        requestaddr = self.GetRequestEmail(cookie)
         confirmurl = '%s/%s' % (self.GetScriptURL('confirm', absolute=1),
                                 cookie)
         listname = self.real_name
@@ -759,14 +769,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
              'cookie'     : cookie,
              'listowner'  : self.GetOwnerEmail(),
              }, mlist=self)
-        if mm_cfg.VERP_CONFIRMATIONS:
-            subj = _(
-                'You have been invited to join the %(listname)s mailing list')
-            sender = self.GetConfirmEmail(cookie)
-        else:
-            # Do it the old fashioned way
-            subj = 'confirm ' + cookie
-            sender = requestaddr
+        subj = self.GetConfirmSubject(listname, cookie, 'join')
+        sender = self.GetRequestEmail(cookie)
         msg = Message.UserNotification(
             invitee, sender, subj,
             text, lang=self.preferred_language)
@@ -876,18 +880,18 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                  'listaddr'    : self.GetListEmail(),
                  'listname'    : realname,
                  'cookie'      : cookie,
-                 'requestaddr' : self.GetRequestEmail(),
+                 'requestaddr' : self.GetRequestEmail(cookie),
                  'remote'      : remote,
                  'listadmin'   : self.GetOwnerEmail(),
                  'confirmurl'  : confirmurl,
                  }, lang=lang, mlist=self)
             msg = Message.UserNotification(
-                recipient, self.GetRequestEmail(),
+                recipient, self.GetRequestEmail(cookie),
                 text=text, lang=lang)
             # BAW: See ChangeMemberAddress() for why we do it this way...
             del msg['subject']
-            msg['Subject'] = 'confirm ' + cookie
-            msg['Reply-To'] = self.GetRequestEmail()
+            msg['Subject'] = self.GetConfirmSubject(realname, cookie, 'join')
+            msg['Reply-To'] = self.GetRequestEmail(cookie)
             msg.send(self)
             who = formataddr((name, email))
             syslog('subscribe', '%s: pending %s %s',
@@ -1064,7 +1068,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
              'listaddr'   : self.GetListEmail(),
              'listname'   : realname,
              'cookie'     : cookie,
-             'requestaddr': self.GetRequestEmail(),
+             'requestaddr': self.GetRequestEmail(cookie),
              'remote'     : '',
              'listadmin'  : self.GetOwnerEmail(),
              'confirmurl' : confirmurl,
@@ -1077,18 +1081,18 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # Subject: in a separate step, although we have to delete the one
         # UserNotification adds.
         msg = Message.UserNotification(
-            newaddr, self.GetRequestEmail(),
+            newaddr, self.GetRequestEmail(cookie),
             text=text, lang=lang)
         del msg['subject']
-        msg['Subject'] = 'confirm ' + cookie
-        msg['Reply-To'] = self.GetRequestEmail()
+        msg['Subject'] = self.GetConfirmSubject(realname, cookie, 'join')
+        msg['Reply-To'] = self.GetRequestEmail(cookie)
         msg.send(self)
 
     def ApprovedChangeMemberAddress(self, oldaddr, newaddr, globally):
         # It's possible they were a member of this list, but choose to change
         # their membership globally.  In that case, we simply remove the old
         # address.
-        if self.isMember(newaddr):
+        if self.getMemberCPAddress(oldaddr) == newaddr:
             self.removeMember(oldaddr)
         else:
             self.changeMemberAddress(oldaddr, newaddr)
@@ -1108,7 +1112,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             mlist.Lock()
             try:
                 # Same logic as above, re newaddr is already a member
-                if mlist.isMember(newaddr):
+                if mlist.getMemberCPAddress(oldaddr) == newaddr:
                     mlist.removeMember(oldaddr)
                 else:
                     mlist.changeMemberAddress(oldaddr, newaddr)
@@ -1263,18 +1267,18 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
              'listaddr'    : self.GetListEmail(),
              'listname'    : realname,
              'cookie'      : cookie,
-             'requestaddr' : self.GetRequestEmail(),
+             'requestaddr' : self.GetRequestEmail(cookie),
              'remote'      : remote,
              'listadmin'   : self.GetOwnerEmail(),
              'confirmurl'  : confirmurl,
              }, lang=lang, mlist=self)
         msg = Message.UserNotification(
-            addr, self.GetRequestEmail(),
+            addr, self.GetRequestEmail(cookie),
             text=text, lang=lang)
             # BAW: See ChangeMemberAddress() for why we do it this way...
         del msg['subject']
-        msg['Subject'] = 'confirm ' + cookie
-        msg['Reply-To'] = self.GetRequestEmail()
+        msg['Subject'] = self.GetConfirmSubject(realname, cookie, 'leave')
+        msg['Reply-To'] = self.GetRequestEmail(cookie)
         msg.send(self)
 
 

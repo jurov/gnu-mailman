@@ -39,6 +39,7 @@ from email.MIMEText import MIMEText
 from email.MIMEMessage import MIMEMessage
 from email.Utils import getaddresses
 from email.Header import decode_header, make_header, Header
+from email.Charset import Charset
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -137,9 +138,11 @@ def send_digests(mlist, mboxfp):
 
 def send_i18n_digests(mlist, mboxfp):
     mbox = Mailbox(mboxfp)
-    # Prepare common information
+    # Prepare common information (first lang/charset)
     lang = mlist.preferred_language
     lcset = Utils.GetCharSet(lang)
+    lcset_out = Charset(lcset).output_charset
+    # Common Information (contd)
     realname = mlist.real_name
     volume = mlist.volume
     issue = mlist.next_digest_number
@@ -316,6 +319,10 @@ def send_i18n_digests(mlist, mboxfp):
         print >> plainmsg
         payload = msg.get_payload(decode=True)\
                   or msg.as_string().split('\n\n',1)[1]
+        mcset = msg.get_content_charset('')
+        if mcset and mcset <> lcset and mcset <> lcset_out:
+            payload = unicode(payload, mcset, 'replace'
+                      ).encode(lcset, 'replace')
         print >> plainmsg, payload
         if not payload.endswith('\n'):
             print >> plainmsg
