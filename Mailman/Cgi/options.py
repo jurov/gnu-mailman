@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -219,7 +219,6 @@ def main():
 
     # Authenticate, possibly using the password supplied in the login page
     password = cgidata.getvalue('password', '').strip()
-
     if not mlist.WebAuthenticate((mm_cfg.AuthUser,
                                   mm_cfg.AuthListAdmin,
                                   mm_cfg.AuthSiteAdmin),
@@ -629,7 +628,10 @@ address.  Upon confirmation, any other mailing list containing the address
         print doc.Format()
         return
 
-    options_page(mlist, doc, user, cpuser, userlang)
+    if mlist.isMember(user):
+        options_page(mlist, doc, user, cpuser, userlang)
+    else:
+        loginpage(mlist, doc, user, userlang)
     print doc.Format()
 
 
