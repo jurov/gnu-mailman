@@ -319,12 +319,8 @@ class General(GUIBase):
 
             ('respond_to_post_requests', mm_cfg.Radio,
              (_('No'), _('Yes')), 0,
-             _('Send mail to poster when their posting is held for approval?'),
-
-             _("""Approval notices are sent when mail triggers certain of the
-             limits <em>except</em> routine list moderation and spam filters,
-             for which notices are <em>not</em> sent.  This option overrides
-             ever sending the notice.""")),
+             _('Send mail to poster when their posting is held for approval?')
+            ),
 
             _('Additional settings'),
 
