@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2004-07-14 17:41+0200\n"
+"PO-Revision-Date: 2004-10-14 11:44+0200\n"
 "Last-Translator: Peer Heinlein <p.heinlein@jpberlin.de>\n"
 "Language-Team: Deutsch\n"
 "MIME-Version: 1.0\n"
@@ -2130,16 +2130,14 @@ msgstr "Administrativen Listenübersicht"
 
 # Mailman/Cgi/create.py:95
 #: Mailman/Cgi/create.py:102
-#, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Der Listenname darf \"@\" nicht enthalten: %(listname)s"
+msgstr "Der Listenname darf \"@\" nicht enthalten: %(safelistname)s"
 
 # Mailman/Cgi/create.py:101 Mailman/Cgi/create.py:174 bin/newlist:122
 # bin/newlist:154
 #: Mailman/Cgi/create.py:109
-#, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "Liste existiert bereits: %(listname)s"
+msgstr "Liste existiert bereits: %(safelistname)s"
 
 # Mailman/Cgi/create.py:105
 #: Mailman/Cgi/create.py:113
@@ -2180,9 +2178,8 @@ msgstr ""
 
 # Mailman/Cgi/create.py:203 bin/newlist:184
 #: Mailman/Cgi/create.py:161
-#, fuzzy
 msgid "Unknown virtual host: %(safehostname)s"
-msgstr "Unbekannte Liste: %(listname)s"
+msgstr "Unbekannter virtueller host: %(safehostname)s"
 
 # Mailman/Cgi/create.py:170
 #: Mailman/Cgi/create.py:192 bin/newlist:166
@@ -2548,13 +2545,12 @@ msgid "No such member: %(safeuser)s."
 msgstr " %(safeuser)s ist nicht Abonnent."
 
 #: Mailman/Cgi/options.py:173
-#, fuzzy
 msgid ""
 "Your unsubscription request has been\n"
 "                    forwarded to the list administrator for approval."
 msgstr ""
 "Ihr Abbestelllungsantrag wurde mit der Bitte um Bestätigung an den\n"
-"Listenadministrator weitergeleitet."
+"Listenadministrator weitergeleitet. "
 
 # Mailman/Cgi/options.py:133
 #: Mailman/Cgi/options.py:178 Mailman/Cgi/options.py:192
@@ -3289,7 +3285,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_confirm.py:71
 msgid "Bad approval password given.  Held message is still being held."
-msgstr ""
+msgstr "Falsches Passwort. Nachricht wird weiterhin gehalten."
 
 # Mailman/Cgi/confirm.py:166
 #: Mailman/Commands/cmd_confirm.py:80
@@ -3763,14 +3759,12 @@ msgstr "Nachrichtensammlung aktiviert"
 
 # Mailman/HTMLFormatter.py:135
 #: Mailman/Commands/cmd_set.py:301
-#, fuzzy
 msgid "delivery enabled"
-msgstr "Mailzustellung aktiviert"
+msgstr "Mailzustellung aktiviert "
 
 #: Mailman/Commands/cmd_set.py:304
-#, fuzzy
 msgid "delivery disabled by user"
-msgstr "; es wurde von Ihnen deaktiviert"
+msgstr "Mailzustellung durch Nutzer deaktiviert"
 
 # Mailman/Gui/Digest.py:27
 #: Mailman/Commands/cmd_set.py:316
@@ -4012,18 +4006,16 @@ msgstr "Mitglieder, die Nachrichtensammlungen erhalten:"
 
 # Mailman/Defaults.py:777
 #: Mailman/Defaults.py:1249
-#, fuzzy
 msgid "Catalan"
-msgstr "Italienisch"
+msgstr "Katalanisch"
 
 #: Mailman/Defaults.py:1250
 msgid "Czech"
 msgstr "Tschechisch"
 
 #: Mailman/Defaults.py:1251
-#, fuzzy
 msgid "Danish"
-msgstr "Finnisch"
+msgstr "Dänisch"
 
 #: Mailman/Defaults.py:1252
 msgid "German"
@@ -4058,7 +4050,7 @@ msgstr "Französisch"
 
 #: Mailman/Defaults.py:1259
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisch"
 
 # Mailman/Defaults.py:776
 #: Mailman/Defaults.py:1260
@@ -4106,9 +4098,8 @@ msgid "Portuguese (Brazil)"
 msgstr "Portuguese (Brazil)"
 
 #: Mailman/Defaults.py:1270
-#, fuzzy
 msgid "Romanian"
-msgstr "Estonian"
+msgstr "Rumänisch"
 
 #: Mailman/Defaults.py:1271
 msgid "Russian"
@@ -4119,9 +4110,8 @@ msgid "Serbian"
 msgstr "Serbisch"
 
 #: Mailman/Defaults.py:1273
-#, fuzzy
 msgid "Slovenian"
-msgstr "Serbisch"
+msgstr "Slowenisch"
 
 #: Mailman/Defaults.py:1274
 msgid "Swedish"
@@ -4133,11 +4123,11 @@ msgstr "Ukrainisch"
 
 #: Mailman/Defaults.py:1276
 msgid "Chinese (China)"
-msgstr ""
+msgstr "Chinesisch (China)"
 
 #: Mailman/Defaults.py:1277
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "Chinesisch (Taiwan)"
 
 # Mailman/Deliverer.py:42
 #: Mailman/Deliverer.py:52
@@ -4202,9 +4192,8 @@ msgstr ""
 
 # Mailman/Deliverer.py:103
 #: Mailman/Deliverer.py:212
-#, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "%(listfullname)s Mailinglisten Erinnerung"
+msgstr "%(listname)s Mailinglisten Testnachricht "
 
 #: Mailman/Errors.py:114
 msgid "For some unknown reason"
@@ -5008,7 +4997,7 @@ msgstr "Listenmitgliedschaft nicht öffentlich anzeigen"
 
 #: Mailman/Gui/General.py:49
 msgid "Acknowledge the member's posting"
-msgstr "Mails des Nutzers immer freigeben und verteilen"
+msgstr "Verteilte Mails dem Nutzer bestätigen"
 
 #: Mailman/Gui/General.py:50
 msgid "Do not send a copy of a member's own post"
@@ -6865,9 +6854,8 @@ msgstr ""
 
 # Mailman/Cgi/admin.py:721 Mailman/Gui/Membership.py:30
 #: Mailman/Gui/Privacy.py:373
-#, fuzzy
 msgid "Header filters"
-msgstr "Mitglieder-Filter"
+msgstr "Header-Filter"
 
 # Mailman/Gui/Topics.py:70
 #: Mailman/Gui/Privacy.py:376
@@ -6945,13 +6933,12 @@ msgstr ""
 "werden ignoriert."
 
 #: Mailman/Gui/Privacy.py:473
-#, fuzzy
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"Das Muster  `%(pattern)s' ist keine zulässige Regular Expression\n"
+"Das Muster  `%(safepattern)s' ist keine zulässige Regular Expression\n"
 "und wird darum ignoriert. "
 
 #: Mailman/Gui/Topics.py:35
@@ -7090,12 +7077,11 @@ msgstr ""
 "werden ignoriert."
 
 #: Mailman/Gui/Topics.py:128
-#, fuzzy
 msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"Das Muster  `%(pattern)s' ist keine zulässige Regular Expression\n"
+"Das Muster  `%(safepattern)s' ist keine zulässige Regular Expression\n"
 "und wird darum ignoriert. "
 
 # Mailman/Gui/Usenet.py:24
@@ -7906,11 +7892,11 @@ msgstr "-------------- nächster Teil --------------\n"
 
 #: Mailman/Handlers/SpamDetect.py:54
 msgid "The message headers matched a filter rule"
-msgstr ""
+msgstr "Der Nachrichten-Header traf auf eine Filter-Regel zu"
 
 #: Mailman/Handlers/SpamDetect.py:121
 msgid "Message rejected by filter rule match"
-msgstr ""
+msgstr "Nachricht wurde durch Filter-Regeln geblockt"
 
 # Mailman/Handlers/ToDigest.py:148
 #: Mailman/Handlers/ToDigest.py:146
@@ -7939,7 +7925,7 @@ msgstr "Meldungen des Tages (%(msgcount)d messages)"
 
 #: Mailman/Handlers/ToDigest.py:308
 msgid "[Message discarded by content filter]"
-msgstr ""
+msgstr "[Nachricht durch Content-Filter verworfen]"
 
 # Mailman/Handlers/ToDigest.py:295
 #: Mailman/Handlers/ToDigest.py:323
@@ -11337,9 +11323,8 @@ msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- Lasse die Finger davon: %(o_tmpl)s und %(n_tmpl)s existieren."
 
 #: bin/update:363
-#, fuzzy
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
-msgstr "- Lasse die Finger davon: %(o_tmpl)s und %(n_tmpl)s existieren."
+msgstr "- %(o_tmpl)s existiert nicht, keine Aktion durchgeführt"
 
 #: bin/update:393
 msgid "removing directory %(src)s and everything underneath"
@@ -11366,14 +11351,12 @@ msgid "message is unparsable: %(filebase)s"
 msgstr ""
 
 #: bin/update:538
-#, fuzzy
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
-msgstr "Update der alten pending_subscriptions.db Datenbank"
+msgstr "Update der alten pending_subscriptions.db Datenbank von Mailman 2.0"
 
 #: bin/update:549
-#, fuzzy
 msgid "Updating Mailman 2.1.4 pending.pck database"
-msgstr "Update der alten pending_subscriptions.db Datenbank"
+msgstr "Update der alten pending_subscriptions.db Datenbank von Mailman 2.1.4"
 
 #: bin/update:573
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
