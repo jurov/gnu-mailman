@@ -1,0 +1,37 @@
+Title: Mailman security issues
+
+<h3>Mailman security issues</h3>
+
+The GNU Mailman developers take security very seriously.  All Mailman security
+concerns should be emailed to
+<a href="mailto:%6D%61%69%6C%6D%61%6E%2D%73%65%63%75%72%69%74%79%40%70%79%74%68%6F%6E%2E%6F%72%67">mailman-security at python dot org</a>.
+This is a closed list that reaches the core Mailman developers.
+
+<h3>Known issues and fixes</h3>
+
+<ul>
+
+<li><b>CAN-2005-0202</b> -- This is a very serious issue affecting the Mailman
+2.1 series up to and including version 2.1.5.  Mailman 2.1.6 is not
+affected.  This issue can allow for the leakage of member passwords.
+
+<p>A quick, immediate fix is to remove the /usr/local/mailman/cgi-bin/private
+executable.  However, this will break any private archives your lists may be
+using.  See below for a proper patch.
+
+<p>The extent of your exposure to this vulnerability depends on factors such
+as which version of Apache you are running and how you have it configured.  We
+do not currently know the exact combination that enables the hole, although we
+currently believe that Apache 2.0 sites are not vulnerable and that that many
+if not most Apache 1.3 sites are vulnerable.  In any event, the safest
+approach is to assume the worst and it is recommended that you apply
+<a href="CAN-2005-0202.txt">this Mailman patch</a> as soon as possible.
+
+<p>For additional piece of mind, it is
+recommended that you regenerate your list member passwords using
+<a href="reset_pw.py">the Mailman 2.1.6 reset_pw.py script</a>.  Put this file
+in your Mailman installation's bin directory.  After running the script, you
+might also want to manually run the cron/mailpasswds script so that your users
+will be informed of their new passwords.
+</li>
+</ul>
