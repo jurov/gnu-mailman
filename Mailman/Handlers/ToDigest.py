@@ -215,14 +215,14 @@ def send_i18n_digests(mlist, mboxfp):
         messages.append(msg)
         # Get the Subject header
         msgsubj = msg.get('subject', _('(no subject)'))
-        subject = oneline(msgsubj, lcset)
+        subject = Utils.oneline(msgsubj, lcset)
         # Don't include the redundant subject prefix in the toc
         mo = re.match('(re:? *)?(%s)' % re.escape(mlist.subject_prefix),
                       subject, re.IGNORECASE)
         if mo:
             subject = subject[:mo.start(2)] + subject[mo.end(2):]
         username = ''
-        addresses = getaddresses([oneline(msg.get('from', ''), lcset)])
+        addresses = getaddresses([Utils.oneline(msg.get('from', ''), lcset)])
         # Take only the first author we find
         if isinstance(addresses, ListType) and addresses:
             username = addresses[0][0]
@@ -310,7 +310,7 @@ def send_i18n_digests(mlist, mboxfp):
         # Honor the default setting
         for h in mm_cfg.PLAIN_DIGEST_KEEP_HEADERS:
             if msg[h]:
-                uh = Utils.wrap('%s: %s' % (h, oneline(msg[h], lcset)))
+                uh = Utils.wrap('%s: %s' % (h, Utils.oneline(msg[h], lcset)))
                 uh = '\n\t'.join(uh.split('\n'))
                 print >> plainmsg, uh
         print >> plainmsg
@@ -380,16 +380,3 @@ def send_i18n_digests(mlist, mboxfp):
                     recips=plainrecips,
                     listname=mlist.internal_name(),
                     isdigest=True)
-
-
-
-def oneline(s, cset):
-    # Decode header string in one line and convert into specified charset
-    try:
-        h = make_header(decode_header(s))
-        ustr = h.__unicode__()
-        oneline = UEMPTYSTRING.join(ustr.splitlines())
-        return oneline.encode(cset, 'replace')
-    except (LookupError, UnicodeError):
-        # possibly charset problem. return with undecoded string in one line.
-        return EMPTYSTRING.join(s.splitlines())
