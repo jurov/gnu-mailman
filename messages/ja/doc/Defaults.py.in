@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-# [訳注] このファイルは, Mailman 2.1.x 配布物に含まれる
+# [訳注] このファイルは, Mailman 2.1.6a2 配布物に含まれる
 #   Mailman/Defaults.py.in のコメント部分を日本語 (共通語) に翻訳した
 #   ものです. 配布等の条件は原文と同様, GNU 一般公衆利用許諾契約書
 #   (GNU General Public License) に従います (上記も参照ください).
@@ -154,8 +154,8 @@ def add_virtualhost(urlhost, emailhost=None):
 # で, ここで既定の設定をしておく.
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
-# すでにあるリストのドメインを変えるには、bin/fix_url.py を実行するといい
-# かもしれない. bin/fix_url.py スクリプトは the bin/withlist の中で実行する,
+# 注意: すでにあるリストのドメインを変えるには、bin/fix_url.py を実行すると
+# いいかもしれない. bin/fix_url.py スクリプトは, bin/withlist の中で実行する,
 # こんなふうに: bin/withlist -l -r bin/fix_url.py リスト名
 
 
@@ -268,12 +268,12 @@ ARCHIVE_SCRUBBER = 'Mailman.Handlers.Scrubber'
 
 # Mailman.Handlers.Scrubber は, 添付のファイル名をそのまま使う.
 # それ (すごく長い MIME エンコードされたファイル名とか) がいやなら,
-# ここを True に設定する. [>=2.1.x]
+# ここを True に設定する. [>=2.1.6]
 SCRUBBER_DONT_USE_ATTACHMENT_FILENAME = False
 
 # 添付のファイル名の拡張子をそのまま使うのは, ウィルスが拡張子を偽装して
 # いると危険かもしれない. ファイル名の拡張子で添付をフィルタするなら,
-# ここを True に設定できる [>=2.1.x]
+# ここを True に設定できる [>=2.1.6]
 SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION = False
 
 # この変数は, text/html のサブパートで何をするかを定義する. 完全に取り除くか,
@@ -323,8 +323,8 @@ ARCHIVER_CLOBBER_DATE_POLICY = 2
 ARCHIVER_ALLOWABLE_SANE_DATE_SKEW = days(15)
 
 # Pipermail の保存書庫は, 投稿者の電子メールアドレスをそのまま記録している.
-# ひとによっては, これはスパム発信用アドレス収集者にとっては金鉱のようなもの
-# だ, と考える. ここを Yes に設定すると, 電子メールアドレスを適度にぼやかす
+# これは, スパム発信用アドレス収集者にとっては金鉱のようなものだ, と考える
+# ひともいるだろう. ここを Yes に設定すると, 電子メールアドレスを適度にぼやかす
 # ことができる. が, これは保存書庫の中に現れる mailto: URL も壊してしまう
 # ことに注意.
 ARCHIVER_OBSCURES_EMAILADDRS = Yes
@@ -344,10 +344,10 @@ DEFAULT_CHARSET = None
 # 主な問題は, マルチバイトの符号化でオクテット 0x26 が必ずしも & 文字を
 # 表さないものがある, というやつだ. ここの変数は, そういうキャラクタセット
 # で保存書庫で HTML クォートしないもののリストを入れる.
-# [訳注] この変数は既定値として iso-2022-jp が定義してあるが, 電子メールで
-#   ISO 2022 符号化法を使う言語 --- Mailman では現在, 日本語のみ --- では,
-#   保存書庫は EUC-JP のような符号化法を使うことにすればいいので, この変数が
-#   設定してあってもしてなくても, あまり意味がない.
+# [訳注] この変数は既定値として iso-2022-jp が定義してあるが, 上の説明の
+#   ような問題が起こるキャラクタセット --- Mailman では現在, 日本語の
+#   iso-2022-jp のみ --- では, 保存書庫は EUC などの符号化法を使うことに
+#   すればいいので, この変数が設定してあってもしてなくても, あまり意味がない.
 VERBATIM_ENCODING = ['iso-2022-jp']
 
 # 保存書庫が公開のとき, Mailman が生の Unix mbox ファイルも公開にしてしまうか.
@@ -467,7 +467,7 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 
 # リスト全員に送るようなすべての `普通の' メッセージは, このハンドラモジュール
 # のパイプラインを通る. それぞれのリスト自身では, `pipeline' 属性を定義すれば
-# グローバルなパイプラインを上書きできる. [>=2.1] [訳注: 2.1.x から Scrubber
+# グローバルなパイプラインを上書きできる. [>=2.1] [訳注: 2.1.6 から Scrubber
 # モジュールが追加された.]
 GLOBAL_PIPELINE = [
     # まずは, すべての配送過程で共通の処理をするモジュール.
@@ -538,7 +538,7 @@ OWNER_PIPELINE = [
 
 # 配送が成功かそうでないかにかかわらず, メッセージ配送ごとに出力する
 # メッセージの書式. このログメッセージの出力を無効にするには None を設定する.
-# [訳注: 2.1.x から, リスト名 listname が含まれるようになった.]
+# [訳注: 2.1.6 から, リスト名 %(listname)s が含まれるようになった.]
 SMTP_LOG_EVERY_MESSAGE = (
     'smtp',
     '%(msg_message-id)s smtp to %(listname)s for %(#recips)d recips, completed in %(time).3f seconds')
@@ -609,7 +609,7 @@ VERP_REGEXP = r'^(?P<bounces>[^+]+?)\+(?P<mailbox>[^=]+)=(?P<host>[^@]+)@.*$'
 # メッセージを認識するための VERP 書式 [>=2.1.5]
 VERP_PROBE_FORMAT = '%(bounces)s+%(token)s'
 VERP_PROBE_REGEXP = r'^(?P<bounces>[^+]+?)\+(?P<token>[^@]+)@.*$'
-# ここを Yes にすると, 配送エラーで配送停止するときに VERP を検出する [>=2.1.x]
+# ここを Yes にすると, 配送エラーでの配送停止で VERP 検出を有効にする [>=2.1.6]
 VERP_PROBES = No
 
 # VERP を使うのにもっともよい機会は, パスワード通知のときだ. これは
@@ -678,7 +678,7 @@ QRUNNERS = [
     ('IncomingRunner', 1), # 外界から来る投稿
     ('NewsRunner',     1), # nntpd へ送り出すメッセージ
     ('OutgoingRunner', 1), # smtpd へ送り出すメッセージ
-    ('VirginRunner',   1), # 内部的に作り出した (virgin birth) メッセージ
+    ('VirginRunner',   1), # 内部的に作り出した (できたての) メッセージ
     ('RetryRunner',    1), # 一時的に失敗した配送の再試行 [>=2.1.4]
     ]
 
@@ -723,12 +723,12 @@ SYNC_AFTER_WRITE = No
 #####
 
 # このサーバの標準言語. リストの文脈やユーザの文脈がわからないときはいつでも,
-# 替わりにこの言語を使う. 設定できる値は下の LC_DESCRIPTIONS を見る. [>=2.1]
+# 代わりにこの言語を使う. 設定できる値は下の LC_DESCRIPTIONS を見る. [>=2.1]
 DEFAULT_SERVER_LANGUAGE = 'en'
 
 # 会員のみがメーリングリストに投稿できるようにするとき, メッセージの送信者
-# をどのように決めるか. この変数を Yes に設定するなら, まずメッセージの
-# エンヴェロープ送信者を使い, エンヴェロープ送信者がなければ替わりに
+# をどのように決めるか. この変数を Yes に設定すると, まずメッセージの
+# エンヴェロープ送信者を使い, エンヴェロープ送信者がなければ代わりに
 # 送信者を使う. これを No に設定すると, いつも送信者を使う.
 #
 # エンヴェロープ送信者は SMTP 配送が設定するから, 送信者よりはごまかすのが
@@ -807,7 +807,7 @@ DEFAULT_MAX_MESSAGE_SIZE = 40           # キロバイト
 # これらの書式文字列は, メーリングリストのインスタンスの辞書を使って
 # 展開される.
 # [訳注]
-#   2.1.x 以降, DEFAULT_SUBJECT_PREFIX に %d を含めると通し番号が
+#   2.1.6 以降, DEFAULT_SUBJECT_PREFIX に %d を含めると通し番号が
 #   入るようになった. %04d といった書式も使える.
 #   mm_cfg.py で設定するときは %%d のように書かなければならないことに注意.
 DEFAULT_SUBJECT_PREFIX  = "[%(real_name)s] "
@@ -818,7 +818,7 @@ DEFAULT_MSG_FOOTER = """_______________________________________________
 %(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s
 """
 
-# 通常配送で添付削除する [>=2.1.x]
+# 通常配送で添付削除する [>=2.1.6]
 DEFAULT_SCRUB_NONDIGEST = False
 
 # 電子メールコマンド処理では, 指示された行数より後の電子メールコマンドを
@@ -831,7 +831,7 @@ DEFAULT_ADMIN_IMMED_NOTIFY = Yes
 # 管理者に入会/退会を知らせるか.
 DEFAULT_ADMIN_NOTIFY_MCHANGES = No
 
-# この日数の後, 保留されているメッセージを破棄する [>=2.1.x]
+# この日数の後, 保留されているメッセージを破棄する [>=2.1.6]
 DEFAULT_MAX_DAYS_TO_HOLD = 3            # 日数
 
 # リスト会員の投稿は, 既定で司会つきにするか. [>=2.1; DEFAULT_MODERATED は廃止]
@@ -854,10 +854,10 @@ DEFAULT_REQUIRE_EXPLICIT_DESTINATION = Yes
 # リスト名のほかに承認できる名前.
 DEFAULT_ACCEPTABLE_ALIASES ="""
 """
-# ほかのメーリングリストだけを会員とするメーリングリスト (傘リスト) にするか:
+# ほかのメーリングリストだけを会員とするメーリングリスト (親子リスト) にするか:
 DEFAULT_UMBRELLA_LIST = No
 
-# 傘リストの場合, 管理通知 (入会の確認やパスワード通知) を送るアドレスの
+# 親子リストの場合, 管理通知 (入会の確認やパスワード通知) を送るアドレスの
 # メールボックス部につける接尾語:
 DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX = "-owner"
 
@@ -951,13 +951,13 @@ DEFAULT_PASS_MIME_TYPES = ['multipart/mixed',
 # DEFAULT_FILTER_FILENAME_EXTENSIONS は, 削除するファイル名の拡張子のリスト.
 # これは役に立つ. なぜなら, いろんなウィルスが, content-type ヘッダを偽装して
 # 安全なファイルに見せかけながら実行可能な拡張子をつけるようにしていて,
-# 被害者がそれを「開く」と実行されてしまうことをねらっているので. [>=2.1.x]
+# 被害者がそれを「開く」と実行されてしまうことをねらっているので. [>=2.1.6]
 DEFAULT_FILTER_FILENAME_EXTENSIONS = [
     'exe', 'bat', 'cmd', 'com', 'pif', 'scr', 'vbs', 'cpl'
     ]
 
 # DEFAULT_PASS_FILENAME_EXTENSIONS は, 通すファイル名の拡張子のリスト.
-# 形式は DEFAULT_FILTER_FILENAME_EXTENSIONS とおなじ. [>=2.1.x]
+# 形式は DEFAULT_FILTER_FILENAME_EXTENSIONS とおなじ. [>=2.1.6]
 DEFAULT_PASS_FILENAME_EXTENSIONS = []
 
 # 内容フィルタを通したあとで, text/html を text/plain に変換するかどうか.
@@ -1284,10 +1284,9 @@ from Version import *
 # [訳注]
 #   もしも自分のサイトで中国語を使えるようにしている(いた)のなら注意.
 #
-#   2.1.x での「中国語」の変更.
+#   2.1.6 での「中国語」の変更.
 #   o big5 と gb の地域化テキスト (メッセージカタログとテンプレート) は
 #     削除された.
-#   o zh_CN と zh_TW の言語コードと説明はデフォルトでは無効になった.
 #
 #   2.1.4 での「中国語」の変更.
 #   o 言語のコードと説明がつぎのように変更された:
@@ -1338,8 +1337,7 @@ add_language('sl',    _('Slovenian'),           'iso-8859-2')
 add_language('sv',    _('Swedish'),             'iso-8859-1')
 add_language('tr',    _('Turkish'),             'iso-8859-9')
 add_language('uk',    _('Ukrainian'),           'utf-8')
-# これらは未サポート.
-# add_language('zh_CN', _('Chinese (China)'),     'gb2312')
-# add_language('zh_TW', _('Chinese (Taiwan)'),    'big5')
+add_language('zh_CN', _('Chinese (China)'),     'gb2312')
+add_language('zh_TW', _('Chinese (Taiwan)'),    'big5')
 
 del _
