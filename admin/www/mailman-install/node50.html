@@ -5,26 +5,25 @@
 <link rel="first" href="mailman-install.html" title='GNU Mailman - Installation Manual' />
 <link rel='last' href='about.html' title='About this document...' />
 <link rel='help' href='about.html' title='About this document...' />
-<link rel="next" href="node50.html" />
-<link rel="prev" href="node48.html" />
+<link rel="prev" href="bsd-issues.html" />
 <link rel="parent" href="node47.html" />
-<link rel="next" href="node50.html" />
+<link rel="next" href="about.html" />
 <meta name='aesop' content='information' />
-<title>15.2 BSD issues</title>
+<title>15.3 MacOSX issues</title>
 </head>
 <body>
 <DIV CLASS="navigation">
 <div id='top-navigation-panel' xml:id='top-navigation-panel'>
 <table align="center" width="100%" cellpadding="0" cellspacing="2">
 <tr>
-<td class='online-navigation'><a rel="prev" title="15.1 GNU/Linux issues"
-  href="node48.html"><img src='previous.png'
+<td class='online-navigation'><a rel="prev" title="15.2 BSD issues"
+  href="bsd-issues.html"><img src='previous.png'
   border='0' height='32'  alt='Previous Page' width='32' /></A></td>
 <td class='online-navigation'><a rel="parent" title="15 Platform and operating"
   href="node47.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="15.3 MacOSX issues"
-  href="node50.html"><img src='next.png'
+<td class='online-navigation'><a rel="next" title="About this document ..."
+  href="about.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
 <td class='online-navigation'><img src='blank.png'
@@ -36,40 +35,55 @@
 </tr></table>
 <div class='online-navigation'>
 <b class="navlabel">Previous:</b>
-<a class="sectref" rel="prev" href="node48.html">15.1 GNU/Linux issues</A>
+<a class="sectref" rel="prev" href="bsd-issues.html">15.2 BSD issues</A>
 <b class="navlabel">Up:</b>
 <a class="sectref" rel="parent" href="node47.html">15 Platform and operating</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="node50.html">15.3 MacOSX issues</A>
+<a class="sectref" rel="next" href="about.html">About this document ...</A>
 </div>
 <hr /></div>
 </DIV>
 <!--End of Navigation Panel-->
 
-<H2><A NAME="SECTION0011520000000000000000"></A><A NAME="bsd-issues"></A>
-<BR>
-15.2 BSD issues
+<H2><A NAME="SECTION0011530000000000000000">
+15.3 MacOSX issues</A>
 </H2>
 
 <P>
-Vivek Khera writes that some BSDs do nightly security scans for setuid file
-changes.  setgid directories also come up on the scan when they change.  Also,
-the setgid bit is not necessary on BSD systems because group ownership is
-automatically inherited on files created in directories.  On other <span class="Unix">Unix</span>es,
-this only happens when the directory has the setgid bit turned on.
+Many people run Mailman on MacOSX.  Here are some pointers that have been
+collected on getting Mailman to run on MacOSX.
 
 <P>
-To install without turning on the setgid bit on directories, simply pass in
-the <var>DIRSETGID</var> variable to <b class="program">make</b>, after you've run
-<b class="program">configure</b>:
+
+<UL>
+<LI>Jaguar (MacOSX 10.2) comes with Python 2.2.  While this isn't the very
+      latest stable version of Python, it ought to be sufficient to run
+      Mailman 2.1.
 
 <P>
-<div class="verbatim"><pre>
-    % make DIRSETGID=: install
-</pre></div>
+</LI>
+<LI>David B. O'Donnell has a web page describing his configuration of
+      Mailman 2.0.13 and Postfix on MacOSX Server.
 
 <P>
-This disables the <b class="program">chmod g+s</b> command on installed directories.
+<a class="url" href="http://www.afp548.com/Articles/mail/python-mailman.html">http://www.afp548.com/Articles/mail/python-mailman.html</a>
+<P>
+</LI>
+<LI>Kathleen Webb posted her experiences in getting Mailman running on
+      Jaguar using Sendmail.
+
+<P>
+<a class="url" href="http://mail.python.org/pipermail/mailman-users/2002-October/022944.html">http://mail.python.org/pipermail/mailman-users/2002-October/022944.html</a>
+<P>
+</LI>
+<LI>Panther server (MacOSX 10.3) comes with Mailman; Apple has a tech
+      document about a problem you might encounter running Mailman on Mac OS X
+      Server 10.3:
+
+<P>
+<a class="url" href="http://docs.info.apple.com/article.html?artnum=107889">http://docs.info.apple.com/article.html?artnum=107889</a>
+</LI>
+</UL>
 
 <P>
 
@@ -78,14 +92,14 @@ This disables the <b class="program">chmod g+s</b> command on installed director
 <p></p><hr />
 <table align="center" width="100%" cellpadding="0" cellspacing="2">
 <tr>
-<td class='online-navigation'><a rel="prev" title="15.1 GNU/Linux issues"
-  href="node48.html"><img src='previous.png'
+<td class='online-navigation'><a rel="prev" title="15.2 BSD issues"
+  href="bsd-issues.html"><img src='previous.png'
   border='0' height='32'  alt='Previous Page' width='32' /></A></td>
 <td class='online-navigation'><a rel="parent" title="15 Platform and operating"
   href="node47.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="15.3 MacOSX issues"
-  href="node50.html"><img src='next.png'
+<td class='online-navigation'><a rel="next" title="About this document ..."
+  href="about.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
 <td class='online-navigation'><img src='blank.png'
@@ -97,11 +111,11 @@ This disables the <b class="program">chmod g+s</b> command on installed director
 </tr></table>
 <div class='online-navigation'>
 <b class="navlabel">Previous:</b>
-<a class="sectref" rel="prev" href="node48.html">15.1 GNU/Linux issues</A>
+<a class="sectref" rel="prev" href="bsd-issues.html">15.2 BSD issues</A>
 <b class="navlabel">Up:</b>
 <a class="sectref" rel="parent" href="node47.html">15 Platform and operating</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="node50.html">15.3 MacOSX issues</A>
+<a class="sectref" rel="next" href="about.html">About this document ...</A>
 </div>
 </div>
 <hr />

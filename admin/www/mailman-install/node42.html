@@ -5,26 +5,26 @@
 <link rel="first" href="mailman-install.html" title='GNU Mailman - Installation Manual' />
 <link rel='last' href='about.html' title='About this document...' />
 <link rel='help' href='about.html' title='About this document...' />
-<link rel="next" href="customizing.html" />
+<link rel="next" href="node43.html" />
 <link rel="prev" href="node41.html" />
 <link rel="parent" href="front.html" />
-<link rel="next" href="customizing.html" />
+<link rel="next" href="node43.html" />
 <meta name='aesop' content='information' />
-<title>10 Check the hostname settings</title>
+<title>10 Start the Mailman qrunner</title>
 </head>
 <body>
 <DIV CLASS="navigation">
 <div id='top-navigation-panel' xml:id='top-navigation-panel'>
 <table align="center" width="100%" cellpadding="0" cellspacing="2">
 <tr>
-<td class='online-navigation'><a rel="prev" title="9 Start the Mailman"
+<td class='online-navigation'><a rel="prev" title="9 Set up cron"
   href="node41.html"><img src='previous.png'
   border='0' height='32'  alt='Previous Page' width='32' /></A></td>
 <td class='online-navigation'><a rel="parent" title="Front Matter"
   href="front.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="11 Customize Mailman"
-  href="customizing.html"><img src='next.png'
+<td class='online-navigation'><a rel="next" title="11 Check the hostname"
+  href="node43.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
 <td class='online-navigation'><img src='blank.png'
@@ -36,35 +36,85 @@
 </tr></table>
 <div class='online-navigation'>
 <b class="navlabel">Previous:</b>
-<a class="sectref" rel="prev" href="node41.html">9 Start the Mailman</A>
+<a class="sectref" rel="prev" href="node41.html">9 Set up cron</A>
 <b class="navlabel">Up:</b>
 <a class="sectref" rel="parent" href="front.html">Front Matter</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="customizing.html">11 Customize Mailman</A>
+<a class="sectref" rel="next" href="node43.html">11 Check the hostname</A>
 </div>
 <hr /></div>
 </DIV>
 <!--End of Navigation Panel-->
 
 <H1><A NAME="SECTION0011000000000000000000">
-10 Check the hostname settings</A>
+10 Start the Mailman qrunner</A>
 </H1>
 
 <P>
-You should check the values for <var>DEFAULT_EMAIL_HOST</var> and
-<var>DEFAULT_URL_HOST</var> in <span class="file">Defaults.py</span>.  Make any necessary changes in
-the <span class="file">mm_cfg.py</span> file, <strong>not</strong> in the <span class="file">mm_cfg.py</span> file.  If you
-change either of these two values, you'll want to add the following afterwards
-in the <span class="file">mm_cfg.py</span> file:
+Mailman depends on a process called the ``qrunner'' to delivery all
+email messages it sees.  You must start the qrunner by executing the following
+command from the <var>$prefix</var> directory:
 
 <P>
 <div class="verbatim"><pre>
-    add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
+    % bin/mailmanctl start
 </pre></div>
 
 <P>
-You will want to run the <b class="program">bin/fix_url.py</b> to change the domain of any
-existing lists.
+You probably want to start Mailman every time you reboot your system.  Exactly
+how to do this depends on your operating system.  If your OS supports the
+<b class="program">chkconfig</b> command (e.g. RedHat and Mandrake Linuxes) you can
+do the following (as root, from the Mailman install directory):
+
+<P>
+<div class="verbatim"><pre>
+    % cp scripts/mailman /etc/init.d/mailman
+    % chkconfig --add mailman
+</pre></div>
+
+<P>
+Note that <span class="file">/etc/init.d</span> may be <span class="file">/etc/rc.d/init.d</span> on some systems.
+
+<P>
+On Gentoo Linux, you can do the following:
+
+<P>
+<div class="verbatim"><pre>
+    % cp scripts/mailman /etc/init.d/mailman
+    % rc-update add mailman default
+</pre></div>
+
+<P>
+On Debian, you probably want to use:
+
+<P>
+<div class="verbatim"><pre>
+    % update-rc.d mailman defaults
+</pre></div>
+
+<P>
+For <span class="Unix">Unix</span>es that don't support <b class="program">chkconfig</b>, you might try the
+following set of commands:
+
+<P>
+<div class="verbatim"><pre>
+    % cp scripts/mailman /etc/init.d/mailman
+    % cp misc/mailman /etc/init.d
+    % cd /etc/rc.d/rc0.d
+    % ln -s ../init.d/mailman K12mailman
+    % cd ../rc1.d
+    % ln -s ../init.d/mailman K12mailman
+    % cd ../rc2.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc3.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc4.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc5.d
+    % ln -s ../init.d/mailman S98mailman
+    % cd ../rc6.d
+    % ln -s ../init.d/mailman K12mailman
+</pre></div>
 
 <P>
 
@@ -73,14 +123,14 @@ existing lists.
 <p></p><hr />
 <table align="center" width="100%" cellpadding="0" cellspacing="2">
 <tr>
-<td class='online-navigation'><a rel="prev" title="9 Start the Mailman"
+<td class='online-navigation'><a rel="prev" title="9 Set up cron"
   href="node41.html"><img src='previous.png'
   border='0' height='32'  alt='Previous Page' width='32' /></A></td>
 <td class='online-navigation'><a rel="parent" title="Front Matter"
   href="front.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="11 Customize Mailman"
-  href="customizing.html"><img src='next.png'
+<td class='online-navigation'><a rel="next" title="11 Check the hostname"
+  href="node43.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
 <td class='online-navigation'><img src='blank.png'
@@ -92,15 +142,15 @@ existing lists.
 </tr></table>
 <div class='online-navigation'>
 <b class="navlabel">Previous:</b>
-<a class="sectref" rel="prev" href="node41.html">9 Start the Mailman</A>
+<a class="sectref" rel="prev" href="node41.html">9 Set up cron</A>
 <b class="navlabel">Up:</b>
 <a class="sectref" rel="parent" href="front.html">Front Matter</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="customizing.html">11 Customize Mailman</A>
+<a class="sectref" rel="next" href="node43.html">11 Check the hostname</A>
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on December 13, 2004.</span>
+<span class="release-info">Release 2.1, documentation updated on December 22, 2004.</span>
 </DIV>
 <!--End of Navigation Panel-->
 

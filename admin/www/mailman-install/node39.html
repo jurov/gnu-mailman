@@ -10,7 +10,7 @@
 <link rel="parent" href="front.html" />
 <link rel="next" href="node40.html" />
 <meta name='aesop' content='information' />
-<title>7 Create a site-wide mailing list</title>
+<title>7 Review your site defaults</title>
 </head>
 <body>
 <DIV CLASS="navigation">
@@ -23,7 +23,7 @@
 <td class='online-navigation'><a rel="parent" title="Front Matter"
   href="front.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="8 Set up cron"
+<td class='online-navigation'><a rel="next" title="8 Create a site-wide"
   href="node40.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
@@ -40,55 +40,50 @@
 <b class="navlabel">Up:</b>
 <a class="sectref" rel="parent" href="front.html">Front Matter</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="node40.html">8 Set up cron</A>
+<a class="sectref" rel="next" href="node40.html">8 Create a site-wide</A>
 </div>
 <hr /></div>
 </DIV>
 <!--End of Navigation Panel-->
 
 <H1><A NAME="SECTION001700000000000000000">
-7 Create a site-wide mailing list</A>
+7 Review your site defaults</A>
 </H1>
 
 <P>
-After you have completed the integration of Mailman and your mail server, you
-need to create a ``site-wide'' mailing list.  This is the one that password
-reminders will appear to come from, and it is required for proper Mailman
-operation.  Usually this should be a list called <code>mailman</code>, but if you
-need to change this, be sure to change the <var>MAILMAN_SITE_LIST</var> variable in
-<span class="file">mm_cfg.py</span>.  You can create the site list with this command, following
-the prompts:
+Mailman has a large number of site-wide configuration options which you should
+now review and change according to your needs.  Some of the options control
+how Mailman interacts with your environment, and other options select defaults
+for newly created lists<A NAME="tex2html5"
+  HREF="#foot508"><SUP>5</SUP></A>.  There are system tuning parameters and integration options.
 
 <P>
-<div class="verbatim"><pre>
-    % bin/newlist mailman
-</pre></div>
+The full set of site-wide defaults lives in the
+<span class="file"><var>$prefix</var>/Mailman/Defaults.py</span> file, however you should
+<strong>never</strong> modify this file!  Instead, change the <span class="file">mm_cfg.py</span> file in
+that same directory.  You only need to add values to <span class="file">mm_cfg.py</span> that are
+different than the defaults in <span class="file">Defaults.py</span>, and future Mailman upgrades
+are guaranteed never to touch your <span class="file">mm_cfg.py</span> file.
 
 <P>
-Now configure your site list.  There is a convenient template for a generic
-site list in the installation directory, under <span class="file">data/sitelist.cfg</span> which
-can help you with this.  You should review the configuration options in the
-template, but note that any options not named in the <span class="file">sitelist.cfg</span> file
-won't be changed.
+The <span class="file">Defaults.py</span> file is documented extensively, so the options are not
+described here.  The <span class="file">Defaults.py</span> and <span class="file">mm_cfg.py</span> are both
+<a class="ulink" href="http://www.python.org"
+  >Python</a> files so valid Python syntax must be
+maintained or your Mailman installation will break.
 
 <P>
-The template can be applied to your site list by
-running:
+<BR><HR><H4>Footnotes</H4>
+<DL>
+<DT><A NAME="foot508">... lists</A><A
+ HREF="node39.html#tex2html5"><SUP>5</SUP></A></DT>
+<DD>In general, changing the list defaults
+described in this section will not affect any already created lists.  To make
+changes after a list has been created, use the web interface or the command
+line scripts.
 
-<P>
-<div class="verbatim"><pre>
-    % bin/config_list -i data/sitelist.cfg mailman
-</pre></div>
-
-<P>
-After applying the <span class="file">sitelist.cfg</span> options, be sure you review the
-site list's configuration via the admin pages.
-
-<P>
-You should also subscribe yourself to the site list.
-
-<P>
-
+</DD>
+</DL>
 <DIV CLASS="navigation">
 <div class='online-navigation'>
 <p></p><hr />
@@ -100,7 +95,7 @@ You should also subscribe yourself to the site list.
 <td class='online-navigation'><a rel="parent" title="Front Matter"
   href="front.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="8 Set up cron"
+<td class='online-navigation'><a rel="next" title="8 Create a site-wide"
   href="node40.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
@@ -117,11 +112,11 @@ You should also subscribe yourself to the site list.
 <b class="navlabel">Up:</b>
 <a class="sectref" rel="parent" href="front.html">Front Matter</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="node40.html">8 Set up cron</A>
+<a class="sectref" rel="next" href="node40.html">8 Create a site-wide</A>
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on December 13, 2004.</span>
+<span class="release-info">Release 2.1, documentation updated on December 22, 2004.</span>
 </DIV>
 <!--End of Navigation Panel-->
 

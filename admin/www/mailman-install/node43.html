@@ -5,26 +5,26 @@
 <link rel="first" href="mailman-install.html" title='GNU Mailman - Installation Manual' />
 <link rel='last' href='about.html' title='About this document...' />
 <link rel='help' href='about.html' title='About this document...' />
-<link rel="next" href="node29.html" />
-<link rel="prev" href="node27.html" />
-<link rel="parent" href="node16.html" />
-<link rel="next" href="node29.html" />
+<link rel="next" href="node44.html" />
+<link rel="prev" href="node42.html" />
+<link rel="parent" href="front.html" />
+<link rel="next" href="node44.html" />
 <meta name='aesop' content='information' />
-<title>6.2.12 Virtual Domains</title>
+<title>11 Check the hostname settings</title>
 </head>
 <body>
 <DIV CLASS="navigation">
 <div id='top-navigation-panel' xml:id='top-navigation-panel'>
 <table align="center" width="100%" cellpadding="0" cellspacing="2">
 <tr>
-<td class='online-navigation'><a rel="prev" title="6.2.11 Doing VERP with"
-  href="node27.html"><img src='previous.png'
+<td class='online-navigation'><a rel="prev" title="10 Start the Mailman"
+  href="node42.html"><img src='previous.png'
   border='0' height='32'  alt='Previous Page' width='32' /></A></td>
-<td class='online-navigation'><a rel="parent" title="6.2 Using the Exim"
-  href="node16.html"><img src='up.png'
+<td class='online-navigation'><a rel="parent" title="Front Matter"
+  href="front.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="6.2.13 List Verification"
-  href="node29.html"><img src='next.png'
+<td class='online-navigation'><a rel="next" title="12 Create the site"
+  href="node44.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
 <td class='online-navigation'><img src='blank.png'
@@ -36,48 +36,35 @@
 </tr></table>
 <div class='online-navigation'>
 <b class="navlabel">Previous:</b>
-<a class="sectref" rel="prev" href="node27.html">6.2.11 Doing VERP with</A>
+<a class="sectref" rel="prev" href="node42.html">10 Start the Mailman</A>
 <b class="navlabel">Up:</b>
-<a class="sectref" rel="parent" href="node16.html">6.2 Using the Exim</A>
+<a class="sectref" rel="parent" href="front.html">Front Matter</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="node29.html">6.2.13 List Verification</A>
+<a class="sectref" rel="next" href="node44.html">12 Create the site</A>
 </div>
 <hr /></div>
 </DIV>
 <!--End of Navigation Panel-->
 
-<H3><A NAME="SECTION0016212000000000000000">
-6.2.12 Virtual Domains</A>
-</H3>
+<H1><A NAME="SECTION0011100000000000000000">
+11 Check the hostname settings</A>
+</H1>
 
 <P>
-One approach to handling virtual domains is to use a separate Mailman
-installation for each virtual domain.  Currently, this is the only way to have
-lists with the same name in different virtual domains handled by the same
-machine.
-
-<P>
-In this case, the <var>MAILMAN_HOME</var> and <var>MAILMAN_WRAP</var> macros are useless
-- you can remove them.  Change your director (router) to something like this:
+You should check the values for <var>DEFAULT_EMAIL_HOST</var> and
+<var>DEFAULT_URL_HOST</var> in <span class="file">Defaults.py</span>.  Make any necessary changes in
+the <span class="file">mm_cfg.py</span> file, <strong>not</strong> in the <span class="file">mm_cfg.py</span> file.  If you
+change either of these two values, you'll want to add the following afterwards
+in the <span class="file">mm_cfg.py</span> file:
 
 <P>
 <div class="verbatim"><pre>
-  require_files = /virtual/${domain}/mailman/lists/${lc:$local_part}/config.pck
+    add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 </pre></div>
 
 <P>
-and change your transport like this:
-
-<P>
-<div class="verbatim"><pre>
-  command = /virtual/${domain}/mailman/mail/mailman \
-            ${if def:local_part_suffix \
-                 {${sg{$local_part_suffix}{-(\\w+)(\\+.*)?}{\$1}}}
-                 {post}} \
-              $local_part
-  current_directory = /virtual/${domain}/mailman
-  home_directory = /virtual/${domain}/mailman
-</pre></div>
+You will want to run the <b class="program">bin/fix_url.py</b> to change the domain of any
+existing lists.
 
 <P>
 
@@ -86,14 +73,14 @@ and change your transport like this:
 <p></p><hr />
 <table align="center" width="100%" cellpadding="0" cellspacing="2">
 <tr>
-<td class='online-navigation'><a rel="prev" title="6.2.11 Doing VERP with"
-  href="node27.html"><img src='previous.png'
+<td class='online-navigation'><a rel="prev" title="10 Start the Mailman"
+  href="node42.html"><img src='previous.png'
   border='0' height='32'  alt='Previous Page' width='32' /></A></td>
-<td class='online-navigation'><a rel="parent" title="6.2 Using the Exim"
-  href="node16.html"><img src='up.png'
+<td class='online-navigation'><a rel="parent" title="Front Matter"
+  href="front.html"><img src='up.png'
   border='0' height='32'  alt='Up One Level' width='32' /></A></td>
-<td class='online-navigation'><a rel="next" title="6.2.13 List Verification"
-  href="node29.html"><img src='next.png'
+<td class='online-navigation'><a rel="next" title="12 Create the site"
+  href="node44.html"><img src='next.png'
   border='0' height='32'  alt='Next Page' width='32' /></A></td>
 <td align="center" width="100%">GNU Mailman - Installation Manual</td>
 <td class='online-navigation'><img src='blank.png'
@@ -105,11 +92,11 @@ and change your transport like this:
 </tr></table>
 <div class='online-navigation'>
 <b class="navlabel">Previous:</b>
-<a class="sectref" rel="prev" href="node27.html">6.2.11 Doing VERP with</A>
+<a class="sectref" rel="prev" href="node42.html">10 Start the Mailman</A>
 <b class="navlabel">Up:</b>
-<a class="sectref" rel="parent" href="node16.html">6.2 Using the Exim</A>
+<a class="sectref" rel="parent" href="front.html">Front Matter</A>
 <b class="navlabel">Next:</b>
-<a class="sectref" rel="next" href="node29.html">6.2.13 List Verification</A>
+<a class="sectref" rel="next" href="node44.html">12 Create the site</A>
 </div>
 </div>
 <hr />

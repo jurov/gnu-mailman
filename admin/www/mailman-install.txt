@@ -11,7 +11,7 @@ GNU Mailman - Installation Manual
    barry(at)python.org
 
    Release 2.1
-   December 13, 2004
+   December 22, 2004
 
                                  Front Matter
 
@@ -52,7 +52,7 @@ GNU Mailman - Installation Manual
    Mailman requires a unique user and group name which will own its
    files, and under which its processes will run. Mailman's basic
    security is based on group ownership permissions, so it's important to
-   get this step right^1. Typically, you will add a new user and a new
+   get this step right1. Typically, you will add a new user and a new
    group, both called mailman. The mailman user must be a member of the
    mailman group. Mailman will be installed under the mailman user and
    group, with the set-group-id (setgid) bit enabled.
@@ -78,7 +78,7 @@ GNU Mailman - Installation Manual
    the variable data files and install them in separate directories. This
    section will describe the available options.
 
-   The default is to install all of Mailman to /usr/local/mailman^2. You
+   The default is to install all of Mailman to /usr/local/mailman2. You
    can change this base installation directory (referred to here as
    $prefix) by specifying the directory with the --prefix configure
    option. If you're upgrading from a previous version of Mailman, you
@@ -92,7 +92,7 @@ GNU Mailman - Installation Manual
 
    Make sure the installation directory is set to group mailman (or
    whatever you're going to specify with --with-groupname) and has the
-   setgid bit set^3. You probably also want to guarantee that this
+   setgid bit set3. You probably also want to guarantee that this
    directory is readable and executable by everyone. For example, these
    shell commands will accomplish this:
 
@@ -826,8 +826,8 @@ GNU Mailman - Installation Manual
    server. Don't. The Sendmail.py module is misnamed - it's really a
    command line based message handoff scheme as opposed to the SMTP
    scheme used in SMTPDirect.py (the default). Sendmail.py has known
-   security holes and is provided as a proof-of-concept only^4. If you
-   are having problems using SMTPDirect.py fix those instead of using
+   security holes and is provided as a proof-of-concept only4. If you are
+   having problems using SMTPDirect.py fix those instead of using
    Sendmail.py, or you may open your system up to security exploits.
 
   6.3.1 Sendmail ``smrsh'' compatibility
@@ -1050,7 +1050,34 @@ fi
 
    http://mailman.cis.to/qmail-verh/
 
-                       7 Create a site-wide mailing list
+                          7 Review your site defaults
+
+   Mailman has a large number of site-wide configuration options which
+   you should now review and change according to your needs. Some of the
+   options control how Mailman interacts with your environment, and other
+   options select defaults for newly created lists5. There are system
+   tuning parameters and integration options.
+
+   The full set of site-wide defaults lives in the
+   $prefix/Mailman/Defaults.py file, however you should never modify this
+   file! Instead, change the mm_cfg.py file in that same directory. You
+   only need to add values to mm_cfg.py that are different than the
+   defaults in Defaults.py, and future Mailman upgrades are guaranteed
+   never to touch your mm_cfg.py file.
+
+   The Defaults.py file is documented extensively, so the options are not
+   described here. The Defaults.py and mm_cfg.py are both Python files so
+   valid Python syntax must be maintained or your Mailman installation
+   will break.
+
+   Note: Do not change the HOME_DIR or MAILMAN_DIR variables. These are
+   set automatically by the configure script, and you will break your
+   Mailman installation by if you change these.
+
+   You should make any changes to mm_cfg.py using the account you
+   installed Mailman under in the 14 section.
+
+                       8 Create a site-wide mailing list
 
    After you have completed the integration of Mailman and your mail
    server, you need to create a ``site-wide'' mailing list. This is the
@@ -1077,10 +1104,10 @@ fi
 
    You should also subscribe yourself to the site list.
 
-                                 8 Set up cron
+                                 9 Set up cron
 
    Several Mailman features occur on a regular schedule, so you must set
-   up cron to run the right programs at the right time^5.
+   up cron to run the right programs at the right time^6.
 
    If your version of crontab supports the -u option, you must be root to
    do this next step. Add $prefix/cron/crontab.in as a crontab entry by
@@ -1097,7 +1124,7 @@ fi
     % su - mailman
     % crontab crontab.in
 
-                          9 Start the Mailman qrunner
+                         10 Start the Mailman qrunner
 
    Mailman depends on a process called the ``qrunner'' to delivery all
    email messages it sees. You must start the qrunner by executing the
@@ -1144,7 +1171,7 @@ fi
     % cd ../rc6.d
     % ln -s ../init.d/mailman K12mailman
 
-                        10 Check the hostname settings
+                        11 Check the hostname settings
 
    You should check the values for DEFAULT_EMAIL_HOST and
    DEFAULT_URL_HOST in Defaults.py. Make any necessary changes in the
@@ -1157,38 +1184,33 @@ fi
    You will want to run the bin/fix_url.py to change the domain of any
    existing lists.
 
-                             11 Customize Mailman
+                          12 Create the site password
 
-   Now that Mailman is all set up, there are a few site-wide
-   configurations you can make before you start creating mailing lists.
-   You should do these steps using the account you installed Mailman
-   under in the 13 section.
+   There are two site-wide passwords that you can create from the command
+   line, using the bin/mmsitepass script. The first is the ``site
+   password'' which can be used anywhere a password is required in the
+   system. The site password will get you into the administration page
+   for any list, and it can be used to log in as any user. Think root for
+   a Unix system, so pick this password wisely!
 
-     * The file $prefix/Mailman/Defaults.py contains a number of defaults
-       for your installation. If any of these are incorrect, override
-       them in $prefix/Mailman/mm_cfg.py, not in the Defaults.py file!
-       See the comments in Defaults.py for details. Once a list is
-       created, editing many of these variables will have no effect. At
-       that point, you'll need to configure your lists through the web
-       administration interface or through the command line scripts
-       bin/withlist and bin/config_list.
-       The install process will never overwrite an existing mm_cfg.py
-       file so you can freely make changes to this file.
-       Note: Do not change the HOME_DIR or MAILMAN_DIR variables. These
-       are set automatically by the configure script, and you will break
-       your Mailman installation by if you change these.
-     * Create the site password. Use this command:
+   The second password is a site-wide ``list creator'' password. You can
+   use this to delegate the ability to create new mailing lists without
+   providing all the privileges of the site password. Of course, the
+   owner of the site password can also create new mailing lists, but the
+   list creator password is limited to just that special role.
+
+   To set the site password, use this command:
+
     % $prefix/bin/mmsitepass <your-site-password>
-       This password can be used anywhere that individual user or mailing
-       list administrator passwords are required, giving the mailman site
-       administrator the ability to adjust these things when necessary.
-       You may also want to create a password for the site-wide ``list
-       creator'' role. The list creator is someone other than the site
-       administrator who has privileges to create and remove lists
-       through the web interface. Use the -c option to mmsitepass to set
-       this.
 
-                       12 Create your first mailing list
+   To set the list creator password, use this command:
+
+    % $prefix/bin/mmsitepass -c <list-creator-password>
+
+   It is okay not to set a list creator password, but you probably do
+   want a site password.
+
+                       13 Create your first mailing list
 
    For more detailed information about using Mailman, including creating
    and configuring mailing lists, see the Mailman List Adminstration
@@ -1198,7 +1220,7 @@ fi
      * Start by visiting the url http://my.dom.ain/mailman/create.
      * Fill out the form as described in the on-screen instructions, and
        in the ``List creator's password'' field, type the password you
-       entered in section 11. Type your own email address for the
+       entered in section 7. Type your own email address for the
        ``Initial list owner address'', and select ``Yes'' to notify the
        list administrator.
      * Click on the ``Create List'' button.
@@ -1218,10 +1240,10 @@ fi
        to you via Mailman.
 
    Congratulations! You've just set up and tested your first Mailman
-   mailing list. If you had any problems along the way, please see the 13
+   mailing list. If you had any problems along the way, please see the 14
    section.
 
-                              13 Troubleshooting
+                              14 Troubleshooting
 
    If you encounter problems with running Mailman, first check the
    question and answer section below. If your problem is not covered
@@ -1231,7 +1253,7 @@ fi
    Also check for errors in your syslog files, your mail and web server
    log files and in Mailman's $prefix/logs/error file. If you're still
    having problems, you should send a message to the
-   mailman-users@python.org mailing list^6; see
+   mailman-users@python.org mailing list7; see
    http://mail.python.org/mailman/listinfo/mailman-users for more
    information.
 
@@ -1299,7 +1321,7 @@ fi
         % ./configure --with-the-right-options
         % make install
 
-                    14 Platform and operating system notes
+                    15 Platform and operating system notes
 
    Generally, Mailman runs on any POSIX-based system, such as Solaris,
    the various BSD variants, Linux systems, MacOSX, and other generic
@@ -1309,7 +1331,7 @@ fi
    have additional recommended installation or configuration
    instructions.
 
-14.1 GNU/Linux issues
+15.1 GNU/Linux issues
 
    Linux seems to be the most popular platform for running Mailman. Here
    are some hints on getting Mailman to run on Linux:
@@ -1344,7 +1366,7 @@ fi
        This problem can manifest itself in other Linux distributions in
        different ways, although usually it appears as ImportErrors.
 
-14.2 BSD issues
+15.2 BSD issues
 
    Vivek Khera writes that some BSDs do nightly security scans for setuid
    file changes. setgid directories also come up on the scan when they
@@ -1360,7 +1382,7 @@ fi
 
    This disables the chmod g+s command on installed directories.
 
-14.3 MacOSX issues
+15.3 MacOSX issues
 
    Many people run Mailman on MacOSX. Here are some pointers that have
    been collected on getting Mailman to run on MacOSX.
@@ -1382,7 +1404,7 @@ fi
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, December 13, 2004, Release 2.1
+   GNU Mailman - Installation Manual, December 22, 2004, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1398,31 +1420,38 @@ fi
 
     Footnotes
 
-   ... right^1
+   ... right1
           You will be able to check and repair your permissions after
           installation is complete.
 
-   .../usr/local/mailman^2
+   .../usr/local/mailman2
           This is the default for Mailman 2.1. Earlier versions of
           Mailman installed everything under /home/mailman by default.
 
-   ... set^3
-          BSD users should see the 14.2 section for additional
+   ... set3
+          BSD users should see the 15.2 section for additional
           information.
 
-   ... only^4
+   ... only4
           In fact, in later versions of Mailman, this module is
           explicitly sabotaged. You have to know what you're doing in
           order to re-enable it.
 
-   ... time^5
+   ... lists5
+          In general, changing the list defaults described in this
+          section will not affect any already created lists. To make
+          changes after a list has been created, use the web interface or
+          the command line scripts, such as bin/withlist and
+          bin/config_list.
+
+   ... time^6
           Note that if you're upgrading from a previous version of
           Mailman, you'll want to install the new crontab, but be careful
           if you're running multiple Mailman installations on your site!
           Changing the crontab could mess with other parallel Mailman
           installations.
 
-   ... list^6
+   ... list7
           You must subscribe to this mailing list in order to post to it,
           but the mailing list's archives are publicly visible.
      _________________________________________________________________
@@ -1430,4 +1459,4 @@ fi
    Previous Page Up One Level Next Page GNU Mailman - Installation Manual
      _________________________________________________________________
 
-   Release 2.1, documentation updated on December 13, 2004.
+   Release 2.1, documentation updated on December 22, 2004.
