@@ -75,9 +75,11 @@ class Results:
         subj = msg.get('subject', '')
         try:
             subj = make_header(decode_header(subj)).__unicode__()
+            # TK: Currently we don't allow 8bit or multibyte in mail command.
+            subj = subj.encode('us-ascii')
             # Always process the Subject: header first
             self.commands.append(subj)
-        except HeaderParseError:
+        except (HeaderParseError, UnicodeError, LookupError):
             # We couldn't parse it so ignore the Subject header
             pass
         # Find the first text/plain part
