@@ -315,6 +315,9 @@ Url : %(url)s
         # language's charset.
         if not charset or charset == 'us-ascii':
             charset = lcset_out
+        else:
+            # normalize to the output charset if input/output are different
+            charset = Charset(charset).output_charset or charset
         # We now want to concatenate all the parts which have been scrubbed to
         # text/plain, into a single text/plain payload.  We need to make sure
         # all the characters in the concatenated string are in the same
