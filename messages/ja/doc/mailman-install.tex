@@ -26,7 +26,8 @@
 にインストールする方法を説明するものです. 基本的なインストール手順
 だけでなく, あなたが使用するウェブとメールサーバに統合するための
 ガイドラインを含んでいます\footnote{
-訳注：現時点で翻訳は訳者の環境において確認できる部分に限られています.
+訳注：現時点で翻訳は訳者（菊地・池田）の環境において確認できる部分
+に限られています.
 }.
 
 
@@ -314,7 +315,7 @@ Mailman をインストールする前に \program{configure} を実行して, システム
 時計のずれを補償したファイルロック機構 にすることができます．
 
 この節では Mailman のウェブインタフェースをウェブサーバに接続するために
-必要な事柄を説明します. ここでの手順は Apache ウェブサーバ向けになって
+必要な事柄を説明します. ここでの手順は Apache ウェブサーバに若干偏って
 いますので, 詳細についてはご利用のウェブサーバの説明書を参照してください.
 
 ウェブサーバの設定で \file{\var{\$prefix}/cgi-bin} に CGI スクリプトの
@@ -408,9 +409,14 @@ Postfix 2.1.5 (を含む) までの各種バージョンで試験済みです.
     owner_request_special = no
 \end{verbatim}
 
-Mailman のオプションである VERP 配送をサポートするためには, (デフォルトの)
-\code{luser_relay} を無効にしたままで, \code{recipient_delimiter} を
-設定してアドレスの意味拡張を有効にします.
+Mailman のオプションである VERP 配送をサポートするためには, 
+\code{luser_relay} を無効(これが既定値)にしたままで, 
+\code{recipient_delimiter} を
+設定して 拡張アドレス\footnote{訳注：原文は extended address 
+semantics なので, `拡張されたアドレスの意味論'. 実際には,
+extended address とだけ書いてある文献が多いようなので, `意味論'
+を省略した.}
+を有効にします.
 \file{main.cf} の \code{luser_relay} の値をどれもコメントアウトし,
 デフォルトのままにします. また, 次のように \file{main.cf} ファイルに
 追加します.
@@ -526,47 +532,50 @@ suid したスクリプトは安全でないからです. Postfix が \file{aliases.db}
 
 \subsubsection{仮想ドメイン\label{postfix-virtual}}
 
-Postfix 2.0 は ``virtual alias domains'' をサポートしています. これは
-基本的に以前``Postfix-style virtual domains'' と呼ばれていたものです.
-%
-%Postfix 2.0 supports ``virtual alias domains'', essentially what used to be
-%called ``Postfix-style virtual domains'' in earlier Postfix versions.  
-To make
-virtual alias domains work with Mailman, you need to do some setup in both
-Postfix and Mailman.  Mailman will write all virtual alias mappings to a file
-called, by default, \file{/usr/local/mailman/data/virtual-mailman}.  It will
-also use \program{postmap} to create the \program{virtual-mailman.db} file
-that Postfix will actually use.
+Postfix 2.0 は ``仮想エイリアス ドメイン\footnote{訳注：virtual alias domains. }'' をサポートします. 
+これは, 以前のバージョンの Postfix では ``Postfix スタイルの仮想ドメイン''
+と呼ばれていたものです. 
+Mailman で動作する仮想エイリアスドメインを作るには, 
+Postfix と Mailman の両方で設定をする必要があります. 
+Mailman は, (既定では) \file{/usr/local/mailman/data/virtual-mailman}
+という名前のファイルにすべての仮想エイリアスのマップを書き込みます. 
+また, Postfix が実際に使う \program{virtual-mailman.db}
+ファイルを作成するために \program{postmap} を使います. 
 
-First, you need to set up the Postfix virtual alias domains as described in
-the Postfix documentation (see Postfix's \code{virtual(5)} manpage).  Note
-that it's your responsibility to include the \code{virtual-alias.domain
-anything} line as described manpage; Mailman will not include this line in
-\file{virtual-mailman}.  You are highly encouraged to make sure your virtual
-alias domains are working properly before integrating with Mailman.
+まず, Postfix の仮想エイリアス ドメインを Postfix の文書の説明どおりに作ります
+(Postfix の \code{virtual(5)} マニュアルページを参照してください). 
+マニュアルページの説明にある
+\code{virtual-alias.domain anything}
+の行は, 自分で入れなければいけないことに注意してください. 
+Mailman は \file{virtual-mailman} にこの行を入れてくれません. 
+Mailman と統合する前に, 
+この仮想エイリアス ドメインが正しく動作するようにしておくことが, 
+とても大事です. 
 
-Next, add a path to Postfix's \var{virtual_alias_maps} variable, pointing to
-the virtual-mailman file, e.g.:
+次に, Postfix と \var{virtual_alias_maps} 変数に, virtual-mailman
+ファイルの位置のパス名を追加します. 例:
 
 \begin{verbatim}
-    virtual_alias_maps = <your normal virtual alias files>,
+    virtual_alias_maps = <通常の仮想エイリアスのファイル>,
         hash:/usr/local/mailman/data/virtual-mailman
 \end{verbatim}
 
-assuming you've installed Mailman in the default location.  If you're using an
-older version of Postfix which doesn't have the \var{virtual_alias_maps}
-variable, use the \var{virtual_maps} variable instead.
+ここでは, Mailman は既定の場所にインストールしてあると仮定しています. 
+\var{virtual_alias_maps}
+変数のない古いバージョンの Postfix を使っているのなら, 
+かわりに \var{virtual_maps} 変数を使います. 
 
-Next, in your \file{mm_cfg.py} file, you will want to set the variable
-\var{POSTFIX_STYLE_VIRTUAL_DOMAINS} to the list of virtual domains that Mailman
-should update.  This may not be all of the virtual alias domains that your
-Postfix installation supports!  The values in this list will be matched
-against the \var{host_name} attribute of mailing lists objects, and must be an
-exact match.
+次に, \file{mm_cfg.py} ファイルで, 
+\var{POSTFIX_STYLE_VIRTUAL_DOMAINS} に, 
+Mailman が更新する仮想ドメインのリストを設定するとよいでしょう. 
+これは, Postfix のほうでサポートする仮想ドメインすべてとは限りません!
+このリストの要素は, メーリングリスト オブジェクトの \var{host_name}
+属性と照合されます. 完全一致でなければいけません. 
 
-Here's an example.  Say that Postfix is configured to handle the virtual
-domains \code{dom1.ain}, \code{dom2.ain}, and \code{dom3.ain}, and further
-that in your \file{main.cf} file you've got the following settings:
+例を挙げます. 
+Postfix は仮想ドメイン \code{dom1.ain}, \code{dom2.ain}, \code{dom3.ain}, 
+を扱うよう設定してあるものとし, さらに, 
+\file{main.cf} ファイルに次の設定がしてあるものとします:
 
 \begin{verbatim}
     myhostname = mail.dom1.ain
@@ -578,57 +587,63 @@ that in your \file{main.cf} file you've got the following settings:
         hash:/some/path/to/virtual-dom2
 \end{verbatim}
 
-If in your \file{virtual-dom1} file, you've got the following lines:
+たとえば \file{virtual-dom1} ファイルに, つぎの行があるとします:
 
 \begin{verbatim}
     dom1.ain  IGNORE
     @dom1.ain @mail.dom1.ain
 \end{verbatim}
 
-this tells Postfix to deliver anything addressed to \code{dom1.ain} to the
-same mailbox at \code{mail.dom1.com}, its default destination.
+これは Postfix に, \code{dom1.ain} 宛てのものはなんでも, 
+\code{mail.dom1.com} の同名のメールボックス (既定の配送先) に配送するよう
+指示していることになります. 
 
-In this case you would not include \code{dom1.ain} in
-\var{POSTFIX_STYLE_VIRTUAL_DOMAINS} because otherwise Mailman will write
-entries for mailing lists in the dom1.ain domain as
+この場合, \var{POSTFIX_STYLE_VIRTUAL_DOMAINS} には \code{dom1.ain}
+を含めません. なぜなら
+そうしなければ, Mailman は dom1.ain ドメインのメーリングリストの項目を
 
 \begin{verbatim}
     mylist@dom1.ain         mylist
     mylist-request@dom1.ain mylist-request
-    # and so on...
+    # 等々...
 \end{verbatim}
 
-The more specific entries trump your more general entries, thus breaking the
-delivery of any \code{dom1.ain} mailing list.
+のように書き込むからです. 
 
-However, you would include \code{dom2.ain} and \code{dom3.ain} in
-\file{mm_cfg.py}:
+より特定した項目が, より一般的な項目を上書きするので, 
+\code{dom1.ain} メーリングリストへの配送は止められてしまいます. 
+
+いっぽう, \code{dom2.ain} は \code{dom3.ain} \file{mm_cfg.py} に含めます:
 
 \begin{verbatim}
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['dom2.ain', 'dom3.ain']
 \end{verbatim}
 
-Now, any list that Mailman creates in either of those two domains, will have
-the correct entries written to \file{/usr/local/mailman/data/virtual-mailman}.
+こうして, この二つのドメインのいずれかに属するメーリングリストを
+Mailman が作ったら, \file{/usr/local/mailman/data/virtual-mailman}
+には正しい項目が入ります. 
 
-As above with the \file{data/aliases*} files, you want to make sure that both
-\file{data/virtual-mailman} and \file{data/virtual-mailman.db} are user and
-group owned by \code{mailman}.
+上の \file{data/aliases*} ファイルと同じく, 
+\file{data/virtual-mailman} と \file{data/virtual-mailman.db}
+の両方とも, \code{mailman} のユーザ, グループに
+所有されているようにしたほうがいいでしょう. 
 
-\subsubsection{An alternative approach}
+\subsubsection{他の方法}
 
-Fil \email{fil@rezo.net} has an alternative approach based on virtual maps and
-regular expressions, as described at:
+Fil \email{fil@rezo.net} は, 
+virtual マップと正規表現を使った他の方法を紹介しています. 
+以下に説明があります:
 
 \begin{itemize}
-\item (French)  \url{http://listes.rezo.net/comment.php}
-\item (English) \url{http://listes.rezo.net/how.php}
+\item (フランス語)  \url{http://listes.rezo.net/comment.php}
+\item (英語) \url{http://listes.rezo.net/how.php}
 \end{itemize}
 
-This is a good (and simpler) alternative if you don't mind exposing an
-additional hostname in the domain part of the addresses people will use to
-contact your list.  I.e. if people should use \code{mylist@lists.dom.ain}
-instead of \code{mylist@dom.ain}.
+リストにアクセスするときのアドレスのドメインに
+余分なホスト部がつくのが気にならなければ, これは良い (そしてよりシンプルな)
+代替案です. 
+つまり, \code{mylist@dom.ain} のかわりに \code{mylist@lists.dom.ain}
+を使わないといけないのでもよければ, ということです. 
 
 \subsection{Using the Exim mail server}
 
@@ -982,14 +997,16 @@ Overhauled/reformatted/clarified/simplified by Greg Ward
 \begin{notice}[警告]
 Sendmail メールサーバを使うとき, 
 \file{mm_cfg.py} の中に \var{DELIVERY_MODULE} 設定変数として \code{'Sendmail'}
-を入れたいと思うかもしれませんが, \file{Sendmail.py} のモジュール名は
+を入れたいと思うかもしれませんが, そうしては\strong{いけません}.
+\file{Sendmail.py} のモジュール名は
 間違って付けられています.
 デフォルトの \file{SMTPDirect.py} で使う SMTP 方式に対して, コマンドラインで
 メッセージを渡す方式を表しています.
 \file{Sendmail.py} ファイルには既知のセキュリティホールがあり
 概念的可能性を証明するために提供されています\footnote{実際, Mailman の
-最近のバージョンでは意図的に更新をサボっています. もしこれを有効に
-したいのであれば, よく知って置いてください.}.
+最近のバージョンでは, このモジュールをわざと動かなくしてあります.
+もしこれを有効にしたいのであれば, なにが起こるかよく理解していなければ
+いけません.}.
 もし \file{SMTPDirect.py} の利用で問題があるなら \file{Sendmail.py} を
 使うのでなく, 問題を直すことです. でないとセキュリティ悪用にさらす
 ことになりかねません.
@@ -1051,7 +1068,7 @@ Mailman のソース配布物 \file{contrib} ディレクトリに次の4つの
 \item \file{mm-handler.readme} - セットアップする方法の説明
 \item \file{mm-handler}        - メール配送エージェント (MDA)
 \item \file{mailman.mc}        - 設定ファイルの例
-\item \file{virtusertable}     - RFC 2142 アドレス例外についての例
+\item \file{virtusertable}     - RFC 2142 アドレスを例外にする例
 \end{itemize}
 
 \subsubsection{性能について}
@@ -1637,46 +1654,51 @@ Here is a list of some common questions and answers:
 
 \end{itemize}
 
-\section{Platform and operating system notes}
+\section{プラットフォームやオペレーティング システムごとの注}
 
-Generally, Mailman runs on any POSIX-based system, such as Solaris, the
-various BSD variants, Linux systems, MacOSX, and other generic \UNIX{}
-systems.  It doesn't run on Windows.  For the most part, the generic
-instructions given in this document should be sufficient to get Mailman
-working on any supported platform.  Some operating systems have additional
-recommended installation or configuration instructions.
+一般に, Mailman は POSIX 準拠のシステム (Solaris, 
+BSD のさまざまな変種, Linux 系システム, MacOSX, 
+その他の \UNIX{} システムなど) でなら動作します. 
+Windows では動作しません. 
+たいていの場合, 
+Mailman がサポートされているプラットフォームで動作するようにするには, 
+この文書で説明した一般的な手順だけで充分です. 
+しかし, 一部のオペレーティング システムでは, 
+このほかに, インストールや設定の際に推奨される手順があります. 
 
-\subsection{GNU/Linux issues}
+\subsection{GNU/Linux について}
 
-Linux seems to be the most popular platform for running Mailman.  Here are
-some hints on getting Mailman to run on Linux:
+Linux は, Mailman を実行するプラットフォームとしては, 
+もっとも普及しているもののようです. 
+Mailman を Linux で実行できるようにするためのヒントをいくつか挙げます:
 
 \begin{itemize}
-\item If you are getting errors with hard link creations and/or you are using
-      a special secure kernel (securelinux/openwall/grsecurity), see the file
-      \file{contrib/README.check_perms_grsecurity} in the Mailman source
-      distribution.
+\item ハードリンクの作成でエラーが起こったり, 
+      特別なセキュア カーネル (securelinux/openwall/grsecurity) を使っているときは, 
+      Mailman のソース配布物のファイル
+      \file{contrib/README.check_perms_grsecurity} を見てください. 
 
-      Note that if you are using Linux Mandrake in secure mode, you are
-      probably concerned by this.
+      Linux Mandrake をセキュア モードで使っているのなら, 
+      これは役にたつでしょう. 
 
-\item Apparently Mandrake 9.0 changed the permissions on gcc, so if you build
-      as the \code{mailman} user, you need to be sure \code{mailman} is in the
-      \code{cctools} group.
+\item Mandrake は 9.0 あたりから gcc の実行権限を変更しています. 
+      \code{mailman} ユーザになってビルドするのなら, 
+      \code{mailman} が \code{cctools} グループにも所属しているようにします. 
 
-\item If you installed Python from your Linux distribution's package manager
-      (e.g. .rpms for Redhat-derived systems or .deb for Debian), you must
-      install the ``development'' package of Python, or you may not get
-      everything you need.
+\item Python を Linux ディストリビューションのパッケージ管理
+      (例えば Redhat 系のシステムなら .rpm, Debian なら .deb)
+      でインストールしたのなら, 
+      Python ``開発用'' パッケージもインストールしなければいけません. 
+      そうしないと期待したとおりの結果になりません. 
 
-      For example, using Python 2.2 on Debian, you will need to install the
-      \code{python2.2-dev} package.  On Redhat, you probably need the
-      \code{python2-devel} package.
+      例えば, Debian で Python 2.2 を使っているのなら, 
+      \code{python2.2-dev} パッケージをインストールする必要があります. 
+      Redhat では, たぶん \code{python2-devel} パッケージが必要でしょう. 
 
-      If you install Python from source, you should be fine.
+      Python をソースからインストールしたのなら, うまくいくはずです. 
 
-      One symptom of this problem, although for unknown reasons, is that you
-      might get an error such as this during your install:
+      理屈はよくわかりませんが, インストールの最中につぎのようなエラーが起こるのなら, 
+      この問題がおきていると判断してよいでしょう:
 
       \begin{verbatim}
           Traceback (most recent call last):
@@ -1686,57 +1708,63 @@ some hints on getting Mailman to run on Linux:
           make: *** [update] Error 1
       \end{verbatim}
 
-      If this happens, install the Python development package and try
-      \program{configure} and \program{make install} again.  Or install the
-      latest version of Python from source, available from
-      \url{http://www.python.org}.
+      これがおこるのなら, 
+      Python の開発用パッケージをインストールしてから
+      もう一度 \program{configure} と \program{make install} をやってみましょう. 
+      あるいは, 最新バージョンの Python (\url{http://www.python.org}
+      で入手できる) をソースからインストールします. 
 
-      This problem can manifest itself in other Linux distributions in
-      different ways, although usually it appears as \code{ImportErrors}.
+      この問題は, 上記以外の Linux ディストリビューションでは
+      違ったふうに表れるかもしれませんが, 
+      普通は \code{ImportErrors} \code{ImportErrors} として表れます. 
 \end{itemize}
 
-\subsection{BSD issues\label{bsd-issues}}
+\subsection{BSD について\label{bsd-issues}}
 
-Vivek Khera writes that some BSDs do nightly security scans for setuid file
-changes.  setgid directories also come up on the scan when they change.  Also,
-the setgid bit is not necessary on BSD systems because group ownership is
-automatically inherited on files created in directories.  On other \UNIX{}es,
-this only happens when the directory has the setgid bit turned on.
+Vivek Khera によれば, 一部の BSD システムでは, 
+夜間のセキュリティ スキャンで setuid ファイルの変更を調べます. 
+setgid ディレクトリも, 変更されるとスキャン結果に現れます. 
+また, BSD システムでは, ディレクトリの中にファイルを作ると, 
+ディレクトリのグループ所有権を自動的に継承するので, 
+setgid ビットはなくてもいいのです. 
+他の \UNIX{} システムでは, ディレクトリの setgid ビットがオンになっていないと
+こうはなりません. 
 
-To install without turning on the setgid bit on directories, simply pass in
-the \var{DIRSETGID} variable to \program{make}, after you've run
-\program{configure}:
+ディレクトリの setgid ビットをオンにせずにインストールするには, 
+\program{configure} を実行したあとで, 
+\program{make} に \var{DIRSETGID} 変数を渡せばいいです:
 
 \begin{verbatim}
     % make DIRSETGID=: install
 \end{verbatim}
 
-This disables the \program{chmod g+s} command on installed directories.
+これで, インストールされるディレクトリに対する
+\program{chmod g+s} コマンドが無効になります. 
 
-\subsection{MacOSX issues}
+\subsection{MacOSX について}
 
-Many people run Mailman on MacOSX.  Here are some pointers that have been
-collected on getting Mailman to run on MacOSX.
+Mailman を MacOSX で実行している人も大勢います. 
+ここでは, Mailman を MacOSX で実行できるようにするために集めた
+情報へのポインタを挙げておきます. 
 
 \begin{itemize}
-\item Jaguar (MacOSX 10.2) comes with Python 2.2.  While this isn't the very
-      latest stable version of Python, it ought to be sufficient to run
-      Mailman 2.1.
+\item Jaguar (MacOSX 10.2) には Python 2.2 がついてきます. 
+      が, これは Python のあまり最近の安定バージョンではなく, 
+      Mailman 2.1 を実行するのには充分ではありません. 
 
-\item David B. O'Donnell has a web page describing his configuration of
-      Mailman 2.0.13 and Postfix on MacOSX Server.
+\item David B. O'Donnell は, Web サイトで, 
+      自分の MacOSX 上の Mailman 2.0.13 と Postfix の設定を説明しています. 
 
       \url{http://www.afp548.com/Articles/mail/python-mailman.html}
 
-\item Kathleen Webb posted her experiences in getting Mailman running on
-      Jaguar using Sendmail.
+\item Kathleen Webb は, Jaguar で Sendmail を使って Mailman を実行できるように
+      した経験を投稿してくれました. 
 
       \url{http://mail.python.org/pipermail/mailman-users/2002-October/022944.html}
 
-\item Panther server (MacOSX 10.3) comes with Mailman; Your operating system
-      should contain documentation that will help you, and Apple has a tech
-      document about a problem you might encounter running Mailman on Mac OS X
-      Server 10.3:
+\item Panther サーバ (MacOSX 10.3) には Mailman が入っています;
+      Apple は, Mailman を MacOSX Server 10.3 で動作させる際にぶつかりそうな
+      問題についての技術文書を出しています:
 
       \url{http://docs.info.apple.com/article.html?artnum=107889}
 \end{itemize}
@@ -1755,7 +1783,7 @@ version of Postfix.  Setting up a working MTA such as Postfix is beyond the
 scope of this guide and you should refer to \url{http://www.postfix.org} for
 tips on getting Postfix running.  An easy way to set Postfix up is to install
 and run Postfix Enabler, a stand-alone tool for configuring Postfix on Mac
-OSX, available from 
+OSX, available from
 \url{http://www.roadstead.com/weblog/Tutorials/PostfixEnabler.html}.
 
 Likewise, Mac OSX 'client' version from 10.1 onwards includes a working Apache
