@@ -345,7 +345,9 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     # tempted to delivery bounces there instead of our envelope sender
     #
     # BAW An interpretation of RFCs 2822 and 2076 could argue for not touching
-    # the Sender header at all, and using Return-Path instead of Errors-To.
+    # the Sender header at all.  Brad Knowles points out that MTAs tend to
+    # wipe existing Return-Path headers, and old MTAs may still honor
+    # Errors-To while new ones will at worst ignore the header.
     del msg['sender']
     del msg['errors-to']
     msg['Sender'] = envsender
