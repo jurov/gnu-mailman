@@ -349,16 +349,27 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
         # Send the message
         refused = conn.sendmail(envsender, recips, msgtext)
     except smtplib.SMTPRecipientsRefused, e:
+        syslog('smtp-failure', 'All recipients refused: %s', e)
         refused = e.recipients
-    # MTA not responding, or other socket problems, or any other kind of
-    # SMTPException.  In that case, nothing got delivered
-    except (socket.error, smtplib.SMTPException, IOError), e:
-        # BAW: should this be configurable?
-        syslog('smtp', 'All recipients refused: %s', e)
-        # If the exception had an associated error code, use it, otherwise,
-        # fake it with a non-triggering exception code
-        errcode = getattr(e, 'smtp_code', -1)
-        errmsg = getattr(e, 'smtp_error', 'ignore')
+    except smtplib.SMTPResponseException, e:
+        syslog('smtp-failure', 'SMTP session failure: %s, %s',
+               e.smtp_code, smtp_error)
+        # If this was a permanent failure, don't add the recipients to the
+        # refused, because we don't want them to be added to failures.
+        # Otherwise, if the MTA rejects the message because of the message
+        # content (e.g. it's spam, virii, or has syntactic problems), then
+        # this will end up registering a bounce score for every recipient.
+        # Definitely /not/ what we want.
+        if e.smtp_code < 500 or e.smtp_code == 552:
+            # It's a temporary failure
+            for r in recips:
+                refused[r] = (e.smtp_code, e.smtp_error)
+    except (socket.error, IOError, smtplib.SMTPException), e:
+        # MTA not responding, or other socket problems, or any other kind of
+        # SMTPException.  In that case, nothing got delivered, so treat this
+        # as a temporary failure.
+        syslog('smtp-failure', 'Low level smtp connection error: %s', e)
+        error = str(e)
         for r in recips:
-            refused[r] = (errcode, errmsg)
+            refused[r] = (-1, error)
     failures.update(refused)
