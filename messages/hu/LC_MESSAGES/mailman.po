@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman\n"
-"POT-Creation-Date: Mon Mar 31 15:24:11 2003\n"
+"POT-Creation-Date: Fri Apr 18 23:56:34 2003\n"
 "PO-Revision-Date: 2002-12-12 15:24+0100\n"
 "Last-Translator: Szilard Vizi <vizisz@freemail.hu>\n"
 "Language-Team: Hungarian <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgstr " Az utolsó visszapattanásod ideje: %(date)s"
 #: Mailman/Bouncer.py:264 Mailman/Deliverer.py:135
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:233
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/Hold.py:250
-#: Mailman/Handlers/ToDigest.py:208 Mailman/ListAdmin.py:243
+#: Mailman/Handlers/ToDigest.py:215 Mailman/ListAdmin.py:243
 msgid "(no subject)"
 msgstr "(nincs tárgy)"
 
@@ -2608,19 +2608,19 @@ msgstr "Hiba"
 msgid "You must supply a valid email address."
 msgstr "Érvényes e-mail címet kell megadnod."
 
-#: Mailman/Cgi/subscribe.py:124
+#: Mailman/Cgi/subscribe.py:123
 msgid "You may not subscribe a list to itself!"
 msgstr "Listát saját magára nem lehet felíratni!"
 
-#: Mailman/Cgi/subscribe.py:133
+#: Mailman/Cgi/subscribe.py:131
 msgid "If you supply a password, you must confirm it."
 msgstr "Ha megadtál jelszót, akkor azt meg kell erõsítened."
 
-#: Mailman/Cgi/subscribe.py:135
+#: Mailman/Cgi/subscribe.py:133
 msgid "Your passwords did not match."
 msgstr "A megadott jelszavak nem egyeznek."
 
-#: Mailman/Cgi/subscribe.py:169
+#: Mailman/Cgi/subscribe.py:167
 msgid ""
 "Your subscription request has been received, and will soon be acted upon.\n"
 "Depending on the configuration of this mailing list, your subscription "
@@ -2635,7 +2635,7 @@ msgstr ""
 "Ha megerõsítésed szükséges a feliratkozáshoz, akkor errõl hamarosan\n"
 "e-mailben részletes leírást fogsz kapni."
 
-#: Mailman/Cgi/subscribe.py:183
+#: Mailman/Cgi/subscribe.py:181
 msgid ""
 "The email address you supplied is banned from this\n"
 "        mailing list.  If you think this restriction is erroneous, please\n"
@@ -2645,19 +2645,19 @@ msgstr ""
 "Ha úgy gondolod, hogy ez a korlátozás jogtalan, akkor\n"
 "kérlek írj a lista tulajdonosának a következõ címre: %(listowner)s"
 
-#: Mailman/Cgi/subscribe.py:187
+#: Mailman/Cgi/subscribe.py:185
 msgid ""
 "The email address you supplied is not valid.  (E.g. it must contain an\n"
 "`@'.)"
 msgstr "A megadott e-mail cím nem érvényes. (Pl. tartalmaznia kell `@' jelet.)"
 
-#: Mailman/Cgi/subscribe.py:191
+#: Mailman/Cgi/subscribe.py:189
 msgid ""
 "Your subscription is not allowed because the email address you gave is\n"
 "insecure."
 msgstr "Feliratkozásod a nem megfelelõ e-mail címed miatt nem engedélyezett."
 
-#: Mailman/Cgi/subscribe.py:199
+#: Mailman/Cgi/subscribe.py:197
 msgid ""
 "Confirmation from your email address is required, to prevent anyone from\n"
 "subscribing you without permission.  Instructions are being sent to you at\n"
@@ -2668,7 +2668,7 @@ msgstr ""
 "tudtod nélkül felírathassanak. Útbaigazítást a(z) %(email)s címre küldtünk.\n"
 "Fontos, hogy feliratkozásod csakis a kérelem megerõsítése után lesz végleges."
 
-#: Mailman/Cgi/subscribe.py:211
+#: Mailman/Cgi/subscribe.py:209
 msgid ""
 "Your subscription request was deferred because %(x)s.  Your request has "
 "been\n"
@@ -2680,15 +2680,15 @@ msgstr ""
 "adminisztrátorához lett továbbítva. A szerkesztõ döntésérõl értesítve\n"
 "leszel."
 
-#: Mailman/Cgi/subscribe.py:218 Mailman/Commands/cmd_confirm.py:60
+#: Mailman/Cgi/subscribe.py:216 Mailman/Commands/cmd_confirm.py:60
 msgid "You are already subscribed."
 msgstr "Már fel vagy iratkozva!"
 
-#: Mailman/Cgi/subscribe.py:232
+#: Mailman/Cgi/subscribe.py:230
 msgid "Mailman privacy alert"
 msgstr "Értesítés jogosulatlan taglista hozzáférési kísérletrõl"
 
-#: Mailman/Cgi/subscribe.py:233
+#: Mailman/Cgi/subscribe.py:231
 msgid ""
 "An attempt was made to subscribe your address to the mailing list\n"
 "%(listaddr)s.  You are already subscribed to this mailing list.\n"
@@ -2719,15 +2719,15 @@ msgstr ""
 "tagja vagy-e, akkor nyugodtan értesítsd a lista adminisztrátorát errõl,\n"
 "a következõ címen: %(listowner)s.\n"
 
-#: Mailman/Cgi/subscribe.py:252
+#: Mailman/Cgi/subscribe.py:250
 msgid "This list does not support digest delivery."
 msgstr "A listán nincs digest küldés."
 
-#: Mailman/Cgi/subscribe.py:254
+#: Mailman/Cgi/subscribe.py:252
 msgid "This list only supports digest delivery."
 msgstr "A listán csak a digest küldés mûködik."
 
-#: Mailman/Cgi/subscribe.py:261
+#: Mailman/Cgi/subscribe.py:259
 msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Feliratkozásod a(z) %(realname)s listára sikeresen megtörtént."
 
@@ -2769,8 +2769,9 @@ msgid "Your request has been forwarded to the list moderator for approval."
 msgstr "Kérésed a lista szerkesztõjéhez lett továbbítva jóváhagyásra."
 
 #: Mailman/Commands/cmd_confirm.py:63
+#, fuzzy
 msgid ""
-"You are not current a member.  Have you already unsubscribed or changed\n"
+"You are not currently a member.  Have you already unsubscribed or changed\n"
 "your email address?"
 msgstr ""
 "Jelenleg nem vagy listatag. Nem lehet, hogy már leiratkoztál vagy\n"
@@ -3452,79 +3453,79 @@ msgstr "Nem-digest (rendes) listatagok:"
 msgid "Digest members:"
 msgstr "Digest listatagok:"
 
-#: Mailman/Defaults.py:1241
+#: Mailman/Defaults.py:1204
 msgid "Traditional Chinese"
 msgstr "Hagyományos kínai"
 
-#: Mailman/Defaults.py:1242
+#: Mailman/Defaults.py:1205
 msgid "Czech"
 msgstr "Cseh"
 
-#: Mailman/Defaults.py:1243
+#: Mailman/Defaults.py:1206
 msgid "German"
 msgstr "Német"
 
-#: Mailman/Defaults.py:1244
+#: Mailman/Defaults.py:1207
 msgid "English (USA)"
 msgstr "Angol (USA)"
 
-#: Mailman/Defaults.py:1245
+#: Mailman/Defaults.py:1208
 msgid "Spanish (Spain)"
 msgstr "Spanyol"
 
-#: Mailman/Defaults.py:1246
+#: Mailman/Defaults.py:1209
 msgid "Estonian"
 msgstr "Észt"
 
-#: Mailman/Defaults.py:1247
+#: Mailman/Defaults.py:1210
 msgid "Finnish"
 msgstr "Finn"
 
-#: Mailman/Defaults.py:1248
+#: Mailman/Defaults.py:1211
 msgid "French"
 msgstr "Francia"
 
-#: Mailman/Defaults.py:1249
+#: Mailman/Defaults.py:1212
 msgid "Simplified Chinese"
 msgstr "Egyszerûsített kínai"
 
-#: Mailman/Defaults.py:1250
+#: Mailman/Defaults.py:1213
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: Mailman/Defaults.py:1251
+#: Mailman/Defaults.py:1214
 msgid "Italian"
 msgstr "Olasz"
 
-#: Mailman/Defaults.py:1252
+#: Mailman/Defaults.py:1215
 msgid "Japanese"
 msgstr "Japán"
 
-#: Mailman/Defaults.py:1253
+#: Mailman/Defaults.py:1216
 msgid "Korean"
 msgstr "Koreai"
 
-#: Mailman/Defaults.py:1254
+#: Mailman/Defaults.py:1217
 msgid "Lithuanian"
 msgstr ""
 
-#: Mailman/Defaults.py:1255
+#: Mailman/Defaults.py:1218
 msgid "Dutch"
 msgstr "Holland"
 
-#: Mailman/Defaults.py:1256
+#: Mailman/Defaults.py:1219
 msgid "Norwegian"
 msgstr "Norvég"
 
-#: Mailman/Defaults.py:1257
+#: Mailman/Defaults.py:1220
 msgid "Portuguese (Brazil)"
 msgstr "Portugál (Brazil)"
 
-#: Mailman/Defaults.py:1258
+#: Mailman/Defaults.py:1221
 msgid "Russian"
 msgstr "Orosz"
 
-#: Mailman/Defaults.py:1259
+#: Mailman/Defaults.py:1222
 msgid "Swedish"
 msgstr "Svéd"
 
@@ -7134,35 +7135,35 @@ msgstr "%(partctype)s típusú részek figyelmen kívül hagyva"
 msgid "-------------- next part --------------\n"
 msgstr "--------- következõ rész ---------\n"
 
-#: Mailman/Handlers/ToDigest.py:137
+#: Mailman/Handlers/ToDigest.py:144
 msgid "%(realname)s Digest, Vol %(volume)d, Issue %(issue)d"
 msgstr "%(realname)s digest, %(volume)d kötet, %(issue)d szám"
 
-#: Mailman/Handlers/ToDigest.py:178
+#: Mailman/Handlers/ToDigest.py:185
 msgid "digest header"
 msgstr "digest fejléc"
 
-#: Mailman/Handlers/ToDigest.py:181
+#: Mailman/Handlers/ToDigest.py:188
 msgid "Digest Header"
 msgstr "Digest fejléc"
 
-#: Mailman/Handlers/ToDigest.py:194
+#: Mailman/Handlers/ToDigest.py:201
 msgid "Today's Topics:\n"
 msgstr "Mai témák:\n"
 
-#: Mailman/Handlers/ToDigest.py:273
+#: Mailman/Handlers/ToDigest.py:280
 msgid "Today's Topics (%(msgcount)d messages)"
 msgstr "Mai témák (%(msgcount)d üzenet)"
 
-#: Mailman/Handlers/ToDigest.py:306
+#: Mailman/Handlers/ToDigest.py:317
 msgid "digest footer"
 msgstr "digest lábléc"
 
-#: Mailman/Handlers/ToDigest.py:309
+#: Mailman/Handlers/ToDigest.py:320
 msgid "Digest Footer"
 msgstr "Digest lábléc"
 
-#: Mailman/Handlers/ToDigest.py:323
+#: Mailman/Handlers/ToDigest.py:334
 msgid "End of "
 msgstr "Vége: "
 
@@ -7301,7 +7302,7 @@ msgstr "%(dbfile)s tulajdonosa %(owner)s (%(user)s legyen a tulajdonos)"
 msgid "You have been invited to join the %(listname)s mailing list"
 msgstr "Megkértek, hogy csatlakozz a(z) %(listname)s levelezõlistához"
 
-#: Mailman/MailList.py:812 Mailman/MailList.py:1174
+#: Mailman/MailList.py:812 Mailman/MailList.py:1176
 msgid " from %(remote)s"
 msgstr " %(remote)s"
 
@@ -7322,12 +7323,12 @@ msgstr "leiratkozáshoz szerkesztõi jóváhagyás szükséges"
 msgid "%(realname)s unsubscribe notification"
 msgstr "Értesítés %(realname)s listáról leiratkozásáról"
 
-#: Mailman/MailList.py:1095
+#: Mailman/MailList.py:1097
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr ""
 "feliratkozáshoz a(z) %(name)s listára adminisztrátori jóváhagyás szükséges"
 
-#: Mailman/MailList.py:1343
+#: Mailman/MailList.py:1345
 msgid "Last autoresponse notification for today"
 msgstr "A mai napra az utolsó automatikus válasz"
 
@@ -7357,11 +7358,11 @@ msgstr ""
 msgid "Uncaught bounce notification"
 msgstr "Ismeretlen visszapattanási értesítés"
 
-#: Mailman/Queue/CommandRunner.py:74
+#: Mailman/Queue/CommandRunner.py:85
 msgid "Ignoring non-text/plain MIME parts"
 msgstr "Nem-szöveges/sima MIME részek figyelmen kívül hagyva"
 
-#: Mailman/Queue/CommandRunner.py:130
+#: Mailman/Queue/CommandRunner.py:141
 msgid ""
 "The results of your email command are provided below.\n"
 "Attached is your original message.\n"
@@ -7369,11 +7370,11 @@ msgstr ""
 "Az e-mailben elküldött parancsaidra a válaszokat lejjebb\n"
 "olvashatod. Az eredeti leveledet csatoltuk ehhez a levélhez.\n"
 
-#: Mailman/Queue/CommandRunner.py:135
+#: Mailman/Queue/CommandRunner.py:146
 msgid "- Results:"
 msgstr "- Eredmények:"
 
-#: Mailman/Queue/CommandRunner.py:141
+#: Mailman/Queue/CommandRunner.py:152
 msgid ""
 "\n"
 "- Unprocessed:"
@@ -7381,13 +7382,13 @@ msgstr ""
 "\n"
 "- Feldolgozatlanok:"
 
-#: Mailman/Queue/CommandRunner.py:145
+#: Mailman/Queue/CommandRunner.py:156
 msgid ""
 "No commands were found in this message.\n"
 "To obtain instructions, send a message containing just the word \"help\".\n"
 msgstr ""
 
-#: Mailman/Queue/CommandRunner.py:150
+#: Mailman/Queue/CommandRunner.py:161
 msgid ""
 "\n"
 "- Ignored:"
@@ -7395,7 +7396,7 @@ msgstr ""
 "\n"
 "- Figyelmen kívûl hagyva:"
 
-#: Mailman/Queue/CommandRunner.py:152
+#: Mailman/Queue/CommandRunner.py:163
 msgid ""
 "\n"
 "- Done.\n"
@@ -7405,7 +7406,7 @@ msgstr ""
 "- Vége.\n"
 "\n"
 
-#: Mailman/Queue/CommandRunner.py:176
+#: Mailman/Queue/CommandRunner.py:187
 msgid "The results of your email commands"
 msgstr "Az e-mail parancsok eredményei"
 
@@ -8217,7 +8218,7 @@ msgstr "Unix-From sor megváltoztatva: %(lineno)d"
 msgid "Bad status number: %(arg)s"
 msgstr "Hibás jelzõszám: %(arg)s"
 
-#: bin/cleanarch:160
+#: bin/cleanarch:166
 msgid "%(messages)d messages found"
 msgstr "%(messages)d üzenetet találtam"
 
@@ -10502,6 +10503,7 @@ msgid "Using Mailman version:"
 msgstr "Mailman verziószáma:"
 
 #: bin/withlist:19
+#, fuzzy
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -10605,13 +10607,13 @@ msgid ""
 "user on a particular list.  You could put the following function in a file\n"
 "called `changepw.py':\n"
 "\n"
-"from Mailman.Errors import NotAMember\n"
+"from Mailman.Errors import NotAMemberError\n"
 "\n"
 "def changepw(mlist, addr, newpasswd):\n"
 "    try:\n"
 "        mlist.setMemberPassword(addr, newpasswd)\n"
 "        mlist.Save()\n"
-"    except NotAMember:\n"
+"    except NotAMemberError:\n"
 "        print 'No address matched:', addr\n"
 "\n"
 "and run this from the command line:\n"
