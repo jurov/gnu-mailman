@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b4+\n"
 "POT-Creation-Date: Mon Sep 22 10:07:56 2003\n"
-"PO-Revision-Date: 2003-09-18 15:57+0200\n"
+"PO-Revision-Date: 2003-09-24 11:35+0200\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3497,9 +3497,8 @@ msgid "Czech"
 msgstr "Tsjekkisk"
 
 #: Mailman/Defaults.py:1262
-#, fuzzy
 msgid "Danish"
-msgstr "Finsk"
+msgstr "Dansk"
 
 #: Mailman/Defaults.py:1263
 msgid "German"
@@ -3519,7 +3518,7 @@ msgstr "Estisk"
 
 #: Mailman/Defaults.py:1267
 msgid "Euskara"
-msgstr ""
+msgstr "Baskisk"
 
 #: Mailman/Defaults.py:1268
 msgid "Finnish"
@@ -8733,20 +8732,29 @@ msgid ""
 "    --quiet / -q\n"
 "        Don't print status messages.\n"
 msgstr ""
+"Forkaster meldinger som holdes igjen for godkjenning.\n"
+"\n"
+"Brukes slik:\n"
+"    discard [valg] fil ...\n"
+"\n"
+"Valg:\n"
+"    --help / -h\n"
+"        Viser denne hjelpeteksten.\n"
+"\n"
+"    --quiet / -q\n"
+"        Ikke vis statusmeldinger.\n"
 
 #: bin/discard:94
-#, fuzzy
 msgid "Ignoring non-held message: %(f)s"
-msgstr "Ser bort i fra endring av et medlem som er utmeldt: %(user)s"
+msgstr "Ser bort i fra melding som ikke ble holdt igjen: %(f)s"
 
 #: bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
-msgstr ""
+msgstr "Ser bort i fra melding med ugyldig id: %(f)s"
 
 #: bin/discard:112
-#, fuzzy
 msgid "Discarded held msg #%(id)s for list %(listname)s"
-msgstr "Melde meg på listen %(listname)s"
+msgstr "Forkastet melding #%(id)s for listen %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -9161,7 +9169,6 @@ msgid "matching mailing lists found:"
 msgstr "treff på denne epostlisten:"
 
 #: bin/list_members:19
-#, fuzzy
 msgid ""
 "List all the members of a mailing list.\n"
 "\n"
