@@ -44,6 +44,7 @@ from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Message
 from Mailman import i18n
+from Mailman import Errors
 from Mailman.Mailbox import Mailbox
 from Mailman.MemberAdaptor import ENABLED
 from Mailman.Handlers.Decorate import decorate
@@ -301,7 +302,11 @@ def send_i18n_digests(mlist, mboxfp):
             print >> plainmsg, separator30
             print >> plainmsg
         # Use Mailman.Handlers.Scrubber.process() to get plain text
-        msg = scrubber(mlist, msg)
+        try:
+            msg = scrubber(mlist, msg)
+        except Errors.DiscardMessage:
+            print >> plainmsg, _('[Message discarded by content filter]')
+            continue
         # Honor the default setting
         for h in mm_cfg.PLAIN_DIGEST_KEEP_HEADERS:
             if msg[h]:
