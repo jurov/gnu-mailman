@@ -7,19 +7,20 @@
 # Copyright (C) YEAR ORGANIZATION.
 # Stefaniu Criste <webmaster@dizain.ro>, 2003.
 # root <root@hangar.ro>, 2003.
+# Stefaniu Criste <gupi@informatia.ro>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Mar 15 22:04:14 2004\n"
-"PO-Revision-Date: 2003-12-08 23:25+0200\n"
-"Last-Translator: Stefaniu Criste <webmaster@dizain.ro>\n"
+"PO-Revision-Date: 2004-03-24 19:55+0200\n"
+"Last-Translator: Stefaniu Criste <gupi@informatia.ro>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.4\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.3\n"
 
 #: Mailman/Archiver/HyperArch.py:119
 msgid "size not available"
@@ -44,7 +45,7 @@ msgstr "Mesajul urmãtor:"
 
 #: Mailman/Archiver/HyperArch.py:648 Mailman/Archiver/HyperArch.py:684
 msgid "thread"
-msgstr "fir de discuþie"
+msgstr "thread"
 
 #: Mailman/Archiver/HyperArch.py:649 Mailman/Archiver/HyperArch.py:685
 msgid "subject"
@@ -126,19 +127,19 @@ msgstr "Septembrie"
 
 #: Mailman/Archiver/HyperArch.py:876
 msgid "First"
-msgstr "întâi"
+msgstr "I"
 
 #: Mailman/Archiver/HyperArch.py:876
 msgid "Fourth"
-msgstr "al patrulea"
+msgstr "IV"
 
 #: Mailman/Archiver/HyperArch.py:876
 msgid "Second"
-msgstr "al doilea"
+msgstr "II"
 
 #: Mailman/Archiver/HyperArch.py:876
 msgid "Third"
-msgstr "al treilea"
+msgstr "III"
 
 #: Mailman/Archiver/HyperArch.py:878
 msgid "%(ord)s quarter %(year)i"
@@ -157,6 +158,7 @@ msgid "%(day)i %(month)s %(year)i"
 msgstr "%(day)i %(month)s %(year)i"
 
 #: Mailman/Archiver/HyperArch.py:994
+#, fuzzy
 msgid "Computing threaded index\n"
 msgstr "Calculez indexul firului de discuþie (threaded index)\n"
 
@@ -183,7 +185,7 @@ msgstr "Reîncarc starea arhivei"
 
 #: Mailman/Archiver/pipermail.py:315
 msgid "Pickling archive state into "
-msgstr ""
+msgstr "Conserv informaþiile de stare ale arhivei "
 
 #: Mailman/Archiver/pipermail.py:426
 msgid "Updating index files for archive [%(archive)s]"
@@ -191,7 +193,7 @@ msgstr "Actualizez fiºierele de index pentru arhiva [%(archive)s]"
 
 #: Mailman/Archiver/pipermail.py:459
 msgid "  Thread"
-msgstr "  Fir de discuþie"
+msgstr "  Thread"
 
 #: Mailman/Archiver/pipermail.py:566
 msgid "#%(counter)05d %(msgid)s"
@@ -260,6 +262,7 @@ msgid "Authorization failed."
 msgstr "Autorizarea a eºuat."
 
 #: Mailman/Cgi/admin.py:181
+#, fuzzy
 msgid ""
 "You have turned off delivery of both digest and\n"
 "                non-digest messages.  This is an incompatible state of\n"
@@ -268,11 +271,11 @@ msgid ""
 "                unusable."
 msgstr ""
 "Aþi dezactivat atât livrarea rezumatelor, cât ºi\n"
-"                a mesajelor normale.  Aceasta este o stare inacceptabilã.\n"
-"                Trebuie sã activaþi una din metodele de livrare (rezumat "
+"a mesajelor normale.  Aceasta este o stare inacceptabilã.\n"
+"Trebuie sã activaþi una din metodele de livrare (rezumat "
 "sau\n"
-"                mesaje normale), altfel lista dumneavoastrã devine practic\n"
-"                inutilizabilã."
+"mesaje normale), altfel lista dumneavoastrã devine practic\n"
+"inutilizabilã."
 
 #: Mailman/Cgi/admin.py:185 Mailman/Cgi/admin.py:191 Mailman/Cgi/admin.py:196
 #: Mailman/Cgi/admin.py:1435 Mailman/Gui/GUIBase.py:190
@@ -285,8 +288,8 @@ msgid ""
 "                off. Those people will not receive mail."
 msgstr ""
 "Aveþi membrii ce vor doar rezumate zilnice, dar livrarea\n"
-"                rezumatelor este anulatã. Aceºti membrii\n"
-"                vor primi mesaje."
+"rezumatelor este anulatã. Aceºti membrii\n"
+"vor primi mesaje."
 
 #: Mailman/Cgi/admin.py:194
 msgid ""
@@ -311,12 +314,11 @@ msgid "Mailman"
 msgstr "Mailman"
 
 #: Mailman/Cgi/admin.py:255
-#, fuzzy
 msgid ""
 "<p>There currently are no publicly-advertised %(mailmanlink)s\n"
 "            mailing lists on %(hostname)s."
 msgstr ""
-"<p>ÃŽn acest moment nu sunt liste de discuþii %(mailmanlink)s\n"
+"<p>În acest moment nu sunt liste de discuþii %(mailmanlink)s\n"
 "publice la %(hostname)s."
 
 #: Mailman/Cgi/admin.py:261
@@ -326,8 +328,8 @@ msgid ""
 "            name to visit the configuration pages for that list."
 msgstr ""
 "<p>Mai jos aveþi toate listele de discuþii %(mailmanlink)s publice la\n"
-"            la %(hostname)s.  Faceþi click pe numele listei pentru a\n"
-"            accesa paginile de configurare ale acelei liste."
+"la %(hostname)s.  Faceþi click pe numele listei pentru a-i\n"
+"accesa pagina de configurare."
 
 #: Mailman/Cgi/admin.py:268
 msgid "right "
@@ -460,8 +462,7 @@ msgstr "Ieºire"
 
 #: Mailman/Cgi/admin.py:475
 msgid "Emergency moderation of all list traffic is enabled"
-msgstr ""
-"Moderarea excepþionalã de urgenþã a traficului întregii liste este activatã"
+msgstr "Moderarea excepþionalã de urgenþã a traficului întregii liste este activatã"
 
 #: Mailman/Cgi/admin.py:486
 msgid ""
@@ -551,24 +552,24 @@ msgstr "...dupã aceasta."
 
 #: Mailman/Cgi/admin.py:747 Mailman/Cgi/admin.py:750
 msgid "Spam Filter Rule %(i)d"
-msgstr ""
+msgstr "Regula de filtrare a spam-ului: %(i)d"
 
 #: Mailman/Cgi/admin.py:752
 msgid "Spam Filter Regexp:"
-msgstr ""
+msgstr "Filtru Regexp Spam:"
 
 #: Mailman/Cgi/admin.py:763 Mailman/Cgi/admindb.py:289
 #: Mailman/Cgi/admindb.py:348 Mailman/Cgi/admindb.py:391
 #: Mailman/Cgi/admindb.py:625
 msgid "Defer"
-msgstr "Amânare"
+msgstr "Amânã"
 
 #: Mailman/Cgi/admin.py:763 Mailman/Cgi/admindb.py:291
 #: Mailman/Cgi/admindb.py:350 Mailman/Cgi/admindb.py:391
 #: Mailman/Cgi/admindb.py:625 Mailman/Gui/ContentFilter.py:37
 #: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:290
 msgid "Reject"
-msgstr "Respingere"
+msgstr "Respinge"
 
 #: Mailman/Cgi/admin.py:763 Mailman/Gui/Privacy.py:216
 #: Mailman/Gui/Privacy.py:290
@@ -580,7 +581,7 @@ msgstr "Reþine"
 #: Mailman/Cgi/admindb.py:625 Mailman/Gui/ContentFilter.py:37
 #: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:290
 msgid "Discard"
-msgstr "Ignorare"
+msgstr "Ignorã"
 
 #: Mailman/Cgi/admin.py:764 Mailman/Cgi/admindb.py:391
 #: Mailman/Gui/Privacy.py:290
@@ -593,11 +594,11 @@ msgstr "Acþiune:"
 
 #: Mailman/Cgi/admin.py:779
 msgid "Move rule up"
-msgstr ""
+msgstr "Mutã regula mai sus"
 
 #: Mailman/Cgi/admin.py:780
 msgid "Move rule down"
-msgstr ""
+msgstr "Mutã regula mai jos"
 
 #: Mailman/Cgi/admin.py:813
 msgid "<br>(Edit <b>%(varname)s</b>)"
@@ -2447,8 +2448,7 @@ msgstr "adresa de email ºi "
 
 #: Mailman/Cgi/options.py:788
 msgid "%(realname)s list: member options for user %(safeuser)s"
-msgstr ""
-"Lista de discuþii %(realname)s: opþiunile personale pentru %(safeuser)s"
+msgstr "Lista de discuþii %(realname)s: opþiunile personale pentru %(safeuser)s"
 
 #: Mailman/Cgi/options.py:813
 msgid ""
@@ -2776,8 +2776,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_confirm.py:55
 msgid "Your request has been forwarded to the list moderator for approval."
-msgstr ""
-"Cererea dumneavoastrã a fost înaintatã moderatorului listei pentru aprobare."
+msgstr "Cererea dumneavoastrã a fost înaintatã moderatorului listei pentru aprobare."
 
 #: Mailman/Commands/cmd_confirm.py:63
 msgid ""
@@ -3732,8 +3731,7 @@ msgstr ""
 
 #: Mailman/Gui/Bounce.py:78
 msgid "Should Mailman perform automatic bounce processing?"
-msgstr ""
-"Sã asigure Mailman procesarea automatã a eºecurilor (bounces) de livrare?"
+msgstr "Sã asigure Mailman procesarea automatã a eºecurilor (bounces) de livrare?"
 
 #: Mailman/Gui/Bounce.py:79
 msgid ""
@@ -4068,8 +4066,7 @@ msgid "How big in Kb should a digest be before it gets sent out?"
 msgstr "Cât de mare (în Ko) sã fie un rezumat înainte de a fi trimis?"
 
 #: Mailman/Gui/Digest.py:63
-msgid ""
-"Should a digest be dispatched daily when the size threshold isn't reached?"
+msgid "Should a digest be dispatched daily when the size threshold isn't reached?"
 msgstr ""
 "Rezumatul trebuie trimis zilnic, sau când pragul limitã al mãrimii este "
 "atins?"
@@ -4200,8 +4197,7 @@ msgstr "Personalitaea generalã a listei"
 #: Mailman/Gui/General.py:65
 #, fuzzy
 msgid "The public name of this list (make case-changes only)."
-msgstr ""
-"Numele public al acestei liste (modificaþi doar din/în majuscule/minuscule)."
+msgstr "Numele public al acestei liste (modificaþi doar din/în majuscule/minuscule)."
 
 #: Mailman/Gui/General.py:66
 msgid ""
@@ -4978,15 +4974,13 @@ msgstr "Textul introductiv adãugat înaintea oricãrui mesaj livrat imediat. "
 
 #: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
-msgstr ""
-"Textul de încheiere adãugat mesajelor individuale trimise membrilor listei"
+msgstr "Textul de încheiere adãugat mesajelor individuale trimise membrilor listei"
 
 #: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
-msgstr ""
-"Textul de încheiere adãugat la sfârºitul fiecãrui mesaj livrat imediat. "
+msgstr "Textul de încheiere adãugat la sfârºitul fiecãrui mesaj livrat imediat. "
 
 #: Mailman/Gui/Passwords.py:27
 msgid "Passwords"
@@ -5622,8 +5616,7 @@ msgstr ""
 
 #: Mailman/Gui/Topics.py:69
 msgid "How many body lines should the topic matcher scan?"
-msgstr ""
-"Câte linii din corpul mesajului trebuie scanate pentru aflarea topicii?"
+msgstr "Câte linii din corpul mesajului trebuie scanate pentru aflarea topicii?"
 
 #: Mailman/Gui/Topics.py:71
 msgid ""
@@ -5878,8 +5871,7 @@ msgstr "; a fost dezactivatã din motive necunoscute"
 
 #: Mailman/HTMLFormatter.py:149
 msgid "Note: your list delivery is currently disabled%(reason)s."
-msgstr ""
-"Notã: livrarea mesajelor listei este în acest moment dezactivatã%(reason)s."
+msgstr "Notã: livrarea mesajelor listei este în acest moment dezactivatã%(reason)s."
 
 #: Mailman/HTMLFormatter.py:152
 msgid "Mail delivery"
@@ -6080,8 +6072,7 @@ msgstr " <p> Introduceþi"
 
 #: Mailman/HTMLFormatter.py:307
 msgid " and password to visit  the subscribers list: <p><center> "
-msgstr ""
-" ºi parola dumneavoastrã pentru a vizita lista abonaþilor: <p><center> "
+msgstr " ºi parola dumneavoastrã pentru a vizita lista abonaþilor: <p><center> "
 
 #: Mailman/HTMLFormatter.py:312
 msgid "Password: "
@@ -6140,8 +6131,7 @@ msgstr "Publicat de o persoanã neabonatã pe o listã exclusivã"
 
 #: Mailman/Handlers/Hold.py:62
 msgid "Non-members are not allowed to post messages to this list."
-msgstr ""
-"Persoanele neabonate nu au permisiunea de a publica mesaje pe aceastã listã."
+msgstr "Persoanele neabonate nu au permisiunea de a publica mesaje pe aceastã listã."
 
 #: Mailman/Handlers/Hold.py:65
 msgid "Posting to a restricted list by sender requires approval"
@@ -6149,8 +6139,7 @@ msgstr ""
 
 #: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
-msgstr ""
-"Aceastã listã este restricþionatã; mesajul dumneavoastrã nu a fost aprobat."
+msgstr "Aceastã listã este restricþionatã; mesajul dumneavoastrã nu a fost aprobat."
 
 #: Mailman/Handlers/Hold.py:69
 msgid "Too many recipients to the message"
@@ -6502,13 +6491,11 @@ msgstr "verific posesorul fiºierelor %(dbfile)s"
 
 #: Mailman/MTA/Postfix.py:342
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
-msgstr ""
-"%(dbfile)s este deþinut de %(owner)s (trebuie sã fie deþinut de %(user)s"
+msgstr "%(dbfile)s este deþinut de %(owner)s (trebuie sã fie deþinut de %(user)s"
 
 #: Mailman/MailList.py:756
 msgid "You have been invited to join the %(listname)s mailing list"
-msgstr ""
-"Aþi primit invitaþia de a intra în rândurile listei de discuþii %(listname)s"
+msgstr "Aþi primit invitaþia de a intra în rândurile listei de discuþii %(listname)s"
 
 #: Mailman/MailList.py:860 Mailman/MailList.py:1249
 #, fuzzy
@@ -6701,10 +6688,8 @@ msgid "Server Local Time"
 msgstr "Ora localã pe server"
 
 #: Mailman/i18n.py:139
-msgid ""
-"%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
-msgstr ""
-"%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
+msgid "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
+msgstr "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 
 #: bin/add_members:26
 msgid ""
@@ -7128,8 +7113,7 @@ msgstr "Probleme gãsite:"
 
 #: bin/check_perms:375
 msgid "Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix"
-msgstr ""
-"Re-rulaþi ca ºi %(MAILMAN_USER)s (sau root) cu opþiunea -f pentru a repara"
+msgstr "Re-rulaþi ca ºi %(MAILMAN_USER)s (sau root) cu opþiunea -f pentru a repara"
 
 #: bin/cleanarch:19
 msgid ""
@@ -8581,11 +8565,11 @@ msgstr ""
 
 #: bin/transcheck:67
 msgid "scan a string from the original file"
-msgstr ""
+msgstr "scanez un string din fiºierul original"
 
 #: bin/transcheck:77
 msgid "scan a translated string"
-msgstr "scaneazã un string tradus"
+msgstr "scanez un string tradus"
 
 #: bin/transcheck:90
 msgid "check for differences between checked in and checked out"
@@ -8593,7 +8577,7 @@ msgstr ""
 
 #: bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
-msgstr ""
+msgstr "parcurg un fiºier .po ºi extrag msgids ºi msgstrs"
 
 #: bin/transcheck:142
 msgid ""
@@ -8605,16 +8589,26 @@ msgid ""
 "            4  end\n"
 "        "
 msgstr ""
+"Tabelul de stare pentru parserul inite-states-machine:\n"
+"            0  idle\n"
+"            1  nume de fiºier sau comentariu\n"
+"            2  msgid\n"
+"            3  msgstr\n"
+"            4  sfârºit\n"
+"        "
 
 #: bin/transcheck:279
 msgid ""
 "check a translated template against the original one\n"
 "       search also <MM-*> tags if html is not zero"
 msgstr ""
+"verificã un ºablon tradus prin comparare cu cel original\n"
+"       de asemena, cautã tagurile <MM-*> în cazul în care\n"
+"       codul HTML nu este nul"
 
 #: bin/transcheck:326
 msgid "scan the po file comparing msgids with msgstrs"
-msgstr ""
+msgstr "scanez fiºierul po ºi compar msgids cu msgstrs"
 
 #: bin/unshunt:19
 msgid ""
@@ -8659,11 +8653,11 @@ msgstr ""
 
 #: bin/update:107
 msgid "Fixing language templates: %(listname)s"
-msgstr ""
+msgstr "Repar ºabloanele de limbã: %(listname)s"
 
 #: bin/update:196 bin/update:686
 msgid "WARNING: could not acquire lock for list: %(listname)s"
-msgstr ""
+msgstr "ATENÞIE: nu am putut asigura asigura lista: %(listname)s"
 
 #: bin/update:215
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
@@ -8723,10 +8717,12 @@ msgid ""
 "    looks like you have a really recent CVS installation...\n"
 "    you're either one brave soul, or you already ran me"
 msgstr ""
+"    se pare cã ai o instalat o versiune foarte recentã din CVS...\n"
+"   ori eºti un brav optimist, ori m-ai alungat deja"
 
 #: bin/update:311
 msgid "- updating old public mbox file"
-msgstr ""
+msgstr "- actualizez vechiul fiºier public mbox"
 
 #: bin/update:319
 msgid ""
@@ -8735,6 +8731,10 @@ msgid ""
 "    to\n"
 "        %(newname)s"
 msgstr ""
+"    fiºier necunoscut, mut\n"
+"        %(o_pub_mbox_file)s\n"
+"    în\n"
+"        %(newname)s"
 
 #: bin/update:350
 msgid "- This list looks like it might have <= b4 list templates around"
@@ -8742,7 +8742,7 @@ msgstr ""
 
 #: bin/update:358
 msgid "- moved %(o_tmpl)s to %(n_tmpl)s"
-msgstr ""
+msgstr "- am mutat %(o_tmpl)s în %(n_tmpl)s"
 
 #: bin/update:360
 msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
@@ -8750,11 +8750,11 @@ msgstr ""
 
 #: bin/update:363
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
-msgstr ""
+msgstr "- %(o_tmpl)s nu existã, las locul neatins"
 
 #: bin/update:393
 msgid "removing directory %(src)s and everything underneath"
-msgstr ""
+msgstr "ºterg directorul %(src)s ºi tot conþinutul acestuia"
 
 #: bin/update:396
 msgid "removing %(src)s"
@@ -8762,11 +8762,11 @@ msgstr "ºterg %(src)s"
 
 #: bin/update:400
 msgid "Warning: couldn't remove %(src)s -- %(rest)s"
-msgstr ""
+msgstr "Atenþie: nu am putut ºterge %(src)s -- %(rest)s"
 
 #: bin/update:405
 msgid "couldn't remove old file %(pyc)s -- %(rest)s"
-msgstr ""
+msgstr "nu am putut ºterge vechiul fiºier %(pyc)s -- %(rest)s"
 
 #: bin/update:409
 #, fuzzy
@@ -8775,7 +8775,7 @@ msgstr "actualizez vechile fiºiere qfiles"
 
 #: bin/update:509
 msgid "message is unparsable: %(filebase)s"
-msgstr ""
+msgstr "mesajul nu poate fi parcurs: %(filebase)s"
 
 #: bin/update:538
 #, fuzzy
@@ -8828,8 +8828,7 @@ msgstr "- nimic de actualizat aici"
 #: bin/update:697
 #, fuzzy
 msgid "- usenet watermarks updated and gate_watermarks removed"
-msgstr ""
-"- watermark-urile usenet au fost actualizate ºi gate_watermark-urile ºterse"
+msgstr "- watermark-urile usenet au fost actualizate ºi gate_watermark-urile ºterse"
 
 #: bin/update:711
 msgid ""
@@ -9160,6 +9159,7 @@ msgstr ""
 "Motiv: %(reason)s"
 
 #: cron/disabled:19
+#, fuzzy
 msgid ""
 "Process disabled members, recommended once per day.\n"
 "\n"
@@ -9208,6 +9208,8 @@ msgid ""
 "    --listname=listname\n"
 "        Process only the given list, otherwise do all lists.\n"
 msgstr ""
+"Proceseazã membrii dezactivaþi; recomandat zilnic.\n"
+"\n"
 
 #: cron/disabled:144
 msgid "[disabled by periodic sweep and cull, no message available]"
@@ -9226,6 +9228,16 @@ msgid ""
 "        Print this text and exit.\n"
 "\n"
 msgstr ""
+"Sondeazã serverele NNTP pentru mesaje de trimis spre listele de discuþii.\n"
+"\n"
+"Folosire: gate_news [opþiuni]\n"
+"\n"
+"Unde opþiunile sunt\n"
+"\n"
+"    --help\n"
+"    -h\n"
+"        afiºeazã acest mesaj de ajutor ºi terminã execuþia\n"
+"\n"
 
 #: cron/mailpasswds:19
 msgid ""
@@ -9287,6 +9299,27 @@ msgid ""
 "        this, all archivable lists are processed.\n"
 "\n"
 msgstr ""
+"Regenereazã fiºierele arhivã (gzip) Pipermail.\n"
+"\n"
+"Acest script ar trebui sã ruleze noaptea din cron.  Când este rulat\n"
+"din linia de comandã, urmãtorul format este recunoscut:\n"
+"\n"
+"Folosire: %(program)s [-v] [-h] [numeliste]\n"
+"\n"
+"Unde:\n"
+"    --verbose\n"
+"    -v\n"
+"        afiºeazã fiecare fiºier ce este comprimat\n"
+"\n"
+"    --help\n"
+"    -h\n\n"
+"        afiºeazã acest mesaj de ajutor ºi terminã execuþia\n"
+"\n"
+"    listnames\n"
+"        Opþional, comprimã doar fiºierele .txt pentru listele date.\n"
+"        Fãrã acest parametru, toate listele ce pot fi arhivate sunt\n"
+"        procesate.\n"
+"\n"
 
 #: cron/senddigests:19
 msgid ""
@@ -9314,3 +9347,4 @@ msgstr ""
 
 #~ msgid "Simplified Chinese"
 #~ msgstr "Chineza simplificatã"
+
