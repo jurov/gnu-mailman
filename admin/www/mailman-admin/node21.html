@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>3.7 The Privacy Options Category</title>
+<META NAME="description" CONTENT="3.7 The Privacy Options Category">
+<META NAME="keywords" CONTENT="mailman-admin">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="STYLESHEET" href="mailman-admin.css">
+<link rel="first" href="mailman-admin.html">
+<link rel="contents" href="contents.html" title="Contents">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node22.html">
+</head>
+<body>
+<DIV CLASS="navigation">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td><A HREF="node20.html"><img src="../icons/previous.gif"
+  border="0" height="32"
+  alt="Previous Page" width="32"></A></td>
+<td><A HREF="node9.html"><img src="../icons/up.gif"
+  border="0" height="32"
+  alt="Up One Level" width="32"></A></td>
+<td><A HREF="node22.html"><img src="../icons/next.gif"
+  border="0" height="32"
+  alt="Next Page" width="32"></A></td>
+<td align="center" width="100%">GNU Mailman - List Administration Manual</td>
+<td><A href="contents.html"><img src="../icons/contents.gif"
+  border="0" height="32"
+  alt="Contents" width="32"></A></td>
+<td><img src="../icons/blank.gif"
+  border="0" height="32"
+  alt="" width="32"></td>
+<td><img src="../icons/blank.gif"
+  border="0" height="32"
+  alt="" width="32"></td>
+</tr></table>
+<b class="navlabel">Previous:</b> <a class="sectref" HREF="node20.html">3.6 The Digest Options</A>
+<b class="navlabel">Up:</b> <a class="sectref" HREF="node9.html">3 The List Configuration</A>
+<b class="navlabel">Next:</b> <a class="sectref" HREF="node22.html">3.7.1 Subscription rules</A>
+<br><hr>
+</DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION002370000000000000000">
+3.7 The Privacy Options Category</A>
+</H2>
+
+<P>
+The Privacy category lets you control how much of the list's
+information is public, as well as who can send messages to your list.
+It also contains some spam detection filters.  Note that this section
+is not used to control whether your list's archives are public or
+private; for that, use the <A HREF="#Archiving_options"><tex2html_cross_ref_visible_mark></A> category.
+
+<P>
+There are four sub-categories:
+
+<UL>
+<LI>Subscription rules - i.e. the rules for joining and leaving
+      your mailing list
+
+<P>
+</LI>
+<LI>Sender filters - the rules for who may post messages to your
+      list
+
+<P>
+</LI>
+<LI>Recipient filters - moderation rules based on the recipient of
+      the message
+
+<P>
+</LI>
+<LI>Spam filters - some regular expression based rules for header
+      matching
+</LI>
+</UL>
+
+<P>
+The sender, recipient, and spam filtering rules are part of the
+general list moderation features of Mailman.  When a message is posted
+to the list, it is matched against a number of criteria, the outcome
+of which determines whether the message is reflected to the membership
+or not.  In general, the outcome is one of four states:
+
+<P>
+
+<UL>
+<LI>Approved or Accepted - the message may be sent on to the
+      members of the mailing list.
+
+<P>
+</LI>
+<LI>Hold - the message will be held for moderator approval.  The
+      list owners and moderators will then have to explicitly approve
+      the message before the list members will see it.
+
+<P>
+</LI>
+<LI>Reject - the message is bounced back to the original sender,
+      often with a notice containing the reason the message was
+      rejected.  The list members never see rejected messages.
+
+<P>
+</LI>
+<LI>Discard - the message is simply thrown away without further
+      processing.
+</LI>
+</UL>
+
+<P>
+Many of the fields in this section are text boxes accepting addresses,
+one per line.  Unless otherwise noted, these also accept regular
+expressions which will be matched against an address, if the line
+begins with a (caret) character.
+
+<P>
+
+<p><hr>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></a>
+
+<UL CLASS="ChildLinks">
+<LI><A href="node22.html">3.7.1 Subscription rules</a>
+<LI><A href="node23.html">3.7.2 Sender filters</a>
+<LI><A href="node24.html">3.7.3 Recipient Filters</a>
+<LI><A href="node25.html">3.7.4 Spam Filters</a>
+</ul>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation">
+<p><hr>
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td><A HREF="node20.html"><img src="../icons/previous.gif"
+  border="0" height="32"
+  alt="Previous Page" width="32"></A></td>
+<td><A HREF="node9.html"><img src="../icons/up.gif"
+  border="0" height="32"
+  alt="Up One Level" width="32"></A></td>
+<td><A HREF="node22.html"><img src="../icons/next.gif"
+  border="0" height="32"
+  alt="Next Page" width="32"></A></td>
+<td align="center" width="100%">GNU Mailman - List Administration Manual</td>
+<td><A href="contents.html"><img src="../icons/contents.gif"
+  border="0" height="32"
+  alt="Contents" width="32"></A></td>
+<td><img src="../icons/blank.gif"
+  border="0" height="32"
+  alt="" width="32"></td>
+<td><img src="../icons/blank.gif"
+  border="0" height="32"
+  alt="" width="32"></td>
+</tr></table>
+<b class="navlabel">Previous:</b> <a class="sectref" HREF="node20.html">3.6 The Digest Options</A>
+<b class="navlabel">Up:</b> <a class="sectref" HREF="node9.html">3 The List Configuration</A>
+<b class="navlabel">Next:</b> <a class="sectref" HREF="node22.html">3.7.1 Subscription rules</A>
+<hr>
+<span class="release-info">Release 2.1, documentation updated on October 2, 2004.</span>
+</DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>
