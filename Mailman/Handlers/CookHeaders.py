@@ -168,7 +168,7 @@ def process(mlist, msg, msgdata):
     listid = '<%s.%s>' % (mlist.internal_name(), mlist.host_name)
     if mlist.description:
         # Make sure description is properly i18n'd
-        listid_h = uheader(mlist, mlist.description, 'List-Id')
+        listid_h = uheader(mlist, u'"' + mlist.description + u'"', 'List-Id')
         listid_h.append(listid, 'us-ascii')
     else:
         # For wrapping
