@@ -125,7 +125,8 @@ def process_request(doc, cgidata):
                 blank if you want Mailman to autogenerate the list
                 passwords.'''))
             return
-        password = confirm = Utils.MakeRandomPassword(length=8)
+        password = confirm = Utils.MakeRandomPassword(
+            mm_cfg.ADMIN_PASSWORD_LENGTH)
     else:
         if password <> confirm:
             request_creation(doc, cgidata,
