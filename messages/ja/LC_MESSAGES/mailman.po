@@ -1,12 +1,12 @@
 # Mailman Japanese Translation
-# Copyright (C) 2002
-# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002
+# Copyright (C) 2002-2004
+# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2004
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: Sat Dec 13 14:40:28 2003\n"
-"PO-Revision-Date: 2003-09-24 17:00+0900\n"
+"PO-Revision-Date: 2004-01-12 14:00+0900\n"
 "Last-Translator: Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>\n"
 "Language-Team: Japanese <mmjp-users@mm.tkikuchi.net>\n"
 "MIME-Version: 1.0\n"
@@ -525,17 +525,17 @@ msgstr "...この後に."
 
 #: Mailman/Cgi/admin.py:746 Mailman/Cgi/admin.py:749
 msgid "Spam Filter Rule %(i)d"
-msgstr ""
+msgstr "スパムフィルター規則 %(i)d"
 
 #: Mailman/Cgi/admin.py:751
 msgid "Spam Filter Regexp:"
-msgstr ""
+msgstr "スパムフィルター正規表現"
 
 #: Mailman/Cgi/admin.py:762 Mailman/Cgi/admindb.py:289
 #: Mailman/Cgi/admindb.py:346 Mailman/Cgi/admindb.py:389
 #: Mailman/Cgi/admindb.py:612
 msgid "Defer"
-msgstr "保留"
+msgstr "延期"
 
 #: Mailman/Cgi/admin.py:762 Mailman/Cgi/admindb.py:291
 #: Mailman/Cgi/admindb.py:348 Mailman/Cgi/admindb.py:389
@@ -567,11 +567,11 @@ msgstr "処置:"
 
 #: Mailman/Cgi/admin.py:778
 msgid "Move rule up"
-msgstr ""
+msgstr "規則の順を上げる"
 
 #: Mailman/Cgi/admin.py:779
 msgid "Move rule down"
-msgstr ""
+msgstr "規則の順を下げる"
 
 #: Mailman/Cgi/admin.py:812
 msgid "<br>(Edit <b>%(varname)s</b>)"
@@ -1128,7 +1128,7 @@ msgstr "この会員の<em>発言制限</em>フラグをクリアーする"
 
 #: Mailman/Cgi/admindb.py:425
 msgid "<em>The sender is now a member of this list</em>"
-msgstr "<em>送信者はこのリストの会員となりました.</em>"
+msgstr "<em>送信者は, 現在このリストの会員です.</em>"
 
 #: Mailman/Cgi/admindb.py:434
 msgid "Add <b>%(esender)s</b> to one of these sender filters:"
@@ -1330,7 +1330,6 @@ msgid "Confirm subscription request"
 msgstr "入会申請を確認"
 
 #: Mailman/Cgi/confirm.py:227
-#, fuzzy
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    subscription request to the mailing list <em>%(listname)s</em>.  Your\n"
@@ -1808,14 +1807,12 @@ msgid "administrative list overview"
 msgstr "管理リスト一覧"
 
 #: Mailman/Cgi/create.py:102
-#, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "リスト名には @ を入れることはできません: %(listname)s"
+msgstr "リスト名には @ を入れることはできません: %(safelistname)s"
 
 #: Mailman/Cgi/create.py:109
-#, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "リストが既にあります: %(listname)s"
+msgstr "リストが既にあります: %(safelistname)s"
 
 #: Mailman/Cgi/create.py:113
 msgid "You forgot to enter the list name"
@@ -1847,9 +1844,8 @@ msgid "You are not authorized to create new mailing lists"
 msgstr "あなたは新しいメーリングリストを作成する権限がありません"
 
 #: Mailman/Cgi/create.py:161
-#, fuzzy
 msgid "Unknown virtual host: %(safehostname)s"
-msgstr "リスト名が不明: %(listname)s"
+msgstr "仮想ホスト名が不明: %(safehostname)s"
 
 #: Mailman/Cgi/create.py:192 bin/newlist:166
 msgid "Bad owner email address: %(s)s"
@@ -2161,7 +2157,6 @@ msgid "No such member: %(safeuser)s."
 msgstr "そのような会員はいません: %(safeuser)s."
 
 #: Mailman/Cgi/options.py:172
-#, fuzzy
 msgid ""
 "Your unsubscription request has been\n"
 "                    forwarded to the list administrator for approval."
@@ -2779,7 +2774,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_confirm.py:71
 msgid "Bad approval password given.  Held message is still being held."
-msgstr ""
+msgstr "承認パスワードが違います. 保留メールは引き続き保留されます."
 
 #: Mailman/Commands/cmd_confirm.py:80
 msgid "Confirmation succeeded"
@@ -3208,14 +3203,12 @@ msgid "digest option set"
 msgstr "digest (まとめ読み)オプションを設定"
 
 #: Mailman/Commands/cmd_set.py:301
-#, fuzzy
 msgid "delivery enabled"
-msgstr "delivery (配送) on"
+msgstr "配送を有効にしました"
 
 #: Mailman/Commands/cmd_set.py:304
-#, fuzzy
 msgid "delivery disabled by user"
-msgstr "; あなたが配送停止しました"
+msgstr "会員の要求により配送停止しました"
 
 #: Mailman/Commands/cmd_set.py:316
 msgid "myposts option set"
@@ -3424,9 +3417,8 @@ msgid "Digest members:"
 msgstr "まとめ読み会員:"
 
 #: Mailman/Defaults.py:1271
-#, fuzzy
 msgid "Catalan"
-msgstr "イタリア語"
+msgstr "カタロニア語"
 
 #: Mailman/Defaults.py:1272
 msgid "Czech"
@@ -3467,7 +3459,7 @@ msgstr "フランス語"
 
 #: Mailman/Defaults.py:1281
 msgid "Croatian"
-msgstr ""
+msgstr "クロアチア語"
 
 #: Mailman/Defaults.py:1282
 msgid "Hungarian"
@@ -3510,9 +3502,8 @@ msgid "Portuguese (Brazil)"
 msgstr "ポルトガル語(ブラジル)"
 
 #: Mailman/Defaults.py:1292
-#, fuzzy
 msgid "Romanian"
-msgstr "エストニア語"
+msgstr "ルーマニア語"
 
 #: Mailman/Defaults.py:1293
 msgid "Russian"
@@ -3523,9 +3514,8 @@ msgid "Serbian"
 msgstr "セルビア語"
 
 #: Mailman/Defaults.py:1295
-#, fuzzy
 msgid "Slovenian"
-msgstr "セルビア語"
+msgstr "スロヴェニア語"
 
 #: Mailman/Defaults.py:1296
 msgid "Swedish"
@@ -3537,11 +3527,11 @@ msgstr "ウクライナ語"
 
 #: Mailman/Defaults.py:1298
 msgid "Chinese (China)"
-msgstr ""
+msgstr "中国語 (中国)"
 
 #: Mailman/Defaults.py:1299
 msgid "Chinese (Taiwan)"
-msgstr ""
+msgstr "中国語 (台湾)"
 
 #: Mailman/Deliverer.py:51
 msgid ""
@@ -4584,7 +4574,7 @@ msgstr ""
 "れます. これはメールリーダソフトなどで他のメー\n"
 "ルと区別するのに 有効です. 簡潔をこころがけましょう. \n"
 "メーリングリストの名称が長かったら,  メーリングリ\n"
-"ストであることがわかる範囲で, 短く簡潔にするとよいでしょう. "
+"ストであることがわかる範囲で, 短く簡潔にするとよいでしょう. \n"
 
 #: Mailman/Gui/General.py:149
 msgid ""
@@ -6107,14 +6097,12 @@ msgstr ""
 "これにより, リスト会員が受け取る SPAM の量を減らすことが可能です."
 
 #: Mailman/Gui/Privacy.py:373
-#, fuzzy
 msgid "Header filters"
-msgstr "会員フィルター"
+msgstr "ヘッダフィルター"
 
 #: Mailman/Gui/Privacy.py:376
-#, fuzzy
 msgid "Filter rules to match against the headers of a message."
-msgstr "メールにマッチさせる話題キーワード, 1行につき1個"
+msgstr "メールヘッダが適合するかどうかを検査するフィルターの規則"
 
 #: Mailman/Gui/Privacy.py:378
 msgid ""
@@ -6132,11 +6120,17 @@ msgid ""
 "after\n"
 "             the first match."
 msgstr ""
+"それぞれのヘッダフィルター規則は2部に分かれています. 1行にひとつずつの\n"
+"正規表現のリストと, 動作です. Mailman は規則の正規表現について\n"
+"メールヘッダの適合を検査し, もし適合すればメールは指定した動作に\n"
+"従って, 拒否か保留か破棄します. その規則を一時的に無効にするには\n"
+"<em>延期</em>を選んでください.\n"
+"このリストについて複数のフィルター規則を定義することができます.\n"
+"その場合, 順に検査を行い, 最初に適合したところで処理を停止します.\n"
 
 #: Mailman/Gui/Privacy.py:389
-#, fuzzy
 msgid "Legacy anti-spam filters"
-msgstr "対SPAMフィルター"
+msgstr "古い対SPAMフィルター"
 
 #: Mailman/Gui/Privacy.py:392
 msgid "Hold posts with header value matching a specified regexp."
@@ -6174,23 +6168,21 @@ msgstr ""
 " 方法で回避できます."
 
 #: Mailman/Gui/Privacy.py:465
-#, fuzzy
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
 msgstr ""
-"話題の指定にはその名前とパターンが必要です.\n"
-"不完全な話題は無視されます."
+"ヘッダフィルターの規則にはパターンが必要です.\n"
+"不完全なフィルター規則は無視されます."
 
 #: Mailman/Gui/Privacy.py:473
-#, fuzzy
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"この話題パターン `%(pattern)s' は正しい正規表現ではありません.\n"
-"破棄します."
+"このヘッダフィルター規則パターン `%(safepattern)s' は正しい正規表現\n"
+"ではありません. 無視します."
 
 #: Mailman/Gui/Topics.py:35
 msgid "Topics"
@@ -6317,12 +6309,11 @@ msgstr ""
 "不完全な話題は無視されます."
 
 #: Mailman/Gui/Topics.py:128
-#, fuzzy
 msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"この話題パターン `%(pattern)s' は正しい正規表現ではありません.\n"
+"この話題パターン `%(safepattern)s' は正しい正規表現ではありません.\n"
 "破棄します."
 
 #: Mailman/Gui/Usenet.py:25
@@ -7049,7 +7040,7 @@ msgstr ""
 
 #: Mailman/Handlers/Scrubber.py:301
 msgid "Skipped content of type %(partctype)s"
-msgstr "MIME タイプ %(partctype)s 飛ばします"
+msgstr "MIME タイプ %(partctype)s 飛ばします\n"
 
 #: Mailman/Handlers/Scrubber.py:327
 msgid "-------------- next part --------------\n"
@@ -7057,11 +7048,11 @@ msgstr ""
 
 #: Mailman/Handlers/SpamDetect.py:54
 msgid "The message headers matched a filter rule"
-msgstr ""
+msgstr "メッセージヘッダがフィルター規則に適合しました"
 
 #: Mailman/Handlers/SpamDetect.py:121
 msgid "Message rejected by filter rule match"
-msgstr ""
+msgstr "フィルター規則適合によりメールは拒否されました"
 
 #: Mailman/Handlers/ToDigest.py:145
 msgid "%(realname)s Digest, Vol %(volume)d, Issue %(issue)d"
@@ -10828,7 +10819,7 @@ msgstr ""
 
 #: cron/checkdbs:110
 msgid "%(count)d %(realname)s moderator request(s) waiting"
-msgstr "%(realname)s の司会要請が %(count)d 件あります"
+msgstr "%(count)d 件の%(realname)s 司会要請があります"
 
 #: cron/checkdbs:129
 msgid "Pending subscriptions:"
@@ -11102,11 +11093,3 @@ msgstr ""
 "        リスト名をあげたリストについてだけ, まとめ読みを送信する.\n"
 "        これが無い場合, 全てのリストの処理をする.\n"
 
-#~ msgid "delivery option set"
-#~ msgstr "delivery (配送)オプションを設定"
-
-#~ msgid "Traditional Chinese"
-#~ msgstr "中国語(伝統的)"
-
-#~ msgid "Simplified Chinese"
-#~ msgstr "中国語(簡体字)"
