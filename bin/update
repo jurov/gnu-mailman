@@ -582,8 +582,10 @@ def update_pending():
         elif op == Pending.HELD_MESSAGE:
             # data[0] is the hold id.  There better only be one entry per id
             id = data[0]
-            assert not holds_by_id.has_key(id)
-            holds_by_id[id] = (key, val)
+            if holds_by_id.has_key(id):
+                print _('WARNING: Ignoring duplicate pending ID: %(id)s.')
+            else:
+                holds_by_id[id] = (key, val)
     # Now we have to lock every list and re-pend all the appropriate
     # requests.  Note that this will reset all the expiration dates, but that
     # should be fine.
