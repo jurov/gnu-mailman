@@ -156,7 +156,10 @@ def process(mlist, msg, msgdata):
         # was munged into the Reply-To header, but if not, we'll add it to a
         # Cc header.  BAW: should we force it into a Reply-To header in the
         # above code?
-        if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1:
+        # Also skip Cc if this is an anonymous list as list posting address
+        # is already in From and Reply-To in this case.
+        if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
+           and not mlist.anonymous_list:
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
