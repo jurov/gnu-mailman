@@ -1,99 +1,27 @@
-Help for %(listname)s mailing list:
+对邮件列表 %(listname)s 的帮助：
 
-This is email command help for version %(version)s of the "Mailman"
-list manager.  The following describes commands you can send to get
-information about and control your subscription to Mailman lists at
-this site.  A command can be in the subject line or in the body of the
-message.
+这是对"Mailman"邮件列表管理程序版本 %(version)s 的邮件命令帮助。下面将描
+述此站点上可以用来获取或者修改您的邮件列表订阅信息的命令。命令可以作为
+邮件的主题或者正文。
 
-Note that much of the following can also be accomplished via the World
-Wide Web, at:
+注意，下面的大多数命令的功能都可以通过访问下面的万维网站点来完成：
+	
+	%(listinfo_url)s
 
-    %(listinfo_url)s
+特别地，您可以通过此万维网站点来把您的口令发送到您的信箱中。
 
-In particular, you can use the Web site to have your password sent to
-your delivery address.
+列表特定的命令(subscribe，who等等)必须发送到此列表相应的*-request地址
+中。例如，对于列表'mailman'来说，就是'mailman-request@...'。
 
-List specific commands (subscribe, who, etc) should be sent to the
-*-request address for the particular list, e.g. for the 'mailman'
-list, use 'mailman-request@...'.
+在下面的描述中，若元素在"<>"中，表示此元素是必须的，若元素在"[]"中，则
+表示此元素是可选的。您在使用命令时不要包含"<>"或"[]"。
 
-About the descriptions - words in "<>"s signify REQUIRED items and
-words in "[]" denote OPTIONAL items.  Do not include the "<>"s or
-"[]"s when you use the commands.
+下列命令是可用的：
 
-The following commands are valid:
+	%(commands)s
 
-    subscribe [password] [digest-option] [address=<address>]
-        Subscribe to the mailing list.  Your password must be given to
-        unsubscribe or change your options.  When you subscribe to the
-        list, you'll be reminded of your password periodically.
-        'digest-option' may be either: 'nodigest' or 'digest' (no
-        quotes!)  If you wish to subscribe an address other than the
-        address you send this request from, you may specify
-        "address=<email address>" (no brackets around the email
-        address, no quotes!)
+命令应当发送到 %(requestaddr)s 。
 
-    unsubscribe <password> [address]
-        Unsubscribe from the mailing list.  Your password must match
-        the one you gave when you subscribed.  If you are trying to
-        unsubscribe from a different address than the one you
-        subscribed from, you may specify it in the 'address' field.
-
-    who
-        See everyone who is on this mailing list.
-
-    info
-        View the introductory information for this list.
-
-    lists
-        See what mailing lists are run by this Mailman server.
-
-    help
-        This message.
-
-    set <option> <on|off> <password> 
-        Turn on or off list options.  Valid options are:
-
-        ack:
-            Turn this on to receive acknowledgement mail when you send
-            mail to the list.
-
-        digest:
-            Receive mail from the list bundled together instead of one
-            post at a time.
-
-        plain:
-            Get plain-text, not MIME-compliant, digests (only if
-            digest is set)
-
-        nomail:
-            Stop delivering mail.  Useful if you plan on taking a
-            short vacation.
-
-        norcv:
-            Turn this on to NOT receive posts you send to the list.
-            Does not work if digest is set.
-
-        hide:
-            Conceals your address when people look at who is on this
-            list.
-
-
-    options
-        Show the current values of your list options.
-
-    password <oldpassword> <newpassword> 
-        Change your list password.
-    
-    end or --
-       Stop processing commands (good to do if your mailer
-       automatically adds a signature file - it'll save you from a lot
-       of cruft).
-
-
-Commands should be sent to %(requestaddr)s
-
-Questions and concerns for the attention of a person should be sent to
+个人所关注的内容和问题应当发送到
 
     %(adminaddr)s

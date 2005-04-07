@@ -1,35 +1,30 @@
-The mailing list `%(listname)s' has just been created for you.  The
-following is some basic information about your mailing list.
+您的新邮件列表`%(listname)s'已经创建。下面是一些有关此列表的基本信息。
 
-Your mailing list password is:
+您的邮件列表口令是：
 
-    %(password)s
+	%(password)s
 
-You need this password to configure your mailing list.  You also need
-it to handle administrative requests, such as approving mail if you
-choose to run a moderated list.
+管理或配置您的邮件列表时您都将需要此口令。例如在您选择运行一个受限的列表时需
+要用它来核准发言权。
 
-You can configure your mailing list at the following web page:
+您可以在下面的网页中配置您的邮件列表：
 
-    %(admin_url)s
+	%(admin_url)s
 
-The web page for users of your mailing list is: 
+列表成员可以查看的列表相关信息位于：
 
-    %(listinfo_url)s
+	%(listinfo_url)s
 
-You can even customize these web pages from the list configuration
-page.  However, you do need to know HTML to be able to do this.
+您可以在列表配置页中定制这些网页。当然，您对HTML必须要有一定的认识才行。
 
-There is also an email-based interface for users (not administrators)
-of your list; you can get info about using it by sending a message
-with just the word `help' as subject or in the body, to:
+您的列表对列表成员(非管理员)也有一个基于邮件的接口；可以通过向
 
-    %(requestaddr)s
+	%(requestaddr)s
 
-To unsubscribe a user: from the mailing list 'listinfo' web page,
-click on or enter the user's email address as if you were that user.
-Where that user would put in their password to unsubscribe, put in
-your admin password.  You can also use your password to change
-member's options, including digestification, delivery disabling, etc.
+发送一封主题或者正文仅包含单词'help'的信件来获得相关信息。
 
-Please address all questions to %(siteowner)s.
+要想为一位用户退订列表，在邮件列表的"列表信息"页中输入此用户的邮件地址，在
+应该填入此用户口令的地方填入您的管理口令。您也可以用您的口令来修改成员的各
+种选项，包括摘要配置，暂停发信等等。
+
+如果有任何问题，请发送邮件到 %(siteowner)s 。

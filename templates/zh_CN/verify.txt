@@ -1,22 +1,21 @@
-Mailing list subscription confirmation notice for mailing list %(listname)s
+订阅邮件列表 %(listname)s 的确认通知
 
-We have received a request%(remote)s for subscription of your email
-address, "%(email)s", to the %(listaddr)s mailing list.  To confirm
-that you want to be added to this mailing list, simply reply to this
-message, keeping the Subject: header intact.  Or visit this web page:
 
-    %(confirmurl)s
+我们从 %(remote)s 接收到一个要把您的信箱地址，"%(email)s"加入到邮件列表
+%(listaddr)s的请求 。为了确认您确实想订阅此列表，请回复此信件，保持回信的
+主题不变。或者访问下面的网页：
 
-Or include the following line -- and only the following line -- in a
-message to %(requestaddr)s:
+	%(confirmurl)s
 
-    confirm %(cookie)s
+或者向 %(requestaddr)s发送一封仅包含下面一行信息的信件：
 
-Note that simply sending a `reply' to this message should work from
-most mail readers, since that usually leaves the Subject: line in
-the right form (additional "Re:" text in the Subject: is okay).
+	confirm %(cookie)s
 
-If you do not wish to be subscribed from this list, please simply
-disregard this message.  If you think you are being maliciously
-subscribed to the list, or have any other questions, send them to
-%(listadmin)s.
+
+注意，对大多数的邮件阅读器来说，简单的发送一封对此信件的回复就可以了，因
+为这样一般会保持回复信件的主题为正确的形式(主题中有多余的文本"Re:"是没关
+系的)。
+
+
+如果您并不想订阅此邮件列表，请简单的忽略此信件。如果您认为某人恶意的要将
+您加入此列表，或者有其它的任何问题，请把他们发送给 %(listadmin)s。

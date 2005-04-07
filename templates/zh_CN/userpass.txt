@@ -1,24 +1,21 @@
-You, or someone posing as you, has requested a password reminder for
-your membership on the mailing list %(fqdn_lname)s.  You will need
-this password in order to change your membership options (e.g. do you
-want regular delivery or digest delivery), and having this password
-makes it easier for you to unsubscribe from the mailing list.
+您，或者其他冒名顶替您的人，请求发送一封关于您订阅的 %(fqdn_lname)s
+邮件列表的使用口令的提示函。您将需要此口令来修改您的选项(例如，使用
+普通投递模式还是摘要投递模式)，并且拥有此口令也使得退订此列表更加容
+易。
 
-You are subscribed with the address: %(user)s
+您用来订阅列表的地址是： %(user)s
 
-Your %(listname)s password is: %(password)s
+您在 %(listname)s 列表的口令是： %(password)s
 
-To make changes to your membership options, log in and visit your
-options web page:
+要想改变您的选项，请登录并访问您的选项页：
 
-    %(options_url)s
+	%(options_url)s
 
-You can also make such changes via email by sending a message to:
+您也可以通过邮件来作出这些更改。发送一封主题或正文仅包括单词'help'的信
+件到
+	
+	%(requestaddr)s
 
-    %(requestaddr)s
+自动回复的信件将包含一些更具体的指导。
 
-with the text "help" in the subject or body.  The automatic reply will
-contain more detailed instructions.
-
-Questions or comments?  Please send them to the %(listname)s mailing
-list administrator at %(owneraddr)s.
+有任何问题或者建议，请发送给 %(listname)s 邮件列表的管理员 %(owneraddr)s。
