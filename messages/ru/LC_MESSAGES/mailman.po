@@ -151,6 +151,7 @@ msgid "%(month)s %(year)i"
 msgstr "%(month)s %(year)i"
 
 # MSS: здесь месяц не склоняется...  Что есть плохо.  Варианты?
+# fattie: а нельзя поправить код?
 #: Mailman/Archiver/HyperArch.py:914
 msgid "The Week Of Monday %(day)i %(month)s %(year)i"
 msgstr "Неделя, начинающаяся с понедельника %(day)i %(month)s %(year)i"
@@ -179,10 +180,12 @@ msgstr "Без темы"
 msgid "Creating archive directory "
 msgstr "Создается каталог архива "
 
+# fattie: should check this out
 #: Mailman/Archiver/pipermail.py:292
 msgid "Reloading pickled archive state"
 msgstr "Загружается состояние архива"
 
+# fattie: should check this out
 #: Mailman/Archiver/pipermail.py:319
 msgid "Pickling archive state into "
 msgstr "Состояние архива сохраняется в "
@@ -371,10 +374,10 @@ msgstr "[описание отсутствует]"
 # MSS: DIG предложил другой вариант, но он мне тоже не нравится. :(
 #   надо смотреть на эту функцию глобально
 #  +msgstr "Допустимое имя переменной не найдено."
-# взял почти вариант от fattie
+# fattie: should check this out
 #: Mailman/Cgi/admin.py:327
 msgid "No valid variable name found."
-msgstr "Не найдено название допустимой переменной."
+msgstr "Не найдено названия допустимой переменной."
 
 #: Mailman/Cgi/admin.py:337
 msgid ""
@@ -558,7 +561,7 @@ msgstr "Отложить"
 msgid "Reject"
 msgstr "Отклонить"
 
-# MSS: fattie propose "Удержать"
+# MSS: fattie proposes "Удержать"
 #: Mailman/Cgi/admin.py:761 Mailman/Gui/Privacy.py:216
 #: Mailman/Gui/Privacy.py:290
 msgid "Hold"
@@ -596,6 +599,7 @@ msgstr "<br>(Изменить <b>%(varname)s</b>)"
 msgid "<br>(Details for <b>%(varname)s</b>)"
 msgstr "<br>(Подробная информация о \"<b>%(varname)s\"</b>)"
 
+# fattie: should check this out
 #: Mailman/Cgi/admin.py:820
 msgid ""
 "<br><em><strong>Note:</strong>\n"
@@ -2079,7 +2083,7 @@ msgstr "HTML-код обновлен."
 
 #: Mailman/Cgi/listinfo.py:73
 msgid "%(hostname)s Mailing Lists"
-msgstr "%(hostname)s Списки Рассылки"
+msgstr "Списки рассылки %(hostname)s"
 
 #: Mailman/Cgi/listinfo.py:106
 msgid ""
@@ -3491,10 +3495,9 @@ msgstr "Русский"
 msgid "Serbian"
 msgstr "Сербский"
 
-# MSS: или "Словенский"?
 #: Mailman/Defaults.py:1334
 msgid "Slovenian"
-msgstr "Словацкий"
+msgstr "Словенский"
 
 #: Mailman/Defaults.py:1335
 msgid "Swedish"
@@ -4249,7 +4252,7 @@ msgstr "Режим по умолчанию для доставки дайджестов?"
 
 #: Mailman/Gui/Digest.py:59
 msgid "How big in Kb should a digest be before it gets sent out?"
-msgstr "По достижении какого размера отравлять новый дайджест (Кб)?"
+msgstr "По достижении какого размера отправлять новый дайджест (Кб)?"
 
 #: Mailman/Gui/Digest.py:63
 msgid "Should a digest be dispatched daily when the size threshold isn't reached?"
@@ -4378,7 +4381,7 @@ msgstr "По возможности отфильтровывать копии одних и тех же сообщений"
 msgid ""
 "Fundamental list characteristics, including descriptive\n"
 "            info and basic behaviors."
-msgstr "Основные характеристики списка: краткое описание и основные настройки"
+msgstr "Общие параметры списка рассылки, включая описание и основные настройки."
 
 #: Mailman/Gui/General.py:62
 msgid "General list personality"
@@ -4563,7 +4566,7 @@ msgid ""
 "             address (Removes From, Sender and Reply-To fields)"
 msgstr ""
 "Скрывать адрес отправителя, заменяя его адресом списка рассылки\n"
-"(в полях \"От\", \"Отправитель\" и \"Отвечать\")"
+"(в полях \"From\", \"Sender\" и \"Reply-To\")"
 
 #: Mailman/Gui/General.py:158
 msgid "<tt>Reply-To:</tt> header munging"
@@ -5943,6 +5946,7 @@ msgstr ""
 "возможно перенаправление сообщений в этот список (должны\n"
 "стоять в поле <tt>To:</tt> или <tt>CC:</tt>."
 
+# fattie: проверить про ^
 #: Mailman/Gui/Privacy.py:349
 msgid ""
 "Alternate addresses that are acceptable when\n"
@@ -6594,7 +6598,7 @@ msgid ""
 "        email address:\n"
 "        <p><center> "
 msgstr ""
-"Чтобы удаления подписки на список рассылки %(realname)s, получите\n"
+"Чтобы удалить подписку на список рассылки %(realname)s, получите\n"
 "сообщения с напоминанием пароля или измените параметры своей подписки,\n"
 "%(either)sвведите адрес своей подписки:\n"
 "<p><center> "
@@ -6695,7 +6699,7 @@ msgstr ""
 
 #: Mailman/Handlers/Emergency.py:29
 msgid "Emergency hold on all list traffic is in effect"
-msgstr "Включено экстренное задержание всех сообщений списка рассылки"
+msgstr "Включено экстренное задержание всех сообщений, направленных в адрес списка рассылки"
 
 #: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
 msgid "Your message was deemed inappropriate by the moderator."
@@ -10722,7 +10726,7 @@ msgstr "Отсутствует название списка рассылки."
 
 #: bin/withlist:245
 msgid "--all requires --run"
-msgstr "параметр --all требует наличие параметра --run"
+msgstr "параметр --all требует наличия параметра --run"
 
 #: bin/withlist:265
 msgid "Importing %(module)s..."
@@ -10857,53 +10861,55 @@ msgid ""
 "    --listname=listname\n"
 "        Process only the given list, otherwise do all lists.\n"
 msgstr ""
-"Обработать блокированных подписчиков. (Рекомендуется запускать раз в день)\n"
+"Обработать блокированных подписчиков, рекомендуется запускать раз в день.\n"
 "\n"
-"Этот сценарий рассматривает подписчиков, которым доставка списков рассылок\n"
-"была заблокирована. Если они блокированы в силу ошибок доставке, им будет\n"
-"отправлено дополнительно оповещение или же, если им было отправлено максимальное\n"
-"количество опопвещений, их подписка может быть удалена.\n"
+"Этот сценарий рассматривает подписчиков, для которых достака сообщений\n"
+"была приостановлена. Если они заблокированы в силу ошибок доставки, им\n"
+"будет отправлено дополнительно извещение, или же, если им было\n"
+"отправлено максимальное количество извещений, их подписка может быть\n"
+"удалена.\n"
 "\n"
-"Use the --byadmin, --byuser, and --unknown flags to also send notifications to\n"
-"members whose accounts have been disabled for those reasons.  Use --all to\n"
-"send the notification to all disabled members.\n"
+"С помощью ключей --byadmin, --byuser и --unknown укажите пользователей,\n"
+"которым нужно отправить извещения. Чтобы отправить извещения всем\n"
+"пользователям, укажите ключ --all.\n"
 "\n"
 "Запуск: %(PROGRAM)s [параметры]\n"
 "\n"
 "Options:\n"
 "    -h / --help\n"
-"        Вывести подсказку и завершить работу.\n"
+"        Напечатать эту подсказку и завершить работу.\n"
 "\n"
 "    -o / --byadmin\n"
-"        также извещать о пользователях, блокироваванных администратором\n"
+"        Известить пользователей, заблокироваванных администратором\n"
 "        списка рассылки.\n"
 "\n"
 "    -m / --byuser\n"
-"        также извещать о пользователях, сами блокировавших свою подписку\n"
+"        Известить пользователей, заблокировавших свою подписку\n"
+"        самостоятельно.\n"
 "\n"
 "    -u / --unknown\n"
-"        Also send notifications to any member disabled for unknown reasons\n"
-"        (usually a legacy disabled address).\n"
+"        Известить пользователей, чья подписка заблокирована по\n"
+"        неизвестной причине.\n"
 "\n"
 "    -b / --notbybounce\n"
-"        Don't send notifications to members disabled because of bounces (the\n"
-"        default is to notify bounce disabled members).\n"
+"        Не извещать пользователей, чья подписка была заблокирована из-за\n"
+"        ошибок.\n"
 "\n"
 "    -a / --all\n"
-"        извещать всех блокированных подписчиков.\n"
+"        Известить всех блокированных подписчиков.\n"
 "\n"
 "    -f / --force\n"
-"        Send notifications to disabled members even if they're not due a new\n"
-"        notification yet.\n"
+"        Известить подписчиков, даже если очередь для отправки им извещения\n"
+"        еще не дошла.\n"
 "\n"
-"    -l listname\n"
-"    --listname=имя-списка\n"
+"    -l имя_списка\n"
+"    --listname=имя_списка\n"
 "        Обработать только указанный список рассылки. Если не указан, то\n"
 "        обработать все.\n"
 
 #: cron/disabled:144
 msgid "[disabled by periodic sweep and cull, no message available]"
-msgstr "[заблокирован в результате периодической проверки и чистки. пояснение отсутствует]"
+msgstr "[заблокирован в результате периодической проверки и чистки, пояснение отсутствует]"
 
 #: cron/gate_news:19
 msgid ""
@@ -10918,15 +10924,15 @@ msgid ""
 "        Print this text and exit.\n"
 "\n"
 msgstr ""
-"Опросить NNTP-серверы на наличие сообщений для гейтования в списки рассылки.\n"
+"Опросить NNTP-серверы на наличие сообщений для пересылки в списки рассылки.\n"
 "\n"
 "Запуск: gate_news [параметры]\n"
 "\n"
-"Где допустимыми являются следующие параметры:\n"
+"Параметры:\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        Вывести подсказку и завершить работу.\n"
+"        Напечатать эту подсказку и завершить работу.\n"
 "\n"
 
 #: cron/mailpasswds:19
@@ -10963,21 +10969,22 @@ msgstr ""
 "Запуск: %(PROGRAM)s [параметры]\n"
 "\n"
 "Параметры:\n"
-"    -l имясписка\n"
-"    --listname=имясписка\n"
+"    -l имя_списка\n"
+"    --listname=имя_списка\n"
 "        Разослать напоминание только для указанного списка рассылки.  Если\n"
 "        отсутствует, обрабатывать все списки рассылки. При необходимости вы\n"
 "        можете указать несколько параметров -l/--listname.\n"
 "    -h/--help\n"
-"        Вывести это сообщение и завершить работу.\n"
+"        Напечатать эту подсказку и завершить работу.\n"
 
 #: cron/mailpasswds:216
 msgid "Password // URL"
 msgstr "Пароль // URL"
 
+# fattie: "Напоминание паролей подписчикам списков рассылок на сервере %(host)s"
 #: cron/mailpasswds:222
 msgid "%(host)s mailing list memberships reminder"
-msgstr "Список подписок на списки рассылок на сервере %(host)s"
+msgstr "Список подписок на сервере %(host)s"
 
 #: cron/nightly_gzip:19
 msgid ""
@@ -11004,22 +11011,21 @@ msgid ""
 msgstr ""
 "Пересоздать gzip-сжатые архивы программой Pipermail.\n"
 "\n"
-"Этот сценарий необходимо запускать каждую ночь при помощи программы cron.  При\n"
-"запуске сценария вы можете использовать следую\n"
+"Этот сценарий необходимо запускать каждую ночь при помощи программы cron:\n"
 "\n"
-"Запуск: %(program)s [-v] [-h] [списки-рассылки]\n"
+"Запуск: %(program)s [-v] [-h] [имена_списков]\n"
 "\n"
-"Где:\n"
+"Параметры:\n"
 "    --verbose\n"
 "    -v\n"
-"        выводить название каждого файла, передаваемого программе gzip\n"
+"        Выводить название каждого файла, передаваемого программе gzip.\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        вывести подсказку и завершить работу.\n"
+"        Напечатать эту подсказку и завершить работу.\n"
 "\n"
-"    списки-рассылки\n"
-"        дополнительно вы можете указать, что необходимо обрабатывать только\n"
+"    имена_списков\n"
+"        Дополнительно вы можете указать, что необходимо обрабатывать только\n"
 "        указанные списки рассылки.\n"
 
 #: cron/senddigests:19
