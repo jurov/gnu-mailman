@@ -1,3 +1,4 @@
+
    #GNU Mailman - Installation Manual About this document... About this
    document...
 
@@ -11,7 +12,7 @@ GNU Mailman - Installation Manual
    barry(at)python.org
 
    Release 2.1
-   December 22, 2004
+   April 10, 2005
 
                                  Front Matter
 
@@ -895,20 +896,20 @@ GNU Mailman - Installation Manual
      * You might need to set the mail-gid user to either qmail, mailman,
        or nofiles by using the --with-mail-gid configure option.
        BN: it highly depends on your mail storing policy. For example if
-       you use the simple  alias/.qmail-* files, you can use `id -g
+       you use the simple ~alias/.qmail-* files, you can use `id -g
        alias`. But if you use /var/qmail/users, the specified mail gid
        can be used.
        If you are going to be directing virtual domains directly to the
        mailman user (using ``virtualdomains'' on a list-only domain, for
        example), you will have to use --with-mail-gid=gid of mailman
        user's group. This is incompatible with having list aliases in
-       alias, unless that alias simply forwards to mailman-listname*.
+       ~alias, unless that alias simply forwards to mailman-listname*.
      * If there is a user mailman on your system, the alias mailman-owner
-       will work only in  mailman. You have to do a touch .qmail-owner in
-        mailman directory to create this alias.
-       NB: An alternative, IMHO better solution is to chown root mailman,
-       that will stop qmail from considering mailman to be a user to whom
-       mail can be delivered. (See ``man 8 qmail-getpw''.)
+       will work only in ~mailman. You have to do a touch .qmail-owner in
+       ~mailman directory to create this alias.
+       NB: An alternative, IMHO better solution is to chown root
+       ~mailman, that will stop qmail from considering mailman to be a
+       user to whom mail can be delivered. (See ``man 8 qmail-getpw''.)
      * In a related issue, if you have any users with the same name as
        one of your mailing lists, you will have problems if list names
        contain "-" in them. Putting .qmail redirections into the user's
@@ -922,10 +923,10 @@ GNU Mailman - Installation Manual
        and use the /var/qmail/control/virtualdomains file to put the
        mailman user in charge of this virtual domain.
      * BN:If inbound messages are delivered by another user than mailman,
-       it's necessary to allow it to access  mailman. Be sure that
-       mailman has group writing access and setgid bit is set. Then put
+       it's necessary to allow it to access ~mailman. Be sure that
+       ~mailman has group writing access and setgid bit is set. Then put
        the delivering user to mailman group, and you can deny access to
-       mailman to others. Be sure that you can do the same with the WWW
+       ~mailman to others. Be sure that you can do the same with the WWW
        service.
        By the way the best thing is to make a virtual mail server to
        handle all of the mail. NB: E.g. make an additional "A" DNS record
@@ -945,14 +946,14 @@ GNU Mailman - Installation Manual
           etc
        or for automatic list alias handling (when using the lists.kva.hu
        virtual as above), see contrib/qmail-to-mailman.py in the Mailman
-       source distribution. Modify the  mailman/.qmail-default to
+       source distribution. Modify the ~mailman/.qmail-default to
        include:
-          |/path/to/python /path/to/qmail-to-mailman.py
+          |preline /path/to/python /path/to/qmail-to-mailman.py
        and new lists will automatically be picked up.
      * You have to make sure that the localhost can relay. If you start
        qmail via inetd and tcpenv, you need some line the following in
        your /etc/hosts.allow file:
-      tcp-env: 127. 10.205.200 : setenv RELAYCLIENT
+      tcp-env: 127. 10.205.200. : setenv RELAYCLIENT
        where 10.205.200. is your IP address block. If you use tcpserver,
        then you need something like the following in your /etc/tcp.smtp
        file:
@@ -1175,7 +1176,7 @@ fi
 
    You should check the values for DEFAULT_EMAIL_HOST and
    DEFAULT_URL_HOST in Defaults.py. Make any necessary changes in the
-   mm_cfg.py file, not in the mm_cfg.py file. If you change either of
+   mm_cfg.py file, not in the Defaults.py file. If you change either of
    these two values, you'll want to add the following afterwards in the
    mm_cfg.py file:
 
@@ -1281,7 +1282,7 @@ fi
      * Problem: I send mail to the list, and get back mail saying the
        list is not found!
        Solution: You probably didn't add the necessary aliases to the
-       system alias database, or you didn't properly integration Mailman
+       system alias database, or you didn't properly integrate Mailman
        with your mail server. Perhaps you didn't update the alias
        database, or your system requires you to run newaliases
        explicitly. Refer to your server specific instructions in the 6
@@ -1397,14 +1398,99 @@ fi
        Jaguar using Sendmail.
        http://mail.python.org/pipermail/mailman-users/2002-October/022944
        .html
-     * Panther server (MacOSX 10.3) comes with Mailman; Apple has a tech
-       document about a problem you might encounter running Mailman on
-       Mac OS X Server 10.3:
+     * Panther server (MacOSX 10.3) comes with Mailman; Your operating
+       system should contain documentation that will help you, and Apple
+       has a tech document about a problem you might encounter running
+       Mailman on Mac OS X Server 10.3:
        http://docs.info.apple.com/article.html?artnum=107889
+
+   Terry Allen provides the following detailed instructions on running
+   Mailman on the 'client' version of OSX, or in earlier versions of OSX:
+
+   Mac OSX 10.3 and onwards has the basics for a successful Mailman
+   installation. Users of earlier versions of Mac OSX contains Sendmail
+   and those users should look at the Sendmail installation section for
+   tips. You should follow the basic installation steps as described
+   earlier in this manual, substituting as appropriate, the steps
+   outlined in this section.
+
+   By default, Mac OSX 10.3 'client' version does not have a fully
+   functional version of Postfix. Setting up a working MTA such as
+   Postfix is beyond the scope of this guide and you should refer to
+   http://www.postfix.org for tips on getting Postfix running. An easy
+   way to set Postfix up is to install and run Postfix Enabler, a
+   stand-alone tool for configuring Postfix on Mac OSX, available from
+   http://www.roadstead.com/weblog/Tutorials/PostfixEnabler.html.
+
+   Likewise, Mac OSX 'client' version from 10.1 onwards includes a
+   working Apache webserver. This is switched on using the System
+   Preferences control panel under the 'Sharing tab'. A useful tool for
+   configuring the Apache on Mac OSX is Webmin, which can be obtained
+   from http://www.webmin.com.
+
+   Webmin can also perform configuration for other system tasks,
+   including Postfix, adding jobs to your crontab, adding user and
+   groups, plus adding startup and shutdown jobs.
+
+   In a stock installation of OSX, the requirement for Mailman is to have
+   Python installed. Python is not installed by default, so it is advised
+   that you install the developer's tools package, which may have been
+   provided with your system. It can also be downloaded from the Apple
+   developer site at http://connect.apple.com. Not only is the developer
+   tools package an essential requirement for installing Mailman, but it
+   will come in handy at a later date should you need other tools. The
+   developer's tools are also know by the name XCode tools.
+
+   As a minimum, the Python version should be 2.2, but 2.3 is
+   recommended.
+
+   If you wish to add a user and group using the command line in OSX
+   instead of via Webmin or another GUI interface, open your terminal
+   application and follow the commands as indicated below - do not type
+   the comments following the "#" since they are just notes:
+
+sudo tcsh
+niutil -create / /users/mailman
+niutil -createprop / /users/mailman name mailman
+# Note that xxx is a free group ID number on your system
+niutil -createprop / /users/mailman uid xxx
+niutil -createprop / /users/mailman home /usr/local/mailman
+mkdir -p /usr/local/mailman
+niutil -createprop / /users/mailman shell /bin/tcsh
+passwd mailman
+# To prevent malicious hacking, supply a secure password here
+niutil -create / /groups/mailman
+niutil -createprop / /groups/mailman name mailman
+# Note that xxx is a free group ID number on your system
+niutil -createprop / /groups/mailman gid xxx
+niutil -createprop / /groups/mailman passwd '*'
+niutil -createprop / /groups/mailman users 'mailman'
+chown mailman:mailman /usr/local/mailman
+cd /usr/local/mailman
+chmod a+rx,g+ws .
+exit
+su mailman
+
+   For setting up Apache on OSX to handle Mailman, the steps are almost
+   identical and the configuration file on a stock Mac OSX Client version
+   is stored in the nearly standard location of /etc/httpd/httpd.conf.
+
+   The AFP548.com site has a time-saving automated startup item creator
+   for Mailman, which can be found at
+   http://www.afp548.com/Software/MailmanStartup.tar.gz
+
+   To install it, copy it into your /Library/StartupItems directory. As
+   the root or superuser, from the terminal, enter the following:
+
+gunzip MailmanStartup.tar.gz
+tar xvf MailmanStartup.tar
+
+   It will create the startup item for you so that when you reboot,
+   Mailman will start up.
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, December 22, 2004, Release 2.1
+   GNU Mailman - Installation Manual, April 10, 2005, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1459,4 +1545,4 @@ fi
    Previous Page Up One Level Next Page GNU Mailman - Installation Manual
      _________________________________________________________________
 
-   Release 2.1, documentation updated on December 22, 2004.
+   Release 2.1, documentation updated on April 10, 2005.
