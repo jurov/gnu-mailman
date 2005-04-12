@@ -959,7 +959,7 @@ and change your transport like this:
 
 This is how a set of address tests for the Exim lists look on a working
 system.  The list in question is \email{quixote-users@mems-exchange.org}, and
-these commands were run on the \code{mems-exchange.org} mail server ("% "
+these commands were run on the \code{mems-exchange.org} mail server ("\% "
 indicates the Unix shell prompt):
 
 \begin{verbatim}
@@ -1080,137 +1080,152 @@ Mailman は \code{localhost} (つまり, 127.0.0.1) から Sendmail の
 SMTP ポートに接続しますので, ローカルホストからの接続については
 DNS での同時検証を\strong{しない}ように Sendmail を設定してください.
 
-\subsection{Using the Qmail mail server\label{qmail-issues}}
+\subsection{qmail メールサーバを使う場合\label{qmail-issues}}
 
-There are some issues that users of the qmail mail transport agent have
-encountered.  None of the core maintainers use qmail, so all of this
-information has been contributed by the Mailman user community, especially
-Martin Preishuber and Christian Tismer, with notes by Balazs Nagy (BN) and
-Norbert Bollow (NB).
+ここでは, qmail メール配送エージェントを使うユーザがぶつかった問題をいくつかとりあげます.
+Mailman の中心的なメンテナで qmail を使っている者はいませんので, 
+以下の情報はすべて, Mailman のユーザ コミュニティから寄贈されたものです.
+とりわけ, Martin Preishuber と Christian Tismer, そして Balazs Nagy (以下 BN) と
+Norbert Bollow (以下 NB) の注釈に負っています.
 
 \begin{itemize}
-\item You might need to set the mail-gid user to either \code{qmail},
-      \code{mailman}, or \code{nofiles} by using the
-      \longprogramopt{with-mail-gid} \program{configure} option.
+\item \longprogramopt{with-mail-gid} \program{configure} オプションを使って, 
+      mail-gid のユーザを, \code{qmail}, \code{mailman}, \code{nofiles}
+      のいずれかにする必要がありそうです.
 
-      \emph{BN:} it highly depends on your mail storing policy.  For example
-      if you use the simple \file{~alias/.qmail-*} files, you can use
-      \program{`id -g alias`}.  But if you use \file{/var/qmail/users}, the
-      specified mail gid can be used.
+      \emph{BN:} どれを選ぶかは, メール格納の方針に大いに依存します.
+      たとえば, 単純な \file{\~{}alias/.qmail-*} ファイルを使っているのなら, 
+      \program{`id -g alias`} を使います\footnote{訳注:
+      ユーザ \code{alias} の GID を使う, という意味です.}.
+      しかし \file{/var/qmail/users} を使っているのなら, 
+      そこで指定したメール gid を使うことになります.
 
-      If you are going to be directing virtual domains directly to the
-      \code{mailman} user (using ``virtualdomains'' on a list-only domain, for
-      example), you will have to use \longprogramopt{with-mail-gid}=\var{gid
-      of mailman user's group}.  This is incompatible with having list aliases
-      in \file{~alias}, unless that alias simply forwards to
-      \code{mailman-listname*}.
+      仮想ドメインのアドレスが直接 \code{mailman} ユーザに向かうようにしている
+      (たとえば, メーリングリスト専用のドメインに ``virtualdomains'' を使っている)
+      のなら, \longprogramopt{with-mail-gid}=\var{mailmanユーザのグループのGID}
+      を使わなければならないでしょう.
+      これは, リストのエイリアスを \file{\~{}alias} に入れることとは両立しません.
+      こういうエイリアスは, 
+      \code{mailman-リスト名*} を転送するものになってしまいます.
+      
 
-\item If there is a user \code{mailman} on your system, the alias
-      \code{mailman-owner} will work only in \file{~mailman}.  You have to do
-      a \program{touch .qmail-owner} in \file{~mailman} directory to create
-      this alias.
+\item システムにユーザ \code{mailman} があると, エイリアス
+      \code{mailman-owner} は \file{\~{}mailman} の中でだけ動作します.
+      \file{\~{}mailman} ディレクトリの中で \program{touch .qmail-owner} すると, 
+      このエイリアスを作成できます.
 
-      \emph{NB:} An alternative, IMHO better solution is to \program{chown
-      root ~mailman}, that will stop qmail from considering \code{mailman} to
-      be a user to whom mail can be delivered.  (See ``man 8 qmail-getpw''.)
+      \emph{NB:} かわりに, 私がより良い解決策かと思うのが, \program{chown
+      root \~{}mailman} をすることで, こうすると qmail は \code{mailman} 
+      を, メールを配送できるユーザとみなさなくなります 
+      (``man 8 qmail-getpw'' を見てください)\footnote{訳注:
+      \code{mailman} ユーザのホームディレクトリが存在しない場合
+      (「グループとユーザの追加」の節の手順のとおりにするとそうなります) も, 
+      qmail は \code{mailman} を, メールを配送できるユーザとみなしません.}.
 
-\item In a related issue, if you have any users with the same name as one of
-      your mailing lists, you will have problems if list names contain
-      \samp{-} in them.  Putting \file{.qmail} redirections into the user's
-      home directory doesn't work because the Mailman wrappers will not get
-      spawned with the proper GID.  The solution is to put the following lines
-      in the \file{/var/qmail/users/assign} file:
+\item 関連する話題として, メーリングリストのどれかと同じ名前のユーザがあると, 
+      \samp{-} があるリスト名で問題が起きる, というものがあります.
+      そのユーザのホームディレクトリに \file{.qmail} リダイレクションファイルを置いても, 
+      Mailman のラッパを正しい GID で呼び出せないため, 動作しません.
+      解決策は, \file{/var/qmail/users/assign} ファイルに次のような行を入れることです:
 
 \begin{verbatim}
   +zope-:alias:112:11:/var/qmail/alias:-:zope-:
   .
 \end{verbatim}
 
-      where in this case the listname is e.g. \code{zope-users}.
+      これは, リスト名が \code{zope-users} などである場合です.
 
-      \emph{NB:} Alternatively, you could host the lists on a virtual domain,
-      and use the \file{/var/qmail/control/virtualdomains} file to put the
-      \code{mailman} user in charge of this virtual domain.
+      \emph{NB:} かわりに, リストを仮想ドメインで扱うことにして, 
+      \file{/var/qmail/control/virtualdomains} ファイルを使って
+      この仮想ドメインを \code{mailman} ユーザで管理させることもできます.
 
-\item \emph{BN:}If inbound messages are delivered by another user than
-      \code{mailman}, it's necessary to allow it to access \file{~mailman}.
-      Be sure that \file{~mailman} has group writing access and setgid bit is
-      set.  Then put the delivering user to \code{mailman} group, and you can
-      deny access to \file{~mailman} to others.  Be sure that you can do the
-      same with the WWW service.
+\item \emph{BN:}受け取るメッセージを \code{mailman} 以外のユーザで配送するときは, 
+      そのユーザが \file{\~{}mailman} にアクセスできるようになっていることが必須です.
+      \file{\~{}mailman} にグループ書き込み権限があって, 
+      setgid ビットがセットしてあることを確かめます.
+      そして, 配送するユーザを \code{mailman} グループに入れますが, 
+      ほかのユーザは \file{\~{}mailman} にアクセスできなくしてもよいでしょう.
+      WWW サービスについても同じようにできます.
 
-      By the way the best thing is to make a virtual mail server to handle all
-      of the mail.  \emph{NB:} E.g. make an additional "A" DNS record for the
-      virtual mailserver pointing to your IP address, add the line
-      \code{lists.kva.hu:mailman} to \file{/var/qmail/control/virtualdomains}
-      and a \code{lists.kva.hu} line to \file{/var/qmail/control/rcpthosts}
-      file.  Don't forget to HUP the qmail-send after modifying
-      ``virtualdomains''.  Then every mail to lists.kva.hu will arrive to
-      mail.kva.hu's mailman user.
+      とにかく, すべてのメールを扱う仮想メールサーバをつくるのが最善のやりかたです.
+      \emph{NB:} たとえば, 仮想メールサーバ用に
+      自分の IP アドレスを指す DNS "A" レコードを追加した上で, 
+      \file{/var/qmail/control/virtualdomains} ファイルに
+      \code{lists.kva.hu:mailman} という行を, 
+      \file{/var/qmail/control/rcpthosts} ファイルに
+      \code{lists.kva.hu} という行を, それぞれ追加します.
+      ``virtualdomains'' を変更したら, 
+      qmail-send に HUP シグナルを送るのを忘れないようにしてください.
+      これで, lists.kva.hu 宛のすべてのメールは
+      mail.kva.hu の mailman ユーザに届くようになります.
 
-      Then make your aliases:
-
-\begin{verbatim}
-          .qmail              => mailman@...'s letters
-          .qmail-owner        => mailman-owner's letters
-\end{verbatim}
-
-      For list aliases, you can either create them manually:
+      それから, エイリアスを作成します:
 
 \begin{verbatim}
-          .qmail-list         => posts to the 'list' list
-          .qmail-list-admin   => posts to the 'list's owner
-          .qmail-list-request => requests to 'list'
-          etc
+          .qmail              => mailman@...へのメール
+          .qmail-owner        => mailman-owner へのメール
 \end{verbatim}
+%% [池田] 仮想メールサーバにした場合, mailman*@... は mailman-mailman*@..
+%% に配送されるので, 上記のエイリアスは不要では?
 
-      or for automatic list alias handling (when using the lists.kva.hu
-      virtual as above), see \file{contrib/qmail-to-mailman.py} in the Mailman
-      source distribution.  Modify the \file{~mailman/.qmail-default} to
-      include:
+      リストのエイリアスについては, 次のように手動で作成することもできます:
 
 \begin{verbatim}
-          |/path/to/python /path/to/qmail-to-mailman.py
+          .qmail-list         => 'list' リストへの投稿
+          .qmail-list-admin   => 'list' の管理者への投稿
+          .qmail-list-request => 'list' への要求
+          など
 \end{verbatim}
 
-      and new lists will automatically be picked up.
-
-\item You have to make sure that the localhost can relay.  If you start qmail
-      via inetd and tcpenv, you need some line the following in your
-      \file{/etc/hosts.allow} file:
+      あるいは, (上のように, lists.kva.hu を仮想で使っているときは)
+      リストエイリアスの自動把握をすることもできます.  Mailman のソース配布物にある
+      \file{contrib/qmail-to-mailman.py} を見てください\footnote{訳注:
+      qmail-to-mailman.py は, 仮想メールサーバでないアドレスにも使えるでしょう.}.
+      \file{\~{}mailman/.qmail-default} を変更して, 次のものを含めます:
 
 \begin{verbatim}
-      tcp-env: 127. 10.205.200 : setenv RELAYCLIENT
+          |preline /path/to/python /path/to/qmail-to-mailman.py
 \end{verbatim}
 
-      where 10.205.200. is your IP address block.  If you use tcpserver, then
-      you need something like the following in your \file{/etc/tcp.smtp} file:
+      すると, 新しいリストを自動的にみつけてくれるようになります.
+
+\item localhost がメールをリレーできるように気をつけなければいけません.
+      qmail を inetd と tcpenv を通じて起動しているのなら, 
+      \file{/etc/hosts.allow} につぎのような行が必要です:
+
+\begin{verbatim}
+      tcp-env: 127. 10.205.200. : setenv RELAYCLIENT
+\end{verbatim}
+
+      ここで 10.205.200. は, 自分の IP アドレスブロックです.
+      tcpserver を使っているのなら, \file{/etc/tcp.smtp} ファイルに
+      次のようなものが必要です:
 
 \begin{verbatim}
       10.205.200.:allow,RELAYCLIENT=""
       127.:allow,RELAYCLIENT=""
 \end{verbatim}
 
-\item \emph{BN:} Bigger \file{/var/qmail/control/concurrencyremote} values
-      work better sending outbound messages, within reason.  Unless you know
-      your system can handle it (many if not most cannot) this should not be
-      set to a value greater than 120.
+\item \emph{BN:} \file{/var/qmail/control/concurrencyremote}
+      の値は, 常識的な範囲で増やせば, メッセージの送出がより速く動作するようになります.
+      ただし, システムがさばける数 %% (many if not most cannot) ???
+      だと分かっていない限り, 
+      この値は 120 より大きくしてはなりません.
 
-\item More information about setting up qmail and relaying can be found in the
-      qmail documentation.
+\item qmail とリレーの設定についてのさらなる情報は, qmail の文書にあります.
 \end{itemize}
 
-\emph{BN:} Last but not least, here's a little script to generate aliases to
-your lists (if for some reason you can/will not have them automatically picked
-up using \file{contrib/qmail-to-mailman.py}):
+\emph{BN:} 最後に, リストのエイリアスを生成するスクリプトを挙げておきます
+(なんらかの理由で, \file{contrib/qmail-to-mailman.py} 
+を使って自動的にエイリアスを拾い出すことができなかったり, そうしたくないときに使います):
 
-This script is for the Mailman 2.0 series:
+Mailman 2.0 系列のためのスクリプト:
 
 \begin{verbatim}
 #!/bin/sh
 if [ $# = 1 ]; then
     i=$1
-    echo Making links to $i in the current directory...
+    echo カレントディレクトリに $i へのリンクを作っています...
     echo "|preline /home/mailman/mail/mailman post $i" > .qmail-$i
     echo "|preline /home/mailman/mail/mailman mailowner $i" > .qmail-$i-admin
     echo "|preline /home/mailman/mail/mailman mailowner $i" > .qmail-$i-owner
@@ -1221,21 +1236,23 @@ fi
 % $ - emacs turd
 
 \begin{notice}[note]
-This is for a new Mailman 2.1 installation.  Users upgrading from
-Mailman 2.0 would most likely change \file{/usr/local/mailman} to
-\file{/home/mailman}.  If in doubt, refer to the \longprogramopt{prefix}
-option passed to \program{configure} during compile time.
+以下のスクリプトは, 新たにインストールした Mailman 2.1 のためのものです.
+Mailman 2.0 からアップグレードするユーザだと, ディレクトリを
+\file{/usr/local/mailman} から \file{/home/mailman} に変えたがるかもしれません.
+これをはっきり指定するには, % ???
+コンパイルのときに \program{configure} に
+\longprogramopt{prefix} オプションを渡します.
 \end{notice}
 
 \begin{verbatim}
 #!/bin/sh
 if [ $# = 1 ]; then
     i=$1
-    echo Making links to $i in the current directory...
+    echo カレントディレクトリに $i へのリンクを作っています...
     echo "|preline /usr/local/mailman/mail/mailman post $i" > .qmail-$i
     echo "|preline /usr/local/mailman/mail/mailman admin $i" > .qmail-$i-admin
     echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bounces
-    # The following line is for VERP
+    # 次の行は VERP 用
     # echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bounces-default
     echo "|preline /usr/local/mailman/mail/mailman confirm $i" > .qmail-$i-confirm
     echo "|preline /usr/local/mailman/mail/mailman join $i" > .qmail-$i-join
@@ -1248,13 +1265,13 @@ fi
 \end{verbatim}
 % $ - emacs turd
 
-\subsubsection{Information on VERP}
+\subsubsection{VERP についての情報}
 
-You will note in the alias generating script for 2.1 above, there is a line
-for VERP that has been commented out.  If you are interested in VERP there are
-two options.  The first option is to allow Mailman to do the VERP formatting.
-To activate this, uncomment that line and add the following lines to your
-\file{mm_cfg.py} file:
+上記の 2.1 用エイリアス生成スクリプトでは, VERP 用の行がコメントアウト
+してあるのに気づいたことでしょう.  VERP に関心があるのなら, 2つの選択
+肢があります.  一つめは Mailman に VERP 書式化をおこなわせるものです.
+これを有効にするには, 上のスクリプトでコメントを外し, \file{mm_cfg.py} 
+ファイルに次の行を加えます:
 
 \begin{verbatim}
     VERP_FORMAT = '%(bounces)s-+%(mailbox)s=%(host)s'
@@ -1262,29 +1279,30 @@ To activate this, uncomment that line and add the following lines to your
 \end{verbatim}
 % $ - emacs turd
 
-The second option is a patch on SourceForge located at:
+別の選択肢として, SourceForge にあるパッチも使えます.  次の場所にあります:
 
 \url{http://sourceforge.net/tracker/?func=detail\&atid=300103\&aid=645513\&group_id=103}
 
-This patch currently needs more testing and might best be suitable for
-developers or people well familiar with qmail.  Having said that, this patch
-is the more qmail-friendly approach resulting in large performance gains.
+このパッチは現時点では, テストが充分とは言えないので, 
+開発者や qmail についてよく分かっている人向きでしょう.  聞くところによると, 
+このパッチは qmail とより調和するアプローチで, 効率を大きく改善させるとのことです.
 
-\subsubsection{Virtual mail server}
+\subsubsection{仮想メール サーバ}
 
-As mentioned in the \ref{qmail-issues} section for a virtual mail server, a
-patch under testing is located at:
+\ref{qmail-issues} 節でも仮想メールサーバについては触れましたが, 
+テスト中のパッチが以下の場所にあります:
 
 \url{http://sf.net/tracker/index.php?func=detail\&aid=621257\&group_id=103\&atid=300103}
 
-Again, this patch is for people familiar with their qmail installation.
+念のため.  このパッチも, qmail のインストールについてよく分かっている人向けです.
 
-\subsubsection{More information}
+\subsubsection{更なる情報}
 
-You might be interested in some information on modifying footers that Norbert
-Bollow has written about Mailman and qmail, available here:
+メッセージフッタの変更についての情報に関心があるようなら, 
+Norbert Bollow が Mailman と qmail について書いたものがあります.  次の場所にあります:
 
-    \url{http://mailman.cis.to/qmail-verh/}
+    \url{http://mailman.cis.to/qmail-verh/}\footnote{訳注:
+    翻訳時点ではアクセスできませんでした.}
 
 \section{サイトのデフォルトを点検\label{customizing}}
 
@@ -1763,6 +1781,7 @@ Mailman を MacOSX で実行している人も大勢います.
       \url{http://mail.python.org/pipermail/mailman-users/2002-October/022944.html}
 
 \item Panther サーバ (MacOSX 10.3) には Mailman が入っています;
+      オペレーティング システムには助けになる文書が含まれていますし,
       Apple は, Mailman を MacOSX Server 10.3 で動作させる際にぶつかりそうな
       問題についての技術文書を出しています:
 
@@ -1816,7 +1835,7 @@ the commands as indicated below - do not type the comments following the
 sudo tcsh
 niutil -create / /users/mailman
 niutil -createprop / /users/mailman name mailman
-# Note that xxx is a free group ID number on your system
+# Note that xxx is a free user ID number on your system
 niutil -createprop / /users/mailman uid xxx
 niutil -createprop / /users/mailman home /usr/local/mailman
 mkdir -p /usr/local/mailman
