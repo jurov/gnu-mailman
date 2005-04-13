@@ -8265,31 +8265,33 @@ msgstr ""
 
 #: bin/mailmanctl:151
 msgid "PID unreadable in: %(pidfile)s"
-msgstr ""
+msgstr "在: %(pidfile)s 中找不到PID"
 
 #: bin/mailmanctl:153
 msgid "Is qrunner even running?"
-msgstr ""
+msgstr "队列管理器正在运行吗？"
 
 #: bin/mailmanctl:159
 msgid "No child with pid: %(pid)s"
-msgstr ""
+msgstr "进程号: %(pid)s 没有子进程"
 
 #: bin/mailmanctl:161
 msgid "Stale pid file removed."
-msgstr ""
+msgstr "过期的进程号文件已删除。"
 
 #: bin/mailmanctl:219
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if another\n"
 "master qrunner is already running.\n"
-msgstr ""
+msgstr "队列管理器的主锁无法获得，因为好像另一个主队列管理器已经在运行了。\n"
 
 #: bin/mailmanctl:225
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there is\n"
 "a stale master qrunner lock.  Try re-running mailmanctl with the -s flag.\n"
 msgstr ""
+"队列管理器的主锁无法获得。好像存在一个过期的队列管理器主锁。\n"
+"可以尝试使用 -s flag 来重启mailmanctl。\n"
 
 #: bin/mailmanctl:231
 msgid ""
@@ -8303,42 +8305,50 @@ msgid ""
 "\n"
 "Exiting."
 msgstr ""
+"队列管理器的主锁无法获得，好像其他主机上的某些进程已经取得了它。\n"
+"我们不能越过主机边界来测试过期的主锁，所以您必须手动测试。\n"
+"或者，如果您已经知道主锁已过期，用 -s flag 来重启mailmanctl。\n"
+"\n"
+"主锁文件: %(LOCKFILE)s\n"
+"主锁主机: %(status)s\n"
+"\n"
+"正在退出。"
 
 #: bin/mailmanctl:278 cron/mailpasswds:119
 msgid "Site list is missing: %(sitelistname)s"
-msgstr ""
+msgstr "缺少站点列表: %(sitelistname)s"
 
 #: bin/mailmanctl:303
 msgid "Run this program as root or as the %(name)s user, or use -u."
-msgstr ""
+msgstr "用root用户，或 %(name)s用户，来运行此程序，或者使用 -u。"
 
 #: bin/mailmanctl:334
 msgid "No command given."
-msgstr ""
+msgstr "没有提供命令。"
 
 #: bin/mailmanctl:337
 msgid "Bad command: %(command)s"
-msgstr ""
+msgstr "错误命令: %(command)s"
 
 #: bin/mailmanctl:342
 msgid "Warning!  You may encounter permission problems."
-msgstr ""
+msgstr "警告！您可能会遇到权限问题。"
 
 #: bin/mailmanctl:351
 msgid "Shutting down Mailman's master qrunner"
-msgstr ""
+msgstr "正在关闭Mailman的主队列管理器"
 
 #: bin/mailmanctl:358
 msgid "Restarting Mailman's master qrunner"
-msgstr ""
+msgstr "正在重启Mailman的主队列管理器"
 
 #: bin/mailmanctl:362
 msgid "Re-opening all log files"
-msgstr ""
+msgstr "正在打开所有的日志文件"
 
 #: bin/mailmanctl:398
 msgid "Starting Mailman's master qrunner."
-msgstr ""
+msgstr "正在启动Mailman的主队列管理器"
 
 #: bin/mmsitepass:19
 #, docstring
@@ -8363,38 +8373,55 @@ msgid ""
 "\n"
 "If password is not given on the command line, it will be prompted for.\n"
 msgstr ""
+"从终端中的提示来设置站点密码。\n"
+"\n"
+"在管理员密码好使的大部分地方（但还不是全部），站点密码都好使。在大部分用户密码能用的地方，\n"
+"站点密码也能用。\n"
+"\n"
+"用法e: %(PROGRAM)s [options] [password]\n"
+"\n"
+"选项:\n"
+"\n"
+"    -c/--列表创建者（listcreator）\n"
+"        设置列表创建者的密码，而不是站点密码。列表创建者有权创建和删除列表，但是\n"
+"        没有站点管理员的全部权限。\n"
+"\n"
+"    -h/--帮助\n"
+"        显示此帮助信息然后退出\n"
+"\n"
+"如果在命令行中没有输入密码，将会提醒您。\n"
 
 #: bin/mmsitepass:73
 msgid "site"
-msgstr ""
+msgstr "站点"
 
 #: bin/mmsitepass:80
 msgid "list creator"
-msgstr ""
+msgstr "列表创建者"
 
 #: bin/mmsitepass:86
 msgid "New %(pwdesc)s password: "
-msgstr ""
+msgstr "新 %(pwdesc)s 密码"
 
 #: bin/mmsitepass:87
 msgid "Again to confirm password: "
-msgstr ""
+msgstr "再次确认密码"
 
 #: bin/mmsitepass:89
 msgid "Passwords do not match; no changes made."
-msgstr ""
+msgstr "两次密码不同，没有做改变"
 
 #: bin/mmsitepass:92
 msgid "Interrupted..."
-msgstr ""
+msgstr "被中断..."
 
 #: bin/mmsitepass:98
 msgid "Password changed."
-msgstr ""
+msgstr "密码已改变"
 
 #: bin/mmsitepass:100
 msgid "Password change failed."
-msgstr ""
+msgstr "改变密码失败"
 
 #: bin/msgfmt.py:5
 #, docstring
@@ -8421,16 +8448,35 @@ msgid ""
 "    --version\n"
 "        Display version information and exit.\n"
 msgstr ""
+"从原始的翻译信息中产生二进制信息目录册。\n"
+"\n"
+"本程序将原始的统一字符编码的信息目录册(.po 文件)转换成二进制的GNU目录册(.mo file)。\n"
+"它本质上和GNU的msgfmt程序是一样的，但是，它只是一个简单的执行。\n"
+"\n"
+"用法: msgfmt.py [OPTIONS] filename.po\n"
+"\n"
+"选项:\n"
+"    -o file\n"
+"    --output-file=file\n"
+"        指定信息将写入的文件。如果忽略，将会输出到名为filename.mo（取决于输入文件名）的文件中。\n"
+"\n"
+"    -h\n"
+"    --help\n"
+"        输出此信息然后退出。\n"
+"\n"
+"    -V\n"
+"    --version\n"
+"        显示翻译信息然后退出。\n"
 
 #: bin/msgfmt.py:49
 #, docstring
 msgid "Add a non-fuzzy translation to the dictionary."
-msgstr ""
+msgstr "向字典中加入一个不失真的翻译。"
 
 #: bin/msgfmt.py:57
 #, docstring
 msgid "Return the generated output."
-msgstr ""
+msgstr "返回产生的输出。"
 
 #: bin/newlist:19
 #, docstring
@@ -8507,30 +8553,88 @@ msgid ""
 "\n"
 "Note that listnames are forced to lowercase.\n"
 msgstr ""
+"创建一个全新的、空的邮件列表\n"
+"\n"
+"用法: %(PROGRAM)s [options] [listname [listadmin-addr [admin-password]]]\n"
+"\n"
+"选项:\n"
+"\n"
+"    -l language\n"
+"    --language=language\n"
+"        制定列表的默认语言, 此语言必须是双字节编码。\n"
+"\n"
+"    -u urlhost\n"
+"    --urlhost=urlhost\n"
+"        提供列表中的网络接口主机名。\n"
+"\n"
+"    -e emailhost\n"
+"    --emailhost=emailhost\n"
+"        提供列表的email域名。\n"
+"\n"
+"    -q/--quiet\n"
+"        通常管理员会在被提醒之后再收到email通知他们的列表已建好。\n"
+"        此操作能阻止提醒和email通知。\n"
+"\n"
+"    -h/--help\n"
+"        输出此帮助文件然后退出。\n"
+"\n"
+"只要您愿意，您能在命令行上指定任意多个参数：对于缺少的参数会提醒您。\n"
+"\n"
+"每个邮件列表又都两个参数，一个用来在寄出email时指定默认主机名，另一个为所有的网络接口指定默认网址。\n"
+"当您配置完Mailman，这些默认值已经正确了，但是如果您正在使用多个虚拟的Mailman站点，则默认值可能\n"
+"对您正在创建的列表不是很适用。\n"
+"\n"
+"您还要为您创建的列表指定一个域，使用如下格式的命令：\n"
+"\n"
+"    newlist --urlhost=www.mydom.ain mylist\n"
+"\n"
+"‘www.mydom.ain’ 将作为虚拟主机列表的网址的基础主机名。例如：通过此设置后，人们将可以在\n"
+"http://www.mydom.ain/mailman/listinfo上察看列表的概貌。而且，如果email主机名是自动指定的话，\n"
+"www.mydom.ain将是VIRTUAL_HOSTS 映射入 mm_cfg.py/Defaults.py时的关键字（key）\n"
+"\n"
+"如果您希望email主机名不同于从VIRTUAL_HOSTS中搜出的，或者如果urlhost没有在VIRTUAL_HOSTS上注册，\n"
+"您可以指定emailhost，格式如下：\n"
+"\n"
+"    newlist --urlhost=www.mydom.ain --emailhost=mydom.ain mylist\n"
+"\n"
+"‘mydom.ain’是邮件域名。如果您不指定emailhost而urlhost不在虚拟主机列表中，则email接口将使用\n"
+"mm_cfg.DEFAULT_EMAIL_HOST\n"
+"\n"
+"为了向后兼容，您也可以为您创建的新列表指定一个域，通过使用如下的格式：\n"
+"\n"
+"    mylist@www.mydom.ain\n"
+"\n"
+"‘www.mydom.ain’ 用来做‘urlhost’，但是如果在虚拟主机表中没有找到‘emailhost’，它也用来做\n"
+"‘emailhost’。注意‘--urlhost’ and ‘--emailhost’有比‘www.mydom.ain’高的优先权。\n"
+"\n"
+"如果您像‘mylist’着样品写出了列表名，则email主机名将从DEFAULT_EMAIL_HOST中取得，\n"
+"网址将从DEFAULT_URL中取得。 (像在文件Defaults.py中定义的，或者被mm_cfg.py文件中的设置覆盖的。)\n"
+"\n"
+"注意列表名必须是小写字母。\n"
 
 #: bin/newlist:150
 msgid "Unknown language: %(lang)s"
-msgstr ""
+msgstr "未知的语言: %(lang)s"
 
 #: bin/newlist:155
 msgid "Enter the name of the list: "
-msgstr ""
+msgstr "输入列表的名字："
 
 #: bin/newlist:176
 msgid "Enter the email of the person running the list: "
-msgstr ""
+msgstr "输入运行列表的人的email："
 
 #: bin/newlist:181
 msgid "Initial %(listname)s password: "
-msgstr ""
+msgstr "初始的 %(listname)s的密码："
 
 #: bin/newlist:185
 msgid "The list password cannot be empty"
-msgstr ""
+msgstr "列表密码不能为空"
 
 #: bin/newlist:225
 msgid "Hit enter to notify %(listname)s owner..."
-msgstr ""
+msgstr "单击回车来通知 %(listname)s的所有者..."
 
 #: bin/qrunner:19
 #, docstring
@@ -8586,18 +8690,58 @@ msgid ""
 "runner is required unless -l or -h is given, and it must be one of the names\n"
 "displayed by the -l switch.\n"
 msgstr ""
+"通过一次或者多次命令，来运行一个或者多个队列管理器。\n"
+"\n"
+"每个指定的管理器都循环的工作。换句话说，第一个指定的管理器会毁掉它的目录下的所有的文件。当它结束后，\n"
+"下一个管理器将会重复这么做，并一直循环下去。在命令行中可以指定一共循环的次数。\n"
+"\n"
+"用法: %(PROGRAM)s [options]\n"
+"\n"
+"选项:\n"
+"\n"
+"    -r runner[:slice:range]\n"
+"    --runner=runner[:slice:range]\n"
+"        运行指定的队列管理器，该管理器必须是选项 -l的返回值中的一个。\n"
+"        可选选项slice:range:用来为一个队列分配多个队列管理器。\n"
+"        range是分配到该队列中的队列管理器的总数；slice是该改队列的号码，范围是[0..range)。\n"
+"\n"
+"        如果使用slice:range形式, 您最好确定队列的每个队列管理器都有一个相同的range值。\n"
+"        如果没有提供slice:runner，将默认成1:1。\n"
+"\n"
+"        可以使用多个-r 选项，此时每个队列管理器都将按循环的方式运行一次。\n"
+"        管理器‘All’是被选项-l列出来的每个队列管理器的简写。\n"
+"\n"
+"    --once\n"
+"    -o\n"
+"        严格的在每个队列管理器得主循环中运行管理器一次。如果没有此选项，\n"
+"        每个队列管理器讲不规律的运行，直到进程收到SIGTERM或者SIGINT。\n"
+"\n"
+"    -l/--list\n"
+"        显示可用的队列管理器的名字然后退出。\n"
+"\n"
+"    -v/--verbose\n"
+"        向日志文件中输出更多的调试信息。\n"
+"\n"
+"    -s/--subproc\n"
+"        只有当队列管理器作为mailmanctl启动脚本的subprocess运行时，该选项才能使用。\n"
+"        它改变因为出错退出时的行为，来使在那个框架下工作的更好。\n"
+"\n"
+"    -h/--help\n"
+"        输出该信息然后退出。\n"
+"\n"
+"除非使用-l 或 -h，都要有管理器，并且它必须是使用 -l 后显示的名字的中的一个。\n"
 
 #: bin/qrunner:176
 msgid "%(name)s runs the %(runnername)s qrunner"
-msgstr ""
+msgstr "%(name)s 运行 %(runnername)s 队列管理器"
 
 #: bin/qrunner:177
 msgid "All runs all the above qrunners"
-msgstr ""
+msgstr "All 运行以上所有的队列管理器"
 
 #: bin/qrunner:213
 msgid "No runner name given."
-msgstr ""
+msgstr "没提供管理器的名字。"
 
 #: bin/rb-archfix:21
 #, docstring
@@ -8627,6 +8771,26 @@ msgid ""
 "\n"
 "This script is provided for convenience purposes only.  It isn't supported.\n"
 msgstr ""
+"降低磁盘空间。\n"
+"\n"
+"用法: %(PROGRAM)s [options] file ...\n"
+"\n"
+"选项是:\n"
+"    -h / --help\n"
+"        输出此帮助信息然后退出。\n"
+"\n"
+"此命令仅用来整理用Mailman 2.1.3O或更早的版本生成的数据库归档文件，这些文件都是html格式的。\n"
+"而html格式会造成大量的内存浪费并严重影响高速列表的性能，特别是会产生大量文本纪录的列表。\n"
+"\n"
+"例子:\n"
+"\n"
+"%% ls -1 archives/private/*/database/*-article | xargs %(PROGRAM)s\n"
+"\n"
+"在运行此脚本后，您应该运行‘bin/check_perms -f’。\n"
+"\n"
+"当您成功的运行了此脚本后，您可能会愿意删除雕有此脚本产生的-article.bak文件。\n"
+"\n"
+"此脚本仅是用来提升性能的。并不是必需使用的。\n"
 
 #: bin/remove_members:19
 #, docstring
@@ -8673,22 +8837,57 @@ msgid ""
 "    addr1 ... are additional addresses to remove.\n"
 "\n"
 msgstr ""
+"从列表中删除成员。\n"
+"\n"
+"用法:\n"
+"    remove_members [options] [listname] [addr1 ...]\n"
+"\n"
+"选项:\n"
+"\n"
+"    --file=file\n"
+"    -f file\n"
+"        删除从给定文件（file）中找到的成员地址。如果文件是‘-’，则从输入中寻找。\n"
+"\n"
+"    --all\n"
+"    -a\n"
+"        删除邮件列表中所有的成员。（和--fromall互斥）\n"
+"\n"
+"    --fromall\n"
+"        从您的系统上的所有列表中删除给定的地址，不管您可能有的虚拟域。\n"
+"        此选项不能和-a/--all一起使用。而且，您也不能指定列表名。\n"
+"\n"
+"    --nouserack\n"
+"    -n\n"
+"        不用发送用户确认信息。如果不指定，将会使用列表默认值。\n"
+"\n"
+"    --noadminack\n"
+"    -N\n"
+"        不用发送管理员确认信息。如果不指定，将会使用列表默认值。\n"
+"\n"
+"    --help\n"
+"    -h\n"
+"        输出该帮助信息然后退出。\n"
+"\n"
+"    列表名是邮件发送列表的名字\n"
+"\n"
+"    addr1 ... 是额外要删除的地址。\n"
+"\n"
 
 #: bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
-msgstr ""
+msgstr "不能读取文件: %(filename)s。"
 
 #: bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
-msgstr ""
+msgstr "打开列表 %(listname)s 时出错... 正在跳过。"
 
 #: bin/remove_members:173
 msgid "No such member: %(addr)s"
-msgstr ""
+msgstr "没有这个成员: %(addr)s"
 
 #: bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
-msgstr ""
+msgstr "用户 %(addr)s 已从列表: %(listname)s中删除。"
 
 #: bin/reset_pw.py:21
 #, docstring
@@ -8707,14 +8906,26 @@ msgid ""
 "    -v / --verbose\n"
 "        Print what the script is doing.\n"
 msgstr ""
+"为邮件列表成员重设密码。\n"
+"\n"
+"此脚本为一个邮件列表的所有成员重设密码。它也能为所有邮件列表的所有成员重设密码，\n"
+"但是您有必要让所有得用户知道他们的密码被改变了。\n"
+"\n"
+"该脚本必须作为bin/withlist脚本来运行，即\n"
+"\n"
+"% bin/withlist -l -r reset_pw listname [options]\n"
+"\n"
+"选项:\n"
+"    -v / --verbose\n"
+"        输出脚本正在干什么\n"
 
 #: bin/reset_pw.py:77
 msgid "Changing passwords for list: %(listname)s"
-msgstr ""
+msgstr "为列表 %(listname)s改变密码"
 
 #: bin/reset_pw.py:83
 msgid "New password for member %(member)40s: %(randompw)s"
-msgstr ""
+msgstr "成员 %(member)40s的新密码： %(randompw)s"
 
 #: bin/rmlist:19
 #, docstring
@@ -8727,7 +8938,7 @@ msgid ""
 "Usage:\n"
 "    rmlist [-a] [-h] listname\n"
 "\n"
-"Where:\n"
+"其中:\n"
 "    --archives\n"
 "    -a\n"
 "        Remove the list's archives too, or if the list has already been\n"
@@ -8738,30 +8949,46 @@ msgid ""
 "        Print this help message and exit.\n"
 "\n"
 msgstr ""
+"安全的删除邮件列表的所有组件!\n"
+"\n"
+"能删除邮件列表的（几乎）所有的痕迹。默认情况下，对不用的旧列表很有用的列表存档不会被删除。\n"
+"\n"
+"用法:\n"
+"    rmlist [-a] [-h] listname\n"
+"\n"
+"其中:\n"
+"    --archives\n"
+"    -a\n"
+"        将列表存档也删除，如果列表已经被删除，则删除所有残留的存档。\n"
+"\n"
+"    --help\n"
+"    -h\n"
+"        输出该帮助信息然后退出。\n"
+"\n"
 
 #: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
-msgstr ""
+msgstr "正在删除 %(msg)s"
 
 #: bin/rmlist:80
 msgid "%(listname)s %(msg)s not found as %(filename)s"
-msgstr ""
+msgstr "没有找到叫 %(filename)s的 %(listname)s %(msg)s "
 
 #: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
-msgstr ""
+msgstr "没有这个列表(或者列表已经被删除了): %(listname)s"
 
 #: bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
-msgstr ""
+msgstr "没有这个列表: %(listname)s。正在删除它的残留的文件。"
 
 #: bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
-msgstr ""
+msgstr "没有删除文件。带上 -a再调用一遍命令来删除它们。"
 
 #: bin/rmlist:124
 msgid "list info"
-msgstr ""
+msgstr "列表信息"
 
 #: bin/rmlist:132
 msgid "stale lock file"
