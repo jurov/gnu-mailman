@@ -1,7 +1,7 @@
 # Catalogues Mailman en Français.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Ousmane Wilane <wilane@cyg.sn>, 2002.
-# Pascal George <george@lyon.inserm.fr>, 2003-2004. 
+# Pascal George <george@lyon.inserm.fr>, 2003-2005. 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b6\n"
@@ -2108,7 +2108,7 @@ msgstr "Page des options utilisateur spécifiques"
 
 #: Mailman/Cgi/edithtml.py:46
 msgid "Welcome email text file"
-msgstr ""
+msgstr "Fichier texte message de Bienvenue"
 
 #: Mailman/Cgi/edithtml.py:58
 msgid "List name is required."
@@ -6576,6 +6576,10 @@ msgid ""
 "             the list's owner address by %%(listowner)s and replaces the\n"
 "             internally crafted default message."
 msgstr ""
+" Texte à inclure dans chaque avis de rejet à envoyer aux\n"
+"             non-abonnés qui poste sur la liste. Cet avis peut inclure\n"
+"             l'adresse du propriétaire de la liste avec %%(listowner)s\n"
+"	      et remplacer le message interne par défaut."
 
 #: Mailman/Gui/Privacy.py:318
 msgid ""
@@ -7980,14 +7984,12 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "%(dbfile)s appartient à %(owner)s (doit appartenir à %(user)s)"
 
 #: Mailman/MailList.py:214
-#, fuzzy
 msgid "Your confirmation is required to join the %(listname)s mailing list"
-msgstr "Vous n'êtes pas abonné à la liste %(listname)s"
+msgstr "Votre confirmation est nécessaire pour accéder à la liste %(listname)s"
 
 #: Mailman/MailList.py:224
-#, fuzzy
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
-msgstr "Vous n'êtes pas abonné à la liste %(listname)s"
+msgstr "Votre confirmation est nécessaire pour quitter la liste %(listname)s"
 
 #: Mailman/MailList.py:888 Mailman/MailList.py:1277
 msgid " from %(remote)s"
@@ -10281,7 +10283,6 @@ msgid "Return the generated output."
 msgstr "Retourne la sortie générée."
 
 #: bin/newlist:19
-#, fuzzy
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -10369,8 +10370,7 @@ msgid ""
 msgstr ""
 "Crée une nouvelle liste sans abonnés.\n"
 "\n"
-"Usage : %(PROGRAM)s [options] [nom_liste [addr_listeadmin [mot_de_passe-"
-"admin]]]\n"
+"Usage : %(PROGRAM)s [options] [nom_liste [addr_listeadmin [mot_de_passe-admin]]]\n"
 "\n"
 "Options :\n"
 "\n"
@@ -10379,12 +10379,12 @@ msgstr ""
 "        Faire de `langue' la langue préférée de cette liste, le paramètre\n"
 "        doit être composé des deux lettres du code de la langue.\n"
 "\n"
-"    -u urlhôte\n"
-"    --urlhost=urlhôte\n"
+"    -u urlhost\n"
+"    --urlhost=urlhost\n"
 "        Retourne le nom d'hôte de l'interface web de la liste.\n"
 "\n"
-"    -e emailhôte\n"
-"    --emailhost=emailhôte\n"
+"    -e emailhost\n"
+"    --emailhost=emailhost\n"
 "        Retourne le nom de domaine du serveur de courrier de la liste.\n"
 "\n"
 "    -q/--quiet\n"
@@ -10427,7 +10427,7 @@ msgstr ""
 "    newlist --urlhost=www.mondoma.ine --emailhost=mondoma.ine maliste\n"
 "\n"
 "où `mondoma.ine' est le nom de domaine de messagerie\n"
-"Si vous ne spécifiez le serveur de messagerie et que\n"
+"Si vous ne spécifiez pas le serveur de messagerie et que\n"
 " urlhost n'est pas dans la liste des hôtes virtuels, alors la valeur de "
 "mm_cfg.DEFAULT_EMAIL_HOST sera\n"
 "utilisée pour l'interface de courrier.\n"
@@ -10446,7 +10446,7 @@ msgstr ""
 "Si vous spécifiez le nom de la liste sous la forme `maliste', alors le\n"
 "nom d'hôte pour la messagerie sera extrait de DEFAULT_HOST_NAME et\n"
 "l'url sera extraite de DEFAULT_URL (comme spécifié dans votre fichier\n"
-"Defaults.py à moins que ces valeurs n'aient été redéfinit dans\n"
+"Defaults.py à moins que ces valeurs n'aient été redéfinies dans\n"
 "mm_cfg.py).\n"
 "\n"
 "Notez que les noms de liste sont ramenés en minuscule.\n"
@@ -11569,7 +11569,6 @@ msgid "Using Mailman version:"
 msgstr "Utilisation de la version de Mailman :"
 
 #: bin/withlist:19
-#, fuzzy
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -11786,13 +11785,13 @@ msgstr ""
 "pourrez créer les fonctions suivantes dans un fichier appelé\n"
 "`changepass.py':\n"
 "\n"
-"from Mailman.Errors import NotAMember\n"
+"from Mailman.Errors import NotAMemberError\n"
 "\n"
 "def changepasse(mlist, addr, nouvpasse):\n"
 "    try:\n"
 "        mlist.setMemberPassword(addr, nouvpasse)\n"
 "        mlist.Save()\n"
-"    except NotAMember:\n"
+"    except NotAMemberError:\n"
 "        print \"Pas d'adresse correspondant à:\", addr\n"
 "\n"
 "puis exécuter ce qui suit sur la ligne de commande:\n"
