@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Wed Mar 23 09:55:34 2005\n"
-"PO-Revision-Date: 2005-03-31 08:27+0300\n"
+"PO-Revision-Date: 2005-04-14 10:45+0300\n"
 "Last-Translator: Anti Veeranna <duke@linux.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -384,7 +384,7 @@ msgid ""
 "    "
 msgstr ""
 "<em><strong>Hoiatus:</strong> selle seadistuse muutmine siin\n"
-"ei kajastu teistes akendes. Reloadi teisi aknaid, milles selle listi\n"
+"ei kajastu teistes akendes. Värskenda teisi aknaid, milles selle listi\n"
 "see seadistus kuvatud on. Võid ka..."
 
 #: Mailman/Cgi/admin.py:373
@@ -443,10 +443,7 @@ msgstr "Kõik listi saadetud kirjad peetakse modereerimiseks kinni"
 msgid ""
 "Make your changes in the following section, then submit them\n"
 "        using the <em>Submit Your Changes</em> button below."
-msgstr ""
-"Tee selles vormis soovitud muudatused ja salvesta nad klikkides allpool "
-"asuvat\n"
-"       <em>Salvesta</em> nuppu."
+msgstr "Muudatused jõustuvad peale <em>Salvesta</em> nupu vajutamist."
 
 #: Mailman/Cgi/admin.py:502
 msgid "Additional Member Tasks"
@@ -456,7 +453,7 @@ msgstr "Muud tellimuse seaded"
 msgid ""
 "<li>Set everyone's moderation bit, including\n"
 "            those members not currently visible"
-msgstr "<li>Kehtesteda kõigile kasutajatele 'mod' lipuke."
+msgstr "<li>Kehtestada kõigile kasutajatele 'mod' lipuke."
 
 #: Mailman/Cgi/admin.py:512
 msgid "Off"
@@ -621,7 +618,7 @@ msgstr "Vigane regulaaravaldis: "
 
 #: Mailman/Cgi/admin.py:932
 msgid "%(allcnt)s members total, %(membercnt)s shown"
-msgstr "Kokku %(allcnt)s liiget, näidatakse %(membercnt)s"
+msgstr "Kokku on %(allcnt)s liiget, selles nimekirjas %(membercnt)s"
 
 #: Mailman/Cgi/admin.py:935
 msgid "%(allcnt)s members total"
@@ -882,7 +879,7 @@ msgid ""
 "least\n"
 "    one blank line at the end..."
 msgstr ""
-"Kui soovite kutse või tervituse algusse mingit teksti lisada,\n"
+"Kui soovite kutse või tervituse algusse teksti lisada,\n"
 "siis kirjutage see siia. Lõppu jätke vähemalt üks tühi rida. "
 
 #: Mailman/Cgi/admin.py:1184
@@ -916,9 +913,8 @@ msgid ""
 "and also provide the email addresses of the list moderators in the\n"
 "<a href=\"%(adminurl)s/general\">general options section</a>."
 msgstr ""
-"<em>Listi omanikud</em> on isikud, kel on täielik kontroll listi "
-"seadistuste\n"
-"üle. Nad saavad seadistust muuta nende veebilehtede kaudu.\n"
+"<em>Listi omanikel</em> on täielik kontroll listi "
+"ja selle seadistuste üle. Nad saavad seadistusi muuta nende veebilehtede kaudu.\n"
 "\n"
 "<p><em>Listi toimetajatel</em> on vähem õigusi; nad ei saa listi seadistusi\n"
 "muuta, kuid neil on õigused administratiivtaotluste läbivaatamiseks ja\n"
@@ -956,11 +952,11 @@ msgstr "Salvesta"
 
 #: Mailman/Cgi/admin.py:1278
 msgid "Moderator passwords did not match"
-msgstr "Toimetaja paroolid erinesid"
+msgstr "Toimetaja paroolid erinesid üksteisest"
 
 #: Mailman/Cgi/admin.py:1288
 msgid "Administrator passwords did not match"
-msgstr "Omaniku paroolid erinesid"
+msgstr "Omaniku paroolid erinesid üksteisest"
 
 #: Mailman/Cgi/admin.py:1337
 msgid "Already a member"
@@ -1000,7 +996,7 @@ msgstr "Tellimus lõpetati:"
 
 #: Mailman/Cgi/admin.py:1396
 msgid "Cannot unsubscribe non-members:"
-msgstr "Aadresse, mis ei puuduvad liikmete nimekirjas, ei saa ka eemaldada:"
+msgstr "Neid liikmete nimekirjast puuduvaid aadresse ei saa ka eemaldada:"
 
 #: Mailman/Cgi/admin.py:1408
 msgid "Bad moderation flag value"
@@ -1012,7 +1008,7 @@ msgstr "ei liidetud"
 
 #: Mailman/Cgi/admin.py:1432
 msgid "Ignoring changes to deleted member: %(user)s"
-msgstr "kustutatud liikmele %(user)s rakendatud muudatusi ignoreeriti"
+msgstr "kustutatud liikmele %(user)s rakendatud muudatusi eirati"
 
 #: Mailman/Cgi/admin.py:1472
 msgid "Successfully Removed:"
@@ -2713,7 +2709,7 @@ msgstr ""
 "teha ei luba.\n"
 "\n"
 "Kui tellijaks olid sina ise ja sa oled lihtsalt unustanud, et see list\n"
-"on sul juba tellitud, siis lihtsalt ignoreeri seda kirja. Kui sul on\n"
+"on sul juba tellitud, siis lihtsalt eira seda kirja. Kui sul on\n"
 "alust arvata, et keegi üritas teada saada kas sa oled selle listi\n"
 "liige või mitte, siis võid ühendust võtta listi omanikuga aadressil\n"
 "%(listowner)s.\n"
@@ -4018,7 +4014,7 @@ msgid ""
 "             message</a> for email to the -owner and -admin address."
 msgstr ""
 "Kuigi Mailmani tagastuste töötleja on küllaltki intelligentne, ei suuda\n"
-"see siiski töödelda kõiki maailmas kasutusel olevaid tagastuste formaate. "
+"see siiski töödelda kõiki maailmas kasutusel olevaid tagastuste vorminguid. "
 "Siin\n"
 "peaks valima <em>Jah</em> kahel põhjusel: 1) kui tegemist on tõesti "
 "kriitilise veaga kirjade kätte toimetamisel,\n"
@@ -4031,7 +4027,7 @@ msgstr ""
 "edaspidi kustutatakse kõik töötlemata tagastused.\n"
 "\n"
 "<p><b>NB</b> See seadistus mõjub ka listi -admin aadressidele\n"
-"saadetud kirjadele. Seda aadressiformaat on iganenud ja seda ei peaks\n"
+"saadetud kirjadele. See aadressivorming on iganenud ja seda ei peaks\n"
 "enam kasutama, aga mõned inimesed kasutavad seda sellest hoolimata\n"
 "Kui keegi saadab sellele aadressile kirja ja siit on valitud <em>Ei</em>, "
 "siis\n"
@@ -4188,7 +4184,7 @@ msgstr ""
 "Kasuta seda seadistust, et eemaldada manused tüübi alusel. Igal real peaks "
 "olema üks MIME tüüp kujul <tt>tüüp/alamtüüp</tt> näiteks <tt>image/gif</tt>. "
 "Alamtüübi võib ka ära jätta ja siis eemaldatakse kõik selletüübilised "
-"manused, näiteks <tt>image</tt>. <p>Tühje ridu ignoreeritakse.\n"
+"manused, näiteks <tt>image</tt>. <p>Tühje ridu eiratakse.\n"
 "<p>Vaata ka <a href=\"?VARHELP=contentfilter/pass_mime_types\">lubatud "
 "tüüpide nimekirja abiinfot</a>."
 
@@ -4215,7 +4211,7 @@ msgid ""
 "             will be rejected by the pass filter."
 msgstr ""
 "Selle seadistuse abil saad kustutada manuseid, mille tüüp ei ole lubatud "
-"tüüpide nimestikus. Formaat on sama, mis <a href=\"?VARHELP=contentfilter/"
+"tüüpide nimestikus. Vorming on sama, mis <a href=\"?VARHELP=contentfilter/"
 "filter_mime_types\">keelatud tüüpide nimekirjal</a>. <p><b>Märkus</b>: kui "
 "jätad sellest nimestikust välja <tt>multipart</tt> tüübi, siis "
 "filtreeritakse välja kõik manustega kirjad."
@@ -4302,7 +4298,7 @@ msgstr ""
 
 #: Mailman/Gui/ContentFilter.py:163
 msgid "Bad MIME type ignored: %(spectype)s"
-msgstr "Vigast MIME tüüpi ignoreeriti: %(spectype)s"
+msgstr "Vigast MIME tüüpi eirati: %(spectype)s"
 
 #: Mailman/Gui/Digest.py:36
 msgid "Digest options"
@@ -4340,7 +4336,7 @@ msgstr "Plain"
 
 #: Mailman/Gui/Digest.py:56
 msgid "When receiving digests, which format is default?"
-msgstr "Millist kokkuvõtete formaati kasutada?"
+msgstr "Millist kokkuvõtete vormingut kasutada?"
 
 #: Mailman/Gui/Digest.py:59
 msgid "How big in Kb should a digest be before it gets sent out?"
@@ -6275,7 +6271,7 @@ msgstr ""
 "<p>Näide: <pre>to: @public.com </pre> peatab kõik kirjad, mille\n"
 "<em>To:</em> päisest leiti string '@public.com'.\n"
 "\n"
-"<p>Regulaaravaldise alguses asuvaid tühemikke ignoreeritakse. Sellest saab\n"
+"<p>Regulaaravaldise alguses asuvaid tühemikke eiratakse. Sellest saab\n"
 "vajadusel üle tühemikke sulgudega ümbritsedes."
 
 #: Mailman/Gui/Privacy.py:481
@@ -6284,7 +6280,7 @@ msgid ""
 "                Incomplete filter rules will be ignored."
 msgstr ""
 "Päisefiltrid koosnevad reeglitest.\n"
-"Poolikuid reegleid ignoreeritakse."
+"Poolikuid reegleid eiratakse."
 
 #: Mailman/Gui/Privacy.py:489
 msgid ""
@@ -6293,7 +6289,7 @@ msgid ""
 "                rule will be ignored."
 msgstr ""
 "%(safepattern)s pole korrektne regulaaravaldis. Seda\n"
-"reeglit ignoreeritakse."
+"reeglit eiratakse."
 
 #: Mailman/Gui/Topics.py:35
 msgid "Topics"
@@ -6413,7 +6409,7 @@ msgstr ""
 msgid ""
 "Topic specifications require both a name and\n"
 "                a pattern.  Incomplete topics will be ignored."
-msgstr "Kategooria koosneb nimest ja reeglist. Poolikuid kategooriaid ignoreeritakse."
+msgstr "Kategooria koosneb nimest ja reeglist. Poolikuid kategooriaid eiratakse."
 
 #: Mailman/Gui/Topics.py:128
 msgid ""
@@ -6573,7 +6569,7 @@ msgid ""
 msgstr ""
 "Sünkroniseerimine uudisegrupiga tähendab et listi hakatakse edastama\n"
 "postitusi mis on saadetud peale sünkroniseerimis hetke. Kõiki varasemaid\n"
-"postitusi ignoreeritakse. See on samaväärne sellega nagu sa loeksid\n"
+"postitusi eiratakse. See on samaväärne sellega nagu sa loeksid\n"
 "ise uudisegruppi ja märgiksid kõik postitused <em>loetuks</em>.\n"
 "Sünkroniseerides ei jõua varasemad postitused listi liikmeteni."
 
@@ -7137,7 +7133,7 @@ msgstr ""
 
 #: Mailman/Handlers/Scrubber.py:335
 msgid "Skipped content of type %(partctype)s\n"
-msgstr "Kirja osa tüübiga %(partctype)s ignoreeriti\n"
+msgstr "Kirja osa tüübiga %(partctype)s eirati\n"
 
 #: Mailman/Handlers/Scrubber.py:370
 msgid "-------------- next part --------------\n"
@@ -7378,7 +7374,7 @@ msgstr "Töötlemata tagastus"
 
 #: Mailman/Queue/CommandRunner.py:92
 msgid "Ignoring non-text/plain MIME parts"
-msgstr "non-text/plain MIME osiseid ignoreeritakse"
+msgstr "non-text/plain MIME osiseid eiratakse"
 
 #: Mailman/Queue/CommandRunner.py:148
 msgid ""
@@ -7414,7 +7410,7 @@ msgid ""
 "- Ignored:"
 msgstr ""
 "\n"
-"- Ignoreeriti:"
+"- eirati:"
 
 #: Mailman/Queue/CommandRunner.py:170
 msgid ""
@@ -7591,14 +7587,14 @@ msgstr ""
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
 "        Kas saata uutele liikmetele tervitus või mitte. Selle kasutamisel "
-"ignoreeritakse\n"
+"eiratakse\n"
 "        listi `send_welcome_msg' seadistust.\n"
 "\n"
 "    --admin-notify=<y|n>\n"
 "    -a <y|n>\n"
 "        Kas teavitada listi haldajat uutest liikmetest või mitte. Selle "
 "kasutamisel\n"
-"        ignoreeritakse listi `admin_notify_mchanges' seadistust.\n"
+"        eiratakse listi `admin_notify_mchanges' seadistust.\n"
 "\n"
 "    --help\n"
 "    -h\n"
@@ -8258,7 +8254,7 @@ msgstr ""
 "\n"
 "Liikme kloonimine tähendab uue tellija loomist, kelle profiili seadistused\n"
 "võetakse originaali käest. See käsk eeldab, et tema käivitaja teab täpselt\n"
-"mida teeb -- uue aadressi formaati ei kontrollita, tervitusteadet ei "
+"mida teeb -- uue aadressi vormingut ei kontrollita, tervitusteadet ei "
 "saadeta, jne\n"
 "\n"
 "Originaali profiili seadistused jäävad puutumata. Kui soovid "
@@ -8420,7 +8416,7 @@ msgstr "lubatud väärtused on:"
 
 #: bin/config_list:255
 msgid "attribute \"%(k)s\" ignored"
-msgstr "atribuuti \"%(k)s\" ignoreeriti"
+msgstr "atribuuti \"%(k)s\" eirati"
 
 #: bin/config_list:258
 msgid "attribute \"%(k)s\" changed"
@@ -8500,11 +8496,11 @@ msgstr ""
 
 #: bin/discard:94
 msgid "Ignoring non-held message: %(f)s"
-msgstr "Mitte-peatatud kirja %(f)s ignoreeritakse."
+msgstr "Mitte-peatatud kirja %(f)s eiratakse."
 
 #: bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
-msgstr "Peatatud vigase id'ga %(f)s kirja ignoreeritakse"
+msgstr "Peatatud vigase id'ga %(f)s kirja eiratakse"
 
 #: bin/discard:112
 msgid "Discarded held msg #%(id)s for list %(listname)s"
@@ -8553,12 +8549,12 @@ msgstr ""
 "Valikud:\n"
 "\n"
 "    --marshal/-m\n"
-"        Oletab et faili formaat on Pythoni marshal, kõrgema prioriteediga "
+"        Oletab et faili vorming on Pythoni marshal, kõrgema prioriteediga "
 "kui\n"
 "        automaatne tuvastus.\n"
 "\n"
 "    --pickle/-p\n"
-"        Oletab et faili formaat on Pythoni pickle, kõrgema prioriteediga "
+"        Oletab et faili vorming on Pythoni pickle, kõrgema prioriteediga "
 "kui\n"
 "        automaatne tuvastus.\n"
 "\n"
@@ -8785,13 +8781,13 @@ msgid ""
 msgstr ""
 "Regenereeri Mailmani aliased uuesti.\n"
 "\n"
-"Väljundi formaat sõltub MTA muutuja väärtusest mm_cfg.py failis.\n"
+"Väljundi vorming sõltub MTA muutuja väärtusest mm_cfg.py failis.\n"
 "\n"
 "Kasutamine: genaliases [võtmed]\n"
 "Võtmed:\n"
 "\n"
 "    -q/--quiet\n"
-"        Mõnede MTA'de formaat võib sisaldada lisakommentaare. Selle võtme "
+"        Mõnede MTA'de vorming võib sisaldada lisakommentaare. Selle võtme "
 "kasutamisel jäetakse need välja\n"
 "\n"
 "    -h/--help\n"
@@ -10231,7 +10227,7 @@ msgstr "Aadressifaili %(filename)s lugemine ebaõnnestus: %(msg)s"
 
 #: bin/sync_members:203
 msgid "Ignore  :  %(addr)30s"
-msgstr "Ignoreeri  : %(addr)30s"
+msgstr "eirati  : %(addr)30s"
 
 #: bin/sync_members:212
 msgid "Invalid :  %(addr)30s"
@@ -10555,11 +10551,11 @@ msgstr "Uuendan Mailman 2.1.4 pending.pck andmebaasi"
 
 #: bin/update:576
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
-msgstr "Vigaseid andmeid ignoreeritakse: %(key)s: %(val)s"
+msgstr "Vigaseid andmeid eiratakse: %(key)s: %(val)s"
 
 #: bin/update:592
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
-msgstr "HOIATUS: duplikaat ID-sid %(id)s ignoreeritakse."
+msgstr "HOIATUS: duplikaat ID-sid %(id)s eiratakse."
 
 #: bin/update:645
 msgid "getting rid of old source files"
