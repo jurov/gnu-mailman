@@ -11,7 +11,7 @@
 %DVIPSWebPage: (www.radicaleye.com)
 %DVIPSCommandLine: dvips -N0 -o mailman-install.ps mailman-install
 %DVIPSParameters: dpi=600
-%DVIPSSource:  TeX output 2005.04.12:2150
+%DVIPSSource:  TeX output 2005.04.16:1052
 %%BeginProcSet: tex.pro 0 0
 %!
 /TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
@@ -364,7 +364,7 @@ TeXDict begin
 TeXDict begin 1 0 bop 0 83 3901 9 v 700 357 a Fz(GNU)57
 b(Mailman)g(-)g(Installation)h(Man)n(ual)3368 504 y Fy(Release)30
 b(2.1)3153 859 y Fx(Barr)t(y)i(W)-5 b(arsa)n(w)3413 1213
-y Fw(April)20 b(12,)g(2005)3265 1360 y Fv(barr)r(y\(at\)p)n(ython.org)
+y Fw(April)20 b(16,)g(2005)3265 1360 y Fv(barr)r(y\(at\)p)n(ython.org)
 1811 1581 y Fu(Abstract)208 1732 y Ft(This)30 b(document)j(describes)f
 (ho)n(w)g(to)f(install)f(GNU)h(Mailman)h(on)f(a)g(POSIX-based)g(system)
 h(such)g(as)h(U)t Fs(N)t(I)t(X)r Ft(,)f(MacOSX,)f(or)208
@@ -1357,13 +1357,13 @@ TeXDict begin 14 13 bop 0 83 a Fw(If)20 b(you)f(also)i(do)f(SMTP)g
 Fp(Doing)24 b(VERP)g(with)g(Exim)f(and)h(Mailman)0 1027
 y Fw(VERP)30 b(will)g(send)e(one)h(email,)i(with)e(a)g(separate)g(en)m
 (v)o(elope)e(sender)h(\(return)f(path\),)j(for)f(each)f(of)h(your)f
-(subscribers)g(\226)h(read)g(the)0 1126 y(information)18
-b(in)j(`)p Fk($)p Fj(pr)m(e\002x)p Fp(/Mailman/Def)n(ault.p)n(y)p
-Fw(')g(for)f(the)h(options)f(that)h(start)g(with)g(VERP)-9
-b(.)21 b(In)g(a)g(nutshell,)f(all)h(you)f(need)g(to)h(do)f(to)0
-1226 y(enable)f(VERP)i(with)g(Exim)e(is)j(to)e(add)g(these)g(lines)g
-(to)h(`)p Fk($)p Fj(pr)m(e\002x)p Fp(/Mailman/mm)p 2354
-1226 46 4 v 51 w(cfg.p)n(y)p Fw(':)416 1464 y Fl
+(subscribers)g(\226)h(read)g(the)0 1126 y(information)21
+b(in)j(`)p Fk($)p Fj(pr)m(e\002x)p Fp(/Mailman/Def)n(aults)o(.p)n(y)p
+Fw(')e(for)h(the)h(options)e(that)i(start)f(with)h(VERP)-9
+b(.)24 b(In)f(a)h(nutshell,)f(all)h(you)f(need)f(to)i(do)0
+1226 y(to)c(enable)g(VERP)h(with)f(Exim)g(is)h(to)f(add)g(these)g
+(lines)h(to)f(`)p Fk($)p Fj(pr)m(e\002x)p Fp(/Mailman/mm)p
+2439 1226 46 4 v 51 w(cfg.p)n(y)p Fw(':)416 1464 y Fl
 (VERP_PASSWORD_REMINDERS)41 b(=)j(Yes)416 1556 y
 (VERP_PERSONALIZED_DELIVERIES)c(=)k(Yes)416 1647 y
 (VERP_DELIVERY_INTERVAL)d(=)j(Yes)416 1738 y(VERP_CONFIRMATIONS)d(=)k
@@ -2226,19 +2226,19 @@ b(setting)g(up)f(Apache)g(on)h(OSX)g(to)g(handle)f(Mailman,)h(the)g
 (steps)g(are)g(almost)g(identical)f(and)h(the)g(con\002guration)d
 (\002le)k(on)e(a)i(stock)0 2387 y(Mac)e(OSX)h(Client)g(v)o(ersion)e(is)
 i(stored)f(in)g(the)g(nearly)f(standard)g(location)h(of)g(`)p
-Fv(/etc/httpd/httpd.conf)o Fw('.)0 2534 y(The)41 b Fv(AFP548.com)e
-Fw(site)j(has)f(a)g(time-sa)n(ving)f(automated)f(startup)i(item)g
-(creator)f(for)g(Mailman,)45 b(which)40 b(can)h(be)g(found)e(at)0
-2633 y Fv(http://www)l(.afp548.com/Sof)o(tw)o(ar)o(e/Mai)o(lma)o(nSta)o
-(r)s(tu)o(p)m(.ta)o(r)l(.gz)0 2780 y Fw(T)-7 b(o)23 b(install)g(it,)h
-(cop)o(y)d(it)j(into)e(your)f(`)p Fv(/Libr)o(ar)r(y/Star)s(tupItems)p
-Fw(')e(directory)-5 b(.)30 b(As)23 b(the)g(root)e(or)i(superuser)m(,)e
-(from)h(the)g(terminal,)g(enter)h(the)0 2880 y(follo)n(wing:)236
-3118 y Fl(gunzip)44 b(MailmanStartup.tar.gz)236 3209
-y(tar)h(xvf)f(MailmanStartup.tar)0 3496 y Fw(It)20 b(will)h(create)f
-(the)h(startup)e(item)i(for)e(you)g(so)i(that)f(when)g(you)f(reboot,)g
-(Mailman)g(will)i(start)g(up.)p 0 5549 3901 4 v 0 5649
-a Fp(15.3)84 b(MacOSX)23 b(issues)2972 b(27)p eop end
+Fv(/etc/httpd/httpd.conf)o Fw('.)0 2534 y(The)40 b(AFP548.com)e(site)k
+(has)e(a)h(time-sa)n(ving)e(automated)g(startup)h(item)h(creator)e(for)
+h(Mailman,)k(which)c(can)g(be)g(found)f(at)0 2633 y Fv(http://www)l
+(.afp548.com/Sof)o(tw)o(ar)o(e/Mai)o(lma)o(nSta)o(r)s(tu)o(p)m(.ta)o(r)
+l(.gz)0 2780 y Fw(T)-7 b(o)23 b(install)g(it,)h(cop)o(y)d(it)j(into)e
+(your)f(`)p Fv(/Libr)o(ar)r(y/Star)s(tupItems)p Fw(')e(directory)-5
+b(.)30 b(As)23 b(the)g(root)e(or)i(superuser)m(,)e(from)h(the)g
+(terminal,)g(enter)h(the)0 2880 y(follo)n(wing:)236 3118
+y Fl(gunzip)44 b(MailmanStartup.tar.gz)236 3209 y(tar)h(xvf)f
+(MailmanStartup.tar)0 3496 y Fw(It)20 b(will)h(create)f(the)h(startup)e
+(item)i(for)e(you)g(so)i(that)f(when)g(you)f(reboot,)g(Mailman)g(will)i
+(start)g(up.)p 0 5549 3901 4 v 0 5649 a Fp(15.3)84 b(MacOSX)23
+b(issues)2972 b(27)p eop end
 %%Trailer
 
 userdict /end-hook known{end-hook}if
