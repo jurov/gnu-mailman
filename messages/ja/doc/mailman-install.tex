@@ -117,7 +117,7 @@ configure で \longprogramopt{prefix} オプションを使います.
 以前のバージョンから更新するには, インストールディレクトリを変更す
 るので無い限り, \longprogramopt{prefix} を設定する必要があります.
 
-\begin{notice}[警告]
+\begin{notice}[warning]
 Mailman を \code{nosuid} オプションでマウントされたファイルシステムに
 インストールすることはできません. これがあると Mailman のインストールに
 失敗します. というのは, セキュリティ上の理由で setgid プログラムの利用を
@@ -149,7 +149,7 @@ setgid プログラムを許している場所に Maiman をインストールしてください.
 Mailman をインストールする前に \program{configure} を実行して, システム
 で必要になるいろいろなインストールオプションを設定しなければなりません.
 
-\begin{notice}[注意]
+\begin{notice}[note]
 下にある，\longprogramopt{with-mail-gid} と \longprogramopt{with-cgi-gid}
 のオプションに特に注意. 多分これが必要になります.
 \end{notice}
@@ -335,7 +335,7 @@ Mailman をインストールする前に \program{configure} を実行して, システム
 \end{verbatim}
 % $ - emacs turd
 
-\begin{notice}[警告]
+\begin{notice}[warning]
 CGIスクリプトを実行する ユーザIDが \code{mailman} グループに入って
 \strong{いない}ことをよく確認してください．でないと，非公開の保存書庫
 が誰にでも見られてしまいます.
@@ -453,7 +453,7 @@ Postfix と Mailman を統合すると, 新しいリストを作成したり,
 \program{configure} で用いた \longprogramopt{prefix} と
 \longprogramopt{with-var-prefix} のオプションに従って読み替えてください.
 
-\begin{notice}[注意]
+\begin{notice}[note]
 もし, 仮想ドメインを使っていて, 仮想ドメインの設定を優先させたいと
 いう場合には, \ref{postfix-virtual} 節を先に読んでください!
 \end{notice}
@@ -613,7 +613,7 @@ Postfix は仮想ドメイン \code{dom1.ain}, \code{dom2.ain}, \code{dom3.ain},
 より特定した項目が, より一般的な項目を上書きするので, 
 \code{dom1.ain} メーリングリストへの配送は止められてしまいます. 
 
-いっぽう, \code{dom2.ain} は \code{dom3.ain} \file{mm_cfg.py} に含めます:
+いっぽう, \code{dom2.ain} と \code{dom3.ain} は \file{mm_cfg.py} に含めます:
 
 \begin{verbatim}
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['dom2.ain', 'dom3.ain']
@@ -645,89 +645,109 @@ virtual マップと正規表現を使った他の方法を紹介しています.
 つまり, \code{mylist@dom.ain} のかわりに \code{mylist@lists.dom.ain}
 を使わないといけないのでもよければ, ということです. 
 
-\subsection{Using the Exim mail server}
+\subsection{Exim メールサーバを使う場合}
+% 池田: Exim の用語は, まだ定訳のないものが多い. ここでは次のような訳語を使う:
+%
+% 原語                     日本語訳
+% ======================= ==============
+% SMTP callback (callout) SMTP 呼出し検証
+% director                ダイレクタ
+% domain list             ドメインリスト
+% main section            首節
+% recipient verification  受信者検証
+% router                  ルータ
+% section                 節
+% transport               トランスポート
 
 \begin{notice}[note]
-This section is derived from Nigel Metheringham's ``HOWTO - Using Exim and
-Mailman together'', which covers Mailman 2.0.x and Exim 3.  It has been
-updated to cover Mailman 2.1 and Exim 4.  The original document is here:
+本節は, Nigel Metheringham の ``HOWTO - Exim で Mailman を使う''\footnote{訳注:
+``HOWTO - Using Exim and Mailman together''.} から採りました.
+これは Mailman 2.0.x と Exim 3 に対応していました.
+それを Mailman 2.1 と Exim 4 に対応するように改訂しました.
+元の文書は次の場所にあります:
 \url{http://www.exim.org/howto/mailman.html}.
 \end{notice}
 
-There is no Mailman configuration needed other than the standard options
-detailed in the Mailman install documentation.  The Exim configuration is
-transparent to Mailman.  The user and group settings for Mailman must match
-those in the config fragments given below.
+Mailman のインストールについて説明した箇所の標準的なオプション以外には,
+Mailman の設定は必要ありません.
+Exim の設定は Mailman に対して透過的です. %???
+Mailman のユーザとグループの設定は,
+以下に述べる設定のものと一致していなければいけません.
 
-\subsubsection{Exim configuration}
+\subsubsection{Exim の設定}
 
-The Exim configuration is built so that a list created within Mailman
-automatically appears to Exim without the need for defining any additional
-aliases.
+Exim の設定では, Mailman 側で作成したリストは自動的に Exim 側で有効になります.
+新たにエイリアスを定義する必要はありません.
 
-The drawback of this configuration is that it will work poorly on systems
-supporting lists in several different mail domains.  While Mailman handles
-virtual domains, it does not yet support having two distinct lists with the
-same name in different virtual domains, using the same Mailman installation.
-This will eventually change.  (But see below for a variation on this scheme
-that should accommodate virtual domains better.)
+ここで説明する設定方法の欠点は,
+複数の異なるメールドメインのリストに対応したシステムでは, 満足に動作しないことです.
+Mailman は, 仮想ドメインを扱えるものの,
+ひとつの Mailman
+のインストレーションで異なる仮想ドメインが同じ名前のリストを別々に持つことには,
+まだ対応していません. そのうち変わるでしょう (なお, 後で述べるように,
+仮想ドメインをもっとうまく扱う方法もあります).
 
-The configuration file excerpts below are for use in an already functional
-Exim configuration, which accepts mail for the domain in which the list
-resides.  If this domain is separate from the others handled by your Exim
-configuration, then you'll need to:
+以下で説明する設定は, 抜粋です.
+Exim が使えるような設定になっており,
+リストが属するドメインへのメールを受け付けるようになっていれば,
+使えます. このドメインが Exim の設定で扱う他のドメインと分離されているときは,
+次のようにする必要があります:
 
 \begin{itemize}
-\item add the list domain, ``my.list.domain'' to \var{local_domains}
+\item リストのドメイン ``my.list.domain'' を \var{local_domains} に追加する
 
-\item add a ``domains=my.list.domain'' option to the director (router) for the
-      list
+\item ``domains=my.list.domain'' オプションを, リストへのダイレクタ (ルータ)
+      に追加する\footnote{訳注: 後の節で説明するダイレクタ (ルータ)
+      の設定をしたあとで追加します.}
 
-\item (optional) exclude that domain from your other directors (routers)
+\item (必要なら) 他のダイレクタ (ルータ) からそのドメインを除外する
 \end{itemize}
 
 \begin{notice}[note]
-The instructions in this document should work with either Exim 3 or Exim 4.
-In Exim 3, you must have a \var{local_domains} configuration setting; in Exim
-4, you most likely have a \var{local_domains} domainlist.  If you don't, you
-probably know what you're doing and can adjust accordingly.  Similarly, in
-Exim 4 the concept of ``directors'' has disappeared -- there are only routers
-now.  So if you're using Exim 4, whenever this document says ``director'',
-read ``router''.
+この文書での説明は, Exim 3 と Exim 4 のどちらでも動作するようになっています.
+Exim 3 では, \var{local_domains} の設定がなければいけません --- Exim 4 では,
+たいていは \var{local_domains} ドメインリストのようなものがあります.
+ないのなら, どこをどう調整すればうまくいくかは自分でわかっていることと思います.
+また, Exim 4 では ``ダイレクタ'' の概念がなくなってしまいました --
+ルータしかありません. ですから Exim 4 を使っているのなら,
+この文書で ``ダイレクタ'' と言ったときは ``ルータ'' と読みかえてください.
 \end{notice}
 
-Whether you are using Exim 3 or Exim 4, you will need to add some macros to
-the main section of your Exim config file.  You will also need to define one
-new transport.  With Exim 3, you'll need to add a new director; with Exim 4, a
-new router plays the same role.
+Exim 3 と Exim 4 のいずれを使っていても,
+Exim 設定ファイルの 首節\footnote{訳注: main section.
+Exim の設定ファイルで, 最初の ``begin ...'' 行より前の,
+全般的な設定を記述する部分.}に若干のマクロを追加する必要があります.
+また, 新たにトランスポートを定義する必要があります.
+Exim 3 では, 新たにダイレクタを追加する必要があります ---
+Exim 4 では, 新たにルータを追加して同じことをさせます.
 
-Finally, the configuration supplied here should allow co-habiting Mailman 2.0
-and 2.1 installations, with the proviso that you'll probably want to use
-\code{mm21} in place of \code{mailman} -- e.g., \var{MM21_HOME},
-\var{mm21_transport}, etc.
+なお, ここで提供する設定では,
+Mailman 2.0 と 2.1 のインストレーションを共存させることもできます.
+ただしその場合は, \code{mailman} のかわりに \code{mm21} を使うとよいかもしれません
+-- 例えば,  \var{MM21_HOME}, \var{mm21_transport} などです.
 
-\subsubsection{Main configuration settings}
+\subsubsection{全般的な設定}
 
-First, you need to add some macros to the top of your Exim config file.  These
-just make the director (router) and transport below a bit cleaner.  Obviously,
-you'll need to edit these based on how you configured and installed Mailman.
+まず, Exim 設定ファイルの最初でいくつかマクロを追加する必要があります.
+これによって, 以下で作成するダイレクタ (ルータ) とトランスポートが少し見やすくなります.
+当然, Mailman をどう設定しインストールしたかによって, 変更する必要があります.
 
 \begin{verbatim}
-    # Home dir for your Mailman installation -- aka Mailman's prefix
-    # directory.
+    # インストールした Mailman のホームディレクトリ -- つまり Mailman のプリフィクス
+    # ディレクトリ
     MAILMAN_HOME=/usr/local/mailman
     MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
 
-    # User and group for Mailman, should match your --with-mail-gid
-    # switch to Mailman's configure script.
+    # Mailman のユーザとグループ. Mailman の configure スクリプトに与えた
+    # --with-mail-gid スイッチと一致しなければいけない.
     MAILMAN_USER=mailman
     MAILMAN_GROUP=mailman
 \end{verbatim}
 
-\subsubsection{Transport for Exim 3\label{exim3-transport}}
+\subsubsection{Exim 3\label{exim3-transport} のトランスポート}
 
-Add this to the transports section of your Exim config file,
-i.e. somewhere between the first and second ``end'' line:
+次のものを, Exim 設定ファイルの transports 節 -- つまり,
+最初と2番めの ``end'' 行の間のどこか -- に入れます:
 
 \begin{verbatim}
   mailman_transport:
@@ -743,18 +763,18 @@ i.e. somewhere between the first and second ``end'' line:
     group = MAILMAN_GROUP
 \end{verbatim}
 
-\subsubsection{Director for Exim 3}
+\subsubsection{Exim 3 のダイレクタ}
 
-If you're using Exim 3, you'll need to add the following director to your
-config file (directors go between the second and third ``end'' lines).  Also,
-don't forget that order matters -- e.g. you can make Mailman lists take
-precedence over system aliases by putting this director in front of your
-aliasfile director, or vice-versa.
+Exim 3 を使っているのなら, 設定ファイルに以下のダイレクタを追加する必要があります
+(ダイレクタは, 2つめと3つめの ``end'' 行の間にきます).  また,
+順序が問題になることを忘れないでください --
+例えば, このダイレクタをエイリアスファイルのダイレクタよりも前に置けば,
+Mailman のリストをシステムエイリアスより優先させることができます. 逆も言えます.
 
 \begin{verbatim}
-  # Handle all addresses related to a list 'foo': the posting address.
-  # Automatically detects list existence by looking
-  # for lists/$local_part/config.pck under MAILMAN_HOME.
+  # リスト 'foo' (投稿アドレス) に関するアドレスすべてを扱う.
+  # MAILMAN_HOME 下の lists/$local_part/config.pck を探して,
+  # 自動的にリストの存在を検知する.
   mailman_director:
     driver = smartuser
     require_files = MAILMAN_HOME/lists/$local_part/config.pck
@@ -765,13 +785,15 @@ aliasfile director, or vice-versa.
     transport = mailman_transport
 \end{verbatim}
 
-\subsubsection{Router for Exim 4}
+\subsubsection{Exim 4 のルータ}
 
-In Exim 4, there's no such thing as directors -- you need to add a new router
-instead.  Also, the canonical order of the configuration file was changed so
-routers come before transports, so the router for Exim 4 comes first here.
-Put this router somewhere after the ``begin routers'' line of your config
-file, and remember that order matters.
+Exim 4 では, ダイレクタのようなものはありません
+-- かわりに, 新しくルータを追加する必要があります.
+なお Exim 4 では,
+設定ファイル内の標準的な順序はルータがトランスポートの前にくるように変更されたため,
+まずルータについて述べます.
+以下のルータを, 設定ファイルの ``begin routers'' の行の後のどこかに入れます.
+ルータの順序が問題になることを忘れないでください.
 
 \begin{verbatim}
   mailman_router:
@@ -785,76 +807,88 @@ file, and remember that order matters.
 \end{verbatim}
 % $ - emacs turds
 
-\subsubsection{Transports for Exim 4}
+\subsubsection{Exim 4 のトランスポート}
 
-The transport for Exim 4 is the same as for Exim 3 (see \ref{exim3-transport};
-just copy the transport given above to somewhere under the ``begin
-transports'' line of your Exim config file.
+Exim 4 でのトランスポートは Exim 3 のものと同じです (\ref{exim3-transport}
+を見てください) --- 先に示したトランスポートを, Exim 設定ファイルの
+``begin transports'' 行の後のどこかにコピーします.
 
-\subsubsection{Additional notes}
+\subsubsection{その他の注意点}
 
-Exim should be configured to allow reasonable volume -- e.g. don't set
-\var{max_recipients} down to a silly value -- and with normal degrees of
-security -- specifically, be sure to allow relaying from 127.0.0.1, but pretty
-much nothing else.  Parallel deliveries and other tweaks can also be used if
-you like; experiment with your setup to see what works.  Delay warning
-messages should be switched off or configured to only happen for non-list
-mail, unless you like receiving tons of mail when some random host is down.
+Exim は, 充分な量の処理ができるように設定しておかないといけません
+--- 例えば, \var{max_recipients} をやたらと小さな値にしてはいけません
+--- また, 充分なセキュリティ強度に設定しなければいけません ---
+特に, 127.0.0.1 からの中継は許可し,
+ほかからはほとんど許可しないように気をつけてください\footnote{訳注:
+Mailman は, MTA を通じてメールを送る際に,
+HELO (EHLO) コマンドの引数として, 自ホストのプライマリ FQDN を使います.
+スパム排除のために, HELO (EHLO)
+の引数に自ホスト名をかたるクライアントからの配送を拒否するような設定をしている場合は,
+localhost (127.0.0.1) からの配送が拒否されないように気をつけてください.}.
+並列配送のようなちょっとした技巧を使ってみたければ, やってみましょう ---
+設定を少しずつ変えてみて, うまくいくか確かめます. % ???
+配送遅延の警告メッセージは, 出さないようにするか,
+リスト以外のメールでのみ出すように設定しなければいけません.
+どこかでホストが落ちるたびに大量のメールを受け取るのは嫌でしょうから.
 
-\subsubsection{Problems}
+\subsubsection{問題点}
 
 \begin{itemize}
 
-\item Mailman will send as many \code{MAIL FROM}/\code{RCPT TO} as it needs.
-      It may result in more than 10 or 100 messages sent in one connection,
-      which will exceed the default value of Exim's
-      \var{smtp_accept_queue_per_connection} value.  This is bad because it
-      will cause Exim to switch into queue mode and severely delay delivery of
-      your list messages.  The way to fix this is to set Mailman's
-      \var{SMTP_MAX_SESSIONS_PER_CONNECTION} (in
-      \file{\var{\$prefix}/Mailman/mm_cfg.py}) to a smaller value than Exim's
-      \var{smtp_accept_queue_per_connection}.
+\item Mailman は, 必要に応じてできるだけ多くの \code{MAIL FROM}/\code{RCPT TO}
+      を送ろうとします. 結果として, 一回の接続で 10 件, 100 件,
+      あるいはそれ以上のメッセージが送られることもあり, Exim の
+      \var{smtp_accept_queue_per_connection} の既定の値を超えてしまうかもしれません.
+      これは困ったことです. なぜなら, こうなると Exim は queue モードに切り替わり,
+      リストのメッセージの配送が恐ろしく遅れることになるからです.
+      これを直すには, Mailman の \var{SMTP_MAX_SESSIONS_PER_CONNECTION} を
+      (\file{\var{\$prefix}/Mailman/mm_cfg.py} で) Exim の
+      \var{smtp_accept_queue_per_connection} より小さい値に設定します.
 
-\item Mailman should ignore Exim delay warning messages, even though Exim
-      should never send this to list messages.  Mailman 2.1's general bounce
-      detection and VERP support should greatly improve the bounce detector's
-      hit rates.
+\item Exim はリストのメッセージに遅延警告メッセージを送ってはいけません. が,
+      Mailman も Exim の遅延警告メッセージを無視しなければいけません. %% ???
+      Mailman 2.1 の配送エラー処理を VERP に対応させると,
+      配送エラー処理の的中率が大幅に向上します.
 
-\item List existence is determined by the existence of a \file{config.pck}
-      file for a list.  If you delete lists by foul means, be aware of this.
+\item リストが存在するかどうかは, リストの \file{config.pck}
+      ファイルが存在するかどうかで決めています. 誤ってリストを削除してしまったときは,
+      このファイルに気をつけましょう. %% ???
 
-\item If you are getting Exim or Mailman complaining about user ids when you
-      send mail to a list, check that the \var{MAILMAN_USER} and
-      \var{MAILMAN_GROUP} match those of Mailman itself (i.e. what were used
-      in the \program{configure} script).  Also make sure you do not have
-      aliases in the main alias file for the list.
+\item リストにメールを送ったときに, Exim か Mailman
+      でユーザIDに関するエラーが起きるのなら, \var{MAILMAN_USER} と
+      \var{MAILMAN_GROUP} が Mailman 自身のものと一致するか (つまり,
+      \program{configure} スクリプトで使っているものか) を調べます.
+      また, エイリアスファイルに,
+      リストのアドレスがエイリアスとして登録されていないかも確かめましょう.
 \end{itemize}
 
-\subsubsection{Receiver Verification}
+\subsubsection{受信者検証}
 
-Exim's receiver verification feature is very useful -- it lets Exim reject
-unrouteable addresses at SMTP time.  However, this is most useful for
-externally-originating mail that is addressed to mail in one of your local
-domains.  For Mailman list traffic, mail originates on your server, and is
-addressed to random external domains that are not under your control.
-Furthermore, each message is addressed to many recipients
--- up to 500 if you use Mailman's default configuration and don't tweak
-\var{SMTP_MAX_RCPTS}.
+Exim の受信者検証\footnote{訳注: recipient verification.}はとても役に立ちます
+-- SMTPの時点で, 配送不能なアドレスを Exim が拒否するようになります.
+しかし, これがいちばん役立つのは,
+外部から来たメールがローカルのドメインのどれかに向かっているときです.
+Mailman のリストのトラヒックは, 自サーバから出て,
+サーバの預り知らない外部のさまざまなドメインへと向かいます.
+そのうえ, メッセージはたくさんの受信者
+-- Mailman の既定の設定を使い, \var{SMTP_MAX_RCPTS} をいじっていないときは,
+最大 500 箇所 -- へ向かうことになります.
 
-Doing receiver verification on Mailman list traffic is a recipe for trouble.
-In particular, Exim will attempt to route every recipient addresses in
-outgoing Mailman list posts.  Even though this requires nothing more than a
-few DNS lookups for each address, it can still introduce significant delays.
-Therefore, you should disable recipient verification for Mailman traffic.
+Mailman のリストのトラヒックで受信者検証をするのは, トラブルのもとです.
+とりわけ, Mailman からリストの投稿が出ていくときに,
+Exim は全ての受信者アドレスを検証しようとします.
+ひとつひとつのアドレスについては, DNS 検索にはわずかな時間しか要さないかもしれませんが,
+全体としては著しい遅延を引き起こし得ます.
+したがって, Mailman のトラヒックに対しては受信者検証を無効にしなければいけません.
 
-Under Exim 3, put this in your main configuration section:
+Exim 3 では, 首節に以下のものを入れます:
 
 \begin{verbatim}
     receiver_verify_hosts = !127.0.0.1
 \end{verbatim}
 
-Under Exim 4, this is probably already taken care of for you by the default
-recipient verification ACL statement (in the \code{RCPT TO} ACL):
+Exim 4 では, この点についてはおそらく
+(\code{RCPT TO} ACL 中の) 既定の ACL 文では考慮されていることでしょう: % ???
 
 \begin{verbatim}
   accept  domains       = +local_domains
@@ -863,28 +897,32 @@ recipient verification ACL statement (in the \code{RCPT TO} ACL):
           verify        = recipient
 \end{verbatim}
 
-which only does recipient verification on addresses in your domain.  (That's
-not exactly the same as doing recipient verification only on messages coming
-from non-127.0.0.1 hosts, but it should do the trick for Mailman.)
+これで, 自分のドメインのアドレスに対してだけ受信者検証をするようになります
+(これは厳密には, 127.0.0.1
+以外のホストから来るメッセージだけに対して受信者検証をすることとは違いますが,
+Mailman にはよく効きます).
 
-\subsubsection{SMTP Callback}
+\subsubsection{SMTP 呼出し検証}
 
-Exim's SMTP callback feature is an even more powerful way to detect bogus
-sender addresses than normal sender verification.  Unfortunately, lots of
-servers send bounce messages with a bogus address in the header, and there are
-plenty that send bounces with bogus envelope senders (even though they're
-supposed to just use an empty envelope sender for bounces).
+Exim の SMTP 呼出し検証\footnote{訳注:
+SMTP callback.}の仕様は, でたらめな送信者アドレスを検出する方法としては,
+通常の送信者検証にくらべてはるかに強力です. ところが困ったことに,
+バウンスメッセージのヘッダにでたらめなアドレスを入れて送るサーバはたくさんありますし,
+また (バウンスメッセージには空のエンヴェロープ送信者を使うことになっているにも関わらず)
+でたらめなエンヴェロープ送信者を使ってバウンスメッセージを送るサーバも,
+少なからずあるのです.
 
-In order to ensure that Mailman can disable/remove bouncing addresses, you
-generally want to receive bounces for Mailman lists, even if those bounces are
-themselves not bounceable.  Thus, you might want to disable SMTP callback on
-bounce messages.
+Mailman が,
+バウンスの発生しているアドレスをきちんと配送停止したり登録を抹消したりできるように,
+Mailman のリストへ届くバウンスメッセージは,
+たとえそういったバウンスメッセージそれ自体はバウンス不可能なものであっても,
+受け取るようにしたほうがいいでしょう. そのため, バウンスメッセージに対しては,
+SMTP 呼出し検証は無効にするとよいかもしれません.
 
-With Exim 4, you can accomplish this using something like the following in
-your \code{RCPT TO} ACL:
+Exim 4 でこれを実現するには, \code{RCPT TO} ACL で以下のようなものを使います:
 
 \begin{verbatim}
-  # Accept bounces to lists even if callbacks or other checks would fail
+  # 呼出し検証などの検査が失敗したとしても, リストへのバウンスメッセージは受け付ける
   warn     message      = X-WhitelistedRCPT-nohdrfromcallback: Yes
            condition    = \
            ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
@@ -898,12 +936,12 @@ your \code{RCPT TO} ACL:
                 {yes}{no}}
                 {yes}{no}}
 
-  # Now, check sender address with SMTP callback.
+  # そして, SMTP 呼出し検証で送信者アドレスを調べる.
   deny   !verify = sender/callout=90s
 \end{verbatim}
 
-If you also do SMTP callbacks on header addresses, you'll want something like
-this in your \code{DATA} ACL:
+ヘッダのアドレスにも SMTP 呼出し検証をしたければ, 次のようなものを \code{DATA} ACL
+に入れるとよいでしょう.
 
 \begin{verbatim}
   deny   !condition = $header_X-WhitelistedRCPT-nohdrfromcallback:
@@ -911,12 +949,13 @@ this in your \code{DATA} ACL:
 \end{verbatim}
 % $ - emacs turd
 
-\subsubsection{Doing VERP with Exim and Mailman}
+\subsubsection{Exim と Mailman で VERP を使う}
 
-VERP will send one email, with a separate envelope sender (return path), for
-each of your subscribers -- read the information in
-\file{\var{\$prefix}/Mailman/Default.py} for the options that start with VERP.
-In a nutshell, all you need to do to enable VERP with Exim is to add these lines to \file{\var{\$prefix}/Mailman/mm_cfg.py}:
+VERP では, 一つのメールを, リストの購読者ごとに別々の送信者 (返送経路) で送ります
+-- VERP を使えるようにするためのオプションについては
+\file{\var{\$prefix}/Mailman/Defaults.py} の情報を読んでください.
+まとめると, Exim で VERP を有効にするのに必要なことは,
+\file{\var{\$prefix}/Mailman/mm_cfg.py} に次の行を追加することです:
 
 \begin{verbatim}
     VERP_PASSWORD_REMINDERS = Yes
@@ -925,24 +964,28 @@ In a nutshell, all you need to do to enable VERP with Exim is to add these lines
     VERP_CONFIRMATIONS = Yes
 \end{verbatim}
 
-(The director (router) above is smart enough to deal with VERP bounces.)
+(先に説明したダイレクタ (ルータ) は,
+VERP のバウンスメッセージをちゃんと処理できるようになっています. )
 
-\subsubsection{Virtual Domains}
+\subsubsection{仮想ドメイン}
 
-One approach to handling virtual domains is to use a separate Mailman
-installation for each virtual domain.  Currently, this is the only way to have
-lists with the same name in different virtual domains handled by the same
-machine.
+仮想ドメインを扱う手法のひとつとして,
+仮想ドメインごとに別々の Mailman をインストールするというものがあります.
+現時点では,
+ひとつの計算機で異なる仮想ドメインが同じ名前のリストを別々に持てるようにするには,
+この方法しかありません\footnote{訳注:
+異なる仮想ドメインで同じ名前のリストを別々に使えなくてもかまわなければ,
+本節の設定は不要です.}.
 
-In this case, the \var{MAILMAN_HOME} and \var{MAILMAN_WRAP} macros are useless
--- you can remove them.  Change your director (router) to something like this:
+この場合, マクロ \var{MAILMAN_HOME} と \var{MAILMAN_WRAP} は使えません
+-- 削除してしまってかまいません. ダイレクタ (ルータ) を次のように変更します:
 
 \begin{verbatim}
   require_files = /virtual/${domain}/mailman/lists/${lc:$local_part}/config.pck
 \end{verbatim}
 % $ - emacs turd
 
-and change your transport like this:
+そして, トランスポートを次のように変更します:
 
 \begin{verbatim}
   command = /virtual/${domain}/mailman/mail/mailman \
@@ -955,12 +998,13 @@ and change your transport like this:
 \end{verbatim}
 % $ - emacs turd
 
-\subsubsection{List Verification}
+\subsubsection{リストの検証}
 
-This is how a set of address tests for the Exim lists look on a working
-system.  The list in question is \email{quixote-users@mems-exchange.org}, and
-these commands were run on the \code{mems-exchange.org} mail server ("\% "
-indicates the Unix shell prompt):
+ここでは, Exim のアドレステストセットを使って,
+システムの動作の様子を調べる方法を説明します. % ???
+問題のリストを \email{quixote-users@mems-exchange.org} とし,
+次の一連のコマンドを \code{mems-exchange.org} メールサーバで実行します ("\% "
+は Unix のシェル プロンプトを表します):
 
 \begin{verbatim}
   % exim -bt quixote-users
@@ -980,21 +1024,23 @@ indicates the Unix shell prompt):
     router = mailman_router, transport = mailman_transport
 \end{verbatim}
 
-If your \program{exim -bt} output looks something like this, that's a start:
-at least it means Exim will pass the right messages to the right Mailman
-commands.  It by no means guarantees that your Exim/Mailman installation is
-functioning perfectly, though!
+\program{exim -bt} の出力がここに示したようなものになっていれば,
+ここまでは順調と言えます: % that's a start ???
+少なくとも,
+Exim が適切なメッセージを適切な Mailman のコマンドに渡していることは確認できました.
+しかし, インストールしてある Exim/Mailman が,
+完全に正しく動作しているという保証はありません!
 
-\subsubsection{Document History}
+\subsubsection{この文書の履歴}
 
-Originally written by Nigel Metheringham \email{postmaster@exim.org}.  Updated
-by Marc Merlin \email{marc_soft@merlins.org} for Mailman 2.1, Exim 4.
-Overhauled/reformatted/clarified/simplified by Greg Ward
-\email{gward@python.net}.
+元になる文書は Nigel Metheringham \email{postmaster@exim.org} が書きました.
+Marc Merlin \email{marc_soft@merlins.org} が
+Mailman 2.1 と Exim 4 用に改訂しました.
+Greg Ward \email{gward@python.net} が書き直し/再構成/明確化/簡略化しました.
 
 \subsection{Sendmail メールサーバを使う場合}
 
-\begin{notice}[警告]
+\begin{notice}[warning]
 Sendmail メールサーバを使うとき, 
 \file{mm_cfg.py} の中に \var{DELIVERY_MODULE} 設定変数として \code{'Sendmail'}
 を入れたいと思うかもしれませんが, そうしては\strong{いけません}.
@@ -1329,7 +1375,7 @@ Mailman には沢山のサイト全体の設定オプションがありますので, ここで点検し,
 はどちらも \ulink{Python}{http://www.python.org} ファイルなので
 Python の文法を守るようにしないといけません. でないと Mailman は動きません.
 
-\begin{notice}[注意]
+\begin{notice}[note]
 \var{HOME_DIR} と \var{MAILMAN_DIR} 変数を変えては \strong{いけません}.
 これらは \program{configure} スクリプトで自動的に設定されます.
 もし変えると Mailman のインストールが壊れます.
@@ -1734,7 +1780,7 @@ Mailman を Linux で実行できるようにするためのヒントをいくつか挙げます:
 
       この問題は, 上記以外の Linux ディストリビューションでは
       違ったふうに表れるかもしれませんが, 
-      普通は \code{ImportErrors} \code{ImportErrors} として表れます. 
+      普通は \code{ImportError} として表れます. 
 \end{itemize}
 
 \subsection{BSD について\label{bsd-issues}}
@@ -1788,63 +1834,70 @@ Mailman を MacOSX で実行している人も大勢います.
       \url{http://docs.info.apple.com/article.html?artnum=107889}
 \end{itemize}
 
-Terry Allen provides the following detailed instructions on running Mailman on
-the 'client' version of OSX, or in earlier versions of OSX:
+Terry Allen は, 「クライアント」版の OSX や初期の版の OSX での Mailman
+の実行について, 以下のような詳細な説明を提供してくれました
+\hbox{\hfil ---\hss ---\hfil}
 
-Mac OSX 10.3 and onwards has the basics for a successful Mailman installation.
-Users of earlier versions of Mac OSX contains Sendmail and those users should
-look at the Sendmail installation section for tips.  You should follow the
-basic installation steps as described earlier in this manual, substituting as
-appropriate, the steps outlined in this section.
+Mac OSX の 10.3 以降では, Mailman ははじめからインストールしてあります.
+Mac OSX のそれ以前の版では
+[訳注: MTA として Postfix ではなく] Sendmail が入っているので,
+そういうユーザは, このマニュアルの Sendmail でのインストールの節を見て,
+こつをつかんでください. このマニュアルの前のほうで説明している基本的なインストール手順を,
+本節で概説している手順で適当に読み換えながら, 実施します.
 
-By default, Mac OSX 10.3 'client' version does not have a fully functional
-version of Postfix.  Setting up a working MTA such as Postfix is beyond the
-scope of this guide and you should refer to \url{http://www.postfix.org} for
-tips on getting Postfix running.  An easy way to set Postfix up is to install
-and run Postfix Enabler, a stand-alone tool for configuring Postfix on Mac
-OSX, available from
-\url{http://www.roadstead.com/weblog/Tutorials/PostfixEnabler.html}.
+Mac OSX 10.3 の「クライアント」版には, 既定ではフル機能版の Postfix が入っていません.
+Postfix などの MTA を動作させる設定の説明はこの文書の範囲を超えますから,
+\url{http://www.postfix.org} を見て,
+Postfix が実行できるようにするこつをつかんでください.
+Postfix をインストールして動作するように設定する簡単な方法としては,
+Postfix Enabler を実行するというものがあります.
+Mac OSX で Postfix を設定するためのスタンドアロンのツールです.
+\url{http://www.roadstead.com/weblog/Tutorials/PostfixEnabler.html}
+にあります.
 
-Likewise, Mac OSX 'client' version from 10.1 onwards includes a working Apache
-webserver.  This is switched on using the System Preferences control panel
-under the 'Sharing tab'.  A useful tool for configuring the Apache on Mac OSX
-is Webmin, which can be obtained from
-\url{http://www.webmin.com}.
+また, Mac OSX 「クライアント」版でも 10.1 以降なら,
+Apache ウェブサーバが動作するようになっています.
+「システム管理設定」を使って「共有」タブの中で有効にします.
+Webmin というツールは, Mac OSX で Apache を設定するのに役立ちます.
+\url{http://www.webmin.com} で手に入ります.
 
-Webmin can also perform configuration for other system tasks, including
-Postfix, adding jobs to your crontab, adding user and groups, plus adding
-startup and shutdown jobs.
+Webmin では, システムのほかの機能についての設定もできます.
+Postfix の設定, crontab へのジョブの追加, ユーザやグループの追加, などができます.
+また, スタートアップジョブやシャットダウンジョブの追加もできます.
 
-In a stock installation of OSX, the requirement for Mailman is to have Python
-installed.  Python is not installed by default, so it is advised that you
-install the developer's tools package, which may have been provided with your
-system.  It can also be downloaded from the Apple developer site at
-\url{http://connect.apple.com}.  Not only is the developer tools package an
-essential requirement for installing Mailman, but it will come in handy at a
-later date should you need other tools.  The developer's tools are also know
-by the name XCode tools.
+OSX の標準的なインストレーションでの Mailman の要求事項として,
+Python がインストールされていること, というものがありますが,
+Python は既定ではインストールされていません.
+そこで, 開発ツール パッケージをインストールすることをお勧めします.
+このパッケージは, システムとともに提供されているかもしれません.
+また, Apple Developer Connection サイト % Apple developer site ???
+\url{http://connect.apple.com} からダウンロードすることもできます.
+開発ツール パッケージは,
+Mailman をインストールするのにどうしても必要というわけではないのですが,
+いつか他のツールが必要になったときにも役立ちそうなものではあります.
+開発ツールは XCode Tools ともいいます.
 
-As a minimum, the Python version should be 2.2, but 2.3 is recommended.
+Python のバージョンは, 最低限, 2.2 でなければなりません. しかし, 2.3 をお勧めします.
 
-If you wish to add a user and group using the command line in OSX instead of
-via Webmin or another GUI interface, open your terminal application and follow
-the commands as indicated below - do not type the comments following the
-\samp{\#} since they are just notes:
+Webmin などの GUI インタフェースではなく,
+OSX のコマンドラインを使ってユーザやグループを追加したければ,
+ターミナル アプリケーションを開き, 以下に示すコマンドを入力します
+(\samp{\#} ではじまるコメント行は, 単なる説明なので, 入力しません):
 
 \begin{verbatim}
 sudo tcsh
 niutil -create / /users/mailman
 niutil -createprop / /users/mailman name mailman
-# Note that xxx is a free user ID number on your system
+# xxx は, システム上で空いているユーザ ID 番号であることに注意
 niutil -createprop / /users/mailman uid xxx
 niutil -createprop / /users/mailman home /usr/local/mailman
 mkdir -p /usr/local/mailman
 niutil -createprop / /users/mailman shell /bin/tcsh
 passwd mailman
-# To prevent malicious hacking, supply a secure password here
+# ここでは, 悪意のあるハッキングを防ぐため, セキュアなパスワードを与えること
 niutil -create / /groups/mailman
 niutil -createprop / /groups/mailman name mailman
-# Note that xxx is a free group ID number on your system
+# xxx は, システム上で空いているグループ ID 番号であることに注意
 niutil -createprop / /groups/mailman gid xxx
 niutil -createprop / /groups/mailman passwd '*'
 niutil -createprop / /groups/mailman users 'mailman'
@@ -1855,23 +1908,26 @@ exit
 su mailman
 \end{verbatim}
 
-For setting up Apache on OSX to handle Mailman, the steps are almost identical
-and the configuration file on a stock Mac OSX Client version is stored in the
-nearly standard location of \file{/etc/httpd/httpd.conf}.
+OSX の Apache で Mailman が使えるように設定する手順は,
+[訳注: このマニュアルで説明しているのと] ほとんど同じです.
+Mac OSX クライアント版の標準的な設定ファイルは
+\file{/etc/httpd/httpd.conf} (これが標準の場所) あたりに格納されています.
 
-The \url{AFP548.com} site has a time-saving automated startup item creator for
-Mailman, which can be found at 
+\ulink{AFP548.com}{http://www.afp548.com} のサイトには,
+スタートアップアイテムの自動作成ツールがあり, これを使うと手間が省けます.
 \url{http://www.afp548.com/Software/MailmanStartup.tar.gz}
+で見つかります.
 
-To install it, copy it into your \file{/Library/StartupItems} directory. As
-the root or superuser, from the terminal, enter the following:
+インストールするには, このファイルを
+\file{/Library/StartupItems} ディレクトリにコピーします.
+ターミナルで root かスーパユーザになって, 次のものを入力します:
 
 \begin{verbatim}
 gunzip MailmanStartup.tar.gz
 tar xvf MailmanStartup.tar
 \end{verbatim}
 
-It will create the startup item for you so that when you reboot, Mailman will
-start up.
+これでスタートアップアイテムが作成されるので,
+再起動すれば Mailman が開始されます.
 
 \end{document}
