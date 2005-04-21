@@ -188,6 +188,15 @@ class Message(email.Message.Message):
             authors.append(address)
         return authors
 
+    def get_content_charset(self, failobj=None):
+        """email.Message.Message.get_content_charset() should return failobj
+        on error.
+        """
+        try:
+             return email.Message.Message.get_content_charset(self, failobj)
+        except:
+             return failobj
+
 
 
 class UserNotification(Message):
