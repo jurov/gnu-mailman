@@ -190,12 +190,21 @@ class Message(email.Message.Message):
 
     def get_content_charset(self, failobj=None):
         """email.Message.Message.get_content_charset() should return failobj
-        on error.
+        on error. Also, check if the returned charset is supported by the 
+        current running mailman instance.
         """
+        # First, trap known error in super class get_content_charset().
+        # This check will not needed if email package is updated.
         try:
-             return email.Message.Message.get_content_charset(self, failobj)
-        except:
-             return failobj
+            charset = email.Message.Message.get_content_charset(self, failobj)
+        except (LookupError, UnicodeError, ValueError):
+            return failobj
+        # Check if charset is supported.
+        try:
+            unicode('x', charset)
+        except (LookupError, ValueError):
+            return failobj
+        return charset
 
 
 
