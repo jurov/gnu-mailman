@@ -47,9 +47,12 @@ Here is a history of user visible changes to Mailman.
       STEALTH_MODE on by default.
 
     - Chinese languages moved from 'big5' and 'gb' to 'zh_TW' and 'zh_CN'
-      respectively for compliance to the IANA spec. Note that only zh_CN
-      is supported and new translation coming up, while zh_TW is still 
-      unattended for years.
+      respectively for compliance to the IANA spec.  Note, however, that the
+      character sets were changed from 'Big5' or 'GB2312' to 'UTF-8' to cope 
+      with the insufficient codecs support in Python 2.3 and earlier.  You
+      may have to install Chinese capable codecs (like CJKCodecs) separately
+      to handle the incoming messages which are in local charsets, or upgrade
+      your Python to 2.4 or newer.
 
     - Python 2.4 compatibility issue: time.strftime() became strict about the
       'day of year' range.  (1078482)
