@@ -202,7 +202,7 @@ class Message(email.Message.Message):
         # Check if charset is supported.
         try:
             unicode('x', charset)
-        except (LookupError, ValueError):
+        except (LookupError, ValueError, TypeError):
             return failobj
         return charset
 
