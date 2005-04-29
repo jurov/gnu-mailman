@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -187,24 +187,6 @@ class Message(email.Message.Message):
                 address = address.lower()
             authors.append(address)
         return authors
-
-    def get_content_charset(self, failobj=None):
-        """email.Message.Message.get_content_charset() should return failobj
-        on error. Also, check if the returned charset is supported by the 
-        current running mailman instance.
-        """
-        # First, trap known error in super class get_content_charset().
-        # This check will not needed if email package is updated.
-        try:
-            charset = email.Message.Message.get_content_charset(self, failobj)
-        except (LookupError, UnicodeError, ValueError):
-            return failobj
-        # Check if charset is supported.
-        try:
-            unicode('x', charset)
-        except (LookupError, ValueError, TypeError):
-            return failobj
-        return charset
 
 
 
