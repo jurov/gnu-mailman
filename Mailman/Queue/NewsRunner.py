@@ -1,4 +1,4 @@
-# Copyright (C) 2000-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2000-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -106,7 +106,7 @@ def prepare_message(mlist, msg, msgdata):
     # crafted in CookHeaders.py to ensure prefix was stripped from the subject
     # came from mailing list user.
     stripped_subject = msgdata.get('stripped_subject') \
-                       or msgdaga.get('origsubj')
+                       or msgdata.get('origsubj')
     if not mlist.news_prefix_subject_too and stripped_subject is not None:
         del msg['subject']
         msg['subject'] = stripped_subject
