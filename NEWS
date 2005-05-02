@@ -59,7 +59,10 @@ Here is a history of user visible changes to Mailman.
 
     - New feature: automatic discards of held messages.  List owners can now
       set how many days to hold the messages in the moderator request queue.
-      cron/checkdb will automatically discard old messages.  (790494)
+      cron/checkdb will automatically discard old messages.  See the
+      max_days_to_hold variable in the General Options and
+      DEFAULT_MAX_DAYS_TO_HOLD in Defaults.py.  This defaults to 0
+      (i.e. disabled). (790494)
 
     - Improved mail address sanity check.  (1030228)
 
