@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -261,7 +261,7 @@ PRIVATE_EXTERNAL_ARCHIVER = No
 ARCHIVE_SCRUBBER = 'Mailman.Handlers.Scrubber'
 
 # Mailman.Handlers.Scrubber uses attachment's filename as is.
-# If you don't like this (extremely long mime-encoded filename) then set 
+# If you don't like this (extremely long mime-encoded filename) then set
 # this True.
 SCRUBBER_DONT_USE_ATTACHMENT_FILENAME = False
 
@@ -832,7 +832,7 @@ DEFAULT_MSG_FOOTER = """_______________________________________________
 #     old style: Re: [prefix] test
 #     new style: [prefix 123] Re: test ... (number is optional)
 # Old style is default for backward compatibility. New style is forced if
-# a list owner set %d (numbering) in prefix. If the site owner had applied 
+# a list owner set %d (numbering) in prefix. If the site owner had applied
 # new style patch (from SF patch area) before, he/she may want to set this
 # No in mm_cfg.py.
 OLD_STYLE_PREFIXING = Yes
@@ -851,7 +851,7 @@ DEFAULT_ADMIN_IMMED_NOTIFY = Yes
 DEFAULT_ADMIN_NOTIFY_MCHANGES = No
 
 # Discard held messages after this days
-DEFAULT_MAX_DAYS_TO_HOLD = 3            # days
+DEFAULT_MAX_DAYS_TO_HOLD = 0
 
 # Should list members, by default, have their posts be moderated?
 DEFAULT_DEFAULT_MEMBER_MODERATION = No
