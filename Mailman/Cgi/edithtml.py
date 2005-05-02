@@ -158,10 +158,14 @@ def ChangeHTML(mlist, cgi_info, template_name, doc):
     code = cgi_info['html_code'].value
     langdir = os.path.join(mlist.fullpath(), mlist.preferred_language)
     # Make sure the directory exists
+    omask = os.umask(0)
     try:
-        os.mkdir(langdir, 02775)
-    except OSError, e:
-        if e.errno <> errno.EEXIST: raise
+        try:
+            os.mkdir(langdir, 02775)
+        except OSError, e:
+            if e.errno <> errno.EEXIST: raise
+    finally:
+        os.umask(omask)
     fp = open(os.path.join(langdir, template_name), 'w')
     try:
         fp.write(code)
