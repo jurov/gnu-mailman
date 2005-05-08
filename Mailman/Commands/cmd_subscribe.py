@@ -88,7 +88,7 @@ def process(res, args):
             h = make_header(decode_header(realname))
             # BAW: in Python 2.2, use just unicode(h)
             realname = h.__unicode__()
-        except UnicodeDecodeError:
+        except UnicodeError:
             realname = u''
         # Coerce to byte string if uh contains only ascii
         try:

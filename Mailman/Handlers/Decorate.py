@@ -56,7 +56,7 @@ def process(mlist, msg, msgdata):
             username = mlist.getMemberName(member) or None
             try:
                 username = username.encode(Utils.GetCharSet(d['user_language']))
-            except (AttributeError, UnicodeEncodeError):
+            except (AttributeError, UnicodeError):
                 username = member
             d['user_name'] = username
             d['user_optionsurl'] = mlist.GetOptionsURL(member)
