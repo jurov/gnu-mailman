@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -412,7 +412,7 @@ class Article(pipermail.Article):
         if prefix:
             prefix_pat = re.sub(r'%\d*d', r'\s*\d+\s*', prefix)
             prefix_pat = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pat)
-            subject = re.sub(prefix_pat, '', subject)
+            subject = re.sub(re.escape(prefix_pat), '', subject)
         subject = subject.lstrip()
         strip_pat = re.compile('^((RE|AW|SV)(\[\d+\])?:\s*)+', re.I)
         stripped = strip_pat.sub('', subject)
@@ -585,7 +585,7 @@ class Article(pipermail.Article):
         try:
             del self.html_body
         except AttributeError:
-            pass        
+            pass
 
 
 class HyperArchive(pipermail.T):

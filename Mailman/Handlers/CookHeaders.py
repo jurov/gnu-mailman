@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -14,8 +14,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-"""Cook a message's Subject header.
-"""
+"""Cook a message's Subject header."""
 
 from __future__ import nested_scopes
 import re
@@ -51,7 +50,7 @@ nonascii = re.compile('[^\s!-~]')
 
 def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     # Get the charset to encode the string in. Then search if there is any
-    # non-ascii character is in the string. If there is and the charset is 
+    # non-ascii character is in the string. If there is and the charset is
     # us-ascii then we use iso-8859-1 instead. If the string is ascii only
     # we use 'us-ascii' if another charset is specified.
     charset = Utils.GetCharSet(mlist.preferred_language)
@@ -188,7 +187,7 @@ def process(mlist, msg, msgdata):
         i18ndesc = uheader(mlist, mlist.description, 'List-Id', maxlinelen=998)
         listid_h = formataddr((str(i18ndesc), listid))
     else:
-       	# without desc we need to ensure the MUST brackets
+        # without desc we need to ensure the MUST brackets
         listid_h = '<%s>' % listid
     # We always add a List-ID: header.
     del msg['list-id']
@@ -236,7 +235,7 @@ def prefix_subject(mlist, msg, msgdata):
     # tracked (e.g. internally crafted, delivered to a single user such as the
     # list admin).
     prefix = mlist.subject_prefix.strip()
-    if not prefix: 
+    if not prefix:
         return
     subject = msg.get('subject', '')
     # Try to figure out what the continuation_ws is for the header
@@ -260,7 +259,7 @@ def prefix_subject(mlist, msg, msgdata):
     # [],(), or {}, the prefix in the responding post subject will be cared.
     # sequential number format allows '%05d' like pattern.
     p = re.compile('%\d*d')
-    if p.search(prefix,1):
+    if p.search(prefix, 1):
         # prefix have number, so we should search prefix w/number in subject.
         # Also, old_style is forced to False
         prefix_pattern = p.sub(r'\s*\d+\s*', prefix)
@@ -271,7 +270,7 @@ def prefix_subject(mlist, msg, msgdata):
     # Convert [ ( { ) --> \\[ \\( \\{ \\) to feed into re module.
     # TK: Something magic should be here but after trial and error...
     prefix_pattern = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pattern)
-    subject = re.sub(prefix_pattern, '', subject)
+    subject = re.sub(re.escape(prefix_pattern), '', subject)
     rematch = re.match('((RE|AW|SV)(\[\d+\])?:\s*)+', subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
