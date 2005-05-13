@@ -267,9 +267,6 @@ def prefix_subject(mlist, msg, msgdata):
     else:
         prefix_pattern = prefix
         old_style = mm_cfg.OLD_STYLE_PREFIXING
-    # Convert [ ( { ) --> \\[ \\( \\{ \\) to feed into re module.
-    # TK: Something magic should be here but after trial and error...
-    prefix_pattern = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pattern)
     subject = re.sub(re.escape(prefix_pattern), '', subject)
     rematch = re.match('((RE|AW|SV)(\[\d+\])?:\s*)+', subject, re.I)
     if rematch:
