@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -132,18 +132,21 @@ def main():
         m = []
         try:
             cnt = 1
-            print _('[----- start pickle file -----]')
+            if doprint:
+                print _('[----- start pickle file -----]')
             while True:
                 try:
                     obj = load(fp)
                 except EOFError:
-                    print _('[----- end pickle file -----]')
+                    if doprint:
+                        print _('[----- end pickle file -----]')
                     break
-                print _('<----- start object %(cnt)s ----->')
-                if isinstance(obj, StringType):
-                    print obj
-                else:
-                    pp.pprint(obj)
+                if doprint:
+                    print _('<----- start object %(cnt)s ----->')
+                    if isinstance(obj, StringType):
+                        print obj
+                    else:
+                        pp.pprint(obj)
                 cnt += 1
                 m.append(obj)
         finally:
