@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -14,8 +14,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-"""Decorate a message by sticking the header and footer around it.
-"""
+"""Decorate a message by sticking the header and footer around it."""
 
 from types import ListType
 from email.MIMEText import MIMEText
@@ -83,7 +82,7 @@ def process(mlist, msg, msgdata):
     # charsets Mailman supports are strict supersets of us-ascii --
     # no, UTF-16 emails are not supported yet.
     #
-    # TK: Message with 'charset=' cause trouble. So, instead of 
+    # TK: Message with 'charset=' cause trouble. So, instead of
     #     mgs.get_content_charset('us-ascii') ...
     mcset = msg.get_content_charset() or 'us-ascii'
     lcset = Utils.GetCharSet(mlist.preferred_language)
