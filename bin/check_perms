@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -209,7 +209,14 @@ def checkarchives():
             os.chmod(private, mode & ~S_IROTH)
         else:
             print
-
+    # In addition, on a multiuser system you may want to hide the private
+    # archives so other users can't read them.
+    if mode & S_IXOTH:
+        print _("""\
+Warning: Private archive directory is other-executable (o+x).
+         This could allow other users on your system to read private archives.
+         If you're on a shared multiuser system, you should consult the
+         installation manual on how to fix this.""")
 
 MBOXPERMS = S_IRGRP | S_IWGRP | S_IRUSR | S_IWUSR
 

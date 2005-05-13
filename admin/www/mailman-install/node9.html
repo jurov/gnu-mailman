@@ -81,6 +81,30 @@ to fix the problems (probably the easiest solution):
 </UL>
 
 <P>
+<div class="warning"><b class="label">Warning:</b>
+
+If you're running Mailman on a shared multiuser system, and you have mailing
+lists with private archives, you may want to hide the private archive
+directory from other users on your system.  In that case, you should drop the
+other execute permission (o-x) from the <span class="file">archives/private</span> directory.
+However, the web server process must be able to follow the symbolic link in
+public directory, otherwise your public Pipermail archives will not work.  To
+set this up, become root and run the following commands:
+
+<P>
+<div class="verbatim"><pre>
+# cd &lt;prefix&gt;/archives
+# chown &lt;web-server-user&gt; private
+# chmod o-x private
+</pre></div>
+
+<P>
+You need to know what user your web server runs as.  It may be <code>www</code>,
+<code>apache</code>, <code>httpd</code> or <code>nobody</code>, depending on your server's
+configuration.
+</div>
+
+<P>
 
 <DIV CLASS="navigation">
 <div class='online-navigation'>
@@ -114,7 +138,7 @@ to fix the problems (probably the easiest solution):
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on April 16, 2005.</span>
+<span class="release-info">Release 2.1, documentation updated on May 12, 2005.</span>
 </DIV>
 <!--End of Navigation Panel-->
 

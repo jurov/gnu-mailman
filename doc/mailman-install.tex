@@ -283,6 +283,26 @@ to fix the problems (probably the easiest solution):
 \item Repeat previous step until no more errors are reported!
 \end{itemize}
 
+\begin{notice}[warning]
+If you're running Mailman on a shared multiuser system, and you have mailing
+lists with private archives, you may want to hide the private archive
+directory from other users on your system.  In that case, you should drop the
+other execute permission (o-x) from the \file{archives/private} directory.
+However, the web server process must be able to follow the symbolic link in
+public directory, otherwise your public Pipermail archives will not work.  To
+set this up, become root and run the following commands:
+
+\begin{verbatim}
+# cd <prefix>/archives
+# chown <web-server-user> private
+# chmod o-x private
+\end{verbatim}
+
+You need to know what user your web server runs as.  It may be \code{www},
+\code{apache}, \code{httpd} or \code{nobody}, depending on your server's
+configuration.
+\end{notice}
+
 \section{Set up your web server}
 
 Congratulations!  You've installed the Mailman software.  To get everything
