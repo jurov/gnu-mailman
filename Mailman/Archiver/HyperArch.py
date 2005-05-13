@@ -410,9 +410,10 @@ class Article(pipermail.Article):
         # This part was taken from CookHeaders.py (TK)
         prefix = self._mlist.subject_prefix.strip()
         if prefix:
-            prefix_pat = re.sub(r'%\d*d', r'\s*\d+\s*', prefix)
-            prefix_pat = re.sub('([\[\(\{\)])', '\\\\\g<1>', prefix_pat)
-            subject = re.sub(re.escape(prefix_pat), '', subject)
+            prefix_pat = re.escape(prefix)
+            prefix_pat = '%'.join(prefix_pat.split(r'\%'))
+            prefix_pat = re.sub(r'%\d*d', r'\s*\d+\s*', prefix_pat)
+            subject = re.sub(prefix_pat, '', subject)
         subject = subject.lstrip()
         strip_pat = re.compile('^((RE|AW|SV)(\[\d+\])?:\s*)+', re.I)
         stripped = strip_pat.sub('', subject)

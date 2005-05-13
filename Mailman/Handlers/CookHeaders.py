@@ -253,21 +253,21 @@ def prefix_subject(mlist, msg, msgdata):
     # subject is mime-encoded and cset is set as us-ascii. See detail
     # for ch_oneline() (CookHeaders one line function).
     subject, cset = ch_oneline(subject)
-    # Note: searching prefix in subject is REMOVED. (seq version)
     # If the subject_prefix contains '%d', it is replaced with the
-    # mailing list sequential number. Also, if the prefix is closed with
-    # [],(), or {}, the prefix in the responding post subject will be cared.
-    # sequential number format allows '%05d' like pattern.
+    # mailing list sequential number.  Sequential number format allows
+    # '%d' or '%05d' like pattern.
+    prefix_pattern = re.escape(prefix)
+    # unescape '%' :-<
+    prefix_pattern = '%'.join(prefix_pattern.split(r'\%'))
     p = re.compile('%\d*d')
     if p.search(prefix, 1):
         # prefix have number, so we should search prefix w/number in subject.
-        # Also, old_style is forced to False
-        prefix_pattern = p.sub(r'\s*\d+\s*', prefix)
+        # Also, force new style.
+        prefix_pattern = p.sub(r'\s*\d+\s*', prefix_pattern)
         old_style = False
     else:
-        prefix_pattern = prefix
         old_style = mm_cfg.OLD_STYLE_PREFIXING
-    subject = re.sub(re.escape(prefix_pattern), '', subject)
+    subject = re.sub(prefix_pattern, '', subject)
     rematch = re.match('((RE|AW|SV)(\[\d+\])?:\s*)+', subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
