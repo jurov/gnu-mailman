@@ -1,22 +1,14 @@
-# translation of mailman.po to 
-# translation of mailman.po to
-# translation of mailman.po to
-# translation of mailman.po to
-# Copyright (C) YEAR ORGANIZATION.
-# CLIFF WOO <cliffwoo@hit.edu.cn>, 2005.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Wed Mar 23 09:55:34 2005\n"
-"PO-Revision-Date: 2005-04-19 18:35+0800\n"
-"Last-Translator: CLIFF WOO <cliffwoo@hit.edu.cn>\n"
-"Language-Team:  <zh@li.org>\n"
+"PO-Revision-Date: 2005-05-14 12:07+0800\n"
+"Last-Translator: Dai Xiaoguang <leona@cs.hit.edu.cn>\n"
+"Language-Team:  <mailman-cn@mail.cs.hit.edu.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.4\n"
-"X-Generator: KBabel 1.3.1\n"
 
 #: Mailman/Archiver/HyperArch.py:121
 msgid "size not available"
@@ -24,13 +16,13 @@ msgstr "不被允许的大小"
 
 #: Mailman/Archiver/HyperArch.py:127
 msgid " %(size)i bytes "
-msgstr ""
+msgstr "%(size)i 字节"
 
 #: Mailman/Archiver/HyperArch.py:281 Mailman/Archiver/HyperArch.py:454
 #: Mailman/Archiver/HyperArch.py:562 Mailman/Archiver/HyperArch.py:1031
 #: Mailman/Archiver/HyperArch.py:1160
 msgid " at "
-msgstr ""
+msgstr "在"
 
 #: Mailman/Archiver/HyperArch.py:483
 msgid "Previous message:"
@@ -42,7 +34,7 @@ msgstr "下一条消息"
 
 #: Mailman/Archiver/HyperArch.py:672 Mailman/Archiver/HyperArch.py:708
 msgid "thread"
-msgstr "线程"
+msgstr "线索"
 
 #: Mailman/Archiver/HyperArch.py:673 Mailman/Archiver/HyperArch.py:709
 msgid "subject"
@@ -62,15 +54,15 @@ msgstr "<P>目前没有归档文件 </P>"
 
 #: Mailman/Archiver/HyperArch.py:785
 msgid "Gzip'd Text%(sz)s"
-msgstr ""
+msgstr "Gzip压缩文本大小为 %(sz)s"
 
 #: Mailman/Archiver/HyperArch.py:790
 msgid "Text%(sz)s"
-msgstr ""
+msgstr "文本大小为 %(sz)s"
 
 #: Mailman/Archiver/HyperArch.py:880
 msgid "figuring article archives\n"
-msgstr "figuring article archives\n"
+msgstr "处理文章存档\n"
 
 #: Mailman/Archiver/HyperArch.py:890
 msgid "April"
@@ -106,7 +98,7 @@ msgstr "五月"
 
 #: Mailman/Archiver/HyperArch.py:892
 msgid "December"
-msgstr "是二月"
+msgstr "十二月"
 
 #: Mailman/Archiver/HyperArch.py:892
 msgid "November"
@@ -138,11 +130,11 @@ msgstr "第三"
 
 #: Mailman/Archiver/HyperArch.py:902
 msgid "%(ord)s quarter %(year)i"
-msgstr ""
+msgstr "%(year)i 的第 %(ord)s 季度"
 
 #: Mailman/Archiver/HyperArch.py:909
 msgid "%(month)s %(year)i"
-msgstr ""
+msgstr "%(month)s 月 %(year)i 年"
 
 #: Mailman/Archiver/HyperArch.py:914
 msgid "The Week Of Monday %(day)i %(month)s %(year)i"
@@ -150,7 +142,7 @@ msgstr ""
 
 #: Mailman/Archiver/HyperArch.py:918
 msgid "%(day)i %(month)s %(year)i"
-msgstr ""
+msgstr "%(day)i 日 %(month)s 月 %(year)i 年"
 
 #: Mailman/Archiver/HyperArch.py:1018
 msgid "Computing threaded index\n"
@@ -158,15 +150,15 @@ msgstr "计算索引\n"
 
 #: Mailman/Archiver/HyperArch.py:1283
 msgid "Updating HTML for article %(seq)s"
-msgstr "为文章更新HTML %(seq)s"
+msgstr "为文章 %(seq)s 更新HTML"
 
 #: Mailman/Archiver/HyperArch.py:1290
 msgid "article file %(filename)s is missing!"
-msgstr "文章文件 %(filename)s 丢失!"
+msgstr "文章文件 %(filename)s 丢失"
 
 #: Mailman/Archiver/pipermail.py:172 Mailman/Archiver/pipermail.py:173
 msgid "No subject"
-msgstr "没有主题"
+msgstr "无主题"
 
 #: Mailman/Archiver/pipermail.py:280
 msgid "Creating archive directory "
@@ -174,11 +166,11 @@ msgstr "创建归档目录"
 
 #: Mailman/Archiver/pipermail.py:292
 msgid "Reloading pickled archive state"
-msgstr "重新载入归档状态"
+msgstr ""
 
 #: Mailman/Archiver/pipermail.py:319
 msgid "Pickling archive state into "
-msgstr "准备归档状态到"
+msgstr ""
 
 #: Mailman/Archiver/pipermail.py:430
 msgid "Updating index files for archive [%(archive)s]"
@@ -186,7 +178,7 @@ msgstr "为归档 [%(archive)s] 更新索引文件"
 
 #: Mailman/Archiver/pipermail.py:463
 msgid "  Thread"
-msgstr " 线程"
+msgstr " 线索"
 
 #: Mailman/Archiver/pipermail.py:570
 msgid "#%(counter)05d %(msgid)s"
@@ -194,15 +186,15 @@ msgstr ""
 
 #: Mailman/Bouncer.py:44
 msgid "due to excessive bounces"
-msgstr "因为过多的订阅"
+msgstr "因为过多的退信"
 
 #: Mailman/Bouncer.py:45
 msgid "by yourself"
-msgstr "自己"
+msgstr "(由)您自己"
 
 #: Mailman/Bouncer.py:46
 msgid "by the list administrator"
-msgstr "列表管理员"
+msgstr "(由)列表管理员"
 
 #: Mailman/Bouncer.py:47 Mailman/Bouncer.py:247
 #: Mailman/Commands/cmd_set.py:182
@@ -211,7 +203,7 @@ msgstr "因为未知原因"
 
 #: Mailman/Bouncer.py:194
 msgid "disabled"
-msgstr "不允许"
+msgstr "禁止"
 
 #: Mailman/Bouncer.py:199
 msgid "Bounce action notification"
@@ -219,14 +211,14 @@ msgstr "退信行为通告"
 
 #: Mailman/Bouncer.py:254
 msgid " The last bounce received from you was dated %(date)s"
-msgstr "您最后的订阅日期为 %(date)s"
+msgstr "您最后的退信日期为 %(date)s"
 
 #: Mailman/Bouncer.py:279 Mailman/Deliverer.py:144
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:284
 #: Mailman/Handlers/Hold.py:205 Mailman/Handlers/ToDigest.py:226
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
-msgstr "(没有主题)"
+msgstr "(无主题)"
 
 #: Mailman/Bouncer.py:283
 msgid "[No bounce details are available]"
@@ -234,7 +226,7 @@ msgstr "[无退信的细节信息]"
 
 #: Mailman/Cgi/Auth.py:46
 msgid "Moderator"
-msgstr "等待"
+msgstr "主持人"
 
 #: Mailman/Cgi/Auth.py:48
 msgid "Administrator"
@@ -261,10 +253,9 @@ msgid ""
 "                non-digest delivery or your mailing list will basically be\n"
 "                unusable."
 msgstr ""
-"您关闭了摘要与一般订阅\n"
-"信件的发送。   此二者是互斥事件。\n"
-"                您必须从两者之中选择其一\n"
-"                ，不然你的通讯论坛是基本是无法使用的。"
+"您关闭了摘要与非摘要信息的发送\n"
+"这是不兼容状态。您必须从两者之中选择其一，\n"
+"不然你的邮件列表基本是无法使用的。"
 
 #: Mailman/Cgi/admin.py:183 Mailman/Cgi/admin.py:189 Mailman/Cgi/admin.py:194
 #: Mailman/Cgi/admin.py:1433 Mailman/Gui/GUIBase.py:191
@@ -276,8 +267,8 @@ msgid ""
 "You have digest members, but digests are turned\n"
 "                off. Those people will not receive mail."
 msgstr ""
-"您有摘要模式的会员, 但是摘要模式\n"
-"                被关闭。上述人员将接不到信件"
+"您有开启摘要模式的会员, 但是摘要模式被关闭。\n"
+"这些人将接不到信件"
 
 #: Mailman/Cgi/admin.py:192
 msgid ""
@@ -285,9 +276,8 @@ msgid ""
 "                turned off.  They will receive mail until you fix this\n"
 "                problem."
 msgstr ""
-"您有一般订阅会员，但是非摘要会员\n"
-"                的邮件选项被关闭。  直到您修正上述问题前，一般会员将持续收到信件。\n"
-"               "
+"您有开启非摘要模式会员，但是非摘要模式被关闭。 \n"
+" 直到您修正上述问题前，非摘要模式会员将持续收到信件。"
 
 #: Mailman/Cgi/admin.py:216
 msgid "%(hostname)s mailing lists - Admin Links"
@@ -306,8 +296,8 @@ msgid ""
 "<p>There currently are no publicly-advertised %(mailmanlink)s\n"
 "            mailing lists on %(hostname)s."
 msgstr ""
-"<p>现在并无公开的 %(mailmanlink)s\n"
-"            邮件列表在 %(hostname)s 上。"
+"<p>目前在 %(hostname)s 上无公开的 %(mailmanlink)s\n"
+"          邮件列表。"
 
 #: Mailman/Cgi/admin.py:259
 msgid ""
@@ -315,13 +305,13 @@ msgid ""
 "            %(mailmanlink)s mailing lists on %(hostname)s.  Click on a list\n"
 "            name to visit the configuration pages for that list."
 msgstr ""
-"<p>下面是公开的\n"
-"            %(mailmanlink)s 邮件列表在 %(hostname)s 上.  点击一个列表\n"
-"            名称去访问此列表的配置页面"
+"<p>下面是 %(hostname)s 上公开的\n"
+"            %(mailmanlink)s 邮件列表。  点击一个列表\n"
+"            名称可以访问此列表的配置页面"
 
 #: Mailman/Cgi/admin.py:266
 msgid "right "
-msgstr "对"
+msgstr "正确"
 
 #: Mailman/Cgi/admin.py:268
 msgid ""
@@ -332,16 +322,16 @@ msgid ""
 "\n"
 "        <p>General list information can be found at "
 msgstr ""
-"访问未公开列表的管理员页面\n"
-"        , 打开一个与此相似的链接, 但是拥有一个 '/' 和\n"
-"         %(extra)s列表名。  如果您已经通过认证,\n"
-"        你同样可以看到 <a href=\"%(creatorurl)s\">创建一个新的邮件列表</a>.\n"
+"要访问未公开列表的管理员配置页面\n"
+"        , 打开一个与此相似的链接, 但是附加一个 '/' 和\n"
+"         %(extra)s列表名。  如果您有权限,\n"
+"        你还可以 <a href=\"%(creatorurl)s\">创建一个新的邮件列表</a>.\n"
 "\n"
-"        <p>通常列表的信息能够被发现在"
+"        <p>列表常规信息可在这里找到"
 
 #: Mailman/Cgi/admin.py:275
 msgid "the mailing list overview page"
-msgstr "邮件列表简介"
+msgstr "邮件列表简介页"
 
 #: Mailman/Cgi/admin.py:277
 msgid "<p>(Send questions and comments to "
@@ -362,7 +352,7 @@ msgstr "[没有描述]"
 
 #: Mailman/Cgi/admin.py:327
 msgid "No valid variable name found."
-msgstr "没有找到有效的变量名。"
+msgstr "找不到有效的变量名。"
 
 #: Mailman/Cgi/admin.py:337
 msgid ""
@@ -383,8 +373,8 @@ msgid ""
 "    pages that are displaying this option for this mailing list.  You can also\n"
 "    "
 msgstr ""
-"<em><strong>警告:</strong> 更改此处的选项\n"
-"   可能引起其他屏幕的不同步.  更新此项设置的其他网页，\n"
+"<em><strong>警告:</strong> 更改此选项\n"
+"   可能引起其他窗口的不同步。确保重新载入邮件列表中所有使用该选项的页。\n"
 "    您也可以\n"
 "    "
 
@@ -410,11 +400,11 @@ msgstr "其他管理事件"
 
 #: Mailman/Cgi/admin.py:410
 msgid "Tend to pending moderator requests"
-msgstr "处理待裁决申请"
+msgstr "处理待裁决请求"
 
 #: Mailman/Cgi/admin.py:412
 msgid "Go to the general list information page"
-msgstr "前往简介页"
+msgstr "前往列表常规信息页"
 
 #: Mailman/Cgi/admin.py:414
 msgid "Edit the public HTML pages and text files"
@@ -438,7 +428,7 @@ msgstr "注销"
 
 #: Mailman/Cgi/admin.py:473
 msgid "Emergency moderation of all list traffic is enabled"
-msgstr "突发事件，所有列表通讯被激活"
+msgstr "所有列表通讯的紧急缓存被设置"
 
 #: Mailman/Cgi/admin.py:484
 msgid ""
@@ -446,19 +436,19 @@ msgid ""
 "        using the <em>Submit Your Changes</em> button below."
 msgstr ""
 "修改以下部分, 然后用\n"
-"        <em>Submit Your Changes</em>按钮提交它们。"
+"        <em>提交您的修改</em>按钮提交它们。"
 
 #: Mailman/Cgi/admin.py:502
 msgid "Additional Member Tasks"
-msgstr "而外的成员任务"
+msgstr "额外的成员任务"
 
 #: Mailman/Cgi/admin.py:508
 msgid ""
 "<li>Set everyone's moderation bit, including\n"
 "            those members not currently visible"
 msgstr ""
-"<li>Set everyone's moderation bit, including\n"
-"            those members not currently visible"
+"<li>设置每位成员的节制位，包括\n"
+"            目前不可见的用户"
 
 #: Mailman/Cgi/admin.py:512
 msgid "Off"
@@ -470,7 +460,7 @@ msgstr "开"
 
 #: Mailman/Cgi/admin.py:514
 msgid "Set"
-msgstr ""
+msgstr "设置"
 
 #: Mailman/Cgi/admin.py:555
 msgid "Value"
@@ -481,7 +471,7 @@ msgid ""
 "Badly formed options entry:\n"
 " %(record)s"
 msgstr ""
-"错误形式的选项:\n"
+"错误形式选项入口:\n"
 " %(record)s"
 
 #: Mailman/Cgi/admin.py:667
@@ -514,11 +504,11 @@ msgstr "描述"
 
 #: Mailman/Cgi/admin.py:709 Mailman/Cgi/admin.py:767
 msgid "Add new item..."
-msgstr "增加新的选项"
+msgstr "增加新选项"
 
 #: Mailman/Cgi/admin.py:711 Mailman/Cgi/admin.py:769
 msgid "...before this one."
-msgstr "...在这个之前"
+msgstr "在这个之前"
 
 #: Mailman/Cgi/admin.py:712 Mailman/Cgi/admin.py:770
 msgid "...after this one."
@@ -589,16 +579,15 @@ msgid ""
 "        permanent state.</em>"
 msgstr ""
 "<br><em><strong>注释:</strong>\n"
-"        设置这个值立即执行一个动作，但没有修改\n"
-"        永久的状态.</em>"
+"        设置此值会在当前环境立刻生效，但此值不会被保存。</em>"
 
 #: Mailman/Cgi/admin.py:834
 msgid "Mass Subscriptions"
-msgstr "大众订阅"
+msgstr "批量订阅"
 
 #: Mailman/Cgi/admin.py:841
 msgid "Mass Removals"
-msgstr "大众删除"
+msgstr "批量删除"
 
 #: Mailman/Cgi/admin.py:848
 msgid "Membership List"
@@ -606,7 +595,7 @@ msgstr "成员列表"
 
 #: Mailman/Cgi/admin.py:855
 msgid "(help)"
-msgstr "帮助"
+msgstr "(帮助)"
 
 #: Mailman/Cgi/admin.py:856
 msgid "Find member %(link)s:"
@@ -698,15 +687,14 @@ msgid ""
 "        set, postings from them will be moderated, otherwise they will be\n"
 "        approved."
 msgstr ""
-"<b>mod</b> -- 用户的个人过滤标志.  如果这个被设置了,\n"
-"        用户发出的信件将被过滤, 否则将被接受."
+"<b>mod</b> -- 用户的个人节制标志.  如果设置该值,\n"
+"        用户发出的信件将被缓存, 否则将被发送。"
 
 #: Mailman/Cgi/admin.py:1056
 msgid ""
 "<b>hide</b> -- Is the member's address concealed on\n"
 "        the list of subscribers?"
-msgstr ""
-"<b>隐藏</b> -- 用户的地址在订阅列表中式隐藏的么?"
+msgstr "<b>隐藏</b> -- 用户的地址在订阅者列表中是隐藏的吗?"
 
 #: Mailman/Cgi/admin.py:1058
 msgid ""
@@ -728,17 +716,16 @@ msgstr ""
 "        将给出一个简短的信息描述投递失效的原因:\n"
 "            <ul><li><b>U</b> -- 用户在个人选项页面中禁止了投递.\n"
 "                <li><b>A</b> -- 列表管理员禁止了投递.\n"
-"                <li><b>B</b> -- 由于用户地址的过分的反弹,系统禁止了投递.\n"
+"                <li><b>B</b> -- 由于该用户地址过多的退信,系统禁止了投递.\n"
 "                <li><b>?</b> -- 投递失效的原因未知.\n"
-"                    在Mailman的早些版本中是这种情况.\n"
+"                    在Mailman的早些版本中这是对所有被禁止成员投递信息时出现的情况.\n"
 "            </ul>"
 
 #: Mailman/Cgi/admin.py:1073
 msgid ""
 "<b>ack</b> -- Does the member get acknowledgements of their\n"
 "        posts?"
-msgstr ""
-"<b>确认</b> -- 用户收到了对他们的投递的确认信了么?"
+msgstr "<b>确认</b> -- 用户收到对他们邮件的确认信了吗?"
 
 #: Mailman/Cgi/admin.py:1076
 msgid ""
@@ -768,7 +755,7 @@ msgid ""
 "        text digests?  (otherwise, MIME)"
 msgstr ""
 "<b>纯文本</b> -- 如果接收摘要,是纯文本形式的摘要么?\n"
-"        (否则, 多用途的网际邮件扩充协议MIME)"
+"        (否则, 使用多用途的网际邮件扩充协议MIME)"
 
 #: Mailman/Cgi/admin.py:1087
 msgid "<b>language</b> -- Language preferred by the user"
@@ -865,7 +852,7 @@ msgstr "是"
 
 #: Mailman/Cgi/admin.py:1151
 msgid "Send notifications of new subscriptions to the list owner?"
-msgstr "向列表的管理员发送出现新的订阅的通知?"
+msgstr "向列表管理员发送出现新订阅的通知?"
 
 #: Mailman/Cgi/admin.py:1159 Mailman/Cgi/admin.py:1200
 msgid "Enter one address per line below..."
@@ -881,8 +868,8 @@ msgid ""
 "    top of your invitation or the subscription notification.  Include at least\n"
 "    one blank line at the end..."
 msgstr ""
-"下面, 在您的邀请或者订阅通知的首行中添加附加文字.\n"
-"    在每行的结尾至少包括一个空白符..."
+"下面, 在您的邀请或者订阅通知的头部中添加附加文字.\n"
+"    结尾至少包含一个空白行..."
 
 #: Mailman/Cgi/admin.py:1184
 msgid "Send unsubscription acknowledgement to the user?"
@@ -914,17 +901,16 @@ msgid ""
 "<a href=\"%(adminurl)s/general\">general options section</a>."
 msgstr ""
 "<em>列表管理员</em>拥有所有邮件列表参数的最终控制权.\n"
-"他们可以更改在管理员页面上看到的所有配置变量.\n"
+"他们可以更改在管理员页面上列出的所有配置变量.\n"
 "\n"
-"<p><em>列表缓和器</em> 具有更高的访问权限; \n"
-"他们不能改变任何列表的参数, 但是他们可以挂起管理员的管理请求.\n"
-"包括批准或者拒绝滞留订阅请求,清理滞留记录.当然\n"
+"<p><em>列表主持者</em> 有受限的权限; \n"
+"他们不能改变任何列表的参数, 但是他们可以挂起管理请求.\n"
+"包括批准或者拒绝滞留订阅请求,清理滞留邮件.当然\n"
 "<em>l列表管理员</em> 也可以挂起请求.\n"
 "\n"
-"<p>为了在列表管理员和列表缓和器之间分配拥有者的职责\n"
-"您必须在下面的域中设置单独的缓和器的密码,\n"
-"并在<a href=\"%(adminurl)s/general\">一般选项</a>"
-"中提供列表缓和器的邮件地址."
+"<p>为了在列表管理员和列表主持者之间分配管理员职责\n"
+"您必须在下面的域中设置单独的列表主持者密码,\n"
+"并在<a href=\"%(adminurl)s/general\">常规选项部分</a>中提供列表主持者的邮件地址."
 
 #: Mailman/Cgi/admin.py:1236
 msgid "Enter new administrator password:"
@@ -932,15 +918,15 @@ msgstr "输入新的管理员密码:"
 
 #: Mailman/Cgi/admin.py:1238
 msgid "Confirm administrator password:"
-msgstr "再次输入密码以确认:"
+msgstr "确认管理员密码:"
 
 #: Mailman/Cgi/admin.py:1243
 msgid "Enter new moderator password:"
-msgstr "输入新的缓和器密码:"
+msgstr "输入新的列表主持者密码:"
 
 #: Mailman/Cgi/admin.py:1245
 msgid "Confirm moderator password:"
-msgstr "再次输入密码以确认:"
+msgstr "确认主持者密码:"
 
 #: Mailman/Cgi/admin.py:1255
 msgid "Submit Your Changes"
@@ -948,7 +934,7 @@ msgstr "提交您的修改"
 
 #: Mailman/Cgi/admin.py:1278
 msgid "Moderator passwords did not match"
-msgstr "缓和器密码不匹配"
+msgstr "主持者密码不匹配"
 
 #: Mailman/Cgi/admin.py:1288
 msgid "Administrator passwords did not match"
@@ -956,7 +942,7 @@ msgstr "管理员密码不匹配"
 
 #: Mailman/Cgi/admin.py:1337
 msgid "Already a member"
-msgstr "您已经是成员了"
+msgstr "已经是成员了"
 
 #: Mailman/Cgi/admin.py:1340
 msgid "&lt;blank line&gt;"
@@ -964,7 +950,7 @@ msgstr "&lt;空行&gt;"
 
 #: Mailman/Cgi/admin.py:1341 Mailman/Cgi/admin.py:1344
 msgid "Bad/Invalid email address"
-msgstr "无效的邮件地址"
+msgstr "错误/无效的邮件地址"
 
 #: Mailman/Cgi/admin.py:1347
 msgid "Hostile address (illegal characters)"
@@ -996,7 +982,7 @@ msgstr "不能取消非成员的订阅:"
 
 #: Mailman/Cgi/admin.py:1408
 msgid "Bad moderation flag value"
-msgstr "错误的缓和器标记变量"
+msgstr "错误的节制标记变量"
 
 #: Mailman/Cgi/admin.py:1429
 msgid "Not subscribed"
@@ -1012,7 +998,7 @@ msgstr "成功删除:"
 
 #: Mailman/Cgi/admin.py:1476
 msgid "Error Unsubscribing:"
-msgstr "错误删除:"
+msgstr "错误取消订阅:"
 
 #: Mailman/Cgi/admindb.py:159 Mailman/Cgi/admindb.py:167
 msgid "%(realname)s Administrative Database"
@@ -1032,7 +1018,7 @@ msgstr "点击此处以重新加载页面."
 
 #: Mailman/Cgi/admindb.py:184
 msgid "Detailed instructions for the administrative database"
-msgstr "更详细的管理数据库的指南"
+msgstr "详细的管理数据库的指南"
 
 #: Mailman/Cgi/admindb.py:188
 msgid "Administrative requests for mailing list:"
@@ -1052,7 +1038,7 @@ msgstr "所有的 %(esender)s's 滞留信息."
 
 #: Mailman/Cgi/admindb.py:215
 msgid "a single held message."
-msgstr "仅此一个滞留信息."
+msgstr "仅一个滞留信息."
 
 #: Mailman/Cgi/admindb.py:220
 msgid "all held messages."
@@ -1068,7 +1054,7 @@ msgstr "可用的邮件列表的清单"
 
 #: Mailman/Cgi/admindb.py:267
 msgid "You must specify a list name.  Here is the %(link)s"
-msgstr "您必须制定一个列表名称.  这里是 %(link)s"
+msgstr "您必须给出一个列表名称.  这里是 %(link)s"
 
 #: Mailman/Cgi/admindb.py:280
 msgid "Subscription Requests"
@@ -1113,7 +1099,7 @@ msgstr "对所有这些滞留的信息的动作:"
 
 #: Mailman/Cgi/admindb.py:411
 msgid "Preserve messages for the site administrator"
-msgstr "为站点的管理员保存信息"
+msgstr "为站点管理员保存信息"
 
 #: Mailman/Cgi/admindb.py:417
 msgid "Forward messages (individually) to:"
@@ -1121,7 +1107,7 @@ msgstr "发送信息(分别)给:"
 
 #: Mailman/Cgi/admindb.py:435
 msgid "Clear this member's <em>moderate</em> flag"
-msgstr "清除这个用户的 <em>缓和器</em> 标记"
+msgstr "清除这个用户的 <em>节制</em> 标记"
 
 #: Mailman/Cgi/admindb.py:439
 msgid "<em>The sender is now a member of this list</em>"
@@ -1145,7 +1131,7 @@ msgstr "滞留"
 
 #: Mailman/Cgi/admindb.py:453
 msgid "Rejects"
-msgstr "反对"
+msgstr "拒绝"
 
 #: Mailman/Cgi/admindb.py:462
 msgid ""
@@ -1192,7 +1178,7 @@ msgstr "接收:"
 
 #: Mailman/Cgi/admindb.py:561
 msgid "Posting Held for Approval"
-msgstr "带批准的滞留记录"
+msgstr "待批准邮件"
 
 #: Mailman/Cgi/admindb.py:563
 msgid " (%(count)d of %(total)d)"
@@ -1265,7 +1251,7 @@ msgstr ""
 "<b>无效的验证字符串:</b>\n"
 "    %(safecookie)s.\n"
 "\n"
-"    <p>请注意验证字符串会在最初订阅的大约%(days)s 天之后\n"
+"    <p>请注意验证字符串会在最初订阅后大约%(days)s 天\n"
 "    过期.  如果您的验证字符串过期了, 请重新提交您的订阅.\n"
 "    否则, <a href=\"%(confirmurl)s\">请重新键入</a> 您的验证字符串"
 
@@ -1276,7 +1262,7 @@ msgid ""
 "                unsubscribed, e.g. by the list administrator?"
 msgstr ""
 "要求取消订阅的地址不是邮件列表中的成员.\n"
-"                可能您已经取消了订阅,比如说被邮件列表的管理员?"
+"                可能您已经取消了订阅,比如说被邮件列表的管理员取消?"
 
 #: Mailman/Cgi/confirm.py:144
 msgid ""
@@ -1320,7 +1306,7 @@ msgstr "提交"
 
 #: Mailman/Cgi/confirm.py:230
 msgid "Confirm subscription request"
-msgstr "验证订阅请求"
+msgstr "确认订阅请求"
 
 #: Mailman/Cgi/confirm.py:245
 msgid ""
@@ -1338,13 +1324,13 @@ msgid ""
 "    <p>Or hit <em>Cancel my subscription request</em> if you no longer want to\n"
 "    subscribe to this list."
 msgstr ""
-"为了继续对<em>%(listname)s</em>的订阅请求,您必须完成验证.您的订阅设置如下;\n"
-"    如果需要的话,您可以做相应的修改,然后点击<em>订阅</em>完成验证.\n"
-"    如果您已经验证了订阅请求,您将看到您的帐户的选项页,您可以通过它来\n"
+"为了完成对邮件列表<em>%(listname)s</em>的订阅请求,您必须完成验证.您的订阅设置如下;\n"
+"    可以做任何任何必要的修改,然后点击<em>订阅</em>完成验证.\n"
+"    一旦您完成了订阅请求的验证,您将看到您的帐户的选项页,您可以通过它进一步\n"
 "    定制您的成员选项.\n"
 "\n"
 "    <p>注意: 如果您的订阅完成了验证,您的密码会发送到您的邮箱里.您可以\n"
-"    通过访问您的个人属性页面修改它.\n"
+"    通过访问您的个人选项页修改它.\n"
 "\n"
 "    <p>或者,如果您不想订阅这个列表，可以点击<em>取消我的订阅请求</em> "
 
@@ -1366,13 +1352,13 @@ msgid ""
 "        this mailing list, you can hit <em>Cancel my subscription\n"
 "        request</em>."
 msgstr ""
-"为了继续对<em>%(listname)s</em>的订阅请求,您必须完成验证.您的订阅设置如下;\n"
-"    如果需要的话,您可以做相应的修改,然后点击<em>订阅这个列表...</em>完成验证.\n"
-"    如果您已经验证了订阅请求,缓冲器会批准或者拒绝您的成员请求,您将收到缓冲器\n"
-"    决定结果的通知.\n"
+"为了继续对邮件列表<em>%(listname)s</em>的订阅请求,您必须完成验证.您的订阅设置如下;\n"
+"    你可以做任何必要的修改,然后点击<em>订阅这个列表...</em>完成验证.\n"
+"    一旦您完成了订阅请求的验证,列表主持者会批准或者拒绝您的成员请求,您将收到他(们)\n"
+"    决定结果。\n"
 "\n"
 "    <p>注意: 如果您的订阅完成了验证,您的密码会发送到您的邮箱里.您可以\n"
-"    通过访问您的个人属性页面修改它.\n"
+"    通过访问您的个人选项页修改它.\n"
 "\n"
 "        <p>或者,如果您改变了主意，不想订阅这个邮件列表,\n"
 "        您可以点击 <em>取消我的订阅请求</em>."
@@ -1387,11 +1373,11 @@ msgstr "您的真实姓名:"
 
 #: Mailman/Cgi/confirm.py:288
 msgid "Receive digests?"
-msgstr "接收文摘么?"
+msgstr "接收文摘吗?"
 
 #: Mailman/Cgi/confirm.py:297
 msgid "Preferred language:"
-msgstr "偏好的语言:"
+msgstr "喜欢的语言"
 
 #: Mailman/Cgi/confirm.py:302
 msgid "Cancel my subscription request"
@@ -1407,7 +1393,7 @@ msgstr "您已经取消了您的订阅请求."
 
 #: Mailman/Cgi/confirm.py:358
 msgid "Awaiting moderator approval"
-msgstr "等待缓冲器的批准"
+msgstr "等待列表主持者的批准"
 
 #: Mailman/Cgi/confirm.py:361
 msgid ""
@@ -1417,9 +1403,9 @@ msgid ""
 "            has been forwarded to the list moderator, and you will be notified\n"
 "            of the moderator's decision."
 msgstr ""
-"            您已经成功地完成了对 %(listname)s 订阅请求的验证,\n"
-"            但是在您能收到订阅之前,必须通过列表缓冲器的批准.\n"
-"            您的请求已经转发到列表缓冲器了, 您将收到缓冲器结果的通知."
+"            您已经成功地确认了%(listname)s 你的订阅请求,\n"
+"            但是在您能收到订阅之前,还需要列表主持者的最终批准.\n"
+"            您的请求已经发给列表主持者了, 您将收到列表主持者的决定的通知."
 
 #: Mailman/Cgi/confirm.py:368 Mailman/Cgi/confirm.py:428
 #: Mailman/Cgi/confirm.py:517 Mailman/Cgi/confirm.py:740
@@ -1429,7 +1415,7 @@ msgid ""
 "            address that has already been unsubscribed."
 msgstr ""
 "无效的验证字符串.  \n"
-"            有可能你在尝试验证已经取消订阅的邮件地址请求."
+"            可能你在尝试为已经取消订阅的地址确认请求."
 
 #: Mailman/Cgi/confirm.py:372
 msgid "You are already a member of this mailing list!"
@@ -1442,11 +1428,11 @@ msgid ""
 "            alerted."
 msgstr ""
 "            这个邮件列表还没有邀请您.  \n"
-"            邀请函已经被取消了, 而且列表管理员已经收到了警告."
+"            邀请函已经被丢弃, 而且列表管理员已经收到了警告."
 
 #: Mailman/Cgi/confirm.py:384
 msgid "Subscription request confirmed"
-msgstr "订阅请求已经通过验证"
+msgstr "订阅请求已经确认"
 
 #: Mailman/Cgi/confirm.py:388
 msgid ""
@@ -1459,16 +1445,16 @@ msgid ""
 "            <a href=\"%(optionsurl)s\">proceed to your membership login\n"
 "            page</a>."
 msgstr ""
-"            您已经成功地完成了对邮件列表 %(listname)s 发出订阅请求的地址\n"
-"            \"%(addr)s\" 的验证.  一个单独的验证信息将发送到您的电子邮件里,\n"
-"            同时还有您的密码和其他一些有用的信息和连接.\n"
+"            您已经成功地确认对邮件列表 %(listname)s 发出订阅请求的地址\n"
+"            \"%(addr)s\" .  一个单独的验证信息将发送到您的电子邮箱里,\n"
+"            同时还有您的密码和其他一些有用的信息和链接.\n"
 "\n"
 "            <p>现在,您就可以\n"
 "            <a href=\"%(optionsurl)s\">进入您的成员登陆页面</a>."
 
 #: Mailman/Cgi/confirm.py:406
 msgid "You have canceled your unsubscription request."
-msgstr "您已经撤消了您的取消订阅请求."
+msgstr "您已经撤消了您取消订阅的请求."
 
 #: Mailman/Cgi/confirm.py:434
 msgid "Unsubscription request confirmed"
@@ -1485,7 +1471,7 @@ msgstr ""
 
 #: Mailman/Cgi/confirm.py:449
 msgid "Confirm unsubscription request"
-msgstr "验证取消订阅请求"
+msgstr "确认取消订阅请求"
 
 #: Mailman/Cgi/confirm.py:464 Mailman/Cgi/confirm.py:554
 msgid "<em>Not available</em>"
@@ -1507,14 +1493,14 @@ msgid ""
 "    <p>Or hit <em>Cancel and discard</em> to cancel this unsubscription\n"
 "    request."
 msgstr ""
-"为了完成对 <em>%(listname)s</em> 的取消订阅请求,您必须通过验证.\n"
+"为了完成对 <em>%(listname)s</em> 的取消订阅请求,您必须确认.\n"
 "    当前,您订阅的身份是:\n"
 "\n"
 "    <ul><li><b>真实姓名:</b> %(fullname)s\n"
 "        <li><b>邮件地址:</b> %(addr)s\n"
 "    </ul>\n"
 "\n"
-"    点击下面的 <em>取消订阅</em> 按钮，来完成验证过程.\n"
+"    点击下面的 <em>取消订阅</em> 按钮，来完成确认.\n"
 "\n"
 "    <p>或者点击 <em>取消并且删除</em> 来撤销您的取消订阅请求."
 
@@ -1533,7 +1519,7 @@ msgstr "您已经取消了对地址请求的修改."
 
 #: Mailman/Cgi/confirm.py:523
 msgid "Change of address request confirmed"
-msgstr "对地址请求的修改通过了验证"
+msgstr "对地址请求的修改已经确认"
 
 #: Mailman/Cgi/confirm.py:527
 msgid ""
@@ -1542,13 +1528,13 @@ msgid ""
 "            can now <a href=\"%(optionsurl)s\">proceed to your membership\n"
 "            login page</a>."
 msgstr ""
-"            在邮件列表 the %(listname)s 中,您已经成功地将邮件地址从\n"
+"            在邮件列表 %(listname)s 中,您已经成功地将邮件地址从\n"
 "            <b>%(oldaddr)s</b> 修改为 <b>%(newaddr)s</b>.  \n"
 "            现在您可以 <a href=\"%(optionsurl)s\">进入您的成员登陆页面了</a>."
 
 #: Mailman/Cgi/confirm.py:539
 msgid "Confirm change of address request"
-msgstr "验证修改地址的请求"
+msgstr "确认修改地址的请求"
 
 #: Mailman/Cgi/confirm.py:558
 msgid "globally"
@@ -1603,12 +1589,11 @@ msgstr "继续等待批准"
 msgid ""
 "Okay, the list moderator will still have the\n"
 "    opportunity to approve or reject this message."
-msgstr ""
-"OK, 列表缓冲器仍然有机会批准或者拒绝这条信息."
+msgstr "OK, 列表主持者仍然有机会批准或者拒绝这条信息."
 
 #: Mailman/Cgi/confirm.py:625
 msgid "Sender discarded message via web."
-msgstr "通过web发送删除的信息"
+msgstr "寄件人通过web删除了信件"
 
 #: Mailman/Cgi/confirm.py:627
 msgid ""
@@ -1618,14 +1603,14 @@ msgid ""
 "            rejected the message.  You were not able to cancel it in\n"
 "            time."
 msgstr ""
-"主体头部为<em>%(subject)s</em>的滞留信息:\n"
-"            找不到了. 最有可能的原因是\n"
-"            列表缓冲器已经批准或者拒绝了这条信息.\n"
-"            您没能及时地取消这条消息."
+"找不到主题头部为 <em>%(subject)s</em> 的滞留信件。\n"
+"            最有可能的原因是\n"
+"            列表主持者已经批准或者拒绝了这条信件.\n"
+"            你不能及时地取消这条信件."
 
 #: Mailman/Cgi/confirm.py:635
 msgid "Posted message canceled"
-msgstr "发送的信息已经取消"
+msgstr "发送的信件已经取消"
 
 #: Mailman/Cgi/confirm.py:638
 msgid ""
@@ -1638,14 +1623,13 @@ msgstr ""
 
 #: Mailman/Cgi/confirm.py:649
 msgid "Cancel held message posting"
-msgstr "取消对滞留信息的发送"
+msgstr "取消对滞留信件的发送"
 
 #: Mailman/Cgi/confirm.py:674
 msgid ""
 "The held message you were referred to has\n"
 "        already been handled by the list administrator."
-msgstr ""
-"您提到的滞留信息已经由列表管理员处理了."
+msgstr "提交给你的滞留信件已经由列表管理员处理了."
 
 #: Mailman/Cgi/confirm.py:688
 msgid ""
@@ -1662,7 +1646,7 @@ msgid ""
 "    <p>Or hit the <em>Continue awaiting approval</em> button to continue to\n"
 "    allow the list moderator to approve or reject the message."
 msgstr ""
-"为了取消向邮件列表<em>%(listname)s</em>发送信息,您需要通过验证.\n"
+"为了取消向邮件列表<em>%(listname)s</em>发送信件,您需要通过验证.\n"
 "\n"
 "    <ul><li><b>发送者:</b> %(sender)s\n"
 "        <li><b>主题:</b> %(subject)s\n"
@@ -1671,7 +1655,7 @@ msgstr ""
 "\n"
 "    点击 <em>取消发送</em>按钮来取消发送.\n"
 "\n"
-"    <p>或者点击 <em>继续等待批准</em> 按钮,继续等待列表缓冲器批准或者拒绝信息."
+"    <p>或者点击 <em>继续等待批准</em> 按钮,继续允许列表主持者批准或者拒绝信件."
 
 #: Mailman/Cgi/confirm.py:704
 msgid "Cancel posting"
@@ -1683,8 +1667,8 @@ msgid ""
 "    we continue to receive bounces from your address, it could be deleted from\n"
 "    this mailing list."
 msgstr ""
-"您已经取消了重新设置有效您的成员资格. \n"
-"    如果我们连续收到反复的这种操作,在列表当中您的地址将被删除."
+"您已经取消重新设置您的成员资格有效. \n"
+"    如果我们持续从你的地址收到退信,你地址将被从列表中删除."
 
 #: Mailman/Cgi/confirm.py:746
 msgid "Membership re-enabled."
@@ -1697,8 +1681,8 @@ msgid ""
 "            href=\"%(optionsurl)s\">visit your member options page</a>.\n"
 "            "
 msgstr ""
-"            您已经成功的在邮件列表 %(listname)s 中重新设置有效您的成员资格.\n"
-"           现在您可以 <a href=\"%(optionsurl)s\">访问您的成员选项页面</a>.\n"
+"            您已经成功的在邮件列表 %(listname)s 中重新设置您的成员资格有效.\n"
+"           现在您可以 <a href=\"%(optionsurl)s\">访问您的成员选项页</a>.\n"
 "            "
 
 #: Mailman/Cgi/confirm.py:762
@@ -1738,17 +1722,17 @@ msgid ""
 "    re-enabling your membership.\n"
 "    "
 msgstr ""
-"您在邮件列表 %(realname)s 当中的成员资格由于您过多的反复被禁止了.\n"
+"您在邮件列表 %(realname)s 当中的成员资格由于您过多的退信被禁止了.\n"
 "    如果您希望能够重新向您的地址发送消息,您必须通过验证.\n"
 "    下面是我们的文本信息:\n"
 "\n"
 "    <ul><li><b>成员地址:</b> %(member)s\n"
 "        <li><b>成员姓名:</b> %(username)s\n"
-"        <li><b>收到的最近一次反复:</b> %(date)s\n"
+"        <li><b>收到最后一次退信的时间<\\b> %(date)s\n"
 "        <li><b>在您被永久的从这个邮件列表中删除之前还剩下大约的天数:</b> %(daysleft)s\n"
 "    </ul>\n"
 "\n"
-"    点击 <em>重新设置有效您的成员资格</em> 按钮以继续接受来自这个邮件列表的信件.\n"
+"    点击 <em>重新设置您的成员资格有效</em> 按钮以继续接收来自这个邮件列表的信件.\n"
 "    或者点击<em>取消</em> 按钮 推迟重新设置有效您的成员资格.\n"
 "    "
 
@@ -1801,8 +1785,7 @@ msgid ""
 "Leave the initial password (and confirmation) fields\n"
 "                blank if you want Mailman to autogenerate the list\n"
 "                passwords."
-msgstr ""
-"如果您想让 Mailman 自动生成列表密码,请将初始密码域(或者验证域)置空."
+msgstr "如果您想让 Mailman 自动生成列表密码,请将初始密码域(和验证域)置空."
 
 #: Mailman/Cgi/create.py:133
 msgid "Initial list passwords do not match"
@@ -1814,7 +1797,7 @@ msgstr "列表密码不能为空<!-- ignore -->"
 
 #: Mailman/Cgi/create.py:154
 msgid "You are not authorized to create new mailing lists"
-msgstr "您没有创建新的邮件列表的权限"
+msgstr "您没有创建新邮件列表的权限"
 
 #: Mailman/Cgi/create.py:162
 msgid "Unknown virtual host: %(safehostname)s"
@@ -1934,7 +1917,7 @@ msgstr "初始的列表拥有者地址:"
 
 #: Mailman/Cgi/create.py:338
 msgid "Auto-generate initial list password?"
-msgstr "自动生成列表初始密码么?"
+msgstr "自动生成列表初始密码吗?"
 
 #: Mailman/Cgi/create.py:346
 msgid "Initial list password:"
@@ -1942,7 +1925,7 @@ msgstr "初始列表密码:"
 
 #: Mailman/Cgi/create.py:352
 msgid "Confirm initial password:"
-msgstr "验证初始密码:"
+msgstr "确认初始密码:"
 
 #: Mailman/Cgi/create.py:362
 msgid "List Characteristics"
@@ -1954,9 +1937,9 @@ msgid ""
 "    are allowed to post unmoderated to this list?  Answer <em>Yes</em> to hold\n"
 "    new member postings for moderator approval by default."
 msgstr ""
-"新加入的成员在允许向这个列表发送没有经过缓冲的信息前需要被隔离么?\n"
+"新加入的成员在允许向这个列表发送没有经过缓冲的信息前需要被隔离吗?\n"
 "    回答 <em>是</em> 会将\n"
-"    新成员发送的信息滞留起来,等待缓冲器的批准(默认)."
+"    新成员发送的信息滞留起来,等待主持者的批准(默认)."
 
 #: Mailman/Cgi/create.py:395
 msgid ""
@@ -1964,13 +1947,13 @@ msgid ""
 "        select at least one initial language, the list will use the server\n"
 "        default language of %(deflang)s"
 msgstr ""
-"支持语言的初始清单.  <p>请注意:如果您\n"
+"支持语言的初始列表.  <p>请注意:如果您\n"
 "        没有选择初始语言, 邮件列表将采用服务器\n"
 "        默认的语言 %(deflang)s"
 
 #: Mailman/Cgi/create.py:406
 msgid "Send \"list created\" email to list owner?"
-msgstr "向列表拥有者发送\"列表已创建\"的信件么?"
+msgstr "向列表拥有者发送\"列表已创建\"的信件吗?"
 
 #: Mailman/Cgi/create.py:415
 msgid "List creator's (authentication) password:"
@@ -2038,7 +2021,7 @@ msgstr "提交更改"
 
 #: Mailman/Cgi/edithtml.py:154
 msgid "Can't have empty html page."
-msgstr "不能是空的html页面."
+msgstr "不能有空的html页面."
 
 #: Mailman/Cgi/edithtml.py:155
 msgid "HTML Unchanged."
@@ -2056,8 +2039,7 @@ msgstr " %(hostname)s 邮件列表"
 msgid ""
 "<p>There currently are no publicly-advertised\n"
 "            %(mailmanlink)s mailing lists on %(hostname)s."
-msgstr ""
-"<p>现在在 %(hostname)s 上没有公布的 %(mailmanlink)s 邮件列表."
+msgstr "<p>目前在 %(hostname)s 上没有公开的 %(mailmanlink)s 邮件列表."
 
 #: Mailman/Cgi/listinfo.py:110
 msgid ""
@@ -2066,7 +2048,7 @@ msgid ""
 "            the list, or to subscribe, unsubscribe, and change the preferences\n"
 "            on your subscription."
 msgstr ""
-"<p>下面是 %(hostname)s 上所有公布的列表地址.\n"
+"<p>下面是 %(hostname)s 上所有公开的列表地址.\n"
 "           点击列表名称以获得关于该列表更多的信息,或者订阅,取消订阅,更改您订阅的偏好设置."
 
 #: Mailman/Cgi/listinfo.py:116
@@ -2081,8 +2063,8 @@ msgid ""
 "        <p>List administrators, you can visit "
 msgstr ""
 " 要访问没有发布的列表的通用信息,\n"
-"        打开类似的 URL , 但是请加上 '/' 和 %(adj)s 作为列表名称的附加修饰.\n"
-"        <p>列出列表管理员,这样您可以访问 "
+"        打开类似的 URL , 但是在列表名后附加上 '/' 和 %(adj)s .\n"
+"        <p>如果你是列表管理员,您可以访问 "
 
 #: Mailman/Cgi/listinfo.py:124
 msgid "the list admin overview page"
@@ -2135,7 +2117,7 @@ msgstr ""
 
 #: Mailman/Cgi/options.py:178 Mailman/Cgi/options.py:192
 msgid "The confirmation email has been sent."
-msgstr "电子邮件的验证已经发送"
+msgstr "确认邮件已经发送"
 
 #: Mailman/Cgi/options.py:203 Mailman/Cgi/options.py:215
 #: Mailman/Cgi/options.py:257
@@ -2172,9 +2154,9 @@ msgid ""
 "address.  Upon confirmation, any other mailing list containing the address\n"
 "%(safeuser)s will be changed. "
 msgstr ""
-"您请求的地址 %(newaddr)s 已经是邮件列表 %(listname)s 的成员了,\n"
+"您请求的新地址 %(newaddr)s 已经是邮件列表 %(listname)s 的成员了,\n"
 "但是您仍然请求对这个地址进行全局的修改.\n"
-"经过验证, 其他包含 %(safeuser)s 这个地址的邮件列表将被修改."
+"确认后, 其他包含 %(safeuser)s 这个地址的邮件列表将被修改."
 
 #: Mailman/Cgi/options.py:341
 msgid "The new address is already a member: %(newaddr)s"
@@ -2186,7 +2168,7 @@ msgstr "地址不能为空"
 
 #: Mailman/Cgi/options.py:361
 msgid "A confirmation message has been sent to %(newaddr)s. "
-msgstr "验证信息已经发送到了 %(newaddr)s ."
+msgstr "确认信息已经发送到了 %(newaddr)s ."
 
 #: Mailman/Cgi/options.py:370
 msgid "Bad email address provided"
@@ -2223,7 +2205,7 @@ msgid ""
 "                on the checkbox below the <em>Unsubscribe</em> button.  You\n"
 "                have not been unsubscribed!"
 msgstr ""
-"为了验证您的取消订阅的请求,您必须选中复选框中 <em>取消订阅</em> \n"
+"为了确认您取消订阅的请求,您必须选中复选框中 <em>取消订阅</em> \n"
 "                这一项.  您还没有取消订阅!"
 
 #: Mailman/Cgi/options.py:455
@@ -2249,7 +2231,7 @@ msgid ""
 "            %(owneraddr)s."
 msgstr ""
 "您已经成功地退订了邮件列表 %(fqdn_listname)s。如果\n"
-"            您接收定期摘要的话，您还将收到一封摘要信息。如果您对于退订有任何的\n"
+"            您接收摘要投递的话，您还将收到一封摘要信息。如果您对于退订有任何的\n"
 "            问题，请联系列表管理员： %(owneraddr)s。"
 
 #: Mailman/Cgi/options.py:615
@@ -2258,7 +2240,7 @@ msgid ""
 "            this list, so your delivery option has not been set.  However your\n"
 "            other options have been set successfully."
 msgstr ""
-"列表管理员已经禁止了此列表的定期摘要投递功能，所以您的\n"
+"列表管理员已经禁止了此列表的摘要投递功能，所以您的\n"
 "            投递选项没有被设置，但是您的其他选项都已成功地设置。"
 
 #: Mailman/Cgi/options.py:619
@@ -2276,7 +2258,7 @@ msgstr "您已经成功设置您的选项。"
 
 #: Mailman/Cgi/options.py:626
 msgid "You may get one last digest."
-msgstr "您还将收到一封摘要。"
+msgstr "您可能会收到最后一封摘要。"
 
 #: Mailman/Cgi/options.py:698
 msgid "<em>Yes, I really want to unsubscribe</em>"
@@ -2346,7 +2328,7 @@ msgstr "邮件地址和"
 
 #: Mailman/Cgi/options.py:788
 msgid "%(realname)s list: member options for user %(safeuser)s"
-msgstr "%(realname)s 列表： 用户 %(safeuser)s 的成员信息"
+msgstr "%(realname)s 列表： 用户 %(safeuser)s 的成员选项信息"
 
 #: Mailman/Cgi/options.py:813
 msgid ""
@@ -2362,7 +2344,7 @@ msgid ""
 "    effect.\n"
 "    "
 msgstr ""
-"为了修改您的选项，您必须首先在下面的小节中使用您的 %(extra)s成员口令进行登录。\n"
+"为了修改您的选项，您必须首先在下面的部分中使用您的 %(extra)s 成员口令进行登录。\n"
 "    如果您忘记了您的口令，您可以通过点击下面的按钮来把它邮寄给您。如果您只是想\n"
 "    退订此列表，请点击<em>退订</em>按钮，然后一封确认函将投递给您。\n"
 "\n"
@@ -2391,7 +2373,7 @@ msgid ""
 "    message)."
 msgstr ""
 "通过点击<em>退订</em>按钮，一封确认函将被投递给您。\n"
-"    您需要点击确认函中的一个链接来完成整个退订过程(您也可以通过右击那来确认，\n"
+"    您需要点击确认函中的一个链接来完成整个退订过程(您也可以通过邮件来确认，\n"
 "    请参考确认函中的具体信息)。"
 
 #: Mailman/Cgi/options.py:849
@@ -2504,7 +2486,7 @@ msgstr ""
 "    此列表或者列表管理员的信件都将被退回。\n"
 "\n"
 "    <p>您可以在删除列表的同时也删除列表的邮件存档。但是我们强烈建议您<strong>\n"
-"    不要</strong>删除这些存档，因为他们是您的邮件列表的历史记录。\n"
+"    不要</strong>删除这些存档，因为它们是您的邮件列表的历史记录。\n"
 "\n"
 "    <p>为安全起见，您将被要求再次确认列表管理口令。\n"
 "    "
@@ -2515,7 +2497,7 @@ msgstr "列表管理口令："
 
 #: Mailman/Cgi/rmlist.py:227
 msgid "Also delete archives?"
-msgstr "同时删除邮件存档？"
+msgstr "同时删除邮件归档？"
 
 #: Mailman/Cgi/rmlist.py:235
 msgid "<b>Cancel</b> and return to list administration"
@@ -3062,15 +3044,15 @@ msgstr "接收关闭"
 
 #: Mailman/Commands/cmd_set.py:172
 msgid "by you"
-msgstr ""
+msgstr " 由您"
 
 #: Mailman/Commands/cmd_set.py:175
 msgid "by the admin"
-msgstr ""
+msgstr "由管理员"
 
 #: Mailman/Commands/cmd_set.py:178
 msgid "due to bounces"
-msgstr ""
+msgstr "由于退信"
 
 #: Mailman/Commands/cmd_set.py:186
 msgid "    %(status)s (%(how)s on %(date)s)"
@@ -3078,19 +3060,19 @@ msgstr ""
 
 #: Mailman/Commands/cmd_set.py:192
 msgid "    myposts %(onoff)s"
-msgstr ""
+msgstr "我的信件 %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:195
 msgid "    hide %(onoff)s"
-msgstr ""
+msgstr "隐藏 %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:199
 msgid "    duplicates %(onoff)s"
-msgstr ""
+msgstr "复制 %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:203
 msgid "    reminders %(onoff)s"
-msgstr ""
+msgstr "提示函 %(onoff)s"
 
 #: Mailman/Commands/cmd_set.py:224
 msgid "You did not give the correct password"
@@ -3106,35 +3088,35 @@ msgstr "无法鉴别"
 
 #: Mailman/Commands/cmd_set.py:254
 msgid "ack option set"
-msgstr "设置 确认(ack)"
+msgstr ""
 
 #: Mailman/Commands/cmd_set.py:286
 msgid "digest option set"
-msgstr "设置 摘要(digest)"
+msgstr ""
 
 #: Mailman/Commands/cmd_set.py:301
 msgid "delivery enabled"
-msgstr "激活 接收(delibery)"
+msgstr "启用投递"
 
 #: Mailman/Commands/cmd_set.py:304
 msgid "delivery disabled by user"
-msgstr "用户已经取消 接收(delivery)"
+msgstr "用户已经禁止投递"
 
 #: Mailman/Commands/cmd_set.py:316
 msgid "myposts option set"
-msgstr "设置 myposts"
+msgstr ""
 
 #: Mailman/Commands/cmd_set.py:327
 msgid "hide option set"
-msgstr "设置 隐身(hide)"
+msgstr ""
 
 #: Mailman/Commands/cmd_set.py:339
 msgid "duplicates option set"
-msgstr "设置 duplicates"
+msgstr ""
 
 #: Mailman/Commands/cmd_set.py:351
 msgid "reminder option set"
-msgstr "设置 reminder"
+msgstr ""
 
 #: Mailman/Commands/cmd_stop.py:17
 #, docstring
@@ -3181,15 +3163,14 @@ msgid ""
 "If you think this restriction is erroneous, please contact the list\n"
 "owners at %(listowner)s."
 msgstr ""
-"您提供的邮件地址已从邮件列表中去除。如果您觉得这些限制是错误的，\n"
+"您提供的邮件地址被禁止。如果您觉得这些限制是错误的，\n"
 "请联系列表管理员 %(listowner)s"
 
 #: Mailman/Commands/cmd_subscribe.py:111
 msgid ""
 "Mailman won't accept the given email address as a valid address.\n"
 "(E.g. it must have an @ in it.)"
-msgstr ""
-"您输入的地址不是Mailman的有效地址(地址中必须有@)。"
+msgstr "您输入的地址不是Mailman的有效地址(如:地址中必须有@)。"
 
 #: Mailman/Commands/cmd_subscribe.py:116
 msgid ""
@@ -3301,7 +3282,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_who.py:110
 msgid "You are not allowed to retrieve the list membership."
-msgstr "您没资格得到列表成员表。"
+msgstr "您没资格查看邮件列表的成员。"
 
 #: Mailman/Commands/cmd_who.py:116
 msgid "This list has no members."
@@ -3471,8 +3452,8 @@ msgid ""
 "invitation to your list.  We just thought you'd like to know.  No further\n"
 "action by you is required."
 msgstr ""
-"%(address)s 被邀请加入另一个邮件列表, 但却恶意尝\n"
-"试确认一个加入您的列表的邀请. 我们估计您乐意了解这个情况但您不必采取任何行动。"
+"%(address)s 被邀请加入另一个邮件列表, 但却恶意地\n"
+"将其对邀请的回复发送给您，我们估计您乐意了解这个情况但您不必采取任何行动。"
 
 #: Mailman/Deliverer.py:186
 msgid ""
@@ -3730,7 +3711,7 @@ msgid ""
 "             messages will still be discarded so that the list administrator\n"
 "             isn't inundated with them."
 msgstr ""
-"把这个值设置为<em>否</em>, 你就禁止了这个列表所有的\n"
+"把这个值设置为<em>,否则设为</em>, 你就禁止了这个列表所有的\n"
 "             自动退信处, 然而为了使列表管理员免于被退信消息淹没, 它们\n"
 "             仍然会被忽略"
 
@@ -3739,8 +3720,7 @@ msgid ""
 "The maximum member bounce score before the member's\n"
 "             subscription is disabled.  This value can be a floating point\n"
 "             number."
-msgstr ""
-"用户的订阅被禁止所需的退信值阈值. 这个值可设为浮点数。"
+msgstr "用户退信数的阈值（超过此值您的服务将被关闭）, 该值可设为浮点数。"
 
 #: Mailman/Gui/Bounce.py:88
 msgid ""
@@ -3772,8 +3752,8 @@ msgid ""
 "             is discarded, if no new bounces have been received in the\n"
 "             interim.  This value must be an integer."
 msgstr ""
-"取消某成员退信信息所需天数，在此天数内若系统未收到新的退信\n"
-"             ，则放弃退信这个值应为一个整数。"
+"取消某成员退信信息所需天数，在此天数内若系统未收到新的退信，则丢弃以前保留的退信信息。\n"
+"该值应为一个整数。"
 
 #: Mailman/Gui/Bounce.py:107
 msgid ""
@@ -3860,9 +3840,8 @@ msgid ""
 "             when a member's delivery is disabled due to excessive bounces.\n"
 "             An attempt to notify the member will always be made."
 msgstr ""
-"把这个值设置成<em>否</em>, 你就关闭了当一个用户由于\n"
-"             过多的退信而被暂时禁止时,通常发向列表所有者的通知消息. 但系统\n"
-"             总是尝试通知将被禁止的用户."
+"把这个值设置成<em>否</em>, 你就关闭了一个通知服务，该服务用于在某一个用户\n"
+"因为过多的退信而将被暂时禁止时通知列表属主. 但系统总是尝试通知将被禁止的用户."
 
 #: Mailman/Gui/Bounce.py:156
 msgid ""
@@ -3879,7 +3858,7 @@ msgid ""
 "             attempt to notify the member will always be made."
 msgstr ""
 "把这个值设置成<em>否</em>, 你就关闭了当一个用户由于\n"
-"             过多的退信而被退订时,通常发向列表所有者的通知消息. 但系统总是尝\n"
+"             过多的退信而被退订时,通常发向列表所有者的通知消息的服务. 但系统总是尝\n"
 "             试通知将被禁止的用户."
 
 #: Mailman/Gui/Bounce.py:185
@@ -3896,7 +3875,7 @@ msgstr "内容过滤"
 
 #: Mailman/Gui/ContentFilter.py:37
 msgid "Forward to List Owner"
-msgstr "继续到列表所有者"
+msgstr "向前到列表所有者"
 
 #: Mailman/Gui/ContentFilter.py:39
 msgid "Preserve"
@@ -4011,14 +3990,11 @@ msgid ""
 "             <tt>multipart</tt> to this list, any messages with attachments\n"
 "             will be rejected by the pass filter."
 msgstr ""
-"使用此项来移除内容类型不匹配的附件."
-"             要求和格式跟"
-"             <a href=\"?VARHELP=contentfilter/filter_mime_types\"\n"
+"使用此项来移除内容类型不匹配的附件.             要求和格式跟             <a href=\"?VARHELP=contentfilter/filter_mime_types\"\n"
 "             >过滤MIME类型</a>.\n"
 "\n"
 "             <p><b>注意:</b> 如果你向此清单增加了项目但没有同时增加\n"
-"             <tt>multipart</tt>, 所有带附件的消息都将被允许通过过滤\n"
-"             器拒绝."
+"             <tt>multipart</tt>, 所有带附件的消息都将被过滤掉"
 
 #: Mailman/Gui/ContentFilter.py:104
 msgid ""
@@ -4032,8 +4008,7 @@ msgid ""
 "Remove message attachments that don't have a matching\n"
 "             filename extension.  Leave this field blank to skip this filter\n"
 "             test."
-msgstr ""
-"移除没有匹配的扩展名的消息附件. 留空此项以便跳过过滤."
+msgstr "移除没有匹配的扩展名的消息附件. 如果您想跳过过滤器，请留空此项."
 
 #: Mailman/Gui/ContentFilter.py:113
 msgid ""
@@ -4048,8 +4023,7 @@ msgstr ""
 msgid ""
 "Action to take when a message matches the content filtering\n"
 "             rules."
-msgstr ""
-"当消息内容与内容过滤规则相符时采取的动作."
+msgstr "当消息内容与内容过滤规则相符时过滤."
 
 #: Mailman/Gui/ContentFilter.py:122
 msgid ""
@@ -4138,7 +4112,7 @@ msgstr "当受到摘要时，默认的格式是什么？"
 
 #: Mailman/Gui/Digest.py:59
 msgid "How big in Kb should a digest be before it gets sent out?"
-msgstr "在被邮递除去之前，摘要的大小应该是多少？"
+msgstr "在被邮递除去之前，摘要的大小应该是多少Kb？"
 
 #: Mailman/Gui/Digest.py:63
 msgid "Should a digest be dispatched daily when the size threshold isn't reached?"
@@ -4154,7 +4128,7 @@ msgstr "加在摘要顶部的文本(在内容表格之前作为开始消息)。"
 
 #: Mailman/Gui/Digest.py:73
 msgid "Footer added to every digest"
-msgstr "加在每个摘要上的尾部"
+msgstr "加在每个摘要上的尾部信息"
 
 #: Mailman/Gui/Digest.py:74
 msgid "Text attached (as a final message) to the bottom of digests. "
@@ -4288,11 +4262,11 @@ msgid ""
 "             addresses are not case sensitive, but they are sensitive to\n"
 "             almost everything else :-)"
 msgstr ""
-"该名字的大写用来在某些公司里作为一个专用名词\n"
-"             ，或缩写等。但是，名字还将作为邮件地址(\n"
-"             例如：在订阅确认通知里)，所以<em>不</em>应该\n"
+"该名字的大写或者首字母的缩写可能被某些公司里作为专用名词\n"
+"             。但是，如果该名字被申请作为邮件地址(\n"
+"             如：在订阅确认中可以注明)，所以<em>不</em>应该\n"
 "             以其他方式改变名字。(邮件地址不是大小写敏感的，\n"
-"             但是它对其他方式的改变敏感:-)"
+"             但是在其他地方一般是非常敏感的:-)"
 
 #: Mailman/Gui/General.py:75
 msgid ""
@@ -4324,16 +4298,15 @@ msgid ""
 "             addresses of the list moderators</a>.  Note that the field you\n"
 "             are changing here specifies the list administrators."
 msgstr ""
-"每个邮件列表有两个所有者角色。\n"
-"             <em>列表管理员</em>是控\n"
-"             制该列表所有参数的成员。\n"
+"每个邮件列表有两个管理者，他们扮演着不一样的角色。\n"
+"             <em>列表管理员</em>拥有最大的权力。\n"
 "             他们可以通过这些管理页面\n"
-"             改变任何可变的列表配置变量。\n"
+"             改变任何列表配置变量。\n"
 "\n"
-"             <p><em>列表主持人</em>有其他一些限制的许可；\n"
+"             <p><em>列表主持人</em>的权力受到一定的限制，\n"
 "             他们不能改变列表配置变量，但他们允许管理一些\n"
-"             待处理的管理请求，包括同意或拒绝保存的订阅请求，\n"
-"             和丢弃邮件。当然<em>列表管理员</em>也能够处理\n"
+"             待处理的管理请求，包括同意或拒绝保存的订阅请求、\n"
+"             丢弃邮件等。当然<em>列表管理员</em>也能够管理\n"
 "             未处理的请求。\n"
 "\n"
 "             <p>为了将列表所有者的职责分给管理员\n"
@@ -4464,8 +4437,8 @@ msgid ""
 "Hide the sender of a message, replacing it with the list\n"
 "             address (Removes From, Sender and Reply-To fields)"
 msgstr ""
-"隐藏一则消息的发送者，用列表地址替代它。\n"
-"             (从发送者和回复至域里删除掉)"
+"隐藏消息的发送者，用列表地址替代它。\n"
+"             (将From,Sender,Reply-TO等域的信息删除掉)"
 
 #: Mailman/Gui/General.py:158
 msgid "<tt>Reply-To:</tt> header munging"
@@ -4478,7 +4451,7 @@ msgid ""
 "             regardless of whether an explict <tt>Reply-To:</tt> header is\n"
 "             added by Mailman or not."
 msgstr ""
-"在原消息中找到的每一个<tt>Reply-To:</tt>头部都应该被删除吗？\n"
+"所有在原消息中找到的<tt>Reply-To:</tt>头部都应该被删除吗？\n"
 "             如果是，不管是否是Mailman显式添加的\n"
 "             <tt>Reply-To:</tt>头部都将被删除。"
 
@@ -4539,8 +4512,8 @@ msgstr ""
 "这个选项控制Mailman对流经该邮件列表的消息的\n"
 "             <tt>Reply-To:</tt>头部的处理方法。\n"
 "             当设置为<em>发布者</em>时，Mailman不会添加\n"
-"             <tt>Reply-To:</tt>头部，虽然如果原消息中已\n"
-"             经有一个头部了时，它不会被删除。将这个值设置\n"
+"             <tt>Reply-To:</tt>头部，即使原消息中已\n"
+"             经有一个头部了，它不会被删除。将这个值设置\n"
 "             为<em>该列表</em>或<em>显式地址</em>时，会\n"
 "             导致Mailman在所有的消息中插入一个指定的<tt>Reply-To:</tt>\n"
 "             头部，如果必要的话，还会覆盖原消息的头部\n"
@@ -4637,20 +4610,6 @@ msgstr ""
 "将密码提示发送给，例如，\"-owner\"地址，而不是\n"
 "             直接发送给用户。"
 
-#: Mailman/Gui/General.py:242
-msgid ""
-"Set this to yes when this list is intended to cascade only\n"
-"             to other mailing lists.  When set, meta notices like\n"
-"             confirmations and password reminders will be directed to an\n"
-"             address derived from the member's address - it will have the\n"
-"             value of \"umbrella_member_suffix\" appended to the member's\n"
-"             account name."
-msgstr ""
-"当该列表仅用于向其它邮件地址转发，将这里设置为‘是’。\n"
-"             当设置为‘是’时，像确认和密码提示这样的通知\n"
-"             将被送到一个地址，不是成员地址，这个地址是由成\n"
-"             员的账户名加上\"umbrella_member_suffix\"值组成的。"
-
 #: Mailman/Gui/General.py:250
 msgid ""
 "Suffix for use when this list is an umbrella for other\n"
@@ -4730,7 +4689,7 @@ msgstr ""
 
 #: Mailman/Gui/General.py:293
 msgid "Send welcome message to newly subscribed members?"
-msgstr "是否相新订阅者发送欢迎消息？"
+msgstr "是否向新订阅者发送欢迎消息？"
 
 #: Mailman/Gui/General.py:294
 msgid ""
@@ -4924,7 +4883,7 @@ msgid ""
 "<b>real_name</b> attribute not\n"
 "            changed!  It must differ from the list's name by case\n"
 "            only."
-msgstr "<b>real_name</b>属性没有被修改!它与列表名进能有大小写上的不同"
+msgstr "<b>real_name</b>属性没有被修改!它必须与邮件列表有大小写上的不同"
 
 #: Mailman/Gui/General.py:455
 msgid ""
@@ -5018,14 +4977,15 @@ msgid ""
 "             header."
 msgstr ""
 "如果你的邮件列表默认语言使用非ASCII码集，并且前缀中有非ASCII码，\n"
-"             将使用相关标准对前缀编码。但是，如果前缀仅包含ASCII码，或许你想设置该选项\n"
-"             <em>从不</em>以禁止对前缀编码。对使用不支持非ASCII译码邮件阅读器的用户来说，\n"
-"             这将使得头部标题变得易读一些。"
+"             将使用相关标准对前缀编码。但是，如果前缀仅包含ASCII码，或许你想\n"
+"             设置该选项为<em>从不</em>以禁止对前缀编码。对使用不支持非ASCII译\n"
+"             码邮件阅读器的用户来说，这将使得头部标题变得易读一些。\n"
 "\n"
-"             <p>注意，如果你的邮件列表接收编码和未编码的头部标题，你应该选择<em>根据需要\n"
-"             </em>。使用这个设定，如果头部其余部分不含非ASCII码，Mailman将不编码前缀，\n"
-"             反之，如果原始头部中含所有非ASCII码字符，将编码前缀。对于可能导致邮件阅读器显示\n"
-"             额外信息或是遗失前缀和头部之间空格的标准，这样做避免了译码时可能出现的模糊。"
+"             <p>注意，如果你的邮件列表同时接收编码和未编码的头部标题，你应该\n"
+"             选择<em>根据需要</em>。使用这个设定，如果头部其余部分仅含ASCII\n"
+"             码，Mailman将不编码前缀， 反之，如果原始头部中含有非ASCII码字符，\n"
+"             则将编码前缀。对于可能导致邮件阅读器显示额外信息或是遗失前缀和\n"
+"             头部之间空格的标准，这样做避免了译码时可能出现的模糊。"
 
 #: Mailman/Gui/Membership.py:26
 msgid "Membership&nbsp;Management..."
@@ -5069,9 +5029,9 @@ msgid ""
 "                 section for a discussion of important performance\n"
 "                 issues."
 msgstr ""
-"Mailman可否为每一个非摘要投递进行个性化设置？这对只通知列表很有用，但应该<a\n"
-"                 href=\"?VARHELP=nondigest/personalize\">读取详细信息</a>\n"
-"                 部分讨论列表系统性能的重要性。"
+"Mailman是否为每一个非摘要投递进行个性化设置？这对仅作发布通知用途的列表很有\n"
+"                 用，但应该<a href=\"?VARHELP=nondigest/personalize\">读取详细\n"
+"                 信息</a>部分讨论列表系统性能的重要性。"
 
 #: Mailman/Gui/NonDigest.py:60
 msgid ""
@@ -5117,34 +5077,35 @@ msgid ""
 "                 </ul>\n"
 "                 "
 msgstr ""
-"通常，Mailman以批量形式向邮件服务器发送常规邮件。由于减少了Mailman和邮件服务器\n"
-"                 之间的传输次数，这样做效率很高。\n"
+"一般来说,Mailman把普通投递信息批量的送给邮件服务器.这样\n"
+"                  做更有效率,因为它减少了Mailman和邮件服务器之间的通讯量.\n"
 "\n"
-"                 <p>然而，有些列表可以受益于更加个性化的设置。这种情况下，Mailman\n"
-"                 在常规邮递列表上为每一个成语添加一个新的信息，打开此项功能可能会\n"
-"                 降低你的站点的性能，所以你需要仔细考虑这(降低性能来换取个性化设置)\n"
-"                 是否值得，你是否有其他办法来实现你想做的事情。你也应该仔细监视系统以确定\n"
-"                 系统能够负担起这样的开销。\n"
+"                  <p>但是,更个性化的设置对一些列表可能会很有帮助.在这种情况下\n"
+"                  Mailman为普通投递列表中的每一个成员均提交一份新的信息.打开\n"
+"                  此特性可能会降低您站点的性能,所以您应该好好考虑一下,这个交易\n"
+"                  是否合算,或者是否有其它的方式来完成您想要的效果.您应该小心的\n"
+"                  监视您的系统负载,以确保您所花的代价是可承受的.\n"
 "\n"
-"                 <p>选择<em>否</em>以禁用个性化设置，并以批量形式给成员发邮件。\n"
-"                 选择<em>是</em>以使用个性化邮递并允许邮件头部和尾部有额外的可选\n"
-"                 变量(见下)。另外，选择<em>完全个性化</em>；邮件的<code>To:</code>\n"
-"                 头部将被修改以包含成员地址而不再包含列表的邮寄地址。\n"
+"                  <p>选择<em>否</em>来禁止个性化设置,批量向成员投递信息.选择\n"
+"                  <em>是</em>来个性化您的投递,并且允许在消息头和消息尾施用额外\n"
+"                  的替换变量(参考下面的内容).此外,通过选择<em>完全的个性化</em>,\n"
+"                  所发信息的<code>To</code>头部会被修改以包含成员的地址而非列表\n"
+"                  的发信地址.\n"
 "\n"
-"                 <p>当使用个性化设置时，<a\n"
-"                 href=\"?VARHELP=nondigest/msg_header\">邮件头部</a> 和\n"
-"                 <a href=\"?VARHELP=nondigest/msg_footer\">邮件尾部</a>.\n"
-"                 中可以包含一些扩展的变量。\n"
+"                  当个性化启用时,可以在<a href=\"?VARHELP=nondigest/msg_header\">\n"
+"                  信息头和<a href=\"?VARHELP=nondigest/msg_footer\">信息尾使用少量\n"
+"                  的额外替换变量.\n"
 "\n"
-"                 <p>当使用这个功能时，以下额外可选变量在邮件头部和尾部将可以使用。\n"
+"                  <p>当此特性开启时,如下的额外的替换变量可以在信息的头部或者尾\n"
+"                  部使用:\n"
 "\n"
-"                 <ul><li><b>user_address</b> - 用户地址，强制转化为小写字母。\n"
-"                     <li><b>user_delivered_to</b> - 替换用户名的地址(实现由用户向地址转换)\n"
-"                     <li><b>user_password</b> - 用户密码。\n"
-"                     <li><b>user_name</b> - 用户全名。\n"
-"                     <li><b>user_optionsurl</b> - 指向用户选项页的网址\n"
-"                 </ul>\n"
-"                 "
+"                  <ul><li><b>user_address</b> - 用户的地址,被修改为小写.\n"
+"                      <li><b>user_delivered_to</b> - 用户订阅列表时使用的大小写\n"
+"                           相关的地址.\n"
+"                      <li><b>user_password</b> - 用户的口令.\n"
+"                      <li><b>user_name</b> - 用户的全名.\n"
+"                      <li><b>user_optionsurl</b> - 用户选项页的URL地址.\n"
+"                  </ul>"
 
 #: Mailman/Gui/NonDigest.py:109
 msgid ""
@@ -5162,39 +5123,39 @@ msgid ""
 "        page.\n"
 "</ul>\n"
 msgstr ""
-"当列表使用<a href=\"?VARHELP=nondigest/personalize\">个性化设置(personalization)</a>时，\n"
-" 在邮件头部和尾部以下额外可选变量可用：\n"
+"当列表启用<a href=\"?VARHELP=nondigest/personalize\">个性化设置(personalization)</a>时，\n"
+" 在邮件头部和尾部以下额外替换变量可用：\n"
 "\n"
-"<ul><li><b>user_address</b> - 用户地址，强制转化为小写字母。\n"
-"    <li><b>user_delivered_to</b> - 替换用户名的地址(实现由用户向地址转换)\n"
-"    <li><b>user_password</b> - 用户密码。\n"
+"<ul><li><b>user_address</b> - 用户地址，转化为小写字母。\n"
+"    <li><b>user_delivered_to</b> - 用户订阅列表时使用的大小写相关的地址.\n"
+"    <li><b>user_password</b> - 用户口令。\n"
 "    <li><b>user_name</b> - 用户全名。\n"
-"    <li><b>user_optionsurl</b> - 指向用户选项页的网址\n"
+"    <li><b>user_optionsurl</b> - 用户选项页的URL地址.\n"
 "</ul>\n"
 
 #: Mailman/Gui/NonDigest.py:128
 msgid "Header added to mail sent to regular list members"
-msgstr "添加到发给常规列表成员的邮件中的头部"
+msgstr "添加到发给常规列表成员邮件头部的文本"
 
 #: Mailman/Gui/NonDigest.py:129
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
-msgstr "添加到每一封即时邮递的邮件中的文本"
+msgstr "添加到每一封即时投递的邮件中的文本"
 
 #: Mailman/Gui/NonDigest.py:133
 msgid "Footer added to mail sent to regular list members"
-msgstr "添加到发给常规列表成员的邮件中尾部"
+msgstr "添加到发给常规列表成员邮件尾部的文本"
 
 #: Mailman/Gui/NonDigest.py:134
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
-msgstr "添加到每一封即时邮递的邮件末尾的文本"
+msgstr "添加到每一封即时投递的邮件末尾的文本"
 
 #: Mailman/Gui/NonDigest.py:140
 msgid "Scrub attachments of regular delivery message?"
-msgstr "去除常规邮递邮件的附件？"
+msgstr "去除常规投递邮件的附件？"
 
 #: Mailman/Gui/NonDigest.py:141
 msgid ""
@@ -5203,12 +5164,12 @@ msgid ""
 "             access via web browser. If you want the attachments totally\n"
 "             disappear, you can use content filter options."
 msgstr ""
-"当你使用附件时，附件被放在文档区，邮件中设置链接，这样成员可以通过网页浏览器来访问附件。\n"
+"当你使用附件时，附件被放在归档区，邮件中设置链接，这样成员可以通过网页浏览器来访问附件。\n"
 "             如果你想使附件完全不出现，可以使用内容过滤选项。"
 
 #: Mailman/Gui/Passwords.py:27
 msgid "Passwords"
-msgstr "密码"
+msgstr "口令"
 
 #: Mailman/Gui/Privacy.py:37
 msgid "Privacy options..."
@@ -5236,19 +5197,19 @@ msgstr "无"
 
 #: Mailman/Gui/Privacy.py:59 Mailman/Gui/Privacy.py:82
 msgid "Confirm"
-msgstr "确定"
+msgstr "确认"
 
 #: Mailman/Gui/Privacy.py:60 Mailman/Gui/Privacy.py:83
 msgid "Require approval"
-msgstr "要求批准"
+msgstr "要求核准"
 
 #: Mailman/Gui/Privacy.py:61 Mailman/Gui/Privacy.py:84
 msgid "Confirm and approve"
-msgstr "确定并批准"
+msgstr "确认并核准"
 
 #: Mailman/Gui/Privacy.py:63 Mailman/Gui/Privacy.py:86
 msgid "What steps are required for subscription?<br>"
-msgstr "订阅需要那些步骤？"
+msgstr "订阅需要那些步骤？<br>"
 
 #: Mailman/Gui/Privacy.py:64
 msgid ""
@@ -5269,14 +5230,14 @@ msgid ""
 "                           their consent."
 msgstr ""
 "无 - 无认证步骤(<em> 不推荐使用 </em>)<br>\n"
-"                           确定 (*) - 要求有邮件确定步骤 <br>\n"
-"                           要求批准 - 需要列表管理员批准订阅<br>\n"
-"                           确定并批准 - 包含确定和批准\n"
+"                           确认 (*) - 要求有邮件确认步骤 <br>\n"
+"                           要求核准 - 需要列表管理员核准订阅<br>\n"
+"                           确认并核准 - 即要求确认,也需要管理员核准\n"
 "                           \n"
-"                           <p>(*) 当有人请求订阅时，Mailman给他发送带有唯一订阅请求号的\n"
-"                           的通知，如果他要订阅，必须回信。\n"
+"                           <p>(*) 当有人请求订阅时，Mailman给他发送带有唯一订阅请\n"
+"                           求号的的通知，如果他要订阅，必须回信。\n"
 "\n"
-"                           这防止恶意用户不经过他人同意为他人订阅。"
+"                           这用来防止恶意用户不经他人同意而为其订阅。"
 
 #: Mailman/Gui/Privacy.py:87
 msgid ""
@@ -5292,6 +5253,13 @@ msgid ""
 "                           mischievous (or malicious) people from creating\n"
 "                           subscriptions for others without their consent."
 msgstr ""
+"确认 (*) - 需要邮件确认<br>\n"
+"                            Require approvel - 需要列表管理员审核订阅请求<br>\n"
+"                            Confirm and approve - 即需要邮件确认也需要管理员审核\n"
+"                            \n"
+"                            <p>(*) 当有人请求订阅时，Mailman会给他们发送一封通知，\n"
+"                            附带一个唯一的订阅请求号。要想订阅，必须回复此通知。\n"
+"                            <br>这用来防止恶意用户不经他人同意而为其订阅列表。"
 
 #: Mailman/Gui/Privacy.py:103
 msgid ""
@@ -5301,22 +5269,25 @@ msgid ""
 "            <a href=\"%(admin)s/archive\">Archival Options</a> section for\n"
 "            separate archive-related privacy settings."
 msgstr ""
+"您可以在本小节中配置订阅及成员身份公开策略。您也可以\n"
+"             控制此列表是否是公开的。参考<a href=\"%(admin)s/archive\">归档选\n"
+"             项</a>小节以获取归档相关的隐私策略。"
 
 #: Mailman/Gui/Privacy.py:109
 msgid "Subscribing"
-msgstr ""
+msgstr "订阅"
 
 #: Mailman/Gui/Privacy.py:111
 msgid ""
 "Advertise this list when people ask what lists are on this\n"
 "             machine?"
-msgstr ""
+msgstr "在有人询问此主机上运行着哪些邮件列表时，显示此列表吗？"
 
 #: Mailman/Gui/Privacy.py:117
 msgid ""
 "Is the list moderator's approval required for unsubscription\n"
 "             requests?  (<em>No</em> is recommended)"
-msgstr ""
+msgstr "退订请求需要经过列表主持者的核准吗？(推荐选<em>否</em>)"
 
 #: Mailman/Gui/Privacy.py:120
 msgid ""
@@ -5331,16 +5302,24 @@ msgid ""
 "             of such lists include a corporate mailing list that all employees\n"
 "             are required to be members of."
 msgstr ""
+"当成员想要离开列表时，他们会通过web或者email发送一个\n"
+"              退订请求。一般来说，您最好允许列表成员能够自由的退订列表，这样他\n"
+"              们就能够容易地把自己从邮件列表中移除(如果他们不能离开列表的话，会\n"
+"              觉得很烦)\n"
+"\n"
+"              <p>但是对某些列表，您可能希望在一个退订请求被执行之前需要经过列表\n"
+"              主持人核准。这种列表的例子包括公司的邮件列表，所有的雇员都要求是\n"
+"              列表的成员。"
 
 #: Mailman/Gui/Privacy.py:131
 msgid "Ban list"
-msgstr ""
+msgstr "黑名单"
 
 #: Mailman/Gui/Privacy.py:133
 msgid ""
 "List of addresses which are banned from membership in this\n"
 "             mailing list."
-msgstr ""
+msgstr "被禁止加入列表的地址清单。"
 
 #: Mailman/Gui/Privacy.py:136
 msgid ""
@@ -5349,10 +5328,12 @@ msgid ""
 "             addresses one per line; start the line with a ^ character to\n"
 "             designate a regular expression match."
 msgstr ""
+"此清单中的地址被禁止订阅此邮件列表，而无须审核。每行添加一\n"
+"              个地址；以 ^ 开头的行是一个正则表达式匹配。"
 
 #: Mailman/Gui/Privacy.py:141
 msgid "Membership exposure"
-msgstr ""
+msgstr "成员身份公布"
 
 #: Mailman/Gui/Privacy.py:143
 msgid "Anyone"
@@ -5430,11 +5411,11 @@ msgid ""
 "\n"
 "            <p>Note that non-regexp matches are always done first."
 msgstr ""
-"当一封邮件被发送到列表时，要执行一系列的步骤以确定管\n"
-"            理员是否必须首先对此信件进行审查。本小节包含对成员或非成员信件的\n"
-"            控制选项。\n"
+"当一封邮件被发送到列表时，要执行一系列的步骤以确定列\n"
+"            表主持者是否必须首先对此信件进行审查。本小节包含对成员或非成员信\n"
+"            件的控制选项。\n"
 "\n"
-"            <p>如果列表成员的<b>延缓</b>标志被打开，那么他的信件都将被暂存以待\n"
+"            <p>如果列表成员的<b>节制</b>标志被打开，那么他的信件都将被暂存以待\n"
 "            审核。您可以控制成员信件默认情况下是否被暂存。\n"
 "\n"
 "            <p>非成员的信件可以单独的或成组的被自动\n"
@@ -5450,7 +5431,7 @@ msgstr ""
 "            <a href=\"?VARHELP=privacy/sender/generic_nonmember_action\">非成\n"
 "            员通用规则</a>所过滤。\n"
 "\n"
-"            <p>下面的文本框中，每行只能添加一个地址。行首的字符^将说明后面的是\n"
+"            <p>下面的文本框中，每行只能添加一个地址。行首的字符 ^ 说明后面的是\n"
 "            一个<a href=\"http://www.python.org/doc/current/lib/module-re.html\"\n"
 "            >Python正则表达式</a>。反斜线请按照Python原始字符串的形式输入(也就是\n"
 "            说您只需要输入一个反斜线就可以了)。\n"
@@ -5463,7 +5444,7 @@ msgstr "成员过滤器"
 
 #: Mailman/Gui/Privacy.py:198
 msgid "By default, should new list member postings be moderated?"
-msgstr "默认情况下，列表新成员的信件是否被延缓？"
+msgstr "默认情况下，列表新成员的信件是否被暂存？"
 
 #: Mailman/Gui/Privacy.py:200
 msgid ""
@@ -5482,21 +5463,21 @@ msgid ""
 "             <a href=\"%(adminurl)s/members\">membership management\n"
 "             screens</a>."
 msgstr ""
-"每一个列表成员都有一个<em>延缓标志</em>来控制此成员的信件是\n"
-"             直接发送到列表中还是必须先经列表管理员审查。当延缓标志被打开时\n"
+"每一个列表成员都有一个<em>节制标志</em>来控制此成员的信件是\n"
+"             直接发送到列表中还是必须先经列表主持者审查。当节制标志被打开时\n"
 "             列表成员的信件就必须先通过审查。作为列表管理员，您可以决定某个人\n"
 "             的信件是否必须通过审查。\n"
 "\n"
-"             <p>新加入成员的初始延缓标志将从此选项中获得。关闭此选项将默认直接\n"
+"             <p>新加入成员的初始节制标志将从此选项中获得。关闭此选项将默认直接\n"
 "             接受成员的信件。打开此选项将默认使得成员信件必须首先经过审查。您\n"
 "             总是可以在<a href=\"%(adminurl)s/members\">成员管理页</a>单独地设\n"
-"             置某个成员的延缓标志。"
+"             置某个成员的节制标志。"
 
 #: Mailman/Gui/Privacy.py:217
 msgid ""
 "Action to take when a moderated member posts to the\n"
 "             list."
-msgstr "当一个被延缓的成员发信到列表时应该执行的动作。"
+msgstr "当一个被节制的成员发信到列表时应该执行的动作。"
 
 #: Mailman/Gui/Privacy.py:219
 msgid ""
@@ -5541,7 +5522,7 @@ msgstr "非成员过滤器"
 msgid ""
 "List of non-member addresses whose postings should be\n"
 "             automatically accepted."
-msgstr "应当被自动接受其信件的非成员地址清单。"
+msgstr "其信件应当被自动接受的非成员地址清单。"
 
 #: Mailman/Gui/Privacy.py:244
 msgid ""
@@ -5647,7 +5628,7 @@ msgstr ""
 "当接收到非成员发送的信件时，发信者地址将与被显式指定为\n"
 "             <a href=\"?VARHELP=privacy/sender/accept_these_nonmembers\"\n"
 "             >接受</a>，\n"
-"             <a href=\"?VARHELP=privacy/sender/hold_these_nonmembers\">缓存</a>，\n"
+"             <a href=\"?VARHELP=privacy/sender/hold_these_nonmembers\">暂存</a>，\n"
 "             <a href=\"?VARHELP=privacy/sender/reject_these_nonmembers\"\n"
 "             >拒绝</a>(退信)，或者\n"
 "             <a href=\"?VARHELP=privacy/sender/discard_these_nonmembers\"\n"
@@ -5667,8 +5648,8 @@ msgid ""
 "             internally crafted default message."
 msgstr ""
 "应当被包含到寄给发信到本列表的非成员的退信通知中的文本。\n"
-"             This notice can include the list's owner address by \n"
-"             %%(listowner)s and replaces the internally crafted default message."
+"             此通知可以包含列表属主地址 %%(listowner)s, 并且替换掉Mailman\n"
+"             内定的默认信息。"
 
 #: Mailman/Gui/Privacy.py:318
 msgid ""
@@ -5685,8 +5666,8 @@ msgid ""
 "Must posts have list named in destination (to, cc) field\n"
 "             (or be among the acceptable alias names, specified below)?"
 msgstr ""
-"信件的目的地址(to,cc)必须包含此列表(或在下面指定的可接\n"
-"             受的别名)？"
+"信件的目的地址(to,cc)必须包含此列表的地址(或在下面指定的\n"
+"             可接受的别名)吗？"
 
 #: Mailman/Gui/Privacy.py:328
 msgid ""
@@ -5714,6 +5695,7 @@ msgstr ""
 "\n"
 "             <p>这样做的代价是，列表将不再接受从其他地址中继过来的正常信件，\n"
 "             除非\n"
+"\n"
 "             <ol>\n"
 "                 <li>中继地址有着同样的名字，或者\n"
 "\n"
@@ -5749,10 +5731,10 @@ msgstr ""
 "`require_explicit_destination'选项打开时的\n"
 "             其他可接受地址。可以在每行指定一个正则表达式，用来匹配信件中的\n"
 "             所有目的地址。正则表达式匹配是用Python的re.match()函数实现的，\n"
-"             这意味着匹配是从字符串的头部开始进行的。\n"
+"             这意味着匹配是从字符串的开头开始进行的。\n"
 "             \n"
 "             <p>为了与Mailman 1.1保持向后兼容，如果正则表达式中不包括字符'@'，\n"
-"             那么它将仅与收件地址的本地部分进行进行匹配。如果匹配失败，或者此\n"
+"             那么它将仅与收件地址的本地部分进行匹配。如果匹配失败，或者此\n"
 "             正则表达式中含有字符'@'的话，它将会与整个收件地址进行匹配。\n"
 "             \n"
 "             <p>不赞成与本地部分进行匹配；在未来的版本中，这里指定的正则表达式\n"
@@ -5846,13 +5828,13 @@ msgid ""
 msgstr ""
 "使用此选现来根据特定的头部值禁止垃圾邮件。目标值是一个\n"
 "             用来与指定头部进行匹配的正则表达式。匹配以大小写无关的形式进行。\n"
-"             以'#'开头的行将被作为注释而被忽略。\n"
+"             以'#'开头的行将被作为注释而忽略。\n"
 "\n"
 "             <p>例如：<pre>to: .*@public.com </pre>是说要延缓邮件头<em>To:</em>\n"
 "             中包含'@public.com'的所有信件。\n"
 "\n"
 "             <p>注意，开头的空格将被从正则表达式中清除。可以通过许多方法绕开此\n"
-"             限制，例如转义或者用括号括起来。"
+"             限制，例如转义或者用括号把空白括起来。"
 
 #: Mailman/Gui/Privacy.py:481
 msgid ""
@@ -5917,7 +5899,7 @@ msgstr ""
 "             href=\"http://www.python.org/doc/current/lib/module-re.html\">\n"
 "             正则表达式</a>来对收到的邮件进行分类。如果某邮件的<code>Subject:</code>\n"
 "             头或<code>Keywords:</code>头匹配一个主题过滤器，那么此邮件将在逻辑上\n"
-"             被放进一个主题<em>桶</em>。没个列表成员都可以选择只从邮件列表中接收属于\n"
+"             被放进一个主题<em>桶</em>。每个列表成员都可以选择只从邮件列表中接收属于\n"
 "             某个或某几个主题桶的邮件。不属于用户注册的任何主题桶的信件将不会被投递\n"
 "             到列表中。\n"
 "\n"
@@ -5944,7 +5926,7 @@ msgid ""
 "             until a non-header-like line is encountered.\n"
 "             "
 msgstr ""
-"主题匹配器将在信件中文中扫描这么多行以寻找要匹配的主题关键字。\n"
+"主题匹配器将在信件正文中扫描这么多行以寻找要匹配的主题关键字。\n"
 "             当这么多行都已经扫描完或者遇到一个不象头部的行时，扫描终止。\n"
 "             若这个值设定为0，则将不会对正文进行扫描(也就是说，只有<code>Keywords:\n"
 "             </code>头和<code>Subject:</code>头会被扫描)。把这个值设为负数，则所有\n"
@@ -5967,7 +5949,7 @@ msgstr ""
 "每个主题关键字事实上都是一个正则表达式，他们将与邮件的指定部分，\n"
 "            特别是<code>Keywords:</code>头和<code>Subject:</code>头，进行匹配。\n"
 "            注意，邮件正文的前面几行也可以包含<code>Keywords:</code>\"头\"和\n"
-"            <code>Subject:</code>\"头\"，也可以对他们进行匹配。"
+"            <code>Subject:</code>\"头\"，也将对他们进行匹配。"
 
 #: Mailman/Gui/Topics.py:119
 msgid ""
@@ -5982,7 +5964,7 @@ msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"主题模式'%(safepattern)s'不是一个合法的正则\n"
+"主题模式 '%(safepattern)s' 不是一个合法的正则\n"
 "                表达式。它将被丢弃。"
 
 #: Mailman/Gui/Usenet.py:25
@@ -5991,7 +5973,7 @@ msgstr "邮件&lt;--&gt;新闻网关"
 
 #: Mailman/Gui/Usenet.py:35
 msgid "Mail-to-News and News-to-Mail gateway services."
-msgstr "邮件到新闻和新闻到邮件网关服务"
+msgstr "Mail-to-News和News-to-Mail网关服务"
 
 #: Mailman/Gui/Usenet.py:37
 msgid "News server settings"
@@ -6016,7 +5998,7 @@ msgstr ""
 "\n"
 "             新闻服务器不是Mailman的组成部分。您必须已经可以访问一个NNTP服务器，\n"
 "             并且此NNTP服务器必须已把此邮件列表所在的主机认作是可以阅读和发布新\n"
-"             闻的机器。"
+"             闻的主机。"
 
 #: Mailman/Gui/Usenet.py:50
 msgid "The name of the Usenet group to gateway to and/or from."
@@ -6040,15 +6022,15 @@ msgstr "转发选项"
 
 #: Mailman/Gui/Usenet.py:63
 msgid "Moderated"
-msgstr "受限的"
+msgstr "节制的"
 
 #: Mailman/Gui/Usenet.py:63
 msgid "Open list, moderated group"
-msgstr "开放列表，受限的组"
+msgstr "开放的列表，节制的组"
 
 #: Mailman/Gui/Usenet.py:66
 msgid "The moderation policy of the newsgroup."
-msgstr "新闻组的限制策略"
+msgstr "新闻组的节制策略"
 
 #: Mailman/Gui/Usenet.py:68
 msgid ""
@@ -6077,27 +6059,27 @@ msgid ""
 "             Mailman moderation facilities, but to add an <tt>Approved</tt>\n"
 "             header to all messages that are gatewayed to Usenet."
 msgstr ""
-"这个设置终止新闻组的缓冲策略以及它和邮件列表缓冲策略的相互作用。该设置仅应用于\n"
-"             你正通过网关连接<em>至</em>的新闻组，所以如果你只是从世界性的新闻\n"
-"             组网络系统通过网关连接，或者你正通过网关连接的新闻组没有经过缓冲，\n"
+"这个设置检测新闻组的节制策略以及它和邮件列表节制策略的相互作用。该设置仅应用于\n"
+"             您正通过网关连接<em>至</em>的新闻组，所以如果您只是从Usenet\n"
+"             向外连接，或者你正通过网关连接的新闻组不受节制，\n"
 "             请将该选项设为<em>不</em>。\n"
 "\n"
-"             <p>如果新闻组被缓冲，你可以将该邮件列表设为新闻组的缓冲地址。通过\n"
-"             选定<em>已缓冲</em>，一个附加的发送控制会放置到认证程序中。所有发\n"
-"             送到邮件列表的信息将在被发送到新闻组或者邮件列表成员资格之前经过认证。\n"
+"             <p>如果新闻组受节制，您可以将该邮件列表设为新闻组的缓冲地址。通过\n"
+"             选定<em>节制</em>，一份额外的消息会放置到审核程序中。所有发\n"
+"             送到邮件列表的信息将在被发送到新闻组或者邮件列表成员之前经过审核。\n"
 "\n"
-"             <p><em>注意如果信息中包含一个<tt>已核准</tt>头部，同时头部里还有\n"
-"             列表的管理口令，则这个保留检验将被绕开，将允许有特权的发送者直接\n"
+"             <p><em>注意如果信息中包含一个<tt>Approved</tt>头部，同时头部里还有\n"
+"             列表的管理口令，则这个暂存测试将被绕开，将允许有特权的发送者直接\n"
 "             往列表和新闻组发送信息。</em>\n"
 "\n"
-"             <p>最后，如果新闻组已经被缓冲，但是你无论如何想要一个预约的录入保险单,\n"
-"             你可以选定<em>开放列表，缓冲组</em>。这个选项的作用在于，使用标准的\n"
-"             Mailman缓冲工具，但是在所有通过网关连接到世界性新闻组网络系统的信息中\n"
-"             加上了一个<tt>已核准</tt>头部。"
+"             <p>最后，如果新闻组受节制，但是您又想要使用开放的发信策略,\n"
+"             您可以选定<em>开放的列表，节制的组</em>。这将使用标准的\n"
+"             Mailman节制设施，但是在所有通过网关发送到Usenet的信息中\n"
+"             加上了一个<tt>Approved</tt>头部。"
 
 #: Mailman/Gui/Usenet.py:94
 msgid "Prefix <tt>Subject:</tt> headers on postings gated to news?"
-msgstr "在连接到新闻的置入中加入前缀<tt>Subject:</tt>头部？"
+msgstr "在经网关发送到新闻组的邮件中添加<tt>Subject:</tt>头部？"
 
 #: Mailman/Gui/Usenet.py:95
 msgid ""
@@ -6109,19 +6091,20 @@ msgid ""
 "             normal <tt>Subject:</tt> prefixes, they won't be prefixed for\n"
 "             gated messages either."
 msgstr ""
-"Mailman在<tt>Subject:</tt>头部前添加<a href=\"?VARHELP=general/subject_prefix\">\n"
-"             你可以定制的正文</a>作为前缀，而且正常情况下，这个前缀显示在经网关\n"
+"Mailman以<a href=\"?VARHELP=general/subject_prefix\">\n"
+"             您可以定制的文本</a>作为内容添加<tt>Subject:</tt>头部。并且在正\n"
+"             常情况下，这个前缀显示在经网关\n"
 "             路由到新闻组的信件中。你可以把此选项设定为<em>否</em>以禁止在被路由\n"
-"             信件中添加前缀。。当然，如果你关闭正常的<tt>Subject:</tt>前缀，\n"
+"             信件中添加前缀。当然，如果你关闭正常的<tt>Subject:</tt>前缀，\n"
 "             它们也将不会出现为被路由信件的前缀。"
 
 #: Mailman/Gui/Usenet.py:103
 msgid "Mass catch up"
-msgstr "大规模弥补"
+msgstr ""
 
 #: Mailman/Gui/Usenet.py:106
 msgid "Should Mailman perform a <em>catchup</em> on the newsgroup?"
-msgstr "Mailman必须在新闻组上执行<em>弥补</em>吗？"
+msgstr ""
 
 #: Mailman/Gui/Usenet.py:107
 msgid ""
@@ -6141,7 +6124,7 @@ msgstr ""
 
 #: Mailman/Gui/Usenet.py:121
 msgid "Mass catchup completed"
-msgstr "Mass catchup completed"
+msgstr ""
 
 #: Mailman/Gui/Usenet.py:133
 msgid ""
@@ -6156,11 +6139,11 @@ msgstr ""
 
 #: Mailman/HTMLFormatter.py:47
 msgid "%(listinfo_link)s list run by %(owner_link)s"
-msgstr "%(listinfo_link)s 通过 %(owner_link)s 运行"
+msgstr "由 %(owner_link)s 运行的 %(listinfo_link)s 邮件列表"
 
 #: Mailman/HTMLFormatter.py:55
 msgid "%(realname)s administrative interface"
-msgstr "%(realname)s管理的接口"
+msgstr "%(realname)s 的管理接口"
 
 #: Mailman/HTMLFormatter.py:56
 msgid " (requires authorization)"
@@ -6168,7 +6151,7 @@ msgstr "(需要授权)"
 
 #: Mailman/HTMLFormatter.py:59
 msgid "Overview of all %(hostname)s mailing lists"
-msgstr "所有 %(hostname)s邮件列表总览"
+msgstr "%(hostname)s 上的所有邮件列表"
 
 #: Mailman/HTMLFormatter.py:80
 msgid "<em>(1 private member not shown)</em>"
@@ -6180,7 +6163,7 @@ msgstr "<em>(%(num_concealed)d个私有成员没有显示)</em>"
 
 #: Mailman/HTMLFormatter.py:138
 msgid "; it was disabled by you"
-msgstr "；你禁止了该选项"
+msgstr "；您禁止了该选项"
 
 #: Mailman/HTMLFormatter.py:140
 msgid "; it was disabled by the list administrator"
@@ -6220,9 +6203,10 @@ msgid ""
 msgstr ""
 "<p>%(note)s\n"
 "\n"
-"            <p>你可能故意禁止了列表投递，或者被来自你的电子邮件地址的退信触发而禁止了。\n"
-"            无论是哪一种情况，改变以下的 %(link)s 选项以便重新启动递交。如果你有任何问题\n"
-"            或者需要帮助请联系 %(mailto)s。"
+"            <p>你可能故意禁止了列表投递，或者被来自你的电子邮件地址的\n"
+"            退信触发而禁止了。无论是哪一种情况，改变以下的 %(link)s 选\n"
+"            项以便重新启动投递。如果您有任何问题，或者需要帮助，请联系\n"
+"            %(mailto)s。"
 
 #: Mailman/HTMLFormatter.py:167
 msgid ""
@@ -6233,20 +6217,20 @@ msgid ""
 "            this address.  Your bounce score will be automatically reset if\n"
 "            the problems are corrected soon."
 msgstr ""
-"<p>我们已经接收到一些来自你的地址的新近的退信。\n"
-"            你当前的<em>退信数</em>已经比最大限制 %(total)s 超过了 %(score)s。\n"
-"            请仔细检查你填写的地址是否正确并且可以正常使用。如果问题被纠正，你\n"
-"            的退信数将很快地被自动重设。"
+"<p>我们已经接收到一些来自您的地址的新近的退信。\n"
+"            您当前的<em>退信数</em>已经比最大限制 %(total)s 超过了 %(score)s。\n"
+"            请仔细检查你用来订阅的地址是否正确并且可以正常使用。问题被纠正后，你\n"
+"            的退信数将很快被自动重设。"
 
 #: Mailman/HTMLFormatter.py:179
 msgid "(Note - you are subscribing to a list of mailing lists, so the %(type)s notice will be sent to the admin address for your membership, %(addr)s.)<p>"
-msgstr "(注意 - 您正在订阅一个邮件列表，所以 %(type)s 通知将被发送到管理员， %(addr)s。)<p>"
+msgstr "(注意 - 您正在订阅一个邮件列表，所以 %(type)s 通知将被发送到管理员以告知您用来订阅的地址 %(addr)s。)<p>"
 
 #: Mailman/HTMLFormatter.py:189
 msgid ""
 "You will be sent email requesting confirmation, to\n"
 "            prevent others from gratuitously subscribing you."
-msgstr "为防止有人无意地替你订阅，将有确认函发送给你。"
+msgstr "为防止有人无意替您订阅，将有确认函发送给您。"
 
 #: Mailman/HTMLFormatter.py:192
 msgid ""
@@ -6269,33 +6253,33 @@ msgid ""
 "            by the list moderator.  You will be notified of the moderator's\n"
 "            decision by email."
 msgstr ""
-"为防止有人无故替您预订，将有确认函发送给你。一旦经\n"
-"            您确认，您的请求讲讲被暂缓以待列表管理员审核。管理员的决定将通\n"
+"为防止有人无意替您订阅，将有确认函发送给您。一旦经\n"
+"            您确认，您的请求将被暂缓以待列表主持者审核。主持者的决定将通\n"
 "            过电子邮件告知你。"
 
 #: Mailman/HTMLFormatter.py:206
 msgid ""
 "This is %(also)sa private list, which means that the\n"
 "            list of members is not available to non-members."
-msgstr "这是一个 %(also)sa 私有列表，这意味着非成员无法访问成员列表。"
+msgstr "这是一个 %(also)s 私有列表，这意味着非成员无法访问成员列表。"
 
 #: Mailman/HTMLFormatter.py:209
 msgid ""
 "This is %(also)sa hidden list, which means that the\n"
 "            list of members is available only to the list administrator."
-msgstr "这是一个 %(also)sa 隐藏列表，这意味着成员列表仅对列表管理员可见。"
+msgstr "这是一个 %(also)s 隐藏列表，这意味着成员列表仅对列表管理员可见。"
 
 #: Mailman/HTMLFormatter.py:212
 msgid ""
 "This is %(also)sa public list, which means that the\n"
 "            list of members list is available to everyone."
-msgstr "这是一个 %(also)sa 公共列表，这意味着成员列表对任何人都可见。"
+msgstr "这是一个 %(also)s 公共列表，这意味着成员列表对任何人都可见。"
 
 #: Mailman/HTMLFormatter.py:215
 msgid ""
 " (but we obscure the addresses so they are not\n"
 "                easily recognizable by spammers)."
-msgstr "(但是我们将地址模糊化，所以它们将不会轻易被垃圾信息收集器识别)。"
+msgstr "(但是我们将地址模糊化，这样它们将不会轻易被垃圾信息收集器识别)。"
 
 #: Mailman/HTMLFormatter.py:220
 msgid ""
@@ -6305,7 +6289,7 @@ msgid ""
 "            `%(sfx)s' account for your address.)"
 msgstr ""
 "<p>(注意：这是一个掩护列表，用来将其他的邮件列表作为\n"
-"            成员。在其他事务中，这意味着对您的地址，你的确认请求将被发送\n"
+"            成员。在其他事务中，这意味着对您的地址，您的确认请求将被发送\n"
 "            到`%(sfx)s'。)"
 
 #: Mailman/HTMLFormatter.py:249
@@ -6319,27 +6303,27 @@ msgid ""
 "        email address:\n"
 "        <p><center> "
 msgstr ""
-"为了从 %(realname)s 取消订阅，获得密码提示函，或者改变你的订阅选项 %(either)s输入你\n"
+"为了从 %(realname)s 退订，获得口令提示函，或者改变你的订阅选项 %(either)s输入你\n"
 "        用来订阅的电子邮件地址:\n"
 "        <p><center> "
 
 #: Mailman/HTMLFormatter.py:261
 msgid "Unsubscribe or edit options"
-msgstr "取消订阅或者编辑选项"
+msgstr "退订或编辑选项"
 
 #: Mailman/HTMLFormatter.py:265
 msgid ""
 "<p>... <b><i>or</i></b> select your entry from\n"
 "                      the subscribers list (see above)."
 msgstr ""
-"<p>... <b><i>or</i></b>从订阅者列表(参考上文)中选择你的\n"
+"<p>... <b><i>or</i></b>从订阅者列表(参考上文)中选择您的\n"
 "                      入口条目。"
 
 #: Mailman/HTMLFormatter.py:267
 msgid ""
 " If you leave the field blank, you will be prompted for\n"
 "        your email address"
-msgstr "如果你将该字段设为空白，您将被提示输入您的邮件地址。"
+msgstr "如果您将该字段设为空白，您将被提示输入您的邮件地址。"
 
 #: Mailman/HTMLFormatter.py:275
 msgid ""
@@ -6355,7 +6339,7 @@ msgstr "(<i>%(which)s只对列表管理员有效</i>)"
 
 #: Mailman/HTMLFormatter.py:289
 msgid "Click here for the list of "
-msgstr "点击这里获取列表的"
+msgstr "点击这里获取列表"
 
 #: Mailman/HTMLFormatter.py:291
 msgid " subscribers: "
@@ -6403,7 +6387,7 @@ msgstr "你的口令将每月一次以提示函的形式发送给你。"
 
 #: Mailman/HTMLFormatter.py:392
 msgid "The current archive"
-msgstr "当前存档"
+msgstr "当前归档"
 
 #: Mailman/Handlers/Acknowledge.py:59
 msgid "%(realname)s post acknowledgement"
@@ -6413,7 +6397,7 @@ msgstr "%(realname)s发送确认"
 msgid ""
 "Your urgent message to the %(realname)s mailing list was not authorized for\n"
 "delivery.  The original message as received by Mailman is attached.\n"
-msgstr "你发送到 %(realname)s 邮件列表的加急信息没有经过投递授权。附上Mailman收讫的原始信息。\n"
+msgstr "您发送到 %(realname)s 邮件列表的加急信息没有投递授权。附上Mailman收讫的原始信息。\n"
 
 #: Mailman/Handlers/Emergency.py:29
 msgid "Emergency hold on all list traffic is in effect"
@@ -6421,7 +6405,7 @@ msgstr "紧急暂缓所有列表信件"
 
 #: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
 msgid "Your message was deemed inappropriate by the moderator."
-msgstr "列表主持人认为你的信息不合适。"
+msgstr "列表主持人认为您的信息不合适。"
 
 #: Mailman/Handlers/Hold.py:53
 msgid "Sender is explicitly forbidden"
@@ -6429,7 +6413,7 @@ msgstr "发送人被明确禁止"
 
 #: Mailman/Handlers/Hold.py:54
 msgid "You are forbidden from posting messages to this list."
-msgstr "你被禁止往该列表发送信息。"
+msgstr "您被禁止往该列表发送信息。"
 
 #: Mailman/Handlers/Hold.py:57
 msgid "Post to moderated list"
@@ -6449,7 +6433,7 @@ msgstr "需要被审核的用户向一个受限列表发送信息"
 
 #: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
-msgstr "该列表受限制；你的信息没有经过批准。"
+msgstr "该列表受限制；您的信息没有经过批准。"
 
 #: Mailman/Handlers/Hold.py:69
 msgid "Too many recipients to the message"
@@ -6470,8 +6454,7 @@ msgid ""
 "address in the To: or Cc: fields."
 msgstr ""
 "不允许收信人的地址空白或者不清晰\n"
-"尝试在发送至和抄送栏写明地址后重新发送\n"
-"\"To\" or\"Cc\""
+"请尝试在To:和Cc:字段写明地址后重新发送"
 
 #: Mailman/Handlers/Hold.py:79
 msgid "Message may contain administrivia"
@@ -6486,7 +6469,7 @@ msgid ""
 msgstr ""
 "请不要发送管理请求到邮件列表，如果希望订阅，\n"
 "请访问 %(listurl)s 或者 以｀help｀为内容发送信息至\n"
-"请求地址以获得进一步的指示信息。"
+"请求地址， %(request)s，以获得进一步的指示信息。"
 
 #: Mailman/Handlers/Hold.py:90
 msgid "Message has a suspicious header"
@@ -6506,19 +6489,19 @@ msgstr "信件内容过大：%(size)d 字节 (上限为 %(limit)d KB)"
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
-msgstr "您的信件过大，请删除信件内容至小于 %(kb)s KB"
+msgstr "您的信件过大，请修改信件内容至小于 %(kb)s KB"
 
 #: Mailman/Handlers/Hold.py:110
 msgid "Posting to a moderated newsgroup"
-msgstr "发送信息至管理员新闻组"
+msgstr "发送信息至受节制的新闻组"
 
 #: Mailman/Handlers/Hold.py:240
 msgid "Your message to %(listname)s awaits moderator approval"
-msgstr "您发送到 %(listname)s 的信件已经交由管理员审批"
+msgstr "您发送到 %(listname)s 的信件已经交由列表主持者审批"
 
 #: Mailman/Handlers/Hold.py:259
 msgid "%(listname)s post from %(sender)s requires approval"
-msgstr "%(listname)s 中来自 %(sender)s 的帖子 需要审批"
+msgstr "%(listname)s 中来自 %(sender)s 的信件需要审批"
 
 #: Mailman/Handlers/Hold.py:266
 msgid ""
@@ -6528,19 +6511,19 @@ msgid ""
 "message will be approved for posting to the list.  The Approved: header can\n"
 "also appear in the first line of the body of the reply."
 msgstr ""
-"如果您回复该信件，请保持主题头（Subject:header）不变,\n"
-"Mailman 将会丢弃该保留信件。如果该信息是垃圾邮件，采用以上处理方式。\n"
-"如果您回复该信件并包含带有邮件列表密码的批准头（Approved:header）\n"
-"该信件将被批注发送至列表。该批注头（Approved:header）将会\n"
-"同时出现在回复信件体的第一行"
+"如果您回复该信件，请保持Subject:邮件头不变,\n"
+"Mailman 将会丢弃被暂存的信件。如果该信息是垃圾邮件，采用以上处理方式。\n"
+"如果您回复该信件并包含带有邮件列表密码的Approved:头部\n"
+"该信件将被批准发送至列表。该Approved:头部将会\n"
+"同时出现在回复信件正文的第一行"
 
 #: Mailman/Handlers/MimeDel.py:58
 msgid "The message's content type was explicitly disallowed"
-msgstr "该信件的内容类型被明确禁止"
+msgstr "该信件的内容类型(content type)被明确禁止"
 
 #: Mailman/Handlers/MimeDel.py:63
 msgid "The message's content type was not explicitly allowed"
-msgstr "该信件的内容类型没有被明确禁止"
+msgstr "该信件的内容类型(content type)没有被明确禁止"
 
 #: Mailman/Handlers/MimeDel.py:71
 msgid "The message's file extension was explicitly disallowed"
@@ -6561,13 +6544,14 @@ msgid ""
 "are receiving the only remaining copy of the discarded message.\n"
 "\n"
 msgstr ""
-"附带的信件符合  %(listname)s 邮件列表的内容过滤规则\n"
-"并被禁止转发至列表用户\n"
-"您所收到的内容为被丢弃信息的保留部分。\n\n"
+"附带的信件匹配 %(listname)s 邮件列表的内容过滤规则\n"
+"而被禁止发送至列表用户\n"
+"您所收到的内容为被丢弃信息的拷贝。\n"
+"\n"
 
 #: Mailman/Handlers/MimeDel.py:235
 msgid "Content filtered message notification"
-msgstr "内容过滤通知"
+msgstr "对内容被过滤信件的通知"
 
 #: Mailman/Handlers/Moderate.py:142
 msgid ""
@@ -6575,8 +6559,8 @@ msgid ""
 "automatically rejected.  If you think that your messages are being rejected in\n"
 "error, contact the mailing list owner at %(listowner)s."
 msgstr ""
-"您没有发送信件至该邮件列表的权限，您的信息被自动拒绝\n"
-"如果您认为你的信件被错误拒绝，请联系 %(listowner)s.中的邮件列表的所有者 "
+"您没有发送信件至该邮件列表的权限，您的信息被自动拒绝。\n"
+"如果您认为你的信件被错误拒绝，请联系 %(listowner)s 中的邮件列表的所有者 "
 
 #: Mailman/Handlers/Moderate.py:158
 msgid "Auto-discard notification"
@@ -6584,11 +6568,11 @@ msgstr "自动丢弃通知"
 
 #: Mailman/Handlers/Moderate.py:161
 msgid "The attached message has been automatically discarded."
-msgstr "附带的信件被自动丢弃"
+msgstr "附带的消息被自动丢弃"
 
 #: Mailman/Handlers/Replybot.py:74
 msgid "Auto-response for your message to the \"%(realname)s\" mailing list"
-msgstr "对您发送至 \"%(realname)s\" 邮件列表的消息自动应答"
+msgstr "对您发送至 \"%(realname)s\" 邮件列表信件的自动答复"
 
 #: Mailman/Handlers/Replybot.py:107
 msgid "The Mailman Replybot"
@@ -6600,20 +6584,20 @@ msgid ""
 "Name: %(filename)s\n"
 "Url: %(url)s\n"
 msgstr ""
-"嵌入的、无法确定字符集的文本被取消了...\n"
+"嵌入的、无法确定字符集的文本被除去了...\n"
 "名称：%(filename)s\n"
-"Url: %(url)s\n"
+"Url： %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:213
 msgid "HTML attachment scrubbed and removed"
-msgstr "HTML附件被取消并被移除"
+msgstr "HTML附件被移除"
 
 #: Mailman/Handlers/Scrubber.py:231 Mailman/Handlers/Scrubber.py:257
 msgid ""
 "An HTML attachment was scrubbed...\n"
 "URL: %(url)s\n"
 msgstr ""
-"一个HTML附件被取消...\n"
+"一个HTML附件被移除...\n"
 "URL: %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:269
@@ -6626,7 +6610,7 @@ msgstr "没有日期"
 
 #: Mailman/Handlers/Scrubber.py:271
 msgid "unknown sender"
-msgstr "未知的发送人"
+msgstr "未知的发送者"
 
 #: Mailman/Handlers/Scrubber.py:274
 msgid ""
@@ -6637,7 +6621,7 @@ msgid ""
 "Size: %(size)s\n"
 "Url: %(url)s\n"
 msgstr ""
-"嵌入的信息被取消...\n"
+"一份嵌入的信息被移除...\n"
 "发信人: %(who)s\n"
 "主题: %(subject)s\n"
 "日期: %(date)s\n"
@@ -6682,11 +6666,11 @@ msgstr "%(realname)s 摘要, 卷 %(volume)d, 发布 %(issue)d"
 
 #: Mailman/Handlers/ToDigest.py:195
 msgid "digest header"
-msgstr "摘要头"
+msgstr "摘要头部"
 
 #: Mailman/Handlers/ToDigest.py:198
 msgid "Digest Header"
-msgstr "摘要头"
+msgstr "摘要头部"
 
 #: Mailman/Handlers/ToDigest.py:211
 msgid "Today's Topics:\n"
@@ -6694,7 +6678,7 @@ msgstr "本日主题:\n"
 
 #: Mailman/Handlers/ToDigest.py:291
 msgid "Today's Topics (%(msgcount)d messages)"
-msgstr "本日主题 (%(msgcount)d 信件)"
+msgstr "本日主题 (%(msgcount)d 封信件)"
 
 #: Mailman/Handlers/ToDigest.py:317
 msgid "[Message discarded by content filter]"
@@ -6702,11 +6686,11 @@ msgstr "[被内容过滤程序删除的信件]"
 
 #: Mailman/Handlers/ToDigest.py:343
 msgid "digest footer"
-msgstr "文摘脚注"
+msgstr "摘要尾部"
 
 #: Mailman/Handlers/ToDigest.py:346
 msgid "Digest Footer"
-msgstr "文摘脚注"
+msgstr "摘要尾部"
 
 #: Mailman/Handlers/ToDigest.py:360
 msgid "End of "
@@ -6714,27 +6698,27 @@ msgstr "结束"
 
 #: Mailman/ListAdmin.py:295
 msgid "Posting of your message titled \"%(subject)s\""
-msgstr "您的以标题 \"%(subject)s\" 发布的帖子"
+msgstr "您以标题 \"%(subject)s\" 发布的信件"
 
 #: Mailman/ListAdmin.py:334
 msgid "Forward of moderated message"
-msgstr "转发的管理区信件"
+msgstr "被暂存信件的转发"
 
 #: Mailman/ListAdmin.py:390
 msgid "New subscription request to list %(realname)s from %(addr)s"
-msgstr "来自  %(addr)s 的对 %(realname)s  列表的订阅申请"
+msgstr "来自 %(addr)s 的对 %(realname)s 列表的订阅请求"
 
 #: Mailman/ListAdmin.py:413
 msgid "Subscription request"
-msgstr "订阅申请"
+msgstr "订阅请求"
 
 #: Mailman/LisAdmin.py:442
 msgid "New unsubscription request from %(realname)s by %(addr)s"
-msgstr "来自 %(addr)s %(realname)s  的新的订阅申请"
+msgstr "来自 %(addr)s 的对 %(realname)s 列表的退订请求"
 
 #: Mailman/ListAdmin.py:465
 msgid "Unsubscription request"
-msgstr "退订申请"
+msgstr "退订请求"
 
 #: Mailman/ListAdmin.py:496
 msgid "Original Message"
@@ -6742,7 +6726,7 @@ msgstr "原文"
 
 #: Mailman/ListAdmin.py:499
 msgid "Request to mailing list %(realname)s rejected"
-msgstr "对于  %(realname)s 邮件列表的订阅申请被拒绝"
+msgstr "对于 %(realname)s 邮件列表的请求被拒绝"
 
 #: Mailman/MTA/Manual.py:64
 msgid ""
@@ -6754,10 +6738,10 @@ msgid ""
 "Here are the entries for the /etc/aliases file:\n"
 msgstr ""
 "`%(listname)s' 邮件列表通过Web界面被创建。\n"
-"为了激活该邮件列表，需要对/etc/aliases 给予适当的更新。\n"
-"同时需要运行程序 newaliases\n"
+"为了激活该邮件列表，需要对/etc/aliases给予适当的更新。\n"
+"同时需要运行程序newaliases\n"
 "\n"
-"以下为文件 /etc/aliases 相关项 \n"
+"以下为需要添加的/etc/aliases相关项 \n"
 
 #: Mailman/MTA/Manual.py:75
 msgid ""
@@ -6766,7 +6750,7 @@ msgid ""
 "`newaliases' program:\n"
 msgstr ""
 "为了完成邮件列表的创建，您需要编辑/etc/aliases或者相关文件，\n"
-"并添加如下行内容，然后运行 newaliases程序：\n"
+"并添加如下行内容，然后运行newaliases程序：\n"
 
 #: Mailman/MTA/Manual.py:80
 msgid "## %(listname)s mailing list"
@@ -6774,7 +6758,7 @@ msgstr "## %(listname)s 邮件列表"
 
 #: Mailman/MTA/Manual.py:97
 msgid "Mailing list creation request for list %(listname)s"
-msgstr "邮件列表 %(listname)s 创建申请"
+msgstr "邮件列表 %(listname)s 创建请求"
 
 #: Mailman/MTA/Manual.py:112
 msgid ""
@@ -6786,9 +6770,9 @@ msgid ""
 "Here are the entries in the /etc/aliases file that should be removed:\n"
 msgstr ""
 "`%(listname)s' 邮件列表通过Web界面被移除。\n"
-"为了取消激活该邮件列表，需要对/etc/aliases 给予适当的更新。\n"
-"同时需要运行程序 newaliases\n"
-"以下为需要删除的 /etc/aliases 相关项:\n"
+"为了完全删除该邮件列表，需要对/etc/aliases给予适当的更新。\n"
+"同时需要运行程序newaliases\n"
+"以下为需要删除的/etc/aliases 相关项:\n"
 
 #: Mailman/MTA/Manual.py:122
 msgid ""
@@ -6801,13 +6785,13 @@ msgid ""
 msgstr ""
 "\n"
 "为了删除您的该邮件列表，需要删除/etc/aliases 中的以下列。\n"
-"同时需要运行程序 newaliases\n"
+"同时需要运行程序newaliases\n"
 "\n"
 "## %(listname)s 邮件列表"
 
 #: Mailman/MTA/Manual.py:141
 msgid "Mailing list removal request for list %(listname)s"
-msgstr "对于邮件列表 %(listname)s 的删除请求"
+msgstr "对邮件列表 %(listname)s 的删除请求"
 
 #: Mailman/MTA/Postfix.py:306
 msgid "checking permissions on %(file)s"
@@ -6823,7 +6807,7 @@ msgstr "%(file)s 的权限必须是 066x （获得 %(octmode)s）"
 #: bin/check_perms:250 bin/check_perms:269 bin/check_perms:283
 #: bin/check_perms:303 bin/check_perms:340
 msgid "(fixing)"
-msgstr "（固定）"
+msgstr "(固定)"
 
 #: Mailman/MTA/Postfix.py:334
 msgid "checking ownership of %(dbfile)s"
@@ -6831,7 +6815,7 @@ msgstr "查看 %(dbfile)s 的所有者"
 
 #: Mailman/MTA/Postfix.py:342
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
-msgstr "%(dbfile)s 为 %(owner)s 所有 （必须为 %(user)s 所有"
+msgstr "%(dbfile)s 为 %(owner)s 所有(必须为 %(user)s 所有"
 
 #: Mailman/MailList.py:214
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -6847,7 +6831,7 @@ msgstr "来自 %(remote)s"
 
 #: Mailman/MailList.py:922
 msgid "subscriptions to %(realname)s require moderator approval"
-msgstr "对于 %(realname)s 的订阅需要管理员批准"
+msgstr "对 %(realname)s 的订阅请求需要列表主持者批准"
 
 #: Mailman/MailList.py:986 bin/add_members:242
 msgid "%(realname)s subscription notification"
@@ -6855,7 +6839,7 @@ msgstr "%(realname)s 订阅通知"
 
 #: Mailman/MailList.py:1005
 msgid "unsubscriptions require moderator approval"
-msgstr "退订需要协调人批准"
+msgstr "退订需要列表主持人批准"
 
 #: Mailman/MailList.py:1025
 msgid "%(realname)s unsubscribe notification"
@@ -6867,7 +6851,7 @@ msgstr "%(name)s 的订阅需要管理员批准"
 
 #: Mailman/MailList.py:1449
 msgid "Last autoresponse notification for today"
-msgstr "本日最后的自动回复通知"
+msgstr "本日最后一条自动回复通知"
 
 #: Mailman/Queue/BounceRunner.py:298
 msgid ""
@@ -6880,15 +6864,16 @@ msgid ""
 "%(adminurl)s\n"
 "\n"
 msgstr ""
-"附带的信件为邮件发生错误时的返回代码，但是返回代码不可识别，\n"
-"同时也无法从信件中题取出成员地址。本邮件列表设置将所有返回代码\n发送至管理员列表。 "
-"获取更多信息，请浏览：\n"
+"附带的信件是接收到的退信，但是退信格式不可识别，或者无法从其中提取出成员地\n"
+"址。本邮件列表设置将所有不可辨识的退信发送至列表管理员。\n"
+"\n"
+"要获取更多信息，请浏览：\n"
 "%(adminurl)s\n"
 "\n"
 
 #: Mailman/Queue/BounceRunner.py:308
 msgid "Uncaught bounce notification"
-msgstr "无法获取错误返回代码通知"
+msgstr "未捕获的退信通知"
 
 #: Mailman/Queue/CommandRunner.py:92
 msgid "Ignoring non-text/plain MIME parts"
@@ -6899,7 +6884,7 @@ msgid ""
 "The results of your email command are provided below.\n"
 "Attached is your original message.\n"
 msgstr ""
-"您的邮件命令的结果提供如下。\n"
+"您的邮件命令的执行结果提供如下。\n"
 "附件中是您的原始信件。\n"
 
 #: Mailman/Queue/CommandRunner.py:153
@@ -6912,7 +6897,7 @@ msgid ""
 "- Unprocessed:"
 msgstr ""
 "\n"
-"- 未处理的："
+"- 未处理："
 
 #: Mailman/Queue/CommandRunner.py:163
 msgid ""
@@ -6920,7 +6905,7 @@ msgid ""
 "To obtain instructions, send a message containing just the word \"help\".\n"
 msgstr ""
 "该邮件中没有发现指令。\n"
-"发送内容为 \"help\" 的信件获得所有命令.\n"
+"发送内容为 \"help\" 的信件以获得所有命令.\n"
 
 #: Mailman/Queue/CommandRunner.py:168
 msgid ""
@@ -6928,7 +6913,7 @@ msgid ""
 "- Ignored:"
 msgstr ""
 "\n"
-"- 乎律:"
+"- 忽略:"
 
 #: Mailman/Queue/CommandRunner.py:170
 msgid ""
@@ -6942,11 +6927,11 @@ msgstr ""
 
 #: Mailman/Queue/CommandRunner.py:194
 msgid "The results of your email commands"
-msgstr "您的邮件命令的结果"
+msgstr "您的邮件命令执行结果"
 
 #: Mailman/htmlformat.py:627
 msgid "Delivered by Mailman<br>version %(version)s"
-msgstr "由 Mailman<br>version %(version)s 投递"
+msgstr "由 Mailman<br> %(version)s 投递"
 
 #: Mailman/htmlformat.py:628
 msgid "Python Powered"
@@ -7088,79 +7073,74 @@ msgstr ""
 "\n"
 "    --regular-members-file=file\n"
 "    -r file\n"
-"        A file containing addresses of the members to be added, one\n"
-"        address per line.  This list of people become non-digest\n"
-"        members.  If file is `-', read addresses from stdin.  Note that\n"
-"        -n/--non-digest-members-file are deprecated synonyms for this option.\n"
+"        一个包含要被添加成员地址的文件,每行写一个地址.这些地址将成为非\n"
+"        摘要成员.如果指定的文件为`-',将从标准输入读取地址.注意,不赞成使用\n"
+"        -n/--non-digest-members-file作为此选项的同义词.\n"
 "\n"
 "    --digest-members-file=file\n"
 "    -d file\n"
-"        Similar to above, but these people become digest members.\n"
+"        和上面的选项累死,但是这些人将作为摘要成员.\n"
 "\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
-"        Set whether or not to send the list members a welcome message,\n"
-"        overriding whatever the list's `send_welcome_msg' setting is.\n"
+"        设置是否向列表成员发送欢迎信息,覆盖列表的`send_welcome_msg'设置.\n"
 "\n"
 "    --admin-notify=<y|n>\n"
 "    -a <y|n>\n"
-"        Set whether or not to send the list administrators a notification on\n"
-"        the success/failure of these subscriptions, overriding whatever the\n"
-"        list's `admin_notify_mchanges' setting is.\n"
+"        设置对于成功/失败的订阅,是否向列表管理员发送通知,覆盖列表的\n"
+"        `admin_notify_mchanges'设置.\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        Print this help message and exit.\n"
+"        打印此帮助信息然后退出.\n"
 "\n"
 "    listname\n"
-"        The name of the Mailman list you are adding members to.  It must\n"
-"        already exist.\n"
+"        您要添加成员的邮件列表.它必须是已经存在的.\n"
 "\n"
-"You must supply at least one of -r and -d options.  At most one of the\n"
-"files can be `-'.\n"
+"-r和-d选项您必须至少C指定一个.最多可以指定一个文件为`-'.\n"
 
 #: bin/add_members:137
 msgid "Already a member: %(member)s"
-msgstr "已经是会员：%(member)s"
+msgstr "已经是成员：%(member)s"
 
 #: bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
-msgstr "错误/不合法的 邮件地址: 空行"
+msgstr "错误/不合法的邮件地址: 空行"
 
 #: bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
-msgstr "错误/不合法的 邮件地址： %(member)s"
+msgstr "错误/不合法的邮件地址： %(member)s"
 
 #: bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
-msgstr "恶意地址 （非法字符）： %(member)s"
+msgstr "恶意地址(非法字符)： %(member)s"
 
 #: bin/add_members:146
 msgid "Subscribed: %(member)s"
-msgstr "已订阅的: %(member)s"
+msgstr "已订阅: %(member)s"
 
 #: bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
-msgstr "错误的参数 -w/--welcome-msg: %(arg)s "
+msgstr "-w/--welcome-msg选项的错误参数: %(arg)s "
 
 #: bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
-msgstr "错误的参数 -a/--admin-notify: %(arg)s"
+msgstr "-a/--admin-notify选项的错误参数: %(arg)s"
 
 #: bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
-msgstr "无法从标准输入读取摘要和正常用户 "
+msgstr "无法从标准输入既读取摘要用户又读取正常用户 "
 
 #: bin/add_members:210 bin/config_list:105 bin/find_member:97 bin/inject:90
 #: bin/list_admins:89 bin/list_members:232 bin/sync_members:222
 #: cron/bumpdigests:86
 msgid "No such list: %(listname)s"
-msgstr "没有列表： %(listname)s"
+msgstr "没有此列表： %(listname)s"
 
 #: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
 #: bin/sync_members:244 bin/update:555 cron/bumpdigests:78
 msgid "Nothing to do."
-msgstr "没有做任何动作"
+msgstr "什么也不需要做."
 
 #: bin/arch:19
 #, docstring
@@ -7204,43 +7184,39 @@ msgid ""
 "\n"
 "<mbox> is optional.  If it is missing, it is calculated.\n"
 msgstr ""
-"重新创建一个列表档案。\n"
+"重建列表归档\n"
 "\n"
-"使用这个命令重新为一个邮件列表创建档案。如果您需要编辑或者\n "
-"删除档案中的信件，可能需要如此做此操作。\n"
+"使用这个命令重新为一个邮件列表创建归档。如果您需要编辑或者\n "
+"删除归档中的信件，可能需要做此操作。\n"
 "\n"
 "用法: %(PROGRAM)s [options] <listname> [<mbox>]\n"
 "\n"
-"Where options are:\n"
+"这里选项为\n"
 "    -h / --help\n"
-"        Print this help message and exit.\n"
+"        打印此帮助信息然后退出.\n"
 "\n"
 "    -q / --quiet\n"
-"        Make the archiver output less verbose.\n"
+"        关闭冗余输出.\n"
 "\n"
 "    --wipe\n"
-"        First wipe out the original archive before regenerating.  You usually\n"
-"        want to specify this argument unless you're generating the archive in\n"
-"        chunks.\n"
+"        在重新生成归档前删除原有归档.一般来说,除非您成块地生成归档,您会指定此\n"
+"        选项.\n"
 "\n"
 "    -s N\n"
 "    --start=N\n"
-"        Start indexing at article N, where article 0 is the first in the mbox.\n"
-"        Defaults to 0.\n"
+"        从第N篇文章开始索引,mbox中的文章从0开始计数.默认为0.\n"
 "\n"
 "    -e M\n"
 "    --end=M\n"
-"        End indexing at article M.  This script is not very efficient with\n"
-"        respect to memory management, and for large archives, it may not be\n"
-"        possible to index the mbox entirely.  For that reason, you can specify\n"
-"        the start and end article numbers.\n"
+"        到第M篇文章处结束索引.这个脚本在内存管理和处理大的归档方面并不高效,\n"
+"        可能无法完全索引mobx中的所有条目.由此,您可以提供开始和结束索引的文\n"
+"        章编号.\n"
 "\n"
-"Where <mbox> is the path to a list's complete mbox archive.  Usually this will\n"
-"be some path in the archives/private directory.  For example:\n"
+"<mbox>是列表mbox归档的路径.一般来说是archives/private目录下的某个路径.例如:\n"
 "\n"
-"%% bin/arch mylist archives/private/mylist.mbox/mylist.mbox\n"
+"%% bin/arch mylist archinves/private/mylist.mbox/mylist.mbox\n"
 "\n"
-"<mbox> is optional.  If it is missing, it is calculated.\n"
+"<mbox>是可选的.如果没有提供,它将被计算出来.\n"
 
 #: bin/arch:125
 msgid "listname is required"
@@ -7279,11 +7255,11 @@ msgid ""
 "\n"
 "You will need to run `bin/check_perms -f' after running this script.\n"
 msgstr ""
-"修复MM2.1b4的邮件存档。\n"
+"修复MM2.1b4归档。\n"
 "\n"
 "用法: %(PROGRAM)s [options] file ...\n"
 "\n"
-"可用的options有:\n"
+"可用的选项有:\n"
 "    -h / --help\n"
 "        打印此帮助信息然后退出。\n"
 "\n"
@@ -7512,8 +7488,9 @@ msgstr ""
 "\n"
 "用法： %(PROGRAM)s [-f] [-v] [-h]\n"
 "\n"
-"不指定参数时，仅检查并报告许可权及组属主不正确的文件。指定-f选项(以root身\n"
-"份)时，修复所有发现的许可权问题。指定-v选项将导致冗余输出。\n"
+"不指定参数时，仅检查和报告有虚假许可权或者所属组不正确的文件。\n"
+"指定-f选项(以root身份运行)时，修复所有被发现的许可权问题。\n"
+"指定-v选项将导致冗余输出。\n"
 
 #: bin/check_perms:108
 msgid "    checking gid and mode for %(path)s"
@@ -7521,19 +7498,19 @@ msgstr "    为 %(path)s 检查gid和许可权"
 
 #: bin/check_perms:120
 msgid "%(path)s bad group (has: %(groupname)s, expected %(MAILMAN_GROUP)s)"
-msgstr "%(path)s组属主错误(当前组: %(groupname)s, 期望值为 %(MAILMAN_GROUP)s)"
+msgstr "%(path)s所属组错误(当前组: %(groupname)s, 期望值为 %(MAILMAN_GROUP)s)"
 
 #: bin/check_perms:143
 msgid "directory permissions must be %(octperms)s: %(path)s"
-msgstr "目录许可权必须为 %(octperms)s: %(path)s"
+msgstr "目录许可权必须是 %(octperms)s: %(path)s"
 
 #: bin/check_perms:152
 msgid "source perms must be %(octperms)s: %(path)s"
-msgstr "源许可权必须为 %(octperms)s: %(path)s"
+msgstr "源许可权必须是 %(octperms)s: %(path)s"
 
 #: bin/check_perms:163
 msgid "article db files must be %(octperms)s: %(path)s"
-msgstr "文章数据库文件必须为 %(octperms)s: %(path)s"
+msgstr "文章数据库文件必须是 %(octperms)s: %(path)s"
 
 #: bin/check_perms:175
 msgid "checking mode for %(prefix)s"
@@ -7553,7 +7530,7 @@ msgstr "检查 %(private)s 的许可权"
 
 #: bin/check_perms:206
 msgid "%(private)s must not be other-readable"
-msgstr "%(private)s必须不能为其他人可读(other-readable)"
+msgstr "%(private)s不能是其他人可读(other-readable)"
 
 #: bin/check_perms:225
 msgid "mbox file must be at least 0660:"
@@ -7561,11 +7538,11 @@ msgstr "mbox文件许可权必须至少为0660:"
 
 #: bin/check_perms:248
 msgid "%(dbdir)s \"other\" perms must be 000"
-msgstr "%(dbdir)s的\"其他人\"许可权必须为000"
+msgstr "%(dbdir)s的\"其它\"许可权必须为000"
 
 #: bin/check_perms:258
 msgid "checking cgi-bin permissions"
-msgstr "检查cgi-bin的许可权"
+msgstr "检查cgi-bin许可权"
 
 #: bin/check_perms:263
 msgid "    checking set-gid for %(path)s"
@@ -7589,7 +7566,7 @@ msgstr "检查 %(pwfile)s 的许可权"
 
 #: bin/check_perms:300
 msgid "%(pwfile)s permissions must be exactly 0640 (got %(octmode)s)"
-msgstr "%(pwfile)s 的许可权必须为0640(现在为 %(octmode)s)"
+msgstr "%(pwfile)s 的许可权必须是0640(现在是 %(octmode)s)"
 
 #: bin/check_perms:324
 msgid "checking permissions on list data"
@@ -7597,11 +7574,11 @@ msgstr "检查列表数据的许可权"
 
 #: bin/check_perms:330
 msgid "    checking permissions on: %(path)s"
-msgstr "    检查许可权: %(path)s"
+msgstr "    检查 %(path)s的许可权"
 
 #: bin/check_perms:338
 msgid "file permissions must be at least 660: %(path)s"
-msgstr "文件许可权必须至少为660： %(path)s"
+msgstr "文件许可权至少是660： %(path)s"
 
 #: bin/check_perms:383
 msgid "No problems found"
@@ -7609,11 +7586,13 @@ msgstr "没有发现问题"
 
 #: bin/check_perms:385
 msgid "Problems found:"
-msgstr "发现的问题:"
+msgstr "发现问题:"
 
 #: bin/check_perms:386
 msgid "Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix"
-msgstr "用 %(MAILMAN_USER)s(或root)以-f选项重新运行此脚本来修复发现的问题"
+msgstr ""
+"以 %(MAILMAN_USER)s(或root)身份使用-f标记(flag)重新运行此脚本\n"
+"来修复发现的问题"
 
 #: bin/cleanarch:19
 #, docstring
@@ -7649,13 +7628,13 @@ msgid ""
 msgstr ""
 "清除.mbox存档文件。\n"
 "\n"
-"存档器搜寻用来在mbox存档文件中分隔信件的Unix-From行。为兼容起见，它明确地\n"
-"寻找以\"From\"开头的行 -- 即，大写字母F，小写字母r，o，m，空格，忽略此行中\n"
+"存档器搜寻用来在mbox存档文件中分隔信件(messages)的Unix-From行。为兼容起见，\n"
+"它明确地寻找以\"From \"开头的行 -- 即，大写字母F，小写字母r，o，m，空格，忽略此行中\n"
 "其他的所有字符。\n"
 "\n"
-"一般来说，信件正文中以\"From\"开头的行都应该在行首使用字符'>'来转义。但是\n"
+"一般来说，信件正文中以\"From \"开头的行都应该在行首使用字符'>'来转义。但是\n"
 "也有可能正文中的那些行并没有被转义。此脚本试图通过对Unix-From行做严格的测试\n"
-"以解决这些问题，任何以\"From\"开头但是没有通过此严格测试的行都将被用一个'>'\n"
+"以解决这些问题，任何以\"From \"开头但是没有通过此严格测试的行都将被用一个'>'\n"
 "字符转义。\n"
 "\n"
 "用法： cleanarch [options] < inputfile > outputfile\n"
@@ -7668,22 +7647,22 @@ msgstr ""
 "        不向标准错误打印已修改行的信息\n"
 "\n"
 "    -n / --dry-run\n"
-"        不输出任何东西\n"
+"        不输出任何信息\n"
 "\n"
 "    -h / --help\n"
-"       打印此帮助信息然后退出\n"
+"       打印此帮助信息并退出\n"
 
 #: bin/cleanarch:82
 msgid "Unix-From line changed: %(lineno)d"
-msgstr "修改过的Unix-From行: %(lineno)d"
+msgstr "Unix-From行被改变： %(lineno)d"
 
 #: bin/cleanarch:110
 msgid "Bad status number: %(arg)s"
-msgstr "错误的状态号: %(arg)s"
+msgstr "错误的状态号： %(arg)s"
 
 #: bin/cleanarch:166
 msgid "%(messages)d messages found"
-msgstr "发现 %(messages)d 封信件"
+msgstr "查找到 %(messages)d 封信件"
 
 #: bin/clone_member:19
 #, docstring
@@ -7738,9 +7717,9 @@ msgid ""
 msgstr ""
 "复制一个成员。\n"
 "\n"
-"复制成员意味着一个新成员将被加入到列表，这个新成员有着和原来成员完全相同的选\n"
-"项和口令。注意，此操作完全信任它的执行者 -- 它不对新成员作任何的确认，也不送\n"
-"出欢迎信息，等等。\n"
+"复制成员意味着把一个新成员加入到列表，这个新成员有着和源成员完全相同的选\n"
+"项和口令。注意，此操作完全信任它的执行者 -- 它不对新成员作任何的确认，也不发\n"
+"送任何欢迎信息，等等。\n"
 "\n"
 "现有成员的订阅一般来说不会以任何方式发生修改。如果您想要移除老成员的话，可以\n"
 "使用-r选项。如果您也想修改任何列表管理员的地址，可以使用-a选项。\n"
@@ -7757,11 +7736,11 @@ msgstr ""
 "\n"
 "    --remove\n"
 "    -r\n"
-"        复制后从列表中移除被复制的老成员。\n"
+"        复制并删除成员。\n"
 "\n"
 "    --admin\n"
 "    -a\n"
-"        在列表管理员地址中查找老成员地址，同样的复制或修改它们。\n"
+"        在列表管理员中查找、复制或修改老成员。\n"
 "\n"
 "    --quiet\n"
 "    -q\n"
@@ -7769,14 +7748,14 @@ msgstr ""
 "\n"
 "    --nomodify\n"
 "    -n\n"
-"        打印将要做得事情，但是不真正的去做它们。覆盖--quiet选项。\n"
+"        打印将要做的修改，但不做任何实际的操作。不能同时使用--quiet选项。\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        打印此帮助信息然后退出。\n"
+"        打印此帮助信息并退出。\n"
 "\n"
-" fromoldaddr ('from old address') 是老成员的地址。tonewaddr \n"
-" ('to new address') 是新成员的地址。\n"
+" fromoldaddr ('from old address') 是成员的旧地址。tonewaddr \n"
+" ('to new address') 是成员的新地址。\n"
 "\n"
 
 #: bin/clone_member:94
@@ -7785,11 +7764,11 @@ msgstr "正处理邮件列表："
 
 #: bin/clone_member:101
 msgid "    scanning list owners:"
-msgstr "    扫描列表管理员："
+msgstr "    扫描列表属主："
 
 #: bin/clone_member:119
 msgid "    new list owners:"
-msgstr "    新列表管理员："
+msgstr "    新列表属主："
 
 #: bin/clone_member:121
 msgid "(no change)"
@@ -7797,7 +7776,7 @@ msgstr "(无更改)"
 
 #: bin/clone_member:130
 msgid "    address not found:"
-msgstr "    没找到的地址："
+msgstr "    未找到的地址："
 
 #: bin/clone_member:139
 msgid "    clone address added:"
@@ -7809,11 +7788,11 @@ msgstr "    复制地址已经是列表成员："
 
 #: bin/clone_member:145
 msgid "    original address removed:"
-msgstr "    旧地址被移除："
+msgstr "    源地址被移除："
 
 #: bin/clone_member:196
 msgid "Not a valid email address: %(toaddr)s"
-msgstr "不是合法的email地址： %(toaddr)s"
+msgstr "非法email地址： %(toaddr)s"
 
 #: bin/clone_member:209
 msgid ""
@@ -7870,7 +7849,7 @@ msgid ""
 "The options -o and -i are mutually exclusive.\n"
 "\n"
 msgstr ""
-"从一个文本文件的描述中配置邮件列表。\n"
+"从描述文本中配置邮件列表。\n"
 "\n"
 "用法： config_list [options] listname\n"
 "\n"
@@ -7882,30 +7861,30 @@ msgstr ""
 "        的Python代码。不对应于列表对象任何属性的变量将被忽略(会打印一个警告\n"
 "        信息)。参见-c选项。\n"
 "\n"
-"        一个名为'mlist'的特殊变量在execfile时被设置为全局变量，被帮定到真实\n"
+"        一个名为'mlist'的特殊变量在execfile时被设置为全局变量，被绑定到真实\n"
 "        的邮件列表对象上。这样您就可以对列表对象做任意的操作，但是小心！这样\n"
 "        做可能会对您的邮件列表造成严重的(同时也可能是不可挽回的)伤害！\n"
 "\n"
 "    --outputfile filename\n"
 "    -o filename\n"
 "        以此脚本的输入格式输出列表的当前配置参数，而不是配置列表。这样您就可\n"
-"        以方便地获取特定列表的配置并让其他列表使用相同配置。filename是输出将\n"
-"        写到的文件名。如果文件明为'-'，输出将被写到标准输出。\n"
+"        以方便地获取特定列表的配置并让其他列表使用相同配置。配置参数将被输出\n"
+"	 到以filename命名的文件中。如果文件名为'-'，数据将被写到标准输出。\n"
 "\n"
 "    --checkonly\n"
 "    -c\n"
-"       指定此选项后，要修改的列表实际上将不会作任何改动。只有与-i选项一起指定\n"
-"       时才有用。\n"
+"       指定此选项后，要修改的列表不会作任何实际的改动。只有与-i选项一起指定\n"
+"       时才起作用。\n"
 "\n"
 "    --verbose\n"
 "    -v\n"
-"        打印每一个被改变属性的名字。只有与-i选项一起指定时才有用。\n"
+"        打印每一个被改变的属性的名字。只有与-i选项一起指定时才起作用。\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        打印此帮助信息然后退出\n"
+"        打印此帮助信息并退出\n"
 "\n"
-"选项-o和-i不能同时是用。\n"
+"选项-o和-i不能同时使用。\n"
 "\n"
 
 #: bin/config_list:109
@@ -7922,7 +7901,7 @@ msgstr "选项"
 
 #: bin/config_list:188
 msgid "legal values are:"
-msgstr "合法的值有："
+msgstr "合法的值："
 
 #: bin/config_list:255
 msgid "attribute \"%(k)s\" ignored"
@@ -8008,7 +7987,7 @@ msgstr ""
 
 #: bin/discard:94
 msgid "Ignoring non-held message: %(f)s"
-msgstr "忽略不是被保存的信件： %(f)s"
+msgstr "忽略未被保存的信件： %(f)s"
 
 #: bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
@@ -8056,10 +8035,10 @@ msgstr ""
 "选项：\n"
 "\n"
 "    --marshal/-m\n"
-"        假设文件包含Python marshal，覆盖任何自动猜测。\n"
+"        如果文件包含Python marshal，则覆盖任何自动猜测。\n"
 "\n"
 "    --pickle/-p\n"
-"        假设文件包含Python pickle，覆盖任何自动猜测。\n"
+"      如果文件包含Python pickle，覆盖任何自动猜测。\n"
 "\n"
 "    --noprint/-n\n"
 "        不试图美化打印对象。这在对象有一些问题，并且您只是想获得一个unpickled\n"
@@ -8139,7 +8118,7 @@ msgid ""
 "displayed.\n"
 "\n"
 msgstr ""
-"查找指定成员地址的所有列表。\n"
+"查找包含指定成员地址的所有列表。\n"
 "\n"
 "用法：\n"
 "    find_member [options] regex [regex [...]]\n"
@@ -8155,28 +8134,28 @@ msgstr ""
 "\n"
 "    --owners\n"
 "    -w\n"
-"        也搜索列表的主人。\n"
+"        搜索列表属主和成员。\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        打印此帮助信息然后退出。\n"
+"        打印此帮助信息并退出。\n"
 "\n"
 "    regex\n"
 "        将要匹配的一个Python正则表达式。\n"
 "\n"
-"-l和-x的相互影响如下。如果给出了-l选项，那么仅此选项指定的列表会被搜索。如果\n"
-"指定了-x选项，但是没有指定-l选项，那么除了指定的列表外，所有的列表都将被搜索。\n"
+"-l和-x的相互影响如下。如果给出了-l选项，则仅搜索指定的列表。如果\n"
+"指定了-x选项，但没有指定-l选项，那么除了指定的列表外，所有的列表都将被搜索。\n"
 "\n"
 "正则表达式语法类似于Perl5，使用了Python的re模块。完整的定义参见:\n"
 "\n"
 "http://www.python.org/doc/current/lib/module-re.html\n"
 "\n"
-"地址匹配是大小写无关的，但是显示的地址将保留大小写形式。\n"
+"地址匹配是大小写无关的，但是显示的地址将保留原有形式。\n"
 "\n"
 
 #: bin/find_member:159
 msgid "Search regular expression required"
-msgstr "需指定搜索的正则表达式"
+msgstr "需指定搜索正则表达式"
 
 #: bin/find_member:164
 msgid "No lists to search"
@@ -8188,7 +8167,7 @@ msgstr "在这里找到："
 
 #: bin/find_member:179
 msgid "(as owner)"
-msgstr "(是列表主人)"
+msgstr "(列表属主)"
 
 #: bin/fix_url.py:19
 #, docstring
@@ -8223,15 +8202,15 @@ msgstr ""
 "选项：\n"
 "    -u urlhost\n"
 "    --urlhost=urlhost\n"
-"        在虚拟主机表中搜索urlhost，把web_page_url和host_name属性设置为找到的值。\n"
+"        在虚拟主机列表中搜索urlhost，并把web_page_url和host_name属性设置为找到的值。\n"
 "        在本质上，这把一个列表从一个虚拟域移到了另一个。\n"
 "\n"
-"        不指定此选项的话，将使用默认的web_page_url和host_name值。\n"
+"        不指定此选项，将使用web_page_url和host_name的默认值。\n"
 "\n"
 "    -v / --verbose\n"
 "        打印脚本正在做什么。\n"
 "\n"
-"如果独立运行的话，将打印此帮助信息然后退出。\n"
+"如果独立运行的话，将打印此帮助信息并退出。\n"
 
 #: bin/fix_url.py:80
 msgid "Setting web_page_url to: %(web_page_url)s"
@@ -8261,16 +8240,16 @@ msgid ""
 msgstr ""
 "从头开始重新生成Mailman specific aliases。\n"
 "\n"
-"实际的输出依赖于mm_cfg.py中的'MTA'变量值。\n"
+"实际的输出依赖于mm_cfg.py文件中'MTA'的值。\n"
 "\n"
 "用法： genaliases [options]\n"
 "选项：\n"
 "\n"
 "    -q/--quiet\n"
-"       一些MTA的输出会包括更多冗余的帮助信息。使用此选项来关闭他们。\n"
+"       一些MTA的输出会包括更多冗余的帮助信息。使用此选项来关闭冗于。\n"
 "\n"
 "    -h/--help\n"
-"       打印此帮助信息然后退出。\n"
+"       打印此帮助信息并退出。\n"
 
 #: bin/inject:19
 #, docstring
@@ -8297,22 +8276,22 @@ msgid ""
 "filename is the name of the plaintext message file to inject.  If omitted,\n"
 "standard input is used.\n"
 msgstr ""
-"把一个文件中保存的信件插入到Mailman的incoming队列中。\n"
+"把文件中的信件插入到Mailman的incoming队列中。\n"
 "\n"
-"Usage: inject [options] [filename]\n"
+"用法: inject [options] [filename]\n"
 "\n"
 "选项：\n"
 "\n"
 "    -h / --help\n"
-"        打印此帮助信息然后哦退出。\n"
+"        打印此帮助信息并退出。\n"
 "\n"
 "    -l listname\n"
 "    --listname=listname\n"
-"        信件将要被插入的列表名。必须指定此选项。\n"
+"        将插入信件的列表名。必须指定此选项。\n"
 "\n"
 "    -q queuename\n"
 "    --queue=queuename\n"
-"        信件将要被插入的队列名。queuename必须是qfiles目录的一个子目录名。如果省略\n"
+"        将要插入信件的队列名。queuename必须是qfiles目录的一个子目录名。如果省略\n"
 "        的话，将使用incoming队列。\n"
 "\n"
 "filename是要插入的文本信息文件。如果省略的话，将使用标准输入。\n"
@@ -8349,29 +8328,29 @@ msgid ""
 "`listname' is the name of the mailing list to print the owners of.  You can\n"
 "have more than one named list on the command line.\n"
 msgstr ""
-"列出一个邮件列表的所有主人。\n"
+"列出一个邮件列表的所有属主。\n"
 "\n"
 "用法： %(program)s [options] listname ...\n"
 "\n"
-"这里：\n"
+"其中：\n"
 "\n"
 "    --all-vhost=vhost\n"
 "    -v=vhost\n"
-"        列出指定虚拟主机上所有邮件列表的主人。\n"
+"        列出指定虚拟主机上所有邮件列表的属主。\n"
 "\n"
 "    --all\n"
 "    -a\n"
-"        列出此系统中所有邮件列表的主人。\n"
+"        列出此系统中所有邮件列表的属主。\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        打印此帮助信息然后退出。\n"
+"        打印此帮助信息并退出。\n"
 "\n"
-"'listname'是要列出主人的邮件列表名。可以在命令行上指定多个列表。\n"
+"'listname'是要列出属主的邮件列表名。可以在命令行上指定多个列表。\n"
 
 #: bin/list_admins:96
 msgid "List: %(listname)s, \tOwners: %(owners)s"
-msgstr "列表： %(listname)s, \t主人： %(owners)s"
+msgstr "列表： %(listname)s, \t属主： %(owners)s"
 
 #: bin/list_lists:19
 #, docstring
@@ -8402,21 +8381,21 @@ msgstr ""
 "\n"
 "用法： %(program)s [options]\n"
 "\n"
-"这里：\n"
+"其中：\n"
 "\n"
 "    -a / --advertised\n"
-"        只列出公开的邮件按列表。\n"
+"        只列出公开的邮件列表。\n"
 "\n"
 "    --virtual-host-overview=domain\n"
 "    -V domain\n"
 "        只列出指定虚拟域中的邮件列表。此选项仅在设置了VIRTUAL_HOST_OVERVIEW\n"
-"        变量时才工作。\n"
+"        变量后才有作用。\n"
 "\n"
 "    -b / --bare\n"
-"        仅显示列表名，不显示描述。\n"
+"        仅显示列表名，没有任何描述。\n"
 "\n"
 "    -h / --help\n"
-"        打印此帮助信息然后退出。\n"
+"        打印此帮助信息并退出。\n"
 
 #: bin/list_lists:105
 msgid "No matching mailing lists found"
@@ -8483,7 +8462,7 @@ msgstr ""
 "\n"
 "用法： %(PROGRAM)s [options] listname\n"
 "\n"
-"这里：\n"
+"其中：\n"
 "\n"
 "    --output file\n"
 "    -o file\n"
@@ -8529,11 +8508,11 @@ msgstr "错误的 --nomail 选项： %(why)s"
 
 #: bin/list_members:202
 msgid "Bad --digest option: %(kind)s"
-msgstr "错误的 -- digest 选项： %(kind)s"
+msgstr "错误的 --digest 选项： %(kind)s"
 
 #: bin/list_members:224
 msgid "Could not open file for writing:"
-msgstr "无法为写而打开文件："
+msgstr "无法以写方式打开文件："
 
 #: bin/list_owners:19
 #, docstring
@@ -8559,24 +8538,24 @@ msgid ""
 "        after the options.  If there are no listnames provided, the owners of\n"
 "        all the lists will be displayed.\n"
 msgstr ""
-"列出一个或所有邮件列表的主人。\n"
+"列出一个或所有邮件列表的属主。\n"
 "\n"
 "用法： %(PROGRAM)s [options] [listname ...]\n"
 "选项：\n"
 "\n"
 "    -w / --with-listnames\n"
-"        以列表名分组列表主人，并且在输出中包含列表名。否则的话，列表主人将按\n"
+"        把属主按列表名分组，并且在输出中包含列表名。否则，属主将按\n"
 "        邮件地址排序，并且重复的地址将被删去。\n"
 "\n"
 "    -m / --moderators\n"
-"        在输出中包括列表主持人。\n"
+"        在输出中包括列表管理员。\n"
 "\n"
 "    -h / --help\n"
 "        打印此帮助信息然后退出。\n"
 "\n"
 "    listname\n"
-"        打印指定列表的主人。可以在选项后指定多个列表。如果未指定列表，所有\n"
-"        列表的主人都将被列出。\n"
+"        打印指定列表的属主。可以在选项后指定多个列表。如果未指定列表，所有\n"
+"        列表的属主都将被打印。\n"
 
 #: bin/mailmanctl:19
 #, docstring
@@ -8661,13 +8640,13 @@ msgstr ""
 "在正常运行。此脚本通过fork和exec这些qrunners并且获取他们的pid来做到这些。当它发\n"
 "现有子进程退出时，就会重新启动它。\n"
 "\n"
-"qrunners会对SIGINT， SIGTERM和SIGHUP作出响应。SIGINT和SIGTERM会使qrunners干净地\n"
-"退出，但是只有被SIGINT导致退出的qrunners才会被master重启。SIGHUP会导致master和\n"
-"qrunners关闭它们的日志文件，直到产生新的日志信息时才重新打开它。\n"
+"qrunners会对SIGINT， SIGTERM和SIGHUP信号作出响应。SIGINT和SIGTERM信号可以使qrunners\n"
+"完全地退出，但是master只会对由SIGINT信号造成的退出进行重启。SIGHUP会导致master\n"
+"和qrunners关闭它们的日志文件，直到产生新的输出信息时才重新打开它。\n"
 "\n"
 "master也会响应SIGINT, SIGTERM和SIGHUP，但只是把它们传递给qurnners(注意，当接收到\n"
 "SIGHUP时master会关闭并重新打开它的日志文件)。master也会在data/master-qrunner.pid\n"
-"这个文件中记录它自己的进程号，但是一般来说您不会需要直接使用它。'start', 'stop',\n"
+"这个文件中记录它自己的进程号，但是一般来说您不需要直接使用它。'start', 'stop',\n"
 "'restart'和'reopen'这几个命令为您处理了全部的事情。\n"
 "\n"
 "用法： %(PROGRAM)s [options] [ start | stop | restart | reopen ]\n"
@@ -8676,7 +8655,7 @@ msgstr ""
 "\n"
 "    -n/--no-restart\n"
 "        在qurnners因错误或者SIGINT而退出后不被重启。如果它们是因为SIGTERM而\n"
-"        退出的话，将从不会被重启。请仅为除错目的而使用此选项。仅在给出'start‘\n"
+"        退出的话，将从不会被重启。仅调试时使用此选项。仅在使用'start‘\n"
 "        命令时有效。\n"
 "\n"
 "    -u/--run-as-user\n"
@@ -8684,18 +8663,18 @@ msgstr ""
 "        义)时，此脚本会拒绝执行。如果以root身份运行的话，此脚本将会在检查之前\n"
 "        切换到此用户和组。\n"
 "\n"
-"        这可能会在做测试或者除错时造成不便，所以设置-u选项会导致设置和检查\n"
-"        uid/gid的步骤被省略，并且程序将会以当前用户和组的身份运行。不推荐在实\n"
-"        际生产环境中使用此选项。\n"
+"        这可能会对测试或者调试造成不便，设置-u选项会导致设置和检查\n"
+"        uid/gid的步骤被忽略，并且程序将会以当前用户和组的身份运行。不推荐在实\n"
+"        际环境(normal production environments)中使用此选项。\n"
 "\n"
-"        但是请注意，如果您使用了-u选项，并且您不再mailman组中，您可能会遇到权\n"
-"        限问题，例如无法从web上删除一个列表的存档。坏运气！\n"
+"        但是请注意，如果使用了-u选项，并且不属于mailman组，则可能会遇到权\n"
+"        限问题，例如无法从web上删除一个列表的存档。厄运！\n"
 "\n"
 "    -s/--stale-lock-cleanup\n"
 "        如果mailmanctl发现一个已存在的master锁文件，它一般会打印一段错误信息，\n"
 "        然后退出。指定此选项会使mailmanctl做进一步的检查。如果发现一个正在运行\n"
 "        的进程，它的host/pid与锁文件中描述的一致，mailmanctl仍然会退出。但是如\n"
-"        果没有找到这样的进程，mailmanctl会删除这个错误的锁文件，然后尝试建立正\n"
+"        果没有找到这样的进程，mailmanctl会删除这个错误的锁文件，然后尝试建立正确\n"
 "        的master锁文件。\n"
 "\n"
 "    -q/--quiet\n"
@@ -8711,7 +8690,7 @@ msgstr ""
 "\n"
 "    stop    - 停止master守护进程和所有的qrunners。停止后，不会再有信件被处理。\n"
 "\n"
-"    restart - 重启qrunners，但是不重启master守护进程。当您升级Mailman后使用此\n"
+"    restart - 重启qrunners，但是不重启master进程。当您升级Mailman后使用此\n"
 "              命令，这样qrunners将会使用新安装的代码。\n"
 "\n"
 "    reopen  - 这将会关闭所有的日志文件，在产生新的日志信息时再重新打开它们。\n"
@@ -8726,7 +8705,7 @@ msgstr "队列管理器正在运行吗？"
 
 #: bin/mailmanctl:159
 msgid "No child with pid: %(pid)s"
-msgstr "进程号: %(pid)s 没有子进程"
+msgstr "进程: %(pid)s 没有子进程"
 
 #: bin/mailmanctl:161
 msgid "Stale pid file removed."
@@ -8736,14 +8715,14 @@ msgstr "过期的进程号文件已删除。"
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if another\n"
 "master qrunner is already running.\n"
-msgstr "队列管理器的主锁无法获得，因为好像另一个主队列管理器已经在运行了。\n"
+msgstr "队列管理器的主锁无法获得，可能另一个主队列管理器正在运行。\n"
 
 #: bin/mailmanctl:225
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there is\n"
 "a stale master qrunner lock.  Try re-running mailmanctl with the -s flag.\n"
 msgstr ""
-"队列管理器的主锁无法获得。好像存在一个过期的队列管理器主锁。\n"
+"队列管理器的主锁无法获得。可能存在一个过期的队列管理器主锁。\n"
 "可以尝试使用 -s flag 来重启mailmanctl。\n"
 
 #: bin/mailmanctl:231
@@ -8758,9 +8737,9 @@ msgid ""
 "\n"
 "Exiting."
 msgstr ""
-"队列管理器的主锁无法获得，好像其他主机上的某些进程已经取得了它。\n"
-"我们不能越过主机边界来测试过期的主锁，所以您必须手动测试。\n"
-"或者，如果您已经知道主锁已过期，用 -s flag 来重启mailmanctl。\n"
+"队列管理器的主锁无法获得，可能其他主机上的某些进程正在使用它。\n"
+"我们不能越过主机来测试过期的主锁，所以您必须手动测试。\n"
+"或者，如果您知道主锁已过期，用 -s flag 来重启mailmanctl。\n"
 "\n"
 "主锁文件: %(LOCKFILE)s\n"
 "主锁主机: %(status)s\n"
@@ -8773,7 +8752,7 @@ msgstr "缺少站点列表: %(sitelistname)s"
 
 #: bin/mailmanctl:303
 msgid "Run this program as root or as the %(name)s user, or use -u."
-msgstr "用root用户，或 %(name)s用户，来运行此程序，或者使用 -u。"
+msgstr "用root用户，或 %(name)s用户身份来运行此程序，或者使用-u。"
 
 #: bin/mailmanctl:334
 msgid "No command given."
@@ -8826,23 +8805,23 @@ msgid ""
 "\n"
 "If password is not given on the command line, it will be prompted for.\n"
 msgstr ""
-"从终端中的提示来设置站点密码。\n"
+"从终端提示来设置口令。\n"
 "\n"
-"在管理员密码好使的大部分地方（但还不是全部），站点密码都好使。在大部分用户密码能用的地方，\n"
-"站点密码也能用。\n"
+"在管理员口令有效的大部分地方（但不是全部），站点口令都有效。在用户口令有效的大部分地方，\n"
+"站点口令也有效。\n"
 "\n"
-"用法e: %(PROGRAM)s [options] [password]\n"
+"用法: %(PROGRAM)s [options] [password]\n"
 "\n"
 "选项:\n"
 "\n"
 "    -c/--列表创建者（listcreator）\n"
-"        设置列表创建者的密码，而不是站点密码。列表创建者有权创建和删除列表，但是\n"
+"        设置列表创建者的口令，而不是站点口令。列表创建者有权创建和删除列表，但是\n"
 "        没有站点管理员的全部权限。\n"
 "\n"
 "    -h/--帮助\n"
-"        显示此帮助信息然后退出\n"
+"        显示此帮助信息并退出\n"
 "\n"
-"如果在命令行中没有输入密码，将会提醒您。\n"
+"如果没有在命令行中输入口令，则会提醒您。\n"
 
 #: bin/mmsitepass:73
 msgid "site"
@@ -8854,15 +8833,15 @@ msgstr "列表创建者"
 
 #: bin/mmsitepass:86
 msgid "New %(pwdesc)s password: "
-msgstr "新 %(pwdesc)s 密码"
+msgstr "新 %(pwdesc)s 口令"
 
 #: bin/mmsitepass:87
 msgid "Again to confirm password: "
-msgstr "再次确认密码"
+msgstr "确认口令"
 
 #: bin/mmsitepass:89
 msgid "Passwords do not match; no changes made."
-msgstr "两次密码不同，没有做改变"
+msgstr "口令不相同，未做改变"
 
 #: bin/mmsitepass:92
 msgid "Interrupted..."
@@ -8870,11 +8849,11 @@ msgstr "被中断..."
 
 #: bin/mmsitepass:98
 msgid "Password changed."
-msgstr "密码已改变"
+msgstr "口令以更改"
 
 #: bin/mmsitepass:100
 msgid "Password change failed."
-msgstr "改变密码失败"
+msgstr "更改口令失败"
 
 #: bin/msgfmt.py:5
 #, docstring
@@ -8901,30 +8880,30 @@ msgid ""
 "    --version\n"
 "        Display version information and exit.\n"
 msgstr ""
-"从原始的翻译信息中产生二进制信息目录册。\n"
+"从文本翻译描述中产生二进制信息目录。\n"
 "\n"
-"本程序将原始的统一字符编码的信息目录册(.po 文件)转换成二进制的GNU目录册(.mo file)。\n"
-"它本质上和GNU的msgfmt程序是一样的，但是，它只是一个简单的执行。\n"
+"本程序将原始的统一字符编码的信息目录(.po文件)转换成二进制的GNU目录(.mo文件)。\n"
+"它本质上和GNU的msgfmt程序是一样的，但是，它只是一个简单的操作。\n"
 "\n"
 "用法: msgfmt.py [OPTIONS] filename.po\n"
 "\n"
 "选项:\n"
 "    -o file\n"
 "    --output-file=file\n"
-"        指定信息将写入的文件。如果忽略，将会输出到名为filename.mo（取决于输入文件名）的文件中。\n"
+"        指定信息写入的文件。如果忽略，将会输出到名为filename.mo（取决于输入文件名）的文件中。\n"
 "\n"
 "    -h\n"
 "    --help\n"
-"        输出此信息然后退出。\n"
+"        输出此信息并退出。\n"
 "\n"
 "    -V\n"
 "    --version\n"
-"        显示翻译信息然后退出。\n"
+"        显示版本信息并退出。\n"
 
 #: bin/msgfmt.py:49
 #, docstring
 msgid "Add a non-fuzzy translation to the dictionary."
-msgstr "向字典中加入一个不失真的翻译。"
+msgstr "向字典中加入一个准确的翻译。"
 
 #: bin/msgfmt.py:57
 #, docstring
@@ -9014,56 +8993,57 @@ msgstr ""
 "\n"
 "    -l language\n"
 "    --language=language\n"
-"        制定列表的默认语言, 此语言必须是双字节编码。\n"
+"        设置列表的默认语言, 必须是两个字符但语言代码。\n"
 "\n"
 "    -u urlhost\n"
 "    --urlhost=urlhost\n"
-"        提供列表中的网络接口主机名。\n"
+"        提供列表的web接口主机名。\n"
 "\n"
 "    -e emailhost\n"
 "    --emailhost=emailhost\n"
 "        提供列表的email域名。\n"
 "\n"
 "    -q/--quiet\n"
-"        通常管理员会在被提醒之后再收到email通知他们的列表已建好。\n"
+"        通常管理员会收到一份邮件，通知他们的列表已建好。\n"
 "        此操作能阻止提醒和email通知。\n"
 "\n"
 "    -h/--help\n"
-"        输出此帮助文件然后退出。\n"
+"        打印此帮助信息然后退出。\n"
 "\n"
-"只要您愿意，您能在命令行上指定任意多个参数：对于缺少的参数会提醒您。\n"
+"只要您愿意，您能在命令行上指定任意多个参数：如果有缺少的参数，将会提醒您。\n"
 "\n"
-"每个邮件列表又都两个参数，一个用来在寄出email时指定默认主机名，另一个为所有的网络接口指定默认网址。\n"
-"当您配置完Mailman，这些默认值已经正确了，但是如果您正在使用多个虚拟的Mailman站点，则默认值可能\n"
-"对您正在创建的列表不是很适用。\n"
+"每个Mailman列表都有两个参数，一个用来作为寄出Email的默认主机名，另一个则作\n"
+"为所有的Web接口的默认URL。当配置完Mailman后，默认值业已被设置，但是如果您\n"
+"正在运行多个虚拟Mailman站点，则默认值可能对您正在创建的列表并不适用。\n"
 "\n"
 "您还要为您创建的列表指定一个域，使用如下格式的命令：\n"
 "\n"
 "    newlist --urlhost=www.mydom.ain mylist\n"
 "\n"
-"‘www.mydom.ain’ 将作为虚拟主机列表的网址的基础主机名。例如：通过此设置后，人们将可以在\n"
-"http://www.mydom.ain/mailman/listinfo上察看列表的概貌。而且，如果email主机名是自动指定的话，\n"
-"www.mydom.ain将是VIRTUAL_HOSTS 映射入 mm_cfg.py/Defaults.py时的关键字（key）\n"
+"‘www.mydom.ain’ 将作为虚拟主机列表的网址的基础主机名。例如：通过此设置后，\n"
+"人们将可以在http://www.mydom.ain/mailman/listinfo上察看列表的概要信息。而\n"
+"且，如果email主机名是自动检测出的话，www.mydom.ain应该是mm_cfg.py/Defaults.py\n"
+"中VIRTUAL_HOSTS这个mapping的关键字(key)。\n"
 "\n"
-"如果您希望email主机名不同于从VIRTUAL_HOSTS中搜出的，或者如果urlhost没有在VIRTUAL_HOSTS上注册，\n"
-"您可以指定emailhost，格式如下：\n"
+"如果您希望email主机名与VIRTUAL_HOSTS中检索出的值不同，或者如果urlhost没有在\n"
+"VIRTUAL_HOSTS中注册，您可以指定emailhost，格式如下：\n"
 "\n"
 "    newlist --urlhost=www.mydom.ain --emailhost=mydom.ain mylist\n"
 "\n"
-"‘mydom.ain’是邮件域名。如果您不指定emailhost而urlhost不在虚拟主机列表中，则email接口将使用\n"
-"mm_cfg.DEFAULT_EMAIL_HOST\n"
+"其中，`mydom.ain'是邮件域名。如果您不指定emailhost而urlhost不在虚拟主机列表中，\n"
+"则email接口将使用mm_cfg.DEFAULT_EMAIL_HOST\n"
 "\n"
-"为了向后兼容，您也可以为您创建的新列表指定一个域，通过使用如下的格式：\n"
+"为了向后兼容，您也可以在创建新列表时指定一个域名，通过使用如下的格式：\n"
 "\n"
 "    mylist@www.mydom.ain\n"
 "\n"
-"‘www.mydom.ain’ 用来做‘urlhost’，但是如果在虚拟主机表中没有找到‘emailhost’，它也用来做\n"
-"‘emailhost’。注意‘--urlhost’ and ‘--emailhost’有比‘www.mydom.ain’高的优先权。\n"
+"这里www.mydom.ain被用来做为`urlhost'，但是如果在虚拟主机表中没有找到`emailhost'，\n"
+"它也用来做为`emailhost'。注意，`--urlhost'和`--emailhost'的优先权比这种记法高。\n"
 "\n"
-"如果您像‘mylist’着样品写出了列表名，则email主机名将从DEFAULT_EMAIL_HOST中取得，\n"
-"网址将从DEFAULT_URL中取得。 (像在文件Defaults.py中定义的，或者被mm_cfg.py文件中的设置覆盖的。)\n"
+"如果您把您的列表名仅拼写为\"mylist\"，则email主机名将从DEFAULT_EMAIL_HOST中取得，\n"
+"URL将从DEFAULT_URL中取得。 (在文件Defaults.py中定义，或者被mm_cfg.py文件中的设置覆盖)\n"
 "\n"
-"注意列表名必须是小写字母。\n"
+"注意列表名强制为小写字母。\n"
 
 #: bin/newlist:150
 msgid "Unknown language: %(lang)s"
@@ -9166,7 +9146,7 @@ msgstr ""
 "\n"
 "    --once\n"
 "    -o\n"
-"        严格的在每个队列管理器得主循环中运行管理器一次。如果没有此选项，\n"
+"        在主循环中仅运行各指定的qrunner一次。否则的话，\n"
 "        每个队列管理器讲不规律的运行，直到进程收到SIGTERM或者SIGINT。\n"
 "\n"
 "    -l/--list\n"
@@ -9180,17 +9160,17 @@ msgstr ""
 "        它改变因为出错退出时的行为，来使在那个框架下工作的更好。\n"
 "\n"
 "    -h/--help\n"
-"        输出该信息然后退出。\n"
+"        输出此帮助信息然后退出。\n"
 "\n"
 "除非使用-l 或 -h，都要有管理器，并且它必须是使用 -l 后显示的名字的中的一个。\n"
 
 #: bin/qrunner:176
 msgid "%(name)s runs the %(runnername)s qrunner"
-msgstr "%(name)s 运行 %(runnername)s 队列管理器"
+msgstr "%(name)s 运行 %(runnername)s qrunner"
 
 #: bin/qrunner:177
 msgid "All runs all the above qrunners"
-msgstr "All 运行以上所有的队列管理器"
+msgstr "All 运行上面的所有qrunners"
 
 #: bin/qrunner:213
 msgid "No runner name given."
@@ -9241,7 +9221,7 @@ msgstr ""
 "\n"
 "在运行此脚本后，您应该运行‘bin/check_perms -f’。\n"
 "\n"
-"当您成功的运行了此脚本后，您可能会愿意删除雕有此脚本产生的-article.bak文件。\n"
+"当您对结果满意后，您可能会想要删除由此脚本产生的-article.bak文件。\n"
 "\n"
 "此脚本仅是用来提升性能的。并不是必需使用的。\n"
 
@@ -9299,14 +9279,14 @@ msgstr ""
 "\n"
 "    --file=file\n"
 "    -f file\n"
-"        删除从给定文件（file）中找到的成员地址。如果文件是‘-’，则从输入中寻找。\n"
+"        删除从给定文件（file）中找到的成员地址。如果文件是‘-’，则从标准输入中寻找。\n"
 "\n"
 "    --all\n"
 "    -a\n"
 "        删除邮件列表中所有的成员。（和--fromall互斥）\n"
 "\n"
 "    --fromall\n"
-"        从您的系统上的所有列表中删除给定的地址，不管您可能有的虚拟域。\n"
+"        从您的系统上的所有列表中删除给定的地址，不管您是否有虚拟域。\n"
 "        此选项不能和-a/--all一起使用。而且，您也不能指定列表名。\n"
 "\n"
 "    --nouserack\n"
@@ -9391,7 +9371,7 @@ msgid ""
 "Usage:\n"
 "    rmlist [-a] [-h] listname\n"
 "\n"
-"其中:\n"
+"Where:\n"
 "    --archives\n"
 "    -a\n"
 "        Remove the list's archives too, or if the list has already been\n"
@@ -9445,7 +9425,7 @@ msgstr "列表信息"
 
 #: bin/rmlist:132
 msgid "stale lock file"
-msgstr ""
+msgstr "失效的被锁文件"
 
 #: bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
@@ -9612,7 +9592,7 @@ msgstr "错误的选择: %(yesno)s"
 
 #: bin/sync_members:138
 msgid "Dry run mode"
-msgstr "错误的运行模式"
+msgstr "演示模式"
 
 #: bin/sync_members:159
 msgid "Only one -f switch allowed"
@@ -9824,7 +9804,7 @@ msgstr "修正语言模板: %(listname)s"
 
 #: bin/update:196 bin/update:689
 msgid "WARNING: could not acquire lock for list: %(listname)s"
-msgstr "警告: 不能获得列表的锁: %(listname)s"
+msgstr "警告: 不能获得列表 %(listname)s 的锁"
 
 #: bin/update:215
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
@@ -9910,7 +9890,7 @@ msgid ""
 "    you're either one brave soul, or you already ran me"
 msgstr ""
 "    看起来您安装了最新的 CVS...\n"
-"    您如果不是一个有着勇敢灵魂的人,就是已经运行过我了"
+"    您如果不是一个十分勇敢的人,就是已经运行我了"
 
 #: bin/update:311
 msgid "- updating old public mbox file"
@@ -9923,7 +9903,7 @@ msgid ""
 "    to\n"
 "        %(newname)s"
 msgstr ""
-"    不明文件,移动\n"
+"    未知文件,移动\n"
 "        %(o_pub_mbox_file)s\n"
 "    至\n"
 "        %(newname)s"
@@ -9946,7 +9926,7 @@ msgstr "- %(o_tmpl)s 不存在, 不做修改"
 
 #: bin/update:393
 msgid "removing directory %(src)s and everything underneath"
-msgstr "删除目录%(src)s 及其内所有文件"
+msgstr "删除目录%(src)s 及其目录内所有文件"
 
 #: bin/update:396
 msgid "removing %(src)s"
@@ -10060,7 +10040,7 @@ msgstr ""
 
 #: bin/update:771
 msgid "No updates are necessary."
-msgstr "没有需要的升级"
+msgstr "不需要升级"
 
 #: bin/update:774
 msgid ""
@@ -10070,7 +10050,7 @@ msgid ""
 msgstr ""
 "发现降级安装, 从版本 %(hexlversion)s 到版本 %(hextversion)s\n"
 "这很可能不安全.\n"
-"退出."
+"正在退出."
 
 #: bin/update:779
 msgid "Upgrading from version %(hexlversion)s to %(hextversion)s"
@@ -10092,7 +10072,7 @@ msgstr ""
 "错误:\n"
 "\n"
 "某些列表的锁无法获得.  这意味着\n"
-"当您升级时, Mailman仍然启动 , 或者有无效的锁在\n"
+"当您升级时, Mailman仍然运行, 或者有无效的锁定在\n"
 "%(lockdir)s 目录内.\n"
 "\n"
 "您必须将Mailman 停止并移除所有失效的锁, \n"
@@ -10215,13 +10195,13 @@ msgid ""
 msgstr ""
 "与mailing list对象交互的通用框架。\n"
 "\n"
-"可以两种方式使用此脚本：交互式或者程序式。\n"
+"可以用两种方式使用此脚本：交互式或者程序式。\n"
 "交互式的使用允许您在Python交互式解释器中调整、检查和修改一个MailList\n"
 "对象。此时，在全局命名空间中会有一个名为'm'的MailList对象可用，同时\n"
 "也会把类MailList加载入全局命名空间。\n"
 "\n"
 "程序式的使用，您可以写一个函数来操纵MailList对象，而此脚本会负责所有\n"
-"的内务处理(请查看下面的例子)。事实上，一般的使用语法是：\n"
+"的内务处理(请查看下面的例子)。如果是那样的话，一般的使用语法是：\n"
 "\n"
 "%% bin/withlist [options] listname [args ...]\n"
 "\n"
@@ -10235,15 +10215,15 @@ msgstr ""
 "        的清理过程不会自动保存对MailList对象所作的修改(但是会给列表解锁)。\n"
 "\n"
 "    -i / --interactive\n"
-"        在所有其他处理过程结束后给您提供一个解释器提示符。这是默认行为，除非\n"
+"        在所有其他处理过程结束后给您提供一个交互式的提示。这是默认行为，除非\n"
 "        提供了 -r 选项。\n"
 "\n"
 "    --run [module.]callable\n"
 "    -r [module.]callable\n"
-"       这可以用来在一个打开的MailList对象上运行一个脚本，这是通过试图导入\n"
+"       用于在一个打开的MailList对象上运行一个脚本，这是通过试图导入\n"
 "       'module'(它必须在保存列表的目录下，或者可以通过您的sys.path来访问),\n"
 "       然后从模块中调用'callable'来实现的。callable可以是一个类或者一个函\n"
-"       数；他被作为MailList对象的第一个参数来调用。如果在命令行上给出了其\n"
+"       数；它被作为MailList对象的第一个参数来调用。如果在命令行上给出了其\n"
 "       的参数，他们会被作为后续的位置参数而传递给callable。\n"
 "\n"
 "       注意，'module.'是可选的；如果被省略的话，一个名为'callable'的模块将\n"
@@ -10257,7 +10237,7 @@ msgstr ""
 "        有返回值的列表。\n"
 "\n"
 "    --quiet / -q\n"
-"        去处所有的状态消息。\n"
+"        去除所有的状态消息。\n"
 "\n"
 "    --help / -h\n"
 "        打印此帮助信息然后退出。\n"
@@ -10313,7 +10293,7 @@ msgid ""
 "    os._exit() is called.  It will get called if an exception occurs though.\n"
 "    "
 msgstr ""
-"解锁一个列表，但是并不对其执行Save()。\n"
+"解锁一个被锁住的列表，但是并不对其执行Save()。\n"
 "\n"
 "    如果解释器因为接收到一个信号而退出，或者os._exit()被调用，这将不会被执行。\n"
 "    但是当发生异常时，将会被调用。\n"
@@ -10415,7 +10395,7 @@ msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
 msgstr ""
-"注意： %(discarded)d 旧信息自动过期。\n"
+"注意： %(discarded)d 旧请求自动过期。\n"
 "\n"
 
 #: cron/checkdbs:120
@@ -10512,7 +10492,7 @@ msgstr ""
 "        也向自己禁止的成员发送通知。\n"
 "\n"
 "    -u / --unknown\n"
-"        也向因未知原因而被禁止的成员发送通知(usually a legacy disabled address)。\n"
+"        也向因未知原因而被禁止的成员发送通知(一般是一个继承的被禁止的地址)。\n"
 "\n"
 "    -b / --notbybounce\n"
 "        不向因退信而被禁止的成员发送通知(默认是向他们发送通知)。\n"
@@ -10582,7 +10562,7 @@ msgstr ""
 "向所有列表中的所有成员发送口令提示函。\n"
 "\n"
 "此程序扫描所有的邮件列表，搜集用户和他们的口令，如果mm_cfg.VIRTUAL_HOST_OVERVIEW\n"
-"为真的话还将他们按照列表的host_name进行分组。然后给没一个唯一的用户(每虚拟主机)\n"
+"为真的话还将他们按照列表的host_name进行分组。然后给每一个唯一的用户(每一个虚拟主机)\n"
 "发送一封电子邮件，包含列表的口令以及可选的url。口令提示函从mm_cfg.MAILMAN_SITE_LIST\n"
 "发出，mm_cfg.MAILMAN_SITE_LIST一定要存在。\n"
 "\n"
@@ -10675,4 +10655,3 @@ msgstr ""
 "    -l listname\n"
 "    --listname=listname\n"
 "        仅为指定的列表发送摘要，否则将给所有列表发送摘要。\n"
-
