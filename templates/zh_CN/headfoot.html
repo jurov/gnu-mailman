@@ -1,15 +1,16 @@
-该文本包括
-<a href="http://www.python.org/doc/current/lib/typesseq-strings.html">Python格式串</a>,它用来解决列表属性。下列可以用来说明列表：
+此文本可以包括
+<a href="http://www.python.org/doc/current/lib/typesseq-strings.html">Python
+格式字符串</a>,它们将根据列表属性来被解释。可用的替换有：
 <ul>
     <li><b>real_name</b> - 列表的确切名字;  通常列表名字要大写。
-    <li><b>list_name</b> - 在URL中用来确认列表的名字，当然这种情况很重要。
+    <li><b>list_name</b> - 在URL中用来确认列表的名字，大小写相关。
 
-    <li><b>host_name</b> - 列表服务器在该符合规定的域名上运行。
+    <li><b>host_name</b> - 列表服务器的全限定域名。
 
-    <li><b>web_page_url</b> - Mailman的基本URL.它可以加上：
-             <br>   例如， <em>listinfo/%(list_name)s</em> 来增加邮件列表的信息。
+    <li><b>web_page_url</b> - Mailman的base URL.它可以追加上，
+    例如，<em>listinfo/%(list_name)s</em>来寻址邮件列表的列表信息页。
 
     <li><b>description</b> - 邮件列表的简要说明。
     <li><b>info</b> - 邮件列表的详细说明。
-    <li><b>cgiext</b> - 该扩展可以加到CGI的脚码中。
+    <li><b>cgiext</b> - The extension added to CGI scripts.
 </ul>

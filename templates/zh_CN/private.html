@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>%(realname)s Private Archives Authentication</title>
+    <title>%(realname)s 私有归档认证</title>
 </head>
 <body bgcolor="#ffffff">
 <FORM METHOD=POST ACTION="%(action)s/">
@@ -8,15 +8,15 @@
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
     <TR>
       <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER">
-	<B><FONT COLOR="#0s00000" SIZE="+1">%(realname)s 的个人信息验证</FONT></B>
+	<B><FONT COLOR="#0s00000" SIZE="+1">%(realname)s 私有归档认证</FONT></B>
       </TD>
     </TR>
     <tr>
-        <TD><div ALIGN="Right">邮箱地址:</div></TD>
+        <TD><div ALIGN="Right">Email地址：</div></TD>
         <TD><INPUT TYPE="text" NAME="username" SIZE="30"></TD>
     </tr>
     <tr>
-      <TD><div ALIGN="Right">密码:</div></TD>
+      <TD><div ALIGN="Right">口令：</div></TD>
       <TD><INPUT TYPE="password" NAME="password" SIZE="30"></TD>
     </tr>
     <tr>
@@ -26,8 +26,13 @@
       </td>
     </tr>
   </TABLE>
-      <p><strong><em>注意:</em></strong> 从现在开始，您的浏览器应该使 cookies有效，否则您的改动将不会生效。
-      Session cookies 会在Mailman的管理接口中使用，由此您不必为每次信息的修改进行权限认证。这个cookies会在您退出浏览器时自动中止，当然您也可以通过点击<em>其他管理员文档下面Logout</em>来手动清除cookies（在您成功登陆后就可以看到）。 
+      <p><strong><em>注意：</em></strong> 从此时开始，您的浏览器应该启用
+	  cookies，否则您的任何操作都需要重新认证。
+	  
+      <p>在Mailman的私有存档接口中使用了Session cookies ，由此您不必为每
+	  次操作重新进行认证。这个cookies会在您退出浏览器时自动过期，当然您
+	  也可以通过点击访问您的成员选项页并点击其中的<em>登出</em>按钮来显
+	  式地使其过期。
       
 </FORM>
 </body>
