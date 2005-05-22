@@ -282,10 +282,17 @@ Url: %(url)s
         # If the message isn't a multipart, then we'll strip it out as an
         # attachment that would have to be separately downloaded.  Pipermail
         # will transform the url into a hyperlink.
-        # TK: Confirm also part is not None. (bug-id: 1099138)
         elif part and not part.is_multipart():
             payload = part.get_payload(decode=True)
             ctype = part.get_type()
+            # XXX Under email 2.5, it is possible that payload will be None.
+            # This can happen when you have a Content-Type: multipart/* with
+            # only one part and that part has two blank lines between the
+            # first boundary and the end boundary.  In email 3.0 you end up
+            # with a string in the payload.  I think in this case it's safe to
+            # ignore the part.
+            if payload is None:
+                continue
             size = len(payload)
             omask = os.umask(002)
             try:
