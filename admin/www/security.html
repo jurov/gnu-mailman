@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd" >
 <html>
 <!-- THIS PAGE IS AUTOMATICALLY GENERATED.  DO NOT EDIT. -->
-<!-- Thu Feb 24 10:23:20 2005 -->
+<!-- Mon May 30 15:49:40 2005 -->
 <!-- USING HT2HTML 2.0 -->
 <!-- SEE http://ht2html.sf.net -->
 <!-- User-specified headers:
@@ -172,8 +172,8 @@ This is a closed list that reaches the core Mailman developers.
 <ul>
 
 <li><b>CAN-2005-0202</b> -- This is a very serious issue affecting the Mailman
-2.1 series up to and including version 2.1.5.  Mailman 2.1.6 is not
-affected.  This issue can allow for the leakage of member passwords.
+2.1 series up to and including version 2.1.5.  <b>Mailman 2.1.6 is not
+affected</b>.  This issue can allow for the leakage of member passwords.
 
 <p>A quick, immediate fix is to remove the /usr/local/mailman/cgi-bin/private
 executable.  However, this will break any private archives your lists may be
@@ -196,6 +196,11 @@ will be informed of their new passwords.
 
 <p>Credit goes to Marcus Meissner for finding this issue.
 </li>
+
+<li><b>Mailman 2.1.6</b> -- allows for more cryptographically secure (but less
+user-friendly) list admin and auto-generated user passwords.  Also, a
+potential cross-site scripting hole has been closed.
+
 </ul>
 
 </td><!-- end of body cell -->
