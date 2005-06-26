@@ -88,9 +88,20 @@ def process(mlist, msg, msgdata):
     if size / 1024.0 >= mlist.digest_size_threshhold:
         # This is a bit of a kludge to get the mbox file moved to the digest
         # queue directory.
-        mboxfp.seek(0)
-        send_digests(mlist, mboxfp)
-        os.unlink(mboxfile)
+        try:
+            # Let's close in try - except here because a error in send_digest
+            # can stop regular delivery silently.  Unsuccessful digest
+            # delivery should be tried again by cron and the site
+            # administrator will be notified of any error explicitly by the
+            # cron error message.
+            mboxfp.seek(0)
+            send_digests(mlist, mboxfp)
+            os.unlink(mboxfile)
+        except Exception, errmsg:
+            # I know bare except is prohibited in mailman coding but we can't
+            # forcast what new exception can occur here.
+            syslog('error', 'send_digests() failed: %s', errmsg)
+            pass
     mboxfp.close()
 
 
