@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -14,8 +14,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-"""MailList mixin class managing the general options.
-"""
+"""MailList mixin class managing the general options."""
 
 import re
 
@@ -189,7 +188,7 @@ class General(GUIBase):
              href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
-        href="http://www.metasystema.org/essays/reply-to-useful.mhtml">Reply-To
+             href="http://www.metasystema.net/essays/reply-to.mhtml">Reply-To
              Munging Considered Useful</a> for a dissenting opinion.
 
              <p>Some mailing lists have restricted posting privileges, with a
