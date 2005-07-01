@@ -402,14 +402,6 @@ Mailman should work pretty much out of the box with a standard Postfix
 installation.  It has been tested with various Postfix versions up to and
 including Postfix 2.1.5.
 
-By default, Postfix treats \code{-owner} and \code{-request} addresses
-specially.  Since you want Postfix to deliver such messages to Mailman, you
-should turn off this option by adding this to your \file{main.cf} file:
-
-\begin{verbatim}
-    owner_request_special = no
-\end{verbatim}
-
 In order to support Mailman's optional VERP delivery, you will want to disable
 \code{luser_relay} (the default) and you will want to set
 \code{recipient_delimiter} for extended address semantics.  You should comment
