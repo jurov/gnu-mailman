@@ -284,6 +284,9 @@ Url: %(url)s
         # will transform the url into a hyperlink.
         elif part and not part.is_multipart():
             payload = part.get_payload(decode=True)
+            if type(payload) <> StringType:
+                # What other type can this be ?  Skip this.
+                continue
             ctype = part.get_type()
             # XXX Under email 2.5, it is possible that payload will be None.
             # This can happen when you have a Content-Type: multipart/* with
