@@ -6,6 +6,12 @@ Here is a history of user visible changes to Mailman.
 
 2.1.7 (XX-XXX-200X)
 
+  New Features
+
+    - List owners can customize content filter behavior as not to collapse
+      multipart/alternative to its first content.  This allows HTML part
+      to pass through after other content filtering is done.
+
   Bug fixes and other patches
 
     - bin/update crashes with bogus files (949117).
