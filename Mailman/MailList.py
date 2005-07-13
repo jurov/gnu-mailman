@@ -363,6 +363,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             mm_cfg.DEFAULT_FILTER_FILENAME_EXTENSIONS
         self.pass_filename_extensions = mm_cfg.DEFAULT_PASS_FILENAME_EXTENSIONS
         self.filter_content = mm_cfg.DEFAULT_FILTER_CONTENT
+        self.collapse_alternatives = mm_cfg.DEFAULT_COLLAPSE_ALTERNATIVES
         self.convert_html_to_plaintext = \
             mm_cfg.DEFAULT_CONVERT_HTML_TO_PLAINTEXT
         self.filter_action = mm_cfg.DEFAULT_FILTER_ACTION

@@ -403,6 +403,10 @@ def NewVars(l):
     # automatic discard
     add_only_if_missing('max_days_to_hold', 0)
     add_only_if_missing('nonmember_rejection_notice', '')
+    # multipart/alternative collapse
+    add_only_if_missing('collapse_alternatives', 
+        mm_cfg.DEFAULT_COLLAPSE_ALTERNATIVES)
+
 
 
 

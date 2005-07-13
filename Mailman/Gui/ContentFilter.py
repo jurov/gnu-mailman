@@ -57,9 +57,13 @@ class ContentFilter(GUIBase):
             <p>After this initial filtering, any <tt>multipart</tt>
             attachments that are empty are removed.  If the outer message is
             left empty after this filtering, then the whole message is
-            discarded.  Then, each <tt>multipart/alternative</tt> section will
+            discarded.
+
+            <p> Then, each <tt>multipart/alternative</tt> section will
             be replaced by just the first alternative that is non-empty after
-            filtering.
+            filtering if
+            <a href="?VARHELP=contentfilter/collapse_alternatives"
+            >collapse_alternatives</a> is enabled.
 
             <p>Finally, any <tt>text/html</tt> parts that are left in the
             message may be converted to <tt>text/plain</tt> if
@@ -108,6 +112,10 @@ class ContentFilter(GUIBase):
              _("""Remove message attachments that don't have a matching
              filename extension.  Leave this field blank to skip this filter
              test."""),),
+
+            ('collapse_alternatives', mm_cfg.Radio, (_('No'), _('Yes')), 0,
+             _("""Should Mailman collapse multipart/alternative to its
+             first part content?""")),
 
             ('convert_html_to_plaintext', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Should Mailman convert <tt>text/html</tt> parts to plain

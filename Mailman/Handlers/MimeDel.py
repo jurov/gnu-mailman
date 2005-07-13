@@ -90,10 +90,12 @@ def process(mlist, msg, msgdata):
     # headers.  For now we'll move the subpart's payload into the outer part,
     # and then copy over its Content-Type: and Content-Transfer-Encoding:
     # headers (any others?).
-    collapse_multipart_alternatives(msg)
-    if ctype == 'multipart/alternative':
-        firstalt = msg.get_payload(0)
-        reset_payload(msg, firstalt)
+    # TK: Make this configurable from Gui/ContentFilter.py.
+    if mlist.collapse_alternatives:
+        collapse_multipart_alternatives(msg)
+        if ctype == 'multipart/alternative':
+            firstalt = msg.get_payload(0)
+            reset_payload(msg, firstalt)
     # If we removed some parts, make note of this
     changedp = 0
     if numparts <> len([subpart for subpart in msg.walk()]):
