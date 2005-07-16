@@ -85,7 +85,7 @@ class Logger:
 
     def write(self, msg):
         if isinstance(msg, StringType):
-            msg = unicode(msg, self.__encoding)
+            msg = unicode(msg, self.__encoding, 'replace')
         f = self.__get_f()
         try:
             f.write(msg)
