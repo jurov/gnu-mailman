@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -398,15 +398,14 @@ def NewVars(l):
     add_only_if_missing('scrub_nondigest', 0)
     # ContentFilter by file extensions
     add_only_if_missing('filter_filename_extensions',
-        mm_cfg.DEFAULT_FILTER_FILENAME_EXTENSIONS)
+                        mm_cfg.DEFAULT_FILTER_FILENAME_EXTENSIONS)
     add_only_if_missing('pass_filename_extensions', [])
     # automatic discard
     add_only_if_missing('max_days_to_hold', 0)
     add_only_if_missing('nonmember_rejection_notice', '')
     # multipart/alternative collapse
-    add_only_if_missing('collapse_alternatives', 
-        mm_cfg.DEFAULT_COLLAPSE_ALTERNATIVES)
-
+    add_only_if_missing('collapse_alternatives',
+                        mm_cfg.DEFAULT_COLLAPSE_ALTERNATIVES)
 
 
 

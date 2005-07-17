@@ -1,17 +1,17 @@
-# Copyright (C) 2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2005 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software 
+# along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 """GUI component managing the content filtering options.
@@ -78,7 +78,7 @@ class ContentFilter(GUIBase):
             ('filter_mime_types', mm_cfg.Text, (10, WIDTH), 0,
              _("""Remove message attachments that have a matching content
              type."""),
-             
+
              _("""Use this option to remove each message attachment that
              matches one of these content types.  Each line should contain a
              string naming a MIME <tt>type/subtype</tt>,
@@ -171,9 +171,9 @@ class ContentFilter(GUIBase):
                     doc.addError(_('Bad MIME type ignored: %(spectype)s'))
                 else:
                     types.append(spectype.strip().lower())
-	    if property == 'filter_mime_types':
+            if property == 'filter_mime_types':
                 mlist.filter_mime_types = types
-	    elif property == 'pass_mime_types':
+            elif property == 'pass_mime_types':
                 mlist.pass_mime_types = types
         elif property in ('filter_filename_extensions',
                           'pass_filename_extensions'):
