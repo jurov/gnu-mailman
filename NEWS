@@ -15,7 +15,16 @@ Here is a history of user visible changes to Mailman.
       multipart/alternative to its first content.  This allows HTML part
       to pass through after other content filtering is done.
 
+  Internationalization
+
+    - New language: Interlingua.
+
   Bug fixes and other patches
+
+    - header_filter_rules get lost if accessed directly and needed authenti-
+      cation by login page (1230865).
+
+    - Obscure email when the poster doesn't set full name in 'From:' header.
 
     - Take preambles and epilogues into account when calculating message sizes
       for holding purposes (Mark Sapiro).
@@ -23,6 +32,8 @@ Here is a history of user visible changes to Mailman.
     - Logging/Logger.py unicode transform option (1235567).
 
     - bin/update crashes with bogus files (949117).
+
+    - Bugs and patches: 1212066/1301983 (Date header in create/remove notice)
 
 2.1.6 (30-May-2005)
 
