@@ -188,6 +188,16 @@ class Message(email.Message.Message):
             authors.append(address)
         return authors
 
+    def get_filename(self, failobj=None):
+        """Some MUA have bugs in RFC2231 filename encoding and cause
+        mailman to stop delivery in Scrubber.py (called from ToDigest.py).
+        """
+        try:
+            filename = email.Message.Message.get_filename(self, failobj)
+            return filename
+        except (UnicodeDecodeError, UnicodeError, ValueError):
+            return failobj
+
 
 
 class UserNotification(Message):
