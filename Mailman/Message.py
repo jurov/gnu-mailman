@@ -195,7 +195,7 @@ class Message(email.Message.Message):
         try:
             filename = email.Message.Message.get_filename(self, failobj)
             return filename
-        except (UnicodeDecodeError, UnicodeError, ValueError):
+        except (UnicodeError, LookupError, ValueError):
             return failobj
 
 
