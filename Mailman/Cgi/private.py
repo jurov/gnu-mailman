@@ -74,7 +74,7 @@ def main():
         doc.SetTitle(msg)
         doc.AddItem(Header(2, msg))
         print doc.Format()
-        syslog('error', 'Private archive hostile path: %s', path)
+        syslog('mischief', 'Private archive hostile path: %s', path)
         return
     # BAW: This needs to be converted to the Site module abstraction
     true_filename = os.path.join(
