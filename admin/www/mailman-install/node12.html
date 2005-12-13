@@ -56,16 +56,6 @@ installation.  It has been tested with various Postfix versions up to and
 including Postfix 2.1.5.
 
 <P>
-By default, Postfix treats <code>-owner</code> and <code>-request</code> addresses
-specially.  Since you want Postfix to deliver such messages to Mailman, you
-should turn off this option by adding this to your <span class="file">main.cf</span> file:
-
-<P>
-<div class="verbatim"><pre>
-    owner_request_special = no
-</pre></div>
-
-<P>
 In order to support Mailman's optional VERP delivery, you will want to disable
 <code>luser_relay</code> (the default) and you will want to set
 <code>recipient_delimiter</code> for extended address semantics.  You should comment
@@ -145,7 +135,7 @@ virtual domain support below.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on May 30, 2005.</span>
+<span class="release-info">Release 2.1, documentation updated on December 13, 2005.</span>
 </DIV>
 <!--End of Navigation Panel-->
 

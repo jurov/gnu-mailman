@@ -105,14 +105,15 @@ The MTA variable names a module in the <span class="file">Mailman/MTA</span> dir
 
 <P>
 Make sure that the owner of the <span class="file">data/aliases</span> and
-      <span class="file">data/aliases.db</span> file is <code>mailman</code> and that the group owner
+      <span class="file">data/aliases.db</span> file is <code>mailman</code>, that the group owner
       for those files is <code>mailman</code>, or whatever user and group you used
-      in the configure command:
+      in the configure command, and that both files are group writable:
 
 <P>
 <div class="verbatim"><pre>
         % su
         % chown mailman:mailman data/aliases*
+        % chmod g+w data/aliases*
       </pre></div>
 
 <P>
@@ -197,7 +198,7 @@ tables.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on May 30, 2005.</span>
+<span class="release-info">Release 2.1, documentation updated on December 13, 2005.</span>
 </DIV>
 <!--End of Navigation Panel-->
 
