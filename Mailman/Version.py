@@ -15,7 +15,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 # Mailman version
-VERSION = "2.1.7a1"
+VERSION = "2.1.7b1"
 
 # And as a hex number in the manner of PY_VERSION_HEX
 ALPHA = 0xa
@@ -28,7 +28,7 @@ FINAL = 0xf
 MAJOR_REV = 2
 MINOR_REV = 1
 MICRO_REV = 7
-REL_LEVEL = ALPHA
+REL_LEVEL = BETA
 # at most 15 beta releases!
 REL_SERIAL = 1
 
