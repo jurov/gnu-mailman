@@ -487,11 +487,13 @@ Postfix と Mailman を統合すると, 新しいリストを作成したり,
       \file{data/aliases} と \file{data/aliases.db} の所有者が
       \code{mailman} で, グループ所有者が \code{mailman} であることを
       確認してください. これらは configure コマンドで設定したユーザ
-      グループです:
+      グループです. また, 両方のファイルはグループ書き込み許可が必要
+      です:
 
       \begin{verbatim}
         % su
         % chown mailman:mailman data/aliases*
+        % chmod g+w data/aliases*
       \end{verbatim}
 
 \item Postfix の \file{main.cf} ファイルの \var{alias_maps} 変数が
