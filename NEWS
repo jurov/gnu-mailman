@@ -45,6 +45,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug fixes and other patches
 
+    - Defaults.py.in: SCRUBBER_DONT_USE_ATTACHMENT_FILENAME is set to True
+      for safer operation.
+
     - Fix Scrubber.py mungs quoted-printable bug with introducing
       'X-Mailman-Scrubbed' header for marking that the payload is
       scrubber-munged.  The flag is referenced in ToDigest.py, ToArchive.py,
