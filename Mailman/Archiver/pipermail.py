@@ -21,6 +21,13 @@ from Mailman.Mailbox import ArchiverMailbox
 from Mailman.Logging.Syslog import syslog
 from Mailman.i18n import _
 
+# True/False
+try:
+    True, False
+except NameError:
+    True = 1
+    False = 0
+
 SPACE = ' '
 
 
