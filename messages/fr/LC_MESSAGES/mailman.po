@@ -424,9 +424,8 @@ msgid "Go to the general list information page"
 msgstr "Allez à la page des informations générales de la liste"
 
 #: Mailman/Cgi/admin.py:414
-#, fuzzy
 msgid "Edit the public HTML pages and text files"
-msgstr "Modifier les pages HTML publiques"
+msgstr "Modifier les pages HTML publiques et les fichiers texte"
 
 #: Mailman/Cgi/admin.py:416
 msgid "Go to list archives"
@@ -1285,7 +1284,7 @@ msgstr " est déjà abonné"
 
 #: Mailman/Cgi/admindb.py:808
 msgid "%(addr)s is banned (matched: %(patt)s)"
-msgstr ""
+msgstr "%(addr)s est interdite (correspondance: %(patt)s)"
 
 #: Mailman/Cgi/confirm.py:75
 msgid "Confirmation string was empty."
@@ -1503,7 +1502,6 @@ msgid "You are already a member of this mailing list!"
 msgstr "Vous déjà membre de cette liste !"
 
 #: Mailman/Cgi/confirm.py:375
-#, fuzzy
 msgid ""
 "You are currently banned from subscribing to\n"
 "            this list.  If you think this restriction is erroneous, please\n"
@@ -1512,7 +1510,7 @@ msgstr ""
 "L'adresse courriel fournie est bannie de cette liste. Si vous pensez\n"
 "        que cette restriction est erronée, veuillez entrer en contact avec "
 "le\n"
-"        propriétaire de la liste à l'adresse %(listowner)s."
+"        propriétaire de la liste à l'adresse %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:379
 msgid ""
@@ -1622,7 +1620,6 @@ msgid "You have canceled your change of address request."
 msgstr "Vous avez annulé votre requête de changement d'adresse"
 
 #: Mailman/Cgi/confirm.py:528
-#, fuzzy
 msgid ""
 "%(newaddr)s is banned from subscribing to the\n"
 "            %(realname)s list.  If you think this restriction is erroneous,\n"
@@ -1631,7 +1628,7 @@ msgstr ""
 "L'adresse courriel fournie est bannie de cette liste. Si vous pensez\n"
 "        que cette restriction est erronée, veuillez entrer en contact avec "
 "le\n"
-"        propriétaire de la liste à l'adresse %(listowner)s."
+"        propriétaire de la liste à l'adresse %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:534
 msgid "Change of address request confirmed"
@@ -2303,11 +2300,13 @@ msgid ""
 "The list administrator may not view the other\n"
 "            subscriptions for this user."
 msgstr ""
+"L'administrateur de la liste n'a peut-être pas vu \n"
+"	     les autres abonnements de cet utilisateur." 
 
 #: Mailman/Cgi/options.py:279 Mailman/Cgi/options.py:322
 #: Mailman/Cgi/options.py:442 Mailman/Cgi/options.py:658
 msgid "Note: "
-msgstr ""
+msgstr "Note :"
 
 #: Mailman/Cgi/options.py:284
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
@@ -2327,6 +2326,9 @@ msgid ""
 "            or addresses for this user's other subscriptions.  However, the\n"
 "            subscription for this mailing list has been changed."
 msgstr ""
+"L'administrateur de la liste ne devrait pas changer le nom\n"
+"	     ou les adresses des autres abonnements de cet utilisateur.\n"
+"	     Néanmoins l'abonnement pour cette liste a été modifié."
 
 #: Mailman/Cgi/options.py:342
 msgid "Addresses did not match!"
@@ -2375,15 +2377,14 @@ msgid "%(newaddr)s is already a member of the list."
 msgstr "%(newaddr)s est déjà abonné à la liste."
 
 #: Mailman/Cgi/options.py:404
-#, fuzzy
 msgid ""
 "%(newaddr)s is banned from this list.  If you\n"
 "                      think this restriction is erroneous, please contact\n"
 "                      the list owners at %(owneraddr)s."
 msgstr ""
-"L'adresse spécifiée est bannie de cette liste. Si vous pensez que\n"
+"%(newaddr)s est bannie de cette liste. Si vous pensez que\n"
 "cette mesure est erronée, veuillez contacter le propriétaire de la\n"
-"liste à l'adresse %(listowner)s."
+"liste à l'adresse %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:415
 msgid "Member name successfully changed. "
@@ -2398,15 +2399,14 @@ msgid "Passwords did not match!"
 msgstr "Les mots de passe ne correspondent pas !"
 
 #: Mailman/Cgi/options.py:439
-#, fuzzy
 msgid ""
 "The list administrator may not change the\n"
 "            password for this user's other subscriptions.  However, the\n"
 "            password for this mailing list has been changed."
 msgstr ""
-"L'administrateur de la liste a désactivé la remise en mode individuel\n"
-"            pour cette liste, par suite toutes les options autre que\n"
-"            celle-ci ont étés sauvegardées avec succès."
+"L'administrateur de la liste ne devrait pas modifier\n"
+"            le mot de passe des autres abonnements de cet utilisateur.\n"
+"            Néanmoins le mot de passe pour cette liste a été modifié."
 
 #: Mailman/Cgi/options.py:456 Mailman/Commands/cmd_password.py:83
 #: Mailman/Commands/cmd_password.py:109
@@ -2461,6 +2461,9 @@ msgid ""
 "                options for this mailing list subscription has been\n"
 "                changed."
 msgstr ""
+"L'administrateur de la liste ne devrait pas changer\n"
+"	         les options des autres abonnements de cet utilisateur.\n"
+"	         Néanmoins es options pour cette liste ont été modifiées."
 
 #: Mailman/Cgi/options.py:665
 msgid ""
@@ -2663,7 +2666,7 @@ msgstr "vous devez spécifier une liste."
 
 #: Mailman/Cgi/private.py:73
 msgid "Private archive - \"./\" and \"../\" not allowed in URL."
-msgstr ""
+msgstr "Archive privée - \"./\" et \"../\" non permises dans l'URL."
 
 #: Mailman/Cgi/private.py:110
 msgid "Private Archive Error - %(msg)s"
@@ -2963,7 +2966,6 @@ msgstr ""
 "avez-vous changé d'adresse courriel ?"
 
 #: Mailman/Commands/cmd_confirm.py:68
-#, fuzzy
 msgid ""
 "You are currently banned from subscribing to this list.  If you think this\n"
 "restriction is erroneous, please contact the list owners at\n"
@@ -2971,7 +2973,7 @@ msgid ""
 msgstr ""
 "L'adresse spécifiée est bannie de cette liste. Si vous pensez que\n"
 "cette mesure est erronée, veuillez contacter le propriétaire de la\n"
-"liste à l'adresse %(listowner)s."
+"liste à l'adresse %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:73
 msgid ""
@@ -3698,7 +3700,7 @@ msgstr "Hongrois"
 
 #: Mailman/Defaults.py:1327
 msgid "Interlingua"
-msgstr ""
+msgstr "Interlangue"
 
 #: Mailman/Defaults.py:1328
 msgid "Italian"
@@ -4373,7 +4375,6 @@ msgid "Preserve"
 msgstr "Préserver"
 
 #: Mailman/Gui/ContentFilter.py:42
-#, fuzzy
 msgid ""
 "Policies concerning the content of list traffic.\n"
 "\n"
@@ -4419,15 +4420,12 @@ msgstr ""
 "            sections individuelles sont d'abord comparées aux\n"
 "            <a href=\"?VARHELP=contentfilter/filter_mime_types\">types de "
 "filtres</a>.\n"
-"            Si le type de section correspond à une valeur du filtre, elle "
-"est supprimée.\n"
+"            Si le type de section correspond à une valeur du filtre, elle est supprimée.\n"
 "\n"
 "            <p>Ensuite, si il y a des\n"
-"            <a href=\"?VARHELP=contentfilter/pass_mime_types\">types "
-"acceptés</a>\n"
+"            <a href=\"?VARHELP=contentfilter/pass_mime_types\">types acceptés</a>\n"
 "            définis, tout type de section qui ne correspond <em>pas</em>\n"
-"            à un type accepté est aussi supprimé. Si il n'y a pas de types "
-"accepté\n"
+"            à un type accepté est aussi supprimé. Si il n'y a pas de type accepté\n"
 "            définis, ce contrôle n'est pas effectué.\n"
 "\n"
 "            <p>Après ce filtrage initial, toute section <tt>multipart</tt>\n"
@@ -4436,7 +4434,9 @@ msgstr ""
 "supprimé.\n"
 "            Puis chaque section <tt>multipart/alternative</tt>\n"
 "            sera remplacée par la première section alternative\n"
-"            non vide après filtrage.\n"
+"            non vide après filtrage si\n"
+"             <a href=\"?VARHELP=contentfilter/collapse_alternatives\"\n"
+"            >collapse_alternatives</a> est activée.\n"
 "\n"
 "            Enfin, toute partie <tt>text/html</tt> laissée dans le message\n"
 "            est convertie en <tt>text/plain</tt> si\n"
@@ -4541,11 +4541,11 @@ msgstr ""
 "ce test."
 
 #: Mailman/Gui/ContentFilter.py:117
-#, fuzzy
 msgid ""
 "Should Mailman collapse multipart/alternative to its\n"
 "             first part content?"
-msgstr "Mailman doit envoyer une réponse automatique aux expéditeurs ?"
+msgstr "Mailman doit-il revenir au contenu de la\n"
+"	      première partie ?"
 
 #: Mailman/Gui/ContentFilter.py:121
 msgid ""
@@ -5104,7 +5104,6 @@ msgstr ""
 "             plupart des listes de diffusion."
 
 #: Mailman/Gui/General.py:172
-#, fuzzy
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5146,40 +5145,36 @@ msgid ""
 "             list."
 msgstr ""
 "Cette option contrôle ce que Mailman fait des\n"
-"\t\ten-têtes <tt>Reply-to:</tt> des messages qui arrivent sur cette liste.\n"
+"\t\ten-têtes <tt>Reply-To:</tt> des messages qui arrivent sur cette liste.\n"
 "\t\tQuand il a la valeur <em>expéditeur</em>, Mailman n'ajoute pas \n"
-"\t\td'en-tête <tt>Reply-to</tt>, et s'il y en a un dans le message original, "
+"\t\td'en-tête <tt>Reply-To:</tt>, et s'il y en a un dans le message original, "
 "il \n"
 "\t\tn'est pas supprimé. Mettre cette valeur à <em>Cette liste</em> ou a \n"
-"\t\t<em>adresse explicite</em> oblige Mailman à insérer un en-tête <em>Reply-"
-"to</em> spécifique\n"
+"\t\t<em>adresse explicite</em> oblige Mailman à insérer un en-tête <em>Reply-To:</em> spécifique\n"
 "\t\tà tous les messages, annulant ainsi l'en-tête du message original si "
 "nécessaire\n"
 "\t\t(l'option <em>adresse explicite</em> insère la valeur de \n"
 "<a href=\"?VARHELP=general/reply_to_address\">reply_to_address</a>).\n"
 "\n"
 "\t\t<p>Il y a plusieurs raisons qui militent pour ne pas introduire ou \n"
-"\t\tou remplacer l'en-tête <tt>Reply-To</tt>.\n"
+"\t\tou remplacer l'en-tête <tt>Reply-To:</tt>.\n"
 "\t\tParmi ces raisons on peut citer le fait que beaucoup d'expéditeurs "
-"dépendent de leurs <tt>Reply-to</tt>\n"
+"dépendent de leurs <tt>Reply-to:</tt>\n"
 "\t\tpour réacheminer leurs messages. Une autre raison est le fait que la "
-"modification du <tt>Reply-to</tt>\n"
+"modification du <tt>Reply-To:</tt>\n"
 "\t\trend plus difficile les réponses privées. Lire <a href=\"http://www."
 "unicom.com/pw/reply-to-harmful.html\">\n"
 "\t\t`Reply-To` Munging Considered Harmful</a> pour une discussion générale "
 "sur le problème. Lire <a \n"
-"\t\thref=\"http://www.metasystema.org/essays/reply-to-useful.mhtml\">Reply-"
+"\t\thref=\"http://www.metasystema.org/essays/reply-to.mhtml\">Reply-"
 "To Munging Considered Useful</a>\n"
 "\t\tpour un panorama.\n"
 "\n"
 "\t\t<p>Certaines liste de diffusion ont des possibilités d'envois "
 "restreintes,\n"
-"\t\ten parallèle avec une liste dédiée aux débats. Parmi ces listes on peut "
-"citer les listes\n"
-"\t\t'patches' et 'checkin', où les modifications des logiciels sont soumises "
-"par des systèmes de contrôleurs\n"
-"\t\tde revisions alors que les discussions concernant ces mêmes "
-"modifications se déroulent sur la liste\n"
+"\t\ten parallèle avec une liste dédiée aux débats. Parmi ces listes on peut citer les listes\n"
+"\t\t'patches' et 'checkin', où les modifications des logiciels sont soumises par des systèmes de contrôleurs\n"
+"\t\tde revisions alors que les discussions concernant ces mêmes modifications se déroulent sur la liste\n"
 "\t\tdes développeurs. Pour la gestion de ce type de listes, sélectionner "
 "<tt>adresse explicite</tt> et mettre\n"
 "\t\tla valeur de l'adresse <tt>Reply-To:</tt> à celle de la liste parallèle."
@@ -5189,7 +5184,6 @@ msgid "Explicit <tt>Reply-To:</tt> header."
 msgstr "En-tête <tt>Répondre-à:</tt> explicite."
 
 #: Mailman/Gui/General.py:206
-#, fuzzy
 msgid ""
 "This is the address set in the <tt>Reply-To:</tt> header\n"
 "             when the <a\n"
@@ -5229,20 +5223,20 @@ msgid ""
 "             <tt>Reply-To:</tt> header, it will not be changed."
 msgstr ""
 "Cette adresse est celle du champs <tt>Reply-To:</tt> de l'en-tête\n"
-"\tlorsque la variable<a href=\"?VARHELP=general/reply_goes_to_list\">\n"
+"\tlorsque la variable <a href=\"?VARHELP=general/reply_goes_to_list\">\n"
 "\treply_goes_to_list</a> a la valeur <em>adresse explicite</em>\n"
 "\n"
 "\t\t<p>Il y a nombre de raisons qui militent pour la non-annulation ou "
-"l'introduction d'un en-tête <tt>Reply-to</tt>.\n"
+"l'introduction d'un en-tête <tt>Reply-to:</tt>.\n"
 "\t\tParmi ces raisons on peut citer le fait que pas mal d'expéditeurs "
-"dépendent de leurs <tt>Reply-to</tt>\n"
+"dépendent de leurs <tt>Reply-to:</tt>\n"
 "\t\tpour réacheminer leurs messages. Une autre raison est le fait que la "
-"modification du <tt>Reply-To</tt>\n"
+"modification du <tt>Reply-To:</tt>\n"
 "\t\trend plus difficile les réponses privées. Lire <a href=\"http://www."
 "unicom.com/pw/reply-to-harmful.html\">\n"
 "\t\t`Reply-To` Munging Considered Harmful</a> pour une discussion générale "
 "sur le problème. Lire <a \n"
-"\t\thref=\"http://www.metasystema.org/essays/reply-to-useful.mhtml\">Reply-"
+"\t\thref=\"http://www.metasystema.org/essays/reply-to.mhtml\">Reply-"
 "To Munging Considered Useful</a>\n"
 "\t\tpour un panorama.\n"
 "\n"
@@ -5252,8 +5246,7 @@ msgstr ""
 "citer les listes\n"
 "\t\t'patches' et 'checkin', où les modifications des logiciels sont soumise "
 "par des systèmes de contrôleurs\n"
-"\t\tde revisions alors que les discussions concernant ces mêmes "
-"modifications se déroulent sur la liste\n"
+"\t\tde revisions alors que les discussions concernant ces mêmes modifications se déroulent sur la liste\n"
 "\t\tdes développeurs. Pour la gestion de ce type de listes, sélectionner "
 "<tt>adresse explicite</tt> et mettre\n"
 "\t\tla valeur de l'adresse <tt>Reply-To:</tt> à celle de la liste parallèle."
@@ -8099,9 +8092,8 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "%(dbfile)s appartient à %(owner)s (doit appartenir à %(user)s)"
 
 #: Mailman/MTA/Postfix.py:354
-#, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "les permissions de %(file)s doivent être 066x (reçu %(octmode)s)"
+msgstr "les permissions de %(dbfile)s doivent être 066x (reçu %(octmode)s)"
 
 #: Mailman/MailList.py:214
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -8887,6 +8879,11 @@ msgid ""
 "         If you're on a shared multiuser system, you should consult the\n"
 "         installation manual on how to fix this."
 msgstr ""
+"Avertissement : les droits sur le répertoire des archives privées est réglé sur o+x.\n"
+"	  Cela pourrait permettre à d'autres utilisateurs de votre système\n"
+"	  de lire les archives privées.\n"
+"	  Si vous partagez un système multi-utilisateurs, vous devriez consulter\n"
+"	  le manuel d'installation pour y remédier."
 
 #: bin/check_perms:232
 msgid "mbox file must be at least 0660:"
@@ -9276,14 +9273,15 @@ msgstr ""
 "Les options -o et -i s'excluent mutuellement\n"
 
 #: bin/config_list:116
-#, fuzzy
 msgid ""
 "# -*- python -*-\n"
 "# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## Paramètres de configuration de la liste \"%(listname)s\" -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- codage : %(charset)s -*-\n"
+"## Paramètres de configuration de la liste \"%(listname)s\"\n"
 "## Capturé le %(when)s\n"
 
 #: bin/config_list:142 bin/config_list.orig:131
@@ -10915,7 +10913,6 @@ msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr "Abonné `%(addr)s' supprimé de la liste : %(listname)s."
 
 #: bin/reset_pw.py:21
-#, fuzzy
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -10945,7 +10942,7 @@ msgstr ""
 "\n"
 "Ce script est prévu pour fonctionner avec le script /bin/withlist, i.e.\n"
 "\n"
-"% bin/withlist -l -r reset_pw [options]\n"
+"% bin/withlist -l -r reset_pw nomdeliste [options]\n"
 "\n"
 "Options :\n"
 "    -v / --verbose\n"
@@ -11558,9 +11555,8 @@ msgid "updating old qfiles"
 msgstr "mise à jour des anciens fichiers qfiles"
 
 #: bin/update:448
-#, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Nom de répertoire file d'attente erroné : %(qdir)s"
+msgstr "Avertissement ! Cen'est pas un répertoire : %(dirpath)s"
 
 #: bin/update:517
 msgid "message is unparsable: %(filebase)s"
