@@ -106,7 +106,7 @@ def process(mlist, msg, msgdata):
     # Now do header_filter_rules
     # TK: Collect headers in sub-parts because attachment filename
     # extension may be a clue to possible virus/spam.
-    if msg.is_multipart() and not msg.get('x-list-administrivia',''):
+    if msg.is_multipart():
         headers = ''
         for p in msg.walk():
             g = HeaderGenerator(StringIO())
