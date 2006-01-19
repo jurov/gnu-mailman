@@ -66,6 +66,9 @@ Options:
 
 runner is required unless -l or -h is given, and it must be one of the names
 displayed by the -l switch.
+
+Note also that this script should be started up from mailmanctl as a normal
+operation.  It is only useful for debugging if it is run separately.
 """
 
 import sys
@@ -83,8 +86,6 @@ COMMASPACE = ', '
 
 # Flag which says whether we're running under mailmanctl or not.
 AS_SUBPROC = 0
-
-LogStdErr('error', 'qrunner', manual_reprime=0)
 
 
 
@@ -211,6 +212,12 @@ def main():
         usage(1)
     if len(runners) == 0:
         usage(1, _('No runner name given.'))
+
+    # Before we startup qrunners, we redirect the stderr to mailman syslog.
+    # We assume !AS_SUBPROC is running for debugging purpose and don't
+    # log errors in mailman logs/error but keep printing to stderr.
+    if AS_SUBPROC:
+        LogStdErr('error', 'qrunner', manual_reprime=0, tee_to_real_stderr=0)
 
     # Fast track for one infinite runner
     if len(runners) == 1 and not once:
