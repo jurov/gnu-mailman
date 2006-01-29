@@ -4,6 +4,33 @@ Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.8a1 (XX-Jan-2006)
+
+  Bug fixes and other patches
+
+    - Bouncers support added: 'unknown user', Microsoft SMTPSVC, Prodigy.net.
+
+    - Added a wrapper function for Message.set_payload() to encode contents
+      into qp/base64 upon setting.  This enabled back out the scrubber
+      related patches including 'X-Mailman-Scrubbed' header in 2.1.7.
+
+    - Fix SpamDetect.py potential hold/reject loop problem.
+
+    - A warning message from email package to the stderr can cause error
+      in Logging because stderr may be detached from the process during
+      the qrunner run.  We chose not to output errors to stderr but to
+      the logs/error if the process is running under mailmanctl subprocess.
+
+    - DKIM header cleansing was separated from Cleanse.py
+
+    - Fixes: Lose Topics when go directly to topics URL (1194419).
+      UnicodeError running bin/arch (1395683).  edithtml.py missing import
+      (1400128).  Bad escape in cleanarch.
+
+  Miscellaneous
+
+    - Brad Knowles' mailman daily status report script updated to 0.0.15.
+
 2.1.7 (31-Dec-2005)
 
   Security
