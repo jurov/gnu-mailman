@@ -144,6 +144,11 @@
 #		as opposed to just doing a directory listing and skipping
 #		the files in the middle if there are too many -- now we
 #		know how many are being skipped.
+#
+# 0.0.16	Update by Brad Knowles <brad@stop.mail-abuse.org>
+#		Updated on: Sun Jan 29 11:45:58 CET 2006
+#		Mark found a couple of typos that I somehow let slip
+#		through.  Thanks!
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -297,9 +302,9 @@ do
     $TOUCH $TMPLOG
     echo "Log file: $LOG" >> $TMP
     echo "==============================" >> $TMP
-    $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
 
     if [ -f "$LOGDIR/${LOG}" ] ; then
+    $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
 
 	if [ "${LOG}" = "post" ] ; then
 
@@ -466,7 +471,6 @@ do
 	    echo "" >> $TMP
 	    echo "Other Errors:" >> $TMP
 	    echo "------------------------------" >> $TMP
-MYUID=`$PS -o user -p $$ | $TAIL -1`
 	    $EGREP -vi '(Post by non-member|suspicious header|message approved|Discarded posting|bulk message discarded|junk message discarded|Message has implicit destination|Posting to a moderated newsgroup|Post to moderated list|Message discarded, msgid)' $TMPLOG | $SED -e 's/^.* ([0-9]*) //' -e 's/, message-id=<[^> ]*>:/:/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP 
 
 	elif [ "${LOG}" = "smtp-failure" ] ; then
