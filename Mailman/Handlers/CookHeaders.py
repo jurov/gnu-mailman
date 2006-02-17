@@ -327,20 +327,16 @@ def prefix_subject(mlist, msg, msgdata):
 
 
 
-def ch_oneline(s):
+def ch_oneline(headerstr):
     # Decode header string in one line and convert into single charset
     # copied and modified from ToDigest.py and Utils.py
     # return (string, cset) tuple as check for failure
     try:
-        d = decode_header(s)
+        d = decode_header(headerstr)
         # at this point, we should rstrip() every string because some
         # MUA deliberately add trailing spaces when composing return
         # message.
-        i = 0
-        for (s,c) in d:
-            s = s.rstrip()
-            d[i] = (s,c)
-            i += 1
+        d = [(s.rstrip(), c) for (s,c) in d]
         cset = 'us-ascii'
         for x in d:
             # search for no-None charset
@@ -353,4 +349,4 @@ def ch_oneline(s):
         return oneline.encode(cset, 'replace'), cset
     except (LookupError, UnicodeError, ValueError, HeaderParseError):
         # possibly charset problem. return with undecoded string in one line.
-        return ''.join(s.splitlines()), 'us-ascii'
+        return ''.join(headerstr.splitlines()), 'us-ascii'
