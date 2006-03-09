@@ -8,11 +8,12 @@ Here is a history of user visible changes to Mailman.
 
   Bug fixes and other patches
 
-    - Bouncers support added: 'unknown user', Microsoft SMTPSVC, Prodigy.net.
+    - Bouncers support added: 'unknown user', Microsoft SMTPSVC, Prodigy.net
+      and several others.
 
-    - Added a wrapper function for Message.set_payload() to encode contents
-      into qp/base64 upon setting.  This enabled back out the scrubber
-      related patches including 'X-Mailman-Scrubbed' header in 2.1.7.
+    - Updated email library to 2.5.7 which will encode payload into qp/base64
+      upon setting.  This enabled backing out the scrubber related patches
+      including 'X-Mailman-Scrubbed' header in 2.1.7.
 
     - Fix SpamDetect.py potential hold/reject loop problem.
 
@@ -29,6 +30,9 @@ Here is a history of user visible changes to Mailman.
       (1400128).  Bad escape in cleanarch.  Wrong timezone in list archive
       index pages (1433673).  bin/arch fails with TypeError (1430236).
       Subscription fails with some Language combinations (1435722).
+      Postfix delayed notification not recognized (863989).  2.1.7 (VERP)
+      mistakes delay notice for bounce (1421285).  show_qfiles: 'str'
+      object has no attribute 'as_string' (1444447).
 
   Miscellaneous
 
