@@ -141,11 +141,11 @@ class General(GUIBase):
             ('subject_prefix', mm_cfg.String, WIDTH, 0,
              _('Prefix for subject line of list postings.'),
              _("""This text will be prepended to subject lines of messages
-             posted to the list, to distinguish mailing list messages in in
+             posted to the list, to distinguish mailing list messages in
              mailbox summaries.  Brevity is premium here, it's ok to shorten
              long mailing list names to something more concise, as long as it
              still identifies the mailing list.
-             You can also add a sequencial number by %%d substitution
+             You can also add a sequential number by %%d substitution
              directive. eg.; [listname %%d] -> [listname 123]
                             (listname %%05d) -> (listname 00123)
              """)),

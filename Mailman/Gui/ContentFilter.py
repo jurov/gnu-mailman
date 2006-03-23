@@ -127,7 +127,7 @@ class ContentFilter(GUIBase):
              _("""Action to take when a message matches the content filtering
              rules."""),
 
-             _("""One of these actions is take when the message matches one of
+             _("""One of these actions is taken when the message matches one of
              the content filtering rules, meaning, the top-level
              content type matches one of the <a
              href="?VARHELP=contentfilter/filter_mime_types"
