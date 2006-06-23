@@ -4,6 +4,21 @@ Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.9 (xx-xxx-xxxx)
+
+  Security
+
+    - A malicious user could visit a specially crafted URI and inject an
+      apparent log message into Mailman's error log which might induce an
+      unsuspecting administrator to visit a phishing site.  This has been
+      blocked.  Thanks to Moritz Naumann for its discovery.
+
+  Bug fixes and other patches
+
+    - Fixed Decorate.py so that characters in message header/footer which
+      are not in the character set of the list's language are ignored rather
+      than causing shunted messages (1507248).
+      
 2.1.8 (15-Apr-2006)
 
   Security

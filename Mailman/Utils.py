@@ -53,6 +53,7 @@ from Mailman import mm_cfg
 from Mailman import Errors
 from Mailman import Site
 from Mailman.SafeDict import SafeDict
+from Mailman.Logging.Syslog import syslog
 
 try:
     True, False
@@ -219,9 +220,16 @@ def ValidateEmail(s):
 
 
 
+# Patterns which may be used to form malicious path to inject a new
+# line in the mailman error log. (TK: advisory by Moritz Naumann)
+CRNLpat = re.compile(r'[^\x21-\x7e]')
+
 def GetPathPieces(envar='PATH_INFO'):
     path = os.environ.get(envar)
     if path:
+        if CRNLpat.search(path):
+            path = CRNLpat.split(path)[0]
+            syslog('error', 'Warning: Possible malformed path attack.')
         return [p for p in path.split('/') if p]
     return None
 
@@ -326,7 +334,6 @@ def Secure_MakeRandomPassword(length):
                         # We have no available source of cryptographically
                         # secure random characters.  Log an error and fallback
                         # to the user friendly passwords.
-                        from Mailman.Logging.Syslog import syslog
                         syslog('error',
                                'urandom not available, passwords not secure')
                         return UserFriendly_MakeRandomPassword(length)
@@ -541,7 +548,6 @@ def findtext(templatefile, dict=None, raw=False, lang=None, mlist=None):
                 text = sdict.interpolate(utemplate)
         except (TypeError, ValueError), e:
             # The template is really screwed up
-            from Mailman.Logging.Syslog import syslog
             syslog('error', 'broken template: %s\n%s', filename, e)
             pass
     if raw:
