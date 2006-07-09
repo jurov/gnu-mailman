@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """Reading and writing message objects and message metadata.
 """
@@ -59,6 +60,9 @@ except NameError:
 # (when False).  Pickles are more efficient because the message doesn't need
 # to be re-parsed every time it's unqueued, but pickles are not human readable.
 SAVE_MSGS_AS_PICKLES = True
+# Small increment to add to time in case two entries have the same time.  This
+# prevents skipping one of two entries with the same time until the next pass.
+DELTA = .0001
 
 
 
@@ -163,9 +167,13 @@ class Switchboard:
             filebase = os.path.splitext(f)[0]
             when, digest = filebase.split('+')
             # Throw out any files which don't match our bitrange.  BAW: test
-            # performance and end-cases of this algorithm.
-            if lower is None or (lower <= long(digest, 16) < upper):
-                times[float(when)] = filebase
+            # performance and end-cases of this algorithm.  MAS: both
+            # comparisons need to be <= to get complete range.
+            if lower is None or (lower <= long(digest, 16) <= upper):
+                key = float(when)
+                while times.has_key(key):
+                    key += DELTA
+                times[key] = filebase
         # FIFO sort
         keys = times.keys()
         keys.sort()

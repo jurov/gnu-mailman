@@ -18,6 +18,10 @@ Here is a history of user visible changes to Mailman.
     - Fixed Decorate.py so that characters in message header/footer which
       are not in the character set of the list's language are ignored rather
       than causing shunted messages (1507248).
+
+    - Switchboard.py - Closed very tiny holes at the upper ends of queue
+      slices that could result in unprocessable queue entries.  Improved FIFO
+      processing when two queue entries have the same timestamp.
       
 2.1.8 (15-Apr-2006)
 
