@@ -187,7 +187,7 @@ class Switchboard:
             # comparisons need to be <= to get complete range.
             if lower is None or (lower <= long(digest, 16) <= upper):
                 key = float(when)
-                while key in times.keys():
+                while times.has_key(key):
                     key += DELTA
                 times[key] = filebase
         # FIFO sort
