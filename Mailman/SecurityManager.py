@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 
 """Handle passwords and sanitize approved messages."""
@@ -347,11 +348,12 @@ splitter = re.compile(';\s*')
 
 def parsecookie(s):
     c = {}
-    for p in splitter.split(s):
-        try:
-            k, v = p.split('=', 1)
-        except ValueError:
-            pass
-        else:
-            c[k] = v
+    for line in s.splitlines():
+        for p in splitter.split(line):
+            try:
+                k, v = p.split('=', 1)
+            except ValueError:
+                pass
+            else:
+                c[k] = v
     return c
