@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"POT-Creation-Date: Thu Mar 23 16:59:29 2006\n"
+"POT-Creation-Date: Fri Aug  4 16:11:31 2006\n"
 "PO-Revision-Date: 2005-05-14 12:07+0800\n"
 "Last-Translator: Dai Xiaoguang <leona@cs.hit.edu.cn>\n"
 "Language-Team:  <mailman-cn@mail.cs.hit.edu.cn>\n"
@@ -214,9 +214,9 @@ msgstr "退信行为通告"
 msgid " The last bounce received from you was dated %(date)s"
 msgstr "您最后的退信日期为 %(date)s"
 
-#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:145
+#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:285
-#: Mailman/Handlers/Hold.py:209 Mailman/Handlers/ToDigest.py:235
+#: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:235
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(无主题)"
@@ -340,7 +340,8 @@ msgstr "邮件列表简介页"
 msgid "<p>(Send questions and comments to "
 msgstr "<p>(发送问题和评论到"
 
-#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135 cron/mailpasswds:216
+#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "List"
 msgstr "列表"
 
@@ -349,7 +350,8 @@ msgstr "列表"
 msgid "Description"
 msgstr "描述"
 
-#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142 bin/list_lists:116
+#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142
+#: bin/.svn/text-base/list_lists.svn-base:116 bin/list_lists:116
 msgid "[no description available]"
 msgstr "[没有描述]"
 
@@ -1229,7 +1231,7 @@ msgstr "消息头部:"
 msgid "Message Excerpt:"
 msgstr "消息摘要:"
 
-#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:143
+#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:141
 msgid "No reason given"
 msgstr "没有给出原因"
 
@@ -1867,15 +1869,18 @@ msgstr "您没有创建新邮件列表的权限"
 msgid "Unknown virtual host: %(safehostname)s"
 msgstr "未知的虚拟主机: %(safehostname)s "
 
-#: Mailman/Cgi/create.py:195 bin/newlist:202
+#: Mailman/Cgi/create.py:195 bin/.svn/text-base/newlist.svn-base:202
+#: bin/newlist:202
 msgid "Bad owner email address: %(s)s"
 msgstr "错误的拥有者邮件地址:  %(s)s "
 
-#: Mailman/Cgi/create.py:199 bin/newlist:170 bin/newlist:204
+#: Mailman/Cgi/create.py:199 bin/.svn/text-base/newlist.svn-base:170
+#: bin/.svn/text-base/newlist.svn-base:204 bin/newlist:170 bin/newlist:204
 msgid "List already exists: %(listname)s"
 msgstr "列表已经存在: %(listname)s"
 
-#: Mailman/Cgi/create.py:203 bin/newlist:200
+#: Mailman/Cgi/create.py:203 bin/.svn/text-base/newlist.svn-base:200
+#: bin/newlist:200
 msgid "Illegal list name: %(s)s"
 msgstr "非法的列表名称: %(s)s"
 
@@ -1887,7 +1892,8 @@ msgstr ""
 "在创建列表的时候发生了未知的错误.\n"
 "                请联系站点管理员以获得帮助."
 
-#: Mailman/Cgi/create.py:245 bin/newlist:245
+#: Mailman/Cgi/create.py:245 bin/.svn/text-base/newlist.svn-base:245
+#: bin/newlist:245
 msgid "Your new mailing list: %(listname)s"
 msgstr "您新建的邮件列表: %(listname)s"
 
@@ -2552,7 +2558,7 @@ msgstr ""
 msgid "Private Archive Error - %(msg)s"
 msgstr "内部存档错误 - %(msg)s"
 
-#: Mailman/Cgi/private.py:178
+#: Mailman/Cgi/private.py:179
 msgid "Private archive file not found"
 msgstr "没有找到内部存档文件"
 
@@ -3459,131 +3465,135 @@ msgstr "没订阅摘要(普通的)的成员:"
 msgid "Digest members:"
 msgstr "订阅了摘要的成员:"
 
-#: Mailman/Defaults.py:1320
+#: Mailman/Defaults.py:1324
 msgid "Catalan"
 msgstr "(西班牙)加泰罗尼亚语"
 
-#: Mailman/Defaults.py:1321
+#: Mailman/Defaults.py:1325
 msgid "Czech"
 msgstr "捷克语"
 
-#: Mailman/Defaults.py:1322
+#: Mailman/Defaults.py:1326
 msgid "Danish"
 msgstr "丹麦语"
 
-#: Mailman/Defaults.py:1323
+#: Mailman/Defaults.py:1327
 msgid "German"
 msgstr "德语"
 
-#: Mailman/Defaults.py:1324
+#: Mailman/Defaults.py:1328
 msgid "English (USA)"
 msgstr "英语(美式)"
 
-#: Mailman/Defaults.py:1325
+#: Mailman/Defaults.py:1329
 msgid "Spanish (Spain)"
 msgstr "西班牙语(西班牙)"
 
-#: Mailman/Defaults.py:1326
+#: Mailman/Defaults.py:1330
 msgid "Estonian"
 msgstr "爱沙尼亚语"
 
-#: Mailman/Defaults.py:1327
+#: Mailman/Defaults.py:1331
 msgid "Euskara"
 msgstr "喀拉海语"
 
-#: Mailman/Defaults.py:1328
+#: Mailman/Defaults.py:1332
 msgid "Finnish"
 msgstr "芬兰语"
 
-#: Mailman/Defaults.py:1329
+#: Mailman/Defaults.py:1333
 msgid "French"
 msgstr "法语"
 
-#: Mailman/Defaults.py:1330
+#: Mailman/Defaults.py:1334
 msgid "Croatian"
 msgstr "克罗地亚语"
 
-#: Mailman/Defaults.py:1331
+#: Mailman/Defaults.py:1335
 msgid "Hungarian"
 msgstr "匈牙利语"
 
-#: Mailman/Defaults.py:1332
+#: Mailman/Defaults.py:1336
 msgid "Interlingua"
 msgstr ""
 
-#: Mailman/Defaults.py:1333
+#: Mailman/Defaults.py:1337
 msgid "Italian"
 msgstr "意大利语"
 
-#: Mailman/Defaults.py:1334
+#: Mailman/Defaults.py:1338
 msgid "Japanese"
 msgstr "日语"
 
-#: Mailman/Defaults.py:1335
+#: Mailman/Defaults.py:1339
 msgid "Korean"
 msgstr "韩国语"
 
-#: Mailman/Defaults.py:1336
+#: Mailman/Defaults.py:1340
 msgid "Lithuanian"
 msgstr "立陶宛语"
 
-#: Mailman/Defaults.py:1337
+#: Mailman/Defaults.py:1341
 msgid "Dutch"
 msgstr "荷兰语"
 
-#: Mailman/Defaults.py:1338
+#: Mailman/Defaults.py:1342
 msgid "Norwegian"
 msgstr "挪威语"
 
-#: Mailman/Defaults.py:1339
+#: Mailman/Defaults.py:1343
 msgid "Polish"
 msgstr "波兰语"
 
-#: Mailman/Defaults.py:1340
+#: Mailman/Defaults.py:1344
 msgid "Portuguese"
 msgstr "葡萄牙语"
 
-#: Mailman/Defaults.py:1341
+#: Mailman/Defaults.py:1345
 msgid "Portuguese (Brazil)"
 msgstr "葡萄牙语(巴西)"
 
-#: Mailman/Defaults.py:1342
+#: Mailman/Defaults.py:1346
 msgid "Romanian"
 msgstr "罗马尼亚语"
 
-#: Mailman/Defaults.py:1343
+#: Mailman/Defaults.py:1347
 msgid "Russian"
 msgstr "俄语"
 
-#: Mailman/Defaults.py:1344
+#: Mailman/Defaults.py:1348
 msgid "Serbian"
 msgstr "塞尔维亚语"
 
-#: Mailman/Defaults.py:1345
+#: Mailman/Defaults.py:1349
 msgid "Slovenian"
 msgstr "斯洛文尼亚语"
 
-#: Mailman/Defaults.py:1346
+#: Mailman/Defaults.py:1350
 msgid "Swedish"
 msgstr "瑞典语"
 
-#: Mailman/Defaults.py:1347
+#: Mailman/Defaults.py:1351
 msgid "Turkish"
 msgstr "土耳其语"
 
-#: Mailman/Defaults.py:1348
+#: Mailman/Defaults.py:1352
 msgid "Ukrainian"
 msgstr "乌克兰语"
 
-#: Mailman/Defaults.py:1349
+#: Mailman/Defaults.py:1353
+msgid "Vietnamese"
+msgstr ""
+
+#: Mailman/Defaults.py:1354
 msgid "Chinese (China)"
 msgstr "中文（中国）"
 
-#: Mailman/Defaults.py:1350
+#: Mailman/Defaults.py:1355
 msgid "Chinese (Taiwan)"
 msgstr "中文（台湾）"
 
-#: Mailman/Deliverer.py:53
+#: Mailman/Deliverer.py:51
 msgid ""
 "Note: Since this is a list of mailing lists, administrative\n"
 "notices like the password reminder will be sent to\n"
@@ -3592,27 +3602,27 @@ msgstr ""
 "注意: 由于这是一个邮件列表的清单, 口令提示函等管理通知会被发\n"
 "送到您的成员管理地址, %(addr)s."
 
-#: Mailman/Deliverer.py:73
+#: Mailman/Deliverer.py:71
 msgid " (Digest mode)"
 msgstr "(摘要模式)"
 
-#: Mailman/Deliverer.py:79
+#: Mailman/Deliverer.py:77
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
 msgstr "欢迎加入\"%(realname)s\"的邮件列表 %(digmode)s"
 
-#: Mailman/Deliverer.py:88
+#: Mailman/Deliverer.py:86
 msgid "You have been unsubscribed from the %(realname)s mailing list"
 msgstr "您已经退订了 %(realname)s 的邮件列表"
 
-#: Mailman/Deliverer.py:115
+#: Mailman/Deliverer.py:113
 msgid "%(listfullname)s mailing list reminder"
 msgstr "%(listfullname)s 邮件列表提示函"
 
-#: Mailman/Deliverer.py:167 Mailman/Deliverer.py:186
+#: Mailman/Deliverer.py:165 Mailman/Deliverer.py:184
 msgid "Hostile subscription attempt detected"
 msgstr "检测到敌意的订阅尝试"
 
-#: Mailman/Deliverer.py:168
+#: Mailman/Deliverer.py:166
 msgid ""
 "%(address)s was invited to a different mailing\n"
 "list, but in a deliberate malicious attempt they tried to confirm the\n"
@@ -3622,7 +3632,7 @@ msgstr ""
 "%(address)s 被邀请加入另一个邮件列表, 但却恶意地\n"
 "将其对邀请的回复发送给您，我们估计您乐意了解这个情况但您不必采取任何行动。"
 
-#: Mailman/Deliverer.py:187
+#: Mailman/Deliverer.py:185
 msgid ""
 "You invited %(address)s to your list, but in a\n"
 "deliberate malicious attempt, they tried to confirm the invitation to a\n"
@@ -3634,7 +3644,7 @@ msgstr ""
 "尝试确认一个加入别的列表的邀请, 我们估计您乐意了解这个情况. 但您不必采取任何"
 "行动。"
 
-#: Mailman/Deliverer.py:220
+#: Mailman/Deliverer.py:218
 msgid "%(listname)s mailing list probe message"
 msgstr "%(listname)s 的邮件列表探测消息"
 
@@ -6941,51 +6951,51 @@ msgstr ""
 msgid "Emergency hold on all list traffic is in effect"
 msgstr "紧急暂缓所有列表信件"
 
-#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:57
+#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
 msgid "Your message was deemed inappropriate by the moderator."
 msgstr "列表主持人认为您的信息不合适。"
 
-#: Mailman/Handlers/Hold.py:52
+#: Mailman/Handlers/Hold.py:53
 msgid "Sender is explicitly forbidden"
 msgstr "发送人被明确禁止"
 
-#: Mailman/Handlers/Hold.py:53
+#: Mailman/Handlers/Hold.py:54
 msgid "You are forbidden from posting messages to this list."
 msgstr "您被禁止往该列表发送信息。"
 
-#: Mailman/Handlers/Hold.py:56
+#: Mailman/Handlers/Hold.py:57
 msgid "Post to moderated list"
 msgstr "发送到受限列表"
 
-#: Mailman/Handlers/Hold.py:60
+#: Mailman/Handlers/Hold.py:61
 msgid "Post by non-member to a members-only list"
 msgstr "由非成员发送到一个仅成员列表(members-only list)"
 
-#: Mailman/Handlers/Hold.py:61
+#: Mailman/Handlers/Hold.py:62
 msgid "Non-members are not allowed to post messages to this list."
 msgstr "不允许非成员往该列表发送信息。"
 
-#: Mailman/Handlers/Hold.py:64
+#: Mailman/Handlers/Hold.py:65
 msgid "Posting to a restricted list by sender requires approval"
 msgstr "需要被审核的用户向一个受限列表发送信息"
 
-#: Mailman/Handlers/Hold.py:65
+#: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
 msgstr "该列表受限制；您的信息没有经过批准。"
 
-#: Mailman/Handlers/Hold.py:68
+#: Mailman/Handlers/Hold.py:69
 msgid "Too many recipients to the message"
 msgstr "该信息的收件人太多"
 
-#: Mailman/Handlers/Hold.py:69
+#: Mailman/Handlers/Hold.py:70
 msgid "Please trim the recipient list; it is too long."
 msgstr "请整理收件人列表；该列表太长。"
 
-#: Mailman/Handlers/Hold.py:72
+#: Mailman/Handlers/Hold.py:73
 msgid "Message has implicit destination"
 msgstr "信息中含有隐式的目的地"
 
-#: Mailman/Handlers/Hold.py:73
+#: Mailman/Handlers/Hold.py:74
 msgid ""
 "Blind carbon copies or other implicit destinations are\n"
 "not allowed.  Try reposting your message by explicitly including the list\n"
@@ -6994,11 +7004,11 @@ msgstr ""
 "不允许收信人的地址空白或者不清晰\n"
 "请尝试在To:和Cc:字段写明地址后重新发送"
 
-#: Mailman/Handlers/Hold.py:78
+#: Mailman/Handlers/Hold.py:79
 msgid "Message may contain administrivia"
 msgstr "消息中包含管理指令"
 
-#: Mailman/Handlers/Hold.py:83
+#: Mailman/Handlers/Hold.py:84
 msgid ""
 "Please do *not* post administrative requests to the mailing\n"
 "list.  If you wish to subscribe, visit %(listurl)s or send a message with "
@@ -7010,39 +7020,39 @@ msgstr ""
 "请访问 %(listurl)s 或者 以｀help｀为内容发送信息至\n"
 "请求地址， %(request)s，以获得进一步的指示信息。"
 
-#: Mailman/Handlers/Hold.py:89
+#: Mailman/Handlers/Hold.py:90
 msgid "Message has a suspicious header"
 msgstr "信件带有可疑的邮件头"
 
-#: Mailman/Handlers/Hold.py:90
+#: Mailman/Handlers/Hold.py:91
 msgid "Your message had a suspicious header."
 msgstr "您的信件带有可疑的邮件头"
 
-#: Mailman/Handlers/Hold.py:100
+#: Mailman/Handlers/Hold.py:101
 msgid ""
 "Message body is too big: %(size)d bytes with a limit of\n"
 "%(limit)d KB"
 msgstr "信件内容过大：%(size)d 字节 (上限为 %(limit)d KB)"
 
-#: Mailman/Handlers/Hold.py:105
+#: Mailman/Handlers/Hold.py:106
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
 msgstr "您的信件过大，请修改信件内容至小于 %(kb)s KB"
 
-#: Mailman/Handlers/Hold.py:109
+#: Mailman/Handlers/Hold.py:110
 msgid "Posting to a moderated newsgroup"
 msgstr "发送信息至受节制的新闻组"
 
-#: Mailman/Handlers/Hold.py:244
+#: Mailman/Handlers/Hold.py:250
 msgid "Your message to %(listname)s awaits moderator approval"
 msgstr "您发送到 %(listname)s 的信件已经交由列表主持者审批"
 
-#: Mailman/Handlers/Hold.py:263
+#: Mailman/Handlers/Hold.py:269
 msgid "%(listname)s post from %(sender)s requires approval"
 msgstr "%(listname)s 中来自 %(sender)s 的信件需要审批"
 
-#: Mailman/Handlers/Hold.py:270
+#: Mailman/Handlers/Hold.py:276
 msgid ""
 "If you reply to this message, keeping the Subject: header intact, Mailman "
 "will\n"
@@ -7347,11 +7357,22 @@ msgid "%(file)s permissions must be 066x (got %(octmode)s)"
 msgstr "%(file)s 的权限必须是 066x （获得 %(octmode)s）"
 
 #: Mailman/MTA/Postfix.py:318 Mailman/MTA/Postfix.py:345
-#: Mailman/MTA/Postfix.py:356 bin/check_perms:123 bin/check_perms:145
-#: bin/check_perms:155 bin/check_perms:166 bin/check_perms:191
-#: bin/check_perms:208 bin/check_perms:234 bin/check_perms:257
-#: bin/check_perms:276 bin/check_perms:290 bin/check_perms:310
-#: bin/check_perms:347
+#: Mailman/MTA/Postfix.py:356 bin/.svn/text-base/check_perms.svn-base:123
+#: bin/.svn/text-base/check_perms.svn-base:145
+#: bin/.svn/text-base/check_perms.svn-base:155
+#: bin/.svn/text-base/check_perms.svn-base:166
+#: bin/.svn/text-base/check_perms.svn-base:191
+#: bin/.svn/text-base/check_perms.svn-base:208
+#: bin/.svn/text-base/check_perms.svn-base:234
+#: bin/.svn/text-base/check_perms.svn-base:257
+#: bin/.svn/text-base/check_perms.svn-base:276
+#: bin/.svn/text-base/check_perms.svn-base:290
+#: bin/.svn/text-base/check_perms.svn-base:310
+#: bin/.svn/text-base/check_perms.svn-base:347 bin/check_perms:123
+#: bin/check_perms:145 bin/check_perms:155 bin/check_perms:166
+#: bin/check_perms:191 bin/check_perms:208 bin/check_perms:234
+#: bin/check_perms:257 bin/check_perms:276 bin/check_perms:290
+#: bin/check_perms:310 bin/check_perms:347
 msgid "(fixing)"
 msgstr "(固定)"
 
@@ -7384,7 +7405,8 @@ msgstr "来自 %(remote)s"
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "对 %(realname)s 的订阅请求需要列表主持者批准"
 
-#: Mailman/MailList.py:982 bin/add_members:242
+#: Mailman/MailList.py:982 bin/.svn/text-base/add_members.svn-base:242
+#: bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "%(realname)s 订阅通知"
 
@@ -7576,7 +7598,7 @@ msgid ""
 msgstr ""
 "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 
-#: bin/add_members:26
+#: bin/.svn/text-base/add_members.svn-base:26 bin/add_members:26
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -7655,50 +7677,64 @@ msgstr ""
 "\n"
 "-r和-d选项您必须至少C指定一个.最多可以指定一个文件为`-'.\n"
 
-#: bin/add_members:137
+#: bin/.svn/text-base/add_members.svn-base:137 bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "已经是成员：%(member)s"
 
-#: bin/add_members:140
+#: bin/.svn/text-base/add_members.svn-base:140 bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "错误/不合法的邮件地址: 空行"
 
-#: bin/add_members:142
+#: bin/.svn/text-base/add_members.svn-base:142 bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "错误/不合法的邮件地址： %(member)s"
 
-#: bin/add_members:144
+#: bin/.svn/text-base/add_members.svn-base:144 bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "恶意地址(非法字符)： %(member)s"
 
-#: bin/add_members:146
+#: bin/.svn/text-base/add_members.svn-base:146 bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "已订阅: %(member)s"
 
-#: bin/add_members:191
+#: bin/.svn/text-base/add_members.svn-base:191 bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "-w/--welcome-msg选项的错误参数: %(arg)s "
 
-#: bin/add_members:198
+#: bin/.svn/text-base/add_members.svn-base:198 bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "-a/--admin-notify选项的错误参数: %(arg)s"
 
-#: bin/add_members:204
+#: bin/.svn/text-base/add_members.svn-base:204 bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr "无法从标准输入既读取摘要用户又读取正常用户 "
 
-#: bin/add_members:210 bin/config_list:109 bin/config_list.orig:105
-#: bin/find_member:97 bin/inject:90 bin/list_admins:89 bin/list_members:232
-#: bin/sync_members:222 cron/bumpdigests:86
+#: bin/.svn/text-base/add_members.svn-base:210
+#: bin/.svn/text-base/config_list.svn-base:109
+#: bin/.svn/text-base/find_member.svn-base:97
+#: bin/.svn/text-base/inject.svn-base:90
+#: bin/.svn/text-base/list_admins.svn-base:89
+#: bin/.svn/text-base/list_members.svn-base:232
+#: bin/.svn/text-base/sync_members.svn-base:222 bin/add_members:210
+#: bin/config_list:109 bin/find_member:97 bin/inject:90 bin/list_admins:89
+#: bin/list_members:232 bin/sync_members:222
+#: cron/.svn/text-base/bumpdigests.svn-base:86 cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "没有此列表： %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
-#: bin/sync_members:244 bin/update:564 cron/bumpdigests:78
+#: bin/.svn/text-base/add_members.svn-base:230
+#: bin/.svn/text-base/change_pw.svn-base:158
+#: bin/.svn/text-base/check_db.svn-base:114
+#: bin/.svn/text-base/discard.svn-base:83
+#: bin/.svn/text-base/sync_members.svn-base:244
+#: bin/.svn/text-base/update.svn-base:564 bin/add_members:230
+#: bin/change_pw:158 bin/check_db:114 bin/discard:83 bin/sync_members:244
+#: bin/update:564 cron/.svn/text-base/bumpdigests.svn-base:78
+#: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "什么也不需要做."
 
-#: bin/arch:19
+#: bin/.svn/text-base/arch.svn-base:19 bin/arch:19
 msgid ""
 "Rebuild a list's archive.\n"
 "\n"
@@ -7781,11 +7817,14 @@ msgstr ""
 "\n"
 "<mbox>是可选的.如果没有提供,它将被计算出来.\n"
 
-#: bin/arch:125
+#: bin/.svn/text-base/arch.svn-base:125 bin/arch:125
 msgid "listname is required"
 msgstr "需要列表名"
 
-#: bin/arch:143 bin/change_pw:106 bin/config_list:256 bin/config_list.orig:242
+#: bin/.svn/text-base/arch.svn-base:143
+#: bin/.svn/text-base/change_pw.svn-base:106
+#: bin/.svn/text-base/config_list.svn-base:256 bin/arch:143 bin/change_pw:106
+#: bin/config_list:256
 msgid ""
 "No such list \"%(listname)s\"\n"
 "%(e)s"
@@ -7793,11 +7832,11 @@ msgstr ""
 "列表\"%(listname)s\"不存在\n"
 "%(e)s"
 
-#: bin/arch:183
+#: bin/.svn/text-base/arch.svn-base:183 bin/arch:183
 msgid "Cannot open mbox file %(mbox)s: %(msg)s"
 msgstr "无法打开mbox文件 %(mbox)s: %(msg)s"
 
-#: bin/b4b5-archfix:19
+#: bin/.svn/text-base/b4b5-archfix.svn-base:19 bin/b4b5-archfix:19
 msgid ""
 "Fix the MM2.1b4 archives.\n"
 "\n"
@@ -7834,7 +7873,7 @@ msgstr ""
 "\n"
 "在运行此脚本后您需要运行'bin/check_perms -f'。\n"
 
-#: bin/change_pw:19
+#: bin/.svn/text-base/change_pw.svn-base:19 bin/change_pw:19
 msgid ""
 "Change a list's password.\n"
 "\n"
@@ -7929,23 +7968,23 @@ msgstr ""
 "    --help / -h\n"
 "        打印此帮助信息然后退出。\n"
 
-#: bin/change_pw:144
+#: bin/.svn/text-base/change_pw.svn-base:144 bin/change_pw:144
 msgid "Bad arguments: %(strargs)s"
 msgstr "错误的参数： %(strargs)s"
 
-#: bin/change_pw:148
+#: bin/.svn/text-base/change_pw.svn-base:148 bin/change_pw:148
 msgid "Empty list passwords are not allowed"
 msgstr "列表口令不得为空"
 
-#: bin/change_pw:180
+#: bin/.svn/text-base/change_pw.svn-base:180 bin/change_pw:180
 msgid "New %(listname)s password: %(notifypassword)s"
 msgstr "%(listname)s的新口令： %(notifypassword)s"
 
-#: bin/change_pw:189
+#: bin/.svn/text-base/change_pw.svn-base:189 bin/change_pw:189
 msgid "Your new %(listname)s list password"
 msgstr "您的 %(listname)s列表的新口令"
 
-#: bin/change_pw:190
+#: bin/.svn/text-base/change_pw.svn-base:190 bin/change_pw:190
 msgid ""
 "The site administrator at %(hostname)s has changed the password for your\n"
 "mailing list %(listname)s.  It is now\n"
@@ -7969,7 +8008,7 @@ msgstr ""
 "\n"
 "    %(adminurl)s\n"
 
-#: bin/check_db:19
+#: bin/.svn/text-base/check_db.svn-base:19 bin/check_db:19
 msgid ""
 "Check a list's config database file for integrity.\n"
 "\n"
@@ -8037,19 +8076,19 @@ msgstr ""
 "    --help / -h\n"
 "        打印此帮助信息然后退出。\n"
 
-#: bin/check_db:119
+#: bin/.svn/text-base/check_db.svn-base:119 bin/check_db:119
 msgid "No list named:"
 msgstr "没有指定列表:"
 
-#: bin/check_db:128
+#: bin/.svn/text-base/check_db.svn-base:128 bin/check_db:128
 msgid "List:"
 msgstr "列表:"
 
-#: bin/check_db:148
+#: bin/.svn/text-base/check_db.svn-base:148 bin/check_db:148
 msgid "   %(file)s: okay"
 msgstr "   %(file)s: 完好"
 
-#: bin/check_perms:19
+#: bin/.svn/text-base/check_perms.svn-base:19 bin/check_perms:19
 msgid ""
 "Check the permissions for the Mailman installation.\n"
 "\n"
@@ -8067,47 +8106,47 @@ msgstr ""
 "指定-f选项(以root身份运行)时，修复所有被发现的许可权问题。\n"
 "指定-v选项将导致冗余输出。\n"
 
-#: bin/check_perms:108
+#: bin/.svn/text-base/check_perms.svn-base:108 bin/check_perms:108
 msgid "    checking gid and mode for %(path)s"
 msgstr "    为 %(path)s 检查gid和许可权"
 
-#: bin/check_perms:120
+#: bin/.svn/text-base/check_perms.svn-base:120 bin/check_perms:120
 msgid "%(path)s bad group (has: %(groupname)s, expected %(MAILMAN_GROUP)s)"
 msgstr "%(path)s所属组错误(当前组: %(groupname)s, 期望值为 %(MAILMAN_GROUP)s)"
 
-#: bin/check_perms:143
+#: bin/.svn/text-base/check_perms.svn-base:143 bin/check_perms:143
 msgid "directory permissions must be %(octperms)s: %(path)s"
 msgstr "目录许可权必须是 %(octperms)s: %(path)s"
 
-#: bin/check_perms:152
+#: bin/.svn/text-base/check_perms.svn-base:152 bin/check_perms:152
 msgid "source perms must be %(octperms)s: %(path)s"
 msgstr "源许可权必须是 %(octperms)s: %(path)s"
 
-#: bin/check_perms:163
+#: bin/.svn/text-base/check_perms.svn-base:163 bin/check_perms:163
 msgid "article db files must be %(octperms)s: %(path)s"
 msgstr "文章数据库文件必须是 %(octperms)s: %(path)s"
 
-#: bin/check_perms:175
+#: bin/.svn/text-base/check_perms.svn-base:175 bin/check_perms:175
 msgid "checking mode for %(prefix)s"
 msgstr "检查 %(prefix)s 的许可权"
 
-#: bin/check_perms:185
+#: bin/.svn/text-base/check_perms.svn-base:185 bin/check_perms:185
 msgid "WARNING: directory does not exist: %(d)s"
 msgstr "警告：目录不存在： %(d)s"
 
-#: bin/check_perms:189
+#: bin/.svn/text-base/check_perms.svn-base:189 bin/check_perms:189
 msgid "directory must be at least 02775: %(d)s"
 msgstr "目录许可权必须至少为02775: %(d)s"
 
-#: bin/check_perms:201
+#: bin/.svn/text-base/check_perms.svn-base:201 bin/check_perms:201
 msgid "checking perms on %(private)s"
 msgstr "检查 %(private)s 的许可权"
 
-#: bin/check_perms:206
+#: bin/.svn/text-base/check_perms.svn-base:206 bin/check_perms:206
 msgid "%(private)s must not be other-readable"
 msgstr "%(private)s不能是其他人可读(other-readable)"
 
-#: bin/check_perms:215
+#: bin/.svn/text-base/check_perms.svn-base:215 bin/check_perms:215
 msgid ""
 "Warning: Private archive directory is other-executable (o+x).\n"
 "         This could allow other users on your system to read private "
@@ -8116,69 +8155,69 @@ msgid ""
 "         installation manual on how to fix this."
 msgstr ""
 
-#: bin/check_perms:232
+#: bin/.svn/text-base/check_perms.svn-base:232 bin/check_perms:232
 msgid "mbox file must be at least 0660:"
 msgstr "mbox文件许可权必须至少为0660:"
 
-#: bin/check_perms:255
+#: bin/.svn/text-base/check_perms.svn-base:255 bin/check_perms:255
 msgid "%(dbdir)s \"other\" perms must be 000"
 msgstr "%(dbdir)s的\"其它\"许可权必须为000"
 
-#: bin/check_perms:265
+#: bin/.svn/text-base/check_perms.svn-base:265 bin/check_perms:265
 msgid "checking cgi-bin permissions"
 msgstr "检查cgi-bin许可权"
 
-#: bin/check_perms:270
+#: bin/.svn/text-base/check_perms.svn-base:270 bin/check_perms:270
 msgid "    checking set-gid for %(path)s"
 msgstr "    检查 %(path)s 的set-gid许可权"
 
-#: bin/check_perms:274
+#: bin/.svn/text-base/check_perms.svn-base:274 bin/check_perms:274
 msgid "%(path)s must be set-gid"
 msgstr "%(path)s必须是set-gid的"
 
-#: bin/check_perms:284
+#: bin/.svn/text-base/check_perms.svn-base:284 bin/check_perms:284
 msgid "checking set-gid for %(wrapper)s"
 msgstr "检查 %(wrapper)s 的set-gid许可权"
 
-#: bin/check_perms:288
+#: bin/.svn/text-base/check_perms.svn-base:288 bin/check_perms:288
 msgid "%(wrapper)s must be set-gid"
 msgstr "%(wrapper)s必须是set-gid的"
 
-#: bin/check_perms:298
+#: bin/.svn/text-base/check_perms.svn-base:298 bin/check_perms:298
 msgid "checking permissions on %(pwfile)s"
 msgstr "检查 %(pwfile)s 的许可权"
 
-#: bin/check_perms:307
+#: bin/.svn/text-base/check_perms.svn-base:307 bin/check_perms:307
 msgid "%(pwfile)s permissions must be exactly 0640 (got %(octmode)s)"
 msgstr "%(pwfile)s 的许可权必须是0640(现在是 %(octmode)s)"
 
-#: bin/check_perms:331
+#: bin/.svn/text-base/check_perms.svn-base:331 bin/check_perms:331
 msgid "checking permissions on list data"
 msgstr "检查列表数据的许可权"
 
-#: bin/check_perms:337
+#: bin/.svn/text-base/check_perms.svn-base:337 bin/check_perms:337
 msgid "    checking permissions on: %(path)s"
 msgstr "    检查 %(path)s的许可权"
 
-#: bin/check_perms:345
+#: bin/.svn/text-base/check_perms.svn-base:345 bin/check_perms:345
 msgid "file permissions must be at least 660: %(path)s"
 msgstr "文件许可权至少是660： %(path)s"
 
-#: bin/check_perms:390
+#: bin/.svn/text-base/check_perms.svn-base:390 bin/check_perms:390
 msgid "No problems found"
 msgstr "没有发现问题"
 
-#: bin/check_perms:392
+#: bin/.svn/text-base/check_perms.svn-base:392 bin/check_perms:392
 msgid "Problems found:"
 msgstr "发现问题:"
 
-#: bin/check_perms:393
+#: bin/.svn/text-base/check_perms.svn-base:393 bin/check_perms:393
 msgid "Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix"
 msgstr ""
 "以 %(MAILMAN_USER)s(或root)身份使用-f标记(flag)重新运行此脚本\n"
 "来修复发现的问题"
 
-#: bin/cleanarch:20
+#: bin/.svn/text-base/cleanarch.svn-base:20 bin/cleanarch:20
 msgid ""
 "Clean up an .mbox archive file.\n"
 "\n"
@@ -8239,19 +8278,19 @@ msgstr ""
 "    -h / --help\n"
 "       打印此帮助信息并退出\n"
 
-#: bin/cleanarch:83
+#: bin/.svn/text-base/cleanarch.svn-base:83 bin/cleanarch:83
 msgid "Unix-From line changed: %(lineno)d"
 msgstr "Unix-From行被改变： %(lineno)d"
 
-#: bin/cleanarch:111
+#: bin/.svn/text-base/cleanarch.svn-base:111 bin/cleanarch:111
 msgid "Bad status number: %(arg)s"
 msgstr "错误的状态号： %(arg)s"
 
-#: bin/cleanarch:167
+#: bin/.svn/text-base/cleanarch.svn-base:167 bin/cleanarch:167
 msgid "%(messages)d messages found"
 msgstr "查找到 %(messages)d 封信件"
 
-#: bin/clone_member:19
+#: bin/.svn/text-base/clone_member.svn-base:19 bin/clone_member:19
 msgid ""
 "Clone a member address.\n"
 "\n"
@@ -8354,43 +8393,43 @@ msgstr ""
 " ('to new address') 是成员的新地址。\n"
 "\n"
 
-#: bin/clone_member:94
+#: bin/.svn/text-base/clone_member.svn-base:94 bin/clone_member:94
 msgid "processing mailing list:"
 msgstr "正处理邮件列表："
 
-#: bin/clone_member:101
+#: bin/.svn/text-base/clone_member.svn-base:101 bin/clone_member:101
 msgid "    scanning list owners:"
 msgstr "    扫描列表属主："
 
-#: bin/clone_member:119
+#: bin/.svn/text-base/clone_member.svn-base:119 bin/clone_member:119
 msgid "    new list owners:"
 msgstr "    新列表属主："
 
-#: bin/clone_member:121
+#: bin/.svn/text-base/clone_member.svn-base:121 bin/clone_member:121
 msgid "(no change)"
 msgstr "(无更改)"
 
-#: bin/clone_member:130
+#: bin/.svn/text-base/clone_member.svn-base:130 bin/clone_member:130
 msgid "    address not found:"
 msgstr "    未找到的地址："
 
-#: bin/clone_member:139
+#: bin/.svn/text-base/clone_member.svn-base:139 bin/clone_member:139
 msgid "    clone address added:"
 msgstr "    添加的复制地址："
 
-#: bin/clone_member:142
+#: bin/.svn/text-base/clone_member.svn-base:142 bin/clone_member:142
 msgid "    clone address is already a member:"
 msgstr "    复制地址已经是列表成员："
 
-#: bin/clone_member:145
+#: bin/.svn/text-base/clone_member.svn-base:145 bin/clone_member:145
 msgid "    original address removed:"
 msgstr "    源地址被移除："
 
-#: bin/clone_member:196
+#: bin/.svn/text-base/clone_member.svn-base:196 bin/clone_member:196
 msgid "Not a valid email address: %(toaddr)s"
 msgstr "非法email地址： %(toaddr)s"
 
-#: bin/clone_member:209
+#: bin/.svn/text-base/clone_member.svn-base:209 bin/clone_member:209
 msgid ""
 "Error opening list \"%(listname)s\", skipping.\n"
 "%(e)s"
@@ -8398,7 +8437,7 @@ msgstr ""
 "打开列表\"%(listname)s\"时发生错误，忽略。\n"
 "%(e)s"
 
-#: bin/config_list:20 bin/config_list.orig:19
+#: bin/.svn/text-base/config_list.svn-base:20 bin/config_list:20
 msgid ""
 "Configure a list from a text file description.\n"
 "\n"
@@ -8492,7 +8531,7 @@ msgstr ""
 "选项-o和-i不能同时使用。\n"
 "\n"
 
-#: bin/config_list:117
+#: bin/.svn/text-base/config_list.svn-base:117 bin/config_list:117
 #, fuzzy
 msgid ""
 "# -*- python -*-\n"
@@ -8503,55 +8542,47 @@ msgstr ""
 "## \"%(listname)s\" 邮件列表配置选项 -*- python -*-\n"
 "## 在 %(when)s 被捕获\n"
 
-#: bin/config_list:143 bin/config_list.orig:131
+#: bin/.svn/text-base/config_list.svn-base:143 bin/config_list:143
 msgid "options"
 msgstr "选项"
 
-#: bin/config_list:202 bin/config_list.orig:188
+#: bin/.svn/text-base/config_list.svn-base:202 bin/config_list:202
 msgid "legal values are:"
 msgstr "合法的值："
 
-#: bin/config_list:269 bin/config_list.orig:255
+#: bin/.svn/text-base/config_list.svn-base:269 bin/config_list:269
 msgid "attribute \"%(k)s\" ignored"
 msgstr "属性\"%(k)s\"被忽略"
 
-#: bin/config_list:272 bin/config_list.orig:258
+#: bin/.svn/text-base/config_list.svn-base:272 bin/config_list:272
 msgid "attribute \"%(k)s\" changed"
 msgstr "属性\"%(k)s\"被修改"
 
-#: bin/config_list:278 bin/config_list.orig:264
+#: bin/.svn/text-base/config_list.svn-base:278 bin/config_list:278
 msgid "Non-standard property restored: %(k)s"
 msgstr "非标准属性复位： %(k)s"
 
-#: bin/config_list:286 bin/config_list.orig:272
+#: bin/.svn/text-base/config_list.svn-base:286 bin/config_list:286
 msgid "Invalid value for property: %(k)s"
 msgstr "属性值非法: %(k)s"
 
-#: bin/config_list:288 bin/config_list.orig:274
+#: bin/.svn/text-base/config_list.svn-base:288 bin/config_list:288
 msgid "Bad email address for option %(k)s: %(v)s"
 msgstr "选项 %(k)s 的email地址错误： %(v)s"
 
-#: bin/config_list:345 bin/config_list.orig:331
+#: bin/.svn/text-base/config_list.svn-base:345 bin/config_list:345
 msgid "Only one of -i or -o is allowed"
 msgstr "-i和-o中只能选择一个"
 
-#: bin/config_list:347 bin/config_list.orig:333
+#: bin/.svn/text-base/config_list.svn-base:347 bin/config_list:347
 msgid "One of -i or -o is required"
 msgstr "-i和-o至少需要一个"
 
-#: bin/config_list:351 bin/config_list.orig:337
+#: bin/.svn/text-base/config_list.svn-base:351 bin/config_list:351
 msgid "List name is required"
 msgstr "需要列表名"
 
-#: bin/config_list.orig:109
-msgid ""
-"## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
-"## captured on %(when)s\n"
-msgstr ""
-"## \"%(listname)s\" 邮件列表配置选项 -*- python -*-\n"
-"## 在 %(when)s 被捕获\n"
-
-#: bin/convert.py:19
+#: bin/.svn/text-base/convert.py.svn-base:19 bin/convert.py:19
 msgid ""
 "Convert a list's interpolation strings from %-strings to $-strings.\n"
 "\n"
@@ -8565,15 +8596,20 @@ msgstr ""
 "\n"
 "% bin/withlist -l -r convert <mylist>\n"
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/.svn/text-base/convert.py.svn-base:38
+#: bin/.svn/text-base/fix_url.py.svn-base:85 bin/convert.py:38
+#: bin/fix_url.py:85
 msgid "Saving list"
 msgstr "保存列表"
 
-#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw.py:57
+#: bin/.svn/text-base/convert.py.svn-base:44
+#: bin/.svn/text-base/fix_url.py.svn-base:51
+#: bin/.svn/text-base/reset_pw.py.svn-base:57 bin/convert.py:44
+#: bin/fix_url.py:51 bin/reset_pw.py:57
 msgid "%%%"
 msgstr "%%%"
 
-#: bin/discard:19
+#: bin/.svn/text-base/discard.svn-base:19 bin/discard:19
 msgid ""
 "Discard held messages.\n"
 "\n"
@@ -8599,19 +8635,19 @@ msgstr ""
 "    --quiet / -q\n"
 "        不打印状态信息。\n"
 
-#: bin/discard:94
+#: bin/.svn/text-base/discard.svn-base:94 bin/discard:94
 msgid "Ignoring non-held message: %(f)s"
 msgstr "忽略未被保存的信件： %(f)s"
 
-#: bin/discard:100
+#: bin/.svn/text-base/discard.svn-base:100 bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
 msgstr "忽略保存的信件w/bad id: %(f)s"
 
-#: bin/discard:112
+#: bin/.svn/text-base/discard.svn-base:112 bin/discard:112
 msgid "Discarded held msg #%(id)s for list %(listname)s"
 msgstr "丢弃列表 %(listname)s 中保存的信件 #%(id)s"
 
-#: bin/dumpdb:19
+#: bin/.svn/text-base/dumpdb.svn-base:19 bin/dumpdb:19
 msgid ""
 "Dump the contents of any Mailman `database' file.\n"
 "\n"
@@ -8676,31 +8712,31 @@ msgstr ""
 "者\n"
 "文件名不以这两种后缀结束 -- 使用 -p 或者 -m 选项。\n"
 
-#: bin/dumpdb:106
+#: bin/.svn/text-base/dumpdb.svn-base:106 bin/dumpdb:106
 msgid "No filename given."
 msgstr "没有给出文件名"
 
-#: bin/dumpdb:109
+#: bin/.svn/text-base/dumpdb.svn-base:109 bin/dumpdb:109
 msgid "Bad arguments: %(pargs)s"
 msgstr "参数错误: %(pargs)s"
 
-#: bin/dumpdb:119
+#: bin/.svn/text-base/dumpdb.svn-base:119 bin/dumpdb:119
 msgid "Please specify either -p or -m."
 msgstr "请指定 -p 或者 -m"
 
-#: bin/dumpdb:136
+#: bin/.svn/text-base/dumpdb.svn-base:136 bin/dumpdb:136
 msgid "[----- start pickle file -----]"
 msgstr "[----- start pickle file -----]"
 
-#: bin/dumpdb:142
+#: bin/.svn/text-base/dumpdb.svn-base:142 bin/dumpdb:142
 msgid "[----- end pickle file -----]"
 msgstr "[----- end pickle file -----]"
 
-#: bin/dumpdb:145
+#: bin/.svn/text-base/dumpdb.svn-base:145 bin/dumpdb:145
 msgid "<----- start object %(cnt)s ----->"
 msgstr "<----- start object %(cnt)s ----->"
 
-#: bin/find_member:19
+#: bin/.svn/text-base/find_member.svn-base:19 bin/find_member:19
 msgid ""
 "Find all lists that a member's address is on.\n"
 "\n"
@@ -8779,23 +8815,23 @@ msgstr ""
 "地址匹配是大小写无关的，但是显示的地址将保留原有形式。\n"
 "\n"
 
-#: bin/find_member:159
+#: bin/.svn/text-base/find_member.svn-base:159 bin/find_member:159
 msgid "Search regular expression required"
 msgstr "需指定搜索正则表达式"
 
-#: bin/find_member:164
+#: bin/.svn/text-base/find_member.svn-base:164 bin/find_member:164
 msgid "No lists to search"
 msgstr "没有要搜索的列表"
 
-#: bin/find_member:173
+#: bin/.svn/text-base/find_member.svn-base:173 bin/find_member:173
 msgid "found in:"
 msgstr "在这里找到："
 
-#: bin/find_member:179
+#: bin/.svn/text-base/find_member.svn-base:179 bin/find_member:179
 msgid "(as owner)"
 msgstr "(列表属主)"
 
-#: bin/fix_url.py:19
+#: bin/.svn/text-base/fix_url.py.svn-base:19 bin/fix_url.py:19
 msgid ""
 "Reset a list's web_page_url attribute to the default setting.\n"
 "\n"
@@ -8840,15 +8876,15 @@ msgstr ""
 "\n"
 "如果独立运行的话，将打印此帮助信息并退出。\n"
 
-#: bin/fix_url.py:80
+#: bin/.svn/text-base/fix_url.py.svn-base:80 bin/fix_url.py:80
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "设置web_page_url为： %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/.svn/text-base/fix_url.py.svn-base:83 bin/fix_url.py:83
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "设置host_name为： %(mailhost)s"
 
-#: bin/genaliases:19
+#: bin/.svn/text-base/genaliases.svn-base:19 bin/genaliases:19
 msgid ""
 "Regenerate Mailman specific aliases from scratch.\n"
 "\n"
@@ -8880,7 +8916,7 @@ msgstr ""
 "    -h/--help\n"
 "       打印此帮助信息并退出。\n"
 
-#: bin/inject:19
+#: bin/.svn/text-base/inject.svn-base:19 bin/inject:19
 msgid ""
 "Inject a message from a file into Mailman's incoming queue.\n"
 "\n"
@@ -8927,15 +8963,15 @@ msgstr ""
 "\n"
 "filename是要插入的文本信息文件。如果省略的话，将使用标准输入。\n"
 
-#: bin/inject:83
+#: bin/.svn/text-base/inject.svn-base:83 bin/inject:83
 msgid "Bad queue directory: %(qdir)s"
 msgstr "队列目录错误： %(qdir)s"
 
-#: bin/inject:88
+#: bin/.svn/text-base/inject.svn-base:88 bin/inject:88
 msgid "A list name is required"
 msgstr "需要指定一个列表名"
 
-#: bin/list_admins:19
+#: bin/.svn/text-base/list_admins.svn-base:19 bin/list_admins:19
 msgid ""
 "List all the owners of a mailing list.\n"
 "\n"
@@ -8979,11 +9015,11 @@ msgstr ""
 "\n"
 "'listname'是要列出属主的邮件列表名。可以在命令行上指定多个列表。\n"
 
-#: bin/list_admins:96
+#: bin/.svn/text-base/list_admins.svn-base:96 bin/list_admins:96
 msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "列表： %(listname)s, \t属主： %(owners)s"
 
-#: bin/list_lists:19
+#: bin/.svn/text-base/list_lists.svn-base:19 bin/list_lists:19
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -9027,15 +9063,15 @@ msgstr ""
 "    -h / --help\n"
 "        打印此帮助信息并退出。\n"
 
-#: bin/list_lists:105
+#: bin/.svn/text-base/list_lists.svn-base:105 bin/list_lists:105
 msgid "No matching mailing lists found"
 msgstr "没有找到匹配的邮件列表"
 
-#: bin/list_lists:109
+#: bin/.svn/text-base/list_lists.svn-base:109 bin/list_lists:109
 msgid "matching mailing lists found:"
 msgstr "匹配的邮件列表："
 
-#: bin/list_members:19
+#: bin/.svn/text-base/list_members.svn-base:19 bin/list_members:19
 msgid ""
 "List all the members of a mailing list.\n"
 "\n"
@@ -9143,19 +9179,19 @@ msgstr ""
 "会\n"
 "给出地址状态的指示。\n"
 
-#: bin/list_members:191
+#: bin/.svn/text-base/list_members.svn-base:191 bin/list_members:191
 msgid "Bad --nomail option: %(why)s"
 msgstr "错误的 --nomail 选项： %(why)s"
 
-#: bin/list_members:202
+#: bin/.svn/text-base/list_members.svn-base:202 bin/list_members:202
 msgid "Bad --digest option: %(kind)s"
 msgstr "错误的 --digest 选项： %(kind)s"
 
-#: bin/list_members:224
+#: bin/.svn/text-base/list_members.svn-base:224 bin/list_members:224
 msgid "Could not open file for writing:"
 msgstr "无法以写方式打开文件："
 
-#: bin/list_owners:19
+#: bin/.svn/text-base/list_owners.svn-base:19 bin/list_owners:19
 msgid ""
 "List the owners of a mailing list, or all mailing lists.\n"
 "\n"
@@ -9199,7 +9235,7 @@ msgstr ""
 "        打印指定列表的属主。可以在选项后指定多个列表。如果未指定列表，所有\n"
 "        列表的属主都将被打印。\n"
 
-#: bin/mailmanctl:20
+#: bin/.svn/text-base/mailmanctl.svn-base:20 bin/mailmanctl:20
 msgid ""
 "Primary start-up and shutdown script for Mailman's qrunner daemon.\n"
 "\n"
@@ -9371,30 +9407,30 @@ msgstr ""
 "    reopen  - 这将会关闭所有的日志文件，在产生新的日志信息时再重新打开它"
 "们。\n"
 
-#: bin/mailmanctl:152
+#: bin/.svn/text-base/mailmanctl.svn-base:152 bin/mailmanctl:152
 msgid "PID unreadable in: %(pidfile)s"
 msgstr "在: %(pidfile)s 中找不到PID"
 
-#: bin/mailmanctl:154
+#: bin/.svn/text-base/mailmanctl.svn-base:154 bin/mailmanctl:154
 msgid "Is qrunner even running?"
 msgstr "队列管理器正在运行吗？"
 
-#: bin/mailmanctl:160
+#: bin/.svn/text-base/mailmanctl.svn-base:160 bin/mailmanctl:160
 msgid "No child with pid: %(pid)s"
 msgstr "进程: %(pid)s 没有子进程"
 
-#: bin/mailmanctl:162
+#: bin/.svn/text-base/mailmanctl.svn-base:162 bin/mailmanctl:162
 msgid "Stale pid file removed."
 msgstr "过期的进程号文件已删除。"
 
-#: bin/mailmanctl:220
+#: bin/.svn/text-base/mailmanctl.svn-base:220 bin/mailmanctl:220
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if "
 "another\n"
 "master qrunner is already running.\n"
 msgstr "队列管理器的主锁无法获得，可能另一个主队列管理器正在运行。\n"
 
-#: bin/mailmanctl:226
+#: bin/.svn/text-base/mailmanctl.svn-base:226 bin/mailmanctl:226
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there "
 "is\n"
@@ -9403,7 +9439,7 @@ msgstr ""
 "队列管理器的主锁无法获得。可能存在一个过期的队列管理器主锁。\n"
 "可以尝试使用 -s flag 来重启mailmanctl。\n"
 
-#: bin/mailmanctl:232
+#: bin/.svn/text-base/mailmanctl.svn-base:232 bin/mailmanctl:232
 msgid ""
 "The master qrunner lock could not be acquired, because it appears as if "
 "some\n"
@@ -9426,43 +9462,44 @@ msgstr ""
 "\n"
 "正在退出。"
 
-#: bin/mailmanctl:279 cron/mailpasswds:119
+#: bin/.svn/text-base/mailmanctl.svn-base:279 bin/mailmanctl:279
+#: cron/.svn/text-base/mailpasswds.svn-base:119 cron/mailpasswds:119
 msgid "Site list is missing: %(sitelistname)s"
 msgstr "缺少站点列表: %(sitelistname)s"
 
-#: bin/mailmanctl:304
+#: bin/.svn/text-base/mailmanctl.svn-base:304 bin/mailmanctl:304
 msgid "Run this program as root or as the %(name)s user, or use -u."
 msgstr "用root用户，或 %(name)s用户身份来运行此程序，或者使用-u。"
 
-#: bin/mailmanctl:335
+#: bin/.svn/text-base/mailmanctl.svn-base:335 bin/mailmanctl:335
 msgid "No command given."
 msgstr "没有提供命令。"
 
-#: bin/mailmanctl:338
+#: bin/.svn/text-base/mailmanctl.svn-base:338 bin/mailmanctl:338
 msgid "Bad command: %(command)s"
 msgstr "错误命令: %(command)s"
 
-#: bin/mailmanctl:343
+#: bin/.svn/text-base/mailmanctl.svn-base:343 bin/mailmanctl:343
 msgid "Warning!  You may encounter permission problems."
 msgstr "警告！您可能会遇到权限问题。"
 
-#: bin/mailmanctl:352
+#: bin/.svn/text-base/mailmanctl.svn-base:352 bin/mailmanctl:352
 msgid "Shutting down Mailman's master qrunner"
 msgstr "正在关闭Mailman的主队列管理器"
 
-#: bin/mailmanctl:359
+#: bin/.svn/text-base/mailmanctl.svn-base:359 bin/mailmanctl:359
 msgid "Restarting Mailman's master qrunner"
 msgstr "正在重启Mailman的主队列管理器"
 
-#: bin/mailmanctl:363
+#: bin/.svn/text-base/mailmanctl.svn-base:363 bin/mailmanctl:363
 msgid "Re-opening all log files"
 msgstr "正在打开所有的日志文件"
 
-#: bin/mailmanctl:399
+#: bin/.svn/text-base/mailmanctl.svn-base:399 bin/mailmanctl:399
 msgid "Starting Mailman's master qrunner."
 msgstr "正在启动Mailman的主队列管理器"
 
-#: bin/mmsitepass:19
+#: bin/.svn/text-base/mmsitepass.svn-base:19 bin/mmsitepass:19
 msgid ""
 "Set the site password, prompting from the terminal.\n"
 "\n"
@@ -9506,39 +9543,39 @@ msgstr ""
 "\n"
 "如果没有在命令行中输入口令，则会提醒您。\n"
 
-#: bin/mmsitepass:73
+#: bin/.svn/text-base/mmsitepass.svn-base:73 bin/mmsitepass:73
 msgid "site"
 msgstr "站点"
 
-#: bin/mmsitepass:80
+#: bin/.svn/text-base/mmsitepass.svn-base:80 bin/mmsitepass:80
 msgid "list creator"
 msgstr "列表创建者"
 
-#: bin/mmsitepass:86
+#: bin/.svn/text-base/mmsitepass.svn-base:86 bin/mmsitepass:86
 msgid "New %(pwdesc)s password: "
 msgstr "新 %(pwdesc)s 口令"
 
-#: bin/mmsitepass:87
+#: bin/.svn/text-base/mmsitepass.svn-base:87 bin/mmsitepass:87
 msgid "Again to confirm password: "
 msgstr "确认口令"
 
-#: bin/mmsitepass:89
+#: bin/.svn/text-base/mmsitepass.svn-base:89 bin/mmsitepass:89
 msgid "Passwords do not match; no changes made."
 msgstr "口令不相同，未做改变"
 
-#: bin/mmsitepass:92
+#: bin/.svn/text-base/mmsitepass.svn-base:92 bin/mmsitepass:92
 msgid "Interrupted..."
 msgstr "被中断..."
 
-#: bin/mmsitepass:98
+#: bin/.svn/text-base/mmsitepass.svn-base:98 bin/mmsitepass:98
 msgid "Password changed."
 msgstr "口令以更改"
 
-#: bin/mmsitepass:100
+#: bin/.svn/text-base/mmsitepass.svn-base:100 bin/mmsitepass:100
 msgid "Password change failed."
 msgstr "更改口令失败"
 
-#: bin/msgfmt.py:5
+#: bin/.svn/text-base/msgfmt.py.svn-base:5 bin/msgfmt.py:5
 msgid ""
 "Generate binary message catalog from textual translation description.\n"
 "\n"
@@ -9587,15 +9624,15 @@ msgstr ""
 "    --version\n"
 "        显示版本信息并退出。\n"
 
-#: bin/msgfmt.py:49
+#: bin/.svn/text-base/msgfmt.py.svn-base:49 bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
 msgstr "向字典中加入一个准确的翻译。"
 
-#: bin/msgfmt.py:57
+#: bin/.svn/text-base/msgfmt.py.svn-base:57 bin/msgfmt.py:57
 msgid "Return the generated output."
 msgstr "返回产生的输出。"
 
-#: bin/newlist:19
+#: bin/.svn/text-base/newlist.svn-base:19 bin/newlist:19
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -9747,31 +9784,31 @@ msgstr ""
 "\n"
 "注意列表名强制为小写字母。\n"
 
-#: bin/newlist:150
+#: bin/.svn/text-base/newlist.svn-base:150 bin/newlist:150
 msgid "Unknown language: %(lang)s"
 msgstr "未知的语言: %(lang)s"
 
-#: bin/newlist:155
+#: bin/.svn/text-base/newlist.svn-base:155 bin/newlist:155
 msgid "Enter the name of the list: "
 msgstr "输入列表的名字："
 
-#: bin/newlist:176
+#: bin/.svn/text-base/newlist.svn-base:176 bin/newlist:176
 msgid "Enter the email of the person running the list: "
 msgstr "输入运行列表的人的email："
 
-#: bin/newlist:181
+#: bin/.svn/text-base/newlist.svn-base:181 bin/newlist:181
 msgid "Initial %(listname)s password: "
 msgstr "初始的 %(listname)s的密码："
 
-#: bin/newlist:185
+#: bin/.svn/text-base/newlist.svn-base:185 bin/newlist:185
 msgid "The list password cannot be empty"
 msgstr "列表密码不能为空"
 
-#: bin/newlist:225
+#: bin/.svn/text-base/newlist.svn-base:225 bin/newlist:225
 msgid "Hit enter to notify %(listname)s owner..."
 msgstr "单击回车来通知 %(listname)s的所有者..."
 
-#: bin/qrunner:20
+#: bin/.svn/text-base/qrunner.svn-base:20 bin/qrunner:20
 #, fuzzy
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
@@ -9885,19 +9922,19 @@ msgstr ""
 "除非使用-l 或 -h，都要有管理器，并且它必须是使用 -l 后显示的名字的中的一"
 "个。\n"
 
-#: bin/qrunner:178
+#: bin/.svn/text-base/qrunner.svn-base:178 bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
 msgstr "%(name)s 运行 %(runnername)s qrunner"
 
-#: bin/qrunner:179
+#: bin/.svn/text-base/qrunner.svn-base:179 bin/qrunner:179
 msgid "All runs all the above qrunners"
 msgstr "All 运行上面的所有qrunners"
 
-#: bin/qrunner:215
+#: bin/.svn/text-base/qrunner.svn-base:215 bin/qrunner:215
 msgid "No runner name given."
 msgstr "没提供管理器的名字。"
 
-#: bin/rb-archfix:21
+#: bin/.svn/text-base/rb-archfix.svn-base:21 bin/rb-archfix:21
 msgid ""
 "Reduce disk space usage for Pipermail archives.\n"
 "\n"
@@ -9951,7 +9988,7 @@ msgstr ""
 "\n"
 "此脚本仅是用来提升性能的。并不是必需使用的。\n"
 
-#: bin/remove_members:20
+#: bin/.svn/text-base/remove_members.svn-base:20 bin/remove_members:20
 #, fuzzy
 msgid ""
 "Remove members from a list.\n"
@@ -10033,23 +10070,23 @@ msgstr ""
 "    addr1 ... 是额外要删除的地址。\n"
 "\n"
 
-#: bin/remove_members:156
+#: bin/.svn/text-base/remove_members.svn-base:156 bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
 msgstr "不能读取文件: %(filename)s。"
 
-#: bin/remove_members:163
+#: bin/.svn/text-base/remove_members.svn-base:163 bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
 msgstr "打开列表 %(listname)s 时出错... 正在跳过。"
 
-#: bin/remove_members:173
+#: bin/.svn/text-base/remove_members.svn-base:173 bin/remove_members:173
 msgid "No such member: %(addr)s"
 msgstr "没有这个成员: %(addr)s"
 
-#: bin/remove_members:178
+#: bin/.svn/text-base/remove_members.svn-base:178 bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr "用户 %(addr)s 已从列表: %(listname)s中删除。"
 
-#: bin/reset_pw.py:21
+#: bin/.svn/text-base/reset_pw.py.svn-base:21 bin/reset_pw.py:21
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -10082,15 +10119,15 @@ msgstr ""
 "    -v / --verbose\n"
 "        输出脚本正在干什么\n"
 
-#: bin/reset_pw.py:77
+#: bin/.svn/text-base/reset_pw.py.svn-base:77 bin/reset_pw.py:77
 msgid "Changing passwords for list: %(listname)s"
 msgstr "为列表 %(listname)s改变密码"
 
-#: bin/reset_pw.py:83
+#: bin/.svn/text-base/reset_pw.py.svn-base:83 bin/reset_pw.py:83
 msgid "New password for member %(member)40s: %(randompw)s"
 msgstr "成员 %(member)40s的新密码： %(randompw)s"
 
-#: bin/rmlist:19
+#: bin/.svn/text-base/rmlist.svn-base:19 bin/rmlist:19
 msgid ""
 "Remove the components of a mailing list with impunity - beware!\n"
 "\n"
@@ -10129,43 +10166,46 @@ msgstr ""
 "        输出该帮助信息然后退出。\n"
 "\n"
 
+#: bin/.svn/text-base/rmlist.svn-base:72 bin/.svn/text-base/rmlist.svn-base:75
 #: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "正在删除 %(msg)s"
 
-#: bin/rmlist:80
+#: bin/.svn/text-base/rmlist.svn-base:80 bin/rmlist:80
 msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "没有找到叫 %(filename)s的 %(listname)s %(msg)s "
 
-#: bin/rmlist:104
+#: bin/.svn/text-base/rmlist.svn-base:104 bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "没有这个列表(或者列表已经被删除了): %(listname)s"
 
-#: bin/rmlist:106
+#: bin/.svn/text-base/rmlist.svn-base:106 bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "没有这个列表: %(listname)s。正在删除它的残留的文件。"
 
-#: bin/rmlist:110
+#: bin/.svn/text-base/rmlist.svn-base:110 bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr "没有删除文件。带上 -a再调用一遍命令来删除它们。"
 
-#: bin/rmlist:124
+#: bin/.svn/text-base/rmlist.svn-base:124 bin/rmlist:124
 msgid "list info"
 msgstr "列表信息"
 
-#: bin/rmlist:132
+#: bin/.svn/text-base/rmlist.svn-base:132 bin/rmlist:132
 msgid "stale lock file"
 msgstr "失效的被锁文件"
 
-#: bin/rmlist:137 bin/rmlist:139
+#: bin/.svn/text-base/rmlist.svn-base:137
+#: bin/.svn/text-base/rmlist.svn-base:139 bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "私人邮件存档"
 
-#: bin/rmlist:141 bin/rmlist:143
+#: bin/.svn/text-base/rmlist.svn-base:141
+#: bin/.svn/text-base/rmlist.svn-base:143 bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "公有邮件存档"
 
-#: bin/show_qfiles:20
+#: bin/.svn/text-base/show_qfiles.svn-base:20 bin/show_qfiles:20
 msgid ""
 "Show the contents of one or more Mailman queue files.\n"
 "\n"
@@ -10193,7 +10233,7 @@ msgstr ""
 "\n"
 "示例: show_qfiles qfiles/shunt/*.pck\n"
 
-#: bin/sync_members:19
+#: bin/.svn/text-base/sync_members.svn-base:19 bin/sync_members:19
 msgid ""
 "Synchronize a mailing list's membership with a flat file.\n"
 "\n"
@@ -10320,59 +10360,59 @@ msgstr ""
 "    listname\n"
 "        必需.指定了同步的列表.\n"
 
-#: bin/sync_members:115
+#: bin/.svn/text-base/sync_members.svn-base:115 bin/sync_members:115
 msgid "Bad choice: %(yesno)s"
 msgstr "错误的选择: %(yesno)s"
 
-#: bin/sync_members:138
+#: bin/.svn/text-base/sync_members.svn-base:138 bin/sync_members:138
 msgid "Dry run mode"
 msgstr "演示模式"
 
-#: bin/sync_members:159
+#: bin/.svn/text-base/sync_members.svn-base:159 bin/sync_members:159
 msgid "Only one -f switch allowed"
 msgstr "只允许一个-f开关"
 
-#: bin/sync_members:163
+#: bin/.svn/text-base/sync_members.svn-base:163 bin/sync_members:163
 msgid "No argument to -f given"
 msgstr "没有给出-f的参数"
 
-#: bin/sync_members:172
+#: bin/.svn/text-base/sync_members.svn-base:172 bin/sync_members:172
 msgid "Illegal option: %(opt)s"
 msgstr "无效的选项: %(opt)s"
 
-#: bin/sync_members:178
+#: bin/.svn/text-base/sync_members.svn-base:178 bin/sync_members:178
 msgid "No listname given"
 msgstr "没给出列表名"
 
-#: bin/sync_members:182
+#: bin/.svn/text-base/sync_members.svn-base:182 bin/sync_members:182
 msgid "Must have a listname and a filename"
 msgstr "必须有一个列表名和文件名"
 
-#: bin/sync_members:191
+#: bin/.svn/text-base/sync_members.svn-base:191 bin/sync_members:191
 msgid "Cannot read address file: %(filename)s: %(msg)s"
 msgstr "无法读出地址文件: %(filename)s: %(msg)s"
 
-#: bin/sync_members:203
+#: bin/.svn/text-base/sync_members.svn-base:203 bin/sync_members:203
 msgid "Ignore  :  %(addr)30s"
 msgstr "忽略  :  %(addr)30s"
 
-#: bin/sync_members:212
+#: bin/.svn/text-base/sync_members.svn-base:212 bin/sync_members:212
 msgid "Invalid :  %(addr)30s"
 msgstr "无效的:  %(addr)30s"
 
-#: bin/sync_members:215
+#: bin/.svn/text-base/sync_members.svn-base:215 bin/sync_members:215
 msgid "You must fix the preceding invalid addresses first."
 msgstr "您必须先修正上述的无效地址."
 
-#: bin/sync_members:260
+#: bin/.svn/text-base/sync_members.svn-base:260 bin/sync_members:260
 msgid "Added  : %(s)s"
 msgstr "加入  : %(s)s"
 
-#: bin/sync_members:278
+#: bin/.svn/text-base/sync_members.svn-base:278 bin/sync_members:278
 msgid "Removed: %(s)s"
 msgstr "移除  : %(s)s"
 
-#: bin/transcheck:18
+#: bin/.svn/text-base/transcheck.svn-base:18 bin/transcheck:18
 msgid ""
 "\n"
 "Check a given Mailman translation, making sure that variables and\n"
@@ -10399,27 +10439,27 @@ msgstr ""
 "这里 <lang> 是您的国家代码 (例如 'it' 是意大利) , -q 用来\n"
 "请求简明的摘要.\n"
 
-#: bin/transcheck:57
+#: bin/.svn/text-base/transcheck.svn-base:57 bin/transcheck:57
 msgid "check a translation comparing with the original string"
 msgstr "和原始字符串比较,检查翻译"
 
-#: bin/transcheck:67
+#: bin/.svn/text-base/transcheck.svn-base:67 bin/transcheck:67
 msgid "scan a string from the original file"
 msgstr "从原始文件扫描一串字符串"
 
-#: bin/transcheck:77
+#: bin/.svn/text-base/transcheck.svn-base:77 bin/transcheck:77
 msgid "scan a translated string"
 msgstr "扫描翻译后的字符串"
 
-#: bin/transcheck:90
+#: bin/.svn/text-base/transcheck.svn-base:90 bin/transcheck:90
 msgid "check for differences between checked in and checked out"
 msgstr "检查读入和输出的不同"
 
-#: bin/transcheck:123
+#: bin/.svn/text-base/transcheck.svn-base:123 bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
 msgstr "解析一个 .po文件, 读出消息标识和消息串"
 
-#: bin/transcheck:142
+#: bin/.svn/text-base/transcheck.svn-base:142 bin/transcheck:142
 msgid ""
 "States table for the finite-states-machine parser:\n"
 "            0  idle\n"
@@ -10437,7 +10477,7 @@ msgstr ""
 "            4  结束\n"
 "        "
 
-#: bin/transcheck:279
+#: bin/.svn/text-base/transcheck.svn-base:279 bin/transcheck:279
 msgid ""
 "check a translated template against the original one\n"
 "       search also <MM-*> tags if html is not zero"
@@ -10445,11 +10485,11 @@ msgstr ""
 "对比原始模板检查翻译后的模板\n"
 "       如果html长不为零,则搜索<MM-*>标签"
 
-#: bin/transcheck:326
+#: bin/.svn/text-base/transcheck.svn-base:326 bin/transcheck:326
 msgid "scan the po file comparing msgids with msgstrs"
 msgstr "对比消息标识和消息串扫描po文件"
 
-#: bin/unshunt:19
+#: bin/.svn/text-base/unshunt.svn-base:20 bin/unshunt:20
 msgid ""
 "Move a message from the shunt queue to the original queue.\n"
 "\n"
@@ -10475,7 +10515,7 @@ msgstr ""
 "可选项 `directory' 指定一个目录来出列,而不是其它的\n"
 "qfiles/shunt.\n"
 
-#: bin/unshunt:81
+#: bin/.svn/text-base/unshunt.svn-base:83 bin/unshunt:83
 msgid ""
 "Cannot unshunt message %(filebase)s, skipping:\n"
 "%(e)s"
@@ -10483,7 +10523,7 @@ msgstr ""
 "不能恢复消息 %(filebase)s, 忽略:\n"
 "%(e)s"
 
-#: bin/update:19
+#: bin/.svn/text-base/update.svn-base:19 bin/update:19
 msgid ""
 "Perform all necessary upgrades.\n"
 "\n"
@@ -10518,23 +10558,24 @@ msgstr ""
 "使用这段脚本从之前的某个版本升级到最新的发行版.\n"
 "它可以识别到1.0b4 (?)版本.\n"
 
-#: bin/update:107
+#: bin/.svn/text-base/update.svn-base:107 bin/update:107
 msgid "Fixing language templates: %(listname)s"
 msgstr "修正语言模板: %(listname)s"
 
-#: bin/update:196 bin/update:698
+#: bin/.svn/text-base/update.svn-base:196
+#: bin/.svn/text-base/update.svn-base:698 bin/update:196 bin/update:698
 msgid "WARNING: could not acquire lock for list: %(listname)s"
 msgstr "警告: 不能获得列表 %(listname)s 的锁"
 
-#: bin/update:215
+#: bin/.svn/text-base/update.svn-base:215 bin/update:215
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
 msgstr "重设 %(n)s BYBOUNCEs 使没有退订信息的地址失效"
 
-#: bin/update:221
+#: bin/.svn/text-base/update.svn-base:221 bin/update:221
 msgid "Updating the held requests database."
 msgstr "升级持有请求的数据库"
 
-#: bin/update:243
+#: bin/.svn/text-base/update.svn-base:243 bin/update:243
 msgid ""
 "For some reason, %(mbox_dir)s exists as a file.  This won't work with\n"
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
@@ -10542,7 +10583,7 @@ msgstr ""
 "因为某些原因, %(mbox_dir)s 作为一个文件存在.  它不能和\n"
 "b6一同工作, 所以我将它更名为%(mbox_dir)s.tmp 并继续."
 
-#: bin/update:255
+#: bin/.svn/text-base/update.svn-base:255 bin/update:255
 msgid ""
 "\n"
 "%(listname)s has both public and private mbox archives.  Since this list\n"
@@ -10566,7 +10607,7 @@ msgstr ""
 "如果您想将它们合并,您可以使用'arch'\n"
 "脚本.\n"
 
-#: bin/update:270
+#: bin/.svn/text-base/update.svn-base:270 bin/update:270
 msgid ""
 "%s has both public and private mbox archives.  Since this list\n"
 "currently uses public archiving, I'm installing the public mbox file\n"
@@ -10588,11 +10629,11 @@ msgstr ""
 "如果您想将它们合并,您可以使用'arch'\n"
 "脚本.\n"
 
-#: bin/update:287
+#: bin/.svn/text-base/update.svn-base:287 bin/update:287
 msgid "- updating old private mbox file"
 msgstr "- 正在升级旧的私有邮箱文件"
 
-#: bin/update:295
+#: bin/.svn/text-base/update.svn-base:295 bin/update:295
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pri_mbox_file)s\n"
@@ -10604,7 +10645,8 @@ msgstr ""
 "    至\n"
 "        %(newname)s"
 
-#: bin/update:302 bin/update:325
+#: bin/.svn/text-base/update.svn-base:302
+#: bin/.svn/text-base/update.svn-base:325 bin/update:302 bin/update:325
 msgid ""
 "    looks like you have a really recent CVS installation...\n"
 "    you're either one brave soul, or you already ran me"
@@ -10612,11 +10654,11 @@ msgstr ""
 "    看起来您安装了最新的 CVS...\n"
 "    您如果不是一个十分勇敢的人,就是已经运行我了"
 
-#: bin/update:311
+#: bin/.svn/text-base/update.svn-base:311 bin/update:311
 msgid "- updating old public mbox file"
 msgstr "- 正在升级旧有公有邮箱文件"
 
-#: bin/update:319
+#: bin/.svn/text-base/update.svn-base:319 bin/update:319
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pub_mbox_file)s\n"
@@ -10628,80 +10670,80 @@ msgstr ""
 "    至\n"
 "        %(newname)s"
 
-#: bin/update:350
+#: bin/.svn/text-base/update.svn-base:350 bin/update:350
 msgid "- This list looks like it might have <= b4 list templates around"
 msgstr "- 看来可能有<=b4列表模板"
 
-#: bin/update:358
+#: bin/.svn/text-base/update.svn-base:358 bin/update:358
 msgid "- moved %(o_tmpl)s to %(n_tmpl)s"
 msgstr "- 移动 %(o_tmpl)s 至 %(n_tmpl)s"
 
-#: bin/update:360
+#: bin/.svn/text-base/update.svn-base:360 bin/update:360
 msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- %(o_tmpl)s 和 %(n_tmpl)s 均存在, 将不做任何修改"
 
-#: bin/update:363
+#: bin/.svn/text-base/update.svn-base:363 bin/update:363
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
 msgstr "- %(o_tmpl)s 不存在, 不做修改"
 
-#: bin/update:393
+#: bin/.svn/text-base/update.svn-base:393 bin/update:393
 msgid "removing directory %(src)s and everything underneath"
 msgstr "删除目录%(src)s 及其目录内所有文件"
 
-#: bin/update:396
+#: bin/.svn/text-base/update.svn-base:396 bin/update:396
 msgid "removing %(src)s"
 msgstr "删除%(src)s"
 
-#: bin/update:400
+#: bin/.svn/text-base/update.svn-base:400 bin/update:400
 msgid "Warning: couldn't remove %(src)s -- %(rest)s"
 msgstr "警告: 无法删除 %(src)s -- %(rest)s"
 
-#: bin/update:405
+#: bin/.svn/text-base/update.svn-base:405 bin/update:405
 msgid "couldn't remove old file %(pyc)s -- %(rest)s"
 msgstr "无法删除旧文件 %(pyc)s -- %(rest)s"
 
-#: bin/update:409
+#: bin/.svn/text-base/update.svn-base:409 bin/update:409
 msgid "updating old qfiles"
 msgstr "升级旧的qfiles"
 
-#: bin/update:448
+#: bin/.svn/text-base/update.svn-base:448 bin/update:448
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
 msgstr "队列目录错误： %(qdir)s"
 
-#: bin/update:517
+#: bin/.svn/text-base/update.svn-base:517 bin/update:517
 msgid "message is unparsable: %(filebase)s"
 msgstr "消息无法解析: %(filebase)s"
 
-#: bin/update:531
+#: bin/.svn/text-base/update.svn-base:531 bin/update:531
 msgid "Warning!  Deleting empty .pck file: %(pckfile)s"
 msgstr ""
 
-#: bin/update:550
+#: bin/.svn/text-base/update.svn-base:550 bin/update:550
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
 msgstr "正在升级 Mailman 2.0 pending_subscriptions.db 数据库"
 
-#: bin/update:561
+#: bin/.svn/text-base/update.svn-base:561 bin/update:561
 msgid "Updating Mailman 2.1.4 pending.pck database"
 msgstr "正在升级 Mailman 2.1.4 pending.pck 数据库"
 
-#: bin/update:585
+#: bin/.svn/text-base/update.svn-base:585 bin/update:585
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
 msgstr "忽略错误的未处理数据: %(key)s: %(val)s"
 
-#: bin/update:601
+#: bin/.svn/text-base/update.svn-base:601 bin/update:601
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
 msgstr "警告: 忽略多重的未处理ID: %(id)s"
 
-#: bin/update:654
+#: bin/.svn/text-base/update.svn-base:654 bin/update:654
 msgid "getting rid of old source files"
 msgstr "去除旧的源文件"
 
-#: bin/update:664
+#: bin/.svn/text-base/update.svn-base:664 bin/update:664
 msgid "no lists == nothing to do, exiting"
 msgstr "没有列表文件 == 无事可做, 退出"
 
-#: bin/update:671
+#: bin/.svn/text-base/update.svn-base:671 bin/update:671
 msgid ""
 "fixing all the perms on your old html archives to work with b6\n"
 "If your archives are big, this could take a minute or two..."
@@ -10709,27 +10751,27 @@ msgstr ""
 "正在修复您旧的html存档上所有的错误来使b6工作\n"
 "如果您的存档很大, 可能需要花费一两分钟时间..."
 
-#: bin/update:676
+#: bin/.svn/text-base/update.svn-base:676 bin/update:676
 msgid "done"
 msgstr "完成"
 
-#: bin/update:678
+#: bin/.svn/text-base/update.svn-base:678 bin/update:678
 msgid "Updating mailing list: %(listname)s"
 msgstr "正在升级邮件列表: %(listname)s"
 
-#: bin/update:681
+#: bin/.svn/text-base/update.svn-base:681 bin/update:681
 msgid "Updating Usenet watermarks"
 msgstr "正在升级新闻组水印"
 
-#: bin/update:686
+#: bin/.svn/text-base/update.svn-base:686 bin/update:686
 msgid "- nothing to update here"
 msgstr "- 没有需要升级的"
 
-#: bin/update:709
+#: bin/.svn/text-base/update.svn-base:709 bin/update:709
 msgid "- usenet watermarks updated and gate_watermarks removed"
 msgstr "- 新闻组水印升级,gate_watermarks 移除"
 
-#: bin/update:723
+#: bin/.svn/text-base/update.svn-base:723 bin/update:723
 msgid ""
 "\n"
 "\n"
@@ -10769,11 +10811,11 @@ msgstr ""
 "注意 注意 注意 注意 注意\n"
 "\n"
 
-#: bin/update:780
+#: bin/.svn/text-base/update.svn-base:780 bin/update:780
 msgid "No updates are necessary."
 msgstr "不需要升级"
 
-#: bin/update:783
+#: bin/.svn/text-base/update.svn-base:783 bin/update:783
 msgid ""
 "Downgrade detected, from version %(hexlversion)s to version %(hextversion)s\n"
 "This is probably not safe.\n"
@@ -10783,11 +10825,11 @@ msgstr ""
 "这很可能不安全.\n"
 "正在退出."
 
-#: bin/update:788
+#: bin/.svn/text-base/update.svn-base:788 bin/update:788
 msgid "Upgrading from version %(hexlversion)s to %(hextversion)s"
 msgstr "正在升级,从版本%(hexlversion)s 到 %(hextversion)s"
 
-#: bin/update:797
+#: bin/.svn/text-base/update.svn-base:797 bin/update:797
 msgid ""
 "\n"
 "ERROR:\n"
@@ -10813,15 +10855,15 @@ msgstr ""
 "然后手动重新运行 \"make update\" .  参见 INSTALL 和 UPGRADE 文件来获得更多信"
 "息.\n"
 
-#: bin/version:19
+#: bin/.svn/text-base/version.svn-base:19 bin/version:19
 msgid "Print the Mailman version.\n"
 msgstr "显示Mailman版本.\n"
 
-#: bin/version:26
+#: bin/.svn/text-base/version.svn-base:26 bin/version:26
 msgid "Using Mailman version:"
 msgstr "正在使用的Mailman版本:"
 
-#: bin/withlist:19
+#: bin/.svn/text-base/withlist.svn-base:19 bin/withlist:19
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -11033,7 +11075,7 @@ msgstr ""
 "从命令行中运行：\n"
 " %% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
 
-#: bin/withlist:163
+#: bin/.svn/text-base/withlist.svn-base:163 bin/withlist:163
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -11050,51 +11092,51 @@ msgstr ""
 "    但是当发生异常时，将会被调用。\n"
 "    "
 
-#: bin/withlist:174
+#: bin/.svn/text-base/withlist.svn-base:174 bin/withlist:174
 msgid "Unlocking (but not saving) list: %(listname)s"
 msgstr "解锁(但不保存)列表： %(listname)s"
 
-#: bin/withlist:178
+#: bin/.svn/text-base/withlist.svn-base:178 bin/withlist:178
 msgid "Finalizing"
 msgstr "完成"
 
-#: bin/withlist:187
+#: bin/.svn/text-base/withlist.svn-base:187 bin/withlist:187
 msgid "Loading list %(listname)s"
 msgstr "加载列表 %(listname)s"
 
-#: bin/withlist:189
+#: bin/.svn/text-base/withlist.svn-base:189 bin/withlist:189
 msgid "(locked)"
 msgstr "(已加锁)"
 
-#: bin/withlist:191
+#: bin/.svn/text-base/withlist.svn-base:191 bin/withlist:191
 msgid "(unlocked)"
 msgstr "(已解锁)"
 
-#: bin/withlist:196
+#: bin/.svn/text-base/withlist.svn-base:196 bin/withlist:196
 msgid "Unknown list: %(listname)s"
 msgstr "未知的列表： %(listname)s"
 
-#: bin/withlist:236
+#: bin/.svn/text-base/withlist.svn-base:236 bin/withlist:236
 msgid "No list name supplied."
 msgstr "没有给出列表的名字"
 
-#: bin/withlist:245
+#: bin/.svn/text-base/withlist.svn-base:245 bin/withlist:245
 msgid "--all requires --run"
 msgstr "--all需要--run"
 
-#: bin/withlist:265
+#: bin/.svn/text-base/withlist.svn-base:265 bin/withlist:265
 msgid "Importing %(module)s..."
 msgstr "导入 %(module)s..."
 
-#: bin/withlist:268
+#: bin/.svn/text-base/withlist.svn-base:268 bin/withlist:268
 msgid "Running %(module)s.%(callable)s()..."
 msgstr "运行 %(module)s.%(callable)s()..."
 
-#: bin/withlist:289
+#: bin/.svn/text-base/withlist.svn-base:289 bin/withlist:289
 msgid "The variable `m' is the %(listname)s MailList instance"
 msgstr "变量'm'是 %(listname)s 的MailList实例"
 
-#: cron/bumpdigests:19
+#: cron/.svn/text-base/bumpdigests.svn-base:19 cron/bumpdigests:19
 msgid ""
 "Increment the digest volume number and reset the digest number to one.\n"
 "\n"
@@ -11121,7 +11163,7 @@ msgstr ""
 "命令行上给出的列表将被处理。如果没有给出任何列表的话，所有的列表都将被处"
 "理。\n"
 
-#: cron/checkdbs:19
+#: cron/.svn/text-base/checkdbs.svn-base:19 cron/checkdbs:19
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"
@@ -11141,7 +11183,7 @@ msgstr ""
 "    -h/--help\n"
 "        打印此帮助信息然后退出。\n"
 
-#: cron/checkdbs:107
+#: cron/.svn/text-base/checkdbs.svn-base:107 cron/checkdbs:107
 msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
@@ -11149,19 +11191,19 @@ msgstr ""
 "注意： %(discarded)d 旧请求自动过期。\n"
 "\n"
 
-#: cron/checkdbs:120
+#: cron/.svn/text-base/checkdbs.svn-base:120 cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
 msgstr ""
 
-#: cron/checkdbs:123
+#: cron/.svn/text-base/checkdbs.svn-base:123 cron/checkdbs:123
 msgid "%(realname)s moderator request check result"
 msgstr ""
 
-#: cron/checkdbs:143
+#: cron/.svn/text-base/checkdbs.svn-base:143 cron/checkdbs:143
 msgid "Pending subscriptions:"
 msgstr "阻塞的订阅："
 
-#: cron/checkdbs:154
+#: cron/.svn/text-base/checkdbs.svn-base:154 cron/checkdbs:154
 msgid ""
 "\n"
 "Pending posts:"
@@ -11169,14 +11211,14 @@ msgstr ""
 "\n"
 "阻塞的信件："
 
-#: cron/checkdbs:161
+#: cron/.svn/text-base/checkdbs.svn-base:161 cron/checkdbs:161
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
 "Cause: %(reason)s"
 msgstr ""
 
-#: cron/disabled:19
+#: cron/.svn/text-base/disabled.svn-base:19 cron/disabled:19
 msgid ""
 "Process disabled members, recommended once per day.\n"
 "\n"
@@ -11264,11 +11306,11 @@ msgstr ""
 "    --listname=listname\n"
 "        仅处理指定的列表，否则将处理所有的列表。\n"
 
-#: cron/disabled:144
+#: cron/.svn/text-base/disabled.svn-base:144 cron/disabled:144
 msgid "[disabled by periodic sweep and cull, no message available]"
 msgstr ""
 
-#: cron/gate_news:19
+#: cron/.svn/text-base/gate_news.svn-base:19 cron/gate_news:19
 msgid ""
 "Poll the NNTP servers for messages to be gatewayed to mailing lists.\n"
 "\n"
@@ -11292,7 +11334,7 @@ msgstr ""
 "        打印此帮助信息然后退出。\n"
 "\n"
 
-#: cron/mailpasswds:19
+#: cron/.svn/text-base/mailpasswds.svn-base:19 cron/mailpasswds:19
 msgid ""
 "Send password reminders for all lists to all users.\n"
 "\n"
@@ -11340,15 +11382,15 @@ msgstr ""
 "    -h/--help\n"
 "        打印此帮助信息然后退出。\n"
 
-#: cron/mailpasswds:216
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "Password // URL"
 msgstr "口令 // URL"
 
-#: cron/mailpasswds:222
+#: cron/.svn/text-base/mailpasswds.svn-base:222 cron/mailpasswds:222
 msgid "%(host)s mailing list memberships reminder"
 msgstr "%(host)s邮件列表成员身份提示"
 
-#: cron/nightly_gzip:19
+#: cron/.svn/text-base/nightly_gzip.svn-base:19 cron/nightly_gzip:19
 msgid ""
 "Re-generate the Pipermail gzip'd archive flat files.\n"
 "\n"
@@ -11393,7 +11435,7 @@ msgstr ""
 "理。\n"
 "\n"
 
-#: cron/senddigests:19
+#: cron/.svn/text-base/senddigests.svn-base:19 cron/senddigests:19
 msgid ""
 "Dispatch digests for lists w/pending messages and digest_send_periodic set.\n"
 "\n"
@@ -11420,3 +11462,10 @@ msgstr ""
 "    -l listname\n"
 "    --listname=listname\n"
 "        仅为指定的列表发送摘要，否则将给所有列表发送摘要。\n"
+
+#~ msgid ""
+#~ "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
+#~ "## captured on %(when)s\n"
+#~ msgstr ""
+#~ "## \"%(listname)s\" 邮件列表配置选项 -*- python -*-\n"
+#~ "## 在 %(when)s 被捕获\n"

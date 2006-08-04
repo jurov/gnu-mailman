@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1.5\n"
-"POT-Creation-Date: Thu Mar 23 16:59:29 2006\n"
+"POT-Creation-Date: Fri Aug  4 16:11:31 2006\n"
 "PO-Revision-Date: 2005-05-07 23:27+0200\n"
 "Last-Translator: Daniel Buchmann <Daniel.Buchmann@bibsys.no>\n"
 "Language-Team: Norwegian <i18n-no@lister.ping.uio.no>\n"
@@ -218,9 +218,9 @@ msgstr "Melding om behandling av returmeldinger"
 msgid " The last bounce received from you was dated %(date)s"
 msgstr " Sist mottatte returmelding fra deg var datert %(date)s"
 
-#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:145
+#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:285
-#: Mailman/Handlers/Hold.py:209 Mailman/Handlers/ToDigest.py:235
+#: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:235
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(uten tittel)"
@@ -347,7 +347,8 @@ msgstr "oversikt over epostlister"
 msgid "<p>(Send questions and comments to "
 msgstr "<p>(Send sp&oslash;rsm&aring;l og kommentarer til "
 
-#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135 cron/mailpasswds:216
+#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "List"
 msgstr "Liste"
 
@@ -356,7 +357,8 @@ msgstr "Liste"
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142 bin/list_lists:116
+#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142
+#: bin/.svn/text-base/list_lists.svn-base:116 bin/list_lists:116
 msgid "[no description available]"
 msgstr "[ingen beskrivelse tilgjengelig]"
 
@@ -1261,7 +1263,7 @@ msgstr "Headers i meldingen:"
 msgid "Message Excerpt:"
 msgstr "Utdrag av meldingen:"
 
-#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:143
+#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:141
 msgid "No reason given"
 msgstr "Ingen begrunnelse"
 
@@ -1947,15 +1949,18 @@ msgstr "Du har ikke tilgang til &aring; opprette nye epostlister"
 msgid "Unknown virtual host: %(safehostname)s"
 msgstr "Ukjent virtuell host: %(safehostname)s"
 
-#: Mailman/Cgi/create.py:195 bin/newlist:202
+#: Mailman/Cgi/create.py:195 bin/.svn/text-base/newlist.svn-base:202
+#: bin/newlist:202
 msgid "Bad owner email address: %(s)s"
 msgstr "Ugyldig epostadresse: %(s)s"
 
-#: Mailman/Cgi/create.py:199 bin/newlist:170 bin/newlist:204
+#: Mailman/Cgi/create.py:199 bin/.svn/text-base/newlist.svn-base:170
+#: bin/.svn/text-base/newlist.svn-base:204 bin/newlist:170 bin/newlist:204
 msgid "List already exists: %(listname)s"
 msgstr "Listen finnes allerede: %(listname)s"
 
-#: Mailman/Cgi/create.py:203 bin/newlist:200
+#: Mailman/Cgi/create.py:203 bin/.svn/text-base/newlist.svn-base:200
+#: bin/newlist:200
 msgid "Illegal list name: %(s)s"
 msgstr "Ulovlig listenavn: %(s)s"
 
@@ -1967,7 +1972,8 @@ msgstr ""
 "En ukjent feil oppstod under opprettelse av epostlisten.\n"
 "Kontakt systemadministrator for &aring; f&aring; hjelp."
 
-#: Mailman/Cgi/create.py:245 bin/newlist:245
+#: Mailman/Cgi/create.py:245 bin/.svn/text-base/newlist.svn-base:245
+#: bin/newlist:245
 msgid "Your new mailing list: %(listname)s"
 msgstr "Din nye epostliste: %(listname)s"
 
@@ -2666,7 +2672,7 @@ msgstr ""
 msgid "Private Archive Error - %(msg)s"
 msgstr "Feil i privat arkiv - %(msg)s"
 
-#: Mailman/Cgi/private.py:178
+#: Mailman/Cgi/private.py:179
 msgid "Private archive file not found"
 msgstr "Finner ikke arkivfilen"
 
@@ -3638,131 +3644,135 @@ msgstr "Medlemmer i normal-modus:"
 msgid "Digest members:"
 msgstr "Medlemmer i sammendrag-modus:"
 
-#: Mailman/Defaults.py:1320
+#: Mailman/Defaults.py:1324
 msgid "Catalan"
 msgstr "Katalansk"
 
-#: Mailman/Defaults.py:1321
+#: Mailman/Defaults.py:1325
 msgid "Czech"
 msgstr "Tsjekkisk"
 
-#: Mailman/Defaults.py:1322
+#: Mailman/Defaults.py:1326
 msgid "Danish"
 msgstr "Dansk"
 
-#: Mailman/Defaults.py:1323
+#: Mailman/Defaults.py:1327
 msgid "German"
 msgstr "Tysk"
 
-#: Mailman/Defaults.py:1324
+#: Mailman/Defaults.py:1328
 msgid "English (USA)"
 msgstr "Engelsk (USA)"
 
-#: Mailman/Defaults.py:1325
+#: Mailman/Defaults.py:1329
 msgid "Spanish (Spain)"
 msgstr "Spansk (Spania)"
 
-#: Mailman/Defaults.py:1326
+#: Mailman/Defaults.py:1330
 msgid "Estonian"
 msgstr "Estisk"
 
-#: Mailman/Defaults.py:1327
+#: Mailman/Defaults.py:1331
 msgid "Euskara"
 msgstr "Baskisk"
 
-#: Mailman/Defaults.py:1328
+#: Mailman/Defaults.py:1332
 msgid "Finnish"
 msgstr "Finsk"
 
-#: Mailman/Defaults.py:1329
+#: Mailman/Defaults.py:1333
 msgid "French"
 msgstr "Fransk"
 
-#: Mailman/Defaults.py:1330
+#: Mailman/Defaults.py:1334
 msgid "Croatian"
 msgstr "Kroatisk"
 
-#: Mailman/Defaults.py:1331
+#: Mailman/Defaults.py:1335
 msgid "Hungarian"
 msgstr "Ungarsk"
 
-#: Mailman/Defaults.py:1332
+#: Mailman/Defaults.py:1336
 msgid "Interlingua"
 msgstr ""
 
-#: Mailman/Defaults.py:1333
+#: Mailman/Defaults.py:1337
 msgid "Italian"
 msgstr "Italiensk"
 
-#: Mailman/Defaults.py:1334
+#: Mailman/Defaults.py:1338
 msgid "Japanese"
 msgstr "Japansk"
 
-#: Mailman/Defaults.py:1335
+#: Mailman/Defaults.py:1339
 msgid "Korean"
 msgstr "Koreansk"
 
-#: Mailman/Defaults.py:1336
+#: Mailman/Defaults.py:1340
 msgid "Lithuanian"
 msgstr "Litauisk"
 
-#: Mailman/Defaults.py:1337
+#: Mailman/Defaults.py:1341
 msgid "Dutch"
 msgstr "Nederlandsk"
 
-#: Mailman/Defaults.py:1338
+#: Mailman/Defaults.py:1342
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: Mailman/Defaults.py:1339
+#: Mailman/Defaults.py:1343
 msgid "Polish"
 msgstr "Polsk"
 
-#: Mailman/Defaults.py:1340
+#: Mailman/Defaults.py:1344
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: Mailman/Defaults.py:1341
+#: Mailman/Defaults.py:1345
 msgid "Portuguese (Brazil)"
 msgstr "Portugisisk (Brasil)"
 
-#: Mailman/Defaults.py:1342
+#: Mailman/Defaults.py:1346
 msgid "Romanian"
 msgstr "Rumensk"
 
-#: Mailman/Defaults.py:1343
+#: Mailman/Defaults.py:1347
 msgid "Russian"
 msgstr "Russisk"
 
-#: Mailman/Defaults.py:1344
+#: Mailman/Defaults.py:1348
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: Mailman/Defaults.py:1345
+#: Mailman/Defaults.py:1349
 msgid "Slovenian"
 msgstr "Slovakisk"
 
-#: Mailman/Defaults.py:1346
+#: Mailman/Defaults.py:1350
 msgid "Swedish"
 msgstr "Svensk"
 
-#: Mailman/Defaults.py:1347
+#: Mailman/Defaults.py:1351
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: Mailman/Defaults.py:1348
+#: Mailman/Defaults.py:1352
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
-#: Mailman/Defaults.py:1349
+#: Mailman/Defaults.py:1353
+msgid "Vietnamese"
+msgstr ""
+
+#: Mailman/Defaults.py:1354
 msgid "Chinese (China)"
 msgstr "Kinesisk (Kina)"
 
-#: Mailman/Defaults.py:1350
+#: Mailman/Defaults.py:1355
 msgid "Chinese (Taiwan)"
 msgstr "Kinesisk (Taiwan)"
 
-#: Mailman/Deliverer.py:53
+#: Mailman/Deliverer.py:51
 msgid ""
 "Note: Since this is a list of mailing lists, administrative\n"
 "notices like the password reminder will be sent to\n"
@@ -3773,27 +3783,27 @@ msgstr ""
 "som f.eks. påminnelse om  passord, bli sendt til den administrative adressen "
 "%(addr)s."
 
-#: Mailman/Deliverer.py:73
+#: Mailman/Deliverer.py:71
 msgid " (Digest mode)"
 msgstr " (Sammendrag-modus)"
 
-#: Mailman/Deliverer.py:79
+#: Mailman/Deliverer.py:77
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
 msgstr "Velkommen til epostlisten \"%(realname)s\"%(digmode)s"
 
-#: Mailman/Deliverer.py:88
+#: Mailman/Deliverer.py:86
 msgid "You have been unsubscribed from the %(realname)s mailing list"
 msgstr "Du er nå fjernet fra epostlisten \"%(realname)s\""
 
-#: Mailman/Deliverer.py:115
+#: Mailman/Deliverer.py:113
 msgid "%(listfullname)s mailing list reminder"
 msgstr "Påminnelse fra epostlisten %(listfullname)s"
 
-#: Mailman/Deliverer.py:167 Mailman/Deliverer.py:186
+#: Mailman/Deliverer.py:165 Mailman/Deliverer.py:184
 msgid "Hostile subscription attempt detected"
 msgstr "Ulovlig påmeldingsforsøk oppdaget"
 
-#: Mailman/Deliverer.py:168
+#: Mailman/Deliverer.py:166
 msgid ""
 "%(address)s was invited to a different mailing\n"
 "list, but in a deliberate malicious attempt they tried to confirm the\n"
@@ -3805,7 +3815,7 @@ msgstr ""
 "listen din. Vi tenkte kanskje du kunne ha nytte av å vite om dette.\n"
 "Du trenger ikke foreta deg noe, da forsøket ikke lyktes."
 
-#: Mailman/Deliverer.py:187
+#: Mailman/Deliverer.py:185
 msgid ""
 "You invited %(address)s to your list, but in a\n"
 "deliberate malicious attempt, they tried to confirm the invitation to a\n"
@@ -3818,7 +3828,7 @@ msgstr ""
 "ha nytte av å vite om dette. Du trenger ikke foreta deg noe, da forsøket\n"
 "selvsagt ikke lyktes."
 
-#: Mailman/Deliverer.py:220
+#: Mailman/Deliverer.py:218
 msgid "%(listname)s mailing list probe message"
 msgstr "Kontrollmelding fra epostlisten %(listname)s"
 
@@ -7416,54 +7426,54 @@ msgstr ""
 msgid "Emergency hold on all list traffic is in effect"
 msgstr "All epost til listen nødholdes tilbake for godkjenning."
 
-#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:57
+#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
 msgid "Your message was deemed inappropriate by the moderator."
 msgstr ""
 "Meldingen din ble av moderatoren karakterisert som upassende for denne "
 "listen."
 
-#: Mailman/Handlers/Hold.py:52
+#: Mailman/Handlers/Hold.py:53
 msgid "Sender is explicitly forbidden"
 msgstr "Avsender er utestengt"
 
-#: Mailman/Handlers/Hold.py:53
+#: Mailman/Handlers/Hold.py:54
 msgid "You are forbidden from posting messages to this list."
 msgstr "Du har ikke lov til å sende meldinger til denne epostlisten."
 
-#: Mailman/Handlers/Hold.py:56
+#: Mailman/Handlers/Hold.py:57
 msgid "Post to moderated list"
 msgstr "Melding sendt til moderert liste"
 
-#: Mailman/Handlers/Hold.py:60
+#: Mailman/Handlers/Hold.py:61
 msgid "Post by non-member to a members-only list"
 msgstr ""
 "Avsender er ikke medlem av listen, men kun medlemmer kan sende til listen"
 
-#: Mailman/Handlers/Hold.py:61
+#: Mailman/Handlers/Hold.py:62
 msgid "Non-members are not allowed to post messages to this list."
 msgstr "Man må være medlem for å kunne sende meldinger til denne epostlisten."
 
-#: Mailman/Handlers/Hold.py:64
+#: Mailman/Handlers/Hold.py:65
 msgid "Posting to a restricted list by sender requires approval"
 msgstr "Melding til en begrenset liste krever godkjenning"
 
-#: Mailman/Handlers/Hold.py:65
+#: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
 msgstr "Denne epostlisten er begrenset; din melding ble ikke godkjent."
 
-#: Mailman/Handlers/Hold.py:68
+#: Mailman/Handlers/Hold.py:69
 msgid "Too many recipients to the message"
 msgstr "Meldingen har for mange mottakere"
 
-#: Mailman/Handlers/Hold.py:69
+#: Mailman/Handlers/Hold.py:70
 msgid "Please trim the recipient list; it is too long."
 msgstr "Vennligst kort ned mottakerlisten; den er for lang."
 
-#: Mailman/Handlers/Hold.py:72
+#: Mailman/Handlers/Hold.py:73
 msgid "Message has implicit destination"
 msgstr "Meldingen har implisitt mål"
 
-#: Mailman/Handlers/Hold.py:73
+#: Mailman/Handlers/Hold.py:74
 msgid ""
 "Blind carbon copies or other implicit destinations are\n"
 "not allowed.  Try reposting your message by explicitly including the list\n"
@@ -7473,11 +7483,11 @@ msgstr ""
 "Prøv å send meldingen på nytt ved å eksplisitt spesifisere epostlistens "
 "adresse i To: eller Cc: feltene."
 
-#: Mailman/Handlers/Hold.py:78
+#: Mailman/Handlers/Hold.py:79
 msgid "Message may contain administrivia"
 msgstr "Meldingen kan ha administrativt innhold"
 
-#: Mailman/Handlers/Hold.py:83
+#: Mailman/Handlers/Hold.py:84
 msgid ""
 "Please do *not* post administrative requests to the mailing\n"
 "list.  If you wish to subscribe, visit %(listurl)s or send a message with "
@@ -7489,21 +7499,21 @@ msgstr ""
 "Vil du melde deg av listen, gå inn på %(listurl)s eller send en epost som "
 "kun inneholder ordet 'help' til %(request)s for å få nærmere instruksjoner."
 
-#: Mailman/Handlers/Hold.py:89
+#: Mailman/Handlers/Hold.py:90
 msgid "Message has a suspicious header"
 msgstr "Meldingen har et mistenkelig meldingshode."
 
-#: Mailman/Handlers/Hold.py:90
+#: Mailman/Handlers/Hold.py:91
 msgid "Your message had a suspicious header."
 msgstr "Meldingen din inneholdt et tvilsomt meldingshode."
 
-#: Mailman/Handlers/Hold.py:100
+#: Mailman/Handlers/Hold.py:101
 msgid ""
 "Message body is too big: %(size)d bytes with a limit of\n"
 "%(limit)d KB"
 msgstr "Meldingen er for stor: %(size)d bytes, grensen er %(limit)d KB"
 
-#: Mailman/Handlers/Hold.py:105
+#: Mailman/Handlers/Hold.py:106
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
@@ -7512,21 +7522,21 @@ msgstr ""
 "enn\n"
 "%(kb)d KB."
 
-#: Mailman/Handlers/Hold.py:109
+#: Mailman/Handlers/Hold.py:110
 msgid "Posting to a moderated newsgroup"
 msgstr "Melding sendt til moderert nyhetsgruppe"
 
-#: Mailman/Handlers/Hold.py:244
+#: Mailman/Handlers/Hold.py:250
 msgid "Your message to %(listname)s awaits moderator approval"
 msgstr ""
 "Meldingen du sendte til listen %(listname)s venter på godkjenning av "
 "moderatoren."
 
-#: Mailman/Handlers/Hold.py:263
+#: Mailman/Handlers/Hold.py:269
 msgid "%(listname)s post from %(sender)s requires approval"
 msgstr "Melding til %(listname)s fra %(sender)s krever godkjenning"
 
-#: Mailman/Handlers/Hold.py:270
+#: Mailman/Handlers/Hold.py:276
 msgid ""
 "If you reply to this message, keeping the Subject: header intact, Mailman "
 "will\n"
@@ -7844,11 +7854,22 @@ msgid "%(file)s permissions must be 066x (got %(octmode)s)"
 msgstr "rettighetene på %(file)s må være 066x (men er %(octmode)s)"
 
 #: Mailman/MTA/Postfix.py:318 Mailman/MTA/Postfix.py:345
-#: Mailman/MTA/Postfix.py:356 bin/check_perms:123 bin/check_perms:145
-#: bin/check_perms:155 bin/check_perms:166 bin/check_perms:191
-#: bin/check_perms:208 bin/check_perms:234 bin/check_perms:257
-#: bin/check_perms:276 bin/check_perms:290 bin/check_perms:310
-#: bin/check_perms:347
+#: Mailman/MTA/Postfix.py:356 bin/.svn/text-base/check_perms.svn-base:123
+#: bin/.svn/text-base/check_perms.svn-base:145
+#: bin/.svn/text-base/check_perms.svn-base:155
+#: bin/.svn/text-base/check_perms.svn-base:166
+#: bin/.svn/text-base/check_perms.svn-base:191
+#: bin/.svn/text-base/check_perms.svn-base:208
+#: bin/.svn/text-base/check_perms.svn-base:234
+#: bin/.svn/text-base/check_perms.svn-base:257
+#: bin/.svn/text-base/check_perms.svn-base:276
+#: bin/.svn/text-base/check_perms.svn-base:290
+#: bin/.svn/text-base/check_perms.svn-base:310
+#: bin/.svn/text-base/check_perms.svn-base:347 bin/check_perms:123
+#: bin/check_perms:145 bin/check_perms:155 bin/check_perms:166
+#: bin/check_perms:191 bin/check_perms:208 bin/check_perms:234
+#: bin/check_perms:257 bin/check_perms:276 bin/check_perms:290
+#: bin/check_perms:310 bin/check_perms:347
 msgid "(fixing)"
 msgstr "(fixer)"
 
@@ -7881,7 +7902,8 @@ msgstr " fra %(remote)s"
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "påmelding på %(realname)s krever godkjenning av moderator"
 
-#: Mailman/MailList.py:982 bin/add_members:242
+#: Mailman/MailList.py:982 bin/.svn/text-base/add_members.svn-base:242
+#: bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "Melding om påmelding på epostlisten %(realname)s"
 
@@ -8077,7 +8099,7 @@ msgid ""
 msgstr ""
 "%(wday)s %(day)2i. %(mon)s %(year)04i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s"
 
-#: bin/add_members:26
+#: bin/.svn/text-base/add_members.svn-base:26 bin/add_members:26
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8166,52 +8188,66 @@ msgstr ""
 "Du må benytte minst valgene \"-r\" eller \"-d\". Bare ett av filnavnene kan\n"
 "være \"-\".\n"
 
-#: bin/add_members:137
+#: bin/.svn/text-base/add_members.svn-base:137 bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Allerede medlem: %(member)s"
 
-#: bin/add_members:140
+#: bin/.svn/text-base/add_members.svn-base:140 bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Feil/Ugyldig epostadresse: blank linje"
 
-#: bin/add_members:142
+#: bin/.svn/text-base/add_members.svn-base:142 bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Feil/Ugyldig epostadresse: %(member)s"
 
-#: bin/add_members:144
+#: bin/.svn/text-base/add_members.svn-base:144 bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Ugyldige tegn i epostadressen: %(member)s"
 
-#: bin/add_members:146
+#: bin/.svn/text-base/add_members.svn-base:146 bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Påmeldt: %(member)s"
 
-#: bin/add_members:191
+#: bin/.svn/text-base/add_members.svn-base:191 bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Ugyldig argument til -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:198
+#: bin/.svn/text-base/add_members.svn-base:198 bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Ugyldig argument til -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:204
+#: bin/.svn/text-base/add_members.svn-base:204 bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "Kan ikke lese både medlemmer i normal-modus og medlemmer i sammendrag-modus "
 "fra standard input."
 
-#: bin/add_members:210 bin/config_list:109 bin/config_list.orig:105
-#: bin/find_member:97 bin/inject:90 bin/list_admins:89 bin/list_members:232
-#: bin/sync_members:222 cron/bumpdigests:86
+#: bin/.svn/text-base/add_members.svn-base:210
+#: bin/.svn/text-base/config_list.svn-base:109
+#: bin/.svn/text-base/find_member.svn-base:97
+#: bin/.svn/text-base/inject.svn-base:90
+#: bin/.svn/text-base/list_admins.svn-base:89
+#: bin/.svn/text-base/list_members.svn-base:232
+#: bin/.svn/text-base/sync_members.svn-base:222 bin/add_members:210
+#: bin/config_list:109 bin/find_member:97 bin/inject:90 bin/list_admins:89
+#: bin/list_members:232 bin/sync_members:222
+#: cron/.svn/text-base/bumpdigests.svn-base:86 cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Listen finnes ikke: %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
-#: bin/sync_members:244 bin/update:564 cron/bumpdigests:78
+#: bin/.svn/text-base/add_members.svn-base:230
+#: bin/.svn/text-base/change_pw.svn-base:158
+#: bin/.svn/text-base/check_db.svn-base:114
+#: bin/.svn/text-base/discard.svn-base:83
+#: bin/.svn/text-base/sync_members.svn-base:244
+#: bin/.svn/text-base/update.svn-base:564 bin/add_members:230
+#: bin/change_pw:158 bin/check_db:114 bin/discard:83 bin/sync_members:244
+#: bin/update:564 cron/.svn/text-base/bumpdigests.svn-base:78
+#: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Ingenting å gjøre."
 
-#: bin/arch:19
+#: bin/.svn/text-base/arch.svn-base:19 bin/arch:19
 msgid ""
 "Rebuild a list's archive.\n"
 "\n"
@@ -8304,11 +8340,14 @@ msgstr ""
 "<mbox-fil> er valgfri. Angis den ikke, prøver kommandoen å gjette riktig "
 "navn.\n"
 
-#: bin/arch:125
+#: bin/.svn/text-base/arch.svn-base:125 bin/arch:125
 msgid "listname is required"
 msgstr "krever listens navn"
 
-#: bin/arch:143 bin/change_pw:106 bin/config_list:256 bin/config_list.orig:242
+#: bin/.svn/text-base/arch.svn-base:143
+#: bin/.svn/text-base/change_pw.svn-base:106
+#: bin/.svn/text-base/config_list.svn-base:256 bin/arch:143 bin/change_pw:106
+#: bin/config_list:256
 msgid ""
 "No such list \"%(listname)s\"\n"
 "%(e)s"
@@ -8316,11 +8355,11 @@ msgstr ""
 "Listen \"%(listname)s\" finnes ikke\n"
 "%(e)s"
 
-#: bin/arch:183
+#: bin/.svn/text-base/arch.svn-base:183 bin/arch:183
 msgid "Cannot open mbox file %(mbox)s: %(msg)s"
 msgstr "Kan ikke åpne mbox-fil %(mbox)s: %(msg)s"
 
-#: bin/b4b5-archfix:19
+#: bin/.svn/text-base/b4b5-archfix.svn-base:19 bin/b4b5-archfix:19
 msgid ""
 "Fix the MM2.1b4 archives.\n"
 "\n"
@@ -8341,7 +8380,7 @@ msgid ""
 "You will need to run `bin/check_perms -f' after running this script.\n"
 msgstr ""
 
-#: bin/change_pw:19
+#: bin/.svn/text-base/change_pw.svn-base:19 bin/change_pw:19
 msgid ""
 "Change a list's password.\n"
 "\n"
@@ -8442,23 +8481,23 @@ msgstr ""
 "    --help / -h\n"
 "        Viser denne hjelpeteksten.\n"
 
-#: bin/change_pw:144
+#: bin/.svn/text-base/change_pw.svn-base:144 bin/change_pw:144
 msgid "Bad arguments: %(strargs)s"
 msgstr "Ugyldige parametre: %(strargs)s"
 
-#: bin/change_pw:148
+#: bin/.svn/text-base/change_pw.svn-base:148 bin/change_pw:148
 msgid "Empty list passwords are not allowed"
 msgstr "Blanke listepassord er ikke tillatt"
 
-#: bin/change_pw:180
+#: bin/.svn/text-base/change_pw.svn-base:180 bin/change_pw:180
 msgid "New %(listname)s password: %(notifypassword)s"
 msgstr "Nytt passord for %(listname)s: %(notifypassword)s"
 
-#: bin/change_pw:189
+#: bin/.svn/text-base/change_pw.svn-base:189 bin/change_pw:189
 msgid "Your new %(listname)s list password"
 msgstr "Det nye passordet for epostlisten %(listname)s"
 
-#: bin/change_pw:190
+#: bin/.svn/text-base/change_pw.svn-base:190 bin/change_pw:190
 msgid ""
 "The site administrator at %(hostname)s has changed the password for your\n"
 "mailing list %(listname)s.  It is now\n"
@@ -8484,7 +8523,7 @@ msgstr ""
 "\n"
 "    %(adminurl)s\n"
 
-#: bin/check_db:19
+#: bin/.svn/text-base/check_db.svn-base:19 bin/check_db:19
 msgid ""
 "Check a list's config database file for integrity.\n"
 "\n"
@@ -8551,19 +8590,19 @@ msgstr ""
 "    --help / -h\n"
 "        Viser denne hjelpeteksten.\n"
 
-#: bin/check_db:119
+#: bin/.svn/text-base/check_db.svn-base:119 bin/check_db:119
 msgid "No list named:"
 msgstr "Fant ingen liste med navnet:"
 
-#: bin/check_db:128
+#: bin/.svn/text-base/check_db.svn-base:128 bin/check_db:128
 msgid "List:"
 msgstr "Liste:"
 
-#: bin/check_db:148
+#: bin/.svn/text-base/check_db.svn-base:148 bin/check_db:148
 msgid "   %(file)s: okay"
 msgstr "   %(file)s: ok"
 
-#: bin/check_perms:19
+#: bin/.svn/text-base/check_perms.svn-base:19 bin/check_perms:19
 msgid ""
 "Check the permissions for the Mailman installation.\n"
 "\n"
@@ -8582,48 +8621,48 @@ msgstr ""
 "ugyldige rettigheter og eierskap på filer. Med -f (kjørt som root), retter\n"
 "den opp alle feil underveis. Med -v vises detaljert informasjon.\n"
 
-#: bin/check_perms:108
+#: bin/.svn/text-base/check_perms.svn-base:108 bin/check_perms:108
 msgid "    checking gid and mode for %(path)s"
 msgstr "    kontrollerer gid og rettigheter for %(path)s"
 
-#: bin/check_perms:120
+#: bin/.svn/text-base/check_perms.svn-base:120 bin/check_perms:120
 msgid "%(path)s bad group (has: %(groupname)s, expected %(MAILMAN_GROUP)s)"
 msgstr ""
 "feil gruppe for %(path)s (har: %(groupname)s, forventer %(MAILMAN_GROUP)s)"
 
-#: bin/check_perms:143
+#: bin/.svn/text-base/check_perms.svn-base:143 bin/check_perms:143
 msgid "directory permissions must be %(octperms)s: %(path)s"
 msgstr "rettighetene på katalogen må være %(octperms)s: %(path)s"
 
-#: bin/check_perms:152
+#: bin/.svn/text-base/check_perms.svn-base:152 bin/check_perms:152
 msgid "source perms must be %(octperms)s: %(path)s"
 msgstr "rettighetene på kilden må være %(octperms)s: %(path)s"
 
-#: bin/check_perms:163
+#: bin/.svn/text-base/check_perms.svn-base:163 bin/check_perms:163
 msgid "article db files must be %(octperms)s: %(path)s"
 msgstr "rettighetene på artikkeldatabasefilene må være %(octperms)s: %(path)s"
 
-#: bin/check_perms:175
+#: bin/.svn/text-base/check_perms.svn-base:175 bin/check_perms:175
 msgid "checking mode for %(prefix)s"
 msgstr "kontrollerer rettigheter for %(prefix)s"
 
-#: bin/check_perms:185
+#: bin/.svn/text-base/check_perms.svn-base:185 bin/check_perms:185
 msgid "WARNING: directory does not exist: %(d)s"
 msgstr "ADVARSEL: katalogen finnes ikke: %(d)s"
 
-#: bin/check_perms:189
+#: bin/.svn/text-base/check_perms.svn-base:189 bin/check_perms:189
 msgid "directory must be at least 02775: %(d)s"
 msgstr "katalogen må minst ha rettighetene 02775: %(d)s"
 
-#: bin/check_perms:201
+#: bin/.svn/text-base/check_perms.svn-base:201 bin/check_perms:201
 msgid "checking perms on %(private)s"
 msgstr "kontrollerer rettigheter for: %(private)s"
 
-#: bin/check_perms:206
+#: bin/.svn/text-base/check_perms.svn-base:206 bin/check_perms:206
 msgid "%(private)s must not be other-readable"
 msgstr "%(private)s må ikke være leselig for alle"
 
-#: bin/check_perms:215
+#: bin/.svn/text-base/check_perms.svn-base:215 bin/check_perms:215
 msgid ""
 "Warning: Private archive directory is other-executable (o+x).\n"
 "         This could allow other users on your system to read private "
@@ -8632,70 +8671,70 @@ msgid ""
 "         installation manual on how to fix this."
 msgstr ""
 
-#: bin/check_perms:232
+#: bin/.svn/text-base/check_perms.svn-base:232 bin/check_perms:232
 msgid "mbox file must be at least 0660:"
 msgstr "mbox-filen må minimum ha rettighetene 0660:"
 
-#: bin/check_perms:255
+#: bin/.svn/text-base/check_perms.svn-base:255 bin/check_perms:255
 msgid "%(dbdir)s \"other\" perms must be 000"
 msgstr "rettigheter for \"alle andre\" for katalogen %(dbdir)s må være 000"
 
-#: bin/check_perms:265
+#: bin/.svn/text-base/check_perms.svn-base:265 bin/check_perms:265
 msgid "checking cgi-bin permissions"
 msgstr "kontrollerer rettigheter til cgi-bin"
 
-#: bin/check_perms:270
+#: bin/.svn/text-base/check_perms.svn-base:270 bin/check_perms:270
 msgid "    checking set-gid for %(path)s"
 msgstr "    kontrollerer set-gid for %(path)s"
 
-#: bin/check_perms:274
+#: bin/.svn/text-base/check_perms.svn-base:274 bin/check_perms:274
 msgid "%(path)s must be set-gid"
 msgstr "%(path)s må være set-gid"
 
-#: bin/check_perms:284
+#: bin/.svn/text-base/check_perms.svn-base:284 bin/check_perms:284
 msgid "checking set-gid for %(wrapper)s"
 msgstr "kontrollerer set-gid for %(wrapper)s"
 
-#: bin/check_perms:288
+#: bin/.svn/text-base/check_perms.svn-base:288 bin/check_perms:288
 msgid "%(wrapper)s must be set-gid"
 msgstr "%(wrapper)s må være set-gid"
 
-#: bin/check_perms:298
+#: bin/.svn/text-base/check_perms.svn-base:298 bin/check_perms:298
 msgid "checking permissions on %(pwfile)s"
 msgstr "kontrollerer rettigheter for %(pwfile)s"
 
-#: bin/check_perms:307
+#: bin/.svn/text-base/check_perms.svn-base:307 bin/check_perms:307
 msgid "%(pwfile)s permissions must be exactly 0640 (got %(octmode)s)"
 msgstr "rettighetene for %(pwfile)s må være satt til 0640 (de er %(octmode)s)"
 
-#: bin/check_perms:331
+#: bin/.svn/text-base/check_perms.svn-base:331 bin/check_perms:331
 msgid "checking permissions on list data"
 msgstr "kontrollerer rettigheter for listedata"
 
-#: bin/check_perms:337
+#: bin/.svn/text-base/check_perms.svn-base:337 bin/check_perms:337
 msgid "    checking permissions on: %(path)s"
 msgstr "    kontrollerer rettigheter for: %(path)s"
 
-#: bin/check_perms:345
+#: bin/.svn/text-base/check_perms.svn-base:345 bin/check_perms:345
 msgid "file permissions must be at least 660: %(path)s"
 msgstr "filrettigheter må minimum være 660: %(path)s"
 
-#: bin/check_perms:390
+#: bin/.svn/text-base/check_perms.svn-base:390 bin/check_perms:390
 msgid "No problems found"
 msgstr "Fant ingen problemer"
 
-#: bin/check_perms:392
+#: bin/.svn/text-base/check_perms.svn-base:392 bin/check_perms:392
 msgid "Problems found:"
 msgstr "Problemer funnet:"
 
-#: bin/check_perms:393
+#: bin/.svn/text-base/check_perms.svn-base:393 bin/check_perms:393
 msgid "Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix"
 msgstr ""
 "Kjør dette programmet på nytt med \"-f\" flagget, som bruker %(MAILMAN_USER)"
 "s\n"
 "(eller root) for å fixe dette"
 
-#: bin/cleanarch:20
+#: bin/.svn/text-base/cleanarch.svn-base:20 bin/cleanarch:20
 msgid ""
 "Clean up an .mbox archive file.\n"
 "\n"
@@ -8763,19 +8802,19 @@ msgstr ""
 "    -h / --help\n"
 "        Viser denne hjelpeteksten.\n"
 
-#: bin/cleanarch:83
+#: bin/.svn/text-base/cleanarch.svn-base:83 bin/cleanarch:83
 msgid "Unix-From line changed: %(lineno)d"
 msgstr "Unix-From linje endret: %(lineno)d"
 
-#: bin/cleanarch:111
+#: bin/.svn/text-base/cleanarch.svn-base:111 bin/cleanarch:111
 msgid "Bad status number: %(arg)s"
 msgstr "Ugyldig status nummer: %(arg)s"
 
-#: bin/cleanarch:167
+#: bin/.svn/text-base/cleanarch.svn-base:167 bin/cleanarch:167
 msgid "%(messages)d messages found"
 msgstr "fant %(messages)d meldinger"
 
-#: bin/clone_member:19
+#: bin/.svn/text-base/clone_member.svn-base:19 bin/clone_member:19
 msgid ""
 "Clone a member address.\n"
 "\n"
@@ -8882,43 +8921,43 @@ msgstr ""
 "    som skal få innstillingene til den gamle adressen.\n"
 "\n"
 
-#: bin/clone_member:94
+#: bin/.svn/text-base/clone_member.svn-base:94 bin/clone_member:94
 msgid "processing mailing list:"
 msgstr "Behandler epostlisten:"
 
-#: bin/clone_member:101
+#: bin/.svn/text-base/clone_member.svn-base:101 bin/clone_member:101
 msgid "    scanning list owners:"
 msgstr "    går igjennom listens eiere:"
 
-#: bin/clone_member:119
+#: bin/.svn/text-base/clone_member.svn-base:119 bin/clone_member:119
 msgid "    new list owners:"
 msgstr "    nye eiere av listen:"
 
-#: bin/clone_member:121
+#: bin/.svn/text-base/clone_member.svn-base:121 bin/clone_member:121
 msgid "(no change)"
 msgstr "(ingen endring)"
 
-#: bin/clone_member:130
+#: bin/.svn/text-base/clone_member.svn-base:130 bin/clone_member:130
 msgid "    address not found:"
 msgstr "    fant ikke adressen:"
 
-#: bin/clone_member:139
+#: bin/.svn/text-base/clone_member.svn-base:139 bin/clone_member:139
 msgid "    clone address added:"
 msgstr "    kopierte adressen:"
 
-#: bin/clone_member:142
+#: bin/.svn/text-base/clone_member.svn-base:142 bin/clone_member:142
 msgid "    clone address is already a member:"
 msgstr "    den kopierte adressene er allerede medlem:"
 
-#: bin/clone_member:145
+#: bin/.svn/text-base/clone_member.svn-base:145 bin/clone_member:145
 msgid "    original address removed:"
 msgstr "    den opprinnelige adressen ble ikke fjernet:"
 
-#: bin/clone_member:196
+#: bin/.svn/text-base/clone_member.svn-base:196 bin/clone_member:196
 msgid "Not a valid email address: %(toaddr)s"
 msgstr "Ikke en gyldig epostadresse: %(toaddr)s"
 
-#: bin/clone_member:209
+#: bin/.svn/text-base/clone_member.svn-base:209 bin/clone_member:209
 msgid ""
 "Error opening list \"%(listname)s\", skipping.\n"
 "%(e)s"
@@ -8926,7 +8965,7 @@ msgstr ""
 "Hopper over listen \"%(listname)s\" grunnet feil under åpning.\n"
 "%(e)s"
 
-#: bin/config_list:20 bin/config_list.orig:19
+#: bin/.svn/text-base/config_list.svn-base:20 bin/config_list:20
 msgid ""
 "Configure a list from a text file description.\n"
 "\n"
@@ -9028,7 +9067,7 @@ msgstr ""
 "-o og -i kan ikke benyttes samtidig.\n"
 "\n"
 
-#: bin/config_list:117
+#: bin/.svn/text-base/config_list.svn-base:117 bin/config_list:117
 #, fuzzy
 msgid ""
 "# -*- python -*-\n"
@@ -9039,55 +9078,47 @@ msgstr ""
 "## Innstillinger for epostlisten \"%(listname)s\"  -*- python -*-\n"
 "## Dato: %(when)s\n"
 
-#: bin/config_list:143 bin/config_list.orig:131
+#: bin/.svn/text-base/config_list.svn-base:143 bin/config_list:143
 msgid "options"
 msgstr ""
 
-#: bin/config_list:202 bin/config_list.orig:188
+#: bin/.svn/text-base/config_list.svn-base:202 bin/config_list:202
 msgid "legal values are:"
 msgstr "gyldige verdier:"
 
-#: bin/config_list:269 bin/config_list.orig:255
+#: bin/.svn/text-base/config_list.svn-base:269 bin/config_list:269
 msgid "attribute \"%(k)s\" ignored"
 msgstr "hopper over attributten \"%(k)s\""
 
-#: bin/config_list:272 bin/config_list.orig:258
+#: bin/.svn/text-base/config_list.svn-base:272 bin/config_list:272
 msgid "attribute \"%(k)s\" changed"
 msgstr "endret på attributten \"%(k)s\""
 
-#: bin/config_list:278 bin/config_list.orig:264
+#: bin/.svn/text-base/config_list.svn-base:278 bin/config_list:278
 msgid "Non-standard property restored: %(k)s"
 msgstr "Ikke-standard egenskap gjenopprettet: %(k)s"
 
-#: bin/config_list:286 bin/config_list.orig:272
+#: bin/.svn/text-base/config_list.svn-base:286 bin/config_list:286
 msgid "Invalid value for property: %(k)s"
 msgstr "Ugyldig verdi for egenskap: %(k)s"
 
-#: bin/config_list:288 bin/config_list.orig:274
+#: bin/.svn/text-base/config_list.svn-base:288 bin/config_list:288
 msgid "Bad email address for option %(k)s: %(v)s"
 msgstr "Ugyldig epostadresse for innstillingen %(k)s: %(v)s"
 
-#: bin/config_list:345 bin/config_list.orig:331
+#: bin/.svn/text-base/config_list.svn-base:345 bin/config_list:345
 msgid "Only one of -i or -o is allowed"
 msgstr "Bare en av parametrene \"-i\" eller \"-o\" kan brukes om gangen"
 
-#: bin/config_list:347 bin/config_list.orig:333
+#: bin/.svn/text-base/config_list.svn-base:347 bin/config_list:347
 msgid "One of -i or -o is required"
 msgstr "Du MÅ benytte en av parametrene \"-i\" eller \"-o\""
 
-#: bin/config_list:351 bin/config_list.orig:337
+#: bin/.svn/text-base/config_list.svn-base:351 bin/config_list:351
 msgid "List name is required"
 msgstr "Du MÅ spesifisere Listens navn"
 
-#: bin/config_list.orig:109
-msgid ""
-"## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
-"## captured on %(when)s\n"
-msgstr ""
-"## Innstillinger for epostlisten \"%(listname)s\"  -*- python -*-\n"
-"## Dato: %(when)s\n"
-
-#: bin/convert.py:19
+#: bin/.svn/text-base/convert.py.svn-base:19 bin/convert.py:19
 msgid ""
 "Convert a list's interpolation strings from %-strings to $-strings.\n"
 "\n"
@@ -9096,15 +9127,20 @@ msgid ""
 "% bin/withlist -l -r convert <mylist>\n"
 msgstr ""
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/.svn/text-base/convert.py.svn-base:38
+#: bin/.svn/text-base/fix_url.py.svn-base:85 bin/convert.py:38
+#: bin/fix_url.py:85
 msgid "Saving list"
 msgstr "Lagrer listen"
 
-#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw.py:57
+#: bin/.svn/text-base/convert.py.svn-base:44
+#: bin/.svn/text-base/fix_url.py.svn-base:51
+#: bin/.svn/text-base/reset_pw.py.svn-base:57 bin/convert.py:44
+#: bin/fix_url.py:51 bin/reset_pw.py:57
 msgid "%%%"
 msgstr ""
 
-#: bin/discard:19
+#: bin/.svn/text-base/discard.svn-base:19 bin/discard:19
 msgid ""
 "Discard held messages.\n"
 "\n"
@@ -9130,19 +9166,19 @@ msgstr ""
 "    --quiet / -q\n"
 "        Ikke vis statusmeldinger.\n"
 
-#: bin/discard:94
+#: bin/.svn/text-base/discard.svn-base:94 bin/discard:94
 msgid "Ignoring non-held message: %(f)s"
 msgstr "Ser bort i fra melding som ikke ble holdt igjen: %(f)s"
 
-#: bin/discard:100
+#: bin/.svn/text-base/discard.svn-base:100 bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
 msgstr "Ser bort i fra melding med ugyldig id: %(f)s"
 
-#: bin/discard:112
+#: bin/.svn/text-base/discard.svn-base:112 bin/discard:112
 msgid "Discarded held msg #%(id)s for list %(listname)s"
 msgstr "Forkastet melding #%(id)s for listen %(listname)s"
 
-#: bin/dumpdb:19
+#: bin/.svn/text-base/dumpdb.svn-base:19 bin/dumpdb:19
 msgid ""
 "Dump the contents of any Mailman `database' file.\n"
 "\n"
@@ -9214,31 +9250,31 @@ msgstr ""
 "du ønsker å overstyre dette (eller hvis filnavnet ikke slutter på noen av\n"
 "delene).\n"
 
-#: bin/dumpdb:106
+#: bin/.svn/text-base/dumpdb.svn-base:106 bin/dumpdb:106
 msgid "No filename given."
 msgstr "Ingen filnavn angitt"
 
-#: bin/dumpdb:109
+#: bin/.svn/text-base/dumpdb.svn-base:109 bin/dumpdb:109
 msgid "Bad arguments: %(pargs)s"
 msgstr "Ugyldige parametre: %(pargs)s"
 
-#: bin/dumpdb:119
+#: bin/.svn/text-base/dumpdb.svn-base:119 bin/dumpdb:119
 msgid "Please specify either -p or -m."
 msgstr "Vennligst benytt -p eller -m."
 
-#: bin/dumpdb:136
+#: bin/.svn/text-base/dumpdb.svn-base:136 bin/dumpdb:136
 msgid "[----- start pickle file -----]"
 msgstr ""
 
-#: bin/dumpdb:142
+#: bin/.svn/text-base/dumpdb.svn-base:142 bin/dumpdb:142
 msgid "[----- end pickle file -----]"
 msgstr ""
 
-#: bin/dumpdb:145
+#: bin/.svn/text-base/dumpdb.svn-base:145 bin/dumpdb:145
 msgid "<----- start object %(cnt)s ----->"
 msgstr ""
 
-#: bin/find_member:19
+#: bin/.svn/text-base/find_member.svn-base:19 bin/find_member:19
 msgid ""
 "Find all lists that a member's address is on.\n"
 "\n"
@@ -9322,23 +9358,23 @@ msgstr ""
 "store/små bokstaver slik de er stavet.\n"
 "\n"
 
-#: bin/find_member:159
+#: bin/.svn/text-base/find_member.svn-base:159 bin/find_member:159
 msgid "Search regular expression required"
 msgstr "Du MÅ spesifisere et regexp-uttrykk"
 
-#: bin/find_member:164
+#: bin/.svn/text-base/find_member.svn-base:164 bin/find_member:164
 msgid "No lists to search"
 msgstr "Ingen lister å søke i"
 
-#: bin/find_member:173
+#: bin/.svn/text-base/find_member.svn-base:173 bin/find_member:173
 msgid "found in:"
 msgstr "finnes i:"
 
-#: bin/find_member:179
+#: bin/.svn/text-base/find_member.svn-base:179 bin/find_member:179
 msgid "(as owner)"
 msgstr "(som eier)"
 
-#: bin/fix_url.py:19
+#: bin/.svn/text-base/fix_url.py.svn-base:19 bin/fix_url.py:19
 msgid ""
 "Reset a list's web_page_url attribute to the default setting.\n"
 "\n"
@@ -9382,15 +9418,15 @@ msgstr ""
 "\n"
 "Kjøres scriptet for seg selv, vises denne hjelpeteksten.\n"
 
-#: bin/fix_url.py:80
+#: bin/.svn/text-base/fix_url.py.svn-base:80 bin/fix_url.py:80
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "Setter web_page_url til: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/.svn/text-base/fix_url.py.svn-base:83 bin/fix_url.py:83
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "Setter host_name til: %(mailhost)s"
 
-#: bin/genaliases:19
+#: bin/.svn/text-base/genaliases.svn-base:19 bin/genaliases:19
 msgid ""
 "Regenerate Mailman specific aliases from scratch.\n"
 "\n"
@@ -9410,7 +9446,7 @@ msgid ""
 "        Print this message and exit.\n"
 msgstr ""
 
-#: bin/inject:19
+#: bin/.svn/text-base/inject.svn-base:19 bin/inject:19
 msgid ""
 "Inject a message from a file into Mailman's incoming queue.\n"
 "\n"
@@ -9456,15 +9492,15 @@ msgstr ""
 "settes\n"
 "inn i en kø. Hvis ingen fil angis, benyttes standard input.\n"
 
-#: bin/inject:83
+#: bin/.svn/text-base/inject.svn-base:83 bin/inject:83
 msgid "Bad queue directory: %(qdir)s"
 msgstr "Ugyldig kø-katalog: %(qdir)s"
 
-#: bin/inject:88
+#: bin/.svn/text-base/inject.svn-base:88 bin/inject:88
 msgid "A list name is required"
 msgstr "Navn på liste må angis"
 
-#: bin/list_admins:19
+#: bin/.svn/text-base/list_admins.svn-base:19 bin/list_admins:19
 msgid ""
 "List all the owners of a mailing list.\n"
 "\n"
@@ -9509,11 +9545,11 @@ msgstr ""
 "'listenavn' er navn på en epostliste som du vil se eierne på. Du kan angi\n"
 "navn på flere epostlister.\n"
 
-#: bin/list_admins:96
+#: bin/.svn/text-base/list_admins.svn-base:96 bin/list_admins:96
 msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "Liste: %(listname)s, \tEiere: %(owners)s"
 
-#: bin/list_lists:19
+#: bin/.svn/text-base/list_lists.svn-base:19 bin/list_lists:19
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -9558,15 +9594,15 @@ msgstr ""
 "        Viser denne hjelpeteksten.\n"
 "\n"
 
-#: bin/list_lists:105
+#: bin/.svn/text-base/list_lists.svn-base:105 bin/list_lists:105
 msgid "No matching mailing lists found"
 msgstr "Fant ingen treff på denne epostlisten"
 
-#: bin/list_lists:109
+#: bin/.svn/text-base/list_lists.svn-base:109 bin/list_lists:109
 msgid "matching mailing lists found:"
 msgstr "treff på denne epostlisten:"
 
-#: bin/list_members:19
+#: bin/.svn/text-base/list_members.svn-base:19 bin/list_members:19
 msgid ""
 "List all the members of a mailing list.\n"
 "\n"
@@ -9675,19 +9711,19 @@ msgstr ""
 "Merk at hvis hverken -r eller -d benyttes, vil medlemmer i normal-modus\n"
 "vises først, deretter medlemmer i sammendrag-modus, men ingen status vises.\n"
 
-#: bin/list_members:191
+#: bin/.svn/text-base/list_members.svn-base:191 bin/list_members:191
 msgid "Bad --nomail option: %(why)s"
 msgstr "Ugyldig --nomail parameter: %(why)s"
 
-#: bin/list_members:202
+#: bin/.svn/text-base/list_members.svn-base:202 bin/list_members:202
 msgid "Bad --digest option: %(kind)s"
 msgstr "Ugyldig --digest parameter: %(kind)s"
 
-#: bin/list_members:224
+#: bin/.svn/text-base/list_members.svn-base:224 bin/list_members:224
 msgid "Could not open file for writing:"
 msgstr "Kan ikke åpne filen for skriving:"
 
-#: bin/list_owners:19
+#: bin/.svn/text-base/list_owners.svn-base:19 bin/list_owners:19
 msgid ""
 "List the owners of a mailing list, or all mailing lists.\n"
 "\n"
@@ -9734,7 +9770,7 @@ msgstr ""
 "lister\n"
 "        vises.\n"
 
-#: bin/mailmanctl:20
+#: bin/.svn/text-base/mailmanctl.svn-base:20 bin/mailmanctl:20
 msgid ""
 "Primary start-up and shutdown script for Mailman's qrunner daemon.\n"
 "\n"
@@ -9911,23 +9947,23 @@ msgstr ""
 "    reopen  - Dette fører til at alle loggfiler lukkes og deretter åpnes på\n"
 "              nytt neste gang noe skal skrives til dem.\n"
 
-#: bin/mailmanctl:152
+#: bin/.svn/text-base/mailmanctl.svn-base:152 bin/mailmanctl:152
 msgid "PID unreadable in: %(pidfile)s"
 msgstr "Uleselig PID i: %(pidfile)s"
 
-#: bin/mailmanctl:154
+#: bin/.svn/text-base/mailmanctl.svn-base:154 bin/mailmanctl:154
 msgid "Is qrunner even running?"
 msgstr "Kjører qrunneren i det hele tatt?"
 
-#: bin/mailmanctl:160
+#: bin/.svn/text-base/mailmanctl.svn-base:160 bin/mailmanctl:160
 msgid "No child with pid: %(pid)s"
 msgstr "Ingen child med pid: %(pid)s"
 
-#: bin/mailmanctl:162
+#: bin/.svn/text-base/mailmanctl.svn-base:162 bin/mailmanctl:162
 msgid "Stale pid file removed."
 msgstr "Gammel pid fil fjernet."
 
-#: bin/mailmanctl:220
+#: bin/.svn/text-base/mailmanctl.svn-base:220 bin/mailmanctl:220
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if "
 "another\n"
@@ -9936,7 +9972,7 @@ msgstr ""
 "Kunne ikke opprette låsefil for master qrunneren fordi det ser ut til\n"
 "at en annen qrunner allerede kjører.\n"
 
-#: bin/mailmanctl:226
+#: bin/.svn/text-base/mailmanctl.svn-base:226 bin/mailmanctl:226
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there "
 "is\n"
@@ -9945,7 +9981,7 @@ msgstr ""
 "Kunne ikke opprette låsefil for master qrunneren. Det ser ut til at det\n"
 "eksisterer en gammel låsefil. Kjør mailmanctl med \"-s\" valget.\n"
 
-#: bin/mailmanctl:232
+#: bin/.svn/text-base/mailmanctl.svn-base:232 bin/mailmanctl:232
 msgid ""
 "The master qrunner lock could not be acquired, because it appears as if "
 "some\n"
@@ -9972,43 +10008,44 @@ msgstr ""
 "\n"
 "Avrbyter."
 
-#: bin/mailmanctl:279 cron/mailpasswds:119
+#: bin/.svn/text-base/mailmanctl.svn-base:279 bin/mailmanctl:279
+#: cron/.svn/text-base/mailpasswds.svn-base:119 cron/mailpasswds:119
 msgid "Site list is missing: %(sitelistname)s"
 msgstr "Systemets epostliste mangler: %(sitelistname)s"
 
-#: bin/mailmanctl:304
+#: bin/.svn/text-base/mailmanctl.svn-base:304 bin/mailmanctl:304
 msgid "Run this program as root or as the %(name)s user, or use -u."
 msgstr "Kjør dette programmet som root eller som  %(name)s, eller bruk -u."
 
-#: bin/mailmanctl:335
+#: bin/.svn/text-base/mailmanctl.svn-base:335 bin/mailmanctl:335
 msgid "No command given."
 msgstr "Ingen kommando angitt."
 
-#: bin/mailmanctl:338
+#: bin/.svn/text-base/mailmanctl.svn-base:338 bin/mailmanctl:338
 msgid "Bad command: %(command)s"
 msgstr "Uygldig kommando: %(command)s"
 
-#: bin/mailmanctl:343
+#: bin/.svn/text-base/mailmanctl.svn-base:343 bin/mailmanctl:343
 msgid "Warning!  You may encounter permission problems."
 msgstr "Advarsel! Du kan få tilgangsproblemer."
 
-#: bin/mailmanctl:352
+#: bin/.svn/text-base/mailmanctl.svn-base:352 bin/mailmanctl:352
 msgid "Shutting down Mailman's master qrunner"
 msgstr "Stopper Mailmans master qrunner."
 
-#: bin/mailmanctl:359
+#: bin/.svn/text-base/mailmanctl.svn-base:359 bin/mailmanctl:359
 msgid "Restarting Mailman's master qrunner"
 msgstr "Starter Mailmans master qrunner på nytt."
 
-#: bin/mailmanctl:363
+#: bin/.svn/text-base/mailmanctl.svn-base:363 bin/mailmanctl:363
 msgid "Re-opening all log files"
 msgstr "Åpner alle loggfiler på nytt"
 
-#: bin/mailmanctl:399
+#: bin/.svn/text-base/mailmanctl.svn-base:399 bin/mailmanctl:399
 msgid "Starting Mailman's master qrunner."
 msgstr "Starter Mailmans master qrunner."
 
-#: bin/mmsitepass:19
+#: bin/.svn/text-base/mmsitepass.svn-base:19 bin/mmsitepass:19
 msgid ""
 "Set the site password, prompting from the terminal.\n"
 "\n"
@@ -10056,39 +10093,39 @@ msgstr ""
 "Hvis ikke passordet gis på kommandolinjen, vil programmet be passordet "
 "istedet.\n"
 
-#: bin/mmsitepass:73
+#: bin/.svn/text-base/mmsitepass.svn-base:73 bin/mmsitepass:73
 msgid "site"
 msgstr "system"
 
-#: bin/mmsitepass:80
+#: bin/.svn/text-base/mmsitepass.svn-base:80 bin/mmsitepass:80
 msgid "list creator"
 msgstr "person som listen ble opprettet av"
 
-#: bin/mmsitepass:86
+#: bin/.svn/text-base/mmsitepass.svn-base:86 bin/mmsitepass:86
 msgid "New %(pwdesc)s password: "
 msgstr "Nytt %(pwdesc)s passord: "
 
-#: bin/mmsitepass:87
+#: bin/.svn/text-base/mmsitepass.svn-base:87 bin/mmsitepass:87
 msgid "Again to confirm password: "
 msgstr "Skriv passordet en gang til: "
 
-#: bin/mmsitepass:89
+#: bin/.svn/text-base/mmsitepass.svn-base:89 bin/mmsitepass:89
 msgid "Passwords do not match; no changes made."
 msgstr "Passordene er ikke like; ingen endring utført."
 
-#: bin/mmsitepass:92
+#: bin/.svn/text-base/mmsitepass.svn-base:92 bin/mmsitepass:92
 msgid "Interrupted..."
 msgstr "Avbrutt..."
 
-#: bin/mmsitepass:98
+#: bin/.svn/text-base/mmsitepass.svn-base:98 bin/mmsitepass:98
 msgid "Password changed."
 msgstr "Passordet er endret."
 
-#: bin/mmsitepass:100
+#: bin/.svn/text-base/mmsitepass.svn-base:100 bin/mmsitepass:100
 msgid "Password change failed."
 msgstr "Feil under endring av passord."
 
-#: bin/msgfmt.py:5
+#: bin/.svn/text-base/msgfmt.py.svn-base:5 bin/msgfmt.py:5
 msgid ""
 "Generate binary message catalog from textual translation description.\n"
 "\n"
@@ -10116,15 +10153,15 @@ msgid ""
 "        Display version information and exit.\n"
 msgstr ""
 
-#: bin/msgfmt.py:49
+#: bin/.svn/text-base/msgfmt.py.svn-base:49 bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
 msgstr ""
 
-#: bin/msgfmt.py:57
+#: bin/.svn/text-base/msgfmt.py.svn-base:57 bin/msgfmt.py:57
 msgid "Return the generated output."
 msgstr ""
 
-#: bin/newlist:19
+#: bin/.svn/text-base/newlist.svn-base:19 bin/newlist:19
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -10287,31 +10324,31 @@ msgstr ""
 "\n"
 "Merk at listenavn vil bli omgjort til små bokstaver.\n"
 
-#: bin/newlist:150
+#: bin/.svn/text-base/newlist.svn-base:150 bin/newlist:150
 msgid "Unknown language: %(lang)s"
 msgstr "Ukjent språk: %(lang)s"
 
-#: bin/newlist:155
+#: bin/.svn/text-base/newlist.svn-base:155 bin/newlist:155
 msgid "Enter the name of the list: "
 msgstr "Oppgi epostlistens navn:"
 
-#: bin/newlist:176
+#: bin/.svn/text-base/newlist.svn-base:176 bin/newlist:176
 msgid "Enter the email of the person running the list: "
 msgstr "Oppgi epostadressen til personen som er ansvarlig for listen:"
 
-#: bin/newlist:181
+#: bin/.svn/text-base/newlist.svn-base:181 bin/newlist:181
 msgid "Initial %(listname)s password: "
 msgstr "Det første passordet for \"%(listname)s\" er: "
 
-#: bin/newlist:185
+#: bin/.svn/text-base/newlist.svn-base:185 bin/newlist:185
 msgid "The list password cannot be empty"
 msgstr "Listen må ha et passord (listens passord kan ikke være blankt)"
 
-#: bin/newlist:225
+#: bin/.svn/text-base/newlist.svn-base:225 bin/newlist:225
 msgid "Hit enter to notify %(listname)s owner..."
 msgstr "Trykk [Enter] for å sende melding til eieren av listen %(listname)s..."
 
-#: bin/qrunner:20
+#: bin/.svn/text-base/qrunner.svn-base:20 bin/qrunner:20
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
 "\n"
@@ -10378,19 +10415,19 @@ msgid ""
 "operation.  It is only useful for debugging if it is run separately.\n"
 msgstr ""
 
-#: bin/qrunner:178
+#: bin/.svn/text-base/qrunner.svn-base:178 bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
 msgstr "%(name)s starter %(runnername)s qrunneren"
 
-#: bin/qrunner:179
+#: bin/.svn/text-base/qrunner.svn-base:179 bin/qrunner:179
 msgid "All runs all the above qrunners"
 msgstr "\"All\" kjører alle qrunnerene ovenfor"
 
-#: bin/qrunner:215
+#: bin/.svn/text-base/qrunner.svn-base:215 bin/qrunner:215
 msgid "No runner name given."
 msgstr "Ingen runner navn ble angitt."
 
-#: bin/rb-archfix:21
+#: bin/.svn/text-base/rb-archfix.svn-base:21 bin/rb-archfix:21
 msgid ""
 "Reduce disk space usage for Pipermail archives.\n"
 "\n"
@@ -10422,7 +10459,7 @@ msgid ""
 "This script is provided for convenience purposes only.  It isn't supported.\n"
 msgstr ""
 
-#: bin/remove_members:20
+#: bin/.svn/text-base/remove_members.svn-base:20 bin/remove_members:20
 #, fuzzy
 msgid ""
 "Remove members from a list.\n"
@@ -10508,23 +10545,23 @@ msgstr ""
 "    addr1 ... er ytterligere adresser som skal fjernes.\n"
 "\n"
 
-#: bin/remove_members:156
+#: bin/.svn/text-base/remove_members.svn-base:156 bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
 msgstr "Kunne ikke åpne filen \"%(filename)s\" for lesing."
 
-#: bin/remove_members:163
+#: bin/.svn/text-base/remove_members.svn-base:163 bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
 msgstr "Hopper over listen \"%(listname)s\" grunnet feil under åpning."
 
-#: bin/remove_members:173
+#: bin/.svn/text-base/remove_members.svn-base:173 bin/remove_members:173
 msgid "No such member: %(addr)s"
 msgstr "Medlemmet finnes ikke: %(addr)s."
 
-#: bin/remove_members:178
+#: bin/.svn/text-base/remove_members.svn-base:178 bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr "%(addr)s er nå fjernet fra listen %(listname)s."
 
-#: bin/reset_pw.py:21
+#: bin/.svn/text-base/reset_pw.py.svn-base:21 bin/reset_pw.py:21
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -10544,15 +10581,15 @@ msgid ""
 "        Print what the script is doing.\n"
 msgstr ""
 
-#: bin/reset_pw.py:77
+#: bin/.svn/text-base/reset_pw.py.svn-base:77 bin/reset_pw.py:77
 msgid "Changing passwords for list: %(listname)s"
 msgstr "Endrer passord for liste: %(listname)s"
 
-#: bin/reset_pw.py:83
+#: bin/.svn/text-base/reset_pw.py.svn-base:83 bin/reset_pw.py:83
 msgid "New password for member %(member)40s: %(randompw)s"
 msgstr ""
 
-#: bin/rmlist:19
+#: bin/.svn/text-base/rmlist.svn-base:19 bin/rmlist:19
 msgid ""
 "Remove the components of a mailing list with impunity - beware!\n"
 "\n"
@@ -10593,45 +10630,48 @@ msgstr ""
 "        Viser denne hjelpeteksten.\n"
 "\n"
 
+#: bin/.svn/text-base/rmlist.svn-base:72 bin/.svn/text-base/rmlist.svn-base:75
 #: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "Fjerner %(msg)s"
 
-#: bin/rmlist:80
+#: bin/.svn/text-base/rmlist.svn-base:80 bin/rmlist:80
 msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "Fant ikke %(listname)s %(msg)s som %(filename)s"
 
-#: bin/rmlist:104
+#: bin/.svn/text-base/rmlist.svn-base:104 bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "Listen finnes ikke (eller er allerede slettet): %(listname)s"
 
-#: bin/rmlist:106
+#: bin/.svn/text-base/rmlist.svn-base:106 bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "Listen finnes ikke: %(listname)s. Fjerner arkivet som ligger igjen."
 
-#: bin/rmlist:110
+#: bin/.svn/text-base/rmlist.svn-base:110 bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr ""
 "Fjerner ikke arkivet. Kjør kommandoen på nytt med parameteren \"-a\" for\n"
 "å fjerne arkivet."
 
-#: bin/rmlist:124
+#: bin/.svn/text-base/rmlist.svn-base:124 bin/rmlist:124
 msgid "list info"
 msgstr "listeinformasjon"
 
-#: bin/rmlist:132
+#: bin/.svn/text-base/rmlist.svn-base:132 bin/rmlist:132
 msgid "stale lock file"
 msgstr "gammel låsefil"
 
-#: bin/rmlist:137 bin/rmlist:139
+#: bin/.svn/text-base/rmlist.svn-base:137
+#: bin/.svn/text-base/rmlist.svn-base:139 bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "private arkiv"
 
-#: bin/rmlist:141 bin/rmlist:143
+#: bin/.svn/text-base/rmlist.svn-base:141
+#: bin/.svn/text-base/rmlist.svn-base:143 bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "offentlige arkiv"
 
-#: bin/show_qfiles:20
+#: bin/.svn/text-base/show_qfiles.svn-base:20 bin/show_qfiles:20
 msgid ""
 "Show the contents of one or more Mailman queue files.\n"
 "\n"
@@ -10648,7 +10688,7 @@ msgid ""
 "Example: show_qfiles qfiles/shunt/*.pck\n"
 msgstr ""
 
-#: bin/sync_members:19
+#: bin/.svn/text-base/sync_members.svn-base:19 bin/sync_members:19
 msgid ""
 "Synchronize a mailing list's membership with a flat file.\n"
 "\n"
@@ -10777,59 +10817,59 @@ msgstr ""
 "    listenavn\n"
 "        Må benyttes. Angir navnet på listen som skal synkroniseres.\n"
 
-#: bin/sync_members:115
+#: bin/.svn/text-base/sync_members.svn-base:115 bin/sync_members:115
 msgid "Bad choice: %(yesno)s"
 msgstr "Ugyldig valg: %(yesno)s"
 
-#: bin/sync_members:138
+#: bin/.svn/text-base/sync_members.svn-base:138 bin/sync_members:138
 msgid "Dry run mode"
 msgstr "Utfører ingen endringer."
 
-#: bin/sync_members:159
+#: bin/.svn/text-base/sync_members.svn-base:159 bin/sync_members:159
 msgid "Only one -f switch allowed"
 msgstr "Bare en \"-f\" parameter kan brukes"
 
-#: bin/sync_members:163
+#: bin/.svn/text-base/sync_members.svn-base:163 bin/sync_members:163
 msgid "No argument to -f given"
 msgstr "\"-f\" parameteren mangler verdi"
 
-#: bin/sync_members:172
+#: bin/.svn/text-base/sync_members.svn-base:172 bin/sync_members:172
 msgid "Illegal option: %(opt)s"
 msgstr "Ugyldig parameter: %(opt)s"
 
-#: bin/sync_members:178
+#: bin/.svn/text-base/sync_members.svn-base:178 bin/sync_members:178
 msgid "No listname given"
 msgstr "Ingen liste angitt"
 
-#: bin/sync_members:182
+#: bin/.svn/text-base/sync_members.svn-base:182 bin/sync_members:182
 msgid "Must have a listname and a filename"
 msgstr "Må ha et listenavn og et filnavn"
 
-#: bin/sync_members:191
+#: bin/.svn/text-base/sync_members.svn-base:191 bin/sync_members:191
 msgid "Cannot read address file: %(filename)s: %(msg)s"
 msgstr "Kan ikke lese adressefil: %(filename)s: %(msg)s"
 
-#: bin/sync_members:203
+#: bin/.svn/text-base/sync_members.svn-base:203 bin/sync_members:203
 msgid "Ignore  :  %(addr)30s"
 msgstr "Hopper over : %(addr)30s"
 
-#: bin/sync_members:212
+#: bin/.svn/text-base/sync_members.svn-base:212 bin/sync_members:212
 msgid "Invalid :  %(addr)30s"
 msgstr "Ugyldig :  %(addr)30s"
 
-#: bin/sync_members:215
+#: bin/.svn/text-base/sync_members.svn-base:215 bin/sync_members:215
 msgid "You must fix the preceding invalid addresses first."
 msgstr "Du må fixe de ugyldige adressene først."
 
-#: bin/sync_members:260
+#: bin/.svn/text-base/sync_members.svn-base:260 bin/sync_members:260
 msgid "Added  : %(s)s"
 msgstr "La inn : %(s)s"
 
-#: bin/sync_members:278
+#: bin/.svn/text-base/sync_members.svn-base:278 bin/sync_members:278
 msgid "Removed: %(s)s"
 msgstr "Fjernet: %(s)s"
 
-#: bin/transcheck:18
+#: bin/.svn/text-base/transcheck.svn-base:18 bin/transcheck:18
 msgid ""
 "\n"
 "Check a given Mailman translation, making sure that variables and\n"
@@ -10845,27 +10885,27 @@ msgid ""
 "to ask for a brief summary.\n"
 msgstr ""
 
-#: bin/transcheck:57
+#: bin/.svn/text-base/transcheck.svn-base:57 bin/transcheck:57
 msgid "check a translation comparing with the original string"
 msgstr ""
 
-#: bin/transcheck:67
+#: bin/.svn/text-base/transcheck.svn-base:67 bin/transcheck:67
 msgid "scan a string from the original file"
 msgstr ""
 
-#: bin/transcheck:77
+#: bin/.svn/text-base/transcheck.svn-base:77 bin/transcheck:77
 msgid "scan a translated string"
 msgstr ""
 
-#: bin/transcheck:90
+#: bin/.svn/text-base/transcheck.svn-base:90 bin/transcheck:90
 msgid "check for differences between checked in and checked out"
 msgstr ""
 
-#: bin/transcheck:123
+#: bin/.svn/text-base/transcheck.svn-base:123 bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
 msgstr ""
 
-#: bin/transcheck:142
+#: bin/.svn/text-base/transcheck.svn-base:142 bin/transcheck:142
 msgid ""
 "States table for the finite-states-machine parser:\n"
 "            0  idle\n"
@@ -10876,17 +10916,17 @@ msgid ""
 "        "
 msgstr ""
 
-#: bin/transcheck:279
+#: bin/.svn/text-base/transcheck.svn-base:279 bin/transcheck:279
 msgid ""
 "check a translated template against the original one\n"
 "       search also <MM-*> tags if html is not zero"
 msgstr ""
 
-#: bin/transcheck:326
+#: bin/.svn/text-base/transcheck.svn-base:326 bin/transcheck:326
 msgid "scan the po file comparing msgids with msgstrs"
 msgstr ""
 
-#: bin/unshunt:19
+#: bin/.svn/text-base/unshunt.svn-base:20 bin/unshunt:20
 msgid ""
 "Move a message from the shunt queue to the original queue.\n"
 "\n"
@@ -10912,13 +10952,13 @@ msgstr ""
 "Den valgfrie \"katalog\" parameteren kan benyttes hvis du ønsker å flytte\n"
 "meldinger fra en annen katalog enn qfiles/shunt.\n"
 
-#: bin/unshunt:81
+#: bin/.svn/text-base/unshunt.svn-base:83 bin/unshunt:83
 msgid ""
 "Cannot unshunt message %(filebase)s, skipping:\n"
 "%(e)s"
 msgstr ""
 
-#: bin/update:19
+#: bin/.svn/text-base/update.svn-base:19 bin/update:19
 msgid ""
 "Perform all necessary upgrades.\n"
 "\n"
@@ -10956,25 +10996,26 @@ msgstr ""
 "versjoner til ny versjon. Scriptet kjenner til versjoner helt tilbake til\n"
 "1.0b4 (?).\n"
 
-#: bin/update:107
+#: bin/.svn/text-base/update.svn-base:107 bin/update:107
 msgid "Fixing language templates: %(listname)s"
 msgstr "Oppdaterer språkfiler: %(listname)s"
 
-#: bin/update:196 bin/update:698
+#: bin/.svn/text-base/update.svn-base:196
+#: bin/.svn/text-base/update.svn-base:698 bin/update:196 bin/update:698
 msgid "WARNING: could not acquire lock for list: %(listname)s"
 msgstr "ADVARSEL: kunne ikke låse listen: %(listname)s"
 
-#: bin/update:215
+#: bin/.svn/text-base/update.svn-base:215 bin/update:215
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
 msgstr ""
 "Resetter %(n)s adresser som ble stoppet grunnet returmeldinger, men som ikke "
 "har noe returmeldinginformasjon"
 
-#: bin/update:221
+#: bin/.svn/text-base/update.svn-base:221 bin/update:221
 msgid "Updating the held requests database."
 msgstr "Oppdaterer databasen over tilbakeholdte meldinger."
 
-#: bin/update:243
+#: bin/.svn/text-base/update.svn-base:243 bin/update:243
 msgid ""
 "For some reason, %(mbox_dir)s exists as a file.  This won't work with\n"
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
@@ -10982,7 +11023,7 @@ msgstr ""
 "Av en eller annen grunn, eksisterer %(mbox_dir)s som en fil. Dette vil ikke\n"
 "virke i b6, så jeg endrer navnet til %(mbox_dir)s.tmp og fortsetter."
 
-#: bin/update:255
+#: bin/.svn/text-base/update.svn-base:255 bin/update:255
 msgid ""
 "\n"
 "%(listname)s has both public and private mbox archives.  Since this list\n"
@@ -11007,7 +11048,7 @@ msgstr ""
 "Hvis du vil kan du integrere dette inn i arkivet ved å bruke 'arch' "
 "skriptet.\n"
 
-#: bin/update:270
+#: bin/.svn/text-base/update.svn-base:270 bin/update:270
 msgid ""
 "%s has both public and private mbox archives.  Since this list\n"
 "currently uses public archiving, I'm installing the public mbox file\n"
@@ -11030,11 +11071,11 @@ msgstr ""
 "Hvis du vil kan du integrere dette inn i arkivet ved å bruke 'arch' "
 "skriptet.\n"
 
-#: bin/update:287
+#: bin/.svn/text-base/update.svn-base:287 bin/update:287
 msgid "- updating old private mbox file"
 msgstr "- oppdaterer den gamle private mbox-filen"
 
-#: bin/update:295
+#: bin/.svn/text-base/update.svn-base:295 bin/update:295
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pri_mbox_file)s\n"
@@ -11046,7 +11087,8 @@ msgstr ""
 "    til\n"
 "        %(newname)s"
 
-#: bin/update:302 bin/update:325
+#: bin/.svn/text-base/update.svn-base:302
+#: bin/.svn/text-base/update.svn-base:325 bin/update:302 bin/update:325
 msgid ""
 "    looks like you have a really recent CVS installation...\n"
 "    you're either one brave soul, or you already ran me"
@@ -11054,11 +11096,11 @@ msgstr ""
 "    ser ut til at du har en ganske ny CVS installasjon...\n"
 "    enten er du en modig sjel, eller så har du allerede kjørt dette skriptet"
 
-#: bin/update:311
+#: bin/.svn/text-base/update.svn-base:311 bin/update:311
 msgid "- updating old public mbox file"
 msgstr "- oppdaterer den gamle offentlige mbox-filen"
 
-#: bin/update:319
+#: bin/.svn/text-base/update.svn-base:319 bin/update:319
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pub_mbox_file)s\n"
@@ -11070,80 +11112,80 @@ msgstr ""
 "    til\n"
 "        %(newname)s"
 
-#: bin/update:350
+#: bin/.svn/text-base/update.svn-base:350 bin/update:350
 msgid "- This list looks like it might have <= b4 list templates around"
 msgstr "- Det ser ut som denne listen har templates eldre enn b5 liggende"
 
-#: bin/update:358
+#: bin/.svn/text-base/update.svn-base:358 bin/update:358
 msgid "- moved %(o_tmpl)s to %(n_tmpl)s"
 msgstr "- flyttet %(o_tmpl)s til %(n_tmpl)s"
 
-#: bin/update:360
+#: bin/.svn/text-base/update.svn-base:360 bin/update:360
 msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- både %(o_tmpl)s og %(n_tmpl)s eksisterer, rører ikke disse"
 
-#: bin/update:363
+#: bin/.svn/text-base/update.svn-base:363 bin/update:363
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
 msgstr "- %(o_tmpl)s eksisterer ikke, rører ikke denne"
 
-#: bin/update:393
+#: bin/.svn/text-base/update.svn-base:393 bin/update:393
 msgid "removing directory %(src)s and everything underneath"
 msgstr "fjerner katalogen %(src)s og alle underkataloger"
 
-#: bin/update:396
+#: bin/.svn/text-base/update.svn-base:396 bin/update:396
 msgid "removing %(src)s"
 msgstr "fjerner %(src)s"
 
-#: bin/update:400
+#: bin/.svn/text-base/update.svn-base:400 bin/update:400
 msgid "Warning: couldn't remove %(src)s -- %(rest)s"
 msgstr "Advarsel: kunne ikke fjerne %(src)s -- %(rest)s"
 
-#: bin/update:405
+#: bin/.svn/text-base/update.svn-base:405 bin/update:405
 msgid "couldn't remove old file %(pyc)s -- %(rest)s"
 msgstr "kunne ikke fjerne den gamle filen %(pyc)s -- %(rest)s"
 
-#: bin/update:409
+#: bin/.svn/text-base/update.svn-base:409 bin/update:409
 msgid "updating old qfiles"
 msgstr "oppdaterer gamle qfiler"
 
-#: bin/update:448
+#: bin/.svn/text-base/update.svn-base:448 bin/update:448
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
 msgstr "Ugyldig kø-katalog: %(qdir)s"
 
-#: bin/update:517
+#: bin/.svn/text-base/update.svn-base:517 bin/update:517
 msgid "message is unparsable: %(filebase)s"
 msgstr "kan ikke tolke melding: %(filebase)s"
 
-#: bin/update:531
+#: bin/.svn/text-base/update.svn-base:531 bin/update:531
 msgid "Warning!  Deleting empty .pck file: %(pckfile)s"
 msgstr ""
 
-#: bin/update:550
+#: bin/.svn/text-base/update.svn-base:550 bin/update:550
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
 msgstr "Oppdaterer pending_subscriptions.db databasen fra Mailman 2.0"
 
-#: bin/update:561
+#: bin/.svn/text-base/update.svn-base:561 bin/update:561
 msgid "Updating Mailman 2.1.4 pending.pck database"
 msgstr "Oppdaterer pending.pck databasen fra Mailman 2.1.4"
 
-#: bin/update:585
+#: bin/.svn/text-base/update.svn-base:585 bin/update:585
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
 msgstr "Ser bort i fra feildata: %(key)s: %(val)s"
 
-#: bin/update:601
+#: bin/.svn/text-base/update.svn-base:601 bin/update:601
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
 msgstr "ADVARSEL: Ser bort i fra duplikatmelding som venter: %(id)s"
 
-#: bin/update:654
+#: bin/.svn/text-base/update.svn-base:654 bin/update:654
 msgid "getting rid of old source files"
 msgstr "fjerner gamle kildefiler"
 
-#: bin/update:664
+#: bin/.svn/text-base/update.svn-base:664 bin/update:664
 msgid "no lists == nothing to do, exiting"
 msgstr "ingen lister == ingenting å gjøre, avslutter"
 
-#: bin/update:671
+#: bin/.svn/text-base/update.svn-base:671 bin/update:671
 msgid ""
 "fixing all the perms on your old html archives to work with b6\n"
 "If your archives are big, this could take a minute or two..."
@@ -11152,27 +11194,27 @@ msgstr ""
 "virke\n"
 "med b6. Hvis arkivene er store, kan dette ta et minutt eller to..."
 
-#: bin/update:676
+#: bin/.svn/text-base/update.svn-base:676 bin/update:676
 msgid "done"
 msgstr "utført"
 
-#: bin/update:678
+#: bin/.svn/text-base/update.svn-base:678 bin/update:678
 msgid "Updating mailing list: %(listname)s"
 msgstr "Oppdaterer epostliste: %(listname)s"
 
-#: bin/update:681
+#: bin/.svn/text-base/update.svn-base:681 bin/update:681
 msgid "Updating Usenet watermarks"
 msgstr "Oppdaterer Usenet watermarks (vannmerker for nyhetsgrupper)"
 
-#: bin/update:686
+#: bin/.svn/text-base/update.svn-base:686 bin/update:686
 msgid "- nothing to update here"
 msgstr "- ingenting å oppdatere her"
 
-#: bin/update:709
+#: bin/.svn/text-base/update.svn-base:709 bin/update:709
 msgid "- usenet watermarks updated and gate_watermarks removed"
 msgstr "- usenet watermarks og gate_watermarks er fjernet"
 
-#: bin/update:723
+#: bin/.svn/text-base/update.svn-base:723 bin/update:723
 msgid ""
 "\n"
 "\n"
@@ -11215,11 +11257,11 @@ msgstr ""
 "NB! NB! NB! NB! NB!\n"
 "\n"
 
-#: bin/update:780
+#: bin/.svn/text-base/update.svn-base:780 bin/update:780
 msgid "No updates are necessary."
 msgstr "Ingen oppdatering er nødvendig."
 
-#: bin/update:783
+#: bin/.svn/text-base/update.svn-base:783 bin/update:783
 msgid ""
 "Downgrade detected, from version %(hexlversion)s to version %(hextversion)s\n"
 "This is probably not safe.\n"
@@ -11229,11 +11271,11 @@ msgstr ""
 "Dette vil antakelig ikke fungere.\n"
 "Avbryter."
 
-#: bin/update:788
+#: bin/.svn/text-base/update.svn-base:788 bin/update:788
 msgid "Upgrading from version %(hexlversion)s to %(hextversion)s"
 msgstr "Oppgraderer fra version %(hexlversion)s til  %(hextversion)s"
 
-#: bin/update:797
+#: bin/.svn/text-base/update.svn-base:797 bin/update:797
 msgid ""
 "\n"
 "ERROR:\n"
@@ -11260,15 +11302,15 @@ msgstr ""
 "for\n"
 "nærmere informasjon.\n"
 
-#: bin/version:19
+#: bin/.svn/text-base/version.svn-base:19 bin/version:19
 msgid "Print the Mailman version.\n"
 msgstr "Vise Mailman versjonen.\n"
 
-#: bin/version:26
+#: bin/.svn/text-base/version.svn-base:26 bin/version:26
 msgid "Using Mailman version:"
 msgstr "Bruker Mailman versjon:"
 
-#: bin/withlist:19
+#: bin/.svn/text-base/withlist.svn-base:19 bin/withlist:19
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -11385,7 +11427,7 @@ msgid ""
 " %% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
 msgstr ""
 
-#: bin/withlist:163
+#: bin/.svn/text-base/withlist.svn-base:163 bin/withlist:163
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -11396,51 +11438,51 @@ msgid ""
 "    "
 msgstr ""
 
-#: bin/withlist:174
+#: bin/.svn/text-base/withlist.svn-base:174 bin/withlist:174
 msgid "Unlocking (but not saving) list: %(listname)s"
 msgstr "Låser opp (men lagrer ikke) listen: %(listname)s"
 
-#: bin/withlist:178
+#: bin/.svn/text-base/withlist.svn-base:178 bin/withlist:178
 msgid "Finalizing"
 msgstr "Avslutter"
 
-#: bin/withlist:187
+#: bin/.svn/text-base/withlist.svn-base:187 bin/withlist:187
 msgid "Loading list %(listname)s"
 msgstr "Leser listen %(listname)s"
 
-#: bin/withlist:189
+#: bin/.svn/text-base/withlist.svn-base:189 bin/withlist:189
 msgid "(locked)"
 msgstr "(låst)"
 
-#: bin/withlist:191
+#: bin/.svn/text-base/withlist.svn-base:191 bin/withlist:191
 msgid "(unlocked)"
 msgstr "(åpen)"
 
-#: bin/withlist:196
+#: bin/.svn/text-base/withlist.svn-base:196 bin/withlist:196
 msgid "Unknown list: %(listname)s"
 msgstr "Ukjent liste: %(listname)s"
 
-#: bin/withlist:236
+#: bin/.svn/text-base/withlist.svn-base:236 bin/withlist:236
 msgid "No list name supplied."
 msgstr "Ingen listenavn angitt"
 
-#: bin/withlist:245
+#: bin/.svn/text-base/withlist.svn-base:245 bin/withlist:245
 msgid "--all requires --run"
 msgstr "--all krever --run"
 
-#: bin/withlist:265
+#: bin/.svn/text-base/withlist.svn-base:265 bin/withlist:265
 msgid "Importing %(module)s..."
 msgstr "Importerer %(module)s..."
 
-#: bin/withlist:268
+#: bin/.svn/text-base/withlist.svn-base:268 bin/withlist:268
 msgid "Running %(module)s.%(callable)s()..."
 msgstr "Kjører %(module)s.%(callable)s()..."
 
-#: bin/withlist:289
+#: bin/.svn/text-base/withlist.svn-base:289 bin/withlist:289
 msgid "The variable `m' is the %(listname)s MailList instance"
 msgstr "Variabelen 'm' er forekomsten av %(listname)s MailList objektet"
 
-#: cron/bumpdigests:19
+#: cron/.svn/text-base/bumpdigests.svn-base:19 cron/bumpdigests:19
 msgid ""
 "Increment the digest volume number and reset the digest number to one.\n"
 "\n"
@@ -11468,7 +11510,7 @@ msgstr ""
 "Volume nummeret økes for den angitte listen. Hvis ingen liste angis, økes\n"
 "volume nummer for alle lister.\n"
 
-#: cron/checkdbs:19
+#: cron/.svn/text-base/checkdbs.svn-base:19 cron/checkdbs:19
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"
@@ -11489,7 +11531,7 @@ msgstr ""
 "    --help / -h\n"
 "        Viser denne hjelpeteksten.\n"
 
-#: cron/checkdbs:107
+#: cron/.svn/text-base/checkdbs.svn-base:107 cron/checkdbs:107
 msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
@@ -11497,19 +11539,19 @@ msgstr ""
 "Melding: %(discarded)d gamle meldinger ble automatisk forkastet.\n"
 "\n"
 
-#: cron/checkdbs:120
+#: cron/.svn/text-base/checkdbs.svn-base:120 cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
 msgstr "%(count)d forespørsler venter på behandling på listen %(realname)s"
 
-#: cron/checkdbs:123
+#: cron/.svn/text-base/checkdbs.svn-base:123 cron/checkdbs:123
 msgid "%(realname)s moderator request check result"
 msgstr "Resultat av forespørselsjekk for listen %(realname)s"
 
-#: cron/checkdbs:143
+#: cron/.svn/text-base/checkdbs.svn-base:143 cron/checkdbs:143
 msgid "Pending subscriptions:"
 msgstr "Søknader om medlemskap som venter på behandling:"
 
-#: cron/checkdbs:154
+#: cron/.svn/text-base/checkdbs.svn-base:154 cron/checkdbs:154
 msgid ""
 "\n"
 "Pending posts:"
@@ -11517,7 +11559,7 @@ msgstr ""
 "\n"
 "Epost til listen som krever godkjenning:"
 
-#: cron/checkdbs:161
+#: cron/.svn/text-base/checkdbs.svn-base:161 cron/checkdbs:161
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -11527,7 +11569,7 @@ msgstr ""
 "Tittel: %(subject)s\n"
 "Fordi: %(reason)s"
 
-#: cron/disabled:19
+#: cron/.svn/text-base/disabled.svn-base:19 cron/disabled:19
 msgid ""
 "Process disabled members, recommended once per day.\n"
 "\n"
@@ -11577,11 +11619,11 @@ msgid ""
 "        Process only the given list, otherwise do all lists.\n"
 msgstr ""
 
-#: cron/disabled:144
+#: cron/.svn/text-base/disabled.svn-base:144 cron/disabled:144
 msgid "[disabled by periodic sweep and cull, no message available]"
 msgstr "[stoppet av periodisk undersøkelse, ingen melding tilgjengelig]"
 
-#: cron/gate_news:19
+#: cron/.svn/text-base/gate_news.svn-base:19 cron/gate_news:19
 msgid ""
 "Poll the NNTP servers for messages to be gatewayed to mailing lists.\n"
 "\n"
@@ -11606,7 +11648,7 @@ msgstr ""
 "        Viser denne hjelpeteksten.\n"
 "\n"
 
-#: cron/mailpasswds:19
+#: cron/.svn/text-base/mailpasswds.svn-base:19 cron/mailpasswds:19
 msgid ""
 "Send password reminders for all lists to all users.\n"
 "\n"
@@ -11656,15 +11698,15 @@ msgstr ""
 "    -h\n"
 "        Viser denne hjelpeteksten.\n"
 
-#: cron/mailpasswds:216
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "Password // URL"
 msgstr "Passord // URL"
 
-#: cron/mailpasswds:222
+#: cron/.svn/text-base/mailpasswds.svn-base:222 cron/mailpasswds:222
 msgid "%(host)s mailing list memberships reminder"
 msgstr "Påminnelse om passord for epostlister på %(host)s"
 
-#: cron/nightly_gzip:19
+#: cron/.svn/text-base/nightly_gzip.svn-base:19 cron/nightly_gzip:19
 msgid ""
 "Re-generate the Pipermail gzip'd archive flat files.\n"
 "\n"
@@ -11712,7 +11754,7 @@ msgstr ""
 "        filene for alle listene som har aktivert arkiv.\n"
 "\n"
 
-#: cron/senddigests:19
+#: cron/.svn/text-base/senddigests.svn-base:19 cron/senddigests:19
 msgid ""
 "Dispatch digests for lists w/pending messages and digest_send_periodic set.\n"
 "\n"
@@ -11742,6 +11784,13 @@ msgstr ""
 "    --listname=listenavn\n"
 "        Send samle-epost kun fra den angitte listen. Hvis ikke dette valget\n"
 "        benyttes, vil det sendes ut fra alle aktuelle lister.\n"
+
+#~ msgid ""
+#~ "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
+#~ "## captured on %(when)s\n"
+#~ msgstr ""
+#~ "## Innstillinger for epostlisten \"%(listname)s\"  -*- python -*-\n"
+#~ "## Dato: %(when)s\n"
 
 #~ msgid ""
 #~ "Approval notices are sent when mail triggers certain of the\n"

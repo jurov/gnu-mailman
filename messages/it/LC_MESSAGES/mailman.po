@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"POT-Creation-Date: Thu Mar 23 16:59:29 2006\n"
+"POT-Creation-Date: Fri Aug  4 16:11:31 2006\n"
 "PO-Revision-Date: 2005-12-11 15:39+0100\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team:  <it@li.org>\n"
@@ -239,9 +239,9 @@ msgstr " L'ultimo errore sul tuo indirizzo è datato %(date)s"
 
 # /home/mailman/Mailman/Archiver/pipermail.py:95
 # /home/mailman/Mailman/Archiver/pipermail.py:96
-#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:145
+#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:285
-#: Mailman/Handlers/Hold.py:209 Mailman/Handlers/ToDigest.py:235
+#: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:235
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(senza oggetto)"
@@ -385,7 +385,8 @@ msgstr "<p>(Manda domande o commenti a "
 # /home/mailman/Mailman/Cgi/admin.py:260
 # /home/mailman/Mailman/Cgi/listinfo.py:159
 # /home/mailman/Mailman/MailList.py:428
-#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135 cron/mailpasswds:216
+#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "List"
 msgstr "Lista"
 
@@ -398,7 +399,8 @@ msgid "Description"
 msgstr "Descrizione"
 
 # /home/mailman/Mailman/MailCommandHandler.py:405
-#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142 bin/list_lists:116
+#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142
+#: bin/.svn/text-base/list_lists.svn-base:116 bin/list_lists:116
 msgid "[no description available]"
 msgstr "[nessuna descrizione disponibile]"
 
@@ -1405,7 +1407,7 @@ msgid "Message Excerpt:"
 msgstr "Estratto del messaggio:"
 
 # /home/mailman/Mailman/ListAdmin.py:210
-#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:143
+#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:141
 msgid "No reason given"
 msgstr "Nessuna motivazione fornita"
 
@@ -2109,15 +2111,18 @@ msgid "Unknown virtual host: %(safehostname)s"
 msgstr "Lista ignota: %(safelistname)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: Mailman/Cgi/create.py:195 bin/newlist:202
+#: Mailman/Cgi/create.py:195 bin/.svn/text-base/newlist.svn-base:202
+#: bin/newlist:202
 msgid "Bad owner email address: %(s)s"
 msgstr "Indirizzo del proprietario non valido: %(s)s"
 
-#: Mailman/Cgi/create.py:199 bin/newlist:170 bin/newlist:204
+#: Mailman/Cgi/create.py:199 bin/.svn/text-base/newlist.svn-base:170
+#: bin/.svn/text-base/newlist.svn-base:204 bin/newlist:170 bin/newlist:204
 msgid "List already exists: %(listname)s"
 msgstr "Lista già esistente: %(listname)s"
 
-#: Mailman/Cgi/create.py:203 bin/newlist:200
+#: Mailman/Cgi/create.py:203 bin/.svn/text-base/newlist.svn-base:200
+#: bin/newlist:200
 msgid "Illegal list name: %(s)s"
 msgstr "Nome lista non valido: %(s)s"
 
@@ -2130,7 +2135,8 @@ msgstr ""
 "                la creazione della lista.  Per favore contatta\n"
 "                l'amministratore di Mailman per assistenza."
 
-#: Mailman/Cgi/create.py:245 bin/newlist:245
+#: Mailman/Cgi/create.py:245 bin/.svn/text-base/newlist.svn-base:245
+#: bin/newlist:245
 msgid "Your new mailing list: %(listname)s"
 msgstr "La tua nuova lista: %(listname)s"
 
@@ -2910,7 +2916,7 @@ msgid "Private Archive Error - %(msg)s"
 msgstr "Errore di archivio privato - %(msg)s"
 
 # /home/mailman/Mailman/Cgi/private.py:154
-#: Mailman/Cgi/private.py:178
+#: Mailman/Cgi/private.py:179
 msgid "Private archive file not found"
 msgstr "File di archivio privato non trovato"
 
@@ -3953,135 +3959,139 @@ msgid "Digest members:"
 msgstr "Iscritti digest:"
 
 # /home/mailman/Mailman/Utils.py:780
-#: Mailman/Defaults.py:1320
+#: Mailman/Defaults.py:1324
 msgid "Catalan"
 msgstr "Catalano"
 
-#: Mailman/Defaults.py:1321
+#: Mailman/Defaults.py:1325
 msgid "Czech"
 msgstr "Ceco"
 
-#: Mailman/Defaults.py:1322
+#: Mailman/Defaults.py:1326
 msgid "Danish"
 msgstr "Danese"
 
-#: Mailman/Defaults.py:1323
+#: Mailman/Defaults.py:1327
 msgid "German"
 msgstr "Tedesco"
 
 # /home/mailman/Mailman/Utils.py:778
-#: Mailman/Defaults.py:1324
+#: Mailman/Defaults.py:1328
 msgid "English (USA)"
 msgstr "Inglese (USA)"
 
 # /home/mailman/Mailman/Utils.py:777
-#: Mailman/Defaults.py:1325
+#: Mailman/Defaults.py:1329
 msgid "Spanish (Spain)"
 msgstr "Spagnolo (Spagna)"
 
-#: Mailman/Defaults.py:1326
+#: Mailman/Defaults.py:1330
 msgid "Estonian"
 msgstr "Estone"
 
-#: Mailman/Defaults.py:1327
+#: Mailman/Defaults.py:1331
 msgid "Euskara"
 msgstr "Basco"
 
-#: Mailman/Defaults.py:1328
+#: Mailman/Defaults.py:1332
 msgid "Finnish"
 msgstr "Finlandese"
 
-#: Mailman/Defaults.py:1329
+#: Mailman/Defaults.py:1333
 msgid "French"
 msgstr "Francese"
 
-#: Mailman/Defaults.py:1330
+#: Mailman/Defaults.py:1334
 msgid "Croatian"
 msgstr "Croato"
 
-#: Mailman/Defaults.py:1331
+#: Mailman/Defaults.py:1335
 msgid "Hungarian"
 msgstr "Ungherese"
 
-#: Mailman/Defaults.py:1332
+#: Mailman/Defaults.py:1336
 msgid "Interlingua"
 msgstr "Interlingua"
 
 # /home/mailman/Mailman/Utils.py:780
-#: Mailman/Defaults.py:1333
+#: Mailman/Defaults.py:1337
 msgid "Italian"
 msgstr "Italiano"
 
-#: Mailman/Defaults.py:1334
+#: Mailman/Defaults.py:1338
 msgid "Japanese"
 msgstr "Giapponese"
 
-#: Mailman/Defaults.py:1335
+#: Mailman/Defaults.py:1339
 msgid "Korean"
 msgstr "Coreano"
 
-#: Mailman/Defaults.py:1336
+#: Mailman/Defaults.py:1340
 msgid "Lithuanian"
 msgstr "Lituano"
 
-#: Mailman/Defaults.py:1337
+#: Mailman/Defaults.py:1341
 msgid "Dutch"
 msgstr "Olandese"
 
-#: Mailman/Defaults.py:1338
+#: Mailman/Defaults.py:1342
 msgid "Norwegian"
 msgstr "Norvegese"
 
-#: Mailman/Defaults.py:1339
+#: Mailman/Defaults.py:1343
 msgid "Polish"
 msgstr "Polacco"
 
-#: Mailman/Defaults.py:1340
+#: Mailman/Defaults.py:1344
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: Mailman/Defaults.py:1341
+#: Mailman/Defaults.py:1345
 msgid "Portuguese (Brazil)"
 msgstr "Portoghese (Brasile)"
 
-#: Mailman/Defaults.py:1342
+#: Mailman/Defaults.py:1346
 msgid "Romanian"
 msgstr "Rumeno"
 
-#: Mailman/Defaults.py:1343
+#: Mailman/Defaults.py:1347
 msgid "Russian"
 msgstr "Russo"
 
-#: Mailman/Defaults.py:1344
+#: Mailman/Defaults.py:1348
 msgid "Serbian"
 msgstr "Serbo"
 
-#: Mailman/Defaults.py:1345
+#: Mailman/Defaults.py:1349
 msgid "Slovenian"
 msgstr "Sloveno"
 
-#: Mailman/Defaults.py:1346
+#: Mailman/Defaults.py:1350
 msgid "Swedish"
 msgstr "Svedese"
 
-#: Mailman/Defaults.py:1347
+#: Mailman/Defaults.py:1351
 msgid "Turkish"
 msgstr "Turco"
 
-#: Mailman/Defaults.py:1348
+#: Mailman/Defaults.py:1352
 msgid "Ukrainian"
 msgstr "Ucraino"
 
-#: Mailman/Defaults.py:1349
+#: Mailman/Defaults.py:1353
+msgid "Vietnamese"
+msgstr ""
+
+#: Mailman/Defaults.py:1354
 msgid "Chinese (China)"
 msgstr "Cinese (Cina)"
 
-#: Mailman/Defaults.py:1350
+#: Mailman/Defaults.py:1355
 msgid "Chinese (Taiwan)"
 msgstr "Cinese (Taiwan)"
 
 # /home/mailman/Mailman/Deliverer.py:208
-#: Mailman/Deliverer.py:53
+#: Mailman/Deliverer.py:51
 msgid ""
 "Note: Since this is a list of mailing lists, administrative\n"
 "notices like the password reminder will be sent to\n"
@@ -4092,29 +4102,29 @@ msgstr ""
 "al tuo indirizzo amministrativo, %(addr)s."
 
 # /home/mailman/Mailman/Digester.py:63
-#: Mailman/Deliverer.py:73
+#: Mailman/Deliverer.py:71
 msgid " (Digest mode)"
 msgstr " (modalit&agrave; digest)"
 
 # /home/mailman/Mailman/Deliverer.py:236
-#: Mailman/Deliverer.py:79
+#: Mailman/Deliverer.py:77
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
 msgstr "Benvenuto nella lista \"%(realname)s\"%(digmode)s"
 
 # /home/mailman/Mailman/Deliverer.py:242
-#: Mailman/Deliverer.py:88
+#: Mailman/Deliverer.py:86
 msgid "You have been unsubscribed from the %(realname)s mailing list"
 msgstr "Sei stato cancellato dalla lista %(realname)s"
 
-#: Mailman/Deliverer.py:115
+#: Mailman/Deliverer.py:113
 msgid "%(listfullname)s mailing list reminder"
 msgstr "promemoria della mailing list %(listfullname)s"
 
-#: Mailman/Deliverer.py:167 Mailman/Deliverer.py:186
+#: Mailman/Deliverer.py:165 Mailman/Deliverer.py:184
 msgid "Hostile subscription attempt detected"
 msgstr "Rilevato tentativo ostile di iscrizione alla lista"
 
-#: Mailman/Deliverer.py:168
+#: Mailman/Deliverer.py:166
 msgid ""
 "%(address)s was invited to a different mailing\n"
 "list, but in a deliberate malicious attempt they tried to confirm the\n"
@@ -4127,7 +4137,7 @@ msgstr ""
 "che tu lo volessi sapere.  Non &egrave; richiesta alcuna azione\n"
 "da parte tua."
 
-#: Mailman/Deliverer.py:187
+#: Mailman/Deliverer.py:185
 msgid ""
 "You invited %(address)s to your list, but in a\n"
 "deliberate malicious attempt, they tried to confirm the invitation to a\n"
@@ -4141,7 +4151,7 @@ msgstr ""
 "Abbiamo creduto giusto fartelo sapere.  Non sono richieste\n"
 "azioni da parte tua."
 
-#: Mailman/Deliverer.py:220
+#: Mailman/Deliverer.py:218
 msgid "%(listname)s mailing list probe message"
 msgstr "messaggio sonda dalla lista %(listname)s"
 
@@ -7955,52 +7965,52 @@ msgstr ""
 msgid "Emergency hold on all list traffic is in effect"
 msgstr "Sospensione di emergenza per tutti i messaggi attivata"
 
-#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:57
+#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
 msgid "Your message was deemed inappropriate by the moderator."
 msgstr ""
 "Il tuo messaggio &egrave; stato giudicato inappropriato dal moderatore."
 
-#: Mailman/Handlers/Hold.py:52
+#: Mailman/Handlers/Hold.py:53
 msgid "Sender is explicitly forbidden"
 msgstr "Mittente esplicitamente proibito"
 
-#: Mailman/Handlers/Hold.py:53
+#: Mailman/Handlers/Hold.py:54
 msgid "You are forbidden from posting messages to this list."
 msgstr "Ti è proibito inviare messaggi a questa lista."
 
-#: Mailman/Handlers/Hold.py:56
+#: Mailman/Handlers/Hold.py:57
 msgid "Post to moderated list"
 msgstr "Messaggio inviato ad una lista moderata"
 
-#: Mailman/Handlers/Hold.py:60
+#: Mailman/Handlers/Hold.py:61
 msgid "Post by non-member to a members-only list"
 msgstr "Messaggio inviato da un non iscritto ad una lista chiusa"
 
-#: Mailman/Handlers/Hold.py:61
+#: Mailman/Handlers/Hold.py:62
 msgid "Non-members are not allowed to post messages to this list."
 msgstr "Ai non iscritti non è permesso inviare messaggi a questa lista."
 
-#: Mailman/Handlers/Hold.py:64
+#: Mailman/Handlers/Hold.py:65
 msgid "Posting to a restricted list by sender requires approval"
 msgstr "Un messaggio diretto ad una lista chiusa richiede approvazione"
 
-#: Mailman/Handlers/Hold.py:65
+#: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
 msgstr "Questa lista è ristretta; il tuo messaggio non è stato approvato."
 
-#: Mailman/Handlers/Hold.py:68
+#: Mailman/Handlers/Hold.py:69
 msgid "Too many recipients to the message"
 msgstr "Troppi destinatari nel messaggio"
 
-#: Mailman/Handlers/Hold.py:69
+#: Mailman/Handlers/Hold.py:70
 msgid "Please trim the recipient list; it is too long."
 msgstr "Per piacere accorcia la lista dei destinatari; è troppo lunga."
 
-#: Mailman/Handlers/Hold.py:72
+#: Mailman/Handlers/Hold.py:73
 msgid "Message has implicit destination"
 msgstr "Il messaggio ha destinazione implicita"
 
-#: Mailman/Handlers/Hold.py:73
+#: Mailman/Handlers/Hold.py:74
 msgid ""
 "Blind carbon copies or other implicit destinations are\n"
 "not allowed.  Try reposting your message by explicitly including the list\n"
@@ -8010,11 +8020,11 @@ msgstr ""
 "permessi.  Prova a rimandare il tuo messaggio mettendo la lista degli\n"
 "indirizzi nei campi To: o Cc:"
 
-#: Mailman/Handlers/Hold.py:78
+#: Mailman/Handlers/Hold.py:79
 msgid "Message may contain administrivia"
 msgstr "Il messaggio potrebbe contenere richieste amministrative"
 
-#: Mailman/Handlers/Hold.py:83
+#: Mailman/Handlers/Hold.py:84
 msgid ""
 "Please do *not* post administrative requests to the mailing\n"
 "list.  If you wish to subscribe, visit %(listurl)s or send a message with "
@@ -8026,15 +8036,15 @@ msgstr ""
 "Se desideri iscriverti, visita %(listurl)s o invia un messaggio con la\n"
 "parola `help' all'indirizzo %(request)s."
 
-#: Mailman/Handlers/Hold.py:89
+#: Mailman/Handlers/Hold.py:90
 msgid "Message has a suspicious header"
 msgstr "Il messaggio ha un campo sospetto."
 
-#: Mailman/Handlers/Hold.py:90
+#: Mailman/Handlers/Hold.py:91
 msgid "Your message had a suspicious header."
 msgstr "Il tuo messaggio ha un campo sospetto."
 
-#: Mailman/Handlers/Hold.py:100
+#: Mailman/Handlers/Hold.py:101
 msgid ""
 "Message body is too big: %(size)d bytes with a limit of\n"
 "%(limit)d KB"
@@ -8042,7 +8052,7 @@ msgstr ""
 "Il testo del messaggio è troppo grande: %(size)d bytes\n"
 "               con un limite di %(limit)d KB"
 
-#: Mailman/Handlers/Hold.py:105
+#: Mailman/Handlers/Hold.py:106
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
@@ -8050,19 +8060,19 @@ msgstr ""
 "Il tuo messaggio era troppo grande; per favore riducilo\n"
 "in modo che diventi meno di %(kb)d KB."
 
-#: Mailman/Handlers/Hold.py:109
+#: Mailman/Handlers/Hold.py:110
 msgid "Posting to a moderated newsgroup"
 msgstr "Messaggio inviato ad un gruppo moderato"
 
-#: Mailman/Handlers/Hold.py:244
+#: Mailman/Handlers/Hold.py:250
 msgid "Your message to %(listname)s awaits moderator approval"
 msgstr "Il tuo messaggio a %(listname)s attende l'approvazione del moderatore"
 
-#: Mailman/Handlers/Hold.py:263
+#: Mailman/Handlers/Hold.py:269
 msgid "%(listname)s post from %(sender)s requires approval"
 msgstr "Messaggio a %(listname)s da %(sender)s richiede approvazione"
 
-#: Mailman/Handlers/Hold.py:270
+#: Mailman/Handlers/Hold.py:276
 msgid ""
 "If you reply to this message, keeping the Subject: header intact, Mailman "
 "will\n"
@@ -8395,11 +8405,22 @@ msgid "%(file)s permissions must be 066x (got %(octmode)s)"
 msgstr "i permessi per %(file)s devono essere 066x (invece di %(octmode)s)"
 
 #: Mailman/MTA/Postfix.py:318 Mailman/MTA/Postfix.py:345
-#: Mailman/MTA/Postfix.py:356 bin/check_perms:123 bin/check_perms:145
-#: bin/check_perms:155 bin/check_perms:166 bin/check_perms:191
-#: bin/check_perms:208 bin/check_perms:234 bin/check_perms:257
-#: bin/check_perms:276 bin/check_perms:290 bin/check_perms:310
-#: bin/check_perms:347
+#: Mailman/MTA/Postfix.py:356 bin/.svn/text-base/check_perms.svn-base:123
+#: bin/.svn/text-base/check_perms.svn-base:145
+#: bin/.svn/text-base/check_perms.svn-base:155
+#: bin/.svn/text-base/check_perms.svn-base:166
+#: bin/.svn/text-base/check_perms.svn-base:191
+#: bin/.svn/text-base/check_perms.svn-base:208
+#: bin/.svn/text-base/check_perms.svn-base:234
+#: bin/.svn/text-base/check_perms.svn-base:257
+#: bin/.svn/text-base/check_perms.svn-base:276
+#: bin/.svn/text-base/check_perms.svn-base:290
+#: bin/.svn/text-base/check_perms.svn-base:310
+#: bin/.svn/text-base/check_perms.svn-base:347 bin/check_perms:123
+#: bin/check_perms:145 bin/check_perms:155 bin/check_perms:166
+#: bin/check_perms:191 bin/check_perms:208 bin/check_perms:234
+#: bin/check_perms:257 bin/check_perms:276 bin/check_perms:290
+#: bin/check_perms:310 bin/check_perms:347
 msgid "(fixing)"
 msgstr "(corretto)"
 
@@ -8436,7 +8457,8 @@ msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "le iscrizioni a %(realname)s richiedono l'approvazione del moderatore"
 
 # /home/mailman/Mailman/Cgi/roster.py:72
-#: Mailman/MailList.py:982 bin/add_members:242
+#: Mailman/MailList.py:982 bin/.svn/text-base/add_members.svn-base:242
+#: bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "Notifica di iscrizione a %(realname)s"
 
@@ -8648,7 +8670,7 @@ msgid ""
 msgstr ""
 "%(wday)s %(day)2i %(mon)s %(year)04i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s"
 
-#: bin/add_members:26
+#: bin/.svn/text-base/add_members.svn-base:26 bin/add_members:26
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8737,56 +8759,70 @@ msgstr ""
 "files può essere `-'.\n"
 
 # /home/mailman/Mailman/Cgi/admin.py:856
-#: bin/add_members:137
+#: bin/.svn/text-base/add_members.svn-base:137 bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Già iscritto: %(member)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: bin/add_members:140
+#: bin/.svn/text-base/add_members.svn-base:140 bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Indirizzo email errato/non valido: riga vuota"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: bin/add_members:142
+#: bin/.svn/text-base/add_members.svn-base:142 bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Indirizzo email errato/non valido: %(member)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:864
-#: bin/add_members:144
+#: bin/.svn/text-base/add_members.svn-base:144 bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Indirizzo con caratteri non permessi: %(member)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:633
-#: bin/add_members:146
+#: bin/.svn/text-base/add_members.svn-base:146 bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Iscritto: %(member)s"
 
-#: bin/add_members:191
+#: bin/.svn/text-base/add_members.svn-base:191 bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Argomento errato per il parametro -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:198
+#: bin/.svn/text-base/add_members.svn-base:198 bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Argomento errato per il parametro -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:204
+#: bin/.svn/text-base/add_members.svn-base:204 bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "Non posso leggere sia gli iscritti digest che quelli normali dallo standard "
 "input."
 
-#: bin/add_members:210 bin/config_list:109 bin/config_list.orig:105
-#: bin/find_member:97 bin/inject:90 bin/list_admins:89 bin/list_members:232
-#: bin/sync_members:222 cron/bumpdigests:86
+#: bin/.svn/text-base/add_members.svn-base:210
+#: bin/.svn/text-base/config_list.svn-base:109
+#: bin/.svn/text-base/find_member.svn-base:97
+#: bin/.svn/text-base/inject.svn-base:90
+#: bin/.svn/text-base/list_admins.svn-base:89
+#: bin/.svn/text-base/list_members.svn-base:232
+#: bin/.svn/text-base/sync_members.svn-base:222 bin/add_members:210
+#: bin/config_list:109 bin/find_member:97 bin/inject:90 bin/list_admins:89
+#: bin/list_members:232 bin/sync_members:222
+#: cron/.svn/text-base/bumpdigests.svn-base:86 cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Non esiste la lista: %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
-#: bin/sync_members:244 bin/update:564 cron/bumpdigests:78
+#: bin/.svn/text-base/add_members.svn-base:230
+#: bin/.svn/text-base/change_pw.svn-base:158
+#: bin/.svn/text-base/check_db.svn-base:114
+#: bin/.svn/text-base/discard.svn-base:83
+#: bin/.svn/text-base/sync_members.svn-base:244
+#: bin/.svn/text-base/update.svn-base:564 bin/add_members:230
+#: bin/change_pw:158 bin/check_db:114 bin/discard:83 bin/sync_members:244
+#: bin/update:564 cron/.svn/text-base/bumpdigests.svn-base:78
+#: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Non ho niente da fare."
 
-#: bin/arch:19
+#: bin/.svn/text-base/arch.svn-base:19 bin/arch:19
 msgid ""
 "Rebuild a list's archive.\n"
 "\n"
@@ -8876,11 +8912,14 @@ msgstr ""
 "<mbox> è opzionale.  Se non viene specificato, sarà calcolato.\n"
 
 # /home/mailman/Mailman/MailList.py:517
-#: bin/arch:125
+#: bin/.svn/text-base/arch.svn-base:125 bin/arch:125
 msgid "listname is required"
 msgstr "il nome della lista è obbligatorio"
 
-#: bin/arch:143 bin/change_pw:106 bin/config_list:256 bin/config_list.orig:242
+#: bin/.svn/text-base/arch.svn-base:143
+#: bin/.svn/text-base/change_pw.svn-base:106
+#: bin/.svn/text-base/config_list.svn-base:256 bin/arch:143 bin/change_pw:106
+#: bin/config_list:256
 msgid ""
 "No such list \"%(listname)s\"\n"
 "%(e)s"
@@ -8888,11 +8927,11 @@ msgstr ""
 "Non esiste la lista \"%(listname)s\"\n"
 "%(e)s"
 
-#: bin/arch:183
+#: bin/.svn/text-base/arch.svn-base:183 bin/arch:183
 msgid "Cannot open mbox file %(mbox)s: %(msg)s"
 msgstr "Non riesco ad aprire il file mbox %(mbox)s: %(msg)s"
 
-#: bin/b4b5-archfix:19
+#: bin/.svn/text-base/b4b5-archfix.svn-base:19 bin/b4b5-archfix:19
 msgid ""
 "Fix the MM2.1b4 archives.\n"
 "\n"
@@ -8930,7 +8969,7 @@ msgstr ""
 "\n"
 "Ad operazione completata dovrai eseguire `bin/check_perms -f'.\n"
 
-#: bin/change_pw:19
+#: bin/.svn/text-base/change_pw.svn-base:19 bin/change_pw:19
 msgid ""
 "Change a list's password.\n"
 "\n"
@@ -9035,23 +9074,23 @@ msgstr ""
 "    --help / -h\n"
 "        Mostra questo messaggio d'aiuto ed esce.\n"
 
-#: bin/change_pw:144
+#: bin/.svn/text-base/change_pw.svn-base:144 bin/change_pw:144
 msgid "Bad arguments: %(strargs)s"
 msgstr "Argomenti errati: %(strargs)s"
 
-#: bin/change_pw:148
+#: bin/.svn/text-base/change_pw.svn-base:148 bin/change_pw:148
 msgid "Empty list passwords are not allowed"
 msgstr "Non sono consentite password nulle per la lista"
 
-#: bin/change_pw:180
+#: bin/.svn/text-base/change_pw.svn-base:180 bin/change_pw:180
 msgid "New %(listname)s password: %(notifypassword)s"
 msgstr "Nuova password per la lista %(listname)s: %(notifypassword)s"
 
-#: bin/change_pw:189
+#: bin/.svn/text-base/change_pw.svn-base:189 bin/change_pw:189
 msgid "Your new %(listname)s list password"
 msgstr "La tua nuova password per la lista %(listname)s"
 
-#: bin/change_pw:190
+#: bin/.svn/text-base/change_pw.svn-base:190 bin/change_pw:190
 msgid ""
 "The site administrator at %(hostname)s has changed the password for your\n"
 "mailing list %(listname)s.  It is now\n"
@@ -9078,7 +9117,7 @@ msgstr ""
 "\n"
 "    %(adminurl)s\n"
 
-#: bin/check_db:19
+#: bin/.svn/text-base/check_db.svn-base:19 bin/check_db:19
 msgid ""
 "Check a list's config database file for integrity.\n"
 "\n"
@@ -9146,22 +9185,22 @@ msgstr ""
 "    --help / -h\n"
 "        Scrive questo messaggio d'aiuto ed esce.\n"
 
-#: bin/check_db:119
+#: bin/.svn/text-base/check_db.svn-base:119 bin/check_db:119
 msgid "No list named:"
 msgstr "Non ci sono liste di nome:"
 
 # /home/mailman/Mailman/Cgi/admin.py:260
 # /home/mailman/Mailman/Cgi/listinfo.py:159
 # /home/mailman/Mailman/MailList.py:428
-#: bin/check_db:128
+#: bin/.svn/text-base/check_db.svn-base:128 bin/check_db:128
 msgid "List:"
 msgstr "Lista:"
 
-#: bin/check_db:148
+#: bin/.svn/text-base/check_db.svn-base:148 bin/check_db:148
 msgid "   %(file)s: okay"
 msgstr "   %(file)s: ok"
 
-#: bin/check_perms:19
+#: bin/.svn/text-base/check_perms.svn-base:19 bin/check_perms:19
 msgid ""
 "Check the permissions for the Mailman installation.\n"
 "\n"
@@ -9180,48 +9219,48 @@ msgstr ""
 "corregge tutti i problemi sui permessi.  Con -v fornisce un report\n"
 "maggiormente dettagliato.\n"
 
-#: bin/check_perms:108
+#: bin/.svn/text-base/check_perms.svn-base:108 bin/check_perms:108
 msgid "    checking gid and mode for %(path)s"
 msgstr "    controllo di gid e modo per %(path)s"
 
-#: bin/check_perms:120
+#: bin/.svn/text-base/check_perms.svn-base:120 bin/check_perms:120
 msgid "%(path)s bad group (has: %(groupname)s, expected %(MAILMAN_GROUP)s)"
 msgstr ""
 "gruppo errato per %(path)s (ha %(groupname)s invece di %(MAILMAN_GROUP)s)"
 
-#: bin/check_perms:143
+#: bin/.svn/text-base/check_perms.svn-base:143 bin/check_perms:143
 msgid "directory permissions must be %(octperms)s: %(path)s"
 msgstr "i permessi sulla directory devono essere %(octperms)s: %(path)s"
 
-#: bin/check_perms:152
+#: bin/.svn/text-base/check_perms.svn-base:152 bin/check_perms:152
 msgid "source perms must be %(octperms)s: %(path)s"
 msgstr "i permessi sui sorgenti devono essere %(octperms)s: %(path)s"
 
-#: bin/check_perms:163
+#: bin/.svn/text-base/check_perms.svn-base:163 bin/check_perms:163
 msgid "article db files must be %(octperms)s: %(path)s"
 msgstr "i permessi sul db dei messaggi devono essere %(octperms)s: %(path)s"
 
-#: bin/check_perms:175
+#: bin/.svn/text-base/check_perms.svn-base:175 bin/check_perms:175
 msgid "checking mode for %(prefix)s"
 msgstr "controllo di modo per %(prefix)s"
 
-#: bin/check_perms:185
+#: bin/.svn/text-base/check_perms.svn-base:185 bin/check_perms:185
 msgid "WARNING: directory does not exist: %(d)s"
 msgstr "ATTENZIONE: la directory %(d)s non esiste"
 
-#: bin/check_perms:189
+#: bin/.svn/text-base/check_perms.svn-base:189 bin/check_perms:189
 msgid "directory must be at least 02775: %(d)s"
 msgstr "questa directory deve essere almeno 02775: %(d)s"
 
-#: bin/check_perms:201
+#: bin/.svn/text-base/check_perms.svn-base:201 bin/check_perms:201
 msgid "checking perms on %(private)s"
 msgstr "controllo permessi su %(private)s"
 
-#: bin/check_perms:206
+#: bin/.svn/text-base/check_perms.svn-base:206 bin/check_perms:206
 msgid "%(private)s must not be other-readable"
 msgstr "%(private)s non deve poter essere letta da tutti"
 
-#: bin/check_perms:215
+#: bin/.svn/text-base/check_perms.svn-base:215 bin/check_perms:215
 msgid ""
 "Warning: Private archive directory is other-executable (o+x).\n"
 "         This could allow other users on your system to read private "
@@ -9237,71 +9276,71 @@ msgstr ""
 "        consultare il manuale di installazione su come correggere "
 "questo         problema."
 
-#: bin/check_perms:232
+#: bin/.svn/text-base/check_perms.svn-base:232 bin/check_perms:232
 msgid "mbox file must be at least 0660:"
 msgstr "il file mbox deve essere almeno 0660:"
 
-#: bin/check_perms:255
+#: bin/.svn/text-base/check_perms.svn-base:255 bin/check_perms:255
 msgid "%(dbdir)s \"other\" perms must be 000"
 msgstr "%(dbdir)s deve avere 0 nei permessi per i non iscritti del gruppo"
 
-#: bin/check_perms:265
+#: bin/.svn/text-base/check_perms.svn-base:265 bin/check_perms:265
 msgid "checking cgi-bin permissions"
 msgstr "controllo dei permessi su cgi-bin"
 
-#: bin/check_perms:270
+#: bin/.svn/text-base/check_perms.svn-base:270 bin/check_perms:270
 msgid "    checking set-gid for %(path)s"
 msgstr "    controllo del flag set-gid per %(path)s"
 
-#: bin/check_perms:274
+#: bin/.svn/text-base/check_perms.svn-base:274 bin/check_perms:274
 msgid "%(path)s must be set-gid"
 msgstr "%(path)s deve essere set-gid"
 
-#: bin/check_perms:284
+#: bin/.svn/text-base/check_perms.svn-base:284 bin/check_perms:284
 msgid "checking set-gid for %(wrapper)s"
 msgstr "controllo del flag set-gid per %(wrapper)s"
 
-#: bin/check_perms:288
+#: bin/.svn/text-base/check_perms.svn-base:288 bin/check_perms:288
 msgid "%(wrapper)s must be set-gid"
 msgstr "%(wrapper)s deve essere set-gid"
 
-#: bin/check_perms:298
+#: bin/.svn/text-base/check_perms.svn-base:298 bin/check_perms:298
 msgid "checking permissions on %(pwfile)s"
 msgstr "controllo dei permessi su %(pwfile)s"
 
-#: bin/check_perms:307
+#: bin/.svn/text-base/check_perms.svn-base:307 bin/check_perms:307
 msgid "%(pwfile)s permissions must be exactly 0640 (got %(octmode)s)"
 msgstr ""
 "i permessi su %(pwfile)s devono essere esattamente 0640 (invece di %(octmode)"
 "s)"
 
-#: bin/check_perms:331
+#: bin/.svn/text-base/check_perms.svn-base:331 bin/check_perms:331
 msgid "checking permissions on list data"
 msgstr "controllo dei permessi sui dati di lista"
 
-#: bin/check_perms:337
+#: bin/.svn/text-base/check_perms.svn-base:337 bin/check_perms:337
 msgid "    checking permissions on: %(path)s"
 msgstr "    controllo dei permessi su: %(path)s"
 
-#: bin/check_perms:345
+#: bin/.svn/text-base/check_perms.svn-base:345 bin/check_perms:345
 msgid "file permissions must be at least 660: %(path)s"
 msgstr "i permessi di questo file devono essere almeno 660: %(path)s"
 
-#: bin/check_perms:390
+#: bin/.svn/text-base/check_perms.svn-base:390 bin/check_perms:390
 msgid "No problems found"
 msgstr "Nessun problema trovato"
 
-#: bin/check_perms:392
+#: bin/.svn/text-base/check_perms.svn-base:392 bin/check_perms:392
 msgid "Problems found:"
 msgstr "Problemi riscontrati:"
 
-#: bin/check_perms:393
+#: bin/.svn/text-base/check_perms.svn-base:393 bin/check_perms:393
 msgid "Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix"
 msgstr ""
 "Per correggere gli errori rilancia il comando come\n"
 "%(MAILMAN_USER)s (o root) con il flag -f"
 
-#: bin/cleanarch:20
+#: bin/.svn/text-base/cleanarch.svn-base:20 bin/cleanarch:20
 msgid ""
 "Clean up an .mbox archive file.\n"
 "\n"
@@ -9364,19 +9403,19 @@ msgstr ""
 "    -h / --help\n"
 "        Scrivi questo messaggio d'aiuto ed esci.\n"
 
-#: bin/cleanarch:83
+#: bin/.svn/text-base/cleanarch.svn-base:83 bin/cleanarch:83
 msgid "Unix-From line changed: %(lineno)d"
 msgstr "Linea From Unix cambiata: %(lineno)d"
 
-#: bin/cleanarch:111
+#: bin/.svn/text-base/cleanarch.svn-base:111 bin/cleanarch:111
 msgid "Bad status number: %(arg)s"
 msgstr "Numero di stato errato: %(arg)s"
 
-#: bin/cleanarch:167
+#: bin/.svn/text-base/cleanarch.svn-base:167 bin/cleanarch:167
 msgid "%(messages)d messages found"
 msgstr "trovati %(messages)d messaggi"
 
-#: bin/clone_member:19
+#: bin/.svn/text-base/clone_member.svn-base:19 bin/clone_member:19
 msgid ""
 "Clone a member address.\n"
 "\n"
@@ -9485,7 +9524,7 @@ msgstr ""
 "rappresenta il nuovo indirizzo che sarà aggiunto alla lista\n"
 "\n"
 
-#: bin/clone_member:94
+#: bin/.svn/text-base/clone_member.svn-base:94 bin/clone_member:94
 msgid "processing mailing list:"
 msgstr "elaborazione della lista:"
 
@@ -9493,40 +9532,40 @@ msgstr "elaborazione della lista:"
 # /home/mailman/Mailman/Cgi/admin.py:231
 # /home/mailman/Mailman/Cgi/listinfo.py:122
 # /home/mailman/Mailman/Cgi/listinfo.py:131
-#: bin/clone_member:101
+#: bin/.svn/text-base/clone_member.svn-base:101 bin/clone_member:101
 msgid "    scanning list owners:"
 msgstr "    scansione dei proprietari della lista:"
 
-#: bin/clone_member:119
+#: bin/.svn/text-base/clone_member.svn-base:119 bin/clone_member:119
 msgid "    new list owners:"
 msgstr "    nuovi proprietari di lista:"
 
-#: bin/clone_member:121
+#: bin/.svn/text-base/clone_member.svn-base:121 bin/clone_member:121
 msgid "(no change)"
 msgstr "(non cambiato)"
 
-#: bin/clone_member:130
+#: bin/.svn/text-base/clone_member.svn-base:130 bin/clone_member:130
 msgid "    address not found:"
 msgstr "    indirizzo non trovato:"
 
-#: bin/clone_member:139
+#: bin/.svn/text-base/clone_member.svn-base:139 bin/clone_member:139
 msgid "    clone address added:"
 msgstr "    indirizzo di clone aggiunto:"
 
-#: bin/clone_member:142
+#: bin/.svn/text-base/clone_member.svn-base:142 bin/clone_member:142
 msgid "    clone address is already a member:"
 msgstr "    l'indirizzo di clone è già un iscritto:"
 
-#: bin/clone_member:145
+#: bin/.svn/text-base/clone_member.svn-base:145 bin/clone_member:145
 msgid "    original address removed:"
 msgstr "    indirizzo originale rimosso:"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: bin/clone_member:196
+#: bin/.svn/text-base/clone_member.svn-base:196 bin/clone_member:196
 msgid "Not a valid email address: %(toaddr)s"
 msgstr "Indirizzo email errato/non valido: %(toaddr)s"
 
-#: bin/clone_member:209
+#: bin/.svn/text-base/clone_member.svn-base:209 bin/clone_member:209
 msgid ""
 "Error opening list \"%(listname)s\", skipping.\n"
 "%(e)s"
@@ -9534,7 +9573,7 @@ msgstr ""
 "Errore nell'apertura della lista \"%(listname)s\", la salto.\n"
 "%(e)s"
 
-#: bin/config_list:20 bin/config_list.orig:19
+#: bin/.svn/text-base/config_list.svn-base:20 bin/config_list:20
 msgid ""
 "Configure a list from a text file description.\n"
 "\n"
@@ -9634,7 +9673,7 @@ msgstr ""
 "Le opzioni -o e -i sono mutuamente esclusive.\n"
 "\n"
 
-#: bin/config_list:117
+#: bin/.svn/text-base/config_list.svn-base:117 bin/config_list:117
 msgid ""
 "# -*- python -*-\n"
 "# -*- coding: %(charset)s -*-\n"
@@ -9647,56 +9686,48 @@ msgstr ""
 "## catturata il %(when)s\n"
 
 # /home/mailman/Mailman/Cgi/admin.py:43
-#: bin/config_list:143 bin/config_list.orig:131
+#: bin/.svn/text-base/config_list.svn-base:143 bin/config_list:143
 msgid "options"
 msgstr "opzioni"
 
-#: bin/config_list:202 bin/config_list.orig:188
+#: bin/.svn/text-base/config_list.svn-base:202 bin/config_list:202
 msgid "legal values are:"
 msgstr "i valori permessi sono:"
 
-#: bin/config_list:269 bin/config_list.orig:255
+#: bin/.svn/text-base/config_list.svn-base:269 bin/config_list:269
 msgid "attribute \"%(k)s\" ignored"
 msgstr "l'attributo \"%(k)s\" è stato ignorato"
 
-#: bin/config_list:272 bin/config_list.orig:258
+#: bin/.svn/text-base/config_list.svn-base:272 bin/config_list:272
 msgid "attribute \"%(k)s\" changed"
 msgstr "l'attributo \"%(k)s\" è stato cambiato"
 
-#: bin/config_list:278 bin/config_list.orig:264
+#: bin/.svn/text-base/config_list.svn-base:278 bin/config_list:278
 msgid "Non-standard property restored: %(k)s"
 msgstr "Parametro non-standard recuperato: %(k)s"
 
-#: bin/config_list:286 bin/config_list.orig:272
+#: bin/.svn/text-base/config_list.svn-base:286 bin/config_list:286
 msgid "Invalid value for property: %(k)s"
 msgstr "Valore non valido per la variabile %(k)s"
 
-#: bin/config_list:288 bin/config_list.orig:274
+#: bin/.svn/text-base/config_list.svn-base:288 bin/config_list:288
 msgid "Bad email address for option %(k)s: %(v)s"
 msgstr "Indirizzo errato per l'opzione %(k)s: %(v)s"
 
-#: bin/config_list:345 bin/config_list.orig:331
+#: bin/.svn/text-base/config_list.svn-base:345 bin/config_list:345
 msgid "Only one of -i or -o is allowed"
 msgstr "E' permesso solo uno tra -i e -o"
 
-#: bin/config_list:347 bin/config_list.orig:333
+#: bin/.svn/text-base/config_list.svn-base:347 bin/config_list:347
 msgid "One of -i or -o is required"
 msgstr "E' necessario specificare almeno uno tra -i e -o"
 
 # /home/mailman/Mailman/MailList.py:517
-#: bin/config_list:351 bin/config_list.orig:337
+#: bin/.svn/text-base/config_list.svn-base:351 bin/config_list:351
 msgid "List name is required"
 msgstr "Il nome della lista &egrave; obbligatorio."
 
-#: bin/config_list.orig:109
-msgid ""
-"## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
-"## captured on %(when)s\n"
-msgstr ""
-"## configurazione della lista \"%(listname)s\" -*- python -*-\n"
-"## catturata il %(when)s\n"
-
-#: bin/convert.py:19
+#: bin/.svn/text-base/convert.py.svn-base:19 bin/convert.py:19
 msgid ""
 "Convert a list's interpolation strings from %-strings to $-strings.\n"
 "\n"
@@ -9711,15 +9742,20 @@ msgstr ""
 "% bin/withlist -l -r convert <mialista>\n"
 
 # /home/mailman/Mailman/MailCommandHandler.py:379
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/.svn/text-base/convert.py.svn-base:38
+#: bin/.svn/text-base/fix_url.py.svn-base:85 bin/convert.py:38
+#: bin/fix_url.py:85
 msgid "Saving list"
 msgstr "Salvo la lista"
 
-#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw.py:57
+#: bin/.svn/text-base/convert.py.svn-base:44
+#: bin/.svn/text-base/fix_url.py.svn-base:51
+#: bin/.svn/text-base/reset_pw.py.svn-base:57 bin/convert.py:44
+#: bin/fix_url.py:51 bin/reset_pw.py:57
 msgid "%%%"
 msgstr "%%%"
 
-#: bin/discard:19
+#: bin/.svn/text-base/discard.svn-base:19 bin/discard:19
 msgid ""
 "Discard held messages.\n"
 "\n"
@@ -9746,19 +9782,19 @@ msgstr ""
 "    --quiet / -q\n"
 "        Non scrivere i messaggi di stato.\n"
 
-#: bin/discard:94
+#: bin/.svn/text-base/discard.svn-base:94 bin/discard:94
 msgid "Ignoring non-held message: %(f)s"
 msgstr "Ignoro un messaggio non trattenuto: %(f)s"
 
-#: bin/discard:100
+#: bin/.svn/text-base/discard.svn-base:100 bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
 msgstr "Ingnoro un messaggio trattenuto con id non valido: %(f)s"
 
-#: bin/discard:112
+#: bin/.svn/text-base/discard.svn-base:112 bin/discard:112
 msgid "Discarded held msg #%(id)s for list %(listname)s"
 msgstr "Scartato il messaggio #%(id)s per la lista %(listname)s"
 
-#: bin/dumpdb:19
+#: bin/.svn/text-base/dumpdb.svn-base:19 bin/dumpdb:19
 msgid ""
 "Dump the contents of any Mailman `database' file.\n"
 "\n"
@@ -9826,31 +9862,31 @@ msgstr ""
 "usa le opzioni -p o -m.\n"
 
 # /home/mailman/Mailman/ListAdmin.py:210
-#: bin/dumpdb:106
+#: bin/.svn/text-base/dumpdb.svn-base:106 bin/dumpdb:106
 msgid "No filename given."
 msgstr "Non è stato fornito un nome di file."
 
-#: bin/dumpdb:109
+#: bin/.svn/text-base/dumpdb.svn-base:109 bin/dumpdb:109
 msgid "Bad arguments: %(pargs)s"
 msgstr "Argomenti errati: %(pargs)s"
 
-#: bin/dumpdb:119
+#: bin/.svn/text-base/dumpdb.svn-base:119 bin/dumpdb:119
 msgid "Please specify either -p or -m."
 msgstr "Per favore specifica -p oppure -m."
 
-#: bin/dumpdb:136
+#: bin/.svn/text-base/dumpdb.svn-base:136 bin/dumpdb:136
 msgid "[----- start pickle file -----]"
 msgstr "[----- inizio del file pickle -----]"
 
-#: bin/dumpdb:142
+#: bin/.svn/text-base/dumpdb.svn-base:142 bin/dumpdb:142
 msgid "[----- end pickle file -----]"
 msgstr "[----- fine del file pickle -----]"
 
-#: bin/dumpdb:145
+#: bin/.svn/text-base/dumpdb.svn-base:145 bin/dumpdb:145
 msgid "<----- start object %(cnt)s ----->"
 msgstr "<----- inizio oggetto %(cnt)s ----->"
 
-#: bin/find_member:19
+#: bin/.svn/text-base/find_member.svn-base:19 bin/find_member:19
 msgid ""
 "Find all lists that a member's address is on.\n"
 "\n"
@@ -9934,23 +9970,23 @@ msgstr ""
 "ma vengono mostrati gli indirizzi senza alterazioni.\n"
 "\n"
 
-#: bin/find_member:159
+#: bin/.svn/text-base/find_member.svn-base:159 bin/find_member:159
 msgid "Search regular expression required"
 msgstr "L'espressione regolare su cui eseguire la ricerca è richiesta"
 
-#: bin/find_member:164
+#: bin/.svn/text-base/find_member.svn-base:164 bin/find_member:164
 msgid "No lists to search"
 msgstr "Non ho liste su cui cercare."
 
-#: bin/find_member:173
+#: bin/.svn/text-base/find_member.svn-base:173 bin/find_member:173
 msgid "found in:"
 msgstr "trovato in:"
 
-#: bin/find_member:179
+#: bin/.svn/text-base/find_member.svn-base:179 bin/find_member:179
 msgid "(as owner)"
 msgstr "(come proprietario)"
 
-#: bin/fix_url.py:19
+#: bin/.svn/text-base/fix_url.py.svn-base:19 bin/fix_url.py:19
 msgid ""
 "Reset a list's web_page_url attribute to the default setting.\n"
 "\n"
@@ -9998,15 +10034,15 @@ msgstr ""
 "\n"
 "Se eseguito da solo (senza withlist), scrive questo messaggio ed esce.\n"
 
-#: bin/fix_url.py:80
+#: bin/.svn/text-base/fix_url.py.svn-base:80 bin/fix_url.py:80
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "Imposto web_page_url a: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/.svn/text-base/fix_url.py.svn-base:83 bin/fix_url.py:83
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "Imposto host_nama a: %(mailhost)s"
 
-#: bin/genaliases:19
+#: bin/.svn/text-base/genaliases.svn-base:19 bin/genaliases:19
 msgid ""
 "Regenerate Mailman specific aliases from scratch.\n"
 "\n"
@@ -10039,7 +10075,7 @@ msgstr ""
 "    -h/--help\n"
 "        Scrive questo messaggio d'aiuto ed esce.\n"
 
-#: bin/inject:19
+#: bin/.svn/text-base/inject.svn-base:19 bin/inject:19
 msgid ""
 "Inject a message from a file into Mailman's incoming queue.\n"
 "\n"
@@ -10091,16 +10127,16 @@ msgstr ""
 "iniettare.\n"
 "Se omesso, verrà usato lo standard input.\n"
 
-#: bin/inject:83
+#: bin/.svn/text-base/inject.svn-base:83 bin/inject:83
 msgid "Bad queue directory: %(qdir)s"
 msgstr "Directory di coda errata: %(qdir)s"
 
 # /home/mailman/Mailman/MailList.py:517
-#: bin/inject:88
+#: bin/.svn/text-base/inject.svn-base:88 bin/inject:88
 msgid "A list name is required"
 msgstr "Il nome della lista è obbligatorio"
 
-#: bin/list_admins:19
+#: bin/.svn/text-base/list_admins.svn-base:19 bin/list_admins:19
 msgid ""
 "List all the owners of a mailing list.\n"
 "\n"
@@ -10145,11 +10181,11 @@ msgstr ""
 "`nomelista' è il nome della lista di cui si vuole l'elenco dei\n"
 "proprietari.  Puoi mettere sulla linea di comando i nomi di più liste.\n"
 
-#: bin/list_admins:96
+#: bin/.svn/text-base/list_admins.svn-base:96 bin/list_admins:96
 msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "Lista: %(listname)s, \tProprietari: %(owners)s"
 
-#: bin/list_lists:19
+#: bin/.svn/text-base/list_lists.svn-base:19 bin/list_lists:19
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -10199,7 +10235,7 @@ msgstr ""
 # /home/mailman/Mailman/Cgi/admin.py:231
 # /home/mailman/Mailman/Cgi/listinfo.py:122
 # /home/mailman/Mailman/Cgi/listinfo.py:131
-#: bin/list_lists:105
+#: bin/.svn/text-base/list_lists.svn-base:105 bin/list_lists:105
 msgid "No matching mailing lists found"
 msgstr "Non sono state trovate liste corrispondenti."
 
@@ -10207,11 +10243,11 @@ msgstr "Non sono state trovate liste corrispondenti."
 # /home/mailman/Mailman/Cgi/admin.py:231
 # /home/mailman/Mailman/Cgi/listinfo.py:122
 # /home/mailman/Mailman/Cgi/listinfo.py:131
-#: bin/list_lists:109
+#: bin/.svn/text-base/list_lists.svn-base:109 bin/list_lists:109
 msgid "matching mailing lists found:"
 msgstr "liste corrispondenti trovate:"
 
-#: bin/list_members:19
+#: bin/.svn/text-base/list_members.svn-base:19 bin/list_members:19
 msgid ""
 "List all the members of a mailing list.\n"
 "\n"
@@ -10321,20 +10357,20 @@ msgstr ""
 "regolari e poi quelli digest ma senza indicare la divisione tra i due\n"
 "gruppi.\n"
 
-#: bin/list_members:191
+#: bin/.svn/text-base/list_members.svn-base:191 bin/list_members:191
 msgid "Bad --nomail option: %(why)s"
 msgstr "Opzione --nomail errata: %(why)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:42
-#: bin/list_members:202
+#: bin/.svn/text-base/list_members.svn-base:202 bin/list_members:202
 msgid "Bad --digest option: %(kind)s"
 msgstr "Opzione --digest errata: %(kind)s"
 
-#: bin/list_members:224
+#: bin/.svn/text-base/list_members.svn-base:224 bin/list_members:224
 msgid "Could not open file for writing:"
 msgstr "Non riesce ad aprire il file in scrittura:"
 
-#: bin/list_owners:19
+#: bin/.svn/text-base/list_owners.svn-base:19 bin/list_owners:19
 msgid ""
 "List the owners of a mailing list, or all mailing lists.\n"
 "\n"
@@ -10380,7 +10416,7 @@ msgstr ""
 "        indicare più di una lista dopo le opzioni.  Se non viene indicata\n"
 "        alcuna lista, allora saranno mostrate tutte.\n"
 
-#: bin/mailmanctl:20
+#: bin/.svn/text-base/mailmanctl.svn-base:20 bin/mailmanctl:20
 msgid ""
 "Primary start-up and shutdown script for Mailman's qrunner daemon.\n"
 "\n"
@@ -10556,23 +10592,23 @@ msgstr ""
 "\n"
 "    reopen  - Semplicemente farà riaprire tutti i file di log.\n"
 
-#: bin/mailmanctl:152
+#: bin/.svn/text-base/mailmanctl.svn-base:152 bin/mailmanctl:152
 msgid "PID unreadable in: %(pidfile)s"
 msgstr "Non capisco il PID in: %(pidfile)s"
 
-#: bin/mailmanctl:154
+#: bin/.svn/text-base/mailmanctl.svn-base:154 bin/mailmanctl:154
 msgid "Is qrunner even running?"
 msgstr "qrunner sta girando?"
 
-#: bin/mailmanctl:160
+#: bin/.svn/text-base/mailmanctl.svn-base:160 bin/mailmanctl:160
 msgid "No child with pid: %(pid)s"
 msgstr "Non ci sono figli con questo pid: %(pid)s"
 
-#: bin/mailmanctl:162
+#: bin/.svn/text-base/mailmanctl.svn-base:162 bin/mailmanctl:162
 msgid "Stale pid file removed."
 msgstr "pid file abbandonato rimosso."
 
-#: bin/mailmanctl:220
+#: bin/.svn/text-base/mailmanctl.svn-base:220 bin/mailmanctl:220
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if "
 "another\n"
@@ -10581,7 +10617,7 @@ msgstr ""
 "Non riesco ad acquisire il lock per il qrunner principale perchè\n"
 "sembra che ci sia un altro qrunner in esecuzione.\n"
 
-#: bin/mailmanctl:226
+#: bin/.svn/text-base/mailmanctl.svn-base:226 bin/mailmanctl:226
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there "
 "is\n"
@@ -10591,7 +10627,7 @@ msgstr ""
 "si tratti di un lock abbandonato.  Prova a rilanciare mailmanctl con\n"
 "l'opzione -s.\n"
 
-#: bin/mailmanctl:232
+#: bin/.svn/text-base/mailmanctl.svn-base:232 bin/mailmanctl:232
 msgid ""
 "The master qrunner lock could not be acquired, because it appears as if "
 "some\n"
@@ -10616,45 +10652,46 @@ msgstr ""
 "\n"
 "Esco."
 
-#: bin/mailmanctl:279 cron/mailpasswds:119
+#: bin/.svn/text-base/mailmanctl.svn-base:279 bin/mailmanctl:279
+#: cron/.svn/text-base/mailpasswds.svn-base:119 cron/mailpasswds:119
 msgid "Site list is missing: %(sitelistname)s"
 msgstr "Lista di sito mancante: %(sitelistname)s"
 
-#: bin/mailmanctl:304
+#: bin/.svn/text-base/mailmanctl.svn-base:304 bin/mailmanctl:304
 msgid "Run this program as root or as the %(name)s user, or use -u."
 msgstr ""
 "Esegui questo programma come root o come l'utente %(name)s, oppure usa -u."
 
 # /home/mailman/Mailman/ListAdmin.py:210
-#: bin/mailmanctl:335
+#: bin/.svn/text-base/mailmanctl.svn-base:335 bin/mailmanctl:335
 msgid "No command given."
 msgstr "Nessuna motivazione fornita."
 
-#: bin/mailmanctl:338
+#: bin/.svn/text-base/mailmanctl.svn-base:338 bin/mailmanctl:338
 msgid "Bad command: %(command)s"
 msgstr "Comando errato: %(command)s"
 
-#: bin/mailmanctl:343
+#: bin/.svn/text-base/mailmanctl.svn-base:343 bin/mailmanctl:343
 msgid "Warning!  You may encounter permission problems."
 msgstr "Attenzione!  Potresti incontrare problemi con i permessi."
 
-#: bin/mailmanctl:352
+#: bin/.svn/text-base/mailmanctl.svn-base:352 bin/mailmanctl:352
 msgid "Shutting down Mailman's master qrunner"
 msgstr "Spengo il master qrunner di Mailman"
 
-#: bin/mailmanctl:359
+#: bin/.svn/text-base/mailmanctl.svn-base:359 bin/mailmanctl:359
 msgid "Restarting Mailman's master qrunner"
 msgstr "Faccio ripartire il master qrunner di Mailman"
 
-#: bin/mailmanctl:363
+#: bin/.svn/text-base/mailmanctl.svn-base:363 bin/mailmanctl:363
 msgid "Re-opening all log files"
 msgstr "Riapro tutti i file di log"
 
-#: bin/mailmanctl:399
+#: bin/.svn/text-base/mailmanctl.svn-base:399 bin/mailmanctl:399
 msgid "Starting Mailman's master qrunner."
 msgstr "Lancio il master qrunner di Mailman"
 
-#: bin/mmsitepass:19
+#: bin/.svn/text-base/mmsitepass.svn-base:19 bin/mmsitepass:19
 msgid ""
 "Set the site password, prompting from the terminal.\n"
 "\n"
@@ -10701,41 +10738,41 @@ msgstr ""
 "Se la password non viene fornita sulla riga di comando, verrà chiesta.\n"
 
 # /home/mailman/Mailman/Cgi/subscribe.py:127
-#: bin/mmsitepass:73
+#: bin/.svn/text-base/mmsitepass.svn-base:73 bin/mmsitepass:73
 msgid "site"
 msgstr "server"
 
-#: bin/mmsitepass:80
+#: bin/.svn/text-base/mmsitepass.svn-base:80 bin/mmsitepass:80
 msgid "list creator"
 msgstr "creatore di liste"
 
-#: bin/mmsitepass:86
+#: bin/.svn/text-base/mmsitepass.svn-base:86 bin/mmsitepass:86
 msgid "New %(pwdesc)s password: "
 msgstr "Nuova password per %(pwdesc)s:"
 
 # /home/mailman/Mailman/Cgi/admin.py:671
-#: bin/mmsitepass:87
+#: bin/.svn/text-base/mmsitepass.svn-base:87 bin/mmsitepass:87
 msgid "Again to confirm password: "
 msgstr "Conferma la nuova password: "
 
-#: bin/mmsitepass:89
+#: bin/.svn/text-base/mmsitepass.svn-base:89 bin/mmsitepass:89
 msgid "Passwords do not match; no changes made."
 msgstr "Le password non sono uguali; nessuna modifica effettuata."
 
-#: bin/mmsitepass:92
+#: bin/.svn/text-base/mmsitepass.svn-base:92 bin/mmsitepass:92
 msgid "Interrupted..."
 msgstr "Interrotto..."
 
 # /home/mailman/Mailman/Cgi/handle_opts.py:187
-#: bin/mmsitepass:98
+#: bin/.svn/text-base/mmsitepass.svn-base:98 bin/mmsitepass:98
 msgid "Password changed."
 msgstr "La password è stata cambiata."
 
-#: bin/mmsitepass:100
+#: bin/.svn/text-base/mmsitepass.svn-base:100 bin/mmsitepass:100
 msgid "Password change failed."
 msgstr "Cambio di password fallito."
 
-#: bin/msgfmt.py:5
+#: bin/.svn/text-base/msgfmt.py.svn-base:5 bin/msgfmt.py:5
 msgid ""
 "Generate binary message catalog from textual translation description.\n"
 "\n"
@@ -10790,15 +10827,15 @@ msgstr ""
 "    --version\n"
 "        Mostra informazioni sulla versione ed esce.\n"
 
-#: bin/msgfmt.py:49
+#: bin/.svn/text-base/msgfmt.py.svn-base:49 bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
 msgstr "Aggiunge una traduzione non-fuzzy nel dizionario."
 
-#: bin/msgfmt.py:57
+#: bin/.svn/text-base/msgfmt.py.svn-base:57 bin/msgfmt.py:57
 msgid "Return the generated output."
 msgstr "Restituisce l'output generato."
 
-#: bin/newlist:19
+#: bin/.svn/text-base/newlist.svn-base:19 bin/newlist:19
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -10952,32 +10989,32 @@ msgstr ""
 "\n"
 "Nota che i nomi di lista vengono forzati a tutte minuscole.\n"
 
-#: bin/newlist:150
+#: bin/.svn/text-base/newlist.svn-base:150 bin/newlist:150
 msgid "Unknown language: %(lang)s"
 msgstr "Lingua sconosciuta: %(lang)s"
 
 # /home/mailman/Mailman/MailCommandHandler.py:297
-#: bin/newlist:155
+#: bin/.svn/text-base/newlist.svn-base:155 bin/newlist:155
 msgid "Enter the name of the list: "
 msgstr "Inserisci il nome della lista: "
 
-#: bin/newlist:176
+#: bin/.svn/text-base/newlist.svn-base:176 bin/newlist:176
 msgid "Enter the email of the person running the list: "
 msgstr "Inserisci l'email della persona che l'amministra: "
 
-#: bin/newlist:181
+#: bin/.svn/text-base/newlist.svn-base:181 bin/newlist:181
 msgid "Initial %(listname)s password: "
 msgstr "Password iniziale per %(listname)s: "
 
-#: bin/newlist:185
+#: bin/.svn/text-base/newlist.svn-base:185 bin/newlist:185
 msgid "The list password cannot be empty"
 msgstr "La password di lista non deve essere vuota"
 
-#: bin/newlist:225
+#: bin/.svn/text-base/newlist.svn-base:225 bin/newlist:225
 msgid "Hit enter to notify %(listname)s owner..."
 msgstr "Premi invio per notificare il proprietario di %(listname)s..."
 
-#: bin/qrunner:20
+#: bin/.svn/text-base/qrunner.svn-base:20 bin/qrunner:20
 #, fuzzy
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
@@ -11101,20 +11138,20 @@ msgstr ""
 "essere uno\n"
 "dei nomi mostrati dallo switch -l.\n"
 
-#: bin/qrunner:178
+#: bin/.svn/text-base/qrunner.svn-base:178 bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
 msgstr "%(name)s esegue il qrunner %(runnername)s"
 
-#: bin/qrunner:179
+#: bin/.svn/text-base/qrunner.svn-base:179 bin/qrunner:179
 msgid "All runs all the above qrunners"
 msgstr "All esegue tutti i qrunner qui sopra"
 
 # /home/mailman/Mailman/ListAdmin.py:210
-#: bin/qrunner:215
+#: bin/.svn/text-base/qrunner.svn-base:215 bin/qrunner:215
 msgid "No runner name given."
 msgstr "Non è stato fornito un nome di qrunner."
 
-#: bin/rb-archfix:21
+#: bin/.svn/text-base/rb-archfix.svn-base:21 bin/rb-archfix:21
 msgid ""
 "Reduce disk space usage for Pipermail archives.\n"
 "\n"
@@ -11171,7 +11208,7 @@ msgstr ""
 "Questo script viene fornito unicamente per motivo di comodità.\n"
 "Non sarà supportato.\n"
 
-#: bin/remove_members:20
+#: bin/.svn/text-base/remove_members.svn-base:20 bin/remove_members:20
 #, fuzzy
 msgid ""
 "Remove members from a list.\n"
@@ -11258,23 +11295,23 @@ msgstr ""
 "    indir1 ... sono indirizzi addizionali da rimuovere.\n"
 "\n"
 
-#: bin/remove_members:156
+#: bin/.svn/text-base/remove_members.svn-base:156 bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
 msgstr "Non riesco ad aprire in lettura il file: %(filename)s."
 
-#: bin/remove_members:163
+#: bin/.svn/text-base/remove_members.svn-base:163 bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
 msgstr "Errore nell'apertura della lista %(listname)s... la salto."
 
-#: bin/remove_members:173
+#: bin/.svn/text-base/remove_members.svn-base:173 bin/remove_members:173
 msgid "No such member: %(addr)s"
 msgstr "Nessun iscritto: %(addr)s."
 
-#: bin/remove_members:178
+#: bin/.svn/text-base/remove_members.svn-base:178 bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr "Utente `%(addr)s' rimosso dalla lista: %(listname)s"
 
-#: bin/reset_pw.py:21
+#: bin/.svn/text-base/reset_pw.py.svn-base:21 bin/reset_pw.py:21
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -11310,15 +11347,15 @@ msgstr ""
 "    -v / --verboso\n"
 "        Scrive quello che sta facendo.\n"
 
-#: bin/reset_pw.py:77
+#: bin/.svn/text-base/reset_pw.py.svn-base:77 bin/reset_pw.py:77
 msgid "Changing passwords for list: %(listname)s"
 msgstr "Cambio le password per la lista %(listname)s"
 
-#: bin/reset_pw.py:83
+#: bin/.svn/text-base/reset_pw.py.svn-base:83 bin/reset_pw.py:83
 msgid "New password for member %(member)40s: %(randompw)s"
 msgstr "Nuova password per l'iscritto %(member)40s: %(randompw)s"
 
-#: bin/rmlist:19
+#: bin/.svn/text-base/rmlist.svn-base:19 bin/rmlist:19
 msgid ""
 "Remove the components of a mailing list with impunity - beware!\n"
 "\n"
@@ -11359,46 +11396,49 @@ msgstr ""
 "        scrive questo messaggio d'aiuto ed esce.\n"
 "\n"
 
+#: bin/.svn/text-base/rmlist.svn-base:72 bin/.svn/text-base/rmlist.svn-base:75
 #: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "Rimozione di %(msg)s"
 
-#: bin/rmlist:80
+#: bin/.svn/text-base/rmlist.svn-base:80 bin/rmlist:80
 msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "non trovato %(msg)s della lista %(listname)s in %(filename)s"
 
-#: bin/rmlist:104
+#: bin/.svn/text-base/rmlist.svn-base:104 bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr "Non esiste (o è stata cancellata) la lista: %(listname)s"
 
-#: bin/rmlist:106
+#: bin/.svn/text-base/rmlist.svn-base:106 bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr "Non esiste la lista: %(listname)s.  Rimuovo i suoi archivi residui."
 
-#: bin/rmlist:110
+#: bin/.svn/text-base/rmlist.svn-base:110 bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr "Non rimuovo gli archivi.  Rilanciami con -a per rimuoverli."
 
 # /home/mailman/Mailman/MailList.py:593
-#: bin/rmlist:124
+#: bin/.svn/text-base/rmlist.svn-base:124 bin/rmlist:124
 msgid "list info"
 msgstr "informazioni sulla lista"
 
-#: bin/rmlist:132
+#: bin/.svn/text-base/rmlist.svn-base:132 bin/rmlist:132
 msgid "stale lock file"
 msgstr "file di lock rimasto abbandonato"
 
 # /home/mailman/Mailman/Cgi/private.py:65
 # /home/mailman/Mailman/Cgi/private.py:77
-#: bin/rmlist:137 bin/rmlist:139
+#: bin/.svn/text-base/rmlist.svn-base:137
+#: bin/.svn/text-base/rmlist.svn-base:139 bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "archivi privati"
 
-#: bin/rmlist:141 bin/rmlist:143
+#: bin/.svn/text-base/rmlist.svn-base:141
+#: bin/.svn/text-base/rmlist.svn-base:143 bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "archivi pubblici"
 
-#: bin/show_qfiles:20
+#: bin/.svn/text-base/show_qfiles.svn-base:20 bin/show_qfiles:20
 msgid ""
 "Show the contents of one or more Mailman queue files.\n"
 "\n"
@@ -11428,7 +11468,7 @@ msgstr ""
 "\n"
 "Esempio: show_qfiles qfiles/shunt/*.pck\n"
 
-#: bin/sync_members:19
+#: bin/.svn/text-base/sync_members.svn-base:19 bin/sync_members:19
 msgid ""
 "Synchronize a mailing list's membership with a flat file.\n"
 "\n"
@@ -11557,62 +11597,62 @@ msgstr ""
 "    nomelista\n"
 "        Obbligatorio.  Indica quale lista va sincronizzata.\n"
 
-#: bin/sync_members:115
+#: bin/.svn/text-base/sync_members.svn-base:115 bin/sync_members:115
 msgid "Bad choice: %(yesno)s"
 msgstr "Scelta errata: %(yesno)s"
 
-#: bin/sync_members:138
+#: bin/.svn/text-base/sync_members.svn-base:138 bin/sync_members:138
 msgid "Dry run mode"
 msgstr "Esecuzione simulata"
 
-#: bin/sync_members:159
+#: bin/.svn/text-base/sync_members.svn-base:159 bin/sync_members:159
 msgid "Only one -f switch allowed"
 msgstr "E' permesso l'uso di una sola opzione -f"
 
 # /home/mailman/Mailman/ListAdmin.py:210
-#: bin/sync_members:163
+#: bin/.svn/text-base/sync_members.svn-base:163 bin/sync_members:163
 msgid "No argument to -f given"
 msgstr "Non è stata specificata l'opzione -f"
 
-#: bin/sync_members:172
+#: bin/.svn/text-base/sync_members.svn-base:172 bin/sync_members:172
 msgid "Illegal option: %(opt)s"
 msgstr "Opzione non permessa: %(opt)s"
 
 # /home/mailman/Mailman/ListAdmin.py:210
-#: bin/sync_members:178
+#: bin/.svn/text-base/sync_members.svn-base:178 bin/sync_members:178
 msgid "No listname given"
 msgstr "Non è stata specificata la lista da sincronizzare"
 
-#: bin/sync_members:182
+#: bin/.svn/text-base/sync_members.svn-base:182 bin/sync_members:182
 msgid "Must have a listname and a filename"
 msgstr "Devo avere un nomelista e un nomefile"
 
-#: bin/sync_members:191
+#: bin/.svn/text-base/sync_members.svn-base:191 bin/sync_members:191
 msgid "Cannot read address file: %(filename)s: %(msg)s"
 msgstr "Non posso leggere il file con gli indirizzi: %(filename)s: %(msg)s"
 
-#: bin/sync_members:203
+#: bin/.svn/text-base/sync_members.svn-base:203 bin/sync_members:203
 msgid "Ignore  :  %(addr)30s"
 msgstr "Ignoro     :  %(addr)30s"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: bin/sync_members:212
+#: bin/.svn/text-base/sync_members.svn-base:212 bin/sync_members:212
 msgid "Invalid :  %(addr)30s"
 msgstr "Non valido :  %(addr)30s"
 
-#: bin/sync_members:215
+#: bin/.svn/text-base/sync_members.svn-base:215 bin/sync_members:215
 msgid "You must fix the preceding invalid addresses first."
 msgstr "Devi prima sistemare i precedenti indirizzi non validi."
 
-#: bin/sync_members:260
+#: bin/.svn/text-base/sync_members.svn-base:260 bin/sync_members:260
 msgid "Added  : %(s)s"
 msgstr "Aggiunto   :  %(s)s"
 
-#: bin/sync_members:278
+#: bin/.svn/text-base/sync_members.svn-base:278 bin/sync_members:278
 msgid "Removed: %(s)s"
 msgstr "Rimosso: %(s)s"
 
-#: bin/transcheck:18
+#: bin/.svn/text-base/transcheck.svn-base:18 bin/transcheck:18
 msgid ""
 "\n"
 "Check a given Mailman translation, making sure that variables and\n"
@@ -11640,27 +11680,27 @@ msgstr ""
 "Dove <lingua> è il codice del tuo paese (es. 'it' per Italia) e -q \n"
 "chiede di ricevere soltanto un rapporto abbreviato.\n"
 
-#: bin/transcheck:57
+#: bin/.svn/text-base/transcheck.svn-base:57 bin/transcheck:57
 msgid "check a translation comparing with the original string"
 msgstr "controlla una traduzione comparandola con le stringhe originali"
 
-#: bin/transcheck:67
+#: bin/.svn/text-base/transcheck.svn-base:67 bin/transcheck:67
 msgid "scan a string from the original file"
 msgstr "scandisce una stringa del file originale"
 
-#: bin/transcheck:77
+#: bin/.svn/text-base/transcheck.svn-base:77 bin/transcheck:77
 msgid "scan a translated string"
 msgstr "scandisce una stringa tradotta"
 
-#: bin/transcheck:90
+#: bin/.svn/text-base/transcheck.svn-base:90 bin/transcheck:90
 msgid "check for differences between checked in and checked out"
 msgstr "controllo differenze tra messi e tolti"
 
-#: bin/transcheck:123
+#: bin/.svn/text-base/transcheck.svn-base:123 bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
 msgstr "esamina un file .po estraendo msgid e msgstr"
 
-#: bin/transcheck:142
+#: bin/.svn/text-base/transcheck.svn-base:142 bin/transcheck:142
 msgid ""
 "States table for the finite-states-machine parser:\n"
 "            0  idle\n"
@@ -11678,7 +11718,7 @@ msgstr ""
 "            4  end\n"
 "        "
 
-#: bin/transcheck:279
+#: bin/.svn/text-base/transcheck.svn-base:279 bin/transcheck:279
 msgid ""
 "check a translated template against the original one\n"
 "       search also <MM-*> tags if html is not zero"
@@ -11687,11 +11727,11 @@ msgstr ""
 "        con l'originale.  Cerca anche i tag <MM-*> se html\n"
 "        è non nullo"
 
-#: bin/transcheck:326
+#: bin/.svn/text-base/transcheck.svn-base:326 bin/transcheck:326
 msgid "scan the po file comparing msgids with msgstrs"
 msgstr "esamina il file .po comparando msgid e msgstr"
 
-#: bin/unshunt:19
+#: bin/.svn/text-base/unshunt.svn-base:20 bin/unshunt:20
 msgid ""
 "Move a message from the shunt queue to the original queue.\n"
 "\n"
@@ -11717,7 +11757,7 @@ msgstr ""
 "Opzionalmente `directory' indica una directory da cui prelevare i\n"
 "messaggi invece che da qfiles/shunt.\n"
 
-#: bin/unshunt:81
+#: bin/.svn/text-base/unshunt.svn-base:83 bin/unshunt:83
 msgid ""
 "Cannot unshunt message %(filebase)s, skipping:\n"
 "%(e)s"
@@ -11725,7 +11765,7 @@ msgstr ""
 "Non riesco a rimettere dentro il messaggio %(filebase)s, lo salto:\n"
 "%(e)s"
 
-#: bin/update:19
+#: bin/.svn/text-base/update.svn-base:19 bin/update:19
 msgid ""
 "Perform all necessary upgrades.\n"
 "\n"
@@ -11762,25 +11802,26 @@ msgstr ""
 "all'ultima versione di Mailman da una versione precedente.\n"
 "Conosce le specificità di tutte le versione dalla 1.0b4 in avanti (?).\n"
 
-#: bin/update:107
+#: bin/.svn/text-base/update.svn-base:107 bin/update:107
 msgid "Fixing language templates: %(listname)s"
 msgstr "Correzione dei template di lingua: %(listname)s"
 
-#: bin/update:196 bin/update:698
+#: bin/.svn/text-base/update.svn-base:196
+#: bin/.svn/text-base/update.svn-base:698 bin/update:196 bin/update:698
 msgid "WARNING: could not acquire lock for list: %(listname)s"
 msgstr "ATTENZIONE: non riesco ad acquisire il lock per la lista: %(listname)s"
 
-#: bin/update:215
+#: bin/.svn/text-base/update.svn-base:215 bin/update:215
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
 msgstr ""
 "Riabilito %(n)s indirizzi che erano stati disabilitati per errori di "
 "spedizione ma per i quali non abbiamo altre informazioni"
 
-#: bin/update:221
+#: bin/.svn/text-base/update.svn-base:221 bin/update:221
 msgid "Updating the held requests database."
 msgstr "Aggiornamento del database dei messaggi sospesi."
 
-#: bin/update:243
+#: bin/.svn/text-base/update.svn-base:243 bin/update:243
 msgid ""
 "For some reason, %(mbox_dir)s exists as a file.  This won't work with\n"
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
@@ -11788,7 +11829,7 @@ msgstr ""
 "Per qualche ragione, %(mbox_dir)s esiste ed è un file.  Questo non\n"
 "funziona con b6, quindi la rinomino in %(mbox_dir)s.tmp e procedo."
 
-#: bin/update:255
+#: bin/.svn/text-base/update.svn-base:255 bin/update:255
 msgid ""
 "\n"
 "%(listname)s has both public and private mbox archives.  Since this list\n"
@@ -11811,7 +11852,7 @@ msgstr ""
 "\n"
 "Se vuoi puoi integrare questo negli archivi usando lo script 'arch'.\n"
 
-#: bin/update:270
+#: bin/.svn/text-base/update.svn-base:270 bin/update:270
 msgid ""
 "%s has both public and private mbox archives.  Since this list\n"
 "currently uses public archiving, I'm installing the public mbox file\n"
@@ -11832,11 +11873,11 @@ msgstr ""
 "\n"
 "Se vuoi puoi integrarlo negli archivi usando lo script 'arch'.\n"
 
-#: bin/update:287
+#: bin/.svn/text-base/update.svn-base:287 bin/update:287
 msgid "- updating old private mbox file"
 msgstr "- aggiornamento del vecchio file mbox privato"
 
-#: bin/update:295
+#: bin/.svn/text-base/update.svn-base:295 bin/update:295
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pri_mbox_file)s\n"
@@ -11848,7 +11889,8 @@ msgstr ""
 "    in\n"
 "        %(newname)s"
 
-#: bin/update:302 bin/update:325
+#: bin/.svn/text-base/update.svn-base:302
+#: bin/.svn/text-base/update.svn-base:325 bin/update:302 bin/update:325
 msgid ""
 "    looks like you have a really recent CVS installation...\n"
 "    you're either one brave soul, or you already ran me"
@@ -11856,11 +11898,11 @@ msgstr ""
 "    sembra che tu abbia una installazione presa di recente dal CVS...\n"
 "    o sei un'anima coraggiosa, o mi hai già eseguito."
 
-#: bin/update:311
+#: bin/.svn/text-base/update.svn-base:311 bin/update:311
 msgid "- updating old public mbox file"
 msgstr "- aggiorno il vecchio file mbox pubblico"
 
-#: bin/update:319
+#: bin/.svn/text-base/update.svn-base:319 bin/update:319
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pub_mbox_file)s\n"
@@ -11872,80 +11914,80 @@ msgstr ""
 "    in\n"
 "        %(newname)s"
 
-#: bin/update:350
+#: bin/.svn/text-base/update.svn-base:350 bin/update:350
 msgid "- This list looks like it might have <= b4 list templates around"
 msgstr "- Sembra che questa lista abbia dei template antecedenti a b4"
 
-#: bin/update:358
+#: bin/.svn/text-base/update.svn-base:358 bin/update:358
 msgid "- moved %(o_tmpl)s to %(n_tmpl)s"
 msgstr "- spostato %(o_tmpl)s in %(n_tmpl)s"
 
-#: bin/update:360
+#: bin/.svn/text-base/update.svn-base:360 bin/update:360
 msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- esistono sia %(o_tmpl)s che %(n_tmpl)s, non tocco niente"
 
-#: bin/update:363
+#: bin/.svn/text-base/update.svn-base:363 bin/update:363
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
 msgstr "- %(o_tmpl)s non esiste, lascio intoccato"
 
-#: bin/update:393
+#: bin/.svn/text-base/update.svn-base:393 bin/update:393
 msgid "removing directory %(src)s and everything underneath"
 msgstr "rimuovo la directory %(src)s e tutto quello che contiene"
 
-#: bin/update:396
+#: bin/.svn/text-base/update.svn-base:396 bin/update:396
 msgid "removing %(src)s"
 msgstr "rimozione di %(src)s"
 
-#: bin/update:400
+#: bin/.svn/text-base/update.svn-base:400 bin/update:400
 msgid "Warning: couldn't remove %(src)s -- %(rest)s"
 msgstr "Attenzione: non riesco a rimuovere %(src)s -- %(rest)s"
 
-#: bin/update:405
+#: bin/.svn/text-base/update.svn-base:405 bin/update:405
 msgid "couldn't remove old file %(pyc)s -- %(rest)s"
 msgstr "non riesco a rimuovere il vecchio file %(pyc)s -- %(rest)s"
 
-#: bin/update:409
+#: bin/.svn/text-base/update.svn-base:409 bin/update:409
 msgid "updating old qfiles"
 msgstr "aggiornamento dei vecchi qfile"
 
-#: bin/update:448
+#: bin/.svn/text-base/update.svn-base:448 bin/update:448
 msgid "Warning!  Not a directory: %(dirpath)s"
 msgstr "Attenzione!  Non è una directory: %(dirpath)s"
 
-#: bin/update:517
+#: bin/.svn/text-base/update.svn-base:517 bin/update:517
 msgid "message is unparsable: %(filebase)s"
 msgstr "il messaggio è incomprensibile: %(filebase)s"
 
-#: bin/update:531
+#: bin/.svn/text-base/update.svn-base:531 bin/update:531
 msgid "Warning!  Deleting empty .pck file: %(pckfile)s"
 msgstr "Attenzione!  Rimozione di un file .pck vuoto: %(pckfile)s"
 
-#: bin/update:550
+#: bin/.svn/text-base/update.svn-base:550 bin/update:550
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
 msgstr ""
 "Aggiornamento del vecchio database pending_subscriptions.db di Mailman 2.0"
 
-#: bin/update:561
+#: bin/.svn/text-base/update.svn-base:561 bin/update:561
 msgid "Updating Mailman 2.1.4 pending.pck database"
 msgstr "Aggiornamento del vecchio database pending.pck di Mailman 2.1.4"
 
-#: bin/update:585
+#: bin/.svn/text-base/update.svn-base:585 bin/update:585
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
 msgstr "Ignoro dati pendenti errati:  %(key)s: %(val)s"
 
-#: bin/update:601
+#: bin/.svn/text-base/update.svn-base:601 bin/update:601
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
 msgstr "ATTENZIONE: Ignoro ID duplicato: %(id)s."
 
-#: bin/update:654
+#: bin/.svn/text-base/update.svn-base:654 bin/update:654
 msgid "getting rid of old source files"
 msgstr "elimino i vecchi file sorgente"
 
-#: bin/update:664
+#: bin/.svn/text-base/update.svn-base:664 bin/update:664
 msgid "no lists == nothing to do, exiting"
 msgstr "nessuna lista == niente da fare, esco"
 
-#: bin/update:671
+#: bin/.svn/text-base/update.svn-base:671 bin/update:671
 msgid ""
 "fixing all the perms on your old html archives to work with b6\n"
 "If your archives are big, this could take a minute or two..."
@@ -11955,27 +11997,27 @@ msgstr ""
 "potrebbero essere necessari vari minuti..."
 
 # /home/mailman/Mailman/MailList.py:539
-#: bin/update:676
+#: bin/.svn/text-base/update.svn-base:676 bin/update:676
 msgid "done"
 msgstr "fatto"
 
-#: bin/update:678
+#: bin/.svn/text-base/update.svn-base:678 bin/update:678
 msgid "Updating mailing list: %(listname)s"
 msgstr "Aggiorno la lista: %(listname)s"
 
-#: bin/update:681
+#: bin/.svn/text-base/update.svn-base:681 bin/update:681
 msgid "Updating Usenet watermarks"
 msgstr "Aggiorno i marcatori di Usenet"
 
-#: bin/update:686
+#: bin/.svn/text-base/update.svn-base:686 bin/update:686
 msgid "- nothing to update here"
 msgstr "- niente da aggiornare qui"
 
-#: bin/update:709
+#: bin/.svn/text-base/update.svn-base:709 bin/update:709
 msgid "- usenet watermarks updated and gate_watermarks removed"
 msgstr "- i marcatori usenet sono stati aggiornati e gate_watermarks rimosso"
 
-#: bin/update:723
+#: bin/.svn/text-base/update.svn-base:723 bin/update:723
 msgid ""
 "\n"
 "\n"
@@ -12015,11 +12057,11 @@ msgstr ""
 "NOTA NOTA NOTA NOTA NOTA\n"
 "\n"
 
-#: bin/update:780
+#: bin/.svn/text-base/update.svn-base:780 bin/update:780
 msgid "No updates are necessary."
 msgstr "Non sono necessarie modifiche."
 
-#: bin/update:783
+#: bin/.svn/text-base/update.svn-base:783 bin/update:783
 msgid ""
 "Downgrade detected, from version %(hexlversion)s to version %(hextversion)s\n"
 "This is probably not safe.\n"
@@ -12029,11 +12071,11 @@ msgstr ""
 "%(hextversion)s.  Probabilmente non è sicuro eseguire questa manovra.\n"
 "Esco."
 
-#: bin/update:788
+#: bin/.svn/text-base/update.svn-base:788 bin/update:788
 msgid "Upgrading from version %(hexlversion)s to %(hextversion)s"
 msgstr "Aggiornamento dalla versione %(hexlversion)s alla %(hextversion)s"
 
-#: bin/update:797
+#: bin/.svn/text-base/update.svn-base:797 bin/update:797
 msgid ""
 "\n"
 "ERROR:\n"
@@ -12059,15 +12101,15 @@ msgstr ""
 "lock, poi rilanciare \"make update\" manualmente.  Vedi i file INSTALL e\n"
 "UPGRADE per i dettagli.\n"
 
-#: bin/version:19
+#: bin/.svn/text-base/version.svn-base:19 bin/version:19
 msgid "Print the Mailman version.\n"
 msgstr "Scrive la versione di Mailman.\n"
 
-#: bin/version:26
+#: bin/.svn/text-base/version.svn-base:26 bin/version:26
 msgid "Using Mailman version:"
 msgstr "Mailman versione:"
 
-#: bin/withlist:19
+#: bin/.svn/text-base/withlist.svn-base:19 bin/withlist:19
 msgid ""
 "General framework for interacting with a mailing list object.\n"
 "\n"
@@ -12293,7 +12335,7 @@ msgstr ""
 "e lanciarlo in questo modo dalla linea di comando:\n"
 "%% bin/withlist -l -r changepw mialista qualcuno@qualcheparte.org pippo\n"
 
-#: bin/withlist:163
+#: bin/.svn/text-base/withlist.svn-base:163 bin/withlist:163
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -12310,53 +12352,53 @@ msgstr ""
 "     un'eccezione.\n"
 "    "
 
-#: bin/withlist:174
+#: bin/.svn/text-base/withlist.svn-base:174 bin/withlist:174
 msgid "Unlocking (but not saving) list: %(listname)s"
 msgstr "Sblocco (ma non salvo) la lista: %(listname)s"
 
-#: bin/withlist:178
+#: bin/.svn/text-base/withlist.svn-base:178 bin/withlist:178
 msgid "Finalizing"
 msgstr "Chiusura"
 
-#: bin/withlist:187
+#: bin/.svn/text-base/withlist.svn-base:187 bin/withlist:187
 msgid "Loading list %(listname)s"
 msgstr "Carico la lista %(listname)s"
 
-#: bin/withlist:189
+#: bin/.svn/text-base/withlist.svn-base:189 bin/withlist:189
 msgid "(locked)"
 msgstr "(bloccata)"
 
-#: bin/withlist:191
+#: bin/.svn/text-base/withlist.svn-base:191 bin/withlist:191
 msgid "(unlocked)"
 msgstr "(sbloccata)"
 
-#: bin/withlist:196
+#: bin/.svn/text-base/withlist.svn-base:196 bin/withlist:196
 msgid "Unknown list: %(listname)s"
 msgstr "Lista ignota: %(listname)s"
 
 # /home/mailman/Mailman/MailList.py:517
-#: bin/withlist:236
+#: bin/.svn/text-base/withlist.svn-base:236 bin/withlist:236
 msgid "No list name supplied."
 msgstr "Il nome della lista è obbligatorio."
 
-#: bin/withlist:245
+#: bin/.svn/text-base/withlist.svn-base:245 bin/withlist:245
 msgid "--all requires --run"
 msgstr "--all richiede --run"
 
-#: bin/withlist:265
+#: bin/.svn/text-base/withlist.svn-base:265 bin/withlist:265
 msgid "Importing %(module)s..."
 msgstr "Importo %(module)s..."
 
-#: bin/withlist:268
+#: bin/.svn/text-base/withlist.svn-base:268 bin/withlist:268
 msgid "Running %(module)s.%(callable)s()..."
 msgstr "Eseguo %(module)s.%(callable)s()..."
 
-#: bin/withlist:289
+#: bin/.svn/text-base/withlist.svn-base:289 bin/withlist:289
 msgid "The variable `m' is the %(listname)s MailList instance"
 msgstr ""
 "La variabile `m' è l'istanza dell'oggetto MailList per la lista %(listname)s"
 
-#: cron/bumpdigests:19
+#: cron/.svn/text-base/bumpdigests.svn-base:19 cron/bumpdigests:19
 msgid ""
 "Increment the digest volume number and reset the digest number to one.\n"
 "\n"
@@ -12384,7 +12426,7 @@ msgstr ""
 "La procedura viene eseguita per le liste elencate sulla riga di comando\n"
 "oppure per tutte se non è stata specificata nessuna lista.\n"
 
-#: cron/checkdbs:19
+#: cron/.svn/text-base/checkdbs.svn-base:19 cron/checkdbs:19
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"
@@ -12405,7 +12447,7 @@ msgstr ""
 "    -h/--help\n"
 "        Scrive questo messaggio di aiuto ed esce.\n"
 
-#: cron/checkdbs:107
+#: cron/.svn/text-base/checkdbs.svn-base:107 cron/checkdbs:107
 msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
@@ -12413,20 +12455,20 @@ msgstr ""
 "Nota: %(discarded)d vecchie richieste automaticamente scadute.\n"
 "\n"
 
-#: cron/checkdbs:120
+#: cron/.svn/text-base/checkdbs.svn-base:120 cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
 msgstr "ci sono %(count)d richieste in attesa del moderatore di %(realname)s"
 
-#: cron/checkdbs:123
+#: cron/.svn/text-base/checkdbs.svn-base:123 cron/checkdbs:123
 msgid "%(realname)s moderator request check result"
 msgstr "risultato del check sulle richieste di moderazione di %(realname)s "
 
 # /home/mailman/Mailman/Cgi/options.py:138
-#: cron/checkdbs:143
+#: cron/.svn/text-base/checkdbs.svn-base:143 cron/checkdbs:143
 msgid "Pending subscriptions:"
 msgstr "Iscrizioni pendenti:"
 
-#: cron/checkdbs:154
+#: cron/.svn/text-base/checkdbs.svn-base:154 cron/checkdbs:154
 msgid ""
 "\n"
 "Pending posts:"
@@ -12434,7 +12476,7 @@ msgstr ""
 "\n"
 "Messaggi pendenti:"
 
-#: cron/checkdbs:161
+#: cron/.svn/text-base/checkdbs.svn-base:161 cron/checkdbs:161
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -12444,7 +12486,7 @@ msgstr ""
 "  Oggetto: %(subject)s\n"
 "    Causa: %(reason)s"
 
-#: cron/disabled:19
+#: cron/.svn/text-base/disabled.svn-base:19 cron/disabled:19
 msgid ""
 "Process disabled members, recommended once per day.\n"
 "\n"
@@ -12538,11 +12580,11 @@ msgstr ""
 "    --listname=nomelista\n"
 "        Esamina solo la lista indicata, altrimenti tutte.\n"
 
-#: cron/disabled:144
+#: cron/.svn/text-base/disabled.svn-base:144 cron/disabled:144
 msgid "[disabled by periodic sweep and cull, no message available]"
 msgstr "[disabilitato dal controllo periodico, nessun messaggio disponibile]"
 
-#: cron/gate_news:19
+#: cron/.svn/text-base/gate_news.svn-base:19 cron/gate_news:19
 msgid ""
 "Poll the NNTP servers for messages to be gatewayed to mailing lists.\n"
 "\n"
@@ -12567,7 +12609,7 @@ msgstr ""
 "        Scrive questo messaggio d'aiuto ed esce.\n"
 "\n"
 
-#: cron/mailpasswds:19
+#: cron/.svn/text-base/mailpasswds.svn-base:19 cron/mailpasswds:19
 msgid ""
 "Send password reminders for all lists to all users.\n"
 "\n"
@@ -12616,15 +12658,15 @@ msgstr ""
 "        Scrive questo messaggio d'aiuto ed esce.\n"
 
 # /home/mailman/Mailman/HTMLFormatter.py:301
-#: cron/mailpasswds:216
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "Password // URL"
 msgstr "Password // URL"
 
-#: cron/mailpasswds:222
+#: cron/.svn/text-base/mailpasswds.svn-base:222 cron/mailpasswds:222
 msgid "%(host)s mailing list memberships reminder"
 msgstr "promemoria per gli iscritti della lista %(host)s"
 
-#: cron/nightly_gzip:19
+#: cron/.svn/text-base/nightly_gzip.svn-base:19 cron/nightly_gzip:19
 msgid ""
 "Re-generate the Pipermail gzip'd archive flat files.\n"
 "\n"
@@ -12671,7 +12713,7 @@ msgstr ""
 "        archiviate.\n"
 "\n"
 
-#: cron/senddigests:19
+#: cron/.svn/text-base/senddigests.svn-base:19 cron/senddigests:19
 msgid ""
 "Dispatch digests for lists w/pending messages and digest_send_periodic set.\n"
 "\n"
@@ -12701,3 +12743,10 @@ msgstr ""
 "    --listname=nomelista\n"
 "        Invia il digest soltanto per la lista indicata, altrimenti viene\n"
 "        inviato per tutte.\n"
+
+#~ msgid ""
+#~ "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
+#~ "## captured on %(when)s\n"
+#~ msgstr ""
+#~ "## configurazione della lista \"%(listname)s\" -*- python -*-\n"
+#~ "## catturata il %(when)s\n"

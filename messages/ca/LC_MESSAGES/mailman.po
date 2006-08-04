@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman\n"
-"POT-Creation-Date: Thu Mar 23 16:59:29 2006\n"
+"POT-Creation-Date: Fri Aug  4 16:11:31 2006\n"
 "PO-Revision-Date: 2004-09-27 16:52+0100\n"
 "Last-Translator: Robert Garrigos <robert@cataloniahosting.com>\n"
 "Language-Team: Català <LL@li.org>\n"
@@ -217,9 +217,9 @@ msgstr "Notificació de missatges rebotats"
 msgid " The last bounce received from you was dated %(date)s"
 msgstr " El darrer missatge rebotat rebut de tu té data %(date)s"
 
-#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:145
+#: Mailman/Bouncer.py:279 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:285
-#: Mailman/Handlers/Hold.py:209 Mailman/Handlers/ToDigest.py:235
+#: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:235
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(sense assumpte)"
@@ -350,7 +350,8 @@ msgstr "la pàgina d'informació general de la llista de correu"
 msgid "<p>(Send questions and comments to "
 msgstr "<p>(Envia preguntes i/o comentaris a "
 
-#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135 cron/mailpasswds:216
+#: Mailman/Cgi/admin.py:288 Mailman/Cgi/listinfo.py:135
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "List"
 msgstr "Llista"
 
@@ -359,7 +360,8 @@ msgstr "Llista"
 msgid "Description"
 msgstr "Descripció"
 
-#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142 bin/list_lists:116
+#: Mailman/Cgi/admin.py:295 Mailman/Cgi/listinfo.py:142
+#: bin/.svn/text-base/list_lists.svn-base:116 bin/list_lists:116
 msgid "[no description available]"
 msgstr "[descripció no disponible]"
 
@@ -1275,7 +1277,7 @@ msgstr "Capçalera del Missatge:"
 msgid "Message Excerpt:"
 msgstr "Resum del missatge:"
 
-#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:143
+#: Mailman/Cgi/admindb.py:709 Mailman/Deliverer.py:141
 msgid "No reason given"
 msgstr "No s'ha donat una raó"
 
@@ -1978,15 +1980,18 @@ msgstr "No estàs autoritzat a crear una nova llista de correu"
 msgid "Unknown virtual host: %(safehostname)s"
 msgstr "Llista desconeguda: %(listname)s"
 
-#: Mailman/Cgi/create.py:195 bin/newlist:202
+#: Mailman/Cgi/create.py:195 bin/.svn/text-base/newlist.svn-base:202
+#: bin/newlist:202
 msgid "Bad owner email address: %(s)s"
 msgstr "L'adreça de correu electrònic de l'amo és errònia: %(s)s"
 
-#: Mailman/Cgi/create.py:199 bin/newlist:170 bin/newlist:204
+#: Mailman/Cgi/create.py:199 bin/.svn/text-base/newlist.svn-base:170
+#: bin/.svn/text-base/newlist.svn-base:204 bin/newlist:170 bin/newlist:204
 msgid "List already exists: %(listname)s"
 msgstr "La llista ja existeix: %(listname)s"
 
-#: Mailman/Cgi/create.py:203 bin/newlist:200
+#: Mailman/Cgi/create.py:203 bin/.svn/text-base/newlist.svn-base:200
+#: bin/newlist:200
 msgid "Illegal list name: %(s)s"
 msgstr "El nom de la llista erroni: %(s)s"
 
@@ -1998,7 +2003,8 @@ msgstr ""
 "Un error desconegut ha ocorregut mentre intentava crear la llista.\n"
 "\tPer favor, contacte amb el administrador per assistència."
 
-#: Mailman/Cgi/create.py:245 bin/newlist:245
+#: Mailman/Cgi/create.py:245 bin/.svn/text-base/newlist.svn-base:245
+#: bin/newlist:245
 msgid "Your new mailing list: %(listname)s"
 msgstr "La teva nova llista de correu:"
 
@@ -2718,7 +2724,7 @@ msgstr ""
 msgid "Private Archive Error - %(msg)s"
 msgstr "Error al Fitxer Privat - %(msg)s"
 
-#: Mailman/Cgi/private.py:178
+#: Mailman/Cgi/private.py:179
 msgid "Private archive file not found"
 msgstr "El fitxer privat no s'ha trobat"
 
@@ -3724,136 +3730,140 @@ msgstr "Membres no-resum (regulars):"
 msgid "Digest members:"
 msgstr "Membres del resum:"
 
-#: Mailman/Defaults.py:1320
+#: Mailman/Defaults.py:1324
 #, fuzzy
 msgid "Catalan"
 msgstr "Italià"
 
-#: Mailman/Defaults.py:1321
+#: Mailman/Defaults.py:1325
 msgid "Czech"
 msgstr "Txec"
 
-#: Mailman/Defaults.py:1322
+#: Mailman/Defaults.py:1326
 #, fuzzy
 msgid "Danish"
 msgstr "Finlandès"
 
-#: Mailman/Defaults.py:1323
+#: Mailman/Defaults.py:1327
 msgid "German"
 msgstr "Alemany"
 
-#: Mailman/Defaults.py:1324
+#: Mailman/Defaults.py:1328
 msgid "English (USA)"
 msgstr "Anglès (USA)"
 
-#: Mailman/Defaults.py:1325
+#: Mailman/Defaults.py:1329
 msgid "Spanish (Spain)"
 msgstr "Espanyol"
 
-#: Mailman/Defaults.py:1326
+#: Mailman/Defaults.py:1330
 msgid "Estonian"
 msgstr "Estonià"
 
-#: Mailman/Defaults.py:1327
+#: Mailman/Defaults.py:1331
 msgid "Euskara"
 msgstr ""
 
-#: Mailman/Defaults.py:1328
+#: Mailman/Defaults.py:1332
 msgid "Finnish"
 msgstr "Finlandès"
 
-#: Mailman/Defaults.py:1329
+#: Mailman/Defaults.py:1333
 msgid "French"
 msgstr "Francès "
 
-#: Mailman/Defaults.py:1330
+#: Mailman/Defaults.py:1334
 msgid "Croatian"
 msgstr ""
 
-#: Mailman/Defaults.py:1331
+#: Mailman/Defaults.py:1335
 msgid "Hungarian"
 msgstr "Hongarès"
 
-#: Mailman/Defaults.py:1332
+#: Mailman/Defaults.py:1336
 msgid "Interlingua"
 msgstr ""
 
-#: Mailman/Defaults.py:1333
+#: Mailman/Defaults.py:1337
 msgid "Italian"
 msgstr "Italià"
 
-#: Mailman/Defaults.py:1334
+#: Mailman/Defaults.py:1338
 msgid "Japanese"
 msgstr "Japonès"
 
-#: Mailman/Defaults.py:1335
+#: Mailman/Defaults.py:1339
 msgid "Korean"
 msgstr "Coreà"
 
-#: Mailman/Defaults.py:1336
+#: Mailman/Defaults.py:1340
 msgid "Lithuanian"
 msgstr "Lituà"
 
-#: Mailman/Defaults.py:1337
+#: Mailman/Defaults.py:1341
 msgid "Dutch"
 msgstr "Holandès"
 
-#: Mailman/Defaults.py:1338
+#: Mailman/Defaults.py:1342
 msgid "Norwegian"
 msgstr "Noruec"
 
-#: Mailman/Defaults.py:1339
+#: Mailman/Defaults.py:1343
 msgid "Polish"
 msgstr ""
 
-#: Mailman/Defaults.py:1340
+#: Mailman/Defaults.py:1344
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portuguès (Brazil)"
 
-#: Mailman/Defaults.py:1341
+#: Mailman/Defaults.py:1345
 msgid "Portuguese (Brazil)"
 msgstr "Portuguès (Brazil)"
 
-#: Mailman/Defaults.py:1342
+#: Mailman/Defaults.py:1346
 #, fuzzy
 msgid "Romanian"
 msgstr "Estonià"
 
-#: Mailman/Defaults.py:1343
+#: Mailman/Defaults.py:1347
 msgid "Russian"
 msgstr "Rus"
 
-#: Mailman/Defaults.py:1344
+#: Mailman/Defaults.py:1348
 #, fuzzy
 msgid "Serbian"
 msgstr "Alemany"
 
-#: Mailman/Defaults.py:1345
+#: Mailman/Defaults.py:1349
 msgid "Slovenian"
 msgstr ""
 
-#: Mailman/Defaults.py:1346
+#: Mailman/Defaults.py:1350
 msgid "Swedish"
 msgstr "Suec"
 
-#: Mailman/Defaults.py:1347
+#: Mailman/Defaults.py:1351
 msgid "Turkish"
 msgstr ""
 
-#: Mailman/Defaults.py:1348
+#: Mailman/Defaults.py:1352
 msgid "Ukrainian"
 msgstr ""
 
-#: Mailman/Defaults.py:1349
+#: Mailman/Defaults.py:1353
+msgid "Vietnamese"
+msgstr ""
+
+#: Mailman/Defaults.py:1354
 msgid "Chinese (China)"
 msgstr ""
 
-#: Mailman/Defaults.py:1350
+#: Mailman/Defaults.py:1355
 msgid "Chinese (Taiwan)"
 msgstr ""
 
-#: Mailman/Deliverer.py:53
+#: Mailman/Deliverer.py:51
 msgid ""
 "Note: Since this is a list of mailing lists, administrative\n"
 "notices like the password reminder will be sent to\n"
@@ -3864,28 +3874,28 @@ msgstr ""
 "les notificacions de recordatori de les contrasenyes s'enviaran a l'adreça\n"
 "administrativa de la teva adreça, %(addr)s."
 
-#: Mailman/Deliverer.py:73
+#: Mailman/Deliverer.py:71
 msgid " (Digest mode)"
 msgstr "(Mode resum)"
 
-#: Mailman/Deliverer.py:79
+#: Mailman/Deliverer.py:77
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
 msgstr "Benvingut a la llista de correu  \"%(realname)s\" %(digmode)s"
 
-#: Mailman/Deliverer.py:88
+#: Mailman/Deliverer.py:86
 msgid "You have been unsubscribed from the %(realname)s mailing list"
 msgstr ""
 "La teva subscripció ha estat cancel·lada a la llista de correu %(realname)s"
 
-#: Mailman/Deliverer.py:115
+#: Mailman/Deliverer.py:113
 msgid "%(listfullname)s mailing list reminder"
 msgstr "Recordatori de la llista de correu %(listfullname)s"
 
-#: Mailman/Deliverer.py:167 Mailman/Deliverer.py:186
+#: Mailman/Deliverer.py:165 Mailman/Deliverer.py:184
 msgid "Hostile subscription attempt detected"
 msgstr ""
 
-#: Mailman/Deliverer.py:168
+#: Mailman/Deliverer.py:166
 msgid ""
 "%(address)s was invited to a different mailing\n"
 "list, but in a deliberate malicious attempt they tried to confirm the\n"
@@ -3893,7 +3903,7 @@ msgid ""
 "action by you is required."
 msgstr ""
 
-#: Mailman/Deliverer.py:187
+#: Mailman/Deliverer.py:185
 msgid ""
 "You invited %(address)s to your list, but in a\n"
 "deliberate malicious attempt, they tried to confirm the invitation to a\n"
@@ -3902,7 +3912,7 @@ msgid ""
 "is required."
 msgstr ""
 
-#: Mailman/Deliverer.py:220
+#: Mailman/Deliverer.py:218
 #, fuzzy
 msgid "%(listname)s mailing list probe message"
 msgstr "Recordatori de la llista de correu %(listfullname)s"
@@ -7645,53 +7655,53 @@ msgstr ""
 msgid "Emergency hold on all list traffic is in effect"
 msgstr "La retenció d' emergència de tot el tràfic està en efecte"
 
-#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:57
+#: Mailman/Handlers/Emergency.py:30 Mailman/Handlers/Hold.py:58
 msgid "Your message was deemed inappropriate by the moderator."
 msgstr "El teu missatge ha estat jutjat de forma errònia per el moderador"
 
-#: Mailman/Handlers/Hold.py:52
+#: Mailman/Handlers/Hold.py:53
 msgid "Sender is explicitly forbidden"
 msgstr "El remiten està explícitament prohibit"
 
-#: Mailman/Handlers/Hold.py:53
+#: Mailman/Handlers/Hold.py:54
 msgid "You are forbidden from posting messages to this list."
 msgstr "Tens prohibit enviar missatges a aquesta llista."
 
-#: Mailman/Handlers/Hold.py:56
+#: Mailman/Handlers/Hold.py:57
 msgid "Post to moderated list"
 msgstr "Enviar a la llista moderada"
 
-#: Mailman/Handlers/Hold.py:60
+#: Mailman/Handlers/Hold.py:61
 msgid "Post by non-member to a members-only list"
 msgstr ""
 "Missatge dirigit a una llista privada procedent d'una adreça que no pertany "
 "a la llista"
 
-#: Mailman/Handlers/Hold.py:61
+#: Mailman/Handlers/Hold.py:62
 msgid "Non-members are not allowed to post messages to this list."
 msgstr "Als no-membres no se'ls permet enviar missatges a aquesta llista."
 
-#: Mailman/Handlers/Hold.py:64
+#: Mailman/Handlers/Hold.py:65
 msgid "Posting to a restricted list by sender requires approval"
 msgstr "L'enviament del remitent a una llista restringida precisa d'aprovació"
 
-#: Mailman/Handlers/Hold.py:65
+#: Mailman/Handlers/Hold.py:66
 msgid "This list is restricted; your message was not approved."
 msgstr "Aquesta llista està restringida; el teu missatge no ha estat aprovat."
 
-#: Mailman/Handlers/Hold.py:68
+#: Mailman/Handlers/Hold.py:69
 msgid "Too many recipients to the message"
 msgstr "Massa destinataris al missatge"
 
-#: Mailman/Handlers/Hold.py:69
+#: Mailman/Handlers/Hold.py:70
 msgid "Please trim the recipient list; it is too long."
 msgstr "Redueix la llista de destinataris; és massa llarga."
 
-#: Mailman/Handlers/Hold.py:72
+#: Mailman/Handlers/Hold.py:73
 msgid "Message has implicit destination"
 msgstr "El missatge no va dirigit explícitament a la llista"
 
-#: Mailman/Handlers/Hold.py:73
+#: Mailman/Handlers/Hold.py:74
 msgid ""
 "Blind carbon copies or other implicit destinations are\n"
 "not allowed.  Try reposting your message by explicitly including the list\n"
@@ -7703,11 +7713,11 @@ msgstr ""
 "llista\n"
 "en el camp To: o Cc:. "
 
-#: Mailman/Handlers/Hold.py:78
+#: Mailman/Handlers/Hold.py:79
 msgid "Message may contain administrivia"
 msgstr "El missatge pot contenir sol·licituts administratives"
 
-#: Mailman/Handlers/Hold.py:83
+#: Mailman/Handlers/Hold.py:84
 msgid ""
 "Please do *not* post administrative requests to the mailing\n"
 "list.  If you wish to subscribe, visit %(listurl)s or send a message with "
@@ -7721,15 +7731,15 @@ msgstr ""
 "amb la paraula `help' a l'adreça de peticions %(request)s per obtenir més "
 "instruccions."
 
-#: Mailman/Handlers/Hold.py:89
+#: Mailman/Handlers/Hold.py:90
 msgid "Message has a suspicious header"
 msgstr "El missatge té una capçalera sospitosa"
 
-#: Mailman/Handlers/Hold.py:90
+#: Mailman/Handlers/Hold.py:91
 msgid "Your message had a suspicious header."
 msgstr "El teu missatge tenia una capçalera sospitosa"
 
-#: Mailman/Handlers/Hold.py:100
+#: Mailman/Handlers/Hold.py:101
 msgid ""
 "Message body is too big: %(size)d bytes with a limit of\n"
 "%(limit)d KB"
@@ -7737,27 +7747,27 @@ msgstr ""
 "El cos del missatge és massa llarg: %(size)d bytes amb un limit de\n"
 "%(limit)d KB"
 
-#: Mailman/Handlers/Hold.py:105
+#: Mailman/Handlers/Hold.py:106
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
 msgstr "el teu missatge era massa gran, ha de ser de menys de  %(kb)d KB."
 
-#: Mailman/Handlers/Hold.py:109
+#: Mailman/Handlers/Hold.py:110
 msgid "Posting to a moderated newsgroup"
 msgstr "Enviant a un grup de noticies moderat"
 
-#: Mailman/Handlers/Hold.py:244
+#: Mailman/Handlers/Hold.py:250
 msgid "Your message to %(listname)s awaits moderator approval"
 msgstr ""
 "El teu missatge a la llista %(listname)s espera l'aprovació de "
 "l'administrador "
 
-#: Mailman/Handlers/Hold.py:263
+#: Mailman/Handlers/Hold.py:269
 msgid "%(listname)s post from %(sender)s requires approval"
 msgstr "Els enviaments a %(listname)s de %(sender)s requereixen aprovació"
 
-#: Mailman/Handlers/Hold.py:270
+#: Mailman/Handlers/Hold.py:276
 msgid ""
 "If you reply to this message, keeping the Subject: header intact, Mailman "
 "will\n"
@@ -8087,11 +8097,22 @@ msgid "%(file)s permissions must be 066x (got %(octmode)s)"
 msgstr "%(file)s ha de tenir permisos 066x (té %(octmode)s)"
 
 #: Mailman/MTA/Postfix.py:318 Mailman/MTA/Postfix.py:345
-#: Mailman/MTA/Postfix.py:356 bin/check_perms:123 bin/check_perms:145
-#: bin/check_perms:155 bin/check_perms:166 bin/check_perms:191
-#: bin/check_perms:208 bin/check_perms:234 bin/check_perms:257
-#: bin/check_perms:276 bin/check_perms:290 bin/check_perms:310
-#: bin/check_perms:347
+#: Mailman/MTA/Postfix.py:356 bin/.svn/text-base/check_perms.svn-base:123
+#: bin/.svn/text-base/check_perms.svn-base:145
+#: bin/.svn/text-base/check_perms.svn-base:155
+#: bin/.svn/text-base/check_perms.svn-base:166
+#: bin/.svn/text-base/check_perms.svn-base:191
+#: bin/.svn/text-base/check_perms.svn-base:208
+#: bin/.svn/text-base/check_perms.svn-base:234
+#: bin/.svn/text-base/check_perms.svn-base:257
+#: bin/.svn/text-base/check_perms.svn-base:276
+#: bin/.svn/text-base/check_perms.svn-base:290
+#: bin/.svn/text-base/check_perms.svn-base:310
+#: bin/.svn/text-base/check_perms.svn-base:347 bin/check_perms:123
+#: bin/check_perms:145 bin/check_perms:155 bin/check_perms:166
+#: bin/check_perms:191 bin/check_perms:208 bin/check_perms:234
+#: bin/check_perms:257 bin/check_perms:276 bin/check_perms:290
+#: bin/check_perms:310 bin/check_perms:347
 msgid "(fixing)"
 msgstr "(fixant)"
 
@@ -8126,7 +8147,8 @@ msgstr "de %(remote)s"
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "les subscripcions a %(realname)s requereixen l'aprovació del moderador"
 
-#: Mailman/MailList.py:982 bin/add_members:242
+#: Mailman/MailList.py:982 bin/.svn/text-base/add_members.svn-base:242
+#: bin/add_members:242
 msgid "%(realname)s subscription notification"
 msgstr "Notificació de subscripció de %(realname)s"
 
@@ -8320,7 +8342,7 @@ msgid ""
 msgstr ""
 "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 
-#: bin/add_members:26
+#: bin/.svn/text-base/add_members.svn-base:26 bin/add_members:26
 #, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
@@ -8409,52 +8431,66 @@ msgstr ""
 "Has de proporcionar al menys una de les opcions -r i -d. Com a molt un\n"
 "dels fitxers pot ser `-'.\n"
 
-#: bin/add_members:137
+#: bin/.svn/text-base/add_members.svn-base:137 bin/add_members:137
 msgid "Already a member: %(member)s"
 msgstr "Ja és un membre: %(member)s"
 
-#: bin/add_members:140
+#: bin/.svn/text-base/add_members.svn-base:140 bin/add_members:140
 msgid "Bad/Invalid email address: blank line"
 msgstr "Adreça de correu electrònic incorrecta: línia en blanc"
 
-#: bin/add_members:142
+#: bin/.svn/text-base/add_members.svn-base:142 bin/add_members:142
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Adreça de correu electrònic incorrecta: %(member)s"
 
-#: bin/add_members:144
+#: bin/.svn/text-base/add_members.svn-base:144 bin/add_members:144
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Adreça hostil (caràcter il·legals): %(member)s"
 
-#: bin/add_members:146
+#: bin/.svn/text-base/add_members.svn-base:146 bin/add_members:146
 msgid "Subscribed: %(member)s"
 msgstr "Subscrit: %(member)s"
 
-#: bin/add_members:191
+#: bin/.svn/text-base/add_members.svn-base:191 bin/add_members:191
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Argument erroni -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:198
+#: bin/.svn/text-base/add_members.svn-base:198 bin/add_members:198
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Argument erroni a -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:204
+#: bin/.svn/text-base/add_members.svn-base:204 bin/add_members:204
 msgid "Cannot read both digest and normal members from standard input."
 msgstr ""
 "No puc llegir als subscriptors regulars i als no regulars des de l'entrada "
 "estàndard."
 
-#: bin/add_members:210 bin/config_list:109 bin/config_list.orig:105
-#: bin/find_member:97 bin/inject:90 bin/list_admins:89 bin/list_members:232
-#: bin/sync_members:222 cron/bumpdigests:86
+#: bin/.svn/text-base/add_members.svn-base:210
+#: bin/.svn/text-base/config_list.svn-base:109
+#: bin/.svn/text-base/find_member.svn-base:97
+#: bin/.svn/text-base/inject.svn-base:90
+#: bin/.svn/text-base/list_admins.svn-base:89
+#: bin/.svn/text-base/list_members.svn-base:232
+#: bin/.svn/text-base/sync_members.svn-base:222 bin/add_members:210
+#: bin/config_list:109 bin/find_member:97 bin/inject:90 bin/list_admins:89
+#: bin/list_members:232 bin/sync_members:222
+#: cron/.svn/text-base/bumpdigests.svn-base:86 cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "La llista no existeix: %(listname)s"
 
-#: bin/add_members:230 bin/change_pw:158 bin/check_db:114 bin/discard:83
-#: bin/sync_members:244 bin/update:564 cron/bumpdigests:78
+#: bin/.svn/text-base/add_members.svn-base:230
+#: bin/.svn/text-base/change_pw.svn-base:158
+#: bin/.svn/text-base/check_db.svn-base:114
+#: bin/.svn/text-base/discard.svn-base:83
+#: bin/.svn/text-base/sync_members.svn-base:244
+#: bin/.svn/text-base/update.svn-base:564 bin/add_members:230
+#: bin/change_pw:158 bin/check_db:114 bin/discard:83 bin/sync_members:244
+#: bin/update:564 cron/.svn/text-base/bumpdigests.svn-base:78
+#: cron/bumpdigests:78
 msgid "Nothing to do."
 msgstr "Res per fer."
 
-#: bin/arch:19
+#: bin/.svn/text-base/arch.svn-base:19 bin/arch:19
 msgid ""
 "Rebuild a list's archive.\n"
 "\n"
@@ -8543,11 +8579,14 @@ msgstr ""
 "\n"
 "<mbox> és opcional. Si no és especificat es calcularà.\n"
 
-#: bin/arch:125
+#: bin/.svn/text-base/arch.svn-base:125 bin/arch:125
 msgid "listname is required"
 msgstr "El nom de la llista és requerit"
 
-#: bin/arch:143 bin/change_pw:106 bin/config_list:256 bin/config_list.orig:242
+#: bin/.svn/text-base/arch.svn-base:143
+#: bin/.svn/text-base/change_pw.svn-base:106
+#: bin/.svn/text-base/config_list.svn-base:256 bin/arch:143 bin/change_pw:106
+#: bin/config_list:256
 msgid ""
 "No such list \"%(listname)s\"\n"
 "%(e)s"
@@ -8555,11 +8594,11 @@ msgstr ""
 "La llista no existeix \"%(listname)s\"\n"
 "%(e)s"
 
-#: bin/arch:183
+#: bin/.svn/text-base/arch.svn-base:183 bin/arch:183
 msgid "Cannot open mbox file %(mbox)s: %(msg)s"
 msgstr "No es pot obrir el fitxer mbox %(mbox)s: %(msg)s"
 
-#: bin/b4b5-archfix:19
+#: bin/.svn/text-base/b4b5-archfix.svn-base:19 bin/b4b5-archfix:19
 msgid ""
 "Fix the MM2.1b4 archives.\n"
 "\n"
@@ -8600,7 +8639,7 @@ msgstr ""
 "Necessitaràs executar `bin/check_perms -f' després d'executar aquest "
 "script.\n"
 
-#: bin/change_pw:19
+#: bin/.svn/text-base/change_pw.svn-base:19 bin/change_pw:19
 msgid ""
 "Change a list's password.\n"
 "\n"
@@ -8711,23 +8750,23 @@ msgstr ""
 "    --help / -h\n"
 "        Mostrar aquest missatge i sortir.\n"
 
-#: bin/change_pw:144
+#: bin/.svn/text-base/change_pw.svn-base:144 bin/change_pw:144
 msgid "Bad arguments: %(strargs)s"
 msgstr "Arguments erronis: %(strargs)s"
 
-#: bin/change_pw:148
+#: bin/.svn/text-base/change_pw.svn-base:148 bin/change_pw:148
 msgid "Empty list passwords are not allowed"
 msgstr "Les contrasenyes buides per les llistes no estan permeses"
 
-#: bin/change_pw:180
+#: bin/.svn/text-base/change_pw.svn-base:180 bin/change_pw:180
 msgid "New %(listname)s password: %(notifypassword)s"
 msgstr "Nova contrasenya de %(listname)s: %(notifypassword)s"
 
-#: bin/change_pw:189
+#: bin/.svn/text-base/change_pw.svn-base:189 bin/change_pw:189
 msgid "Your new %(listname)s list password"
 msgstr "La teva nova contrasenya de %(listname)s"
 
-#: bin/change_pw:190
+#: bin/.svn/text-base/change_pw.svn-base:190 bin/change_pw:190
 msgid ""
 "The site administrator at %(hostname)s has changed the password for your\n"
 "mailing list %(listname)s.  It is now\n"
@@ -8754,7 +8793,7 @@ msgstr ""
 "\n"
 "    %(adminurl)s\n"
 
-#: bin/check_db:19
+#: bin/.svn/text-base/check_db.svn-base:19 bin/check_db:19
 msgid ""
 "Check a list's config database file for integrity.\n"
 "\n"
@@ -8822,19 +8861,19 @@ msgstr ""
 "    --help / -h\n"
 "        Mostra aquest missatge i surt.\n"
 
-#: bin/check_db:119
+#: bin/.svn/text-base/check_db.svn-base:119 bin/check_db:119
 msgid "No list named:"
 msgstr "No hi ha cap llista amb el nom:"
 
-#: bin/check_db:128
+#: bin/.svn/text-base/check_db.svn-base:128 bin/check_db:128
 msgid "List:"
 msgstr "Llista:"
 
-#: bin/check_db:148
+#: bin/.svn/text-base/check_db.svn-base:148 bin/check_db:148
 msgid "   %(file)s: okay"
 msgstr "   %(file)s: correcte"
 
-#: bin/check_perms:19
+#: bin/.svn/text-base/check_perms.svn-base:19 bin/check_perms:19
 #, fuzzy
 msgid ""
 "Check the permissions for the Mailman installation.\n"
@@ -8854,48 +8893,48 @@ msgstr ""
 "Amb -v activa el mode verbose.\n"
 "\n"
 
-#: bin/check_perms:108
+#: bin/.svn/text-base/check_perms.svn-base:108 bin/check_perms:108
 msgid "    checking gid and mode for %(path)s"
 msgstr "    comprovant gid i mode per %(path)s"
 
-#: bin/check_perms:120
+#: bin/.svn/text-base/check_perms.svn-base:120 bin/check_perms:120
 msgid "%(path)s bad group (has: %(groupname)s, expected %(MAILMAN_GROUP)s)"
 msgstr "%(path)s grup erroni (té: %(groupname)s, s'esperava %(MAILMAN_GROUP)s)"
 
-#: bin/check_perms:143
+#: bin/.svn/text-base/check_perms.svn-base:143 bin/check_perms:143
 msgid "directory permissions must be %(octperms)s: %(path)s"
 msgstr "Els permisos de directori han de ser %(octperms)s: %(path)s"
 
-#: bin/check_perms:152
+#: bin/.svn/text-base/check_perms.svn-base:152 bin/check_perms:152
 msgid "source perms must be %(octperms)s: %(path)s"
 msgstr "els permisos dels fonts han de ser  %(octperms)s: %(path)s"
 
-#: bin/check_perms:163
+#: bin/.svn/text-base/check_perms.svn-base:163 bin/check_perms:163
 msgid "article db files must be %(octperms)s: %(path)s"
 msgstr "Els permisos dels fitxers db han de ser %(octperms)s: %(path)s"
 
-#: bin/check_perms:175
+#: bin/.svn/text-base/check_perms.svn-base:175 bin/check_perms:175
 msgid "checking mode for %(prefix)s"
 msgstr "comprovant mode per %(prefix)s"
 
-#: bin/check_perms:185
+#: bin/.svn/text-base/check_perms.svn-base:185 bin/check_perms:185
 #, fuzzy
 msgid "WARNING: directory does not exist: %(d)s"
 msgstr "el directori ha de ser almenys 02775: %(d)s"
 
-#: bin/check_perms:189
+#: bin/.svn/text-base/check_perms.svn-base:189 bin/check_perms:189
 msgid "directory must be at least 02775: %(d)s"
 msgstr "el directori ha de ser almenys 02775: %(d)s"
 
-#: bin/check_perms:201
+#: bin/.svn/text-base/check_perms.svn-base:201 bin/check_perms:201
 msgid "checking perms on %(private)s"
 msgstr "comprovant permisos de %(private)s"
 
-#: bin/check_perms:206
+#: bin/.svn/text-base/check_perms.svn-base:206 bin/check_perms:206
 msgid "%(private)s must not be other-readable"
 msgstr "%(private)s no ha de ser other-readable"
 
-#: bin/check_perms:215
+#: bin/.svn/text-base/check_perms.svn-base:215 bin/check_perms:215
 msgid ""
 "Warning: Private archive directory is other-executable (o+x).\n"
 "         This could allow other users on your system to read private "
@@ -8904,68 +8943,68 @@ msgid ""
 "         installation manual on how to fix this."
 msgstr ""
 
-#: bin/check_perms:232
+#: bin/.svn/text-base/check_perms.svn-base:232 bin/check_perms:232
 msgid "mbox file must be at least 0660:"
 msgstr "El fitxer mbox ha de ser almenys 0660:"
 
-#: bin/check_perms:255
+#: bin/.svn/text-base/check_perms.svn-base:255 bin/check_perms:255
 msgid "%(dbdir)s \"other\" perms must be 000"
 msgstr "els permisos de %(dbdir)s \"other\" han de ser 000"
 
-#: bin/check_perms:265
+#: bin/.svn/text-base/check_perms.svn-base:265 bin/check_perms:265
 msgid "checking cgi-bin permissions"
 msgstr "comprovant permisos de cgi-bin"
 
-#: bin/check_perms:270
+#: bin/.svn/text-base/check_perms.svn-base:270 bin/check_perms:270
 msgid "    checking set-gid for %(path)s"
 msgstr "comprovant permisos de set-gid per %(path)s"
 
-#: bin/check_perms:274
+#: bin/.svn/text-base/check_perms.svn-base:274 bin/check_perms:274
 msgid "%(path)s must be set-gid"
 msgstr "%(path)s ha de ser set-gid"
 
-#: bin/check_perms:284
+#: bin/.svn/text-base/check_perms.svn-base:284 bin/check_perms:284
 msgid "checking set-gid for %(wrapper)s"
 msgstr "comprovant permisos de set-gid per %(wrapper)s"
 
-#: bin/check_perms:288
+#: bin/.svn/text-base/check_perms.svn-base:288 bin/check_perms:288
 msgid "%(wrapper)s must be set-gid"
 msgstr "%(wrapper)s ha de ser set-gid"
 
-#: bin/check_perms:298
+#: bin/.svn/text-base/check_perms.svn-base:298 bin/check_perms:298
 msgid "checking permissions on %(pwfile)s"
 msgstr "comprovant permisos de %(pwfile)s"
 
-#: bin/check_perms:307
+#: bin/.svn/text-base/check_perms.svn-base:307 bin/check_perms:307
 msgid "%(pwfile)s permissions must be exactly 0640 (got %(octmode)s)"
 msgstr ""
 "els permisos de %(pwfile)s han de ser exactament 0640 (got %(octmode)s)"
 
-#: bin/check_perms:331
+#: bin/.svn/text-base/check_perms.svn-base:331 bin/check_perms:331
 msgid "checking permissions on list data"
 msgstr "comprovant permisos a la informació de la llista"
 
-#: bin/check_perms:337
+#: bin/.svn/text-base/check_perms.svn-base:337 bin/check_perms:337
 msgid "    checking permissions on: %(path)s"
 msgstr "    comprovant permisos a: %(path)s"
 
-#: bin/check_perms:345
+#: bin/.svn/text-base/check_perms.svn-base:345 bin/check_perms:345
 msgid "file permissions must be at least 660: %(path)s"
 msgstr "els permisos dels fitxers han de ser almenys 660: %(path)s"
 
-#: bin/check_perms:390
+#: bin/.svn/text-base/check_perms.svn-base:390 bin/check_perms:390
 msgid "No problems found"
 msgstr "No s'han trobat problemes"
 
-#: bin/check_perms:392
+#: bin/.svn/text-base/check_perms.svn-base:392 bin/check_perms:392
 msgid "Problems found:"
 msgstr "Problemes trobats:"
 
-#: bin/check_perms:393
+#: bin/.svn/text-base/check_perms.svn-base:393 bin/check_perms:393
 msgid "Re-run as %(MAILMAN_USER)s (or root) with -f flag to fix"
 msgstr "Re-executa com %(MAILMAN_USER)s (o root) amb la senyal -f per a fixar "
 
-#: bin/cleanarch:20
+#: bin/.svn/text-base/cleanarch.svn-base:20 bin/cleanarch:20
 msgid ""
 "Clean up an .mbox archive file.\n"
 "\n"
@@ -9031,19 +9070,19 @@ msgstr ""
 "    -h / --help\n"
 "        Mostrar aquest missatge i sortir.\n"
 
-#: bin/cleanarch:83
+#: bin/.svn/text-base/cleanarch.svn-base:83 bin/cleanarch:83
 msgid "Unix-From line changed: %(lineno)d"
 msgstr "Línia From de Unix canviada: %(lineno)d"
 
-#: bin/cleanarch:111
+#: bin/.svn/text-base/cleanarch.svn-base:111 bin/cleanarch:111
 msgid "Bad status number: %(arg)s"
 msgstr "nombre d'estat erroni: %(arg)s"
 
-#: bin/cleanarch:167
+#: bin/.svn/text-base/cleanarch.svn-base:167 bin/cleanarch:167
 msgid "%(messages)d messages found"
 msgstr "%(messages)d missatges trobats "
 
-#: bin/clone_member:19
+#: bin/.svn/text-base/clone_member.svn-base:19 bin/clone_member:19
 msgid ""
 "Clone a member address.\n"
 "\n"
@@ -9151,43 +9190,43 @@ msgstr ""
 " (`a l'adreça nova') és la nova adreça del usuari.\n"
 "\n"
 
-#: bin/clone_member:94
+#: bin/.svn/text-base/clone_member.svn-base:94 bin/clone_member:94
 msgid "processing mailing list:"
 msgstr "processant llista de correu:"
 
-#: bin/clone_member:101
+#: bin/.svn/text-base/clone_member.svn-base:101 bin/clone_member:101
 msgid "    scanning list owners:"
 msgstr "    escanejant els amos de la llista:"
 
-#: bin/clone_member:119
+#: bin/.svn/text-base/clone_member.svn-base:119 bin/clone_member:119
 msgid "    new list owners:"
 msgstr "    Nous amos de la llista:"
 
-#: bin/clone_member:121
+#: bin/.svn/text-base/clone_member.svn-base:121 bin/clone_member:121
 msgid "(no change)"
 msgstr "(no hi ha canvis)"
 
-#: bin/clone_member:130
+#: bin/.svn/text-base/clone_member.svn-base:130 bin/clone_member:130
 msgid "    address not found:"
 msgstr "    adreça no trobada:"
 
-#: bin/clone_member:139
+#: bin/.svn/text-base/clone_member.svn-base:139 bin/clone_member:139
 msgid "    clone address added:"
 msgstr "    adreça clonada afegida:"
 
-#: bin/clone_member:142
+#: bin/.svn/text-base/clone_member.svn-base:142 bin/clone_member:142
 msgid "    clone address is already a member:"
 msgstr "        l'adreça clonada ja és membre:"
 
-#: bin/clone_member:145
+#: bin/.svn/text-base/clone_member.svn-base:145 bin/clone_member:145
 msgid "    original address removed:"
 msgstr "    Adreça original eliminada:"
 
-#: bin/clone_member:196
+#: bin/.svn/text-base/clone_member.svn-base:196 bin/clone_member:196
 msgid "Not a valid email address: %(toaddr)s"
 msgstr "No és una adreça vàlida: %(toaddr)s"
 
-#: bin/clone_member:209
+#: bin/.svn/text-base/clone_member.svn-base:209 bin/clone_member:209
 msgid ""
 "Error opening list \"%(listname)s\", skipping.\n"
 "%(e)s"
@@ -9195,7 +9234,7 @@ msgstr ""
 "Error obrint la llista \"%(listname)s\", saltant.\n"
 "%(e)s"
 
-#: bin/config_list:20 bin/config_list.orig:19
+#: bin/.svn/text-base/config_list.svn-base:20 bin/config_list:20
 msgid ""
 "Configure a list from a text file description.\n"
 "\n"
@@ -9301,7 +9340,7 @@ msgstr ""
 "Les opcions -o i -i són mutuament exclusives.\n"
 "\n"
 
-#: bin/config_list:117
+#: bin/.svn/text-base/config_list.svn-base:117 bin/config_list:117
 #, fuzzy
 msgid ""
 "# -*- python -*-\n"
@@ -9312,55 +9351,47 @@ msgstr ""
 "## \"%(listname)s\" configuració de la llista de correu -*- python -*-\n"
 "## capturat el %(when)s\n"
 
-#: bin/config_list:143 bin/config_list.orig:131
+#: bin/.svn/text-base/config_list.svn-base:143 bin/config_list:143
 msgid "options"
 msgstr "opcions"
 
-#: bin/config_list:202 bin/config_list.orig:188
+#: bin/.svn/text-base/config_list.svn-base:202 bin/config_list:202
 msgid "legal values are:"
 msgstr "Els valors acceptats són:"
 
-#: bin/config_list:269 bin/config_list.orig:255
+#: bin/.svn/text-base/config_list.svn-base:269 bin/config_list:269
 msgid "attribute \"%(k)s\" ignored"
 msgstr "atribut \"%(k)s\" ignorat"
 
-#: bin/config_list:272 bin/config_list.orig:258
+#: bin/.svn/text-base/config_list.svn-base:272 bin/config_list:272
 msgid "attribute \"%(k)s\" changed"
 msgstr "atribut \"%(k)s\" canviat "
 
-#: bin/config_list:278 bin/config_list.orig:264
+#: bin/.svn/text-base/config_list.svn-base:278 bin/config_list:278
 msgid "Non-standard property restored: %(k)s"
 msgstr "Propietat no estàndard restaurada: %(k)s"
 
-#: bin/config_list:286 bin/config_list.orig:272
+#: bin/.svn/text-base/config_list.svn-base:286 bin/config_list:286
 msgid "Invalid value for property: %(k)s"
 msgstr "Valor erroni per a la propietat: %(k)s"
 
-#: bin/config_list:288 bin/config_list.orig:274
+#: bin/.svn/text-base/config_list.svn-base:288 bin/config_list:288
 msgid "Bad email address for option %(k)s: %(v)s"
 msgstr "Adreça de correu electrònic errònia per a l'opció %(k)s: %(v)s "
 
-#: bin/config_list:345 bin/config_list.orig:331
+#: bin/.svn/text-base/config_list.svn-base:345 bin/config_list:345
 msgid "Only one of -i or -o is allowed"
 msgstr "Només una de les opcions -i o -o es permesa"
 
-#: bin/config_list:347 bin/config_list.orig:333
+#: bin/.svn/text-base/config_list.svn-base:347 bin/config_list:347
 msgid "One of -i or -o is required"
 msgstr "una de les opcions -i o -o és requerida"
 
-#: bin/config_list:351 bin/config_list.orig:337
+#: bin/.svn/text-base/config_list.svn-base:351 bin/config_list:351
 msgid "List name is required"
 msgstr "Nom de la llista és requerit"
 
-#: bin/config_list.orig:109
-msgid ""
-"## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
-"## captured on %(when)s\n"
-msgstr ""
-"## \"%(listname)s\" configuració de la llista de correu -*- python -*-\n"
-"## capturat el %(when)s\n"
-
-#: bin/convert.py:19
+#: bin/.svn/text-base/convert.py.svn-base:19 bin/convert.py:19
 msgid ""
 "Convert a list's interpolation strings from %-strings to $-strings.\n"
 "\n"
@@ -9375,15 +9406,20 @@ msgstr ""
 "\n"
 "% bin/withlist -l -r convert <mylist>\n"
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/.svn/text-base/convert.py.svn-base:38
+#: bin/.svn/text-base/fix_url.py.svn-base:85 bin/convert.py:38
+#: bin/fix_url.py:85
 msgid "Saving list"
 msgstr "Desant llista"
 
-#: bin/convert.py:44 bin/fix_url.py:51 bin/reset_pw.py:57
+#: bin/.svn/text-base/convert.py.svn-base:44
+#: bin/.svn/text-base/fix_url.py.svn-base:51
+#: bin/.svn/text-base/reset_pw.py.svn-base:57 bin/convert.py:44
+#: bin/fix_url.py:51 bin/reset_pw.py:57
 msgid "%%%"
 msgstr "%%%"
 
-#: bin/discard:19
+#: bin/.svn/text-base/discard.svn-base:19 bin/discard:19
 msgid ""
 "Discard held messages.\n"
 "\n"
@@ -9398,21 +9434,21 @@ msgid ""
 "        Don't print status messages.\n"
 msgstr ""
 
-#: bin/discard:94
+#: bin/.svn/text-base/discard.svn-base:94 bin/discard:94
 #, fuzzy
 msgid "Ignoring non-held message: %(f)s"
 msgstr "Ignorant els canvis al membre eliminat: %(user)s"
 
-#: bin/discard:100
+#: bin/.svn/text-base/discard.svn-base:100 bin/discard:100
 msgid "Ignoring held msg w/bad id: %(f)s"
 msgstr ""
 
-#: bin/discard:112
+#: bin/.svn/text-base/discard.svn-base:112 bin/discard:112
 #, fuzzy
 msgid "Discarded held msg #%(id)s for list %(listname)s"
 msgstr "Subscriure a la llista %(listname)s"
 
-#: bin/dumpdb:19
+#: bin/.svn/text-base/dumpdb.svn-base:19 bin/dumpdb:19
 msgid ""
 "Dump the contents of any Mailman `database' file.\n"
 "\n"
@@ -9482,31 +9518,31 @@ msgstr ""
 "utilitzar l'opció\n"
 "-p o -m.\n"
 
-#: bin/dumpdb:106
+#: bin/.svn/text-base/dumpdb.svn-base:106 bin/dumpdb:106
 msgid "No filename given."
 msgstr "No s'ha donat cap nom de fitxer."
 
-#: bin/dumpdb:109
+#: bin/.svn/text-base/dumpdb.svn-base:109 bin/dumpdb:109
 msgid "Bad arguments: %(pargs)s"
 msgstr "Arguments erronis: %(pargs)s"
 
-#: bin/dumpdb:119
+#: bin/.svn/text-base/dumpdb.svn-base:119 bin/dumpdb:119
 msgid "Please specify either -p or -m."
 msgstr "Per favor, especifica una de les opcions -p o -m"
 
-#: bin/dumpdb:136
+#: bin/.svn/text-base/dumpdb.svn-base:136 bin/dumpdb:136
 msgid "[----- start pickle file -----]"
 msgstr ""
 
-#: bin/dumpdb:142
+#: bin/.svn/text-base/dumpdb.svn-base:142 bin/dumpdb:142
 msgid "[----- end pickle file -----]"
 msgstr ""
 
-#: bin/dumpdb:145
+#: bin/.svn/text-base/dumpdb.svn-base:145 bin/dumpdb:145
 msgid "<----- start object %(cnt)s ----->"
 msgstr ""
 
-#: bin/find_member:19
+#: bin/.svn/text-base/find_member.svn-base:19 bin/find_member:19
 msgid ""
 "Find all lists that a member's address is on.\n"
 "\n"
@@ -9592,23 +9628,23 @@ msgstr ""
 "mostrades.\n"
 "\n"
 
-#: bin/find_member:159
+#: bin/.svn/text-base/find_member.svn-base:159 bin/find_member:159
 msgid "Search regular expression required"
 msgstr "La expressió regular per buscar és requerida"
 
-#: bin/find_member:164
+#: bin/.svn/text-base/find_member.svn-base:164 bin/find_member:164
 msgid "No lists to search"
 msgstr "No hi ha llistes per buscar"
 
-#: bin/find_member:173
+#: bin/.svn/text-base/find_member.svn-base:173 bin/find_member:173
 msgid "found in:"
 msgstr "trobat a:"
 
-#: bin/find_member:179
+#: bin/.svn/text-base/find_member.svn-base:179 bin/find_member:179
 msgid "(as owner)"
 msgstr "(com amo)"
 
-#: bin/fix_url.py:19
+#: bin/.svn/text-base/fix_url.py.svn-base:19 bin/fix_url.py:19
 msgid ""
 "Reset a list's web_page_url attribute to the default setting.\n"
 "\n"
@@ -9655,15 +9691,15 @@ msgstr ""
 "\n"
 "Si s'executa sol, mostra aquesta ajuda i surt.\n"
 
-#: bin/fix_url.py:80
+#: bin/.svn/text-base/fix_url.py.svn-base:80 bin/fix_url.py:80
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "Establint web_page_url a: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/.svn/text-base/fix_url.py.svn-base:83 bin/fix_url.py:83
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "Establint host_name a:  %(mailhost)s"
 
-#: bin/genaliases:19
+#: bin/.svn/text-base/genaliases.svn-base:19 bin/genaliases:19
 msgid ""
 "Regenerate Mailman specific aliases from scratch.\n"
 "\n"
@@ -9683,7 +9719,7 @@ msgid ""
 "        Print this message and exit.\n"
 msgstr ""
 
-#: bin/inject:19
+#: bin/.svn/text-base/inject.svn-base:19 bin/inject:19
 msgid ""
 "Inject a message from a file into Mailman's incoming queue.\n"
 "\n"
@@ -9733,15 +9769,15 @@ msgstr ""
 "filename és el nom del fitxer en text pla del missatge que es vol injectar.\n"
 "Si s'omet, es fa servir el standard input.\n"
 
-#: bin/inject:83
+#: bin/.svn/text-base/inject.svn-base:83 bin/inject:83
 msgid "Bad queue directory: %(qdir)s"
 msgstr "Directori de cua erroni: %(qdir)s"
 
-#: bin/inject:88
+#: bin/.svn/text-base/inject.svn-base:88 bin/inject:88
 msgid "A list name is required"
 msgstr "Un nom per a la llista és requerit"
 
-#: bin/list_admins:19
+#: bin/.svn/text-base/list_admins.svn-base:19 bin/list_admins:19
 msgid ""
 "List all the owners of a mailing list.\n"
 "\n"
@@ -9788,11 +9824,11 @@ msgstr ""
 "llistat dels amos.\n"
 "Pots posar més d'un nom a la línia d'ordres.\n"
 
-#: bin/list_admins:96
+#: bin/.svn/text-base/list_admins.svn-base:96 bin/list_admins:96
 msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "Llista: %(listname)s, \tAmos: %(owners)s"
 
-#: bin/list_lists:19
+#: bin/.svn/text-base/list_lists.svn-base:19 bin/list_lists:19
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -9840,15 +9876,15 @@ msgstr ""
 "        Mostra aquest missatge i surt.\n"
 "\n"
 
-#: bin/list_lists:105
+#: bin/.svn/text-base/list_lists.svn-base:105 bin/list_lists:105
 msgid "No matching mailing lists found"
 msgstr "No s'han trobat llistes de correu que coincideixin"
 
-#: bin/list_lists:109
+#: bin/.svn/text-base/list_lists.svn-base:109 bin/list_lists:109
 msgid "matching mailing lists found:"
 msgstr "Llistes de correu que coincideixen:"
 
-#: bin/list_members:19
+#: bin/.svn/text-base/list_members.svn-base:19 bin/list_members:19
 #, fuzzy
 msgid ""
 "List all the members of a mailing list.\n"
@@ -9954,19 +9990,19 @@ msgstr ""
 "membres regulars,\n"
 "seguit dels membres de resum.\n"
 
-#: bin/list_members:191
+#: bin/.svn/text-base/list_members.svn-base:191 bin/list_members:191
 msgid "Bad --nomail option: %(why)s"
 msgstr "Opció --normal errònia: %(why)s"
 
-#: bin/list_members:202
+#: bin/.svn/text-base/list_members.svn-base:202 bin/list_members:202
 msgid "Bad --digest option: %(kind)s"
 msgstr "Opció --digest errònia: %(kind)s"
 
-#: bin/list_members:224
+#: bin/.svn/text-base/list_members.svn-base:224 bin/list_members:224
 msgid "Could not open file for writing:"
 msgstr "No es pot obrir el fitxer per a escriptura:"
 
-#: bin/list_owners:19
+#: bin/.svn/text-base/list_owners.svn-base:19 bin/list_owners:19
 msgid ""
 "List the owners of a mailing list, or all mailing lists.\n"
 "\n"
@@ -10015,7 +10051,7 @@ msgstr ""
 "de totes\n"
 "        les llistes.\n"
 
-#: bin/mailmanctl:20
+#: bin/.svn/text-base/mailmanctl.svn-base:20 bin/mailmanctl:20
 msgid ""
 "Primary start-up and shutdown script for Mailman's qrunner daemon.\n"
 "\n"
@@ -10198,23 +10234,23 @@ msgstr ""
 "    reopen  - Això tanca tots els fitxers log, causant la seva reobertura\n"
 "              la próxima vegada se hi next.\n"
 
-#: bin/mailmanctl:152
+#: bin/.svn/text-base/mailmanctl.svn-base:152 bin/mailmanctl:152
 msgid "PID unreadable in: %(pidfile)s"
 msgstr "el PID no es pot llegir a: %(pidfile)s"
 
-#: bin/mailmanctl:154
+#: bin/.svn/text-base/mailmanctl.svn-base:154 bin/mailmanctl:154
 msgid "Is qrunner even running?"
 msgstr "encara s'està executant el qrunner?"
 
-#: bin/mailmanctl:160
+#: bin/.svn/text-base/mailmanctl.svn-base:160 bin/mailmanctl:160
 msgid "No child with pid: %(pid)s"
 msgstr "No hi ha cap fill amb el pid: %(pid)s"
 
-#: bin/mailmanctl:162
+#: bin/.svn/text-base/mailmanctl.svn-base:162 bin/mailmanctl:162
 msgid "Stale pid file removed."
 msgstr "Fitxer pid vell eliminat."
 
-#: bin/mailmanctl:220
+#: bin/.svn/text-base/mailmanctl.svn-base:220 bin/mailmanctl:220
 msgid ""
 "The master qrunner lock could not be acquired because it appears as if "
 "another\n"
@@ -10223,7 +10259,7 @@ msgstr ""
 "No s'ha pogut adquirir el bloqueig del qrunner principal. Sembla que\n"
 "hi ha un altre qrunner executant-se.\n"
 
-#: bin/mailmanctl:226
+#: bin/.svn/text-base/mailmanctl.svn-base:226 bin/mailmanctl:226
 msgid ""
 "The master qrunner lock could not be acquired.  It appears as though there "
 "is\n"
@@ -10233,7 +10269,7 @@ msgstr ""
 "hi ha un altre qrunner mestre executant-se. Prova a executar el mailmanctl "
 "amb la senyal -s.\n"
 
-#: bin/mailmanctl:232
+#: bin/.svn/text-base/mailmanctl.svn-base:232 bin/mailmanctl:232
 msgid ""
 "The master qrunner lock could not be acquired, because it appears as if "
 "some\n"
@@ -10259,45 +10295,46 @@ msgstr ""
 "\n"
 "Sortint."
 
-#: bin/mailmanctl:279 cron/mailpasswds:119
+#: bin/.svn/text-base/mailmanctl.svn-base:279 bin/mailmanctl:279
+#: cron/.svn/text-base/mailpasswds.svn-base:119 cron/mailpasswds:119
 msgid "Site list is missing: %(sitelistname)s"
 msgstr "La llista del Site no hi és:  %(sitelistname)s"
 
-#: bin/mailmanctl:304
+#: bin/.svn/text-base/mailmanctl.svn-base:304 bin/mailmanctl:304
 msgid "Run this program as root or as the %(name)s user, or use -u."
 msgstr ""
 "Executar aquest programa com root o amb el usuari %(name)s, o utilitza "
 "l'opció -u."
 
-#: bin/mailmanctl:335
+#: bin/.svn/text-base/mailmanctl.svn-base:335 bin/mailmanctl:335
 msgid "No command given."
 msgstr "No has donat cap ordre."
 
-#: bin/mailmanctl:338
+#: bin/.svn/text-base/mailmanctl.svn-base:338 bin/mailmanctl:338
 msgid "Bad command: %(command)s"
 msgstr "Ordre errònia: %(command)s"
 
-#: bin/mailmanctl:343
+#: bin/.svn/text-base/mailmanctl.svn-base:343 bin/mailmanctl:343
 msgid "Warning!  You may encounter permission problems."
 msgstr "Atenció! pots trobar-te amb problemes de permisos."
 
-#: bin/mailmanctl:352
+#: bin/.svn/text-base/mailmanctl.svn-base:352 bin/mailmanctl:352
 msgid "Shutting down Mailman's master qrunner"
 msgstr "Parant el qrunner principal de Mailman"
 
-#: bin/mailmanctl:359
+#: bin/.svn/text-base/mailmanctl.svn-base:359 bin/mailmanctl:359
 msgid "Restarting Mailman's master qrunner"
 msgstr "Re-iniciant el qrunner principal de Mailman"
 
-#: bin/mailmanctl:363
+#: bin/.svn/text-base/mailmanctl.svn-base:363 bin/mailmanctl:363
 msgid "Re-opening all log files"
 msgstr "Re-obrint tots els fitxers log"
 
-#: bin/mailmanctl:399
+#: bin/.svn/text-base/mailmanctl.svn-base:399 bin/mailmanctl:399
 msgid "Starting Mailman's master qrunner."
 msgstr "Iniciant el qrunner principal de Mailman"
 
-#: bin/mmsitepass:19
+#: bin/.svn/text-base/mmsitepass.svn-base:19 bin/mmsitepass:19
 msgid ""
 "Set the site password, prompting from the terminal.\n"
 "\n"
@@ -10344,39 +10381,39 @@ msgstr ""
 "\n"
 "Si no s'especifica la contrasenya, es preguntarà.\n"
 
-#: bin/mmsitepass:73
+#: bin/.svn/text-base/mmsitepass.svn-base:73 bin/mmsitepass:73
 msgid "site"
 msgstr "lloc"
 
-#: bin/mmsitepass:80
+#: bin/.svn/text-base/mmsitepass.svn-base:80 bin/mmsitepass:80
 msgid "list creator"
 msgstr "Creador de la llista"
 
-#: bin/mmsitepass:86
+#: bin/.svn/text-base/mmsitepass.svn-base:86 bin/mmsitepass:86
 msgid "New %(pwdesc)s password: "
 msgstr "Nova contrasenya %(pwdesc)s: "
 
-#: bin/mmsitepass:87
+#: bin/.svn/text-base/mmsitepass.svn-base:87 bin/mmsitepass:87
 msgid "Again to confirm password: "
 msgstr "Una altra vegada per confirmar la contrasenya:"
 
-#: bin/mmsitepass:89
+#: bin/.svn/text-base/mmsitepass.svn-base:89 bin/mmsitepass:89
 msgid "Passwords do not match; no changes made."
 msgstr "Les contrasenyes no coincideixen; no s'han fet canvis "
 
-#: bin/mmsitepass:92
+#: bin/.svn/text-base/mmsitepass.svn-base:92 bin/mmsitepass:92
 msgid "Interrupted..."
 msgstr "Interromput..."
 
-#: bin/mmsitepass:98
+#: bin/.svn/text-base/mmsitepass.svn-base:98 bin/mmsitepass:98
 msgid "Password changed."
 msgstr "Contrasenya canviada."
 
-#: bin/mmsitepass:100
+#: bin/.svn/text-base/mmsitepass.svn-base:100 bin/mmsitepass:100
 msgid "Password change failed."
 msgstr "El canvi de contrasenya a fallat."
 
-#: bin/msgfmt.py:5
+#: bin/.svn/text-base/msgfmt.py.svn-base:5 bin/msgfmt.py:5
 msgid ""
 "Generate binary message catalog from textual translation description.\n"
 "\n"
@@ -10404,15 +10441,15 @@ msgid ""
 "        Display version information and exit.\n"
 msgstr ""
 
-#: bin/msgfmt.py:49
+#: bin/.svn/text-base/msgfmt.py.svn-base:49 bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
 msgstr ""
 
-#: bin/msgfmt.py:57
+#: bin/.svn/text-base/msgfmt.py.svn-base:57 bin/msgfmt.py:57
 msgid "Return the generated output."
 msgstr ""
 
-#: bin/newlist:19
+#: bin/.svn/text-base/newlist.svn-base:19 bin/newlist:19
 #, fuzzy
 msgid ""
 "Create a new, unpopulated mailing list.\n"
@@ -10551,33 +10588,33 @@ msgstr ""
 "\n"
 "Nota que els noms de les llistes han de ser en minúscules.\n"
 
-#: bin/newlist:150
+#: bin/.svn/text-base/newlist.svn-base:150 bin/newlist:150
 msgid "Unknown language: %(lang)s"
 msgstr "Llenguatge desconegut: %(lang)s"
 
-#: bin/newlist:155
+#: bin/.svn/text-base/newlist.svn-base:155 bin/newlist:155
 msgid "Enter the name of the list: "
 msgstr "Introdueix el nom de la llista:"
 
-#: bin/newlist:176
+#: bin/.svn/text-base/newlist.svn-base:176 bin/newlist:176
 msgid "Enter the email of the person running the list: "
 msgstr ""
 "introdueix l'adreça de correu electrònic de la persona encarregada de la "
 "llista:"
 
-#: bin/newlist:181
+#: bin/.svn/text-base/newlist.svn-base:181 bin/newlist:181
 msgid "Initial %(listname)s password: "
 msgstr "Contrasenya inicial de %(listname)s:"
 
-#: bin/newlist:185
+#: bin/.svn/text-base/newlist.svn-base:185 bin/newlist:185
 msgid "The list password cannot be empty"
 msgstr "La contrasenya de la llista no pot estar buida"
 
-#: bin/newlist:225
+#: bin/.svn/text-base/newlist.svn-base:225 bin/newlist:225
 msgid "Hit enter to notify %(listname)s owner..."
 msgstr "Prem enter per a notificar a l'amo de %(listname)s"
 
-#: bin/qrunner:20
+#: bin/.svn/text-base/qrunner.svn-base:20 bin/qrunner:20
 #, fuzzy
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
@@ -10702,19 +10739,19 @@ msgstr ""
 "es precisa un runner tret que s'indiqui -l o -h, i ha de ser un dels noms "
 "mostrats per l'opció -l.\n"
 
-#: bin/qrunner:178
+#: bin/.svn/text-base/qrunner.svn-base:178 bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
 msgstr "%(name)s executa el qrunner %(runnername)s"
 
-#: bin/qrunner:179
+#: bin/.svn/text-base/qrunner.svn-base:179 bin/qrunner:179
 msgid "All runs all the above qrunners"
 msgstr "Tot executa tots els qrunners indicats adalt"
 
-#: bin/qrunner:215
+#: bin/.svn/text-base/qrunner.svn-base:215 bin/qrunner:215
 msgid "No runner name given."
 msgstr "No has proporcionat cap nom de runner"
 
-#: bin/rb-archfix:21
+#: bin/.svn/text-base/rb-archfix.svn-base:21 bin/rb-archfix:21
 msgid ""
 "Reduce disk space usage for Pipermail archives.\n"
 "\n"
@@ -10746,7 +10783,7 @@ msgid ""
 "This script is provided for convenience purposes only.  It isn't supported.\n"
 msgstr ""
 
-#: bin/remove_members:20
+#: bin/.svn/text-base/remove_members.svn-base:20 bin/remove_members:20
 #, fuzzy
 msgid ""
 "Remove members from a list.\n"
@@ -10832,23 +10869,23 @@ msgstr ""
 "    addr1 ... són adreces addicionals a eliminar.\n"
 "\n"
 
-#: bin/remove_members:156
+#: bin/.svn/text-base/remove_members.svn-base:156 bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
 msgstr "No es pot obrir el fitxer per llegir: %(filename)s."
 
-#: bin/remove_members:163
+#: bin/.svn/text-base/remove_members.svn-base:163 bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
 msgstr "Error obrint la llista  %(listname)s... saltant. "
 
-#: bin/remove_members:173
+#: bin/.svn/text-base/remove_members.svn-base:173 bin/remove_members:173
 msgid "No such member: %(addr)s"
 msgstr "El membre no existeix: %(addr)s"
 
-#: bin/remove_members:178
+#: bin/.svn/text-base/remove_members.svn-base:178 bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
 msgstr "El usuari `%(addr)s' ha estat eliminat de la llista: %(listname)s."
 
-#: bin/reset_pw.py:21
+#: bin/.svn/text-base/reset_pw.py.svn-base:21 bin/reset_pw.py:21
 msgid ""
 "Reset the passwords for members of a mailing list.\n"
 "\n"
@@ -10868,16 +10905,16 @@ msgid ""
 "        Print what the script is doing.\n"
 msgstr ""
 
-#: bin/reset_pw.py:77
+#: bin/.svn/text-base/reset_pw.py.svn-base:77 bin/reset_pw.py:77
 #, fuzzy
 msgid "Changing passwords for list: %(listname)s"
 msgstr "Petició per eliminar la llista %(listname)s"
 
-#: bin/reset_pw.py:83
+#: bin/.svn/text-base/reset_pw.py.svn-base:83 bin/reset_pw.py:83
 msgid "New password for member %(member)40s: %(randompw)s"
 msgstr ""
 
-#: bin/rmlist:19
+#: bin/.svn/text-base/rmlist.svn-base:19 bin/rmlist:19
 msgid ""
 "Remove the components of a mailing list with impunity - beware!\n"
 "\n"
@@ -10920,47 +10957,50 @@ msgstr ""
 "        Mostrar aquest missatge i sortir.\n"
 "\n"
 
+#: bin/.svn/text-base/rmlist.svn-base:72 bin/.svn/text-base/rmlist.svn-base:75
 #: bin/rmlist:72 bin/rmlist:75
 msgid "Removing %(msg)s"
 msgstr "Eliminant %(msg)s"
 
-#: bin/rmlist:80
+#: bin/.svn/text-base/rmlist.svn-base:80 bin/rmlist:80
 #, fuzzy
 msgid "%(listname)s %(msg)s not found as %(filename)s"
 msgstr "%(listname)s %(msg)s no trobat com %(dir)s"
 
-#: bin/rmlist:104
+#: bin/.svn/text-base/rmlist.svn-base:104 bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
 msgstr ""
 "La llista no existeix (o la llista ja ha estat eliminada): %(listname)s"
 
-#: bin/rmlist:106
+#: bin/.svn/text-base/rmlist.svn-base:106 bin/rmlist:106
 msgid "No such list: %(listname)s.  Removing its residual archives."
 msgstr ""
 "La llista no existeix: %(listname)s.  Eliminant els seus fitxers residuals."
 
-#: bin/rmlist:110
+#: bin/.svn/text-base/rmlist.svn-base:110 bin/rmlist:110
 msgid "Not removing archives.  Reinvoke with -a to remove them."
 msgstr ""
 "No s'estan eliminant els fitxers. Re-invoca amb l'opció -a per eliminar-los."
 
-#: bin/rmlist:124
+#: bin/.svn/text-base/rmlist.svn-base:124 bin/rmlist:124
 msgid "list info"
 msgstr "informació de la llista"
 
-#: bin/rmlist:132
+#: bin/.svn/text-base/rmlist.svn-base:132 bin/rmlist:132
 msgid "stale lock file"
 msgstr ""
 
-#: bin/rmlist:137 bin/rmlist:139
+#: bin/.svn/text-base/rmlist.svn-base:137
+#: bin/.svn/text-base/rmlist.svn-base:139 bin/rmlist:137 bin/rmlist:139
 msgid "private archives"
 msgstr "fitxers privats"
 
-#: bin/rmlist:141 bin/rmlist:143
+#: bin/.svn/text-base/rmlist.svn-base:141
+#: bin/.svn/text-base/rmlist.svn-base:143 bin/rmlist:141 bin/rmlist:143
 msgid "public archives"
 msgstr "fitxers públics"
 
-#: bin/show_qfiles:20
+#: bin/.svn/text-base/show_qfiles.svn-base:20 bin/show_qfiles:20
 msgid ""
 "Show the contents of one or more Mailman queue files.\n"
 "\n"
@@ -10977,7 +11017,7 @@ msgid ""
 "Example: show_qfiles qfiles/shunt/*.pck\n"
 msgstr ""
 
-#: bin/sync_members:19
+#: bin/.svn/text-base/sync_members.svn-base:19 bin/sync_members:19
 msgid ""
 "Synchronize a mailing list's membership with a flat file.\n"
 "\n"
@@ -11117,59 +11157,59 @@ msgstr ""
 "        Requerit. Això especifica la llista a sincronitzar.\n"
 "\n"
 
-#: bin/sync_members:115
+#: bin/.svn/text-base/sync_members.svn-base:115 bin/sync_members:115
 msgid "Bad choice: %(yesno)s"
 msgstr "Elecció errònia: %(yesno)s"
 
-#: bin/sync_members:138
+#: bin/.svn/text-base/sync_members.svn-base:138 bin/sync_members:138
 msgid "Dry run mode"
 msgstr "mode d'execució sec"
 
-#: bin/sync_members:159
+#: bin/.svn/text-base/sync_members.svn-base:159 bin/sync_members:159
 msgid "Only one -f switch allowed"
 msgstr "Nomes es permet un indicador -f"
 
-#: bin/sync_members:163
+#: bin/.svn/text-base/sync_members.svn-base:163 bin/sync_members:163
 msgid "No argument to -f given"
 msgstr "No s'han donat arguments a -f"
 
-#: bin/sync_members:172
+#: bin/.svn/text-base/sync_members.svn-base:172 bin/sync_members:172
 msgid "Illegal option: %(opt)s"
 msgstr "Opció errònia: %(opt)s"
 
-#: bin/sync_members:178
+#: bin/.svn/text-base/sync_members.svn-base:178 bin/sync_members:178
 msgid "No listname given"
 msgstr "No s'ha donat el nom de la llista"
 
-#: bin/sync_members:182
+#: bin/.svn/text-base/sync_members.svn-base:182 bin/sync_members:182
 msgid "Must have a listname and a filename"
 msgstr "Es necessari tenir un nom de llista i un nom de fitxer"
 
-#: bin/sync_members:191
+#: bin/.svn/text-base/sync_members.svn-base:191 bin/sync_members:191
 msgid "Cannot read address file: %(filename)s: %(msg)s"
 msgstr "No es pot llegir el fitxer d'adreça: %(filename)s: %(msg)s"
 
-#: bin/sync_members:203
+#: bin/.svn/text-base/sync_members.svn-base:203 bin/sync_members:203
 msgid "Ignore  :  %(addr)30s"
 msgstr "Ignorar  :  %(addr)30s"
 
-#: bin/sync_members:212
+#: bin/.svn/text-base/sync_members.svn-base:212 bin/sync_members:212
 msgid "Invalid :  %(addr)30s"
 msgstr "invàlid :  %(addr)30s"
 
-#: bin/sync_members:215
+#: bin/.svn/text-base/sync_members.svn-base:215 bin/sync_members:215
 msgid "You must fix the preceding invalid addresses first."
 msgstr "Primer has de fixar l'anterior adreça invàlida."
 
-#: bin/sync_members:260
+#: bin/.svn/text-base/sync_members.svn-base:260 bin/sync_members:260
 msgid "Added  : %(s)s"
 msgstr "afegit  : %(s)s"
 
-#: bin/sync_members:278
+#: bin/.svn/text-base/sync_members.svn-base:278 bin/sync_members:278
 msgid "Removed: %(s)s"
 msgstr "Eliminat: %(s)s"
 
-#: bin/transcheck:18
+#: bin/.svn/text-base/transcheck.svn-base:18 bin/transcheck:18
 msgid ""
 "\n"
 "Check a given Mailman translation, making sure that variables and\n"
@@ -11196,29 +11236,29 @@ msgstr ""
 "On <lang> és el codi del país (ex 'it' per a Italia) i -q es\n"
 "per demanar un resum.\n"
 
-#: bin/transcheck:57
+#: bin/.svn/text-base/transcheck.svn-base:57 bin/transcheck:57
 msgid "check a translation comparing with the original string"
 msgstr "comprovar una traducció comparant-la amb la cadena original"
 
-#: bin/transcheck:67
+#: bin/.svn/text-base/transcheck.svn-base:67 bin/transcheck:67
 msgid "scan a string from the original file"
 msgstr "Escanejar una cadena des del fitxer original "
 
-#: bin/transcheck:77
+#: bin/.svn/text-base/transcheck.svn-base:77 bin/transcheck:77
 msgid "scan a translated string"
 msgstr "escanejar una cadena traduïda "
 
-#: bin/transcheck:90
+#: bin/.svn/text-base/transcheck.svn-base:90 bin/transcheck:90
 msgid "check for differences between checked in and checked out"
 msgstr ""
 "Comprovar les diferencies entre els que s'han descarregat i els que s'han de "
 "pujar "
 
-#: bin/transcheck:123
+#: bin/.svn/text-base/transcheck.svn-base:123 bin/transcheck:123
 msgid "parse a .po file extracting msgids and msgstrs"
 msgstr "analitzar sintàcticament un fitxer .po extraient msgids i msgstrs "
 
-#: bin/transcheck:142
+#: bin/.svn/text-base/transcheck.svn-base:142 bin/transcheck:142
 msgid ""
 "States table for the finite-states-machine parser:\n"
 "            0  idle\n"
@@ -11236,7 +11276,7 @@ msgstr ""
 "            4  fi\n"
 "            "
 
-#: bin/transcheck:279
+#: bin/.svn/text-base/transcheck.svn-base:279 bin/transcheck:279
 msgid ""
 "check a translated template against the original one\n"
 "       search also <MM-*> tags if html is not zero"
@@ -11244,11 +11284,11 @@ msgstr ""
 "comprovar la plantilla traduïda amb l'original\n"
 "        buscar també etiquetes <MM-*> si l'html no és zero"
 
-#: bin/transcheck:326
+#: bin/.svn/text-base/transcheck.svn-base:326 bin/transcheck:326
 msgid "scan the po file comparing msgids with msgstrs"
 msgstr "escanejar el fitxer po comparant msgids amb msgstrs"
 
-#: bin/unshunt:19
+#: bin/.svn/text-base/unshunt.svn-base:20 bin/unshunt:20
 msgid ""
 "Move a message from the shunt queue to the original queue.\n"
 "\n"
@@ -11275,7 +11315,7 @@ msgstr ""
 "distint de\n"
 "qfiles/shunt.\n"
 
-#: bin/unshunt:81
+#: bin/.svn/text-base/unshunt.svn-base:83 bin/unshunt:83
 msgid ""
 "Cannot unshunt message %(filebase)s, skipping:\n"
 "%(e)s"
@@ -11283,7 +11323,7 @@ msgstr ""
 "No puc treure el missatge %(filebase)s, saltant:\n"
 "%(e)s"
 
-#: bin/update:19
+#: bin/.svn/text-base/update.svn-base:19 bin/update:19
 msgid ""
 "Perform all necessary upgrades.\n"
 "\n"
@@ -11320,25 +11360,26 @@ msgstr ""
 "partir d'una versió\n"
 "anterior. Reconeix versions fins a la 1.0b4(?).\n"
 
-#: bin/update:107
+#: bin/.svn/text-base/update.svn-base:107 bin/update:107
 msgid "Fixing language templates: %(listname)s"
 msgstr "Fixant la plantilla de llenguatge:  %(listname)s"
 
-#: bin/update:196 bin/update:698
+#: bin/.svn/text-base/update.svn-base:196
+#: bin/.svn/text-base/update.svn-base:698 bin/update:196 bin/update:698
 msgid "WARNING: could not acquire lock for list: %(listname)s"
 msgstr "Atenció: no s'ha pogut adquirir el bloqueig de la llista: %(listname)s"
 
-#: bin/update:215
+#: bin/.svn/text-base/update.svn-base:215 bin/update:215
 msgid "Resetting %(n)s BYBOUNCEs disabled addrs with no bounce info"
 msgstr ""
 "Posant a zero %(n)s BYBOUNCEs adreces inhabilitades sense informació de "
 "rebot "
 
-#: bin/update:221
+#: bin/.svn/text-base/update.svn-base:221 bin/update:221
 msgid "Updating the held requests database."
 msgstr "Actualitzant la base de dades de peticions retingudes."
 
-#: bin/update:243
+#: bin/.svn/text-base/update.svn-base:243 bin/update:243
 msgid ""
 "For some reason, %(mbox_dir)s exists as a file.  This won't work with\n"
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
@@ -11346,7 +11387,7 @@ msgstr ""
 "per alguna raó, %(mbox_dir)s existeix com fitxer. Això no funcionarà amb\n"
 "la b6, li canvio el nom a %(mbox_dir)s.tmp i segueixo amb el procés."
 
-#: bin/update:255
+#: bin/.svn/text-base/update.svn-base:255 bin/update:255
 msgid ""
 "\n"
 "%(listname)s has both public and private mbox archives.  Since this list\n"
@@ -11369,7 +11410,7 @@ msgstr ""
 "\n"
 "Pots integrar això amb els arxius si vols, fent servir el script 'arch'.\n"
 
-#: bin/update:270
+#: bin/.svn/text-base/update.svn-base:270 bin/update:270
 msgid ""
 "%s has both public and private mbox archives.  Since this list\n"
 "currently uses public archiving, I'm installing the public mbox file\n"
@@ -11390,11 +11431,11 @@ msgstr ""
 "\n"
 "Pots integrar això amb els arxius si vols, fent servir l'script 'arch'.\n"
 
-#: bin/update:287
+#: bin/.svn/text-base/update.svn-base:287 bin/update:287
 msgid "- updating old private mbox file"
 msgstr "- actualitzant l'antic fitxer privat mbox"
 
-#: bin/update:295
+#: bin/.svn/text-base/update.svn-base:295 bin/update:295
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pri_mbox_file)s\n"
@@ -11406,7 +11447,8 @@ msgstr ""
 "    a\n"
 "        %(newname)s"
 
-#: bin/update:302 bin/update:325
+#: bin/.svn/text-base/update.svn-base:302
+#: bin/.svn/text-base/update.svn-base:325 bin/update:302 bin/update:325
 msgid ""
 "    looks like you have a really recent CVS installation...\n"
 "    you're either one brave soul, or you already ran me"
@@ -11414,11 +11456,11 @@ msgstr ""
 "    sembla que tens una instal·lació molt recent del CVS...\n"
 "    ets un valent! ;-)"
 
-#: bin/update:311
+#: bin/.svn/text-base/update.svn-base:311 bin/update:311
 msgid "- updating old public mbox file"
 msgstr "- actualitzant l'antic fitxer públic mbox"
 
-#: bin/update:319
+#: bin/.svn/text-base/update.svn-base:319 bin/update:319
 msgid ""
 "    unknown file in the way, moving\n"
 "        %(o_pub_mbox_file)s\n"
@@ -11430,83 +11472,83 @@ msgstr ""
 "    a\n"
 "        %(newname)s"
 
-#: bin/update:350
+#: bin/.svn/text-base/update.svn-base:350 bin/update:350
 msgid "- This list looks like it might have <= b4 list templates around"
 msgstr "- Sembla que aquesta llista té plantilles <= b4 "
 
-#: bin/update:358
+#: bin/.svn/text-base/update.svn-base:358 bin/update:358
 msgid "- moved %(o_tmpl)s to %(n_tmpl)s"
 msgstr "- mogut %(o_tmpl)s a %(n_tmpl)s"
 
-#: bin/update:360
+#: bin/.svn/text-base/update.svn-base:360 bin/update:360
 msgid "- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched"
 msgstr "- %(o_tmpl)s i %(n_tmpl)s  existeixen, els deixo com estan."
 
-#: bin/update:363
+#: bin/.svn/text-base/update.svn-base:363 bin/update:363
 #, fuzzy
 msgid "- %(o_tmpl)s doesn't exist, leaving untouched"
 msgstr "- %(o_tmpl)s i %(n_tmpl)s  existeixen, els deixo com estan."
 
-#: bin/update:393
+#: bin/.svn/text-base/update.svn-base:393 bin/update:393
 msgid "removing directory %(src)s and everything underneath"
 msgstr "eliminant el directori %(src)s i tot el seu contingut "
 
-#: bin/update:396
+#: bin/.svn/text-base/update.svn-base:396 bin/update:396
 msgid "removing %(src)s"
 msgstr "Eliminant %(src)s"
 
-#: bin/update:400
+#: bin/.svn/text-base/update.svn-base:400 bin/update:400
 msgid "Warning: couldn't remove %(src)s -- %(rest)s"
 msgstr "Atenció: no es pot eliminar %(src)s -- %(rest)s"
 
-#: bin/update:405
+#: bin/.svn/text-base/update.svn-base:405 bin/update:405
 msgid "couldn't remove old file %(pyc)s -- %(rest)s"
 msgstr "No es pot eliminar l'antic fitxer %(pyc)s -- %(rest)s"
 
-#: bin/update:409
+#: bin/.svn/text-base/update.svn-base:409 bin/update:409
 msgid "updating old qfiles"
 msgstr "Actualitzant els antics qfiles"
 
-#: bin/update:448
+#: bin/.svn/text-base/update.svn-base:448 bin/update:448
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
 msgstr "Directori de cua erroni: %(qdir)s"
 
-#: bin/update:517
+#: bin/.svn/text-base/update.svn-base:517 bin/update:517
 msgid "message is unparsable: %(filebase)s"
 msgstr ""
 
-#: bin/update:531
+#: bin/.svn/text-base/update.svn-base:531 bin/update:531
 msgid "Warning!  Deleting empty .pck file: %(pckfile)s"
 msgstr ""
 
-#: bin/update:550
+#: bin/.svn/text-base/update.svn-base:550 bin/update:550
 #, fuzzy
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
 msgstr "Actualitzant antiga base de dades pending_subscriptions.db"
 
-#: bin/update:561
+#: bin/.svn/text-base/update.svn-base:561 bin/update:561
 #, fuzzy
 msgid "Updating Mailman 2.1.4 pending.pck database"
 msgstr "Actualitzant antiga base de dades pending_subscriptions.db"
 
-#: bin/update:585
+#: bin/.svn/text-base/update.svn-base:585 bin/update:585
 msgid "Ignoring bad pended data: %(key)s: %(val)s"
 msgstr ""
 
-#: bin/update:601
+#: bin/.svn/text-base/update.svn-base:601 bin/update:601
 msgid "WARNING: Ignoring duplicate pending ID: %(id)s."
 msgstr ""
 
-#: bin/update:654
+#: bin/.svn/text-base/update.svn-base:654 bin/update:654
 msgid "getting rid of old source files"
 msgstr "Desfent-me dels antics fitxers font"
 
-#: bin/update:664
+#: bin/.svn/text-base/update.svn-base:664 bin/update:664
 msgid "no lists == nothing to do, exiting"
 msgstr "si no hi ha llistes == no hi ha res per fer, sortint"
 
-#: bin/update:671
+#: bin/.svn/text-base/update.svn-base:671 bin/update:671
 msgid ""
 "fixing all the perms on your old html archives to work with b6\n"
 "If your archives are big, this could take a minute or two..."
@@ -11514,28 +11556,28 @@ msgstr ""
 "fixant els permisos en els teus antics fitxers html per a treballar amb b6\n"
 "Si els teus arxius són grans, això pot trigar un minut o dos..."
 
-#: bin/update:676
+#: bin/.svn/text-base/update.svn-base:676 bin/update:676
 msgid "done"
 msgstr "Fet"
 
-#: bin/update:678
+#: bin/.svn/text-base/update.svn-base:678 bin/update:678
 msgid "Updating mailing list: %(listname)s"
 msgstr "Actualitzant llista de correu: %(listname)s"
 
-#: bin/update:681
+#: bin/.svn/text-base/update.svn-base:681 bin/update:681
 msgid "Updating Usenet watermarks"
 msgstr "Actualitzant marques d'aigua de Usenet"
 
-#: bin/update:686
+#: bin/.svn/text-base/update.svn-base:686 bin/update:686
 msgid "- nothing to update here"
 msgstr "- aquí no hi ha res per actualitzar"
 
-#: bin/update:709
+#: bin/.svn/text-base/update.svn-base:709 bin/update:709
 msgid "- usenet watermarks updated and gate_watermarks removed"
 msgstr ""
 "- les marques d' aigua i les gate_watermarks de usenet han estat eliminades"
 
-#: bin/update:723
+#: bin/.svn/text-base/update.svn-base:723 bin/update:723
 msgid ""
 "\n"
 "\n"
@@ -11578,11 +11620,11 @@ msgstr ""
 "Atenció Atenció Atenció\n"
 "\n"
 
-#: bin/update:780
+#: bin/.svn/text-base/update.svn-base:780 bin/update:780
 msgid "No updates are necessary."
 msgstr "No hi ha actualitzacions necessàries."
 
-#: bin/update:783
+#: bin/.svn/text-base/update.svn-base:783 bin/update:783
 msgid ""
 "Downgrade detected, from version %(hexlversion)s to version %(hextversion)s\n"
 "This is probably not safe.\n"
@@ -11593,11 +11635,11 @@ msgstr ""
 "El més probable que això no sigui segur.\n"
 "Sortint."
 
-#: bin/update:788
+#: bin/.svn/text-base/update.svn-base:788 bin/update:788
 msgid "Upgrading from version %(hexlversion)s to %(hextversion)s"
 msgstr "Actualitzant de la versió %(hexlversion)s a la %(hextversion)s"
 
-#: bin/update:797
+#: bin/.svn/text-base/update.svn-base:797 bin/update:797
 msgid ""
 "\n"
 "ERROR:\n"
@@ -11625,15 +11667,15 @@ msgstr ""
 "corruptes, aleshores tornar a executar manualment \"make update\". \n"
 "Vegi els fitxers INSTALL i UPGRADE per a més detalls.\n"
 
-#: bin/version:19
+#: bin/.svn/text-base/version.svn-base:19 bin/version:19
 msgid "Print the Mailman version.\n"
 msgstr "Mostrar la versió de Mailman.\n"
 
-#: bin/version:26
+#: bin/.svn/text-base/version.svn-base:26 bin/version:26
 msgid "Using Mailman version:"
 msgstr "Fent servir la versió de Mailman: "
 
-#: bin/withlist:19
+#: bin/.svn/text-base/withlist.svn-base:19 bin/withlist:19
 #, fuzzy
 msgid ""
 "General framework for interacting with a mailing list object.\n"
@@ -11851,7 +11893,7 @@ msgstr ""
 "I executar això a la línia d'ordres:\n"
 "%% bin/withlist -l -r changepw mylist somebody@somewhere.org foobar\n"
 
-#: bin/withlist:163
+#: bin/.svn/text-base/withlist.svn-base:163 bin/withlist:163
 msgid ""
 "Unlock a locked list, but do not implicitly Save() it.\n"
 "\n"
@@ -11868,51 +11910,51 @@ msgstr ""
 "    o si es crida a os._exit() . Se'l cridarà si ocorre una excepció.\n"
 "    "
 
-#: bin/withlist:174
+#: bin/.svn/text-base/withlist.svn-base:174 bin/withlist:174
 msgid "Unlocking (but not saving) list: %(listname)s"
 msgstr "Desbloquejant (però no guardant) la llista: %(listname)s"
 
-#: bin/withlist:178
+#: bin/.svn/text-base/withlist.svn-base:178 bin/withlist:178
 msgid "Finalizing"
 msgstr "Finalitzant"
 
-#: bin/withlist:187
+#: bin/.svn/text-base/withlist.svn-base:187 bin/withlist:187
 msgid "Loading list %(listname)s"
 msgstr "Carregant llista %(listname)s"
 
-#: bin/withlist:189
+#: bin/.svn/text-base/withlist.svn-base:189 bin/withlist:189
 msgid "(locked)"
 msgstr "(blocat)"
 
-#: bin/withlist:191
+#: bin/.svn/text-base/withlist.svn-base:191 bin/withlist:191
 msgid "(unlocked)"
 msgstr "(desblocat)"
 
-#: bin/withlist:196
+#: bin/.svn/text-base/withlist.svn-base:196 bin/withlist:196
 msgid "Unknown list: %(listname)s"
 msgstr "Llista desconeguda: %(listname)s"
 
-#: bin/withlist:236
+#: bin/.svn/text-base/withlist.svn-base:236 bin/withlist:236
 msgid "No list name supplied."
 msgstr "Nom de la llista no proporcionat."
 
-#: bin/withlist:245
+#: bin/.svn/text-base/withlist.svn-base:245 bin/withlist:245
 msgid "--all requires --run"
 msgstr "--all necessita --run"
 
-#: bin/withlist:265
+#: bin/.svn/text-base/withlist.svn-base:265 bin/withlist:265
 msgid "Importing %(module)s..."
 msgstr "Important %(module)s..."
 
-#: bin/withlist:268
+#: bin/.svn/text-base/withlist.svn-base:268 bin/withlist:268
 msgid "Running %(module)s.%(callable)s()..."
 msgstr "Executant %(module)s.%(callable)s()..."
 
-#: bin/withlist:289
+#: bin/.svn/text-base/withlist.svn-base:289 bin/withlist:289
 msgid "The variable `m' is the %(listname)s MailList instance"
 msgstr "La variable `m' és la instància de la llista de correu %(listname)s"
 
-#: cron/bumpdigests:19
+#: cron/.svn/text-base/bumpdigests.svn-base:19 cron/bumpdigests:19
 msgid ""
 "Increment the digest volume number and reset the digest number to one.\n"
 "\n"
@@ -11939,7 +11981,7 @@ msgstr ""
 "S'aplica a les llistes nomenades en la línia d'ordres.\n"
 "Si no es proporciona el nom de cap llista, s'aplica a totes.\n"
 
-#: cron/checkdbs:19
+#: cron/.svn/text-base/checkdbs.svn-base:19 cron/checkdbs:19
 #, fuzzy
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
@@ -11962,26 +12004,26 @@ msgstr ""
 "    -h/--help\n"
 "        Mostrar aquest missatge i surt.\n"
 
-#: cron/checkdbs:107
+#: cron/.svn/text-base/checkdbs.svn-base:107 cron/checkdbs:107
 msgid ""
 "Notice: %(discarded)d old request(s) automatically expired.\n"
 "\n"
 msgstr ""
 
-#: cron/checkdbs:120
+#: cron/.svn/text-base/checkdbs.svn-base:120 cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
 msgstr "%(count)d %(realname)s peticions de moderador en espera "
 
-#: cron/checkdbs:123
+#: cron/.svn/text-base/checkdbs.svn-base:123 cron/checkdbs:123
 #, fuzzy
 msgid "%(realname)s moderator request check result"
 msgstr "%(count)d %(realname)s peticions de moderador en espera "
 
-#: cron/checkdbs:143
+#: cron/.svn/text-base/checkdbs.svn-base:143 cron/checkdbs:143
 msgid "Pending subscriptions:"
 msgstr "Subscripcions pendents:"
 
-#: cron/checkdbs:154
+#: cron/.svn/text-base/checkdbs.svn-base:154 cron/checkdbs:154
 msgid ""
 "\n"
 "Pending posts:"
@@ -11989,7 +12031,7 @@ msgstr ""
 "\n"
 "Enviaments pendents:"
 
-#: cron/checkdbs:161
+#: cron/.svn/text-base/checkdbs.svn-base:161 cron/checkdbs:161
 msgid ""
 "From: %(sender)s on %(date)s\n"
 "Subject: %(subject)s\n"
@@ -11999,7 +12041,7 @@ msgstr ""
 "Tema: %(subject)s\n"
 "Causa: %(reason)s"
 
-#: cron/disabled:19
+#: cron/.svn/text-base/disabled.svn-base:19 cron/disabled:19
 msgid ""
 "Process disabled members, recommended once per day.\n"
 "\n"
@@ -12099,13 +12141,13 @@ msgstr ""
 "        Processar les llistes donades, en cas contrari es processen totes "
 "les llistes.\n"
 
-#: cron/disabled:144
+#: cron/.svn/text-base/disabled.svn-base:144 cron/disabled:144
 msgid "[disabled by periodic sweep and cull, no message available]"
 msgstr ""
 "[inhabilitat a causa de una neteja periòdica, no hi ha cap missatge "
 "disponible]"
 
-#: cron/gate_news:19
+#: cron/.svn/text-base/gate_news.svn-base:19 cron/gate_news:19
 msgid ""
 "Poll the NNTP servers for messages to be gatewayed to mailing lists.\n"
 "\n"
@@ -12130,7 +12172,7 @@ msgstr ""
 "        Mostra aquest missatge i surt.\n"
 "\n"
 
-#: cron/mailpasswds:19
+#: cron/.svn/text-base/mailpasswds.svn-base:19 cron/mailpasswds:19
 msgid ""
 "Send password reminders for all lists to all users.\n"
 "\n"
@@ -12182,15 +12224,15 @@ msgstr ""
 "    -h/--help\n"
 "        Mostra aquest missatge i surt.\n"
 
-#: cron/mailpasswds:216
+#: cron/.svn/text-base/mailpasswds.svn-base:216 cron/mailpasswds:216
 msgid "Password // URL"
 msgstr "Password // URL"
 
-#: cron/mailpasswds:222
+#: cron/.svn/text-base/mailpasswds.svn-base:222 cron/mailpasswds:222
 msgid "%(host)s mailing list memberships reminder"
 msgstr "%(host)s recordatori de afiliació a la llista de correu electrònic. "
 
-#: cron/nightly_gzip:19
+#: cron/.svn/text-base/nightly_gzip.svn-base:19 cron/nightly_gzip:19
 msgid ""
 "Re-generate the Pipermail gzip'd archive flat files.\n"
 "\n"
@@ -12236,7 +12278,7 @@ msgstr ""
 "        aquesta opció, es processen totes les llistes que es poden arxivar.\n"
 "\n"
 
-#: cron/senddigests:19
+#: cron/.svn/text-base/senddigests.svn-base:19 cron/senddigests:19
 msgid ""
 "Dispatch digests for lists w/pending messages and digest_send_periodic set.\n"
 "\n"
@@ -12265,6 +12307,13 @@ msgstr ""
 "    --listname=listname\n"
 "        Envia els missatges agrupats només per la llista especificada.\n"
 "        Si no se n'especifica una, els envia a totes les llistes.\n"
+
+#~ msgid ""
+#~ "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
+#~ "## captured on %(when)s\n"
+#~ msgstr ""
+#~ "## \"%(listname)s\" configuració de la llista de correu -*- python -*-\n"
+#~ "## capturat el %(when)s\n"
 
 #~ msgid ""
 #~ "Approval notices are sent when mail triggers certain of the\n"
