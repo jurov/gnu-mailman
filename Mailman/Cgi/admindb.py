@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -313,7 +313,7 @@ def show_pending_subs(mlist, form):
                      '&nbsp;' + _('Permanently ban from this list')
         # While the address may be a unicode, it must be ascii
         paddr = addr.encode('us-ascii', 'replace')
-        table.AddRow(['%s<br><em>%s</em>' % (paddr, fullname),
+        table.AddRow(['%s<br><em>%s</em>' % (paddr, Utils.websafe(fullname)),
                       radio,
                       TextBox('comment-%d' % id, size=40)
                       ])
@@ -357,7 +357,7 @@ def show_pending_unsubs(mlist, form):
             mlist.HandleRequest(id, mm_cfg.DISCARD)
             continue
         num += 1
-        table.AddRow(['%s<br><em>%s</em>' % (addr, fullname),
+        table.AddRow(['%s<br><em>%s</em>' % (addr, Utils.websafe(fullname)),
                       RadioButtonArray(id, (_('Defer'),
                                             _('Approve'),
                                             _('Reject'),

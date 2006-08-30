@@ -205,7 +205,7 @@ def LCDomain(addr):
 _badchars = re.compile(r'[][()<>|;^,\000-\037\177-\377]')
 
 def ValidateEmail(s):
-    """Verify that the an email address isn't grossly evil."""
+    """Verify that an email address isn't grossly evil."""
     # Pretty minimal, cheesy check.  We could do better...
     if not s or s.count(' ') > 0:
         raise Errors.MMBadEmailError

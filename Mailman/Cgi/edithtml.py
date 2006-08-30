@@ -143,7 +143,8 @@ def FormatHTML(mlist, doc, template_name, template_info):
     doc.AddItem('<p>')
     doc.AddItem('<hr>')
     form = Form(mlist.GetScriptURL('edithtml') + '/' + template_name)
-    text = Utils.websafe(Utils.maketext(template_name, raw=1, mlist=mlist))
+    text = Utils.maketext(template_name, raw=1, mlist=mlist)
+    # MAS: Don't websafe twice.  TextArea does it.
     form.AddItem(TextArea('html_code', text, rows=40, cols=75))
     form.AddItem('<p>' + _('When you are done making changes...'))
     form.AddItem(SubmitButton('submit', _('Submit Changes')))

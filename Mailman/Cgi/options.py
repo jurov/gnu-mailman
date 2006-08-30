@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -702,7 +702,7 @@ def options_page(mlist, doc, user, cpuser, userlang, message=''):
 
     fullname = Utils.uncanonstr(mlist.getMemberName(user), userlang)
     if fullname:
-        presentable_user += ', %s' % fullname
+        presentable_user += ', %s' % Utils.websafe(fullname)
 
     # Do replacements
     replacements = mlist.GetStandardReplacements(userlang)

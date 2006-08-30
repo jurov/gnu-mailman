@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -1318,6 +1318,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
         # we display.  Try uploading a file with 10k names -- it takes a while
         # to render the status page.
         for entry in entries:
+            safeentry = Utils.websafe(entry)
             fullname, address = parseaddr(entry)
             # Canonicalize the full name
             fullname = Utils.canonstr(fullname, mlist.preferred_language)
@@ -1335,20 +1336,20 @@ def change_options(mlist, category, subcat, cgidata, doc):
                                             send_admin_notif, invitation,
                                             whence='admin mass sub')
             except Errors.MMAlreadyAMember:
-                subscribe_errors.append((entry, _('Already a member')))
+                subscribe_errors.append((safeentry, _('Already a member')))
             except Errors.MMBadEmailError:
                 if userdesc.address == '':
                     subscribe_errors.append((_('&lt;blank line&gt;'),
                                              _('Bad/Invalid email address')))
                 else:
-                    subscribe_errors.append((entry,
+                    subscribe_errors.append((safeentry,
                                              _('Bad/Invalid email address')))
             except Errors.MMHostileAddress:
                 subscribe_errors.append(
-                    (entry, _('Hostile address (illegal characters)')))
+                    (safeentry, _('Hostile address (illegal characters)')))
             except Errors.MembershipIsBanned, pattern:
                 subscribe_errors.append(
-                    (entry, _('Banned address (matched %(pattern)s)')))
+                    (safeentry, _('Banned address (matched %(pattern)s)')))
             else:
                 member = Utils.uncanonstr(formataddr((fullname, address)))
                 subscribe_success.append(Utils.websafe(member))
@@ -1388,9 +1389,9 @@ def change_options(mlist, category, subcat, cgidata, doc):
                     addr, whence='admin mass unsub',
                     admin_notif=send_unsub_notifications,
                     userack=userack)
-                unsubscribe_success.append(addr)
+                unsubscribe_success.append(Utils.websafe(addr))
             except Errors.NotAMemberError:
-                unsubscribe_errors.append(addr)
+                unsubscribe_errors.append(Utils.websafe(addr))
         if unsubscribe_success:
             doc.AddItem(Header(5, _('Successfully Unsubscribed:')))
             doc.AddItem(UnorderedList(*unsubscribe_success))

@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -190,15 +190,24 @@ def process_request(doc, cgidata):
                 mlist.Create(listname, owner, pw, langs, emailhost)
             finally:
                 os.umask(oldmask)
-        except Errors.EmailAddressError, s:
+        except Errors.EmailAddressError, e:
+            if e.args:
+                s = Utils.websafe(e.args[0])
+            else:
+                s = Utils.websafe(owner)
             request_creation(doc, cgidata,
                              _('Bad owner email address: %(s)s'))
             return
         except Errors.MMListAlreadyExistsError:
+            # MAS: List already exists so we don't need to websafe it.
             request_creation(doc, cgidata,
                              _('List already exists: %(listname)s'))
             return
-        except Errors.BadListNameError, s:
+        except Errors.BadListNameError, e:
+            if e.args:
+                s = Utils.websafe(e.args[0])
+            else:
+                s = Utils.websafe(listname)
             request_creation(doc, cgidata,
                              _('Illegal list name: %(s)s'))
             return
@@ -321,15 +330,17 @@ def request_creation(doc, cgidata=dummy, errmsg=None):
     ftable.AddRow([Center(Italic(_('List Identity')))])
     ftable.AddCellInfo(ftable.GetCurrentRowIndex(), 0, colspan=2)
 
-    safelistname = Utils.websafe(cgidata.getvalue('listname', ''))
+    listname = cgidata.getvalue('listname', '')
+    # MAS: Don't websafe twice.  TextBox does it.
     ftable.AddRow([Label(_('Name of list:')),
-                   TextBox('listname', safelistname)])
+                   TextBox('listname', listname)])
     ftable.AddCellInfo(ftable.GetCurrentRowIndex(), 0, bgcolor=GREY)
     ftable.AddCellInfo(ftable.GetCurrentRowIndex(), 1, bgcolor=GREY)
 
-    safeowner = Utils.websafe(cgidata.getvalue('owner', ''))
+    owner = cgidata.getvalue('owner', '')
+    # MAS: Don't websafe twice.  TextBox does it.
     ftable.AddRow([Label(_('Initial list owner address:')),
-                   TextBox('owner', safeowner)])
+                   TextBox('owner', owner)])
     ftable.AddCellInfo(ftable.GetCurrentRowIndex(), 0, bgcolor=GREY)
     ftable.AddCellInfo(ftable.GetCurrentRowIndex(), 1, bgcolor=GREY)
 

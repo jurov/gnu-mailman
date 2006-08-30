@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 
 """Library for program-based construction of an HTML documents.
@@ -448,7 +449,11 @@ class PasswordBox(InputObj):
 
 class TextBox(InputObj):
     def __init__(self, name, value='', size=mm_cfg.TEXTFIELDWIDTH):
-        InputObj.__init__(self, name, "TEXT", value, checked=0, size=size)
+        if isinstance(value, str):
+            safevalue = Utils.websafe(value)
+        else:
+            safevalue = value
+        InputObj.__init__(self, name, "TEXT", safevalue, checked=0, size=size)
 
 class Hidden(InputObj):
     def __init__(self, name, value=''):
@@ -457,8 +462,12 @@ class Hidden(InputObj):
 class TextArea:
     def __init__(self, name, text='', rows=None, cols=None, wrap='soft',
                  readonly=0):
+        if isinstance(text, str):
+            safetext = Utils.websafe(text)
+        else:
+            safetext = text
         self.name = name
-        self.text = text
+        self.text = safetext
         self.rows = rows
         self.cols = cols
         self.wrap = wrap

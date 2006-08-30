@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """MailList mixin class managing the general options."""
 
@@ -439,13 +440,13 @@ class General(GUIBase):
             GUIBase._setValue(self, mlist, property, val, doc)
 
     def _escape(self, property, value):
-        # The 'info' property allows HTML, but lets sanitize it to avoid XSS
+        # The 'info' property allows HTML, but let's sanitize it to avoid XSS
         # exploits.  Everything else should be fully escaped.
         if property <> 'info':
             return GUIBase._escape(self, property, value)
         # Sanitize <script> and </script> tags but nothing else.  Not the best
         # solution, but expedient.
-        return re.sub(r'<([/]?script.*?)>', r'&lt;\1&gt;', value)
+        return re.sub(r'(?i)<([/]?script.*?)>', r'&lt;\1&gt;', value)
 
     def _postValidate(self, mlist, doc):
         if not mlist.reply_to_address.strip() and \
