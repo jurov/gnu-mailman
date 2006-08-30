@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd" >
 <html>
 <!-- THIS PAGE IS AUTOMATICALLY GENERATED.  DO NOT EDIT. -->
-<!-- Mon May 30 15:51:27 2005 -->
+<!-- Tue Aug 29 11:07:34 2006 -->
 <!-- USING HT2HTML 2.0 -->
 <!-- SEE http://ht2html.sf.net -->
 <!-- User-specified headers:
@@ -81,31 +81,35 @@ body { margin: 0px; }
 Overview
 </font></b></td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="index.html">Home</a>
+<a href="index.html">Home</a></li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
 <a href="security.html">Security</li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="features.html">Features</a>
+<a href="features.html">Features</a></li>
+</td></tr>
+<tr><td bgcolor="#eecfa1">&nbsp;</td></tr>
+<tr><td bgcolor="#36648b"><b><font color="#ffffff">
+More Information
+</font></b></td></tr>
+<tr><td bgcolor="#eecfa1">
+<a href="http://wiki.list.org">Wiki</a> <i>(exit)</i></li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="i18n.html">Internationalization</a>
+<a href="lists.html">Discussion Lists</a></li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="otherstuff.html">Rants, Papers, and Logos</a>
+<a href="http://sf.net/projects/mailman">SF Project Page</a>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="inthenews.html">Mailman in Use</a>
+<a href="otherstuff.html">Rants, Papers, and Logos</a></li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="prev.html">Previous Releases</a>
+<a href="bugs.html">Bugs and Patches</a></li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-<a href="bugs.html">Bugs and Patches</a>
-</td></tr>
-<tr><td bgcolor="#eecfa1">
-<a href="mirrors.html">Mirrors</a>
+<a href="mirrors.html">Mirrors</a></li>
 </td></tr>
 <tr><td bgcolor="#eecfa1">&nbsp;</td></tr>
 <tr><td bgcolor="#36648b"><b><font color="#ffffff">
@@ -171,7 +175,7 @@ Email Us
 &nbsp;
 </td></tr>
 <tr><td bgcolor="#eecfa1">
-&copy; 1998-2005
+&copy; 1998-2006
 Free Software Foundation, Inc.  Verbatim copying and distribution of this
 entire article is permitted in any medium, provided this notice is preserved.
 
@@ -186,8 +190,8 @@ entire article is permitted in any medium, provided this notice is preserved.
 <h3>Requirements</h3>
 
 <p>Mailman currently runs only on GNU/Linux and any other Un*x-like
-operating system, such as *BSD, Solaris, etc.  It should work on
-MacOSX but not on MacOS 9.  It probably does not work
+operating system, such as *BSD, Solaris, etc.  It works on
+MacOS X but not on MacOS 9.  It probably does not work
 on Windows, although it's possible you could get it running on a
 Cygwin system (please <a
 href="mailto:mailman-developers@python.org">let the developer
@@ -198,11 +202,11 @@ community know</a> if you have success with this!)
 interpreter installed somewhere on your system.  Currently Python 2.1
 or newer is required, with Python 2.3 or 2.4 being recommended.  Mailman
 should work with latest patch release on any Python branch from 2.1 to
-2.4, which as of this writing (30-May-2005) is
+2.4, which as of this writing (29-Aug-2006) is
 <a href="http://www.python.org/2.1.3/">Python 2.1.3</a>,
 <a href="http://www.python.org/2.2.3/">Python 2.2.3</a>,
 <a href="http://www.python.org/2.3.5/">Python 2.3.5</a>, and
-<a href="http://www.python.org/2.4.1/">Python 2.4.1</a>.
+<a href="http://www.python.org/2.4.1/">Python 2.4.3</a>.
 
 <p><em>Note that because Python 2.1 and 2.2 are no longer being developed, and
 only critical bugs are being fixed on the Python 2.3 branch, it is recommended
@@ -217,7 +221,7 @@ by executing the following at your shell's command line:
 <blockquote>
 <pre>
 % python -V
-Python 2.4.1
+Python 2.4.3
 </pre>
 </blockquote>
 
@@ -235,10 +239,8 @@ for web server, and MTAs such as
 should work just fine.
 
 <p>You will need an ANSI C compiler to build Mailman's security
-wrappers.  The
-<a href="http://gcc.gnu.org/">GNU C compiler</a>
-gcc 2.8.1 or later is known to work
-well.
+wrappers.  All modern versions of the
+<a href="http://gcc.gnu.org/">GNU C compiler</a> should work well.
 
 </td><!-- end of body cell -->
 </tr><!-- end of sidebar/body row -->
