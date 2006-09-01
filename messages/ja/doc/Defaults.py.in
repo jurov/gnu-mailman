@@ -1,7 +1,7 @@
 # -*- python -*-
 # -*- coding: euc-jp -*-
 
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,14 +18,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-# [訳注] このファイルは, Mailman 2.1.7 配布物に含まれる
-#   Mailman/Defaults.py.in
+# [訳注] このファイルは, Mailman 2.1.9 配布物に含まれる
+#   Mailman/Defaults.py.in (SF.net での Subversion リビジョンは 7965)
 #   のコメント部分を日本語 (共通語) に翻訳したものです.
 #   配布等の条件は原文と同様, GNU 一般公衆利用許諾契約書 (GNU
 #   General Public License) に従います (上記も参照ください). 内容の正
 #   確な理解のためには, 配布物に含まれる原文を参照されることをお勧めし
 #   ます.
-#   訳者: IKEDA Soji <nezumi@poem.co.jp>
+#   訳者: IKEDA Soji <hatuka@nezumi.nu>
 
 """配布時点の Mailman の重要な設定変数の既定値."""
 
@@ -116,6 +116,10 @@ MAILMAN_SITE_LIST = 'mailman'
 # ことになる.  一方, サイトの全リストでいちいち認証しなおさなくていい
 # のはとっても便利.  サイト認証クッキーを認めるのなら, この値を Yes に
 # する.
+# [訳注] 2.1.7 での仕様変更: リスト管理者は, 会員オプション画面で「全部
+#   変更」を有効にしてオプション変更や会員の退会を実行できなくなった.
+#   サイト管理者は, この変数が Yes のときだけ, 会員オプション画面で「全部
+#   変更」を有効にしてオプション変更や会員の退会を実行できるようになった.
 ALLOW_SITE_ADMIN_COOKIES = No
 
 # text/html パートをプレインテキストに変換するコマンド. これは結果を
@@ -212,13 +216,13 @@ WEB_HIGHLIGHT_COLOR = '#dddddd'                   # 真なら, listinfo と admin
 # 保存書庫の既定値
 #####
 
-# 公開保存書庫の URL のテンプレート. これはいくつかの場所で使う:
+# 公開保存書庫の URL のテンプレート [>=2.1]. これはいくつかの場所で使う:
 # List-Archive: ヘッダ, リストの listinfo ページ, リストの管理ページで.
 #
 # これは "%(listname)s" がどこかに入った文字列でなければいけな
 # い. Mailman はここにリストの名前を代入する. 文字列に "%(hostname)s" 
 # をいれることもできる.  Mailman はここにホスト名 (たいてい 
-# DEFAULT_URL_HOST) を代入する. [>=2.1]
+# DEFAULT_URL_HOST) を代入する.
 PUBLIC_ARCHIVE_URL = 'http://%(hostname)s/pipermail/%(listname)s'
 
 # 保存書庫が既定で有効かどうか.
@@ -265,15 +269,15 @@ PUBLIC_EXTERNAL_ARCHIVER = No
 PRIVATE_EXTERNAL_ARCHIVER = No
 
 # マルチパートのメッセージを「フラット」なメッセージ (つまりシングルパー
-# トのメッセージ) に変換するフィルタモジュール. これは Pipermail で必
-# 要だが, 外部保存書庫作成プログラムを使うのなら 0 に設定するといいか
-# も.
+# トのメッセージ) に変換するフィルタモジュール [>=2.1]. これは Pipermail
+# で必要だが, 外部保存書庫作成プログラムを使うのなら 0 に設定するとい
+# いかも.
 # また, 自分で作ったモジュールに置き換えることもできるが, すくなくとも
 # process() という関数を含んでいて, この関数が MailList オブジェクトと
 # Message オブジェクトを引数にとるようになっていないといけない. これは
 # メッセージを捨てるときは Errors.DiscardMessage を raise しないといけ
 # ない. 捨てないときは, Message オブジェクトを必要に応じて修正しないと
-# いけない.  [>=2.1]
+# いけない.
 ARCHIVE_SCRUBBER = 'Mailman.Handlers.Scrubber'
 
 # Mailman.Handlers.Scrubber で, filename パラメタで示される添付ファイ
@@ -289,9 +293,9 @@ SCRUBBER_DONT_USE_ATTACHMENT_FILENAME = True
 # ここを True に設定できる [>=2.1.6]
 SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION = False
 
-# この変数は, text/html のサブパートで何をするかを定義する. 完全に取り
-# 除くか, エスケープするか, 外部プログラムでフィルタするか. 指定できる
-# 値は:
+# この変数は, text/html のサブパートで何をするかを定義する [>=2.1].
+# 完全に取り除くか, エスケープするか, 外部プログラムでフィルタするか.
+# 指定できる値は:
 # 0 - text/html パートを完全に取り除き, メッセージに削除した旨の注意書
 #     きを残す. 一番外側のパートが text/html だったら, メッセージ全体
 #     を破棄する.
@@ -316,7 +320,7 @@ SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION = False
 # れ, これはプログラムが処理する一時ファイルの名前になる. 処理されたメッ
 # セージは標準出力に書き出さなければいけない. HTML からプレインテキス
 # トへの変換プログラムを指定したければ, ここを 
-# HTML_TO_PLAIN_TEXT_COMMAND に設定する.  [>=2.1]
+# HTML_TO_PLAIN_TEXT_COMMAND に設定する.
 ARCHIVE_HTML_SANITIZER = 1
 
 # ダウンロードできる保存書庫の .txt ファイルを gzip 圧縮するなら Yes 
@@ -497,9 +501,12 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
     ]
 
 # リスト全員に送るようなすべての「普通の」メッセージは, このハンドラモ
-# ジュールのパイプラインを通る. それぞれのリスト自身では, `pipeline' 
-# 属性を定義すればグローバルなパイプラインを上書きできる. [>=2.1] [訳
-# 注: 2.1.6 から Scrubber モジュールが追加された.]
+# ジュールのパイプラインを通る [>=2.1]. それぞれのリスト自身では,
+# `pipeline' 属性を定義すればグローバルなパイプラインを上書きできる.
+# [訳注]
+#   2.1.6 から Scrubber モジュールが追加された.
+#   2.1.8 から CleanseDKIM モジュールが追加された; DomainKey や DKIM
+#   のシグネチャ除去が Cleanse モジュールから独立した.
 GLOBAL_PIPELINE = [
     # まずは, すべての配送過程で共通の処理をするモジュール.
     'SpamDetect',
@@ -514,6 +521,7 @@ GLOBAL_PIPELINE = [
     'CalcRecips',
     'AvoidDuplicates',
     'Cleanse',
+    'CleanseDKIM',
     'CookHeaders',
     # それから, メッセージをまとめ読み用の mbox ファイル, 保存書庫, 
     # ニューズのキューに送る. それぞれの runner が, それぞれの配送過程
@@ -528,10 +536,12 @@ GLOBAL_PIPELINE = [
     'ToOutgoing',
     ]
 
-# これは, -owner アドレスに送られてきたメッセージが通るパイプライン.
+# これは, -owner アドレスに送られてきたメッセージが通るパイプライン
+# [>=2.1] [訳注: 2.1.8 から CleanseDKIM モジュールが追加された].
 OWNER_PIPELINE = [
     'SpamDetect',
     'Replybot',
+    'CleanseDKIM',
     'OwnerRecips',
     'ToOutgoing',
     ]
@@ -679,7 +689,13 @@ VERP_DELIVERY_INTERVAL = 0
 VERP_CONFIRM_FORMAT = '%(addr)s+%(cookie)s'
 
 # これは VERP_REGEXP と同様, ただし VERP_CONFIRM_FORMAT での分割用.
-VERP_CONFIRM_REGEXP = r'^(?P<addr>[^+]+?)\+(?P<cookie>[^@]+)@.*$'
+# なお, [訳注: 2.1.8b1 以降は]
+# From: local_part@host
+# を
+# To: "local_part" <local_part@host>
+# に書き換えて返事をするような MUA を考慮して, '<' より前にあるものは
+# すべて無視するようにした.
+VERP_CONFIRM_REGEXP = r'^(.*<)?(?P<addr>[^+]+?)\+(?P<cookie>[^@]+)@.*$'
 
 # これを Yes に設定すると, VERP 風 (よりユーザに親切) な確認メッセージを使う.
 VERP_CONFIRMATIONS = No
@@ -1393,6 +1409,7 @@ LC_DESCRIPTIONS = {}
 def add_language(code, description, charset):
     LC_DESCRIPTIONS[code] = (description, charset)
 
+add_language('ar',    _('Arabic'),              'utf-8')
 add_language('ca',    _('Catalan'),             'iso-8859-1')
 add_language('cs',    _('Czech'),               'iso-8859-2')
 add_language('da',    _('Danish'),              'iso-8859-1')
@@ -1422,6 +1439,7 @@ add_language('sl',    _('Slovenian'),           'iso-8859-2')
 add_language('sv',    _('Swedish'),             'iso-8859-1')
 add_language('tr',    _('Turkish'),             'iso-8859-9')
 add_language('uk',    _('Ukrainian'),           'utf-8')
+add_language('vi',    _('Vietnamese'),          'utf-8')
 add_language('zh_CN', _('Chinese (China)'),     'utf-8')
 add_language('zh_TW', _('Chinese (Taiwan)'),    'utf-8')
 
