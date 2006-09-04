@@ -1,7 +1,7 @@
 # Catalogues Mailman en Français.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Ousmane Wilane <wilane@cyg.sn>, 2002.
-# Pascal George <george@lyon.inserm.fr>, 2003-2005. 
+# Pascal George <george@lyon.inserm.fr>, 2003-2006. 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b6\n"
@@ -87,7 +87,7 @@ msgstr "Mars"
 
 #: Mailman/Archiver/HyperArch.py:909
 msgid "August"
-msgstr "Aôut"
+msgstr "Août"
 
 #: Mailman/Archiver/HyperArch.py:909
 msgid "July"
@@ -1402,7 +1402,8 @@ msgstr ""
 "    rendant sur votre page d'options personnelles.\n"
 "\n"
 "    <p>Ou cliquez sur <em>Annuler ma demande d'inscription</em> si vous "
-"ne     plus vous inscrire à cette liste."
+"ne\n"
+"    être abonné à cette liste."
 
 #: Mailman/Cgi/confirm.py:261
 msgid ""
@@ -2469,7 +2470,7 @@ msgid ""
 msgstr ""
 "L'administrateur de la liste ne devrait pas changer\n"
 "\t         les options des autres abonnements de cet utilisateur.\n"
-"\t         Néanmoins es options pour cette liste ont été modifiées."
+"\t         Néanmoins les options pour cette liste ont été modifiées."
 
 #: Mailman/Cgi/options.py:665
 msgid ""
@@ -3658,7 +3659,7 @@ msgstr "Abonnés en remise groupée :"
 
 #: Mailman/Defaults.py:1324
 msgid "Arabic"
-msgstr ""
+msgstr "Arabe"
 
 #: Mailman/Defaults.py:1325
 msgid "Catalan"
@@ -3770,7 +3771,7 @@ msgstr "Suédois"
 
 #: Mailman/Defaults.py:1352
 msgid "Turkish"
-msgstr ""
+msgstr "Turque"
 
 #: Mailman/Defaults.py:1353
 msgid "Ukrainian"
@@ -3778,7 +3779,7 @@ msgstr "Ukrainien"
 
 #: Mailman/Defaults.py:1354
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamien"
 
 #: Mailman/Defaults.py:1355
 msgid "Chinese (China)"
@@ -6707,7 +6708,7 @@ msgid ""
 "             internally crafted default message."
 msgstr ""
 " Texte à inclure dans chaque avis de rejet à envoyer aux\n"
-"             non-abonnés qui poste sur la liste. Cet avis peut inclure\n"
+"             non-abonnés qui postent sur la liste. Cet avis peut inclure\n"
 "             l'adresse du propriétaire de la liste avec %%(listowner)s\n"
 "\t      et remplacer le message interne par défaut."
 
@@ -10666,7 +10667,6 @@ msgid "Hit enter to notify %(listname)s owner..."
 msgstr "Tapez sur Entrée pour aviser le propriétaire de %(listname)s..."
 
 #: bin/.svn/text-base/qrunner.svn-base:20 bin/qrunner:20
-#, fuzzy
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
 "\n"
@@ -10779,14 +10779,17 @@ msgstr ""
 "            Cette option ne doit être utilisée que lorsque le qrunner\n"
 "            est exécuté comme sous processus du script de démarrage\n"
 "            mailmanctl. Elle modifie le comportement de\n"
-"            sortie-quand-erreur pour mieux s'accommoder avec ce\n"
+"            sortie-sur-erreur pour mieux s'accommoder avec ce\n"
 "            dispositif.\n"
 "\n"
 "        -h/--help\n"
 "            Affiche ce message puis quitte.\n"
 "\n"
-"Le paramètre `gestionnaire' est obligatoire à moins que -l ou -h n'ait\n"
+"Le paramètre gestionnaire (runner) est obligatoire à moins que -l ou -h n'ait\n"
 "été fourni, et il doit être l'un des noms fourni par l'option -l.\n"
+"\n"
+"Notez aussi que ce script doit être lancé par mailmanctl dans les conditions normales.\n"
+"Lancé seul, il n'est utile qu'à des fins de débogage.\n"
 
 #: bin/.svn/text-base/qrunner.svn-base:178 bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
@@ -10863,7 +10866,6 @@ msgstr ""
 "Ce script est fourni pour des besoins de commodité. Il n'est pas maintenu.\n"
 
 #: bin/.svn/text-base/remove_members.svn-base:20 bin/remove_members:20
-#, fuzzy
 msgid ""
 "Remove members from a list.\n"
 "\n"
@@ -10910,7 +10912,7 @@ msgstr ""
 "Supprimer des abonnés d'une liste.\n"
 "\n"
 "Usage:\n"
-"    remove_members [options] nomliste [addr1 ...]\n"
+"    remove_members [options] [nomliste] [addr1 ...]\n"
 "\n"
 "Options : \n"
 "\n"
@@ -10922,7 +10924,7 @@ msgstr ""
 "\n"
 "    --all\n"
 "    -a\n"
-"        Supprimer tous les abonnés de la liste\n"
+"        Supprimer tous les abonnés de la liste.\n"
 "        (incompatible avec --fromall)\n"
 "\n"
 "    --fromall\n"
