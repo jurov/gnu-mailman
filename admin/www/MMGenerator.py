@@ -16,14 +16,14 @@ from LinkFixer import LinkFixer
 
 sitelinks = [
     # Row 1
-    ('%(rootdir)s/index.html',    'Home'),
-    ('%(rootdir)s/security.html', 'Security'),
-    ('%(rootdir)s/docs.html',     'Documentation'),
-    ('%(rootdir)s/lists.html',    'Mailing lists'),
-    (None, '&nbsp;'),
-    ('%(rootdir)s/help.html',     'Help'),
-    ('%(rootdir)s/download.html', 'Download'),
-    ('%(rootdir)s/devs.html',     'Developers'),
+    ('%(rootdir)s/index.html',      'Home'),
+    ('%(rootdir)s/security.html',   'Security'),
+    ('%(rootdir)s/docs.html',       'Documentation'),
+    ('%(rootdir)s/lists.html',      'Mailing Lists'),
+    ('http://wiki.list.org/x/DQ',   'Community'),
+    ('%(rootdir)s/help.html',       'Help'),
+    ('%(rootdir)s/download.html',   'Download'),
+    ('%(rootdir)s/devs.html',       'Developers'),
     ]
 
 
