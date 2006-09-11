@@ -103,7 +103,7 @@ fatal(const char* ident, int exitcode, char* format, ...)
                 printf("The Mailman CGI wrapper encountered a fatal error. ");
                 printf("This entry is being stored in your syslog:");
                 printf("\n<pre>\n");
-                printf(log_entry);
+                printf("%s", log_entry);
                 printf("</pre>\n");
         }
         else
