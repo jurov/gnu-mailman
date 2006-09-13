@@ -32,7 +32,7 @@ from subprocess import Popen, PIPE
 from urlparse import urlparse
 
 
-__revision__ = '$Revision: 8006 $'
+__revision__ = '$Revision: 8022 $'
 
 parts = __revision__.split()
 if len(parts) == 3:
@@ -149,7 +149,7 @@ DATEMARK    = '<!-DATE--->'
 
 def do_bump(newvers):
     print 'Doing bump...',
-    for file in ('index.ht', 'version.ht'):
+    for file in ('index.ht',):
         print '\t%s...' % file,
         fp = open(os.path.join('admin', 'www', file), 'r+')
         text = fp.read()
