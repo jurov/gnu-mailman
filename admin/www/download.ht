@@ -13,31 +13,11 @@ Mailman is available from the following sources:
 <ul>
     <li><a href="http://sourceforge.net/project/showfiles.php?group_id=103">SourceForge</a>
     <li><a href="http://ftp.gnu.org/gnu/mailman/">GNU</a>
-    <li><a href="http://www.list.org/mailman.tar.gz">List.Org</a>
 </ul>
 
-<em>If you're using a command line FTP client, be sure to set the mode
-to binary</em>.  Once you've downloaded the source tarball, you can
-unpack it with the following commands:
-
-<blockquote>
-<pre>
-% cd /usr/local/src
-% tar zxf mailman.tar.gz
-</pre>
-</blockquote>
-
-Note that the file name may have the version number in it,
-e.g. <code>mailman-2.1.tar.gz</code>.
-
-<p>Mailman's tarball unpacks into a directory called
-<code>mailman-xyz</code> where <em>xyz</em> is the version number.
-Note also that some versions of <code>tar</code> don't accept the
-<em>z</em> option.  In that case, you'll need to use the
-<code>gunzip</code> program like so:
-
-<blockquote>
-<pre>
-% gunzip -c mailman.tar.gz | tar xf -
-</pre>
-</blockquote>
+<i>Note: The tarball used to be available via ftp from www.list.org.  With a
+recent (as of 13-Sep-2006) server move and subsequent bandwidth cap, we can no
+longer provide tarball downloads from list.org.  Please use the SourceForge or
+GNU sites.  Also note that the GNU ftp site may lag behind SourceForge,
+especially just after a release announcement.  It often takes a little while
+for the GNU ftp site to catch up.</i>
