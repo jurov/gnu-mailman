@@ -47,6 +47,24 @@ DOLLAR_STRINGS  = ('msg_header', 'msg_footer',
                    'autoresponse_request_text')
 SALT_LENGTH     = 4 # bytes
 
+TYPES = {
+    mm_cfg.Toggle         : 'bool',
+    mm_cfg.Radio          : 'radio',
+    mm_cfg.String         : 'string',
+    mm_cfg.Text           : 'text',
+    mm_cfg.Email          : 'email',
+    mm_cfg.EmailList      : 'email_list',
+    mm_cfg.Host           : 'host',
+    mm_cfg.Number         : 'number',
+    mm_cfg.FileUpload     : 'upload',
+    mm_cfg.Select         : 'select',
+    mm_cfg.Topics         : 'topics',
+    mm_cfg.Checkbox       : 'checkbox',
+    mm_cfg.EmailListEx    : 'email_list_ex',
+    mm_cfg.HeaderFilter   : 'header_filter',
+    }
+
+
 
 
 class Indenter:
@@ -157,13 +175,14 @@ class XMLDumper(object):
                 continue
             if not is_converted and varname in DOLLAR_STRINGS:
                 value = Utils.to_dollar(value)
+            widget_type = TYPES[vtype]
             if isinstance(value, list):
-                self._push_element('option', name=varname)
+                self._push_element('option', name=varname, type=widget_type)
                 for v in value:
                     self._element('value', v)
                 self._pop_element('option')
             else:
-                self._element('option', value, name=varname)
+                self._element('option', value, name=varname, type=widget_type)
 
     def _dump_list(self, mlist, password_scheme):
         # Write list configuration values
@@ -171,7 +190,12 @@ class XMLDumper(object):
         self._push_element('configuration')
         self._element('option',
                       mlist.preferred_language,
-                      name='preferred_language')
+                      name='preferred_language',
+                      type='string')
+        self._element('option',
+                      mlist.password,
+                      name='password',
+                      type='string')
         for k in mm_cfg.ADMIN_CATEGORIES:
             subcats = mlist.GetConfigSubCategories(k)
             if subcats is None:
