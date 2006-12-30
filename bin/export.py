@@ -19,7 +19,10 @@
 
 """Export an XML representation of a mailing list."""
 
+import os
 import sys
+import sha
+import base64
 import datetime
 import optparse
 
@@ -42,6 +45,7 @@ DOLLAR_STRINGS  = ('msg_header', 'msg_footer',
                    'autoresponse_postings_text',
                    'autoresponse_admin_text',
                    'autoresponse_request_text')
+SALT_LENGTH     = 4 # bytes
 
 
 
@@ -59,7 +63,8 @@ class Indenter:
         assert self._indent >= 0
 
     def write(self, s):
-        self._fp.write(self._indent * self._width * ' ')
+        if s <> '\n':
+            self._fp.write(self._indent * self._width * ' ')
         self._fp.write(s)
 
 
@@ -160,7 +165,7 @@ class XMLDumper(object):
             else:
                 self._element('option', value, name=varname)
 
-    def _dump_list(self, mlist, with_passwords):
+    def _dump_list(self, mlist, password_scheme):
         # Write list configuration values
         self._push_element('list', name=mlist._internal_name)
         self._push_element('configuration')
@@ -185,8 +190,8 @@ class XMLDumper(object):
                 attrs['original'] = cased
             self._push_element('member', **attrs)
             self._element('realname', mlist.getMemberName(member))
-            if with_passwords:
-                self._element('password', mlist.getMemberPassword(member))
+            self._element('password',
+                          password_scheme(mlist.getMemberPassword(member)))
             self._element('language', mlist.getMemberLanguage(member))
             # Delivery status, combined with the type of delivery
             attrs = {}
@@ -230,7 +235,7 @@ class XMLDumper(object):
         self._pop_element('roster')
         self._pop_element('list')
 
-    def dump(self, listnames, with_passwords=False):
+    def dump(self, listnames, password_scheme):
         print >> self._fp, '<?xml version="1.0" encoding="UTF-8"?>'
         self._push_element('mailman', **{
             'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
@@ -242,12 +247,47 @@ class XMLDumper(object):
             except Errors.MMUnknownListError:
                 print >> sys.stderr, _('No such list: %(listname)s')
                 continue
-            self._dump_list(mlist, with_passwords)
+            self._dump_list(mlist, password_scheme)
         self._pop_element('mailman')
 
     def close(self):
         while self._stack:
             self._pop_element()
+
+
+
+def no_password(password):
+    return '{NONE}'
+
+
+def plaintext_password(password):
+    return '{PLAIN}' + password
+
+
+def sha_password(password):
+    h = sha.new(password)
+    return '{SHA}' + base64.b64encode(h.digest())
+
+
+def ssha_password(password):
+    salt = os.urandom(SALT_LENGTH)
+    h = sha.new(password)
+    h.update(salt)
+    return '{SSHA}' + base64.b64encode(h.digest() + salt)
+
+
+SCHEMES = {
+    'none'  : no_password,
+    'plain' : plaintext_password,
+    'sha'   : sha_password,
+    }
+
+try:
+    os.urandom(1)
+except NotImplementedError:
+    pass
+else:
+    SCHEMES['ssha'] = ssha_password
 
 
 
@@ -262,10 +302,15 @@ Export the configuration and members of a mailing list in XML format."""))
                       help=_("""\
 Output XML to FILENAME.  If not given, or if FILENAME is '-', standard out is
 used."""))
-    parser.add_option('-p', '--with-passwords',
+    parser.add_option('-p', '--password-scheme',
+                      default='none', type='string', help=_("""\
+Specify the RFC 2307 style hashing scheme for passwords included in the
+output.  Use -P to get a list of supported schemes, which are
+case-insensitive."""))
+    parser.add_option('-P', '--list-hash-schemes',
                       default=False, action='store_true', help=_("""\
-With this option, user passwords are included in cleartext.  For this reason,
-the default is to not include passwords."""))
+List the supported password hashing schemes and exit.  The scheme labels are
+case-insensitive."""))
     parser.add_option('-l', '--listname',
                       default=[], action='append', type='string',
                       metavar='LISTNAME', dest='listnames', help=_("""\
@@ -275,6 +320,12 @@ included in the XML output.  Multiple -l flags may be given."""))
     if args:
         parser.print_help()
         parser.error(_('Unexpected arguments'))
+    if opts.list_hash_schemes:
+        for label in SCHEMES:
+            print label.upper()
+        sys.exit(0)
+    if opts.password_scheme.lower() not in SCHEMES:
+        parser.error(_('Invalid password scheme'))
     return parser, opts, args
 
 
@@ -293,7 +344,7 @@ def main():
             listnames = opts.listnames
         else:
             listnames = Utils.list_names()
-        dumper.dump(listnames, opts.with_passwords)
+        dumper.dump(listnames, SCHEMES[opts.password_scheme])
         dumper.close()
     finally:
         if fp is not sys.stdout:
