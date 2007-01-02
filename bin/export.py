@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,6 +23,7 @@ import os
 import sys
 import sha
 import base64
+import codecs
 import datetime
 import optparse
 
@@ -145,8 +146,7 @@ class XMLDumper(object):
         if _value is None:
             print >> self._fp, '<%s%s/>' % (_name, attrs)
         else:
-            # The value might contain angle brackets.
-            value = escape(str(_value))
+            value = escape(unicode(_value))
             print >> self._fp, '<%s%s>%s</%s>' % (_name, attrs, value, _name)
 
     def _do_list_categories(self, mlist, k, subcat=None):
@@ -230,7 +230,7 @@ class XMLDumper(object):
                                    }.get(mlist.getDeliveryStatus(member),
                                          'unknown')
             if member in digesters:
-                if mlist.getMemberOption('plain'):
+                if mlist.getMemberOption(member, mm_cfg.DisableMime):
                     attrs['delivery'] = 'plain'
                 else:
                     attrs['delivery'] = 'mime'
@@ -358,9 +358,11 @@ def main():
     parser, opts, args = parseargs()
 
     if opts.outputfile in (None, '-'):
+        # This will fail if there are characters in the output incompatible
+        # with stdout.
         fp = sys.stdout
     else:
-        fp = open(opts.outputfile, 'w')
+        fp = codecs.open(opts.outputfile, 'w', 'utf-8')
 
     try:
         dumper = XMLDumper(fp)
