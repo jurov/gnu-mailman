@@ -10,6 +10,10 @@ Here is a history of user visible changes to Mailman.
 
     - Fixed admin.py so null VARHELP category is handled (1573393).
 
+    - Changed cmd_who.py to list all members if authorization is with the
+      list's admin or moderator password and to accept the password if the
+      roster is public.
+
 2.1.9 (12-Sep-2006)
 
   Security
