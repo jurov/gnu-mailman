@@ -14,9 +14,9 @@ Here is a history of user visible changes to Mailman.
       list's admin or moderator password and to accept the password if the
       roster is public.
 
-    - Changed OldStyleMemberships.py to preserve delivery statuses BYADMIN
-      and BYUSER on a straight change of address.  Also fixed a bug that
-      could result in a member key with uppercase in the domain.
+    - Fixed OldStyleMemberships.py to preserve delivery statuses BYADMIN
+      and BYUSER on a straight change of address (1642388).  Also fixed a
+      bug that could result in a member key with uppercase in the domain.
 
 2.1.9 (12-Sep-2006)
 
