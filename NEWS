@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
@@ -17,6 +17,9 @@ Here is a history of user visible changes to Mailman.
     - Fixed OldStyleMemberships.py to preserve delivery statuses BYADMIN
       and BYUSER on a straight change of address (1642388).  Also fixed a
       bug that could result in a member key with uppercase in the domain.
+
+    - Fixed bin/withlist so that -r can take a full package path to a
+      callable.
 
 2.1.9 (12-Sep-2006)
 
