@@ -12,7 +12,9 @@ Here is a history of user visible changes to Mailman.
 
     - Changed cmd_who.py to list all members if authorization is with the
       list's admin or moderator password and to accept the password if the
-      roster is public.
+      roster is public.  Also changed the web roster to show hidden members
+      when authorization is by site or list's admin or moderator password
+      (1587651).
 
     - Fixed OldStyleMemberships.py to preserve delivery statuses BYADMIN
       and BYUSER on a straight change of address (1642388).  Also fixed a
@@ -20,6 +22,25 @@ Here is a history of user visible changes to Mailman.
 
     - Fixed bin/withlist so that -r can take a full package path to a
       callable.
+
+    - Removal of DomainKey/DKIM signatures is now controlled by Defaults.py
+      mm_cfg.py variable REMOVE_DKIM_HEADERS (default = No).
+
+    - format=flowed and delsp=yes are now preserved for message bodies when
+      message headers/footers are added and attachments are scrubbed
+      (1495122).
+
+    - Queue runner processing is improved to log and preserve for analysis in
+      the shunt queue certain bad queue entries that were previously logged
+      but lost.  Also, entries are preserved when an attempt to shunt throws
+      an exception (1656289).
+
+    - The admin Membership List pages have been changed in that the email
+      address which forms a part of the various CGI data keys is now
+      urllib.quote()ed. This allows changing options for and unsubbing an
+      address which contains double-quote character, but it may require
+      changes to scripts that screen-scrape the web admin interface to
+      produce a membership list so they will report an unquoted address.
 
 2.1.9 (12-Sep-2006)
 

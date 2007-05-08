@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -459,6 +459,15 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
     ('content-transfer-encoding', 'X-Original-Content-Transfer-Encoding'),
     ('mime-version', 'X-MIME-Version'),
     ]
+
+# Some list posts and mail to the -owner address may contain DomainKey or
+# DomainKeys Identified Mail (DKIM) signature headers <http://www.dkim.org/>.
+# Various list transformations to the message such as adding a list header or
+# footer or scrubbing attachments or even reply-to munging can break these
+# signatures.  It is generally felt that these signatures have value, even if
+# broken and even if the outgoing message is resigned.  However, some sites
+# may wish to remove these headers by setting this to Yes.
+REMOVE_DKIM_HEADERS = No
 
 # All `normal' messages which are delivered to the entire list membership go
 # through this pipeline of handler modules.  Lists themselves can override the

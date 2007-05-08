@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -60,7 +60,7 @@ class HTMLFormatter:
                          _('Overview of all %(hostname)s mailing lists')),
                     '<p>', MailmanLogo()))).Format()
 
-    def FormatUsers(self, digest, lang=None):
+    def FormatUsers(self, digest, lang=None, list_hidden=False):
         if lang is None:
             lang = self.preferred_language
         conceal_sub = mm_cfg.ConcealSubscription
@@ -74,7 +74,7 @@ class HTMLFormatter:
         else:
             members = self.getRegularMemberKeys()
             for m in members:
-                if not self.getMemberOption(m, conceal_sub):
+                if list_hidden or not self.getMemberOption(m, conceal_sub):
                     people.append(m)
             num_concealed = len(members) - len(people)
         if num_concealed == 1:
@@ -410,7 +410,7 @@ class HTMLFormatter:
             d['<mm-favicon>'] = mm_cfg.IMAGE_LOGOS + mm_cfg.SHORTCUT_ICON
         return d
 
-    def GetAllReplacements(self, lang=None):
+    def GetAllReplacements(self, lang=None, list_hidden=False):
         """
         returns standard replaces plus formatted user lists in
         a dict just like GetStandardReplacements.
@@ -418,8 +418,8 @@ class HTMLFormatter:
         if lang is None:
             lang = self.preferred_language
         d = self.GetStandardReplacements(lang)
-        d.update({"<mm-regular-users>": self.FormatUsers(0, lang),
-                  "<mm-digest-users>": self.FormatUsers(1, lang)})
+        d.update({"<mm-regular-users>": self.FormatUsers(0, lang, list_hidden),
+                  "<mm-digest-users>": self.FormatUsers(1, lang, list_hidden)})
         return d
 
     def GetLangSelectBox(self, lang=None, varname='language'):

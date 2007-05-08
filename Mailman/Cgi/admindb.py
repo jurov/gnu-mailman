@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -154,9 +154,9 @@ def main():
         signal.signal(signal.SIGTERM, sigterm_handler)
 
         realname = mlist.real_name
-        if not cgidata.keys():
+        if not cgidata.keys() or cgidata.has_key('admlogin'):
             # If this is not a form submission (i.e. there are no keys in the
-            # form), then we don't need to do much special.
+            # form) or it's a login, then we don't need to do much special.
             doc.SetTitle(_('%(realname)s Administrative Database'))
         elif not details:
             # This is a form submission

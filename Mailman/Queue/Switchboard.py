@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -164,12 +164,27 @@ class Switchboard:
             msg = email.message_from_string(msg, Message.Message)
         return msg, data
 
-    def finish(self, filebase):
+    def finish(self, filebase, preserve=False):
         bakfile = os.path.join(self.__whichq, filebase + '.bak')
         try:
-            os.unlink(bakfile)
+            if preserve:
+                psvfile = os.path.join(mm_cfg.SHUNTQUEUE_DIR, filebase + '.psv')
+                # Create the directory if it doesn't yet exist.
+                # Copied from __init__.
+                omask = os.umask(0)                       # rwxrws---
+                try:
+                    try:
+                        os.mkdir(mm_cfg.SHUNTQUEUE_DIR, 0770)
+                    except OSError, e:
+                        if e.errno <> errno.EEXIST: raise
+                finally:
+                    os.umask(omask)
+                os.rename(bakfile, psvfile)
+            else:
+                os.unlink(bakfile)
         except EnvironmentError, e:
-            syslog('error', 'Failed to unlink backup file: %s', bakfile)
+            syslog('error', 'Failed to unlink/preserve backup file: %s',
+                   bakfile)
 
     def files(self, extension='.pck'):
         times = {}

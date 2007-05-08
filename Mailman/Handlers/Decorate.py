@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,6 +16,8 @@
 # USA.
 
 """Decorate a message by sticking the header and footer around it."""
+
+import re
 
 from types import ListType
 from email.MIMEText import MIMEText
@@ -115,9 +117,15 @@ def process(mlist, msg, msgdata):
                     payload = payload.encode(mcset)
                     newcset = mcset
                     # if this fails, fallback to outer try and wrap=true
+            format = msg.get_param('format')
+            delsp = msg.get_param('delsp')
             del msg['content-transfer-encoding']
             del msg['content-type']
             msg.set_payload(payload, newcset)
+            if format:
+                msg.set_param('Format', format)
+            if delsp:
+                msg.set_param('DelSp', delsp)
             wrap = False
         except (LookupError, UnicodeError):
             pass
@@ -211,7 +219,7 @@ def decorate(mlist, template, what, extradict={}):
         template = Utils.to_percent(template)
     # Interpolate into the template
     try:
-        text = (template % d).replace('\r\n', '\n')
+        text = re.sub(r' *\r?\n', r'\n', template % d)
     except (ValueError, TypeError), e:
         syslog('error', 'Exception while calculating %s:\n%s', what, e)
         what = what.upper()

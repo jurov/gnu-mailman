@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -187,6 +187,7 @@ def process(mlist, msg, msgdata=None):
     lcset = Utils.GetCharSet(mlist.preferred_language)
     lcset_out = Charset(lcset).output_charset or lcset
     # Now walk over all subparts of this message and scrub out various types
+    format = delsp = None
     for part in msg.walk():
         ctype = part.get_type(part.get_default_type())
         # If the part is text/plain, we leave it alone
@@ -194,8 +195,21 @@ def process(mlist, msg, msgdata=None):
             # We need to choose a charset for the scrubbed message, so we'll
             # arbitrarily pick the charset of the first text/plain part in the
             # message.
+            # MAS: Also get the RFC 3676 stuff from this part. This seems to
+            # work OK for scrub_nondigest.  It will also work as far as
+            # scrubbing messages for the archive is concerned, but pipermail
+            # doesn't pay any attention to the RFC 3676 parameters.  The plain
+            # format digest is going to be a disaster in any case as some of
+            # messages will be format="flowed" and some not.  ToDigest creates
+            # its own Content-Type: header for the plain digest which won't
+            # have RFC 3676 parameters. If the message Content-Type: headers
+            # are retained for display in the digest, the parameters will be
+            # there for information, but not for the MUA. This is the best we
+            # can do without having get_payload() process the parameters.
             if charset is None:
                 charset = part.get_content_charset(lcset)
+                format = part.get_param('format')
+                delsp = part.get_param('delsp')
             # TK: if part is attached then check charset and scrub if none
             if part.get('content-disposition') and \
                not part.get_content_charset():
@@ -380,7 +394,18 @@ Url : %(url)s
                 text.append(t)
         # Now join the text and set the payload
         sep = _('-------------- next part --------------\n')
+        # The i18n separator is in the list's charset. Coerce it to the
+        # message charset.
+        try:
+            s = unicode(sep, lcset, 'replace')
+            sep = s.encode(charset, 'replace')
+        except (UnicodeError, LookupError, ValueError):
+            pass
         replace_payload_by_text(msg, sep.join(text), charset)
+        if format:
+            msg.set_param('Format', format)
+        if delsp:
+            msg.set_param('DelSp', delsp)
     return msg
 
 
@@ -513,5 +538,7 @@ def save_attachment(mlist, msg, dir, filter_html=True):
         baseurl += '/'
     # A trailing space in url string may save users who are using
     # RFC-1738 compliant MUA (Not Mozilla).
-    url = baseurl + '%s/%s%s%s ' % (dir, filebase, extra, ext)
+    # Trailing space will definitely be a problem with format=flowed.
+    # Bracket the URL instead.
+    url = '<' + baseurl + '%s/%s%s%s>' % (dir, filebase, extra, ext)
     return url
