@@ -376,7 +376,7 @@ Url : %(url)s
             if partcharset and partcharset <> charset:
                 try:
                     t = unicode(t, partcharset, 'replace')
-                except (UnicodeError, LookupError, ValueError):
+                except (UnicodeError, LookupError, ValueError, AssertionError):
                     # Replace funny characters.  We use errors='replace' for
                     # both calls since the first replace will leave U+FFFD,
                     # which isn't ASCII encodeable.
