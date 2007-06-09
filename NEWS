@@ -42,6 +42,10 @@ Here is a history of user visible changes to Mailman.
       changes to scripts that screen-scrape the web admin interface to
       produce a membership list so they will report an unquoted address.
 
+    - The fix for bug 1181161 in 2.1.7 was incomplete.  The Approve(d): line
+      wasn't always found in quoted-printable encoded parts and was never
+      found in base64 encoded parts.  This is now fixed.
+
 2.1.9 (12-Sep-2006)
 
   Security
