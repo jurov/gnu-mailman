@@ -373,7 +373,9 @@ Url : %(url)s
                 partcharset = str(partcharset)
             else:
                 partcharset = part.get_content_charset()
-            if partcharset and partcharset <> charset:
+            # If the part is Content-Type: message/delivery-status, payload is
+            # None so test here.
+            if t and partcharset and partcharset <> charset:
                 try:
                     t = unicode(t, partcharset, 'replace')
                 except (UnicodeError, LookupError, ValueError, AssertionError):
@@ -385,7 +387,7 @@ Url : %(url)s
                 try:
                     # Should use HTML-Escape, or try generalizing to UTF-8
                     t = t.encode(charset, 'replace')
-                except (UnicodeError, LookupError, ValueError):
+                except (UnicodeError, LookupError, ValueError, AssertionError):
                     t = t.encode(lcset, 'replace')
             # Separation is useful
             if isinstance(t, StringType):
@@ -436,7 +438,7 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     # i18n file name is encoded
     lcset = Utils.GetCharSet(mlist.preferred_language)
     filename = Utils.oneline(msg.get_filename(''), lcset)
-    fnext = os.path.splitext(filename)[1]
+    filename, fnext = os.path.splitext(filename)
     # For safety, we should confirm this is valid ext for content-type
     # but we can use fnext if we introduce fnext filtering
     if mm_cfg.SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION:
@@ -444,6 +446,8 @@ def save_attachment(mlist, msg, dir, filter_html=True):
         ext = fnext or guess_extension(ctype, fnext)
     else:
         ext = guess_extension(ctype, fnext)
+    # Allow only alphanumerics, dash, underscore, and dot
+    ext = sre.sub('', ext)
     if not ext:
         # We don't know what it is, so assume it's just a shapeless
         # application/octet-stream, unless the Content-Type: is
@@ -461,7 +465,6 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     try:
         # Now base the filename on what's in the attachment, uniquifying it if
         # necessary.
-        filename = msg.get_filename()
         if not filename or mm_cfg.SCRUBBER_DONT_USE_ATTACHMENT_FILENAME:
             filebase = 'attachment'
         else:
