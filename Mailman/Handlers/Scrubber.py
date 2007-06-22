@@ -223,7 +223,7 @@ def process(mlist, msg, msgdata=None):
                 replace_payload_by_text(part, _("""\
 An embedded and charset-unspecified text was scrubbed...
 Name: %(filename)s
-Url: %(url)s
+URL: %(url)s
 """), lcset)
         elif ctype == 'text/html' and isinstance(sanitize, IntType):
             if sanitize == 0:
@@ -293,7 +293,7 @@ From: %(who)s
 Subject: %(subject)s
 Date: %(date)s
 Size: %(size)s
-Url: %(url)s
+URL: %(url)s
 """), lcset)
         # If the message isn't a multipart, then we'll strip it out as an
         # attachment that would have to be separately downloaded.  Pipermail
@@ -316,6 +316,7 @@ Url: %(url)s
             finally:
                 os.umask(omask)
             desc = part.get('content-description', _('not available'))
+            desc = Utils.oneline(desc, lcset)
             filename = part.get_filename(_('not available'))
             filename = Utils.oneline(filename, lcset)
             replace_payload_by_text(part, _("""\
@@ -324,7 +325,7 @@ Name: %(filename)s
 Type: %(ctype)s
 Size: %(size)d bytes
 Desc: %(desc)s
-Url : %(url)s
+URL: %(url)s
 """), lcset)
         outer = False
     # We still have to sanitize multipart messages to flat text because
@@ -356,14 +357,14 @@ Url : %(url)s
                 text.append(_('Skipped content of type %(partctype)s\n'))
                 continue
             try:
-                t = part.get_payload(decode=True)
+                t = part.get_payload(decode=True) or ''
             # MAS: TypeError exception can occur if payload is None. This
             # was observed with a message that contained an attached
             # message/delivery-status part. Because of the special parsing
             # of this type, this resulted in a text/plain sub-part with a
             # null body. See bug 1430236.
             except (binascii.Error, TypeError):
-                t = part.get_payload()
+                t = part.get_payload() or ''
             # TK: get_content_charset() returns 'iso-2022-jp' for internally
             # crafted (scrubbed) 'euc-jp' text part. So, first try
             # get_charset(), then get_content_charset() for the parts
@@ -373,21 +374,20 @@ Url : %(url)s
                 partcharset = str(partcharset)
             else:
                 partcharset = part.get_content_charset()
-            # If the part is Content-Type: message/delivery-status, payload is
-            # None so test here.
-            if t and partcharset and partcharset <> charset:
+            if partcharset and partcharset <> charset:
                 try:
                     t = unicode(t, partcharset, 'replace')
-                except (UnicodeError, LookupError, ValueError, AssertionError):
-                    # Replace funny characters.  We use errors='replace' for
-                    # both calls since the first replace will leave U+FFFD,
-                    # which isn't ASCII encodeable.
-                    u = unicode(t, 'ascii', 'replace')
-                    t = u.encode('ascii', 'replace')
+                except (UnicodeError, LookupError, ValueError,
+                        AssertionError):
+                    # We can get here if partcharset is bogus in come way.
+                    # Replace funny characters.  We use errors='replace'
+                    t = unicode(t, 'ascii', 'replace')
                 try:
                     # Should use HTML-Escape, or try generalizing to UTF-8
                     t = t.encode(charset, 'replace')
-                except (UnicodeError, LookupError, ValueError, AssertionError):
+                except (UnicodeError, LookupError, ValueError,
+                        AssertionError):
+                    # if the message charset is bogus, use the list's.
                     t = t.encode(lcset, 'replace')
             # Separation is useful
             if isinstance(t, StringType):
@@ -401,7 +401,8 @@ Url : %(url)s
         try:
             s = unicode(sep, lcset, 'replace')
             sep = s.encode(charset, 'replace')
-        except (UnicodeError, LookupError, ValueError):
+        except (UnicodeError, LookupError, ValueError,
+                AssertionError):
             pass
         replace_payload_by_text(msg, sep.join(text), charset)
         if format:
@@ -479,7 +480,8 @@ def save_attachment(mlist, msg, dir, filter_html=True):
             # which one should we go with?  For now, let's go with the one we
             # guessed so attachments can't lie about their type.  Also, if the
             # filename /has/ no extension, then tack on the one we guessed.
-            filebase, ignore = os.path.splitext(filename)
+            # The extension was removed from the name above.
+            filebase = filename
         # Now we're looking for a unique name for this file on the file
         # system.  If msgdir/filebase.ext isn't unique, we'll add a counter
         # after filebase, e.g. msgdir/filebase-cnt.ext
