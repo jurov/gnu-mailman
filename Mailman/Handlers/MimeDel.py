@@ -256,4 +256,4 @@ def get_file_ext(m):
             fext = fext[1:]
         else:
             fext = ''
-    return fext
+    return fext.lower()
