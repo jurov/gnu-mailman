@@ -470,6 +470,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     #
     def Create(self, name, admin, crypted_password,
                langs=None, emailhost=None):
+        assert name == name.lower(), 'List name must be all lower case.'
         if Utils.list_exists(name):
             raise Errors.MMListAlreadyExistsError, name
         # Validate what will be the list's posting address.  If that's
