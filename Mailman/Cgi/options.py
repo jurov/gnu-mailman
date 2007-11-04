@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -797,6 +797,8 @@ def options_page(mlist, doc, user, cpuser, userlang, message=''):
     if mlist.topics:
         table = Table(border="0")
         for name, pattern, description, emptyflag in mlist.topics:
+            if emptyflag:
+                continue
             quotedname = urllib.quote_plus(name)
             details = Link(mlist.GetScriptURL('options') +
                            '/%s/?VARHELP=%s' % (user, quotedname),
