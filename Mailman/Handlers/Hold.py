@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -283,6 +283,8 @@ also appear in the first line of the body of the reply.""")),
             dmsg['Subject'] = 'confirm ' + cookie
             dmsg['Sender'] = requestaddr
             dmsg['From'] = requestaddr
+            dmsg['Date'] = email.Utils.formatdate(localtime=True)
+            dmsg['Message-ID'] = Utils.unique_message_id(mlist)
             nmsg.attach(text)
             nmsg.attach(MIMEMessage(msg))
             nmsg.attach(MIMEMessage(dmsg))

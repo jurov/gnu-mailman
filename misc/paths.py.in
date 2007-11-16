@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -24,8 +24,9 @@
 # attributes that other modules may use to get the absolute path to the
 # installed Mailman distribution.
 
-import sys
 import os
+import sys
+from warnings import filterwarnings
 
 # some scripts expect this attribute to be in this module
 prefix = '@prefix@'
@@ -34,6 +35,9 @@ exec_prefix = '@exec_prefix@'
 # work around a bogus autoconf 2.12 bug
 if exec_prefix == '${prefix}':
     exec_prefix = prefix
+
+# Supress Python 2.5 warning about string exceptions.
+filterwarnings('ignore', '.* string exception', DeprecationWarning)
 
 # Check if ja/ko codecs are available before changing path.
 try:

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -483,10 +483,11 @@ def NewRequestsDatabase(l):
             # blow away the original timestamp and request id.  This means the
             # request will live a little longer than it possibly should have,
             # but that's no big deal.
+            import email
             for p in v:
                 author, text = p[2]
                 reason = p[3]
-                msg = Message.OutgoingMessage(text)
+                msg = email.message_from_string(text, Message.Message)
                 l.HoldMessage(msg, reason)
             del r[k]
         elif k == 'add_member':
