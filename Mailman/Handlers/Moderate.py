@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """Posting moderation filter.
 """
@@ -28,6 +29,7 @@ from Mailman import Errors
 from Mailman.i18n import _
 from Mailman.Handlers import Hold
 from Mailman.Logging.Syslog import syslog
+from Mailman.MailList import MailList
 
 
 
@@ -129,6 +131,15 @@ def matches_p(sender, nonmembers):
                 continue
             if cre.search(sender):
                 return 1
+        elif are.startswith('@'):
+            # XXX Needs to be reviewed for list@domain names.
+	    try:
+	        mother = MailList(are[1:], lock=0)
+	        if mother.isMember(sender):
+	            return 1
+            except Errors.MMUnknownListError:
+                syslog('error', 'filter references non-existent list %s',
+                        are[1:])
     return 0
 
 
