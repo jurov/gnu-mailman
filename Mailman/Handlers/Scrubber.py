@@ -298,7 +298,7 @@ URL: %(url)s
         # If the message isn't a multipart, then we'll strip it out as an
         # attachment that would have to be separately downloaded.  Pipermail
         # will transform the url into a hyperlink.
-        elif part._payload and not part.is_multipart():
+        elif part.get_payload() and not part.is_multipart():
             payload = part.get_payload(decode=True)
             ctype = part.get_type()
             # XXX Under email 2.5, it is possible that payload will be None.
@@ -350,7 +350,7 @@ URL: %(url)s
         for part in msg.walk():
             # TK: bug-id 1099138 and multipart
             # MAS test payload - if part may fail if there are no headers.
-            if not part._payload or part.is_multipart():
+            if not part.get_payload() or part.is_multipart():
                 continue
             # All parts should be scrubbed to text/plain by now.
             partctype = part.get_content_type()
