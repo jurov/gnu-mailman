@@ -180,11 +180,21 @@ class BounceRunner(Runner, BounceMixin):
         #   but a list owner address itself bounced.  That's bad, and for now
         #   we'll simply log the problem and attempt to deliver the message to
         #   the site owner.
-        #
+        # - the list owner could have set listname-bounces as the owner
+        #   address.  That's really bad as it results in a loop of ever
+        #   growing unrecognized bounce messages.  We detect this based on the
+        #   X-BeenThere header and handle it like a list owner bounce.  No
+        #   real bounce will have an X-BeenThere header for the list.
+        bts = [s.strip().lower() for s in msg.get_all('x-beenthere', [])]
+        if mlist.GetListEmail().lower() in bts:
+            bt = True
+        else:
+            bt = False
         # All messages to list-owner@vdom.ain have their envelope sender set
         # to site-owner@dom.ain (no virtual domain).  Is this a bounce for a
-        # message to a list owner, coming to the site owner?
-        if msg.get('to', '') == Utils.get_site_email(extra='owner'):
+        # message to a list owner, coming to the site owner, or an owner
+        # notice sent directly to the -bounces address?
+        if msg.get('to', '') == Utils.get_site_email(extra='owner') or bt:
             # Send it on to the site owners, but craft the envelope sender to
             # be the -loop detection address, so if /they/ bounce, we won't
             # get stuck in a bounce loop.
@@ -192,6 +202,7 @@ class BounceRunner(Runner, BounceMixin):
                          recips=[Utils.get_site_email()],
                          envsender=Utils.get_site_email(extra='loop'),
                          )
+            return
         # List isn't doing bounce processing?
         if not mlist.bounce_processing:
             return
