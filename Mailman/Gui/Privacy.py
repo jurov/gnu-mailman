@@ -1,17 +1,17 @@
-# Copyright (C) 2001-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software 
+# along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
@@ -59,7 +59,7 @@ class Privacy(GUIBase):
                             _('Confirm'),
                             _('Require approval'),
                             _('Confirm and approve')),
-                           0, 
+                           0,
                            _('What steps are required for subscription?<br>'),
                            _('''None - no verification steps (<em>Not
                            Recommended </em>)<br>
@@ -67,7 +67,7 @@ class Privacy(GUIBase):
                            Require approval - require list administrator
                            Approval for subscriptions <br>
                            Confirm and approve - both confirm and approve
-                           
+
                            <p>(*) when someone requests a subscription,
                            Mailman sends them a notice with a unique
                            subscription request number that they must reply to
@@ -88,7 +88,7 @@ class Privacy(GUIBase):
                            Require approval - require list administrator
                            approval for subscriptions <br>
                            Confirm and approve - both confirm and approve
-                           
+
                            <p>(*) when someone requests a subscription,
                            Mailman sends them a notice with a unique
                            subscription request number that they must reply to
@@ -112,7 +112,7 @@ class Privacy(GUIBase):
              machine?''')),
 
             sub_cfentry,
-            
+
             ('unsubscribe_policy', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Is the list moderator's approval required for unsubscription
              requests?  (<em>No</em> is recommended)"""),
@@ -241,10 +241,17 @@ class Privacy(GUIBase):
              _("""List of non-member addresses whose postings should be
              automatically accepted."""),
 
+             # XXX Needs to be reviewed for list@domain names.  Also, the
+             # implementation allows the @listname to work in all
+             # *_these_nonmembers. It doesn't make much sense in the others,
+             # but it could be useful. Should we mention it?
              _("""Postings from any of these non-members will be automatically
              accepted with no further moderation applied.  Add member
              addresses one per line; start the line with a ^ character to
-             designate a regular expression match.""")),
+             designate a regular expression match.  A line consisting of
+             the @ character followed by a list name specifies another
+             Mailman list in this installation, all of whose member
+             addresses will be accepted for this list.""")),
 
             ('hold_these_nonmembers', mm_cfg.EmailListEx, (10, WIDTH), 1,
              _("""List of non-member addresses whose postings will be
@@ -352,18 +359,18 @@ class Privacy(GUIBase):
              against every recipient address in the message.  The matching is
              performed with Python's re.match() function, meaning they are
              anchored to the start of the string.
-             
+
              <p>For backwards compatibility with Mailman 1.1, if the regexp
              does not contain an `@', then the pattern is matched against just
              the local part of the recipient address.  If that match fails, or
              if the pattern does contain an `@', then the pattern is matched
              against the entire recipient address.
-             
+
              <p>Matching against the local part is deprecated; in a future
              release, the pattern will always be matched against the entire
              recipient address.""")),
 
-            ('max_num_recipients', mm_cfg.Number, 5, 0, 
+            ('max_num_recipients', mm_cfg.Number, 5, 0,
              _('Ceiling on acceptable number of recipients for a posting.'),
 
              _('''If a posting has this number, or more, of recipients, it is
@@ -392,7 +399,7 @@ class Privacy(GUIBase):
              case, each rule is matched in turn, with processing stopped after
              the first match.
 
-             Note that headers are collected from all the attachments 
+             Note that headers are collected from all the attachments
              (except for the mailman administrivia message) and
              matched against the regular expressions. With this feature,
              you can effectively sort out messages with dangerous file
