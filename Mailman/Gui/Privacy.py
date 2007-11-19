@@ -67,7 +67,7 @@ class Privacy(GUIBase):
                            Require approval - require list administrator
                            Approval for subscriptions <br>
                            Confirm and approve - both confirm and approve
-
+                           
                            <p>(*) when someone requests a subscription,
                            Mailman sends them a notice with a unique
                            subscription request number that they must reply to
@@ -88,7 +88,7 @@ class Privacy(GUIBase):
                            Require approval - require list administrator
                            approval for subscriptions <br>
                            Confirm and approve - both confirm and approve
-
+                           
                            <p>(*) when someone requests a subscription,
                            Mailman sends them a notice with a unique
                            subscription request number that they must reply to
@@ -359,13 +359,13 @@ class Privacy(GUIBase):
              against every recipient address in the message.  The matching is
              performed with Python's re.match() function, meaning they are
              anchored to the start of the string.
-
+             
              <p>For backwards compatibility with Mailman 1.1, if the regexp
              does not contain an `@', then the pattern is matched against just
              the local part of the recipient address.  If that match fails, or
              if the pattern does contain an `@', then the pattern is matched
              against the entire recipient address.
-
+             
              <p>Matching against the local part is deprecated; in a future
              release, the pattern will always be matched against the entire
              recipient address.""")),
@@ -399,7 +399,7 @@ class Privacy(GUIBase):
              case, each rule is matched in turn, with processing stopped after
              the first match.
 
-             Note that headers are collected from all the attachments
+             Note that headers are collected from all the attachments 
              (except for the mailman administrivia message) and
              matched against the regular expressions. With this feature,
              you can effectively sort out messages with dangerous file
