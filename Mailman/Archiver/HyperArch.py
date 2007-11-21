@@ -460,8 +460,10 @@ class Article(pipermail.Article):
             d["email_html"] = self.quote(self.email)
             d["title"] = self.quote(self.subject)
             d["subject_html"] = self.quote(self.subject)
-            d["subject_url"] = url_quote(self.subject)
-            d["in_reply_to_url"] = url_quote(self.in_reply_to)
+            # TK: These two _url variables are used to compose a response
+            # from the archive web page.  So, ...
+            d["subject_url"] = url_quote('Re: ' + self.subject)
+            d["in_reply_to_url"] = url_quote(self._message_id)
             if mm_cfg.ARCHIVER_OBSCURES_EMAILADDRS:
                 # Point the mailto url back to the list
                 author = re.sub('@', _(' at '), self.author)
