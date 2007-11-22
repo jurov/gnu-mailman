@@ -4,9 +4,60 @@ Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.10 (XX-XXX-200X)
+2.1.10b0 (XX-Nov-2007)
 
   Bug fixes and other patches
+
+    - Added bounce recognition for several additional bounce formats.
+
+    - Fixed CommandRunner.py to decode a quoted-printable or base64 encoded
+      message part (1829061).
+
+    - Fixed Scrubber.py to avoid loss of an implicit text/plain message part
+      with no Content-* headers in a MIME multipart message (759841).  Fixed
+      several other minor scrubber issues (1242450).
+
+    - Added Date and Message-ID headers to the confirm reply message that
+      Mailman adds to the admin notification (1471318).
+
+    - Fixed Cgi/options.py to not present the "empty" topic to user.
+
+    - Fixed Handlers/CalcRecips.py to not process topics if topics are
+      disabled for the list.  This caused users who had previously subscribed
+      to topics and elected to not receive non-matching posts to receive no
+      messages after topics were disabled for the list.
+
+    - Fixed MaildirRunner.py to handle hyphenated list names.
+
+    - Fixed a bug in MimeDel.py (content filtering) which caused
+      *_filename_extensions to not match if the extension in the message was
+      not all lower case.
+
+    - Fixed versions.py to not call a non-existant method when converting held
+      posts from Mailman 1.0.x lists.
+
+    - Added a test to configure to detect a missing python-devel package on
+      some RedHat systems.
+
+    - Fixed bin/dumpdb to once again be able to dump marshals (broken since
+      2.1.5) (963137).
+
+    - Worked around a bug in the Python email library that could cause Mailman
+      to not get the correct value for the sender of a message from an RFC
+      2231 encoded header causing spurious held messages.
+
+    - Fixed bin/check_perms to detect certain missing permissions on the
+      archives/private/ and archives/private/<list>/database/ directories.
+
+    - Improved exception handling in cron/senddigests.
+
+    - Changed the admindb page to not show the "Discard all messages marked
+      Defer" checkbox when there are only (un)subscribes and no held messages.
+      Also added a separator and heading for "Held Messages" like the ones for
+      "Subscribe Requests" and "Unsubscribe Requests".  Suppressed the
+      "Database Updated" message when coming from the login page.  Also
+      removed the "Discard all messages marked Defer" checkbox from the
+      details page where it didn't work (1562922, 1000699).
 
     - Fixed admin.py so null VARHELP category is handled (1573393).
 
@@ -24,7 +75,12 @@ Here is a history of user visible changes to Mailman.
       callable.
 
     - Removal of DomainKey/DKIM signatures is now controlled by Defaults.py
-      mm_cfg.py variable REMOVE_DKIM_HEADERS (default = No).
+      mm_cfg.py variable REMOVE_DKIM_HEADERS (default = No).  Also, if
+      REMOVE_DKIM_HEADERS = Yes, an Authentication-Results: header will be
+      removed if present.
+
+    - The DeprecationWarning issued by Python 2.5 regarding string exceptions
+      is supressed.
 
     - format=flowed and delsp=yes are now preserved for message bodies when
       message headers/footers are added and attachments are scrubbed
@@ -38,13 +94,24 @@ Here is a history of user visible changes to Mailman.
     - The admin Membership List pages have been changed in that the email
       address which forms a part of the various CGI data keys is now
       urllib.quote()ed. This allows changing options for and unsubbing an
-      address which contains double-quote character, but it may require
+      address which contains a double-quote character, but it may require
       changes to scripts that screen-scrape the web admin interface to
       produce a membership list so they will report an unquoted address.
 
     - The fix for bug 1181161 in 2.1.7 was incomplete.  The Approve(d): line
       wasn't always found in quoted-printable encoded parts and was never
       found in base64 encoded parts.  This is now fixed.
+
+    - Added the Hebrew translation from Dov Zamir.
+
+    - Added the ability to put a list name in accept_these_nonmembers
+      to accept posts from members of that list (1220144).
+
+    - Fixed a mail loop if a list owner puts the list's -bounces or -admin
+      address in the list's owner attribute (1834569).
+
+    - Fixed the mailto: link in archived messages to prefix the subject with
+      Re: and to put the correct message-id in In-Reply-To (1621278, 1834281).
 
 2.1.9 (12-Sep-2006)
 
