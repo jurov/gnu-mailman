@@ -33,11 +33,14 @@ run again until another version change is detected.
 """
 
 
+import email
+
 from types import ListType, StringType
 
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Message
+from Mailman.Bouncer import _BounceInfo
 from Mailman.MemberAdaptor import UNKNOWN
 from Mailman.Logging.Syslog import syslog
 
@@ -419,7 +422,6 @@ def UpdateOldUsers(mlist):
     # Go through all the keys in bounce_info.  If the key is not a member, or
     # if the data is not a _BounceInfo instance, chuck the bounce info.  We're
     # doing things differently now.
-    from Mailman.Bouncer import _BounceInfo
     for m in mlist.bounce_info.keys():
         if not mlist.isMember(m) or not isinstance(mlist.getBounceInfo(m),
                                                    _BounceInfo):
@@ -483,7 +485,6 @@ def NewRequestsDatabase(l):
             # blow away the original timestamp and request id.  This means the
             # request will live a little longer than it possibly should have,
             # but that's no big deal.
-            import email
             for p in v:
                 author, text = p[2]
                 reason = p[3]
