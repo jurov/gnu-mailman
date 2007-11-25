@@ -102,7 +102,10 @@ Here is a history of user visible changes to Mailman.
       wasn't always found in quoted-printable encoded parts and was never
       found in base64 encoded parts.  This is now fixed.
 
-    - Added the Hebrew translation from Dov Zamir.
+    - Added the Hebrew translation from Dov Zamir.  This includes addition of
+      a direction ('ltr', 'rtl') to the LC_DESCRIPTIONS table.  The
+      add_language() function defaults direction to 'ltr' to not break
+      existing mm_cfg.py files.
 
     - Added the ability to put a list name in accept_these_nonmembers
       to accept posts from members of that list (1220144).
@@ -112,6 +115,11 @@ Here is a history of user visible changes to Mailman.
 
     - Fixed the mailto: link in archived messages to prefix the subject with
       Re: and to put the correct message-id in In-Reply-To (1621278, 1834281).
+
+    - Added a new 'sibling list' feature to exclude members of another list
+      from receiving a post from this list if the other list is in the To: or
+      Cc: of the post or to include members of the other list if that list is
+      not in the To: or Cc: of the post (Patch ID 1347962).
 
 2.1.9 (12-Sep-2006)
 
