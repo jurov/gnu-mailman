@@ -143,6 +143,30 @@ and footers:
              access via web browser. If you want the attachments totally
              disappear, you can use content filter options.''')),
             ])
+
+        info.extend([
+            _('Sibling lists'),
+
+            ('regular_exclude_lists', mm_cfg.EmailList, (3, WIDTH), 0,
+             _('''Other mailing lists on this site whose members are
+             excluded from the regular (non-digest) delivery if those
+             list addresses appear in To: or Cc: header.'''),
+             _('''The list addresses should be written in full mail address
+             format (e.g. mailman@example.com). Do not specify this list
+             address mutually in the exclude list configuration page,
+             or those doubled members won't get any message. Note also that
+             the site administrator may prohibit cross domain sibling.''')),
+
+            ('regular_include_lists', mm_cfg.EmailList, (3, WIDTH), 0,
+             _('''Other mailing lists on this site whose members are
+             included in the regular (non-digest) delivery if those
+             list addresses don't appear in To: or Cc: header.'''),
+             _('''The list addresses should be written in full mail address
+             format (e.g. mailman@example.com). Note also that the site
+             administrator may prohibit cross domain sibling.''')),
+            ])
+
+
         return info
 
     def _setValue(self, mlist, property, val, doc):
