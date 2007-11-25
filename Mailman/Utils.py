@@ -674,6 +674,9 @@ def GetLanguageDescr(lang):
 def GetCharSet(lang):
     return mm_cfg.LC_DESCRIPTIONS[lang][1]
 
+def GetDirection(lang):
+    return mm_cfg.LC_DESCRIPTIONS[lang][2]
+
 def IsLanguage(lang):
     return mm_cfg.LC_DESCRIPTIONS.has_key(lang)
 

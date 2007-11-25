@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -392,7 +392,7 @@ def request_creation(doc, cgidata=dummy, errmsg=None):
     # Create the table of initially supported languages, sorted on the long
     # name of the language.
     revmap = {}
-    for key, (name, charset) in mm_cfg.LC_DESCRIPTIONS.items():
+    for key, (name, charset, direction) in mm_cfg.LC_DESCRIPTIONS.items():
         revmap[_(name)] = key
     langnames = revmap.keys()
     langnames.sort()
