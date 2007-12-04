@@ -4,7 +4,43 @@ Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.10b0 (XX-Nov-2007)
+2.1.10b1 (04-Dec-2007)
+
+  Security
+
+    - The 2.1.9 fixes for CVE-2006-3636 have been enhanced.  In particular,
+      many potential cross-site scripting attacks have are now detected in
+      editing templates and updating the list's info attribute via the web
+      admin interface.  Thanks again to Moritz Naumann for assistance with
+      this.
+
+  New Features
+
+    - Changed cmd_who.py to list all members if authorization is with the
+      list's admin or moderator password and to accept the password if the
+      roster is public.  Also changed the web roster to show hidden members
+      when authorization is by site or list's admin or moderator password
+      (1587651).
+
+    - Added the ability to put a list name in accept_these_nonmembers
+      to accept posts from members of that list (1220144).
+
+    - Added a new 'sibling list' feature to exclude members of another list
+      from receiving a post from this list if the other list is in the To: or
+      Cc: of the post or to include members of the other list if that list is
+      not in the To: or Cc: of the post (Patch ID 1347962).
+
+    - Added the admin_member_chunksize attribute to the admin General Options
+      interface (Bug 1072002, Partial RFE 782436).
+
+Internationalization
+
+    - Added the Hebrew translation from Dov Zamir.  This includes addition of
+      a direction ('ltr', 'rtl') to the LC_DESCRIPTIONS table.  The
+      add_language() function defaults direction to 'ltr' to not break
+      existing mm_cfg.py files.
+
+    - Added the Slovak translation from Martin Matuska.
 
   Bug fixes and other patches
 
@@ -61,12 +97,6 @@ Here is a history of user visible changes to Mailman.
 
     - Fixed admin.py so null VARHELP category is handled (1573393).
 
-    - Changed cmd_who.py to list all members if authorization is with the
-      list's admin or moderator password and to accept the password if the
-      roster is public.  Also changed the web roster to show hidden members
-      when authorization is by site or list's admin or moderator password
-      (1587651).
-
     - Fixed OldStyleMemberships.py to preserve delivery statuses BYADMIN
       and BYUSER on a straight change of address (1642388).  Also fixed a
       bug that could result in a member key with uppercase in the domain.
@@ -102,24 +132,14 @@ Here is a history of user visible changes to Mailman.
       wasn't always found in quoted-printable encoded parts and was never
       found in base64 encoded parts.  This is now fixed.
 
-    - Added the Hebrew translation from Dov Zamir.  This includes addition of
-      a direction ('ltr', 'rtl') to the LC_DESCRIPTIONS table.  The
-      add_language() function defaults direction to 'ltr' to not break
-      existing mm_cfg.py files.
-
-    - Added the ability to put a list name in accept_these_nonmembers
-      to accept posts from members of that list (1220144).
-
     - Fixed a mail loop if a list owner puts the list's -bounces or -admin
       address in the list's owner attribute (1834569).
 
     - Fixed the mailto: link in archived messages to prefix the subject with
       Re: and to put the correct message-id in In-Reply-To (1621278, 1834281).
 
-    - Added a new 'sibling list' feature to exclude members of another list
-      from receiving a post from this list if the other list is in the To: or
-      Cc: of the post or to include members of the other list if that list is
-      not in the To: or Cc: of the post (Patch ID 1347962).
+    - Coerced list name arguments to lower case in the change_pw, inject,
+      list_admins and list_owners command line tools (patch 1842412).
 
 2.1.9 (12-Sep-2006)
 
