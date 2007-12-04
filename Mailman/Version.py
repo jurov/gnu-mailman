@@ -16,7 +16,7 @@
 # USA.
 
 # Mailman version
-VERSION = "2.1.10a0"
+VERSION = "2.1.10a2"
 
 # And as a hex number in the manner of PY_VERSION_HEX
 ALPHA = 0xa
