@@ -876,3 +876,154 @@ def oneline(s, cset):
     except (LookupError, UnicodeError, ValueError, HeaderParseError):
         # possibly charset problem. return with undecoded string in one line.
         return EMPTYSTRING.join(s.splitlines())
+
+
+# Patterns and functions to flag possible XSS attacks in HTML.
+# This list is compiled from information at http://ha.ckers.org/xss.html,
+# http://www.quirksmode.org/js/events_compinfo.html,
+# http://www.htmlref.com/reference/appa/events1.htm,
+# http://lxr.mozilla.org/mozilla/source/content/events/src/nsDOMEvent.cpp#59,
+# http://www.w3.org/TR/DOM-Level-2-Events/events.html and
+# http://www.xulplanet.com/references/elemref/ref_EventHandlers.html
+# Many thanks are due to Moritz Naumann for his assistance with this.
+_badwords = [
+    '<i?frame',
+    '<link',
+    '<meta',
+    '<script',
+    r'(?:^|\W)j(?:ava)?script(?:\W|$)',
+    r'(?:^|\W)vbs(?:cript)?(?:\W|$)',
+    r'(?:^|\W)domactivate(?:\W|$)',
+    r'(?:^|\W)domattrmodified(?:\W|$)',
+    r'(?:^|\W)domcharacterdatamodified(?:\W|$)',
+    r'(?:^|\W)domfocus(?:in|out)(?:\W|$)',
+    r'(?:^|\W)dommenuitem(?:in)?active(?:\W|$)',
+    r'(?:^|\W)dommousescroll(?:\W|$)',
+    r'(?:^|\W)domnodeinserted(?:intodocument)?(?:\W|$)',
+    r'(?:^|\W)domnoderemoved(?:fromdocument)?(?:\W|$)',
+    r'(?:^|\W)domsubtreemodified(?:\W|$)',
+    r'(?:^|\W)fscommand(?:\W|$)',
+    r'(?:^|\W)onabort(?:\W|$)',
+    r'(?:^|\W)on(?:de)?activate(?:\W|$)',
+    r'(?:^|\W)on(?:after|before)print(?:\W|$)',
+    r'(?:^|\W)on(?:after|before)update(?:\W|$)',
+    r'(?:^|\W)onbefore(?:(?:de)?activate|copy|cut|editfocus|paste)(?:\W|$)',
+    r'(?:^|\W)onbeforeunload(?:\W|$)',
+    r'(?:^|\W)onbegin(?:\W|$)',
+    r'(?:^|\W)onblur(?:\W|$)',
+    r'(?:^|\W)onbounce(?:\W|$)',
+    r'(?:^|\W)onbroadcast(?:\W|$)',
+    r'(?:^|\W)on(?:cell)?change(?:\W|$)',
+    r'(?:^|\W)oncheckboxstatechange(?:\W|$)',
+    r'(?:^|\W)on(?:dbl)?click(?:\W|$)',
+    r'(?:^|\W)onclose(?:\W|$)',
+    r'(?:^|\W)oncommand(?:update)?(?:\W|$)',
+    r'(?:^|\W)oncomposition(?:end|start)(?:\W|$)',
+    r'(?:^|\W)oncontextmenu(?:\W|$)',
+    r'(?:^|\W)oncontrolselect(?:\W|$)',
+    r'(?:^|\W)oncopy(?:\W|$)',
+    r'(?:^|\W)oncut(?:\W|$)',
+    r'(?:^|\W)ondataavailable(?:\W|$)',
+    r'(?:^|\W)ondataset(?:changed|complete)(?:\W|$)',
+    r'(?:^|\W)ondrag(?:drop|end|enter|exit|gesture|leave|over)?(?:\W|$)',
+    r'(?:^|\W)ondragstart(?:\W|$)',
+    r'(?:^|\W)ondrop(?:\W|$)',
+    r'(?:^|\W)onend(?:\W|$)',
+    r'(?:^|\W)onerror(?:update)?(?:\W|$)',
+    r'(?:^|\W)onfilterchange(?:\W|$)',
+    r'(?:^|\W)onfinish(?:\W|$)',
+    r'(?:^|\W)onfocus(?:in|out)?(?:\W|$)',
+    r'(?:^|\W)onhelp(?:\W|$)',
+    r'(?:^|\W)oninput(?:\W|$)',
+    r'(?:^|\W)onkey(?:up|down|press)(?:\W|$)',
+    r'(?:^|\W)onlayoutcomplete(?:\W|$)',
+    r'(?:^|\W)on(?:un)?load(?:\W|$)',
+    r'(?:^|\W)onlosecapture(?:\W|$)',
+    r'(?:^|\W)onmedia(?:complete|error)(?:\W|$)',
+    r'(?:^|\W)onmouse(?:down|enter|leave|move|out|over|up|wheel)(?:\W|$)',
+    r'(?:^|\W)onmove(?:end|start)?(?:\W|$)',
+    r'(?:^|\W)on(?:off|on)line(?:\W|$)',
+    r'(?:^|\W)onoutofsync(?:\W|$)',
+    r'(?:^|\W)onoverflow(?:changed)?(?:\W|$)',
+    r'(?:^|\W)onpage(?:hide|show)(?:\W|$)',
+    r'(?:^|\W)onpaint(?:\W|$)',
+    r'(?:^|\W)onpaste(?:\W|$)',
+    r'(?:^|\W)onpause(?:\W|$)',
+    r'(?:^|\W)onpopup(?:hidden|hiding|showing|shown)(?:\W|$)',
+    r'(?:^|\W)onprogress(?:\W|$)',
+    r'(?:^|\W)onpropertychange(?:\W|$)',
+    r'(?:^|\W)onradiostatechange(?:\W|$)',
+    r'(?:^|\W)onreadystatechange(?:\W|$)',
+    r'(?:^|\W)onrepeat(?:\W|$)',
+    r'(?:^|\W)onreset(?:\W|$)',
+    r'(?:^|\W)onresize(?:end|start)?(?:\W|$)',
+    r'(?:^|\W)onresume(?:\W|$)',
+    r'(?:^|\W)onreverse(?:\W|$)',
+    r'(?:^|\W)onrow(?:delete|enter|exit|inserted)(?:\W|$)',
+    r'(?:^|\W)onrows(?:delete|enter|inserted)(?:\W|$)',
+    r'(?:^|\W)onscroll(?:\W|$)',
+    r'(?:^|\W)onseek(?:\W|$)',
+    r'(?:^|\W)onselect(?:start)?(?:\W|$)',
+    r'(?:^|\W)onselectionchange(?:\W|$)',
+    r'(?:^|\W)onstart(?:\W|$)',
+    r'(?:^|\W)onstop(?:\W|$)',
+    r'(?:^|\W)onsubmit(?:\W|$)',
+    r'(?:^|\W)onsync(?:from|to)preference(?:\W|$)',
+    r'(?:^|\W)onsyncrestored(?:\W|$)',
+    r'(?:^|\W)ontext(?:\W|$)',
+    r'(?:^|\W)ontimeerror(?:\W|$)',
+    r'(?:^|\W)ontrackchange(?:\W|$)',
+    r'(?:^|\W)onunderflow(?:\W|$)',
+    r'(?:^|\W)onurlflip(?:\W|$)',
+    r'(?:^|\W)seeksegmenttime(?:\W|$)',
+    r'(?:^|\W)svgabort(?:\W|$)',
+    r'(?:^|\W)svgerror(?:\W|$)',
+    r'(?:^|\W)svgload(?:\W|$)',
+    r'(?:^|\W)svgresize(?:\W|$)',
+    r'(?:^|\W)svgscroll(?:\W|$)',
+    r'(?:^|\W)svgunload(?:\W|$)',
+    r'(?:^|\W)svgzoom(?:\W|$)',
+    ]
+
+
+# This is the actual re to look for the above patterns
+_badhtml = re.compile('|'.join(_badwords), re.IGNORECASE)
+# This is used to filter non-printable us-ascii characters, some of which
+# can be used to break words to avoid recognition.
+_filterchars = re.compile('[\000-\011\013\014\016-\037\177-\237]')
+# This is used to recognize '&#' and '%xx' strings for _translate which
+# translates them to characters
+_encodedchars = re.compile('(&#[0-9]+;?)|(&#x[0-9a-f]+;?)|(%[0-9a-f]{2})',
+                           re.IGNORECASE)
+
+
+def _translate(mo):
+    """Translate &#... and %xx encodings into the encoded character."""
+    match = mo.group().lower().strip('&#;')
+    try:
+        if match.startswith('x') or match.startswith('%'):
+            val = int(match[1:], 16)
+        else:
+            val = int(match, 10)
+    except ValueError:
+        return ''
+    if val < 256:
+        return chr(val)
+    else:
+        return ''
+
+
+def suspiciousHTML(html):
+    """Check HTML string for various tags, script language names and
+    'onxxx' actions that can be used in XSS attacks.
+    Currently, this a very simple minded test.  It just looks for
+    patterns without analyzing context.  Thus, it potentially flags lots
+    of benign stuff.
+    Returns True if anything suspicious found, False otherwise.
+    """
+
+    if _badhtml.search(_filterchars.sub(
+                       '', _encodedchars.sub(_translate, html))):
+        return True
+    else:
+        return False
