@@ -4,7 +4,7 @@ Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.10b1 (04-Dec-2007)
+2.1.10b2 (xx-xxx-xxxx)
 
   Security
 
@@ -140,6 +140,18 @@ Internationalization
 
     - Coerced list name arguments to lower case in the change_pw, inject,
       list_admins and list_owners command line tools (patch 1842412).
+
+    - Fixed cron/disabled to test if bounce info is stale before disabling
+      a member when the threshold has been reduced.
+
+    - It wasn't noted here, but in 2.1.9, queue runner processing was made
+      more robust by making backups of queue entries when they were dequeued
+      so they could be recovered in the event of a system failure.  This
+      opened the possibility that if a message itself caused a runner to
+      crash, a loop could result that would endlessly reprocess the message.
+      This has now been fixed by adding a dequeue count to the entry and
+      moving the entry aside and logging the fact after the third dequeue of
+      the same entry.
 
 2.1.9 (12-Sep-2006)
 
