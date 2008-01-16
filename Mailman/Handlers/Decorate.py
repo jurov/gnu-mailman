@@ -65,6 +65,7 @@ def process(mlist, msg, msgdata):
         except Errors.NotAMemberError:
             pass
     # These strings are descriptive for the log file and shouldn't be i18n'd
+    d.update(msgdata.get('decoration-data', {}))
     header = decorate(mlist, mlist.msg_header, 'non-digest header', d)
     footer = decorate(mlist, mlist.msg_footer, 'non-digest footer', d)
     # Escape hatch if both the footer and header are empty
@@ -193,7 +194,7 @@ def process(mlist, msg, msgdata):
 
 
 
-def decorate(mlist, template, what, extradict={}):
+def decorate(mlist, template, what, extradict=None):
     # `what' is just a descriptive phrase used in the log message
     #
     # BAW: We've found too many situations where Python can be fooled into
@@ -213,7 +214,8 @@ def decorate(mlist, template, what, extradict={}):
                   'info'          : mlist.info,
                   'cgiext'        : mm_cfg.CGIEXT,
                   })
-    d.update(extradict)
+    if extradict is not None:
+        d.update(extradict)
     # Using $-strings?
     if getattr(mlist, 'use_dollar_strings', 0):
         template = Utils.to_percent(template)
