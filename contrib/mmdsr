@@ -149,6 +149,11 @@
 #		Updated on: Sun Jan 29 11:45:58 CET 2006
 #		Mark found a couple of typos that I somehow let slip
 #		through.  Thanks!
+#
+# 0.0.17	Update by Mark Sapiro <mark@msapiro.net>
+#		Updated on: Thu Jan  3 18:25:06 PST 2008
+#		Enabled processing the prior generation of a rotated log.
+#		Added SORT_FIELD to the user modifiable parameters.
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -223,6 +228,12 @@ SUM_LOGS="fromusenet post smtp"
 # Mailman queue subdirectories to check.  No need to specify path, only name.
 ###############################################################################
 SUBDIRS="archive bounces commands in news out retry shunt virgin"
+
+###############################################################################
+# Specify the field specifier used by your sort command to select the second
+# field.  This will normally be "+1" or "-k 2".
+###############################################################################
+SORT_FIELD="+1"
 
 ###############################################################################
 # Specify recipients for report.  If none, then simply print to "STDOUT".
@@ -304,7 +315,11 @@ do
     echo "==============================" >> $TMP
 
     if [ -f "$LOGDIR/${LOG}" ] ; then
-    $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
+      if [ -f "$LOGDIR/${LOG}.1" ] ; then
+        $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' ${LOGDIR}/${LOG}.1 $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
+      else
+        $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
+      fi
 
 	if [ "${LOG}" = "post" ] ; then
 
@@ -312,7 +327,7 @@ do
 	    echo "Hourly Summary of Posts" >> $TMP
 	    echo "-----------------------" >> $TMP
 
-	    $SED -e 's/^[A-Z][a-z][a-z] *[0-9]* //' -e 's/:.*$//' $TMPLOG | $UNIQ -c | $SORT -n +1 | $AWK '{ printf( "%8d  %02d:00-%02d:59\n", $1, $2, $2 ) }' >> $TMP
+	    $SED -e 's/^[A-Z][a-z][a-z] *[0-9]* //' -e 's/:.*$//' $TMPLOG | $UNIQ -c | $SORT -n $SORT_FIELD | $AWK '{ printf( "%8d  %02d:00-%02d:59\n", $1, $2, $2 ) }' >> $TMP
 
 	    echo "" >> $TMP
 	    echo "Post Count by List" >> $TMP
@@ -372,9 +387,13 @@ do
     $TOUCH $TMPLOG
     echo "Log file: $LOG" >> $TMP
     echo "==============================" >> $TMP
-    $GREP -si "^$DAY [0-9][0-9:]* $YEAR" $LOGDIR/$LOG >> $TMPLOG
 
     if [ -f "$LOGDIR/${LOG}" ] ; then
+      if [ -f "$LOGDIR/${LOG}.1" ] ; then
+        $GREP -si "^$DAY [0-9][0-9:]* $YEAR" ${LOGDIR}/${LOG}.1 ${LOGDIR}/${LOG} | $SED "s/^[^:]*://" >> $TMPLOG
+      else
+        $GREP -si "^$DAY [0-9][0-9:]* $YEAR" ${LOGDIR}/${LOG} >> $TMPLOG
+      fi
 
 	if [ "${LOG}" = "error" ] ; then
 
