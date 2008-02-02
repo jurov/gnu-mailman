@@ -16,7 +16,7 @@
 # USA.
 
 # Mailman version
-VERSION = '2.1.10b2'
+VERSION = '2.1.10b3'
 
 # And as a hex number in the manner of PY_VERSION_HEX
 ALPHA = 0xa
@@ -31,7 +31,7 @@ MINOR_REV = 1
 MICRO_REV = 10
 REL_LEVEL = BETA
 # at most 15 beta releases!
-REL_SERIAL = 2
+REL_SERIAL = 3
 
 HEX_VERSION = ((MAJOR_REV << 24) | (MINOR_REV << 16) | (MICRO_REV << 8) |
                (REL_LEVEL << 4)  | (REL_SERIAL << 0))
