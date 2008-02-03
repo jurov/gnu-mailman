@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -66,17 +66,13 @@ class HTMLFormatter:
         conceal_sub = mm_cfg.ConcealSubscription
         people = []
         if digest:
-            digestmembers = self.getDigestMemberKeys()
-            for dm in digestmembers:
-                if not self.getMemberOption(dm, conceal_sub):
-                    people.append(dm)
-            num_concealed = len(digestmembers) - len(people)
+            members = self.getDigestMemberKeys()
         else:
             members = self.getRegularMemberKeys()
-            for m in members:
-                if list_hidden or not self.getMemberOption(m, conceal_sub):
-                    people.append(m)
-            num_concealed = len(members) - len(people)
+        for m in members:
+            if list_hidden or not self.getMemberOption(m, conceal_sub):
+                people.append(m)
+        num_concealed = len(members) - len(people)
         if num_concealed == 1:
             concealed = _('<em>(1 private member not shown)</em>')
         elif num_concealed > 1:
