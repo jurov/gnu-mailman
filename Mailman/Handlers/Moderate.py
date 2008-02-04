@@ -133,10 +133,10 @@ def matches_p(sender, nonmembers):
                 return 1
         elif are.startswith('@'):
             # XXX Needs to be reviewed for list@domain names.
-	    try:
-	        mother = MailList(are[1:], lock=0)
-	        if mother.isMember(sender):
-	            return 1
+            try:
+                mother = MailList(are[1:], lock=0)
+                if mother.isMember(sender):
+                    return 1
             except Errors.MMUnknownListError:
                 syslog('error', 'filter references non-existent list %s',
                         are[1:])
