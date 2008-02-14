@@ -223,24 +223,33 @@ class Switchboard:
             dst = os.path.join(self.__whichq, filebase + '.pck')
             fp = open(src, 'rb+')
             try:
-                msg = cPickle.load(fp)
-                data_pos = fp.tell()
-                data = cPickle.load(fp)
-                data['_bak_count'] = data.setdefault('_bak_count', 0) + 1
-                fp.seek(data_pos)
-                if data.get('_parsemsg'):
-                    protocol = 0
+                try:
+                    msg = cPickle.load(fp)
+                    data_pos = fp.tell()
+                    data = cPickle.load(fp)
+                except Exception, s:
+                    # If unpickling throws any exception, just log and
+                    # preserve this entry
+                    syslog('error', 'Unpickling .bak exception: %s\n'
+                           + 'preserving file: %s', s, filebase)
+                    self.finish(filebase, preserve=True)
                 else:
-                    protocol = 1
-                cPickle.dump(data, fp, protocol)
-                fp.truncate()
-                fp.flush()
-                os.fsync(fp.fileno())
+                    data['_bak_count'] = data.setdefault('_bak_count', 0) + 1
+                    fp.seek(data_pos)
+                    if data.get('_parsemsg'):
+                        protocol = 0
+                    else:
+                        protocol = 1
+                    cPickle.dump(data, fp, protocol)
+                    fp.truncate()
+                    fp.flush()
+                    os.fsync(fp.fileno())
+                    if data['_bak_count'] >= MAX_BAK_COUNT:
+                        syslog('error',
+                               '.bak file max count, preserving file: %s',
+                               filebase)
+                        self.finish(filebase, preserve=True)
+                    else:
+                        os.rename(src, dst)
             finally:
                 fp.close()
-            if data['_bak_count'] >= MAX_BAK_COUNT:
-                syslog('error', '.bak file max count, preserving file: %s',
-                         filebase)
-                self.finish(filebase, preserve=True)
-            else:
-                os.rename(src, dst)
