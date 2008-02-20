@@ -117,8 +117,9 @@ def process(mlist, msg, msgdata):
 
 
 def matches_p(sender, nonmembers):
-    # First strip out all the regular expressions
-    plainaddrs = [addr for addr in nonmembers if not addr.startswith('^')]
+    # First strip out all the regular expressions and listnames
+    plainaddrs = [addr for addr in nonmembers if not (addr.startswith('^')
+                                                 or addr.startswith('@'))]
     addrdict = Utils.List2Dict(plainaddrs, foldcase=1)
     if addrdict.has_key(sender):
         return 1
