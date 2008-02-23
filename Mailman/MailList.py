@@ -1065,10 +1065,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         newaddr = Utils.LCDomain(newaddr)
         Utils.ValidateEmail(newaddr)
         # Raise an exception if this email address is already a member of the
-        # list, but only if the new address not a case change of the old
+        # list, but only if the new address is the same case-wise as the old
         # address and we're not doing a global change.
-        if not globally and not (newaddr <> oldaddr and
-              newaddr.lower() == oldaddr.lower()) and self.isMember(newaddr):
+        if not globally and newaddr == oldaddr and self.isMember(newaddr):
             raise Errors.MMAlreadyAMember
         if newaddr == self.GetListEmail().lower():
             raise Errors.MMBadEmailError
