@@ -24,10 +24,11 @@ A. What's likely happening is that your MTA is doing DNS resolution on
    turn off synchronous DNS resolution for messages originating from
    the local host.
 
-   In Exim, the value to edit is receiver_verify_hosts.  See
-   README.EXIM for details.  Other MTAs have (of course) different
-   parameters and defaults that control this.  First check the README
-   file for your MTA and then consult your MTA's own documentation.
+   In Exim, the value to edit is receiver_verify_hosts.  Consult the
+   Mailman Installation Manual for details.  Other MTAs have (of
+   course) different parameters and defaults that control this.  First
+   check the README file for your MTA and then consult your MTA's own
+   documentation.
 
 Q. My list members are complaining about Mailman's List-* headers!
    What can I do about this?
@@ -83,7 +84,7 @@ A. The most likely cause of this is that the GID that is compiled into
    (The distributed syslog.conf forwards the message to the loghost,
    when present.  See the syslog man page for more details.)
 
-   If your system is set like this, and you get a failure trying to
+   If your system is set up like this, and you get a failure trying to
    visit the mailman/listinfo web page, and it's due to a UID or GID
    mismatch, then you should get an entry at the end of
    /var/log/syslog identifying the expected and received values.
@@ -131,12 +132,7 @@ A. Make sure that you are using "preline" before calling the "mailman"
        From somebody Mon Oct  9 12:27:34 MDT 2000
 
    before every message and re-running the archive command
-   "bin/arch listname".  The archives should now exist.  See README.QMAIL
-   for more information.
-
-Q. Still having problems?  Running on GNU/Linux?
-
-A. See the README.LINUX file.
+   "bin/arch listname".  The archives should now exist.
 
 Q. I want to get rid of some messages in my archive.  How do I do
    this?
