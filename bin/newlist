@@ -193,7 +193,11 @@ def main():
         oldmask = os.umask(002)
         try:
             try:
-                mlist.Create(listname, owner_mail, pw)
+                if lang == mm_cfg.DEFAULT_SERVER_LANGUAGE:
+                    langs = [lang]
+                else:
+                    langs = [lang, mm_cfg.DEFAULT_SERVER_LANGUAGE]
+                mlist.Create(listname, owner_mail, pw, langs=langs)
             finally:
                 os.umask(oldmask)
         except Errors.BadListNameError, s:
