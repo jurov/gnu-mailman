@@ -162,6 +162,14 @@ Internationalization
       available_languages if it is other than the server's default language
       (1906368).
 
+    - Changed the first URL in the RFC 2369 List-Unsubscribe: header to go
+      to the options login page instead of the listinfo page.
+
+    - Changed the options login page to not issue the "No address given" error
+      when coming from the List-Unsubscribe and other direct links.  Also
+      changed to remember the user's language selection when redisplaying the
+      page following an error.
+
   Miscellaneous
 
     - Brad Knowles' mailman daily status report script updated to 0.0.17.

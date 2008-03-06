@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -99,9 +99,11 @@ def main():
         user = cgidata.getvalue('email')
         if not user:
             # If we're coming from the listinfo page and we left the email
-            # address field blank, it's not an error.  listinfo.html names the
-            # button UserOptions; we can use that as the descriminator.
-            if not cgidata.getvalue('UserOptions'):
+            # address field blank, it's not an error.  Likewise if we're
+            # coming from anywhere else. Only issue the error if we came
+            # via one of our buttons.
+            if (cgidata.getvalue('login') or cgidata.getvalue('login-unsub')
+                    or cgidata.getvalue('login-remind')):
                 doc.addError(_('No address given'))
             loginpage(mlist, doc, None, language)
             print doc.Format()
@@ -861,6 +863,7 @@ def loginpage(mlist, doc, user, lang):
     # Preamble
     # Set up the login page
     form = Form(actionurl)
+    form.AddItem(Hidden('language', lang))
     table = Table(width='100%', border=0, cellspacing=4, cellpadding=5)
     table.AddRow([_("""In order to change your membership option, you must
     first log in by giving your %(extra)smembership password in the section
