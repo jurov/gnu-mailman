@@ -99,6 +99,11 @@ UPGRADING FROM 2.0.x to 2.1
 
     To regenerate your aliases, use the bin/genaliases script.
 
+    IMPORTANT: The encryption algorithm for list admin passwords has
+    changed which means that after upgrading from 2.0.x to 2.1.x, list
+    passwords will have to be reset.  There is a new bin/change_pw tool
+    to help with this.
+
     Mailman 2.1 introduces multilingual (a.k.a. internationalization
     or i18n) support.  Previously only one language per list was
     supported, and it was assumed that this language would be English.
