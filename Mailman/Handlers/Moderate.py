@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -89,15 +89,16 @@ def process(mlist, msg, msgdata):
     else:
         sender = msg.get_sender()
     # From here on out, we're dealing with non-members.
-    if matches_p(sender, mlist.accept_these_nonmembers):
+    listname = mlist.internal_name()
+    if matches_p(sender, mlist.accept_these_nonmembers, listname):
         return
-    if matches_p(sender, mlist.hold_these_nonmembers):
+    if matches_p(sender, mlist.hold_these_nonmembers, listname):
         Hold.hold_for_approval(mlist, msg, msgdata, Hold.NonMemberPost)
         # No return
-    if matches_p(sender, mlist.reject_these_nonmembers):
+    if matches_p(sender, mlist.reject_these_nonmembers, listname):
         do_reject(mlist)
         # No return
-    if matches_p(sender, mlist.discard_these_nonmembers):
+    if matches_p(sender, mlist.discard_these_nonmembers, listname):
         do_discard(mlist, msg)
         # No return
     # Okay, so the sender wasn't specified explicitly by any of the non-member
@@ -116,7 +117,7 @@ def process(mlist, msg, msgdata):
 
 
 
-def matches_p(sender, nonmembers):
+def matches_p(sender, nonmembers, listname):
     # First strip out all the regular expressions and listnames
     plainaddrs = [addr for addr in nonmembers if not (addr.startswith('^')
                                                  or addr.startswith('@'))]
@@ -135,12 +136,19 @@ def matches_p(sender, nonmembers):
         elif are.startswith('@'):
             # XXX Needs to be reviewed for list@domain names.
             try:
-                mother = MailList(are[1:], lock=0)
-                if mother.isMember(sender):
-                    return 1
+                if are[1:] == listname:
+                    # don't reference your own list
+                    syslog('error',
+                        '*_these_nonmembers in %s references own list',
+                        listname)
+                else:
+                    mother = MailList(are[1:], lock=0)
+                    if mother.isMember(sender):
+                        return 1
             except Errors.MMUnknownListError:
-                syslog('error', 'filter references non-existent list %s',
-                        are[1:])
+                syslog('error',
+                  '*_these_nonmembers in %s references non-existent list %s',
+                  listname, are[1:])
     return 0
 
 

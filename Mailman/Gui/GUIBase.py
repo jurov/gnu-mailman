@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -78,12 +78,20 @@ class GUIBase:
                             re.compile(addr)
                         except re.error:
                             raise ValueError
-                    elif wtype == mm_cfg.EmailListEx and addr.startswith('@'):
+                    elif (wtype == mm_cfg.EmailListEx and addr.startswith('@')
+                            and property.endswith('_these_nonmembers')):
                         # XXX Needs to be reviewed for list@domain names.
-                        # check for existence of list?
-                        pass
+                        # don't reference your own list
+                        if addr[1:] == mlist.internal_name():
+                            raise ValueError
+                        # check for existence of list?  For now allow
+                        # reference to list before creating it.
                     else:
                         raise
+                if property in ('regular_exclude_lists',
+                                'regular_include_lists'):
+                    if addr.lower() == mlist.GetListEmail().lower():
+                        raise Errors.EmailAddressError
                 addrs.append(addr)
             return addrs
         # This is a host name, i.e. verbatim

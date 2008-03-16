@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -159,11 +159,16 @@ def do_exclude(mlist, msg, msgdata, recips):
     recips = set(recips)
     destinations = email.Utils.getaddresses(msg.get_all('to', []) +
                                             msg.get_all('cc', []))
-    destinations = [y for x,y in destinations]
+    destinations = [y.lower() for x,y in destinations]
     for listname in mlist.regular_exclude_lists:
+        listname = listname.lower()
         if listname not in destinations:
             continue
         listlhs, hostname = listname.split('@')
+        if listlhs == mlist.internal_name():
+            syslog('error', 'Exclude list %s is a self reference.',
+                    listname)
+            continue
         try:
             slist = MailList(listlhs, lock=False)
         except MMUnknownListError:
@@ -190,11 +195,16 @@ def do_include(mlist, msg, msgdata, recips):
     recips = set(recips)
     destinations = email.Utils.getaddresses(msg.get_all('to', []) +
                                             msg.get_all('cc', []))
-    destinations = [y for x,y in destinations]
+    destinations = [y.lower() for x,y in destinations]
     for listname in mlist.regular_include_lists:
+        listname = listname.lower()
         if listname in destinations:
             continue
         listlhs, hostname = listname.split('@')
+        if listlhs == mlist.internal_name():
+            syslog('error', 'Include list %s is a self reference.',
+                    listname)
+            continue
         try:
             slist = MailList(listlhs, lock=False)
         except MMUnknownListError:
