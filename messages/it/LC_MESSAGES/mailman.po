@@ -1,18 +1,17 @@
 # translation of mailman.po to
-# Simone Piunno <pioppo@ferrara.linux.it>, 2003, 2004, 2005.
-# translation of mailman.po to
+# Simone Piunno <pioppo@ferrara.linux.it>, 2003, 2004, 2005, 2008.
 # Mailman
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Mon Dec  3 20:27:32 2007\n"
-"PO-Revision-Date: 2005-12-11 15:39+0100\n"
+"PO-Revision-Date: 2008-03-24 12:33+0100\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11\n"
+"X-Generator: KBabel 1.11.4\n"
 
 # /home/mailman/Mailman/MailCommandHandler.py:405
 #: Mailman/Archiver/HyperArch.py:123
@@ -344,7 +343,7 @@ msgstr ""
 "pubblico\n"
 "            su %(hostname)s.  Clicca sul nome di\n"
 "            una lista per visitare la relativa pagina di\n"
-"            configurazione. "
+"            configurazione."
 
 # /home/mailman/Mailman/Cgi/admin.py:242
 # /home/mailman/Mailman/Cgi/listinfo.py:143
@@ -756,7 +755,7 @@ msgstr "E"
 
 #: Mailman/Cgi/admin.py:1053
 msgid "<b>unsub</b> -- Click on this to unsubscribe the member."
-msgstr "<b>cancella</b> -- clicca questo per cancellare l'iscritto"
+msgstr "<b>cancella</b> -- clicca questo per cancellare l'iscritto."
 
 #: Mailman/Cgi/admin.py:1055
 msgid ""
@@ -2930,7 +2929,7 @@ msgstr "Devi indicare una lista."
 
 #: Mailman/Cgi/private.py:72
 msgid "Private archive - \"./\" and \"../\" not allowed in URL."
-msgstr ""
+msgstr "Archivio privato - \"./\" e \"../\" non permessi nell'URL."
 
 # /home/mailman/Mailman/Cgi/private.py:99
 #: Mailman/Cgi/private.py:109
@@ -3984,7 +3983,7 @@ msgstr "Iscritti digest:"
 
 #: Mailman/Defaults.py:1341
 msgid "Arabic"
-msgstr ""
+msgstr "Arabo"
 
 # /home/mailman/Mailman/Utils.py:780
 #: Mailman/Defaults.py:1342
@@ -4117,7 +4116,7 @@ msgstr "Ucraino"
 
 #: Mailman/Defaults.py:1373
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamita"
 
 #: Mailman/Defaults.py:1374
 msgid "Chinese (China)"
@@ -4957,7 +4956,7 @@ msgstr ""
 "             degli allegati il messaggio rimane vuoto.\n"
 "\n"
 "             <p>Nota che quest'azione non viene intrapresa se\n"
-"             dopo il filtraggio degli allegati il messaggio contiene\n"
+"             dopo il filtraggio il messaggio contiene\n"
 "             ancora qualcosa.  In questo caso il messaggio viene\n"
 "             sempre inoltrato agli iscritti della lista.\n"
 "\n"
@@ -4967,8 +4966,8 @@ msgstr ""
 "             rigettati o inoltrati al proprietario della lista,\n"
 "             viene inserito il motivo che ha provocanto l'azione\n"
 "             nella notifica di errore che viene inviata indietro\n"
-"             al mittente.  Quando dei messaggi viene conservata una\n"
-"             copia, vengono salvati in una speciale directory coda\n"
+"             al mittente.  Quando viene conservata una copia dei\n"
+"             messaggi, essi vengono salvati in una speciale directory coda\n"
 "             sul disco, cos&igrave; che l'amministratore del server\n"
 "             possa vederlo (e possibilmente recuperarlo), ma non\n"
 "             viene fatto altro.  Questa ultima opzione &egrave;\n"
@@ -5408,8 +5407,8 @@ msgstr ""
 "             che comunque le identifichi\n"
 "             Puoi anche aggiungere un numero progressivo\n"
 "             inserendo la direttiva %%d, ad esempio\n"
-"             [nomelista %%d] -> [nomelista 123]\n"
-"             (nomelista %%05d) -> (nomelista 00123)\n"
+"                            [nomelista %%d] -> [nomelista 123]\n"
+"                            (nomelista %%05d) -> (nomelista 00123)\n"
 "             "
 
 #: Mailman/Gui/General.py:157
@@ -8534,9 +8533,8 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "%(dbfile)s appartiene a %(owner)s (deve appartenere a %(user)s"
 
 #: Mailman/MTA/Postfix.py:354
-#, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "i permessi per %(file)s devono essere 066x (invece di %(octmode)s)"
+msgstr "i permessi per %(dbfile)s devono essere 066x (invece di %(octmode)s)"
 
 # /home/mailman/Mailman/Deliverer.py:242
 #: Mailman/MailList.py:216
@@ -11143,7 +11141,6 @@ msgid "Hit enter to notify %(listname)s owner..."
 msgstr "Premi invio per notificare il proprietario di %(listname)s..."
 
 #: bin/qrunner:20
-#, fuzzy
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
 "\n"
@@ -11265,6 +11262,10 @@ msgstr ""
 "runner è richiesto a meno che siano presenti le opzioni -l o -h, e deve "
 "essere uno\n"
 "dei nomi mostrati dallo switch -l.\n"
+"\n"
+"Nota inoltre che questo script dovrebbe essere esguito da mailmanctl\n"
+"come una normale operazione.  È utile eseguirlo separatamente solo\n"
+"per motivi di debug.\n"
 
 #: bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
@@ -11337,7 +11338,6 @@ msgstr ""
 "Non sarà supportato.\n"
 
 #: bin/remove_members:20
-#, fuzzy
 msgid ""
 "Remove members from a list.\n"
 "\n"
@@ -11421,7 +11421,6 @@ msgstr ""
 "    nomelista è il nome della lista da utilizzare.\n"
 "\n"
 "    indir1 ... sono indirizzi addizionali da rimuovere.\n"
-"\n"
 
 #: bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
@@ -12878,10 +12877,3 @@ msgstr ""
 #~ "\n"
 #~ "    who\n"
 #~ "        Ottieni un elenco degli iscritti a questa lista.\n"
-
-#~ msgid ""
-#~ "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
-#~ "## captured on %(when)s\n"
-#~ msgstr ""
-#~ "## configurazione della lista \"%(listname)s\" -*- python -*-\n"
-#~ "## catturata il %(when)s\n"
