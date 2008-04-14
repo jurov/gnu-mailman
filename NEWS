@@ -4,7 +4,7 @@ Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.10b4 (13-Mar-2008)
+2.1.10rc1 (14-Apr-2008)
 
   Security
 
@@ -13,6 +13,13 @@ Here is a history of user visible changes to Mailman.
       editing templates and updating the list's info attribute via the web
       admin interface.  This has been assigned CVE-2008-0564 and has been
       fixed.  Thanks again to Moritz Naumann for assistance with this.
+
+    - There is a new mm_cfg.py/Defaults.py variable
+      OWNERS_CAN_CHANGE_MEMBER_PASSWORDS which controls whether the list
+      owner can change a member's password from the member's options page.
+      This defaults to No and should be changed to Yes only if list owners
+      are trusted to not change a member's password, log in as the member
+      and make global membership changes.
 
   New Features
 
@@ -173,9 +180,15 @@ Internationalization
     - Changed cmd_subscribe.py to properly accept (no)digest without a
       password and to recognize (no)digest and address= case insensitively.
 
+    - Fixed cmd_subscribe.py to properly accept (no)digest without a password
+      and to recognize (no)digest and address= case insensitively.
+
   Miscellaneous
 
     - Brad Knowles' mailman daily status report script updated to 0.0.17.
+
+    - An updated mm-handler (mm-handler-2.1.10) that can help reduce
+      backscatter has been added to the contrib directory.
 
 2.1.9 (12-Sep-2006)
 
