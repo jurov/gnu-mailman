@@ -421,6 +421,14 @@ address.  Upon confirmation, any other mailing list containing the address
         return
 
     if cgidata.has_key('changepw'):
+        # Is this list admin and is list admin allowed to change passwords.
+        if not (is_user_or_siteadmin
+                or mm_cfg.OWNERS_CAN_CHANGE_MEMBER_PASSWORDS):
+            doc.addError(_("""The list administrator may not change the
+                    password for a user."""))
+            options_page(mlist, doc, user, cpuser, userlang)
+            print doc.Format()
+            return
         newpw = cgidata.getvalue('newpw')
         confirmpw = cgidata.getvalue('confpw')
         if not newpw or not confirmpw:

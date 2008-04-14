@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -784,6 +784,12 @@ OWNERS_CAN_DELETE_THEIR_OWN_LISTS = No
 # delivery to the MTA.  This gives each member a more personalized message,
 # but can have a heavy impact on the performance of your system.
 OWNERS_CAN_ENABLE_PERSONALIZATION = No
+
+# Set this variable to Yes to allow list owners to change a member's password
+# from the member's options page.  Do not do this if list owners aren't all
+# trustworthy as it allows a list owner to change a member's password and then
+# log in as the member and make global changes.
+OWNERS_CAN_CHANGE_MEMBER_PASSWORDS = No
 
 # Should held messages be saved on disk as Python pickles or as plain text?
 # The former is more efficient since we don't need to go through the
