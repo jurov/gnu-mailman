@@ -1,10 +1,10 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
 
-2.1.10rc1 (14-Apr-2008)
+2.1.10 (21-Apr-2008)
 
   Security
 
@@ -179,6 +179,11 @@ Internationalization
 
     - Changed cmd_subscribe.py to properly accept (no)digest without a
       password and to recognize (no)digest and address= case insensitively.
+
+    - Fixed a problem where GuiBase._getValidValue() would truncate a
+      floating point Number type to an int if the value was a float instead
+      of a numeric string. This affected setting floating point values with
+      config_list.
 
   Miscellaneous
 

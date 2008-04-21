@@ -99,6 +99,11 @@ class GUIBase:
             return val
         # This is a number, either a float or an integer
         if wtype == mm_cfg.Number:
+            # The int/float code below doesn't work if we are called from
+            # config_list with a value that is already a float.  It will
+            # truncate the value to an int.
+            if isinstance(val, float):
+                return val
             num = -1
             try:
                 num = int(val)
