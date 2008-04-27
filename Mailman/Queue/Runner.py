@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -103,12 +103,18 @@ class Runner:
                 # but other problems can occur in message parsing, e.g.
                 # ValueError, and exceptions can occur in unpickling too.
                 # We don't want the runner to die, so we just log and skip
-                # this entry, but preserve it for analysis.
+                # this entry, but maybe preserve it for analysis.
                 self._log(e)
-                syslog('error',
-                       'Skipping and preserving unparseable message: %s',
-                       filebase)
-                self._switchboard.finish(filebase, preserve=True)
+                if mm_cfg.QRUNNER_SAVE_BAD_MESSAGES:
+                    syslog('error',
+                           'Skipping and preserving unparseable message: %s',
+                           filebase)
+                    preserve=True
+                else:
+                    syslog('error',
+                           'Ignoring unparseable message: %s', filebase)
+                    preserve=False
+                self._switchboard.finish(filebase, preserve=preserve)
                 continue
             try:
                 self._onefile(msg, msgdata)

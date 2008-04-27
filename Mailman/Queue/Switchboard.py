@@ -169,13 +169,13 @@ class Switchboard:
         bakfile = os.path.join(self.__whichq, filebase + '.bak')
         try:
             if preserve:
-                psvfile = os.path.join(mm_cfg.SHUNTQUEUE_DIR, filebase + '.psv')
+                psvfile = os.path.join(mm_cfg.BADQUEUE_DIR, filebase + '.psv')
                 # Create the directory if it doesn't yet exist.
                 # Copied from __init__.
                 omask = os.umask(0)                       # rwxrws---
                 try:
                     try:
-                        os.mkdir(mm_cfg.SHUNTQUEUE_DIR, 0770)
+                        os.mkdir(mm_cfg.BADQUEUE_DIR, 0770)
                     except OSError, e:
                         if e.errno <> errno.EEXIST: raise
                 finally:
