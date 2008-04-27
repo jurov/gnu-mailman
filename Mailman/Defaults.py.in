@@ -725,6 +725,26 @@ QRUNNER_SLEEP_TIME = seconds(1)
 # them in qfiles/bad subdirectory.
 QRUNNER_SAVE_BAD_MESSAGES = Yes
 
+# Depending on the above setting, the queue entries with messages which can't
+# be parsed may be saved in qfiles/bad.  Certain other exceptions which occur
+# during unpickling of a queue entry also cause the entry to be saved in
+# qfiles/bad.  Various exceptions which occur during message processing cause
+# the message to be shunted (saved in qfiles/shunt) where they can be
+# reprocessed with bin/unshunt after the underlying problem is fixed.  The
+# cull_bad_shunt cron job normally runs daily to remove and possibly archive
+# stale entries in qfiles/bad and qfiles/shunt.  The following settings
+# control this.
+
+# The length of time after which a qfiles/bad or qfiles/shunt file is
+# considered to be stale.  Set to zero to disable culling of qfiles/bad and
+# qfiles/shunt entries.
+BAD_SHUNT_STALE_AFTER = days(7)
+
+# The pathname of a directory (searchable and writable by the Mailman cron
+# user) to which the culled qfiles/bad and qfiles/shunt entries will be
+# moved.  Set to None to simply delete the culled entries.
+BAD_SHUNT_ARCHIVE_DIRECTORY = None
+
 # This flag causes Mailman to fsync() its data files after writing and
 # flushing its contents.  While this ensures the data is written to disk,
 # avoiding data loss, it may be a performance killer.  Note that this flag
