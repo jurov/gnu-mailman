@@ -71,7 +71,8 @@ def process(res, args):
             return STOP
         argnum += 1
     # Fix the password/digest issue
-    if digest is None and password.lower() in ('digest', 'nodigest'):
+    if (digest is None
+            and password and password.lower() in ('digest', 'nodigest')):
         if password.lower() == 'digest':
             digest = 1
         else:
