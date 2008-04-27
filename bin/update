@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -435,6 +435,10 @@ def update_qfiles():
             for filename in os.listdir(dirpath):
                 filepath = os.path.join(dirpath, filename)
                 filebase, ext = os.path.splitext(filepath)
+                # A bug in Mailman 2.1.9 left .bak files behind in some
+                # circumstances. It should be safe to remove them.
+                if ext == '.bak':
+                    os.remove(filepath)
                 # Handle the .db metadata files as part of the handling of the
                 # .pck or .msg message files.
                 if ext not in ('.pck', '.msg'):
