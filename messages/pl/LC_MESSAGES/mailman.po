@@ -1616,9 +1616,9 @@ msgid ""
 "            to confirm a request for an address that has already been\n"
 "            subscribed."
 msgstr ""
-"Nieprawid³owy kod potwierdzaj±cy. Istnieje mo¿liwo¶æ, ¿e próbujesz\n"
-"            potwierdziæ decyzjê dla adresu, który ju¿ zosta³\n"
-"            wcze¶niej wypisany."
+"Adreds email %(newaddr)s jest ju¿ zapisany na listê %(realname)s.\n"
+"            Byæ mo¿e próujesz potwierdziæ subskrypcjê dla adresu, który ju¿ zosta³\n"
+"            wcze¶niej zapisany."
 
 #: Mailman/Cgi/confirm.py:541
 msgid "Change of address request confirmed"
@@ -2172,12 +2172,11 @@ msgid ""
 "must have shell access to your Mailman server.\n"
 "             "
 msgstr ""
-"Zapisana strona zawiera podejrzany kod HTML,\n"
-"który mo¿e zostaæ wykorzystany do ataków typu <em>cross-site scripting</"
-"em>.\n"
+"Zapisana strona zawiera podejrzany kod HTML, który mo¿e zostaæ wykorzystany\n"
+" do ataków typu <em>cross-site scripting</em>.\n"
 "Z tego powodu zmiany zosta³y odrzucone. Aby je wprowadziæ, konieczny bedzie\n"
 "bezpo¶redni dostêp do serwera, na którym zainstalowany jest Mailman.\n"
-
+"             "
 #: Mailman/Cgi/edithtml.py:169
 msgid "See "
 msgstr "Zobacz"
@@ -6952,7 +6951,7 @@ msgid ""
 "You will be sent email requesting confirmation, to\n"
 "            prevent others from gratuitously subscribing you."
 msgstr ""
-"W celu zapobiegania fa³szywym zg³oszeniom, otrzymasz email \n"
+"Aby zapobiec fa³szywym zg³oszeniom, otrzymasz email \n"
 "           z pro¶b± o potwierdzenie subskrypcji."
 
 #: Mailman/HTMLFormatter.py:189
@@ -7606,7 +7605,7 @@ msgstr "Prosimy o potwierdzenie wypisania siê z listy %(listname)s"
 
 #: Mailman/MailList.py:883 Mailman/MailList.py:1305
 msgid " from %(remote)s"
-msgstr " od %(remote)s"
+msgstr " z adresu %(remote)s"
 
 #: Mailman/MailList.py:916
 msgid "subscriptions to %(realname)s require moderator approval"
@@ -10073,7 +10072,7 @@ msgstr ""
 
 #: bin/version:19
 msgid "Print the Mailman version.\n"
-msgstr "Wy¶wietl wersjê Mailmana"
+msgstr "Wy¶wietl wersjê programu Mailman.\n"
 
 #: bin/version:26
 msgid "Using Mailman version:"
