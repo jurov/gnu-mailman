@@ -4,6 +4,22 @@ Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.x.xx (xx-xxx-xxxx)
+
+  Bug fixes and other patches
+
+    - Changed the preservation of unparseable messages to be conditional on
+      the Defaults.py/mm_cfg.py setting of QRUNNER_SAVE_BAD_MESSAGES and
+      changed the queue directory in which messages are preserved from 'shunt'
+      to 'bad'.
+
+    - Fixed a bug introduced in 2.1.10 that caused some email subscribe
+      requests to be shunted.
+
+    - Fixed a problem with bin/update erroneously moving templates from
+      templates/xx to lists/xx if a list has the same name as a language
+      code.  Also fixed the absolute path to lists/ (1418670 ).
+
 2.1.10 (21-Apr-2008)
 
   Security

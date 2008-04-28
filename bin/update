@@ -1,6 +1,6 @@
-#! @PYTHON@
+#! /usr/bin/python
 #
-# Copyright (C) 1998-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -342,25 +342,31 @@ script.
     # and move them to the new place if there's not already
     # a new one there
     #
-    tmpl_dir = os.path.join(mm_cfg.PREFIX, "templates")
-    list_dir = os.path.join(mm_cfg.PREFIX, "lists")
-    b4_tmpl_dir = os.path.join(tmpl_dir, mlist._internal_name)
-    new_tmpl_dir = os.path.join(list_dir, mlist._internal_name)
-    if os.path.exists(b4_tmpl_dir):
-        print _("""\
+    # There is a problem with the following if the list name is equal
+    # to a language code. All the templates get moved from templates/xx
+    # to lists/xx. To avoid this, test the list name, and if it is 'en'
+    # or matches a name in the messages directory, just skip this step.
+    if (mlist._internal_name <> 'en' and mlist._internal_name not in
+            os.listdir(mm_cfg.MESSAGES_DIR)):
+        tmpl_dir = os.path.join(mm_cfg.PREFIX, "templates")
+        list_dir = mm_cfg.LIST_DATA_DIR
+        b4_tmpl_dir = os.path.join(tmpl_dir, mlist._internal_name)
+        new_tmpl_dir = os.path.join(list_dir, mlist._internal_name)
+        if os.path.exists(b4_tmpl_dir):
+            print _("""\
 - This list looks like it might have <= b4 list templates around""")
-        for f in os.listdir(b4_tmpl_dir):
-            o_tmpl = os.path.join(b4_tmpl_dir, f)
-            n_tmpl = os.path.join(new_tmpl_dir, f)
-            if os.path.exists(o_tmpl):
-                if not os.path.exists(n_tmpl):
-                    os.rename(o_tmpl, n_tmpl)
-                    print _('- moved %(o_tmpl)s to %(n_tmpl)s')
+            for f in os.listdir(b4_tmpl_dir):
+                o_tmpl = os.path.join(b4_tmpl_dir, f)
+                n_tmpl = os.path.join(new_tmpl_dir, f)
+                if os.path.exists(o_tmpl):
+                    if not os.path.exists(n_tmpl):
+                        os.rename(o_tmpl, n_tmpl)
+                        print _('- moved %(o_tmpl)s to %(n_tmpl)s')
+                    else:
+                        print _("""\
+- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched""")
                 else:
                     print _("""\
-- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched""")
-            else:
-                print _("""\
 - %(o_tmpl)s doesn't exist, leaving untouched""")
     #
     # Move all the templates to the en language subdirectory as required for
