@@ -20,6 +20,9 @@ Here is a history of user visible changes to Mailman.
       templates/xx to lists/xx if a list has the same name as a language
       code.  Also fixed the absolute path to lists/ (1418670 ).
 
+    - Changed Utils.ValidateEmail to not allow specials (particularly ':')
+      in unquoted local parts (1956393).
+
 2.1.10 (21-Apr-2008)
 
   Security

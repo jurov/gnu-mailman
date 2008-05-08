@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -203,6 +203,9 @@ def LCDomain(addr):
 
 # TBD: what other characters should be disallowed?
 _badchars = re.compile(r'[][()<>|;^,\000-\037\177-\377]')
+# characters in addition to _badchars which are not allowed in
+# unquoted local parts.
+_specials = re.compile(r'[:\\"]')
 
 def ValidateEmail(s):
     """Verify that an email address isn't grossly evil."""
@@ -212,11 +215,15 @@ def ValidateEmail(s):
     if _badchars.search(s) or s[0] == '-':
         raise Errors.MMHostileAddress, s
     user, domain_parts = ParseEmail(s)
-    # This means local, unqualified addresses, are no allowed
+    # This means local, unqualified addresses, are not allowed
     if not domain_parts:
         raise Errors.MMBadEmailError, s
     if len(domain_parts) < 2:
         raise Errors.MMBadEmailError, s
+    if not (user.startswith('"') and user.endswith('"')):
+        # local part is not quoted so it can't contain specials
+        if _specials.search(user):
+            raise Errors.MMBadEmailError, s
 
 
 
