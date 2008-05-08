@@ -109,11 +109,11 @@ class Runner:
                     syslog('error',
                            'Skipping and preserving unparseable message: %s',
                            filebase)
-                    preserve=True
+                    preserve = True
                 else:
                     syslog('error',
                            'Ignoring unparseable message: %s', filebase)
-                    preserve=False
+                    preserve = False
                 self._switchboard.finish(filebase, preserve=preserve)
                 continue
             try:

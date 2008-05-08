@@ -346,8 +346,9 @@ script.
     # to a language code. All the templates get moved from templates/xx
     # to lists/xx. To avoid this, test the list name, and if it is 'en'
     # or matches a name in the messages directory, just skip this step.
-    if (mlist._internal_name <> 'en' and mlist._internal_name not in
-            os.listdir(mm_cfg.MESSAGES_DIR)):
+    if (mlist._internal_name <> 'en' and
+        mlist._internal_name not in os.listdir(mm_cfg.MESSAGES_DIR)):
+        # It's okay to move the templates.
         tmpl_dir = os.path.join(mm_cfg.PREFIX, "templates")
         list_dir = mm_cfg.LIST_DATA_DIR
         b4_tmpl_dir = os.path.join(tmpl_dir, mlist._internal_name)
