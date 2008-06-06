@@ -14,7 +14,7 @@ Here is a history of user visible changes to Mailman.
       to 'bad'.
 
     - Fixed a bug introduced in 2.1.10 that caused some email subscribe
-      requests to be shunted.
+      requests to be shunted (1966837).
 
     - Fixed a problem with bin/update erroneously moving templates from
       templates/xx to lists/xx if a list has the same name as a language
@@ -22,6 +22,10 @@ Here is a history of user visible changes to Mailman.
 
     - Changed Utils.ValidateEmail to not allow specials (particularly ':')
       in unquoted local parts (1956393).
+
+  Miscellaneous
+
+    - Brad Knowles' mailman daily status report script updated to 0.0.18.
 
 2.1.10 (21-Apr-2008)
 

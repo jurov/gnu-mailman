@@ -2,7 +2,7 @@
 ###############################################################################
 # mmdsr -- Mailman Daily Status Report (cron job, run at 23:59)
 ###############################################################################
-# Copyright (c) 2005, Brad Knowles
+# Copyright (c) 2005-2008 Brad Knowles
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -154,6 +154,13 @@
 #		Updated on: Thu Jan  3 18:25:06 PST 2008
 #		Enabled processing the prior generation of a rotated log.
 #		Added SORT_FIELD to the user modifiable parameters.
+# 0.0.18	Update by Mark Sapiro <mark@msapiro.net>
+#		Updated on: Tue May 13 08:58:26 PDT 2008
+#		Changes for Mailman 2.1.10 --
+#		Added 'bad' to the list of queues.
+#		Made listing of a queue directory conditional on existence.
+#		Sumarized unparseable messages and preserved queue entries
+#		in the Other Errors section.
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -227,7 +234,7 @@ SUM_LOGS="fromusenet post smtp"
 ###############################################################################
 # Mailman queue subdirectories to check.  No need to specify path, only name.
 ###############################################################################
-SUBDIRS="archive bounces commands in news out retry shunt virgin"
+SUBDIRS="archive bad bounces commands in news out retry shunt virgin"
 
 ###############################################################################
 # Specify the field specifier used by your sort command to select the second
@@ -418,7 +425,7 @@ do
 	    echo "" >> $TMP
 	    echo "Other Errors:" >> $TMP
 	    echo "------------------------------" >> $TMP
-	    $EGREP -vi '(Uncaught runner exception|No such list|Ignoring unparseable message|Traceback|shunting)' $TMPLOG | $SED 's/^.* ([0-9]*) //' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+	    $EGREP -vi '(Uncaught runner exception|No such list|Traceback|shunting)' $TMPLOG | $SED 's/^.* ([0-9]*) //' | $SED 's/unparseable message.*/unparseable message/' | $SED 's/preserving file.*/preserving file/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 
 	elif [ "${LOG}" = "fromusenet" ] ; then
 
@@ -519,6 +526,7 @@ cd $QUEUEDIR
 for DIR in $SUBDIRS
 do
 
+  if [ -d $DIR ] ; then
     $RM -f $TMPLOG
     $TOUCH $TMPLOG
     $LS -la $DIR >> $TMPLOG
@@ -540,6 +548,7 @@ do
     	$TAIL $TMPLOG >> $TMP
     fi
     echo "" >> $TMP
+  fi
 
 done
 
