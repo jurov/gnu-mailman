@@ -6,6 +6,15 @@ Here is a history of user visible changes to Mailman.
 
 2.x.xx (xx-xxx-xxxx)
 
+  New Features
+
+    - Added a new cron/cull_bad_shunt script to cull and optionally
+      archive old entries from the bad and shunt queues. This is controlled
+      by new Defaults.py/mm_cfg.py settings BAD_SHUNT_STALE_AFTER (default
+      7 days) and BAD_SHUNT_ARCHIVE_DIRECTORY (default None) which determine
+      how long to keep bad and shunt queue entries and optionally, where to
+      archive removed entries.
+
   Bug fixes and other patches
 
     - Changed the preservation of unparseable messages to be conditional on
@@ -22,6 +31,9 @@ Here is a history of user visible changes to Mailman.
 
     - Changed Utils.ValidateEmail to not allow specials (particularly ':')
       in unquoted local parts (1956393).
+
+    - Changed bin/update to remove .bak files erroneously left behind in
+      qfiles/*/ by a 2.1.9 bug.
 
   Miscellaneous
 
