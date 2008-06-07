@@ -425,7 +425,7 @@ do
 	    echo "" >> $TMP
 	    echo "Other Errors:" >> $TMP
 	    echo "------------------------------" >> $TMP
-	    $EGREP -vi '(Uncaught runner exception|No such list|Traceback|shunting)' $TMPLOG | $SED 's/^.* ([0-9]*) //' | $SED 's/unparseable message.*/unparseable message/' | $SED 's/preserving file.*/preserving file/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+	    $EGREP -vi '(Uncaught runner exception|No such list|Traceback|shunting)' $TMPLOG | $SED -e 's/^.* ([0-9]*) //' -e 's/unparseable message.*/unparseable message/' -e 's/preserving file.*/preserving file/' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 
 	elif [ "${LOG}" = "fromusenet" ] ; then
 
