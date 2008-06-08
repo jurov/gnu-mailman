@@ -79,6 +79,9 @@ def main():
 
     if args:
         usage(1)
+    for opt, arg in opts:
+        if opt in ('-h', '--help'):
+            usage(0)
 
     if mm_cfg.BAD_SHUNT_STALE_AFTER <= 0:
         # Nothing to do
