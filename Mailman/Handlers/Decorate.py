@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -159,9 +159,11 @@ def process(mlist, msg, msgdata):
     # basis of the interior, wrapped Message.
     inner = Message()
     # Which headers to copy?  Let's just do the Content-* headers
+    copied = False
     for h, v in msg.items():
         if h.lower().startswith('content-'):
             inner[h] = v
+            copied = True
     inner.set_payload(msg.get_payload())
     # For completeness
     inner.set_unixfrom(msg.get_unixfrom())
@@ -171,6 +173,10 @@ def process(mlist, msg, msgdata):
     # get_content_charset isn't.  However, do make sure there is a default
     # content-type, even if the original message was not MIME.
     inner.set_default_type(msg.get_default_type())
+    if not copied:
+        inner['Content-Type'] = inner.get_content_type()
+    if msg['mime-version'] == None:
+        msg['MIME-Version'] = '1.0'
     # BAW: HACK ALERT.
     if hasattr(msg, '__version__'):
         inner.__version__ = msg.__version__

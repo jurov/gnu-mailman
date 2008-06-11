@@ -58,6 +58,9 @@ Here is a history of user visible changes to Mailman.
     - Changed some non-ascii characters in templates/de/*.html to HTML
       entities.
 
+    - Fixed a problem in Decorate.py that could result in a multipart
+      message with no part headers for the original body part (1991348).
+
   Miscellaneous
 
     - Brad Knowles' mailman daily status report script updated to 0.0.18.
