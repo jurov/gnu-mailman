@@ -1,72 +1,35 @@
 <html>
-
 <head>
-
-  <title>%(listname)s %(who)s Authentication</title>
-
+  <title>Autenticació per a %(who)s de la llista s%(listname)s</title>
 </head>
-
 <body bgcolor="#ffffff">
-
 <FORM METHOD=POST ACTION="%(path)s">
-
 %(message)s
-
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
-
     <TR>
-
       <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER"> <B><FONT COLOR="#000000" SIZE="+1">%(listname)s 
-
-        %(who)s Autentificaci&oacute;</FONT></B></TD>
-
+        %(who)s Autenticaci&oacute;</FONT></B></TD>
     </TR>
-
     <tr>
-
-      <TD><div ALIGN="Right"> Clau de pas de la llista de %(who)s :</div></TD>
-
+      <TD><div ALIGN="Right">Contrasenya de %(who)s de la llista:</div></TD>
       <TD><INPUT TYPE="password" NAME="adminpw" SIZE="30"></TD>
-
     </tr>
-
     <tr>
       <td colspan=2 align=middle><input type="SUBMIT"
-
                                         name="admlogin"
-
-					value="Entrar ->">
+					value="Entra...">
       </td>
-
     </tr>
-
   </TABLE>
 
-      
-
   <p><strong><em>Important:</em></strong> A partir d'aqu&iacute;, necessiteu
-    tenir 
-
-    les cookies habilitades en el vostre navegador.
-
-  <p>Les cookies de sessi&oacute; s'usen en la interf&iacute;cie administrativa
-    
-
-    de Mailman, de manera que no necessiteu re-autentificar-vos en cada operaci&oacute; 
-
-    administrativa. Aquesta cookie expirar&agrave; autom&agrave;ticament quan
-    
-
-    sortiu del navegador, o b&eacute; podeu eliminar expl&iacute;citament
-    
-
-    la cookie prement el link <em>Sortir</em> sota <em>Altres Activitats Administratives</em> 
-
-    (el qual podreu veure un cop us hagueu registra't). 
-
+    tenir les galetes habilitades en el vostre navegador.
+  <p>Les galetes de sessi&oacute; s'usen en la interf&iacute;cie administrativa
+    de Mailman, de manera que no necessiteu tornar a autenticar-vos en cada operaci&oacute; 
+    administrativa. Aquesta galeta expirar&agrave; autom&agrave;ticament quan
+    sortiu del navegador, o b&eacute; podeu eliminarexpl&iacute;citament
+    la galeta fent clic a l'enlla&ccedil; <em>Surt</em> sota <em>Altres activitats administratives</em> 
+    (el qual podreu veure una vegada hagueu entrat).
 </FORM>
-
 </body>
-
 </html>
-
