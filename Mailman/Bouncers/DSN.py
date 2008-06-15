@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -89,6 +89,13 @@ def check(msg):
 
 
 def process(msg):
+    # We've seen some fairly bogus DSNs, allegedly from postfix that are
+    # multipart/mixed with 3 subparts - a text/plain postfix like part, a
+    # message/delivery-status part and a message/rfc822 part with the original
+    # message. Deal with it as follows.
+    if (msg.is_multipart() and len(msg.get_payload()) == 3 and
+      msg.get_payload()[1].get_content_type() == 'message/delivery-status'):
+        return check(msg.get_payload()[1])
     # A DSN has been seen wrapped with a "legal disclaimer" by an outgoing MTA
     # in a multipart/mixed outer part.
     if msg.is_multipart() and msg.get_content_subtype() == 'mixed':

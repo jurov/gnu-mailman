@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -91,12 +91,12 @@ PATTERNS = [
     (_c('Delivery to the following recipient failed'),
      _c('----- Original message -----'),
      _c('^\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
-    # kundenserver.de
-    (_c('A message that you sent could not be delivered'),
+    # kundenserver.de, mxlogic.net
+    (_c('A message that you( have)? sent could not be delivered'),
      _c('^---'),
      _c('<(?P<addr>[^>]*)>')),
     # another kundenserver.de
-    (_c('A message that you sent could not be delivered'),
+    (_c('A message that you( have)? sent could not be delivered'),
      _c('^---'),
      _c('^(?P<addr>[^\s@]+@[^\s@:]+):')),
     # thehartford.com
@@ -126,9 +126,9 @@ PATTERNS = [
     (_c('^Invalid final delivery userid:'),
      _c('^Original message follows.'),
      _c('\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
-    # E500_SMTP_Mail_Service@lerctr.org
-    (_c('------ Failed Recipients ------'),
-     _c('-------- Returned Mail --------'),
+    # E500_SMTP_Mail_Service@lerctr.org and similar
+    (_c('---- Failed Recipients ----'),
+     _c(' Mail ----'),
      _c('<(?P<addr>[^>]*)>')),
     # cynergycom.net
     (_c('A message that you sent could not be delivered'),
@@ -196,7 +196,7 @@ def process(msg, patterns=None):
                 if mo:
                     addr = mo.group('addr')
                     if addr:
-                        addrs[mo.group('addr')] = 1
+                        addrs[addr.strip('<>')] = 1
                 elif ecre.search(line):
                     break
         if addrs:
