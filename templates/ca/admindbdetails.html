@@ -1,59 +1,62 @@
-Les peticions administratives es mostren en una de dues maneres possibles, en una <a
-href="%(summaryurl)s">p&agrave;gina de sumari</a>, i en una p&agrave;gina de <em>detalls</em>.
-LA p&agrave;gina de sumari cont&eacute; les peticions de subscripci&oacute; pendents,
-les peticions de baixa, i els missatges retinguts que esperen la seva aprobació, 
-ordenats per les adreces dels remitents. La p&agrave;gina de detalls cont&eacute; una
-vista m&eacute;s detallada d'aquests missatges retinguts, incloent-ne el títol sencer i un extracte
-del cos del missatge.
+Les sol·licituds d'administració es mostren en una de dues maneres possibles: en una <a href="%%28summaryurl%29s">pàgina de resum</a>, i en una pàgina de <em>detalls</em>.
+La pàgina de resum conté les sol·licituds de subscripció i de
+cancel·lació pendents, i els missatges retinguts que esperen la vostra
+aprovació, ordenats segons l'adreça del remitent. La pàgina de detalls
+conté una vista més detallada d'aquests missatges retinguts, incloent-ne el títol
+sencer i un extracte
+del cos.
 
-<p>En totes les p&agrave;gines estan disponibles les següents accions:
+<p>Les accions següents estan disponibles a totes les pàgines:
 
-<ul>
-  <li><b>Defer</b> -- Posposar la vostra decisi&oacute; fins m&eacute;s tard. 
-    No es far&agrave; cap acci&oacute; a causa d'aquesta petici&oacute; administrativa, 
-    i en quant als missatges retinguts, encara pot reenviar-los o preservar-los.
-  <li><b>Approve</b> -- Aprovar el missatge enviant-lo cap a la llista. Per a 
-    les peticions de subscripci&oacute;, aprovi el canvi en l'status de subscripci&oacute;.
-  <li><b>Reject</b> -- Refusar el missatge enviant una nota de ref&uacute;s a 
-    la persona que el va enviar, i descartant el missatge original. Per a les 
-    peticions de subscripci&oacute;, refusi el canvi en l'status de subscripci&oacute;. 
-    En qualsevol cas hauria de donar una ra&oacute; per a tal decisi&oacute; en 
-    la caixa de texte acompanyant el missatge.
-  <li><b>Discard</b> -- Esborrar el missatge original sense enviar una nota de 
-    ref&uacute;s. Per a les peticions de subscripci&oacute;, aquesta acci&oacute; 
-    descarta la petici&oacute; sense cap notificaci&oacute; a la persona que la 
-    va fer. Aquesta &eacute;s la manera d'actuar davant de l'Spam.
-</ul>
+<ul> <li><b>Ajorna</b> -- ajornament de la decisió per més endavant. No es
+durà a terme cap acció per a&nbsp;aquesta sol·licitud&nbsp;d'administració. Pel que fa als missatges retinguts, encara es
+podran reenviar o mantenir (vegeu l'acció de sota).
 
-<p>Per als missatges retinguts, activi l'opci&oacute; <b>Preserve</b> si vol desar 
-  una c&ograve;pia del missatge per a l'administrador del lloc. Aix&ograve; &eacute;s 
-  molt &uacute;til per a missatges abusius que vulgui descartar, per&ograve; dels 
-  que necessita una c&ograve;pia per a posteriors inspeccions.
-<p>Activi l'opci&oacute; <b>Forward to</b>, i escrigui l'adre&ccedil;a de reenviament 
-  si vol reenviar el missatge a alg&uacute; que no estigui a la llista. Per a 
-  canviar un missatge retingut abans d'enviar-lo a la llista, s'hauria d'enviar 
-  a vost&egrave; mateix el missatge (o b&eacute; al propietari de la llista), 
-  i descartar l'original. Aleshores, quan aquest aparegui en la seva b&uacute;stia, 
-  faci els canvis i reenvii el missatge cap a la llista afegint-li el t&iacute;tol 
-  <tt>Approved:</tt> i amb la seva clau de pas de la llista com a valor. En aquest 
-  casos el comportament adeq&uuml;at seria incloure una nota en el nou missatge 
-  explicant les modificacions del texte original.
-<p>Si la persona que va enviar el missatge original &eacute;s un membre de la 
-  llista que est&agrave; sent moderat, vost&egrave; pot opcionalment treure-li 
-  la bandera que aix&iacute; ho especifica. Aix&ograve; &eacute;s &uacute;til 
-  en el cas de que la seva llista estigui configurada per a posar &quot;a proba&quot; 
-  els membres nous, i vost&egrave; ja hagi decidit que aquest membre en concret 
-  &eacute;s fiable i pot enviar missatges a la llista sense necessitat de la seva 
-  aprobaci&oacute;.
-<p>Si la persona que va enviar el missatge original no &eacute;s un membre de 
-  la llista, pot afegir la seva adre&ccedil;a d'email a un <em>filtre de remitents</em>. 
-  Els filtres de remitents es descriuen en la <a
-href="%(filterurl)s">p&agrave;gina de privacitat del filtre de remitents</a>, 
-  i poden ser d'<b>auto-accept</b> (Accepts),d'<b>auto-hold</b> (Holds), d'<b>auto-reject</b> 
-  (Rejects), o d'<b>auto-discard</b> (Discards). Aquesta opci&oacute; no estar&agrave; 
-  disponible si l'adre&ccedil;a ja est&agrave; afegida en un filtre de remitents.
-<p>Quan hagi acabat, faci click sobre el bot&oacute; <em>Submit All Data</em> 
-  que es troba tant a l'inici com en el final de la p&agrave;gina.. Aquest bot&oacute; 
-  enviar&agrave; totes les accions seleccionades de totes les peticions administratives 
-  sobre les quals ha pres decisi&oacute;.
-<p><a href="%(summaryurl)s">Tornar a la p&agrave;gina principal</a>. 
+<li><b>Aprova</b> -- aprovació del missatge i enviament a&nbsp;la
+llista. Si és una&nbsp;sol·licitud de subscripció, s'aprovarà el canvi
+d'estat de la subscripció.
+
+<li><b>Rebutja</b> -- rebuig del missatge, enviament d'una nota de
+rebuig al remitent i descart del missatge original. Si és una
+sol·licitud de subscripció, es rebutjarà el canvi d'estat de la
+subscripció. En qualsevol cas, és recomanable donar una raó per a tal
+decisió al quadre de text del costat.
+
+<li><b>Descarta</b> -- supressió del missatge original sense enviar
+una nota de rebuig. Si és una sol·licitud de subscripció, es descartarà
+sense enviar cap notificació al remitent. Aquesta és la manera d'actuar
+davant de l'spam. </ul>
+
+<p>Per als missatges retinguts, activeu l'opció <b>Manté</b> per a desar 
+  una còpia del missatge per a l'administrador del lloc. Això és 
+  molt útil per a missatges abusius que vulgueu descartar, però dels quals en calgui una còpia per a inspeccions posteriors.
+
+<p>Activeu l'opció <b>Reenvia a</b>, i escriviu l'adreça de
+reenviament si voleu reenviar el missatge a algú que no sigui a la
+llista. Per a modificar un missatge retingut abans d'enviar-lo a la
+llista, us l'haureu d'enviar a vós mateix&nbsp;(o bé al propietari de
+la llista), i descartar l'original. Un cop l'hàgiu rebut a la bústia
+d'entrada, haureu de realitzar-hi els canvis pertinents i reenviar-lo&nbsp;a la
+llista amb una capçalera <tt>Approved:</tt> que inclogui la vostra contrasenya de la llista com a valor. En aquest 
+  casos és recomanable&nbsp;una nota en el&nbsp;missatge 
+  nou amb una explicació de les modificacions del text original.
+
+<p>Opcionalment, si el remitent del missatge original és un membre de la 
+  llista en espera de moderació, podeu suprimir-li el senyalador que així ho especifica. Això és útil 
+  en el cas que la vostra llista estigui configurada per a posar en període de prova 
+  els membres nous, i ja hàgiu decidit que aquest membre concret 
+  és fiable i pot enviar missatges a la llista sense necessitat d'aprovació.
+
+<p>En cas que el remitent no sigui un membre de 
+  la llista, podeu afegir la seva adreça electrònica a un <em>filtre de remitents</em>. 
+  Els filtres de remitents es descriuen a la <a href="%%28filterurl%29s">pàgina de privacitat del filtre de remitents</a>, 
+  i poden ser d'<b>auto-accept</b> (Accepts), d'<b>auto-hold</b> (Holds), d'<b>auto-reject</b> 
+  (Rejects), o d'<b>auto-discard</b> (Discards). Aquesta opció no estarà 
+  disponible si l'adreça ja apareix en un filtre de remitents.
+
+<p>Un cop&nbsp;hàgiu acabat, feu clic al&nbsp;botó&nbsp;<em>Envia totes les dades</em> 
+  que es troba&nbsp;a l'inici i al final de la pàgina. Aquest botó 
+  enviarà totes les accions seleccionades de totes les sol·licituds d'administració 
+  sobre les quals hàgiu pres una decisió.
+
+<p><a href="%%28summaryurl%29s">Torna a la pàgina principal</a>. 
