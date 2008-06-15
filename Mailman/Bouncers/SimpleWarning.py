@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -49,6 +49,10 @@ patterns = [
     (_c('Delivery attempts will continue to be made'),
      _c('.+'),
      _c('(?P<addr>.+)')),
+    # Googlemail
+    (_c('THIS IS A WARNING MESSAGE ONLY'),
+     _c('Message will be retried'),
+     _c(r'\s*(?P<addr>\S+@\S+)\s*')),
     # Next one goes here...
     ]
 
