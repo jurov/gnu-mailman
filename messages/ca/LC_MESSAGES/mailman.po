@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.11\n"
 "POT-Creation-Date: Fri Jun  6 11:25:34 2008\n"
-"PO-Revision-Date: 2008-06-19 20:15+0200\n"
+"PO-Revision-Date: 2008-06-19 23:09+0200\n"
 "Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Catalan <mailman@llistes.softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -2454,9 +2454,9 @@ msgid ""
 "            other options have been set successfully."
 msgstr ""
 "L'administrador de la llista ha desactivat l'entrega\n"
-"            de missatges agrupats per a aquesta llista i la vostra opció de lliurament no ha estat\n"
-"            establerta. No obstant, totes les altres opcions s'han establert\n"
-"            satisfactòriament."
+"            de missatges agrupats per a aquesta llista, per la qual cosa la \n"
+"            vostra opció de lliurament no s'ha establert. No obstant, totes \n"
+"            les altres opcions s'han establert satisfactòriament."
 
 #: Mailman/Cgi/options.py:679
 msgid ""
@@ -2880,9 +2880,9 @@ msgid ""
 "        supplied by a mailback confirmation notice.\n"
 msgstr ""
 "\n"
-"    confirm <confirmation-string>\n"
-"        Confirma una acció.  Es requereix la cadena de confirmació, la qual\n"
-"        s'h d'enviar en el missatge de resposta de la confirmació.\n"
+"    confirm <cadena-de-confirmació>\n"
+"        Confirma una acció. Es requereix la cadena de confirmació, la qual\n"
+"        s'ha d'enviar en el missatge de resposta de la confirmació.\n"
 
 #: Mailman/Commands/cmd_confirm.py:41 Mailman/Commands/cmd_lists.py:40
 #: Mailman/Commands/cmd_set.py:133 Mailman/Commands/cmd_subscribe.py:69
@@ -2959,8 +2959,9 @@ msgid ""
 msgstr ""
 "\n"
 "    end\n"
-"        Acaba el procés d'ordres. Utilitzi aquesta ordre si el seu programa de correu afegeix\n"
-"        automàticament un fitxer de signatura.\n"
+"        Finalitza el processament d'ordres. Utilitzeu aquesta ordre si el \n"
+"        vostre programa de correu afegeix un fitxer de signatura de manera\n"
+"        automàtica.\n"
 
 #: Mailman/Commands/cmd_help.py:17
 msgid ""
@@ -2974,7 +2975,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_help.py:47
 msgid "You can access your personal options via the following url:"
-msgstr "Pots accedir a les teves opcions personals a traves de la següent url:"
+msgstr "Podeu accedir a les vostres opcions personals a través de l'URL següent:"
 
 #: Mailman/Commands/cmd_info.py:17
 msgid ""
@@ -2992,23 +2993,24 @@ msgstr "n/a"
 
 #: Mailman/Commands/cmd_info.py:44
 msgid "List name:    %(listname)s"
-msgstr "Nom de la llista:    %(listname)s"
+msgstr "Nom de la llista:        %(listname)s"
 
 #: Mailman/Commands/cmd_info.py:45
 msgid "Description:  %(description)s"
-msgstr "Descripció:  %(description)s"
+msgstr "Descripció:              %(description)s"
 
 #: Mailman/Commands/cmd_info.py:46
 msgid "Postings to:  %(postaddr)s"
-msgstr "Enviaments a:  %(postaddr)s"
+msgstr "Enviaments a:             %(postaddr)s"
 
+# FIXME: helpbot (dpm)
 #: Mailman/Commands/cmd_info.py:47
 msgid "List Helpbot: %(requestaddr)s"
-msgstr "Helpbot de la llista: %(requestaddr)s"
+msgstr "Helpbot de la llista:     %(requestaddr)s"
 
 #: Mailman/Commands/cmd_info.py:48
 msgid "List Owners:  %(owneraddr)s"
-msgstr "Amos de la llista:  %(owneraddr)s"
+msgstr "Propietaris de la llista: %(owneraddr)s"
 
 #: Mailman/Commands/cmd_info.py:49
 msgid "More information: %(listurl)s"
@@ -3020,7 +3022,7 @@ msgstr "L'ordre «join» és sinònima de «subscribe».\n"
 
 #: Mailman/Commands/cmd_leave.py:17
 msgid "The `leave' command is synonymous with `unsubscribe'.\n"
-msgstr "L'ordre «leave» és sinònima de «unsubscribe».\n"
+msgstr "L'ordre «leave» és sinònima d'«unsubscribe».\n"
 
 #: Mailman/Commands/cmd_lists.py:17
 msgid ""
@@ -3030,7 +3032,8 @@ msgid ""
 msgstr ""
 "\n"
 "    lists\n"
-"        Mostra una llista de les llistes de correu publiques em aquest servidor del GNU Mailman.\n"
+"        Mostra una llista de les llistes de correu públiques en aquest \n"
+"        servidor del Mailman de GNU.\n"
 
 #: Mailman/Commands/cmd_lists.py:44
 msgid "Public mailing lists at %(hostname)s:"
@@ -3042,11 +3045,11 @@ msgstr "%(i)3d. Nom de la llista:   %(realname)s"
 
 #: Mailman/Commands/cmd_lists.py:67
 msgid "     Description: %(description)s"
-msgstr "     Descripció: %(description)s"
+msgstr "     Descripció:     %(description)s"
 
 #: Mailman/Commands/cmd_lists.py:68
 msgid "     Requests to: %(requestaddr)s"
-msgstr "        Sol·licituds a: %(requestaddr)s"
+msgstr "     Sol·licituds a: %(requestaddr)s"
 
 #: Mailman/Commands/cmd_password.py:17
 msgid ""
@@ -3062,14 +3065,17 @@ msgid ""
 "        response is always sent to the subscribed address.\n"
 msgstr ""
 "\n"
-"    password [<oldpassword> <newpassword>] [address=<address>]\n"
-"        Obté o canvia la seva clau. Si s'utilitza sense arguments, li envia la seva contrasenya\n"
-"        actual. Si s'utilitza amb els arguments <oldpassword> i <newpassword> pot canviar la\n"
-"        seva contrasenya. \n"
+"    password [<contrasenyaantiga> <contrasenyanova>] [address=<adreça>]\n"
+"        Obté o canvia la vostra contrasenya. Si no especifiqueu cap argument,\n"
+"        se us enviarà la vostra contrasenya actual. Si proporcioneu els \n"
+"        arguments <contrasenyaantiga> i <contrasenyanove> us permetrà canviar\n"
+"        la vostra contrasenya.\n"
 "\n"
-"        Si envia el missatge des d'una adreça distinta a aquella amb la qual està subscrit a la llista\n"
-"        indiqui aquesta adreça amb `address=<address>'  (no utilitzi angles (<>) als costats de l'adreça, ni cometes!).\n"
-"        Tingui en compte que, en aquest cas, la resposta sempre s'enviarà a l'adreça subscrita.\n"
+"        Si envieu el missatge des d'una adreça diferent a aquella amb la qual\n"
+"        esteu subscrit a la llista, haureu d'especificar-la a l'argument \n"
+"        «address=<address>» (sense les cometess ni els caràcters <>).\n"
+"        Tingueu en compte que en aquests casos la resposta sempre s'enviarà a\n"
+"        l'adreça de subscripció.\n"
 
 #: Mailman/Commands/cmd_password.py:51 Mailman/Commands/cmd_password.py:66
 msgid "Your password is: %(password)s"
@@ -3117,13 +3123,13 @@ msgid ""
 msgstr ""
 "\n"
 "    set ...\n"
-"        establir o veure les teves opcions de subscripció.\n"
+"        Estableix o mostra les vostres opcions de subscripció.\n"
 "\n"
-"        Fes servir `set help' (sense cometes) per veure una llista detallada de\n"
-"        les opcions que pots canviar.\n"
+"        Utilitzeu l'ordre «set help» (sense les cometes) per a veure una llista\n"
+"        detallada de les opcions que podeu canviar.\n"
 "\n"
-"        Fes servir `set show' (sense cometes) per veure la configuració de les teves\n"
-"        opcions.\n"
+"        Utilitzeu l'ordre «set show» (sense les cometes) per a veure la \n"
+"        configuració actual de les vostres opcions.\n"
 
 #: Mailman/Commands/cmd_set.py:37
 msgid ""
@@ -3192,7 +3198,7 @@ msgstr ""
 "        Mostra aquesta ajuda detallada.\n"
 "\n"
 "    set show [address=<address>]\n"
-"        Mostra la teva configuració actual. Si estàs fent servir una adreça\n"
+"        Mostra la vostra configuració actual. Si estàs fent servir una adreça\n"
 "        que no és la teva adreça de membre, pots especificar la teva adreça de membre\n"
 "        amb `address=<address>' (sense angles <> ni cometes!).\n"
 "\n"
@@ -3244,7 +3250,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_set.py:122
 msgid "Bad set command: %(subcmd)s"
-msgstr "Ordre errònia: %(subcmd)s"
+msgstr "L'ordre per a «set» no és correcta: %(subcmd)s"
 
 #: Mailman/Commands/cmd_set.py:151
 msgid "Your current option settings:"
@@ -3280,12 +3286,12 @@ msgstr "    resum desactivat"
 
 #: Mailman/Commands/cmd_set.py:169
 msgid "delivery on"
-msgstr "lliurament activat"
+msgstr "entrega activada"
 
 #: Mailman/Commands/cmd_set.py:171 Mailman/Commands/cmd_set.py:174
 #: Mailman/Commands/cmd_set.py:177 Mailman/Commands/cmd_set.py:181
 msgid "delivery off"
-msgstr "lliurament desactivat"
+msgstr "entrega desactivada"
 
 #: Mailman/Commands/cmd_set.py:172
 msgid "by you"
@@ -3365,7 +3371,7 @@ msgstr "opció recordatori establerta"
 
 #: Mailman/Commands/cmd_stop.py:17
 msgid "stop is synonymous with the end command.\n"
-msgstr "stop és sinònim de l'ordre end.\n"
+msgstr "stop és sinònima de l'ordre end.\n"
 
 #: Mailman/Commands/cmd_subscribe.py:17
 msgid ""
@@ -3383,15 +3389,16 @@ msgid ""
 msgstr ""
 "\n"
 "    subscribe [password] [digest|nodigest] [address=<adreça>]\n"
-"        Subscriure's a aquesta llista de correu. Has de donar la teva contrasenya per\n"
-"        cancel·lar la subscripció o canviar les teves opcións, però si  l'omets, se'n\n"
-"        generarà una per tu. se't recordarà la contrasenya\n"
+"        Us subscriu a aquesta llista de correu. Haureu d'especificar la\n"
+"        vostra contrasenya per a cancel·lar la subscripció o canviar les\n"
+"        vostres opcions. En cas que no ho feu se us en generarà una de \n"
+"        manera automàtica. La vostra contrasenya se us recordarà\n"
 "        periòdicament.\n"
 "\n"
-"        El següent argument pot ser: `nodigest' o `digest' (sense cometes!).\n"
-"        si vols subscriure una altra adreça distinta a la qe has fet servir per a\n"
-"        enviar aquest missatge, la pots especificar amb `address=<address>'\n"
-"        (sense angles <> ni cometes!)\n"
+"        L'argument següent pot ser: «nodigest» o «digest» (sense cometes).\n"
+"        Si voleu subscriure una adreça diferent a la que heu utilitzat per\n"
+"        a enviar aquest missatge, haureu d'especificar l'argument \n"
+"        «address=<adreça>» (sense els caràcters <> ni cometes).\n"
 
 #: Mailman/Commands/cmd_subscribe.py:62
 msgid "Bad digest specifier: %(arg)s"
@@ -3407,9 +3414,10 @@ msgid ""
 "If you think this restriction is erroneous, please contact the list\n"
 "owners at %(listowner)s."
 msgstr ""
-"L'adreça de correu electrònic que has donat té l'accés prohibit a la llista de correu.\n"
-"Si penses que la restricció és errònia, per favor,\n"
-"contacte amb l'amo de la llista a %(listowner)s."
+"L'adreça de correu electrònic que heu especificat està bandejada \n"
+"en aquesta llista de correu.\n"
+"Si creieu que aquesta restricció és errònia, contacteu el propietari\n"
+"de la llista a %(listowner)s."
 
 #: Mailman/Commands/cmd_subscribe.py:119
 msgid ""
@@ -3424,7 +3432,7 @@ msgid ""
 "Your subscription is not allowed because\n"
 "the email address you gave is insecure."
 msgstr ""
-"No es permet la vostra subscripció a causa perquè\n"
+"No es permet la vostra subscripció perquè\n"
 "l'adreça electrònica que heu especificat és insegura."
 
 #: Mailman/Commands/cmd_subscribe.py:129
@@ -3464,23 +3472,25 @@ msgid ""
 msgstr ""
 "\n"
 "    unsubscribe [password] [address=<address>]\n"
-"         Cancel·la la seva subscripció de la llista de distribució. Si s'indica, la conmtrasenya\n"
-"         ha de coincidir amb la seva contrasenya de la llista. Si s'omet, se li enviarà un missatge\n"
-"         de confirmació a l'adreça que s'està donant de baixa. Si desitja donar de baixa una adreça\n"
-"         diferent de la que està utilitzant per a enviar la sol·licitud, pot indicar-lo amb `address=<address>'\n"
-"         (¡sense angles als costats de l'adreça, i sense cometes!)\n"
+"        Cancel·la la vostra subscripció a la llista de distribució. Si \n"
+"        especifiqueu la contrasenya, ha de coincidir amb la vostra \n"
+"        contrasenya actual de la llista. Si l'ometeu se us enviarà un \n"
+"        missatge de confirmació a l'adreça que vulgueu donar de baixa. \n"
+"        Si voleu cancel·lar la subscripció d'una adreça diferent a la \n"
+"        que heu utilitzat per a enviar aquest missatge, haureu d'especificar \n"
+"        l'argument «address=<adreça>» (sense els caràcters <> ni cometes).\n"
 
 #: Mailman/Commands/cmd_unsubscribe.py:62
 msgid "%(address)s is not a member of the %(listname)s mailing list"
-msgstr "%(address)s no es membre de la llista de correu %(listname)s"
+msgstr "%(address)s no està subscrita a la llista de correu %(listname)s"
 
 #: Mailman/Commands/cmd_unsubscribe.py:69
 msgid ""
 "Your unsubscription request has been forwarded to the list administrator for\n"
 "approval."
 msgstr ""
-"S'ha enviat la vostra sol·licitud de cancel·lació de subscripció a l'administrador de la\n"
-"llista perquè l'aprovi."
+"S'ha enviat la vostra sol·licitud de cancel·lació de subscripció a \n"
+"l'administrador de la llista perquè l'aprovi."
 
 #: Mailman/Commands/cmd_unsubscribe.py:84
 msgid "You gave the wrong password"
@@ -3520,8 +3530,8 @@ msgid ""
 "        hidden members will be included.\n"
 msgstr ""
 "\n"
-"    who password [address=<address>]\n"
-"        Obté el llistat de subscriptors de la llista. El llistat està reservat als\n"
+"    who password [address=<adreça>]\n"
+"        Mostra el llistat de subscriptors no ocults de la llista. El llistat està reservat als\n"
 "        subscriptors, per la qual cosa és necessari que indiqui la seva contrasenya de subscriptor\n"
 "        per a poder-lo rebre. Si està enviant la sol·licitud des d'una adreça distinta d'aquella amb la que\n"
 "        està subscrit, indiqui aquesta adreça de subscripció amb `address=<address>'\n"
@@ -3543,11 +3553,11 @@ msgstr ""
 
 #: Mailman/Commands/cmd_who.py:128
 msgid "You are not allowed to retrieve the list membership."
-msgstr "No se us permet obtenir la llista de membres."
+msgstr "No se us permet obtenir la llista de subscriptors."
 
 #: Mailman/Commands/cmd_who.py:134
 msgid "This list has no members."
-msgstr "Aquesta llista no té cap membre."
+msgstr "Aquesta llista no té cap subscriptor."
 
 #: Mailman/Commands/cmd_who.py:148
 msgid "Non-digest (regular) members:"
@@ -3765,7 +3775,7 @@ msgstr "Opcions d'arxivament"
 
 #: Mailman/Gui/Archive.py:31
 msgid "List traffic archival policies."
-msgstr "Polítiques per a arxivar el tràfic de la llista."
+msgstr "Polítiques d'arxivament del tràfic de la llista."
 
 #: Mailman/Gui/Archive.py:34
 msgid "Archive messages?"
@@ -5817,7 +5827,7 @@ msgstr "Exposició de membres "
 
 #: Mailman/Gui/Privacy.py:143
 msgid "Anyone"
-msgstr "Qui sigui"
+msgstr "Tothom"
 
 #: Mailman/Gui/Privacy.py:143
 msgid "List admin only"
@@ -6461,7 +6471,7 @@ msgstr ""
 
 #: Mailman/Gui/Topics.py:83
 msgid "Topic keywords, one per line, to match against each message."
-msgstr "Paraules clau de temes, una per línia, a buscar en els missatges."
+msgstr "Paraules clau de temes, una per línia, a cercar en els missatges."
 
 #: Mailman/Gui/Topics.py:85
 msgid ""
@@ -6498,7 +6508,7 @@ msgstr ""
 
 #: Mailman/Gui/Usenet.py:25
 msgid "Mail&lt;-&gt;News&nbsp;gateways"
-msgstr "Correu&lt;-&gt;Noticies&nbsp;portes d'enllaç"
+msgstr "Correu&lt;-&gt;Notícies&nbsp;portes d'enllaç"
 
 #: Mailman/Gui/Usenet.py:35
 msgid "Mail-to-News and News-to-Mail gateway services."
@@ -6509,11 +6519,9 @@ msgid "News server settings"
 msgstr "Configuració del servidor de noticies"
 
 #: Mailman/Gui/Usenet.py:40
-#, fuzzy
 msgid "The hostname of the machine your news server is running on."
 msgstr ""
-"L'adreça d'internet de la màquina on el vostre servidor de\n"
-"            noticies s'està executant."
+"El nom de la màquina on s'executa el vostre servidor de notícies."
 
 #: Mailman/Gui/Usenet.py:41
 #, fuzzy
@@ -6895,8 +6903,8 @@ msgid ""
 "(<i>%(which)s is only available to the list\n"
 "                members.</i>)"
 msgstr ""
-"(<i>%(which)s només és disponible per als membres\n"
-"                de la llista.</i>)"
+"(<i>%(which)s només està disponible per als\n"
+"                subscriptors de la llista.</i>)"
 
 #: Mailman/HTMLFormatter.py:276
 msgid ""
@@ -7473,8 +7481,9 @@ msgid ""
 "The results of your email command are provided below.\n"
 "Attached is your original message.\n"
 msgstr ""
-"Abaix tens els resultats de les ordres del teu correu electrònic.\n"
-"El missatge origianl està adjunt.\n"
+"A continuació es mostren els resultats de la vostra \n"
+"ordre de correu.\n"
+"El vostre missatge original s'hi adjunta al final.\n"
 
 #: Mailman/Queue/CommandRunner.py:153
 msgid "- Results:"
