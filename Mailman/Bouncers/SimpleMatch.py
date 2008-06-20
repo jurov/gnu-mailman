@@ -88,7 +88,7 @@ PATTERNS = [
      _c('--- Original message follows\.'),
      _c('<(?P<addr>[^>]*)>:')),
     # googlemail.com
-    (_c('Delivery to the following recipient failed'),
+    (_c('Delivery to the following recipient(s)? failed'),
      _c('----- Original message -----'),
      _c('^\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
     # kundenserver.de, mxlogic.net
@@ -99,13 +99,13 @@ PATTERNS = [
     (_c('A message that you( have)? sent could not be delivered'),
      _c('^---'),
      _c('^(?P<addr>[^\s@]+@[^\s@:]+):')),
-    # thehartford.com
-    (_c('Delivery to the following recipients failed'),
+    # thehartford.com and amenworld.com
+    (_c('Del(i|e)very to the following recipient(s)? (failed|was aborted)'),
      # this one may or may not have the original message, but there's nothing
      # unique to stop on, so stop on the first line of at least 3 characters
      # that doesn't start with 'D' (to not stop immediately) and has no '@'.
      _c('^[^D][^@]{2,}$'),
-     _c('^\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
+     _c('^\s*(. )?(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
     # and another thehartfod.com/hartfordlife.com
     (_c('^Your message\s*$'),
      _c('^because:'),
