@@ -55,13 +55,20 @@ Here is a history of user visible changes to Mailman.
 
     - Fixed unescaped '%' in templates/nl/newlist.txt (1719017).
 
-    - Changed some non-ascii characters in templates/de/*.html to HTML
+    - Changed non-ascii characters in some templates/*/*.html files to HTML
       entities.
 
     - Fixed a problem in Decorate.py that could result in a multipart
       message with no part headers for the original body part (1991348).
 
     - Improved recognition of some bounce messages.
+
+    - Rearranged calls to the list setBounceInfo() method in Bouncer.py
+      to accommodate MemberAdaptors that store bounce info outside the
+      list instance.
+
+    - Fixed CookHeaders.py which in some cases with new style prefixing
+      would insert an extra space between the prefix and the subject.
 
   Miscellaneous
 

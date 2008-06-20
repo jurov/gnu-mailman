@@ -298,7 +298,10 @@ def prefix_subject(mlist, msg, msgdata):
             if old_style:
                 h = u' '.join([recolon, prefix, subject])
             else:
-                h = u' '.join([prefix, recolon, subject])
+                if recolon:
+                    h = u' '.join([prefix, recolon, subject])
+                else:
+                    h = u' '.join([prefix, subject])
             h = h.encode('us-ascii')
             h = uheader(mlist, h, 'Subject', continuation_ws=ws)
             del msg['subject']
