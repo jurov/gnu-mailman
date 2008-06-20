@@ -70,6 +70,10 @@ Here is a history of user visible changes to Mailman.
     - Fixed CookHeaders.py which in some cases with new style prefixing
       would insert an extra space between the prefix and the subject.
 
+    - Changed OldStyleMemberships.py to remove the member from one_last_digest
+      when changing from regular to digest delivery to avoid the possibility
+      of a duplicate digest in some circumstances.
+
   Miscellaneous
 
     - Brad Knowles' mailman daily status report script updated to 0.0.18.
