@@ -7,11 +7,25 @@
 # Jordi Mallach <jordi@sindominio.net>, 2006, 2007, 2008.
 # David Planella <david.planella@gmail.com>, 2008.
 #
+# GLOSSARI
+#
+# Digest: resum, lliurament per resum
+# No-digest: sense resum, normal, lliurament sense resum
+# Pickle:
+# Scrub:
+# Sibling lists: llistes complementàries
+# Roster: llistat
+# Bounce: retorn, missatge retornat
+# Member: subscriptor
+# Non-member: no subscriptor
+# Unsubscribe: cancel·lar la subscripció
+# List owner: propietari de la llista?
+
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.11\n"
 "POT-Creation-Date: Fri Jun  6 11:25:34 2008\n"
-"PO-Revision-Date: 2008-06-20 20:22+0200\n"
+"PO-Revision-Date: 2008-06-21 13:06+0200\n"
 "Last-Translator: David Planella Molas <david.planella@gmail.com>\n"
 "Language-Team: Catalan <mailman@llistes.softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -264,9 +278,9 @@ msgid ""
 "                unusable."
 msgstr ""
 "Heu desactivat el lliurament tant de missatges individuals com de\n"
-"                missatges agrupats.  Aquesta condició és incompatible.\n"
+"                missatges de resum. Aquesta configuració és incompatible.\n"
 "                Cal que habiliteu o bé els missatges individuals o bé els\n"
-"                agrupats. En cas contrari, la vostra llista de correu\n"
+"                de resum. En cas contrari, la vostra llista de correu\n"
 "                serà inutilitzable."
 
 #: Mailman/Cgi/admin.py:184 Mailman/Cgi/admin.py:190 Mailman/Cgi/admin.py:195
@@ -327,7 +341,6 @@ msgstr ""
 msgid "right "
 msgstr "correcte "
 
-# FIXME %(extra)slist
 #: Mailman/Cgi/admin.py:269
 msgid ""
 "To visit the administrators configuration page for an\n"
@@ -3527,7 +3540,6 @@ msgstr ""
 "        és la de l'administrador o del moderador de la llista.\n"
 
 #: Mailman/Commands/cmd_who.py:35
-#, fuzzy
 msgid ""
 "\n"
 "    who password [address=<address>]\n"
@@ -3541,11 +3553,14 @@ msgid ""
 msgstr ""
 "\n"
 "    who password [address=<adreça>]\n"
-"        Mostra el llistat de subscriptors no ocults de la llista. El llistat està reservat als\n"
-"        subscriptors, per la qual cosa és necessari que indiqui la seva contrasenya de subscriptor\n"
-"        per a poder-lo rebre. Si està enviant la sol·licitud des d'una adreça distinta d'aquella amb la que\n"
-"        està subscrit, indiqui aquesta adreça de subscripció amb `address=<address>'\n"
-"        (¡sense angles als costats de l'adreça, i sense cometes!)\n"
+"        Mostra el llistat de subscriptors no ocults de la llista. El llistat \n"
+"        només el poden veure els subscriptors, per la qual cosa caldrà que \n"
+"        proporcioneu la vostra contrasenya de subscriptor per a obtenir-lo.\n"
+"        En cas que envieu la sol·licitud des d'una adreça diferent de la de\n"
+"        subscripció, l'haureu d'especificar a l'argument «address=<address>»\n"
+"        (sense angles als costats de l'adreça, i sense cometes!). Si \n"
+"        especifiqueu la contrasenya de l'administrador o moderador, també\n"
+"        s'hi mostraran els membres ocults.\n"
 
 #: Mailman/Commands/cmd_who.py:46
 msgid ""
@@ -3557,9 +3572,10 @@ msgid ""
 msgstr ""
 "\n"
 "    who password\n"
-"         Obté el llistat de subscriptors de la llista. El llistat està reservat\n"
-"         als administradors i moderadors de la mateixa; has d'eenviar la\n"
-"         contrasenya administrador o moderador per a obtenir el llistat.\n"
+"        Obté el llistat de subscriptors de la llista, el qual només el\n"
+"        podran rebre els administradors i moderadors d'aquesta. Per a\n"
+"        obtenir-lo, haureu d'introduir la contrasenya de l'administrador.\n"
+"        o del moderado.\n"
 
 #: Mailman/Commands/cmd_who.py:128
 msgid "You are not allowed to retrieve the list membership."
@@ -3571,11 +3587,11 @@ msgstr "Aquesta llista no té cap subscriptor."
 
 #: Mailman/Commands/cmd_who.py:148
 msgid "Non-digest (regular) members:"
-msgstr "Membres sense compilació (normals):"
+msgstr "Membres sense resum (normals):"
 
 #: Mailman/Commands/cmd_who.py:151
 msgid "Digest members:"
-msgstr "Membres amb compilació:"
+msgstr "Membres amb resum:"
 
 #: Mailman/Defaults.py:1367
 msgid "Arabic"
@@ -3733,7 +3749,7 @@ msgstr ""
 
 #: Mailman/Deliverer.py:71
 msgid " (Digest mode)"
-msgstr " (mode de compilació)"
+msgstr " (mode de resum)"
 
 #: Mailman/Deliverer.py:77
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
@@ -4436,11 +4452,11 @@ msgstr "Tipus MIME erroni ignorat: %(spectype)s"
 
 #: Mailman/Gui/Digest.py:36
 msgid "Digest options"
-msgstr "Opcions del resum"
+msgstr "Opcions del lliurament per resum"
 
 #: Mailman/Gui/Digest.py:44
 msgid "Batched-delivery digest characteristics."
-msgstr "Característiques del lliurament del resum."
+msgstr "Característiques del lliurament per resum."
 
 #: Mailman/Gui/Digest.py:47
 msgid "Can list members choose to receive list traffic bunched in digests?"
@@ -4452,7 +4468,7 @@ msgstr "Resum"
 
 #: Mailman/Gui/Digest.py:51
 msgid "Regular"
-msgstr "Regular"
+msgstr "Normal"
 
 #: Mailman/Gui/Digest.py:52
 msgid "Which delivery mode is the default for new users?"
@@ -4468,15 +4484,15 @@ msgstr "Text net"
 
 #: Mailman/Gui/Digest.py:56
 msgid "When receiving digests, which format is default?"
-msgstr "Quan rebent resums, quin es el format predeterminat?"
+msgstr "Quin voleu que sigui el format predeterminat de recepció de resums?"
 
 #: Mailman/Gui/Digest.py:59
 msgid "How big in Kb should a digest be before it gets sent out?"
-msgstr "Com de gran ha de ser el resum en Kb abans d'enviar-lo?"
+msgstr "De quina mida (en kb) ha de ser el resum en Kb abans que s'enviï?"
 
 #: Mailman/Gui/Digest.py:63
 msgid "Should a digest be dispatched daily when the size threshold isn't reached?"
-msgstr "Es deu lliurar el resum diàriament si el límit establitestablert en la grandària no s'ha excedit? "
+msgstr "Voleu que s'enviï el resum diàriament si la mida límit no s'ha assolit?"
 
 #: Mailman/Gui/Digest.py:67
 msgid "Header added to every digest"
@@ -4484,7 +4500,7 @@ msgstr "Capçalera afegida a cada resum"
 
 #: Mailman/Gui/Digest.py:68
 msgid "Text attached (as an initial message, before the table of contents) to the top of digests. "
-msgstr "Text a afegir (com un missatge inicial, abans de la taula de contingut) al principi dels resums."
+msgstr "Text a afegir (com a missatge inicial, abans de la taula de contingut) a l'inici dels resums. "
 
 #: Mailman/Gui/Digest.py:73
 msgid "Footer added to every digest"
@@ -4492,7 +4508,7 @@ msgstr "Peu de pàgina afegit a cada resum"
 
 #: Mailman/Gui/Digest.py:74
 msgid "Text attached (as a final message) to the bottom of digests. "
-msgstr "Text a afegir (com a missatge final) al final dels resums."
+msgstr "Text a afegir (com a missatge final) al final dels resums. "
 
 #: Mailman/Gui/Digest.py:80
 msgid "How often should a new digest volume be started?"
@@ -4504,33 +4520,35 @@ msgid ""
 "             incremented and the issue number is reset to 1."
 msgstr ""
 "Quan es comença un nou volum de resum, el nombre de volum\n"
-"            s'incrementa i el nombre d'enviament es posa a 1."
+"            s'incrementa i el nombre d'enviament es reinicialitza a 1."
 
 #: Mailman/Gui/Digest.py:85
 msgid "Should Mailman start a new digest volume?"
-msgstr "Hauria de començar Mailman un nou volum de resum?"
+msgstr "Voleu que el Mailman iniciï un volum de resum nou?"
 
 #: Mailman/Gui/Digest.py:86
 msgid ""
 "Setting this option instructs Mailman to start a new volume\n"
 "             with the next digest sent out."
 msgstr ""
-"Activant aquesta opció li dirà a Mailman que comenci un nou volum\n"
-"        quan s'enviï el següent missatge de resum."
+"Si activeu opció, el Mailman iniciarà un volum nou\n"
+"             amb el proper resum que s'enviï."
 
 #: Mailman/Gui/Digest.py:90
 msgid ""
 "Should Mailman send the next digest right now, if it is not\n"
 "             empty?"
-msgstr "Ha d'enviar Mailman el següent resum ara, si no és buit?"
+msgstr ""
+"Voleu que el Mailman enviï el resum següent ara mateix, en cas\n"
+"             que no sigui buit?"
 
 #: Mailman/Gui/Digest.py:145
 msgid ""
 "The next digest will be sent as volume\n"
 "            %(volume)s, number %(number)s"
 msgstr ""
-"El seüent resum s'enviarà com a volum\n"
-"            %(volume)s, nombre %(number)s"
+"El resum següent s'enviarà com a volum\n"
+"            %(volume)s, número %(number)s"
 
 #: Mailman/Gui/Digest.py:150
 msgid "A digest has been sent."
@@ -4538,7 +4556,7 @@ msgstr "Un resum ha estat enviat"
 
 #: Mailman/Gui/Digest.py:152
 msgid "There was no digest to send."
-msgstr "No hi havia resum per enviar"
+msgstr "No hi havia cap resum per a enviar."
 
 #: Mailman/Gui/GUIBase.py:169
 msgid "Invalid value for variable: %(property)s"
@@ -4546,7 +4564,7 @@ msgstr "Valor erroni de la variable: %(property)s"
 
 #: Mailman/Gui/GUIBase.py:173
 msgid "Bad email address for option %(property)s: %(val)s"
-msgstr "Adreça de correu electrònic errònia per la opció %(property)s: %(val)s"
+msgstr "Adreça de correu electrònic errònia per a la opció %(property)s: %(val)s"
 
 #: Mailman/Gui/GUIBase.py:199
 msgid ""
@@ -4582,19 +4600,19 @@ msgstr "Opcions Generals"
 
 #: Mailman/Gui/General.py:50
 msgid "Conceal the member's address"
-msgstr "Ocultar les adreces dels membres"
+msgstr "Oculta l'adreça del subscriptor"
 
 #: Mailman/Gui/General.py:51
 msgid "Acknowledge the member's posting"
-msgstr "Notificar l'enviament dels membres"
+msgstr "Confirma l'enviament del subscriptor"
 
 #: Mailman/Gui/General.py:52
 msgid "Do not send a copy of a member's own post"
-msgstr "No enviar una còpia a l'amo del missatge "
+msgstr "No enviïs una còpia dels enviaments propis dels subscriptors"
 
 #: Mailman/Gui/General.py:54
 msgid "Filter out duplicate messages to list members (if possible)"
-msgstr "Filtrar els missatges duplicats als membres de la llista(si és possible)"
+msgstr "Filtra els missatges duplicats als membres de la llista (si és possible)"
 
 #: Mailman/Gui/General.py:61
 msgid ""
@@ -4637,7 +4655,7 @@ msgid ""
 "             administrator addresses, each on separate line is okay."
 msgstr ""
 "Les adreces electròniques l'administrador de la llista.\n"
-"            Si en té més d'una, especifiqueu cadascuna en una línea separada."
+"            Si en té més d'una, especifiqueu cadascuna d'elles en una línea separada."
 
 #: Mailman/Gui/General.py:80
 msgid ""
@@ -5334,14 +5352,12 @@ msgstr ""
 "                        "
 
 #: Mailman/Gui/General.py:459
-#, fuzzy
 msgid ""
 "<b>admin_member_chunksize</b> attribute not\n"
 "            changed!  It must be an integer > 0."
 msgstr ""
-"atribut <b>real_name</b> no\n"
-"            canviat! s'ha de diferenciar del nom de la llista només\n"
-"            per les majúscules i minúscules."
+"No s'ha canviat l'atribut <b>admin_member_chunksize</b>.\n"
+"            Cal que sigui in enter més gran que 0."
 
 #: Mailman/Gui/General.py:469
 msgid ""
@@ -5415,8 +5431,8 @@ msgid ""
 "             prefix</a> even when it consists of only ASCII characters?"
 msgstr ""
 "Voleu que es codifiqui el\n"
-"             <a href=\"?VARHELP=general/subject_prefix\">prefix del\n"
-"             tema</a> tot i que consisteixi únicament de caràcters ASCII?"
+"             <a href=\"?VARHELP=general/subject_prefix\">prefix de\n"
+"             l'assumpte</a> fins i tot quan tots els seus caràcters siguin en ASCII?"
 
 #: Mailman/Gui/Language.py:95
 msgid ""
@@ -5721,15 +5737,15 @@ msgstr "Cap"
 
 #: Mailman/Gui/Privacy.py:59 Mailman/Gui/Privacy.py:82
 msgid "Confirm"
-msgstr "Confirma"
+msgstr "Confirmació"
 
 #: Mailman/Gui/Privacy.py:60 Mailman/Gui/Privacy.py:83
 msgid "Require approval"
-msgstr "Requereix aprovació"
+msgstr "Es requereix l'aprovació"
 
 #: Mailman/Gui/Privacy.py:61 Mailman/Gui/Privacy.py:84
 msgid "Confirm and approve"
-msgstr "Confirma i aprova"
+msgstr "Confirmació i aprovació"
 
 #: Mailman/Gui/Privacy.py:63 Mailman/Gui/Privacy.py:86
 msgid "What steps are required for subscription?<br>"
@@ -6084,7 +6100,6 @@ msgstr ""
 "             s'acceptaran automàticament."
 
 #: Mailman/Gui/Privacy.py:248
-#, fuzzy
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             accepted with no further moderation applied.  Add member\n"
@@ -6095,9 +6110,13 @@ msgid ""
 "             addresses will be accepted for this list."
 msgstr ""
 "Els enviaments de qualsevol d'aquests no subscriptors s'acceptaran \n"
-"            automàticamanet sense moderació.\n"
-"            Introdueix les adreces dels membres, una per línia; comença amb ^\n"
-"            per designar una expressió regular."
+"             automàticament sense necessitat de moderació. Afegiu una\n"
+"             adreça per línia, i inicieu la línia amb el caràcter ^ per\n"
+"             a indicar una coincidència amb un una expressió regular.\n"
+"             Les línies on hi aparegui el caràcter @ seguit del nom\n"
+"             d'una llista especifiquen una altra llista de correu del\n"
+"             Mailman daquest lloc, tots els membres de la qual s'acceptaran\n"
+"             per a aquesta llista."
 
 #: Mailman/Gui/Privacy.py:257
 msgid ""
@@ -6523,7 +6542,7 @@ msgstr ""
 
 #: Mailman/Gui/Topics.py:83
 msgid "Topic keywords, one per line, to match against each message."
-msgstr "Paraules clau de temes, una per línia, a cercar en els missatges."
+msgstr "Paraules clau dels temes, una per línia, a cercar en els missatges."
 
 #: Mailman/Gui/Topics.py:85
 msgid ""
@@ -6567,7 +6586,7 @@ msgstr "Serveis de passarel·la de correu a notícies i de notícies a correu."
 
 #: Mailman/Gui/Usenet.py:37
 msgid "News server settings"
-msgstr "Configuració del servidor de noticies"
+msgstr "Configuració del servidor de notícies"
 
 #: Mailman/Gui/Usenet.py:40
 msgid "The hostname of the machine your news server is running on."
@@ -6575,7 +6594,6 @@ msgstr ""
 "El nom de la màquina on s'executa el vostre servidor de notícies."
 
 #: Mailman/Gui/Usenet.py:41
-#, fuzzy
 msgid ""
 "This value may be either the name of your news server, or\n"
 "             optionally of the format name:port, where port is a port number.\n"
@@ -6585,10 +6603,13 @@ msgid ""
 "             recognize the machine this mailing list runs on as a machine\n"
 "             capable of reading and posting news."
 msgstr ""
-"El servidor de Noticies no es part de Mailman. Has de tenir\n"
-"             accés a un servidor NNTP, i aquest servidor NNTP ha de\n"
-"             reconeixer la màquina d'aquesta llista de correu com una màquina que\n"
-"             pot llegir i enviar noticies."
+"Aquest valor pot ser o bé el nom del vostre servidor de notícies, o bé\n"
+"             la cadena nom:port, on port especifica un número de port.\n"
+"\n"
+"             El servidor de notícies no és part del Mailman. Haureu de tenir\n"
+"             accés a un servidor NNTP existent, el qual haurà de reconèixer la\n"
+"             màquina on s'executa la llista de correu actual com a capaç\n"
+"             d'enviar i llegir notícies."
 
 #: Mailman/Gui/Usenet.py:50
 msgid "The name of the Usenet group to gateway to and/or from."
@@ -7011,7 +7032,7 @@ msgstr "Visiteu la llista de subscriptors"
 
 #: Mailman/HTMLFormatter.py:347
 msgid "Once a month, your password will be emailed to you as a reminder."
-msgstr "Una vegada al mes, la vostra contrasenya s'enviarà al vostre correu electrònic com a recordatori."
+msgstr "Una vegada al mes, se us enviarà la vostra contrasenya per correu electrònic com a recordatori."
 
 #: Mailman/HTMLFormatter.py:393
 msgid "The current archive"
@@ -7165,9 +7186,8 @@ msgid "The message's file extension was explicitly disallowed"
 msgstr "L'extensió de fitxer del missatge va ser explícitament prohibit"
 
 #: Mailman/Handlers/MimeDel.py:75
-#, fuzzy
 msgid "The message's file extension was not explicitly allowed"
-msgstr "El tipus de contingut del missatge no va ser explícitament permès"
+msgstr "L'extensió del missatge no està permesa de manera explícita"
 
 #: Mailman/Handlers/MimeDel.py:87
 msgid "After content filtering, the message was empty"
@@ -7237,11 +7257,11 @@ msgstr ""
 
 #: Mailman/Handlers/Scrubber.py:286
 msgid "no subject"
-msgstr "no hi ha tema"
+msgstr "sense assumpte"
 
 #: Mailman/Handlers/Scrubber.py:287
 msgid "no date"
-msgstr "no hi ha data"
+msgstr "sense data"
 
 #: Mailman/Handlers/Scrubber.py:288
 msgid "unknown sender"
@@ -8565,15 +8585,16 @@ msgstr ""
 "\n"
 
 #: bin/config_list:117
-#, fuzzy
 msgid ""
 "# -*- python -*-\n"
 "# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## \"%(listname)s\" configuració de la llista de correu -*- python -*-\n"
-"## capturat el %(when)s\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## Paràmetres de configuració de la llista de correu «%(listname)s»\n"
+"## registrats el %(when)s\n"
 
 #: bin/config_list:143
 msgid "options"
@@ -8581,15 +8602,15 @@ msgstr "opcions"
 
 #: bin/config_list:202
 msgid "legal values are:"
-msgstr "Els valors acceptats són:"
+msgstr "els valors permesos són:"
 
 #: bin/config_list:269
 msgid "attribute \"%(k)s\" ignored"
-msgstr "atribut \"%(k)s\" ignorat"
+msgstr "s'ha ignorat l' atribut «%(k)s»"
 
 #: bin/config_list:272
 msgid "attribute \"%(k)s\" changed"
-msgstr "atribut \"%(k)s\" canviat "
+msgstr "ha canviat l'atribut «%(k)s»"
 
 #: bin/config_list:278
 msgid "Non-standard property restored: %(k)s"
@@ -8672,9 +8693,8 @@ msgid "Ignoring held msg w/bad id: %(f)s"
 msgstr "S'ignorarà el missatge retingut que té una id incorrecta: %(f)s"
 
 #: bin/discard:112
-#, fuzzy
 msgid "Discarded held msg #%(id)s for list %(listname)s"
-msgstr "Subscriure a la llista %(listname)s"
+msgstr "S'ha descartat el missatge retingut #%(id)s de la llista %(listname)s"
 
 #: bin/dumpdb:19
 msgid ""
@@ -9122,10 +9142,9 @@ msgstr "No s'han trobat llistes de correu que coincideixin"
 
 #: bin/list_lists:109
 msgid "matching mailing lists found:"
-msgstr "Llistes de correu que coincideixen:"
+msgstr "llistes de correu coincidents:"
 
 #: bin/list_members:19
-#, fuzzy
 msgid ""
 "List all the members of a mailing list.\n"
 "\n"
@@ -9177,7 +9196,7 @@ msgid ""
 "first, followed by digest members, but no indication is given as to address\n"
 "status.\n"
 msgstr ""
-"Llistar tots els membres d'una llista de correu.\n"
+"Llista tots els subscriptors d'una llista de correu.\n"
 "\n"
 "Forma d'ús: %(PROGRAM)s [opcions] listname\n"
 "\n"
@@ -9185,37 +9204,50 @@ msgstr ""
 "\n"
 "    --output file\n"
 "    -o file\n"
-"        Escriu la sortida al fitxer especificat.\n"
+"        Escriu la sortida al fitxer especificat en lloc de la sortida estàndard.\n"
 "\n"
 "    --regular / -r\n"
-"        Mostrar només els membres regulars (no-resum).\n"
+"        Mostra només els subscriptors normals (sense lliurament per resum).\n"
 "\n"
-"    --digest[=kind] / -d [kind]\n"
-"        Mostrar només els membres de resum.  L'argument opcional pot ser \"mime\" o\n"
-"        \"plain\" que mostra només els membres que reben aquest tipus de resum.\n"
+"    --digest[=tipus] / -d [tipus]\n"
+"        Mostra només els membres amb lliurament per resum. L'argument opcional \n"
+"        pot tenir el valor «mime» o «plain», el qual farà que només es mostrin els \n"
+"        subscriptors amb el tipus de resum especificat.\n"
 "\n"
-"    --nomail[=why] / -n [why]\n"
-"        Mostrar els membres que tenen el lliurament desactivat. L'argument opcional pot ser\n"
-"        \"byadmin\", \"byuser\", \"bybounce\", or \"unknown\" que mostra només els membres que\n"
-"        tenen el lliurament desactivat per aquesta raó. També pot ser\n"
-"        \"enabled\" que només mostrarà els membres amb el liurament activat.\n"
+"    --nomail[=motiu] / -n [motiu]\n"
+"        Mostra els subscriptors que tenen el lliurament desactivat. L'argument \n"
+"        opcional pot tenir el valor «byadmin», «byuser», «bybounce», o bé «unknown»,\n"
+"        amb la qual cosa només es mostraran els subscriptors amb el lliurament\n"
+"        desactivat pel motiu especificat. També pot ser «enabled», cosa que farà\n"
+"        que només es mostrin els subscriptors amb el lliurament activat.\n"
 "\n"
 "    --fullnames / -f\n"
-"        Inclou els noms complets a la sortida.\n"
+"        Mostra els noms complets a la sortida.\n"
 "\n"
 "    --preserve\n"
 "    -p\n"
-"        Mostrar adreces de membres case preserved de la forma que van ser afegidas a la llista.\n"
-"        D'altra forma es mostren en minúscules.\n"
+"        Mostra les adreces dels subscriptors respectant les majúscules i minúscules\n"
+"        que s'utilitzaren en afegir-los a la llista.\n"
+"        En cas contrari, totes les adreces es mostraran en minúscules.\n"
+"\n"
+"    --invalid / -i\n"
+"        Mostra només les adreces de la llista de subscriptors que no són vàlides.\n"
+"        Aquesta opció ignorarà les altres opcions -r, -d, -n\n"
+"\n"
+"    --unicode / -u\n"
+"        Mostra les adreces que estan emmagatzemades com a objectes Unicode en lloc\n"
+"        d'estar-ho com a objectes de cadena normals. Aquesta opció ignorarà les\n"
+"        altres opcions -r, -d, -n\n"
 "\n"
 "    --help\n"
 "    -h\n"
-"        Mostrar aquest missatge i sortir.\n"
+"        Mostra aquest missatge i surt.\n"
 "\n"
-"    listname és el nom de la llista a fer servir.\n"
+"    listname és el nom de la llista a utilitzar.\n"
 "\n"
-"Nota que si no es fa servir l'argument -r ni el -d, primer es mostraràn els membres regulars,\n"
-"seguit dels membres de resum.\n"
+"Tingueu en compte que si no s'especifica cap dels arguments -r o -d, es mostraran\n"
+"primer ambdós subscriptors normals, seguits dels subscriptors amb resum, però no\n"
+"s'indicarà l'estat de l'adreça.\n"
 
 #: bin/list_members:191
 msgid "Bad --nomail option: %(why)s"
@@ -10077,9 +10109,8 @@ msgid "Removing %(msg)s"
 msgstr "Eliminant %(msg)s"
 
 #: bin/rmlist:80
-#, fuzzy
 msgid "%(listname)s %(msg)s not found as %(filename)s"
-msgstr "%(listname)s %(msg)s no trobat com %(dir)s"
+msgstr "No s'ha trobat el missatge %(msg)s de la llista %(listname)s com a fitxer %(filename)s"
 
 #: bin/rmlist:104
 msgid "No such list (or list already deleted): %(listname)s"
@@ -11009,20 +11040,19 @@ msgid ""
 "The lists named on the command line are bumped.  If no list names are given,\n"
 "all lists are bumped.\n"
 msgstr ""
-"Incrementar el nombre de volum i posar  el nombre de resum a un.\n"
+"Incrementa el número de volum de resum i reinicialitza el número de resum a 1.\n"
 "\n"
-"Forma d'ús: %(PROGRAM)s [opcions] [listname ...]\n"
+"Forma d'ús: %(PROGRAM)s [opcions] [nomdelallista ...]\n"
 "\n"
 "Opcions:\n"
 "\n"
 "    --help/-h\n"
 "        Mostra aquest missatge d'ajuda i surt.\n"
 "\n"
-"S'aplica a les llistes nomenades en la línia d'ordres.\n"
-"Si no es proporciona el nom de cap llista, s'aplica a totes.\n"
+"S'incrementaran totes les llistes especificades a la línia d'ordres. En cas que\n"
+"no s'especifiqui cap llista, s'incrementaran totes.\n"
 
 #: cron/checkdbs:19
-#, fuzzy
 msgid ""
 "Check for pending admin requests and mail the list owners if necessary.\n"
 "\n"
@@ -11033,11 +11063,10 @@ msgid ""
 "    -h/--help\n"
 "        Print this message and exit.\n"
 msgstr ""
-"Regenera els fitxers Postfix data/aliases i data/aliases.db.\n"
+"Comprova si hi ha sol·licituds d'administració pendents i notifica-ho als\n"
+"propietaris de la llista per correu en cas que sigui necessari.\n"
 "\n"
-"Forma d'ús:\n"
-"\n"
-"    genaliases [opcions]\n"
+"Forma d'ús: %(PROGRAM)s [opcions]\n"
 "\n"
 "Opcions:\n"
 "\n"
@@ -11054,7 +11083,7 @@ msgstr ""
 
 #: cron/checkdbs:120
 msgid "%(count)d %(realname)s moderator request(s) waiting"
-msgstr "%(count)d %(realname)s peticions de moderador en espera "
+msgstr "Hi ha %(count)d sol·licituds de moderació de la llista %(realname)s per processar"
 
 #: cron/checkdbs:123
 #, fuzzy
