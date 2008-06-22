@@ -209,8 +209,10 @@ class BounceRunner(Runner, BounceMixin):
             return
         # Is this a possible looping message sent directly to a list-bounces
         # address other than the site list?
-        # Use the From: because message may not have a unix_from.
-        if msg.get('from') == Utils.get_site_email(extra='bounces'):
+        # Check From: because unix_from might be VERP'd.
+        # Also, check the From: that Message.OwnerNotification uses.
+        if (msg.get('from') ==
+                Utils.get_site_email(mlist.host_name, 'bounces')):
             # Just send it to the sitelist-owner address.  If that bounces
             # we'll handle it above.
             outq.enqueue(msg, msgdata,
