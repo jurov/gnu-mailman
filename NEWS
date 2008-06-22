@@ -4,7 +4,7 @@ Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.11x (xx-Jun-2008)
+2.1.11rc2 (23-Jun-2008)
 
   New Features
 
@@ -14,6 +14,8 @@ Here is a history of user visible changes to Mailman.
       7 days) and BAD_SHUNT_ARCHIVE_DIRECTORY (default None) which determine
       how long to keep bad and shunt queue entries and optionally, where to
       archive removed entries.
+
+    - Prepended list name to bounce log unrecognized bounce messages.
 
   Bug fixes and other patches
 
@@ -76,6 +78,8 @@ Here is a history of user visible changes to Mailman.
 
     - Patched Danish message catalog for proper use of HTML entities per
       Jonas Smedegaard (1999966).
+
+    - Improved bounce loop detection and handling in BounceRunner.py.
 
   Miscellaneous
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -178,29 +178,45 @@ class BounceRunner(Runner, BounceMixin):
         #   who the message was destined for.  That make our job easy.
         # - the message could have been originally destined for a list owner,
         #   but a list owner address itself bounced.  That's bad, and for now
-        #   we'll simply log the problem and attempt to deliver the message to
-        #   the site owner.
-        # - the list owner could have set listname-bounces as the owner
-        #   address.  That's really bad as it results in a loop of ever
+        #   we'll simply attempt to deliver the message to the site list
+        #   owner.
+        #   Note that this means that automated bounce processing doesn't work
+        #   for the site list.  Because we can't reliably tell to what address
+        #   a non-VERP'd bounce was originally sent, we have to treat all
+        #   bounces sent to the site list as potential list owner bounces.
+        # - the list owner could have set list-bounces (or list-admin) as the
+        #   owner address.  That's really bad as it results in a loop of ever
         #   growing unrecognized bounce messages.  We detect this based on the
-        #   X-BeenThere header and handle it like a list owner bounce.  No
-        #   real bounce will have an X-BeenThere header for the list.
-        bts = [s.strip().lower() for s in msg.get_all('x-beenthere', [])]
-        if mlist.GetListEmail().lower() in bts:
-            bt = True
-        else:
-            bt = False
-        # All messages to list-owner@vdom.ain have their envelope sender set
-        # to site-owner@dom.ain (no virtual domain).  Is this a bounce for a
-        # message to a list owner, coming to the site owner, or an owner
-        # notice sent directly to the -bounces address?
-        if msg.get('to', '') == Utils.get_site_email(extra='owner') or bt:
+        #   fact that this message itself will be from the site bounces
+        #   address.  We then send this to the site list owner instead.
+        # Notices to list-owner have their envelope sender and From: set to
+        # the site-bounces address.  Check if this is this a bounce for a
+        # message to a list owner, coming to site-bounces, or a looping
+        # message sent directly to the -bounces address.  We have to do these
+        # cases separately, because sending to site-owner will reset the
+        # envelope sender.
+        # Is this a site list bounce?
+        if (mlist.internal_name().lower() ==
+                mm_cfg.MAILMAN_SITE_LIST.lower()):
             # Send it on to the site owners, but craft the envelope sender to
             # be the -loop detection address, so if /they/ bounce, we won't
             # get stuck in a bounce loop.
             outq.enqueue(msg, msgdata,
-                         recips=[Utils.get_site_email()],
+                         recips=mlist.owner,
                          envsender=Utils.get_site_email(extra='loop'),
+                         nodecorate=1,
+                         )
+            return
+        # Is this a possible looping message sent directly to a list-bounces
+        # address other than the site list?
+        # Use the From: because message may not have a unix_from.
+        if msg.get('from') == Utils.get_site_email(extra='bounces'):
+            # Just send it to the sitelist-owner address.  If that bounces
+            # we'll handle it above.
+            outq.enqueue(msg, msgdata,
+                         recips=[Utils.get_site_email(extra='owner')],
+                         envsender=Utils.get_site_email(extra='loop'),
+                         nodecorate=1,
                          )
             return
         # List isn't doing bounce processing?
@@ -227,8 +243,10 @@ class BounceRunner(Runner, BounceMixin):
         # If that still didn't return us any useful addresses, then send it on
         # or discard it.
         if not addrs:
-            syslog('bounce', 'bounce message w/no discernable addresses: %s',
-                   msg.get('message-id'))
+            syslog('bounce',
+                   '%s: bounce message w/no discernable addresses: %s',
+                   mlist.internal_name(),
+                   msg.get('message-id', 'n/a'))
             maybe_forward(mlist, msg)
             return
         # BAW: It's possible that there are None's in the list of addresses,
@@ -330,8 +348,12 @@ For more information see:
 """),
                              subject=_('Uncaught bounce notification'),
                              tomoderators=0)
-        syslog('bounce', 'forwarding unrecognized, message-id: %s',
+        syslog('bounce',
+               '%s: forwarding unrecognized, message-id: %s',
+               mlist.internal_name(),
                msg.get('message-id', 'n/a'))
     else:
-        syslog('bounce', 'discarding unrecognized, message-id: %s',
+        syslog('bounce',
+               '%s: discarding unrecognized, message-id: %s',
+               mlist.internal_name(),
                msg.get('message-id', 'n/a'))
