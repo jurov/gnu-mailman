@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -188,7 +188,7 @@ def process(mlist, msg, msgdata):
     #
     # Are we gatewaying to a moderated newsgroup and is this list the
     # moderator's address for the group?
-    if mlist.news_moderation == 2:
+    if mlist.gateway_to_news and mlist.news_moderation == 2:
         hold_for_approval(mlist, msg, msgdata, ModeratedNewsgroup)
 
 
