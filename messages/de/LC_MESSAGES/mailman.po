@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Fri Jun  6 11:25:34 2008\n"
-"PO-Revision-Date: 2008-04-30 23:35+0200\n"
+"PO-Revision-Date: 2008-06-23 22:21+0200\n"
 "Last-Translator: Peer Heinlein <p.heinlein@heinlein-support.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2022,8 +2022,7 @@ msgstr "Zurückgehaltene Nachricht verwerfen"
 msgid ""
 "The held message you were referred to has\n"
 "        already been handled by the list administrator."
-msgstr ""
-"Die zurückgehaltene Nachricht wurde bereits durch den Moderator bearbeitet!"
+msgstr "Die zurückgehaltene Nachricht wurde bereits durch den Moderator bearbeitet!"
 
 # Mailman/Cgi/confirm.py:571
 #: Mailman/Cgi/confirm.py:706
@@ -2505,6 +2504,11 @@ msgid ""
 "must have shell access to your Mailman server.\n"
 "             "
 msgstr ""
+"Die von Ihnen geänderte Webseite beinhaltet verdächtigen HTML-Code "
+"der das System anfällig für Cross-Site-Scripting-Attacken machen könnte. "
+"Ihre Änderung wurde darum *nicht* gespeichert. Wenn Sie wirklich diese "
+"Seite so speichern wollen, so benötigen Sie Shell-Zugriff auf den "
+"Mailman-Server um dort die Dateien direkt zu editieren."
 
 #: Mailman/Cgi/edithtml.py:169
 msgid "See "
@@ -2653,8 +2657,7 @@ msgstr "Authorisierung fehlgeschlagen."
 msgid ""
 "The list administrator may not view the other\n"
 "            subscriptions for this user."
-msgstr ""
-"Der Listenadministrator darf nicht anderen Abonnements eines Nutzers sehen. "
+msgstr "Der Listenadministrator darf nicht anderen Abonnements eines Nutzers sehen. "
 
 #: Mailman/Cgi/options.py:281 Mailman/Cgi/options.py:324
 #: Mailman/Cgi/options.py:452 Mailman/Cgi/options.py:668
@@ -3484,8 +3487,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_help.py:47
 msgid "You can access your personal options via the following url:"
-msgstr ""
-"Sie können Ihre persönlichen Einstellungen unter folgender Webadresse ändern:"
+msgstr "Sie können Ihre persönlichen Einstellungen unter folgender Webadresse ändern:"
 
 #: Mailman/Commands/cmd_info.py:17
 msgid ""
@@ -4109,7 +4111,6 @@ msgid ""
 msgstr ""
 
 #: Mailman/Commands/cmd_who.py:35
-#, fuzzy
 msgid ""
 "\n"
 "    who password [address=<address>]\n"
@@ -4129,7 +4130,9 @@ msgstr ""
 "        Wenn Sie von einer anderen als der eingetragenen E-Mailadresse aus\n"
 "        senden, können Sie mit `address=<address>' eine andere Adresse\n"
 "        angeben, für die dieses Kommando gelten soll (natürlich ohne Angabe\n"
-"        der spitzen Klammern und ohne Anführungszeichen!).\n"
+"        der spitzen Klammern und ohne Anführungszeichen!). "
+"        Wenn Sie über das Administrations- oder Moderationskennwort verfügen werden "
+"        auch unsichtbare Nutzer mit angezeigt.\n"
 
 #: Mailman/Commands/cmd_who.py:46
 msgid ""
@@ -5008,8 +5011,7 @@ msgstr ""
 msgid ""
 "Action to take when a message matches the content filtering\n"
 "             rules."
-msgstr ""
-"Aktion die ausgelöst wird, wenn eine Nachricht auf die Filterregeln zutrifft."
+msgstr "Aktion die ausgelöst wird, wenn eine Nachricht auf die Filterregeln zutrifft."
 
 #: Mailman/Gui/ContentFilter.py:130
 msgid ""
@@ -5098,8 +5100,7 @@ msgstr "Wie groß (in KB) soll eine Sammlung vor dem Verschicken werden?"
 
 # Mailman/Gui/Digest.py:52
 #: Mailman/Gui/Digest.py:63
-msgid ""
-"Should a digest be dispatched daily when the size threshold isn't reached?"
+msgid "Should a digest be dispatched daily when the size threshold isn't reached?"
 msgstr "Sammlung täglich schicken wenn die Größe nicht erreicht wird?"
 
 # Mailman/Gui/Digest.py:56
@@ -5531,7 +5532,6 @@ msgstr ""
 
 # Mailman/Gui/General.py:154
 #: Mailman/Gui/General.py:175
-#, fuzzy
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5573,7 +5573,7 @@ msgid ""
 "             list."
 msgstr ""
 "Diese Option steuert, was Mailman mit dem <tt>Reply-To:</tt> Header "
-"anstellt, wenn eine durchrauschende Nachricht einen solchen enthält. Wenn "
+"anstellt, wenn eine empfangene E-Mail einen solchen enthält. Wenn "
 "diese Option auf <em>Absender</em> gesetzt ist, wird kein <tt>Reply-To:</tt> "
 "Header hinzugefügt und auch kein bereits enthaltener Header entfernt. Setzen "
 "Sie diesen Wert hingegen auf entweder <em>Diese Liste</em> oder "
@@ -5583,17 +5583,14 @@ msgstr ""
 "der Option <a href=\"?VARHELP=general/reply_to_address\"> Antwort an "
 "Adresse</a> ein).\n"
 "  <p>Es gibt viele Gründe, den <tt>Reply-To:</tt> Header unberührt zu "
-"lassen. Einer davon ist, das einige Benutzer selbst vom Wert des <tt>Reply-"
-"To:</tt> Header abhängen, da sie damit ihre korrekte Rücksendeadresse "
+"lassen. Einer davon ist, das einige Benutzer Wert auf ihren eigenen <tt>Reply-"
+"To:</tt> Header ahaben, da sie damit ihre gewünschte Rücksendeadresse "
 "übermitteln. Ein weiterer Grund ist, dass es ein modifizierter <tt>Reply-To:"
 "</tt> Header es viel schwieriger macht, private E-Mailantworten zu "
-"verschicken. Siehe hier zu die Diskussion auf: <a href=\"http://www.unicom."
-"com/pw/reply-to-harmful.html\"> Reply-To Munging Considered Harmful</a>. Und "
-"um sich vom Gegenteil zu überzeugen, siehe: <a href=\"http://www.metasystema."
-"org/essays/reply-to-useful.mhtml\"> Reply-To Munging Considered Useful</a>. "
+"verschicken. Siehe hier zu die Diskussion auf: <a href=\"http://www.unicom.com/pw/reply-to-harmful.html\"> Reply-To Munging Considered Harmful</a>. Gegenteilige Ansichten finden Sie auf <a href=\"http://www.metasystema.net/essays/reply-to.mhtml\"> Reply-To Munging Considered Useful</a>. "
 "Soweit dazu....\n"
 " <p>Einige Mailinglisten laufen mit eingeschränkten Nutzungsrechten, "
-"begleitet von einer parallelen Liste für Diskussionszwecke. beispiele "
+"begleitet von einer parallelen Liste für Diskussionszwecke. Beispiele "
 "hierfür sind `patches' oder `checkin' Listen, auf denen Software-Änderungen "
 "über ein Versions-Kontrollsystem veröffentlicht werden, aber die "
 "Diskussionen über die Änderungen auf einer Entwicklerliste stattfinden. Um "
@@ -5755,8 +5752,7 @@ msgstr ""
 msgid ""
 "List-specific text prepended to new-subscriber welcome\n"
 "             message"
-msgstr ""
-"Listenspezifischen Text zum Willkommensgruss für neue Abonnenten hinzufügen"
+msgstr "Listenspezifischen Text zum Willkommensgruss für neue Abonnenten hinzufügen"
 
 # Mailman/Gui/General.py:127
 #: Mailman/Gui/General.py:278
@@ -6080,6 +6076,12 @@ msgid ""
 "mlist.info.\n"
 "                        "
 msgstr ""
+"Die von Ihnen geänderte Attribut <b>Info</b> beinhaltet verdächtigen HTML-Code "
+"der das System anfällig für Cross-Site-Scripting-Attacken machen könnte. "
+"Ihre Änderung wurde darum *nicht* gespeichert. Wenn Sie wirklich dieses "
+"Attribut so speichern wollen, so benötigen Sie Shell-Zugriff auf den "
+"Mailman-Server. Sie können die Änderung dann dort mit bin/withlist oder "
+"bin/config_list im Feld mlist.info vornehmen."
 
 # Mailman/Cgi/admin.py:1188
 #: Mailman/Gui/General.py:459
@@ -6170,8 +6172,7 @@ msgid ""
 "Encode the\n"
 "             <a href=\"?VARHELP=general/subject_prefix\">subject\n"
 "             prefix</a> even when it consists of only ASCII characters?"
-msgstr ""
-"Soll der Betreff MIME-kodiert werden, auch wenn er nur ASCII-Zeichen enthält?"
+msgstr "Soll der Betreff MIME-kodiert werden, auch wenn er nur ASCII-Zeichen enthält?"
 
 #: Mailman/Gui/Language.py:95
 msgid ""
@@ -6254,8 +6255,7 @@ msgstr "Verhalten in Sachen Datenverkehr bei sofortiger Mailzustellung."
 msgid ""
 "Can subscribers choose to receive mail immediately, rather\n"
 "             than in batched digests?"
-msgstr ""
-"Haben Abonnenten die Wahl, ob sie E-Mails sofort statt stapelweise erhalten?"
+msgstr "Haben Abonnenten die Wahl, ob sie E-Mails sofort statt stapelweise erhalten?"
 
 #: Mailman/Gui/NonDigest.py:53
 msgid "Full Personalization"
@@ -6400,22 +6400,19 @@ msgstr "Kopfzeile, die E-Mails an reguläre Listenmitglieder hinzugefügt wird"
 msgid ""
 "Text prepended to the top of every immediately-delivery\n"
 "             message. "
-msgstr ""
-"Der Text wurde am Beginn jeder sofort zuzustellenden Nachricht eingefügt. "
+msgstr "Der Text wurde am Beginn jeder sofort zuzustellenden Nachricht eingefügt. "
 
 # Mailman/Gui/NonDigest.py:47
 #: Mailman/Gui/NonDigest.py:134
 msgid "Footer added to mail sent to regular list members"
-msgstr ""
-"Fusszeile, die an E-Mails an reguläre Listenmitglieder hinzugefügt wird"
+msgstr "Fusszeile, die an E-Mails an reguläre Listenmitglieder hinzugefügt wird"
 
 # Mailman/Gui/NonDigest.py:48
 #: Mailman/Gui/NonDigest.py:135
 msgid ""
 "Text appended to the bottom of every immediately-delivery\n"
 "             message. "
-msgstr ""
-"Der Text wurde ans Ende jeder sofort zuzustellenden Nachricht hinzugefügt. "
+msgstr "Der Text wurde ans Ende jeder sofort zuzustellenden Nachricht hinzugefügt. "
 
 #: Mailman/Gui/NonDigest.py:141
 msgid "Scrub attachments of regular delivery message?"
@@ -7402,8 +7399,7 @@ msgstr ""
 # Mailman/Gui/Topics.py:70
 #: Mailman/Gui/Topics.py:83
 msgid "Topic keywords, one per line, to match against each message."
-msgstr ""
-"Stichwörter (eines pro Zeile), nach denen in jeder Nachricht gesucht wird."
+msgstr "Stichwörter (eines pro Zeile), nach denen in jeder Nachricht gesucht wird."
 
 # Mailman/Gui/Topics.py:72
 #: Mailman/Gui/Topics.py:85
@@ -7671,8 +7667,7 @@ msgstr "; es wurde aus unbekannten Gründen deaktiviert"
 # Mailman/HTMLFormatter.py:133
 #: Mailman/HTMLFormatter.py:146
 msgid "Note: your list delivery is currently disabled%(reason)s."
-msgstr ""
-"Hinweis: die Zustellung von Nachrichten ist momentan abgeschaltet%(reason)s."
+msgstr "Hinweis: die Zustellung von Nachrichten ist momentan abgeschaltet%(reason)s."
 
 # Mailman/HTMLFormatter.py:135
 #: Mailman/HTMLFormatter.py:149
@@ -7881,8 +7876,7 @@ msgstr "(<i>%(which)s ist nur für die Abonnenten der Liste zugänglich.</i>)"
 msgid ""
 "(<i>%(which)s is only available to the list\n"
 "            administrator.</i>)"
-msgstr ""
-"(<i>%(which)s ist alleine für den Administrator der Liste einsehbar.</i>)"
+msgstr "(<i>%(which)s ist alleine für den Administrator der Liste einsehbar.</i>)"
 
 # Mailman/HTMLFormatter.py:257
 #: Mailman/HTMLFormatter.py:286
@@ -7927,8 +7921,7 @@ msgstr " <p>Geben Sie Ihre "
 # Mailman/HTMLFormatter.py:274
 #: Mailman/HTMLFormatter.py:304
 msgid " and password to visit  the subscribers list: <p><center> "
-msgstr ""
-" und das Passwort ein, um die Liste der Abonnenten einzusehen: <p><center> "
+msgstr " und das Passwort ein, um die Liste der Abonnenten einzusehen: <p><center> "
 
 # Mailman/HTMLFormatter.py:279
 #: Mailman/HTMLFormatter.py:309
@@ -8134,8 +8127,7 @@ msgstr "Der MIME-Typ der Nachricht wurde vom Moderator nicht erlaubt."
 
 #: Mailman/Handlers/MimeDel.py:72
 msgid "The message's file extension was explicitly disallowed"
-msgstr ""
-"Die Datei-Endung des Attachments  wurde vom Moderator ausdrücklich verboten."
+msgstr "Die Datei-Endung des Attachments  wurde vom Moderator ausdrücklich verboten."
 
 #: Mailman/Handlers/MimeDel.py:75
 msgid "The message's file extension was not explicitly allowed"
@@ -8510,8 +8502,7 @@ msgstr " von %(remote)s"
 # Mailman/MailList.py:649
 #: Mailman/MailList.py:916
 msgid "subscriptions to %(realname)s require moderator approval"
-msgstr ""
-"Das Abonnieren von %(realname)s erfordert die Bestätigung des Moderators"
+msgstr "Das Abonnieren von %(realname)s erfordert die Bestätigung des Moderators"
 
 # Mailman/MailList.py:711 bin/add_members:258
 #: Mailman/MailList.py:985 bin/add_members:245
@@ -8531,8 +8522,7 @@ msgstr "%(realname)s Abbestellungbenachrichtigung"
 # Mailman/MailList.py:860
 #: Mailman/MailList.py:1214
 msgid "subscriptions to %(name)s require administrator approval"
-msgstr ""
-"Das Abonnieren von %(name)s erfordert die Bestätigung des Aministrators"
+msgstr "Das Abonnieren von %(name)s erfordert die Bestätigung des Aministrators"
 
 #: Mailman/MailList.py:1477
 msgid "Last autoresponse notification for today"
@@ -8741,10 +8731,8 @@ msgid "Server Local Time"
 msgstr "Lokale Serverzeit"
 
 #: Mailman/i18n.py:146
-msgid ""
-"%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
-msgstr ""
-"%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
+msgid "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
+msgstr "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 
 #: bin/add_members:26
 msgid ""
@@ -10982,11 +10970,9 @@ msgstr "Das Passwort für die Liste darf nicht leer sein"
 
 #: bin/newlist:229
 msgid "Hit enter to notify %(listname)s owner..."
-msgstr ""
-"Enter drücken, um den Besitzer der Liste %(listname)s zu benachrichtigen..."
+msgstr "Enter drücken, um den Besitzer der Liste %(listname)s zu benachrichtigen..."
 
 #: bin/qrunner:20
-#, fuzzy
 msgid ""
 "Run one or more qrunners, once or repeatedly.\n"
 "\n"
@@ -11052,14 +11038,14 @@ msgid ""
 "Note also that this script should be started up from mailmanctl as a normal\n"
 "operation.  It is only useful for debugging if it is run separately.\n"
 msgstr ""
-"Startet einmalig oder wiederholt einen oder mehrere qrunner.\n"
+"Startet einmalig oder wiederholt einen oder mehrere qrunner-Prozesse.\n"
 "\n"
 "Jede angegebene Klasse wird im Round-Robin-Verfahren ausgeführt. Mit "
 "anderen\n"
 "Worten, der erste Runner wird alle Dateien in seinem Verzeichis "
 "verarbeiten,\n"
 "der nächste Runner verarbeitet die Dateien in seinem Verzeichnis, usw.\n"
-"Die Anzahl der Iterationen kann auf der Kommandozeile angegeben werden.\n"
+"Die Anzahl der Durchläufe kann auf der Kommandozeile angegeben werden.\n"
 "\n"
 "Benutzung: %(PROGRAM)s [optionen]\n"
 "\n"
@@ -11077,9 +11063,9 @@ msgstr ""
 "        Wenn Sie die slice:range Option benutzen, stellen Sie besser "
 "sicher,\n"
 "        dass jedem qrunner einer Queue derselbe range-Wert zugewiesen wird.\n"
-"        Fehlwertseitig wird der Wert 1:1 benutzte.\n"
+"        Per Default wird der Wert 1:1 benutzte.\n"
 "\n"
-"        Es können mehrere r-Optionen angegeben werden. In diesem Fall wird\n"
+"        Es kann mehrmals die Option \"-r\" angegeben werden. In diesem Fall wird\n"
 "        jeder qrunner genau einmal im Round-Robin-Verfahren gestartet.\n"
 "        Der besondere Runner `All' ist ein Alias für alle von der Option -l\n"
 "        gelisteten.\n"
@@ -11094,7 +11080,7 @@ msgstr ""
 "        Auflistung aller verfügbaren qrunner-Namen.\n"
 "\n"
 "    -v/--verbose\n"
-"        Sei etwas mitteilsamer in Bezug auf Logdatei-Meldungen.\n"
+"        Sorgt für ausführliche Logmeldungen.\n"
 "\n"
 "    -s/--subproc\n"
 "        Sollte nur vom mailmanctl-Startscript benutzt werden. Diese\n"
@@ -11104,8 +11090,10 @@ msgstr ""
 "    -h/--help\n"
 "        Ausgabe dieser Meldung und Schluss.\n"
 "\n"
-"Die Angabe des runners ist erforderlich, ausser bei Angabe der Optionen\n"
-"-l und -h. Runner muss einer der von der Option -l gelisteten Namen sein.\n"
+"Die Angabe von \"runners\" ist erforderlich, solange nicht die Optionen\n"
+"-l oder -h genutzt werden. \"runner\" muss ein von der Option -l gelisteter Namen sein.\n"
+"\n"
+"Dieses Script wird auch von \"mailmanctl\" im Rahmen des ganz normalen Betriebs aufgerufen.\n"
 
 #: bin/qrunner:178
 msgid "%(name)s runs the %(runnername)s qrunner"
@@ -11153,7 +11141,6 @@ msgid ""
 msgstr ""
 
 #: bin/remove_members:20
-#, fuzzy
 msgid ""
 "Remove members from a list.\n"
 "\n"
@@ -11236,7 +11223,6 @@ msgstr ""
 "    listenname ist der Name der Mailingliste, die benutzt werden soll.\n"
 "\n"
 "    adresse1 ... Adresse(n), die entfernt werden sollen.\n"
-"\n"
 
 #: bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
@@ -11653,7 +11639,6 @@ msgid "scan the po file comparing msgids with msgstrs"
 msgstr ""
 
 #: bin/unshunt:20
-#, fuzzy
 msgid ""
 "Move a message from the shunt queue to the original queue.\n"
 "\n"
@@ -11678,8 +11663,11 @@ msgstr ""
 "    -h / --help\n"
 "        Gibt diese Hilfe aus.\n"
 "\n"
-"Optional: Durch `directory' kann ein anderes Verzeichnis als gfiles/shunt "
-"angegeben werden.\n"
+"Optional: Durch `directory' kann ein anderes Verzeichnis als qfiles/shunt "
+"angegeben werden.  *** Warnung ***: Wenden Sie dieses Programm "
+"keinesfalls auf Nachrichten an, die gar nicht in der \"shunt-Queue\" waren. "
+"Wird dieses Kommando beispielsweise auf qfiles/out angewandt, so "
+"droht der Verlust aller Daten in dieser Queue.\n"
 
 #: bin/unshunt:85
 msgid ""
@@ -11807,8 +11795,7 @@ msgid ""
 "        %(o_pri_mbox_file)s\n"
 "    to\n"
 "        %(newname)s"
-msgstr ""
-"unbekannte Datei im Weg, verschiebe %(o_pri_mbox_file)s nach %(newname)s"
+msgstr "unbekannte Datei im Weg, verschiebe %(o_pri_mbox_file)s nach %(newname)s"
 
 #: bin/update:302 bin/update:325
 msgid ""
@@ -11829,8 +11816,7 @@ msgid ""
 "        %(o_pub_mbox_file)s\n"
 "    to\n"
 "        %(newname)s"
-msgstr ""
-"    unbekannte Datei im Weg, verschiebe %(o_pub_mbox_file)s nach %(newname)s"
+msgstr "    unbekannte Datei im Weg, verschiebe %(o_pub_mbox_file)s nach %(newname)s"
 
 #: bin/update:357
 msgid "- This list looks like it might have <= b4 list templates around"
@@ -12656,3 +12642,4 @@ msgstr ""
 "    --listname=listname\n"
 "        Sendet den digest nur für die angegebene Liste aus. Fehlt diese\n"
 "        Option, werden die digests aller Listen rausgeschickt!\n"
+
