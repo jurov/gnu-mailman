@@ -688,6 +688,7 @@ class HyperArchive(pipermail.T):
                  "archivedate": quotetime(self.archivedate),
                  "listinfo": mlist.GetScriptURL('listinfo', absolute=1),
                  "version": self.version,
+                 "listname": html_quote(mlist.real_name, self.lang),
                  }
             i = {"thread": _("thread"),
                  "subject": _("subject"),
