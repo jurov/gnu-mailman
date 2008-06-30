@@ -475,6 +475,12 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         assert name == name.lower(), 'List name must be all lower case.'
         if Utils.list_exists(name):
             raise Errors.MMListAlreadyExistsError, name
+        # Problems and potential attacks can occur if the list name in the
+        # pipe to the wrapper in an MTA alias or other delivery process
+        # contains shell special characters so allow only defined characters
+        # (default = '[-+_.=a-z0-9]').
+        if len(re.sub(mm_cfg.ACCEPTABLE_LISTNAME_CHARACTERS, '', name)) > 0:
+            raise Errors.BadListNameError, name
         # Validate what will be the list's posting address.  If that's
         # invalid, we don't want to create the mailing list.  The hostname
         # part doesn't really matter, since that better already be valid.

@@ -109,6 +109,11 @@ ALLOW_SITE_ADMIN_COOKIES = No
 # name of the temporary file that the program should operate on.
 HTML_TO_PLAIN_TEXT_COMMAND = '/usr/bin/lynx -dump %(filename)s'
 
+# A Python regular expression character class which defines the characters
+# allowed in list names.  Lists cannot be created with names containing any
+# character that doesn't match this class.
+ACCEPTABLE_LISTNAME_CHARACTERS = '[-+_.=a-z0-9]'
+
 
 
 #####

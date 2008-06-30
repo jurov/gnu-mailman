@@ -4,7 +4,7 @@ Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.11rc2 (23-Jun-2008)
+2.1.11 (30-Jun-2008)
 
   New Features
 
@@ -16,6 +16,14 @@ Here is a history of user visible changes to Mailman.
       archive removed entries.
 
     - Prepended list name to bounce log unrecognized bounce messages.
+
+    - Added a new Defaults.py|mm_cfg.py setting ACCEPTABLE_LISTNAME_CHARACTERS
+      with default value '[-+_.=a-z0-9]'.  This Python regular expression
+      character class specifies the characters allowed in list names.  The
+      motivation for this is the fact that previously, a list named, e.g.,
+      xxx&yyy could be created and MTA aliases generated that would cause
+      The MTA to execute yyy as a command.  There is a possible security issue
+      here, but it is not believed to be exploitable in any meaningful way.
 
   Bug fixes and other patches
 
