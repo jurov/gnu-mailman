@@ -11,7 +11,7 @@
 %DVIPSWebPage: (www.radicaleye.com)
 %DVIPSCommandLine: dvips -N0 -o mailman-install.ps mailman-install
 %DVIPSParameters: dpi=600
-%DVIPSSource:  TeX output 2008.04.21:1057
+%DVIPSSource:  TeX output 2008.06.29:1653
 %%BeginProcSet: tex.pro 0 0
 %!
 /TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
@@ -363,8 +363,8 @@ TeXDict begin
 %%Page: 1 1
 TeXDict begin 1 0 bop 0 83 3901 9 v 700 357 a Fz(GNU)57
 b(Mailman)g(-)g(Installation)h(Man)n(ual)3368 504 y Fy(Release)30
-b(2.1)3153 859 y Fx(Barr)t(y)i(W)-5 b(arsa)n(w)3413 1213
-y Fw(April)20 b(21,)g(2008)3229 1360 y Fv(barr)r(y)g(\(at\))g(list)g
+b(2.1)3153 859 y Fx(Barr)t(y)i(W)-5 b(arsa)n(w)3436 1213
+y Fw(June)20 b(29,)g(2008)3229 1360 y Fv(barr)r(y)g(\(at\))g(list)g
 (dot)g(org)1811 1581 y Fu(Abstract)208 1732 y Ft(This)30
 b(document)j(describes)f(ho)n(w)g(to)f(install)f(GNU)h(Mailman)h(on)f
 (a)g(POSIX-based)g(system)h(such)g(as)h(U)t Fs(N)t(I)t(X)r
@@ -1215,61 +1215,62 @@ TeXDict begin 12 11 bop 326 174 a Fk(#)45 b(Handle)e(all)i(addresses)e
 (-bounces+)1717 827 y(*)1805 814 y(:)h(\\)819 905 y(-confirm+)1224
 918 y(*)1312 905 y(:)g(-join)f(:)h(-leave)e(:)i(\\)819
 996 y(-owner)f(:)h(-request)e(:)i(-admin)416 1088 y(transport)e(=)i
-(mailman_transport)0 1500 y Fo(Router)23 b(f)n(or)g(Exim)g(4)0
+(mailman_transport)0 1499 y Fo(Router)23 b(f)n(or)g(Exim)g(4)0
 1702 y Fw(In)f(Exim)f(4,)h(there')-5 b(s)22 b(no)f(such)h(thing)f(as)h
 (directors)f(\226)h(you)f(need)g(to)h(add)f(a)i(ne)n(w)e(router)g
 (instead.)30 b(Also,)22 b(the)g(canonical)e(order)h(of)h(the)0
 1802 y(con\002guration)f(\002le)j(w)o(as)h(changed)d(so)i(routers)f
 (come)g(before)f(transports,)i(so)g(the)f(router)g(for)g(Exim)g(4)h
-(comes)g(\002rst)g(here.)35 b(Put)24 b(this)0 1902 y(router)19
+(comes)g(\002rst)g(here.)35 b(Put)24 b(this)0 1901 y(router)19
 b(some)n(where)g(after)h(the)g(\223be)o(gin)f(routers\224)g(line)h(of)g
 (your)f(con\002g)g(\002le,)i(and)f(remember)e(that)i(order)f(matters.)
 326 2140 y Fk(mailman_router:)416 2231 y(driver)43 b(=)i(accept)416
-2323 y(require_files)d(=)j(MAILMAN_HOME/lists/$local_part/config.)o
+2322 y(require_files)d(=)j(MAILMAN_HOME/lists/$local_part/config.)o
 (pck)416 2414 y(local_part_suffix_optional)416 2505 y
-(local_part_suffix)d(=)i(-bounces)g(:)g(-bounces+)2210
-2518 y(*)2298 2505 y(:)h(\\)1312 2597 y(-confirm+)1717
-2610 y(*)1805 2597 y(:)g(-join)f(:)h(-leave)e(:)i(\\)1312
-2688 y(-owner)f(:)h(-request)e(:)i(-admin)416 2779 y(transport)e(=)i
-(mailman_transport)0 3191 y Fo(T)-10 b(r)o(anspor)s(ts)22
-b(f)n(or)h(Exim)g(4)0 3394 y Fw(The)f(transport)e(for)i(Exim)f(4)i(is)g
+(local_part_suffix)d(=)i(-admin)g(:)h(-bounces)e(:)i(-bounces+)2614
+2518 y(*)2702 2505 y(:)g(\\)1312 2596 y(-confirm)f(:)g(-confirm+)2210
+2609 y(*)2298 2596 y(:)h(\\)1312 2688 y(-join)f(:)h(-leave)f(:)g(\\)
+1312 2779 y(-owner)g(:)h(-request)e(:)i(\\)1312 2870
+y(-subscribe)e(:)i(-unsubscribe)416 2961 y(transport)e(=)i
+(mailman_transport)0 3373 y Fo(T)-10 b(r)o(anspor)s(ts)22
+b(f)n(or)h(Exim)g(4)0 3576 y Fw(The)f(transport)e(for)i(Exim)f(4)i(is)g
 (the)f(same)g(as)h(for)e(Exim)h(3)g(\(see)g(6.2;)g(just)h(cop)o(y)e
 (the)h(transport)f(gi)n(v)o(en)g(abo)o(v)o(e)f(to)i(some)n(where)f
-(under)0 3494 y(the)f(\223be)o(gin)f(transports\224)g(line)h(of)g(your)
-f(Exim)h(con\002g)f(\002le.)0 3762 y Fo(Additional)26
-b(notes)0 3965 y Fw(Exim)g(should)f(be)i(con\002gured)d(to)i(allo)n(w)h
+(under)0 3676 y(the)f(\223be)o(gin)f(transports\224)g(line)h(of)g(your)
+f(Exim)h(con\002g)f(\002le.)0 3944 y Fo(Additional)26
+b(notes)0 4147 y Fw(Exim)g(should)f(be)i(con\002gured)d(to)i(allo)n(w)h
 (reasonable)e(v)n(olume)g(\226)h(e.g.)44 b(don')o(t)24
-b(set)k Fq(max)p 2597 3965 25 4 v 29 w(r)m(ecipients)e
+b(set)k Fq(max)p 2597 4147 25 4 v 29 w(r)m(ecipients)e
 Fw(do)n(wn)g(to)g(a)h(silly)g(v)n(alue)f(\226)g(and)0
-4064 y(with)21 b(normal)e(de)o(grees)h(of)g(security)g(\226)h
+4246 y(with)21 b(normal)e(de)o(grees)h(of)g(security)g(\226)h
 (speci\002cally)-5 b(,)20 b(be)h(sure)f(to)h(allo)n(w)g(relaying)e
 (from)g(127.0.0.1,)f(b)n(ut)j(pretty)e(much)h(nothing)f(else.)0
-4164 y(P)o(arallel)g(deli)n(v)o(eries)g(and)g(other)f(tweaks)i(can)f
+4346 y(P)o(arallel)g(deli)n(v)o(eries)g(and)g(other)f(tweaks)i(can)f
 (also)h(be)f(used)g(if)h(you)e(lik)o(e;)i(e)o(xperiment)e(with)h(your)f
-(setup)i(to)f(see)h(what)f(w)o(orks.)25 b(Delay)0 4264
+(setup)i(to)f(see)h(what)f(w)o(orks.)25 b(Delay)0 4445
 y(w)o(arning)17 b(messages)g(should)g(be)h(switched)f(of)n(f)g(or)h
 (con\002gured)d(to)j(only)f(happen)f(for)h(non-list)g(mail,)h(unless)g
-(you)f(lik)o(e)g(recei)n(ving)g(tons)0 4363 y(of)j(mail)g(when)g(some)g
-(random)e(host)i(is)i(do)n(wn.)0 4632 y Fo(Prob)n(lems)125
-4821 y Fd(\017)41 b Fw(Mailman)26 b(will)i(send)f(as)h(man)o(y)e
+(you)f(lik)o(e)g(recei)n(ving)g(tons)0 4545 y(of)j(mail)g(when)g(some)g
+(random)e(host)i(is)i(do)n(wn.)0 4813 y Fo(Prob)n(lems)125
+5001 y Fd(\017)41 b Fw(Mailman)26 b(will)i(send)f(as)h(man)o(y)e
 Fl(MAIL)49 b(FROM)p Fw(/)p Fl(RCPT)g(TO)27 b Fw(as)h(it)g(needs.)45
 b(It)28 b(may)f(result)g(in)g(more)g(than)g(10)f(or)h(100)g(mes-)208
-4920 y(sages)h(sent)g(in)g(one)f(connection,)g(which)g(will)i(e)o
+5101 y(sages)h(sent)g(in)g(one)f(connection,)g(which)g(will)i(e)o
 (xceed)d(the)i(def)o(ault)f(v)n(alue)g(of)h(Exim')-5
-b(s)27 b Fq(smtp)p 2997 4920 V 30 w(accept)p 3245 4920
-V 29 w(queue)p 3474 4920 V 28 w(per)p 3613 4920 V 29
-w(connec-)208 5020 y(tion)f Fw(v)n(alue.)44 b(This)26
+b(s)27 b Fq(smtp)p 2997 5101 V 30 w(accept)p 3245 5101
+V 29 w(queue)p 3474 5101 V 28 w(per)p 3613 5101 V 29
+w(connec-)208 5201 y(tion)f Fw(v)n(alue.)44 b(This)26
 b(is)i(bad)e(because)g(it)i(will)f(cause)g(Exim)f(to)h(switch)g(into)f
 (queue)f(mode)h(and)g(se)n(v)o(erely)g(delay)g(deli)n(v)o(ery)f(of)208
-5119 y(your)g(list)i(messages.)45 b(The)26 b(w)o(ay)g(to)h(\002x)g
+5300 y(your)g(list)i(messages.)45 b(The)26 b(w)o(ay)g(to)h(\002x)g
 (this)g(is)g(to)g(set)g(Mailman')-5 b(s)27 b Fq(SMTP)p
-2458 5119 V 29 w(MAX)p 2658 5119 V 30 w(SESSIONS)p 3050
-5119 V 27 w(PER)p 3230 5119 V 29 w(CONNECTION)34 b Fw(\(in)208
-5219 y(`)p Fj($)p Fq(pr)m(e\002x)p Fo(/Mailman/mm)p 966
-5219 V 30 w(cfg.p)n(y)p Fw('\))19 b(to)h(a)h(smaller)f(v)n(alue)g(than)
-f(Exim')-5 b(s)20 b Fq(smtp)p 2474 5219 V 30 w(accept)p
-2722 5219 V 29 w(queue)p 2951 5219 V 28 w(per)p 3090
-5219 V 29 w(connection)p Fw(.)p 0 5549 3901 4 v 0 5649
+2458 5300 V 29 w(MAX)p 2658 5300 V 30 w(SESSIONS)p 3050
+5300 V 27 w(PER)p 3230 5300 V 29 w(CONNECTION)34 b Fw(\(in)208
+5400 y(`)p Fj($)p Fq(pr)m(e\002x)p Fo(/Mailman/mm)p 966
+5400 V 30 w(cfg.p)n(y)p Fw('\))19 b(to)h(a)h(smaller)f(v)n(alue)g(than)
+f(Exim')-5 b(s)20 b Fq(smtp)p 2474 5400 V 30 w(accept)p
+2722 5400 V 29 w(queue)p 2951 5400 V 28 w(per)p 3090
+5400 V 29 w(connection)p Fw(.)p 0 5549 3901 4 v 0 5649
 a Fo(12)2827 b(6)83 b(Set)23 b(up)h(y)n(our)f(mail)h(ser)r(v)n(er)p
 eop end
 %%Page: 13 13
@@ -1357,48 +1358,47 @@ TeXDict begin 14 13 bop 326 174 a Fk(#)45 b(Accept)e(bounces)h(to)h
 y(condition)178 b(=)45 b(\\)729 448 y(${if)g(and)f
 ({{match{$local_part}{\(.)2168 461 y(*)2213 448 y(\)-bounces\\+.)2753
 461 y(*)2798 448 y(})o(})39 b(\\)1178 540 y({exists)k
-({MAILMAN_HOME/lists/$1/config.pck}}})c(\\)954 631 y({yes}{no}})954
-722 y({yes}{no}})326 905 y(accept)133 b(condition)178
-b(=)45 b(\\)729 996 y(${if)g(and)f({{match{$local_part}{\(.)2168
-1009 y(*)2213 996 y(\)-bounces\\+.)2753 1009 y(*)2798
-996 y(})o(})39 b(\\)1178 1088 y({exists)k
-({MAILMAN_HOME/lists/$1/config.pck}}})c(\\)954 1179 y({yes}{no}})954
-1270 y({yes}{no}})326 1453 y(#)45 b(Now,)f(check)g(sender)g(address)f
-(with)h(SMTP)g(callback.)326 1544 y(deny)134 b(!verify)43
-b(=)i(sender/callout=90s)0 1831 y Fw(If)20 b(you)f(also)i(do)f(SMTP)g
+({MAILMAN_HOME/lists/$1/config.pck}}})c(\\)954 631 y({yes}{no}})326
+814 y(accept)133 b(condition)178 b(=)45 b(\\)729 905
+y(${if)g(and)f({{match{$local_part}{\(.)2168 918 y(*)2213
+905 y(\)-bounces\\+.)2753 918 y(*)2798 905 y(})o(})39
+b(\\)1178 996 y({exists)k({MAILMAN_HOME/lists/$1/config.pck}}})c(\\)954
+1088 y({yes}{no}})326 1270 y(#)45 b(Now,)f(check)g(sender)g(address)f
+(with)h(SMTP)g(callback.)326 1362 y(deny)134 b(!verify)43
+b(=)i(sender/callout=90s)0 1648 y Fw(If)20 b(you)f(also)i(do)f(SMTP)g
 (callbacks)g(on)g(header)f(addresses,)g(you')o(ll)h(w)o(ant)g
 (something)f(lik)o(e)h(this)h(in)f(your)f Fl(DATA)h Fw(A)m(CL:)326
-2069 y Fk(deny)134 b(!condition)43 b(=)i
+1886 y Fk(deny)134 b(!condition)43 b(=)i
 ($header_X-WhitelistedRCPT-nohdrfromc)o(allbac)o(k:)640
-2160 y(!verify)e(=)i(header_sender/callout=90s)0 2572
+1978 y(!verify)e(=)i(header_sender/callout=90s)0 2389
 y Fo(Doing)24 b(VERP)g(with)g(Exim)f(and)h(Mailman)0
-2774 y Fw(VERP)30 b(will)g(send)e(one)h(email,)i(with)e(a)g(separate)g
+2592 y Fw(VERP)30 b(will)g(send)e(one)h(email,)i(with)e(a)g(separate)g
 (en)m(v)o(elope)e(sender)h(\(return)f(path\),)j(for)f(each)f(of)h(your)
-f(subscribers)g(\226)h(read)g(the)0 2874 y(information)21
+f(subscribers)g(\226)h(read)g(the)0 2691 y(information)21
 b(in)j(`)p Fj($)p Fq(pr)m(e\002x)p Fo(/Mailman/Def)n(aults)o(.p)n(y)p
 Fw(')e(for)h(the)h(options)e(that)i(start)f(with)h(VERP)-9
 b(.)24 b(In)f(a)h(nutshell,)f(all)h(you)f(need)f(to)i(do)0
-2974 y(to)c(enable)g(VERP)h(with)f(Exim)g(is)h(to)f(add)g(these)g
+2791 y(to)c(enable)g(VERP)h(with)f(Exim)g(is)h(to)f(add)g(these)g
 (lines)h(to)f(`)p Fj($)p Fq(pr)m(e\002x)p Fo(/Mailman/mm)p
-2439 2974 25 4 v 31 w(cfg.p)n(y)p Fw(':)416 3212 y Fk
-(VERP_PASSWORD_REMINDERS)41 b(=)j(Yes)416 3303 y
-(VERP_PERSONALIZED_DELIVERIES)c(=)k(Yes)416 3395 y
-(VERP_DELIVERY_INTERVAL)d(=)j(Yes)416 3486 y(VERP_CONFIRMATIONS)d(=)k
-(Yes)0 3772 y Fw(\(The)20 b(director)e(\(router\))h(abo)o(v)o(e)f(is)j
+2439 2791 25 4 v 31 w(cfg.p)n(y)p Fw(':)416 3029 y Fk
+(VERP_PASSWORD_REMINDERS)41 b(=)j(Yes)416 3121 y
+(VERP_PERSONALIZED_DELIVERIES)c(=)k(Yes)416 3212 y
+(VERP_DELIVERY_INTERVAL)d(=)j(Yes)416 3303 y(VERP_CONFIRMATIONS)d(=)k
+(Yes)0 3590 y Fw(\(The)20 b(director)e(\(router\))h(abo)o(v)o(e)f(is)j
 (smart)g(enough)d(to)i(deal)g(with)h(VERP)g(bounces.\))0
-4041 y Fo(Vir)s(tual)k(Domains)0 4244 y Fw(One)18 b(approach)e(to)j
+3858 y Fo(Vir)s(tual)k(Domains)0 4061 y Fw(One)18 b(approach)e(to)j
 (handling)d(virtual)i(domains)f(is)i(to)g(use)f(a)h(separate)f(Mailman)
 f(installation)h(for)g(each)g(virtual)f(domain.)23 b(Currently)-5
-b(,)0 4343 y(this)21 b(is)g(the)f(only)f(w)o(ay)i(to)f(ha)n(v)o(e)g
+b(,)0 4161 y(this)21 b(is)g(the)f(only)f(w)o(ay)i(to)f(ha)n(v)o(e)g
 (lists)h(with)g(the)f(same)g(name)g(in)g(dif)n(ferent)f(virtual)g
-(domains)g(handled)g(by)h(the)g(same)g(machine.)0 4490
-y(In)i(this)g(case,)h(the)f Fq(MAILMAN)p 919 4490 V 29
-w(HOME)j Fw(and)c Fq(MAILMAN)p 1724 4490 V 30 w(WRAP)h
+(domains)g(handled)g(by)h(the)g(same)g(machine.)0 4307
+y(In)i(this)g(case,)h(the)f Fq(MAILMAN)p 919 4307 V 29
+w(HOME)j Fw(and)c Fq(MAILMAN)p 1724 4307 V 30 w(WRAP)h
 Fw(macros)f(are)h(useless)g(\226)g(you)f(can)h(remo)o(v)o(e)e(them.)30
-b(Change)21 b(your)0 4590 y(director)e(\(router\))f(to)j(something)d
-(lik)o(e)j(this:)326 4828 y Fk(require_files)43 b(=)h
+b(Change)21 b(your)0 4407 y(director)e(\(router\))f(to)j(something)d
+(lik)o(e)j(this:)326 4645 y Fk(require_files)43 b(=)h
 (/virtual/${domain}/mailman/lists/${lc:$l)o(ocal_p)o(art}/c)o(onfig.)o
-(pck)0 5114 y Fw(and)20 b(change)f(your)f(transport)h(lik)o(e)i(this:)p
+(pck)0 4932 y Fw(and)20 b(change)f(your)f(transport)h(lik)o(e)i(this:)p
 0 5549 3901 4 v 0 5649 a Fo(14)2827 b(6)83 b(Set)23 b(up)h(y)n(our)f
 (mail)h(ser)r(v)n(er)p eop end
 %%Page: 15 15

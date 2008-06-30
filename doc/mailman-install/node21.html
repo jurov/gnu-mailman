@@ -64,9 +64,11 @@ file, and remember that order matters.
     driver = accept
     require_files = MAILMAN_HOME/lists/$local_part/config.pck
     local_part_suffix_optional
-    local_part_suffix = -bounces : -bounces+* : \
-                        -confirm+* : -join : -leave : \
-                        -owner : -request : -admin
+    local_part_suffix = -admin : -bounces : -bounces+* : \
+                        -confirm : -confirm+* : \
+                        -join : -leave : \
+                        -owner : -request : \
+                        -subscribe : -unsubscribe
     transport = mailman_transport
 </pre></div>
 
@@ -104,7 +106,7 @@ file, and remember that order matters.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on April 21, 2008.</span>
+<span class="release-info">Release 2.1, documentation updated on June 29, 2008.</span>
 </div>
 <!--End of Navigation Panel-->
 

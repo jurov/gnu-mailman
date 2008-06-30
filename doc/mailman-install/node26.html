@@ -76,12 +76,10 @@ your <code>RCPT TO</code> ACL:
            ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
                      {exists {MAILMAN_HOME/lists/$1/config.pck}}} \
                 {yes}{no}}
-                {yes}{no}}
 
   accept   condition    = \
            ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
                      {exists {MAILMAN_HOME/lists/$1/config.pck}}} \
-                {yes}{no}}
                 {yes}{no}}
 
   # Now, check sender address with SMTP callback.
@@ -132,7 +130,7 @@ this in your <code>DATA</code> ACL:
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on April 21, 2008.</span>
+<span class="release-info">Release 2.1, documentation updated on June 29, 2008.</span>
 </div>
 <!--End of Navigation Panel-->
 

@@ -12,7 +12,7 @@ GNU Mailman - Installation Manual
    barry (at) list dot org
 
    Release 2.1
-   April 21, 2008
+   June 29, 2008
 
                                  Front Matter
 
@@ -639,9 +639,11 @@ GNU Mailman - Installation Manual
     driver = accept
     require_files = MAILMAN_HOME/lists/$local_part/config.pck
     local_part_suffix_optional
-    local_part_suffix = -bounces : -bounces+* : \
-                        -confirm+* : -join : -leave : \
-                        -owner : -request : -admin
+    local_part_suffix = -admin : -bounces : -bounces+* : \
+                        -confirm : -confirm+* : \
+                        -join : -leave : \
+                        -owner : -request : \
+                        -subscribe : -unsubscribe
     transport = mailman_transport
 
   6.2.6 Transports for Exim 4
@@ -742,12 +744,10 @@ GNU Mailman - Installation Manual
            ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
                      {exists {MAILMAN_HOME/lists/$1/config.pck}}} \
                 {yes}{no}}
-                {yes}{no}}
 
   accept   condition    = \
            ${if and {{match{$local_part}{(.*)-bounces\+.*}} \
                      {exists {MAILMAN_HOME/lists/$1/config.pck}}} \
-                {yes}{no}}
                 {yes}{no}}
 
   # Now, check sender address with SMTP callback.
@@ -1503,7 +1503,7 @@ tar xvf MailmanStartup.tar
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, April 21, 2008, Release 2.1
+   GNU Mailman - Installation Manual, June 29, 2008, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1558,4 +1558,4 @@ tar xvf MailmanStartup.tar
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
      _________________________________________________________________
 
-   Release 2.1, documentation updated on April 21, 2008.
+   Release 2.1, documentation updated on June 29, 2008.
