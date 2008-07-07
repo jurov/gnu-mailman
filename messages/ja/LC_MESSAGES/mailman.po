@@ -1,13 +1,13 @@
 # Mailman Japanese Translation
-# Copyright (C) 2002-2004
-# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2005
+# Copyright (C) 2002-2008
+# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2008
 # Yukihiro Yasuda <yukihiro@poem.co.jp>, 2004
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailman 2.1.6\n"
+"Project-Id-Version: Mailman 2.1.11\n"
 "POT-Creation-Date: Fri Jun  6 11:25:34 2008\n"
-"PO-Revision-Date: 2005-03-23 11:30+09:00\n"
+"PO-Revision-Date: 2008-07-06 09:00+09:00\n"
 "Last-Translator: Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>\n"
 "Language-Team: Japanese <mmjp-users@mm.tkikuchi.net>\n"
 "MIME-Version: 1.0\n"
@@ -981,7 +981,7 @@ msgstr "危険なアドレス (規則外の文字)"
 #: Mailman/Cgi/admin.py:1354 bin/add_members:140 bin/clone_member:136
 #: bin/sync_members:264
 msgid "Banned address (matched %(pattern)s)"
-msgstr ""
+msgstr "入会禁止アドレス (%(pattern)s に一致)"
 
 #: Mailman/Cgi/admin.py:1360
 msgid "Successfully invited:"
@@ -1117,9 +1117,8 @@ msgid "Unsubscription Requests"
 msgstr "退会申請"
 
 #: Mailman/Cgi/admindb.py:387
-#, fuzzy
 msgid "Held Messages"
-msgstr "すべての保留メール."
+msgstr "保留メール."
 
 #: Mailman/Cgi/admindb.py:400 Mailman/Cgi/admindb.py:624
 msgid "From:"
@@ -1267,7 +1266,7 @@ msgstr " は既に会員です"
 
 #: Mailman/Cgi/admindb.py:812
 msgid "%(addr)s is banned (matched: %(patt)s)"
-msgstr ""
+msgstr "%(addr)s は入会禁止です (%(patt)s に一致)"
 
 #: Mailman/Cgi/confirm.py:76
 msgid "Confirmation string was empty."
@@ -1589,15 +1588,14 @@ msgstr ""
 "次のリスト管理者宛にご連絡ください: %(owneraddr)s"
 
 #: Mailman/Cgi/confirm.py:534
-#, fuzzy
 msgid ""
 "%(newaddr)s is already a member of\n"
 "            the %(realname)s list.  It is possible that you are attempting\n"
 "            to confirm a request for an address that has already been\n"
 "            subscribed."
 msgstr ""
-"確認文字列が無効です. 既に退会したアドレスの申請を確認しようと\n"
-"している可能性があります."
+"%(newaddr)s は, 既に %(realname)s リストの会員です.\n"
+"既に入会したアドレスの申請を確認しようとしている可能性があります."
 
 #: Mailman/Cgi/confirm.py:541
 msgid "Change of address request confirmed"
@@ -2069,7 +2067,7 @@ msgstr "各会員用のオプションページ"
 
 #: Mailman/Cgi/edithtml.py:48
 msgid "Welcome email text file"
-msgstr ""
+msgstr "歓迎メールのテキストファイル"
 
 #: Mailman/Cgi/edithtml.py:60
 msgid "List name is required."
@@ -2123,19 +2121,22 @@ msgid ""
 "must have shell access to your Mailman server.\n"
 "             "
 msgstr ""
+"あなたが保存したページには, ユーザをクロスサイトスクリプト攻撃に\n"
+"さらすような疑わしい HTMLコードが含まれています."
+"そのため, 変更は却下しました. もし, どうしても変更が必要であれば, \n"
+"Mailman サーバにシェルアクセスしなければなりません.\n"
 
 #: Mailman/Cgi/edithtml.py:169
 msgid "See "
-msgstr ""
+msgstr "参照:"
 
 #: Mailman/Cgi/edithtml.py:172
 msgid "FAQ 4.48."
-msgstr ""
+msgstr "FAQ 4.48."
 
 #: Mailman/Cgi/edithtml.py:173
-#, fuzzy
 msgid "Page Unchanged."
-msgstr "HTML は変更されませんでした."
+msgstr "ページは変更されませんでした."
 
 #: Mailman/Cgi/edithtml.py:191
 msgid "HTML successfully updated."
@@ -2247,11 +2248,13 @@ msgid ""
 "The list administrator may not view the other\n"
 "            subscriptions for this user."
 msgstr ""
+"リスト管理者はこの会員について他の入会状況を見ることは\n"
+"できません."
 
 #: Mailman/Cgi/options.py:281 Mailman/Cgi/options.py:324
 #: Mailman/Cgi/options.py:452 Mailman/Cgi/options.py:668
 msgid "Note: "
-msgstr ""
+msgstr "注意:"
 
 #: Mailman/Cgi/options.py:286
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
@@ -2270,6 +2273,8 @@ msgid ""
 "            or addresses for this user's other subscriptions.  However, the\n"
 "            subscription for this mailing list has been changed."
 msgstr ""
+"リスト管理者は, この会員の他のリストにおける本名やメールアドレスを\n"
+"変更することはできません. しかし, このリストについては変更しました."
 
 #: Mailman/Cgi/options.py:344
 msgid "Addresses did not match!"
@@ -2331,13 +2336,12 @@ msgid "Member name successfully changed. "
 msgstr "会員名を変更しました."
 
 #: Mailman/Cgi/options.py:427
-#, fuzzy
 msgid ""
 "The list administrator may not change the\n"
 "                    password for a user."
 msgstr ""
-"リスト管理者は他のリストについての会員パスワード変更はできません.\n"
-"しかし, このメーリングリストのパスワードは変更しました."
+"リスト管理者は他のリストについての\n"
+"会員パスワード変更はできません."
 
 #: Mailman/Cgi/options.py:436
 msgid "Passwords may not be blank"
@@ -2348,7 +2352,6 @@ msgid "Passwords did not match!"
 msgstr "パスワードが一致しません"
 
 #: Mailman/Cgi/options.py:449
-#, fuzzy
 msgid ""
 "The list administrator may not change the\n"
 "            password for this user's other subscriptions.  However, the\n"
@@ -2405,6 +2408,8 @@ msgid ""
 "                options for this mailing list subscription has been\n"
 "                changed."
 msgstr ""
+"リスト管理者は, この会員の他のリストにおけるオプションを変更することは\n"
+"できません. しかし, このリストでのオプションは変更しました."
 
 #: Mailman/Cgi/options.py:675
 msgid ""
@@ -2605,6 +2610,8 @@ msgstr "リストを指定してください."
 #: Mailman/Cgi/private.py:72
 msgid "Private archive - \"./\" and \"../\" not allowed in URL."
 msgstr ""
+"限定公開保存書庫 - \"./\" と \"../\" を URL に入れる"
+"ことはできません."
 
 #: Mailman/Cgi/private.py:109
 msgid "Private Archive Error - %(msg)s"
@@ -3495,9 +3502,14 @@ msgid ""
 "        See everyone who is on this mailing list. The password is the\n"
 "        list's admin or moderator password.\n"
 msgstr ""
+"\n"
+"    who\n"
+"        このメーリングリストの隠れ会員でない会員を見る.\n"
+"    who password\n"
+"        このメーリングリストの全会員を見る. password はリスト管理者\n"
+"        または司会者のパスワード.\n"
 
 #: Mailman/Commands/cmd_who.py:35
-#, fuzzy
 msgid ""
 "\n"
 "    who password [address=<address>]\n"
@@ -3515,7 +3527,9 @@ msgstr ""
 "        制限されていますので, 閲覧には会員パスワードが必要です. 登録\n"
 "        アドレス以外からコマンドメールを送る場合は `address=<アドレス>'\n"
 "        で会員アドレスを指定してください. (メールアドレスは <> で囲ま\n"
-"        ないこと)\n"
+"        ないこと. それからクオーテーションマークも含まない!)\n"
+"        リスト管理者又は司会者のパスワードを入れると, 隠れ会員も含まれ\n"
+"        ます.\n"
 
 #: Mailman/Commands/cmd_who.py:46
 msgid ""
@@ -3593,13 +3607,12 @@ msgid "French"
 msgstr "フランス語"
 
 #: Mailman/Defaults.py:1378
-#, fuzzy
 msgid "Galician"
-msgstr "イタリア語"
+msgstr "ガリシア語"
 
 #: Mailman/Defaults.py:1379
 msgid "Hebrew"
-msgstr ""
+msgstr "ヘブライ語"
 
 #: Mailman/Defaults.py:1380
 msgid "Croatian"
@@ -3658,9 +3671,8 @@ msgid "Russian"
 msgstr "ロシア語"
 
 #: Mailman/Defaults.py:1394
-#, fuzzy
 msgid "Slovak"
-msgstr "スロベニア語"
+msgstr "スロバキア語"
 
 #: Mailman/Defaults.py:1395
 msgid "Slovenian"
@@ -5237,6 +5249,7 @@ msgid ""
 "Maximum number of members to show on one page of the\n"
 "             Membership List."
 msgstr ""
+"会員リストの 1 ページに表示される最大の会員数."
 
 #: Mailman/Gui/General.py:368
 msgid "Host name this list prefers for email."
@@ -5363,15 +5376,21 @@ msgid ""
 "mlist.info.\n"
 "                        "
 msgstr ""
+"あなたが保存した <b>info</b> 属性には, "
+"ユーザをクロスサイトスクリプト攻撃に\n"
+"さらすような疑わしい HTMLコードが含まれています."
+"そのため, 変更は却下しました. もし, どうしても変更が必要であれば, \n"
+"Mailman サーバにシェルアクセスしなければなりません.\n"
+"変更には bin/withlist 又は bin/config_list を使って\n"
+"mlist.info を設定します.\n"
 
 #: Mailman/Gui/General.py:459
-#, fuzzy
 msgid ""
 "<b>admin_member_chunksize</b> attribute not\n"
 "            changed!  It must be an integer > 0."
 msgstr ""
-"<b>real_name</b>属性は変更されません!\n"
-"リスト名の大文字小文字の変更だけが許されます."
+"<b>admin_member_chunksize</b>属性は変更されません!\n"
+"正の整数でなければいけません."
 
 #: Mailman/Gui/General.py:469
 msgid ""
@@ -5696,9 +5715,8 @@ msgstr ""
 "使ってください."
 
 #: Mailman/Gui/NonDigest.py:149
-#, fuzzy
 msgid "Sibling lists"
-msgstr "リストを保存中"
+msgstr "姉妹リスト"
 
 #: Mailman/Gui/NonDigest.py:152
 msgid ""
@@ -5706,6 +5724,8 @@ msgid ""
 "             excluded from the regular (non-digest) delivery if those\n"
 "             list addresses appear in a To: or Cc: header."
 msgstr ""
+"このサイトのリストで, そのリストアドレスが To: 又は Cc: ヘッダに\n"
+"現れていたら, そのリスト会員を配送から除外するもの."
 
 #: Mailman/Gui/NonDigest.py:155
 msgid ""
@@ -5717,6 +5737,12 @@ msgid ""
 "domain\n"
 "             siblings."
 msgstr ""
+"リストアドレスは (例: mailman@example.com) のように完全なメールアドレスの\n"
+"形式で書いてください. ここに書いたリストの設定ページで, このリストの\n"
+"アドレスを相互に書いてはいけません. もし, そうすると両方のリストに入って\n"
+"いる会員にはメールが配送されなくなります.\n"
+"また, サイト管理者がドメインをまたいでの姉妹リスト指定を禁止している\n"
+"かもしれないことにも注意してください."
 
 #: Mailman/Gui/NonDigest.py:163
 msgid ""
@@ -5724,6 +5750,8 @@ msgid ""
 "             included in the regular (non-digest) delivery if those\n"
 "             list addresses don't appear in a To: or Cc: header."
 msgstr ""
+"このサイトのリストで, そのリストアドレスが To: 又は Cc: ヘッダに\n"
+"現れていなかったら, そのリスト会員を配送に含めるもの."
 
 #: Mailman/Gui/NonDigest.py:166
 msgid ""
@@ -5731,6 +5759,10 @@ msgid ""
 "             format (e.g. mailman@example.com). Note also that the site\n"
 "             administrator may prohibit cross domain siblings."
 msgstr ""
+"リストアドレスは (例: mailman@example.com) のように完全なメールアドレスの\n"
+"形式で書いてください. \n"
+"また, サイト管理者がドメインをまたいでの姉妹リスト指定を禁止している\n"
+"かもしれないことにも注意してください."
 
 #: Mailman/Gui/Passwords.py:27
 msgid "Passwords"
@@ -6127,7 +6159,6 @@ msgid ""
 msgstr "自動的に投稿を承認すべき非会員のアドレス"
 
 #: Mailman/Gui/Privacy.py:248
-#, fuzzy
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             accepted with no further moderation applied.  Add member\n"
@@ -6139,7 +6170,9 @@ msgid ""
 msgstr ""
 "これらの非会員からの投稿は, 自動的に承認され\n"
 "司会プロセスは必要としません. 1行につき1つのアドレスを\n"
-"記入してください; 正規表現を使うには行の最初を ^ で始めてください."
+"記入してください; 正規表現を使うには行の最初を ^ で始めてください.\n"
+"行の最初を @ 文字にして, 後にこの Mailman システムのリスト名を続けると,\n"
+"そのリスト会員全員が承認されます.\n"
 
 #: Mailman/Gui/Privacy.py:257
 msgid ""
@@ -7299,7 +7332,6 @@ msgid "The Mailman Replybot"
 msgstr "Mailman 自動応答システム"
 
 #: Mailman/Handlers/Scrubber.py:223
-#, fuzzy
 msgid ""
 "An embedded and charset-unspecified text was scrubbed...\n"
 "Name: %(filename)s\n"
@@ -7334,7 +7366,6 @@ msgid "unknown sender"
 msgstr "送信者不明"
 
 #: Mailman/Handlers/Scrubber.py:290
-#, fuzzy
 msgid ""
 "An embedded message was scrubbed...\n"
 "From: %(who)s\n"
@@ -7351,7 +7382,6 @@ msgstr ""
 "URL:    %(url)s\n"
 
 #: Mailman/Handlers/Scrubber.py:322
-#, fuzzy
 msgid ""
 "A non-text attachment was scrubbed...\n"
 "Name: %(filename)s\n"
@@ -8323,6 +8353,10 @@ msgid ""
 "         If you're on a shared multiuser system, you should consult the\n"
 "         installation manual on how to fix this."
 msgstr ""
+"警告: 限定公開保存書庫ディレクトリが other-executable (o+x) に\n"
+"      なっています. あなたのシステムのシェルユーザがこの保存書庫\n"
+"      を読むことができます. インストールマニュアルには, これを\n"
+"      どうしたら修正できるか書いてありますので, 参考にしてください.\n"
 
 #: bin/check_perms:240
 msgid "mbox file must be at least 0660:"
@@ -8894,14 +8928,12 @@ msgid "Please specify either -p or -m."
 msgstr "-p または -m を指定してください"
 
 #: bin/dumpdb:133
-#, fuzzy
 msgid "[----- start %(typename)s file -----]"
-msgstr "[----- pickle ファイル開始 -----]"
+msgstr "[----- %(typename)s ファイル開始 -----]"
 
 #: bin/dumpdb:139
-#, fuzzy
 msgid "[----- end %(typename)s file -----]"
-msgstr "[----- pickle ファイル終了 -----]"
+msgstr "[----- %(typename)s ファイル終了 -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
@@ -8909,7 +8941,7 @@ msgstr "<----- %(cnt)s 番目のオブジェクト ----->"
 
 #: bin/export.py:20
 msgid "Export an XML representation of a mailing list."
-msgstr ""
+msgstr "メーリングリストの設定を XML で保存する."
 
 #: bin/export.py:320
 msgid ""
@@ -8917,6 +8949,9 @@ msgid ""
 "\n"
 "Export the configuration and members of a mailing list in XML format."
 msgstr ""
+"%%prog [options]\n"
+"\n"
+"XML 形式でメーリングリストの設定と会員を保存する."
 
 #: bin/export.py:326
 msgid ""
@@ -8924,6 +8959,8 @@ msgid ""
 "is\n"
 "used."
 msgstr ""
+"XML を FILENAME に出力. このオプションが無いとき, FILENAME が '-' の\n"
+"ときは, 標準出力が使用される."
 
 #: bin/export.py:330
 msgid ""
@@ -8931,6 +8968,8 @@ msgid ""
 "output.  Use -P to get a list of supported schemes, which are\n"
 "case-insensitive."
 msgstr ""
+"RFC 2307 スタイルのパスワード・ハッシュ形式を指定.\n"
+"-P オプションでサポートしている形式を出力する. 但し, 大小文字の区別無し."
 
 #: bin/export.py:335
 msgid ""
@@ -8938,6 +8977,8 @@ msgid ""
 "are\n"
 "case-insensitive."
 msgstr ""
+"サポートするパスワード・ハッシュ形式をリストして終了する.\n"
+"但し, ハッシュ形式の指定で大小文字の区別はしない."
 
 #: bin/export.py:340
 msgid ""
@@ -8945,15 +8986,16 @@ msgid ""
 "are\n"
 "included in the XML output.  Multiple -l flags may be given."
 msgstr ""
+"出力に含めるリスト. このオプションが無い場合には, 全てのメーリング\n"
+"リストが XML 出力に入ります. -l フラグを複数付けることもできます."
 
 #: bin/export.py:346
 msgid "Unexpected arguments"
-msgstr ""
+msgstr "予期しない引数"
 
 #: bin/export.py:352
-#, fuzzy
 msgid "Invalid password scheme"
-msgstr " 初期リストパスワード:"
+msgstr " パスワード形式が無効です"
 
 #: bin/find_member:19
 msgid ""
@@ -10722,7 +10764,6 @@ msgid "scan the po file comparing msgids with msgstrs"
 msgstr "po ファイルをスキャンして msgid と msgstr を比較"
 
 #: bin/unshunt:20
-#, fuzzy
 msgid ""
 "Move a message from the shunt queue to the original queue.\n"
 "\n"
@@ -10748,6 +10789,8 @@ msgstr ""
 "        ヘルプを表示して終了.\n"
 "\n"
 "ディレクトリを指定すると qfiles/shunt 以外のディレクトリから移動する.\n"
+"*** 警告 *** shunt されたのではないメールを unshunt してはいけません.\n"
+"例えば, qfiles/out のメールを unshunt するとメールが消えてしまいます.\n"
 
 #: bin/unshunt:85
 msgid ""
@@ -10950,7 +10993,7 @@ msgstr "メールを解析できません: %(filebase)s"
 
 #: bin/update:542
 msgid "Warning!  Deleting empty .pck file: %(pckfile)s"
-msgstr ""
+msgstr "警告! 空の .pck ファイルを削除: %(pckfile)s"
 
 #: bin/update:561
 msgid "Updating Mailman 2.0 pending_subscriptions.db database"
@@ -11480,6 +11523,23 @@ msgid ""
 "    -h / --help\n"
 "        Print this message and exit.\n"
 msgstr ""
+"bad と shunt キューディレクトリの掃除. 毎日1回実行を推奨.\n"
+"\n"
+"このスクリプトは 'bad' と 'shunt' のディレクトリを巡回し, \n"
+"もし, mm_cfg.BAD_SHUNT_STALE_AFTER > 0 であれば, その秒数より古い\n"
+"ファイルを取り除きます.\n"
+"\n"
+"もし, mm_cfg.BAD_SHUNT_ARCHIVE_DIRECTORY が書き込み可能ディレクトリ\n"
+"であれば, それらのファイルはそこへ移動します. でなければ, 削除します.\n"
+"\n"
+"'bad' と 'shunt' 直下の通常ファイルだけが処理されます. それ以外は\n"
+"スキップします.\n"
+"\n"
+"使用法: %(PROGRAM)s [オプション]\n"
+"\n"
+"オプション:\n"
+"    -h / --help\n"
+"        このメッセージを出力して終了する.\n"
 
 #: cron/disabled:20
 msgid ""
@@ -11729,18 +11789,3 @@ msgstr ""
 "        リスト名をあげたリストについてだけ, まとめ読みを送信する.\n"
 "        これが無い場合, すべてのリストの処理をする.\n"
 
-#~ msgid ""
-#~ "\n"
-#~ "    who\n"
-#~ "        See everyone who is on this mailing list.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "    who\n"
-#~ "        このメーリングリストの会員名簿を見る.\n"
-
-#~ msgid ""
-#~ "## \"%(listname)s\" mailing list configuration settings -*- python -*-\n"
-#~ "## captured on %(when)s\n"
-#~ msgstr ""
-#~ "## \"%(listname)s\" メーリングリスト設定 -*- python -*-\n"
-#~ "## %(when)s に読み出し\n"
