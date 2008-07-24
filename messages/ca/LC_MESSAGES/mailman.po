@@ -1630,7 +1630,7 @@ msgid ""
 "            subscribed."
 msgstr ""
 "%(newaddr)s ja està subscrita a\n"
-"            la llista %(realname). Pot ser que estigueu intentant confirmar\n"
+"            la llista %(realname)s. Pot ser que estigueu intentant confirmar\n"
 "            una sol·licitud per a una adreça que ja ha estat subscrita."
 
 #: Mailman/Cgi/confirm.py:541
@@ -2201,7 +2201,7 @@ msgid ""
 "            %(mailmanlink)s mailing lists on %(hostname)s."
 msgstr ""
 "<p>Actualment no hi ha llistes de correu %(mailmanlink)s\n"
-"            públiques a (hostname)s."
+"            públiques a %(hostname)s."
 
 #: Mailman/Cgi/listinfo.py:110
 msgid ""
@@ -2381,7 +2381,7 @@ msgid ""
 msgstr ""
 "%(newaddr)s té l'accés prohibit a la llista de correu.\n"
 "                      Si penseu que la restricció és errònia,\n"
-"                      contacteu amb el propietari de la llista a %(listowner)s."
+"                      contacteu amb el propietari de la llista a %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:417
 msgid "Member name successfully changed. "
@@ -2945,7 +2945,7 @@ msgid ""
 msgstr ""
 "L'adreça de correu electrònic que has donat té l'accés prohibit a la llista de correu.\n"
 "Si penses que la restricció és errònia, per favor,\n"
-"contacte amb l'amo de la llista a %(listowner)s."
+"contacte amb l'amo de la llista a %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -6452,7 +6452,7 @@ msgid ""
 "                rule will be ignored."
 msgstr ""
 "El patró de filtre de capçalera\n"
-"                «%(pattern)s» no és una expressió regular vàlida. S'ignoraràe\n"
+"                «%(safepattern)s» no és una expressió regular vàlida. S'ignoraràe\n"
 "                la regla."
 
 #: Mailman/Gui/Topics.py:36
@@ -6573,7 +6573,7 @@ msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"El patró de tema «%(pattern)s» no és\n"
+"El patró de tema «%(safepattern)s» no és\n"
 "                una expressió regular vàlida. Es descartarà."
 
 #: Mailman/Gui/Usenet.py:25
@@ -7508,7 +7508,7 @@ msgstr "les cancel·lacions de subscripció requereixen l'aprovació del moderad
 
 #: Mailman/MailList.py:1024
 msgid "%(realname)s unsubscribe notification"
-msgstr "Notificació de la cancel·lació de la subscripció a %(realname)"
+msgstr "Notificació de la cancel·lació de la subscripció a %(realname)s"
 
 #: Mailman/MailList.py:1214
 msgid "subscriptions to %(name)s require administrator approval"
@@ -11088,7 +11088,7 @@ msgstr "Hi ha %(count)d sol·licituds de moderació de la llista %(realname)s pe
 #: cron/checkdbs:123
 #, fuzzy
 msgid "%(realname)s moderator request check result"
-msgstr "%(count)d %(realname)s peticions de moderador en espera "
+msgstr "%(realname)s peticions de moderador en espera "
 
 #: cron/checkdbs:143
 msgid "Pending subscriptions:"
