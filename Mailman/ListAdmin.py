@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -499,7 +499,7 @@ class ListAdmin:
             subject = _('Request to mailing list %(realname)s rejected')
         finally:
             i18n.set_translation(otrans)
-        msg = Message.UserNotification(recip, self.GetBouncesEmail(),
+        msg = Message.UserNotification(recip, self.GetOwnerEmail(),
                                        subject, text, lang)
         msg.send(self)
 

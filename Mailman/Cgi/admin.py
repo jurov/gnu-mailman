@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,7 +28,6 @@ import sha
 import urllib
 import signal
 from types import *
-from string import lowercase, digits
 
 from email.Utils import unquote, parseaddr, formataddr
 
@@ -901,12 +900,10 @@ def membership_options(mlist, subcat, cgidata, doc, form):
         qsenviron = os.environ.get('QUERY_STRING')
         if qsenviron:
             qs = cgi.parse_qs(qsenviron)
-            bucket = qs.get('letter', 'a')[0].lower()
-            if bucket not in digits + lowercase:
-                bucket = None
+            bucket = qs.get('letter', '0')[0].lower()
+        keys = buckets.keys()
+        keys.sort()
         if not bucket or not buckets.has_key(bucket):
-            keys = buckets.keys()
-            keys.sort()
             bucket = keys[0]
         members = buckets[bucket]
         action = adminurl + '/members?letter=%s' % bucket
@@ -942,9 +939,7 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     # Add the alphabetical links
     if bucket:
         cells = []
-        for letter in digits + lowercase:
-            if not buckets.get(letter):
-                continue
+        for letter in keys:
             url = adminurl + '/members?letter=%s' % letter
             if letter == bucket:
                 show = Bold('[%s]' % letter.upper()).Format()
