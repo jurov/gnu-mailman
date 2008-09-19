@@ -553,7 +553,8 @@ class ListAdmin:
                     assert len(info) == 6, 'Unknown subscription record layout'
                     continue
                 # Here's the new layout
-                self.__db[id] = when, addr, fullname, passwd, digest, lang
+                self.__db[id] = op, (when, addr, fullname, passwd,
+                                     digest, lang)
             elif op == HELDMSG:
                 if len(info) == 5:
                     when, sender, subject, reason, text = info
@@ -562,7 +563,8 @@ class ListAdmin:
                     assert len(info) == 6, 'Unknown held msg record layout'
                     continue
                 # Here's the new layout
-                self.__db[id] = when, sender, subject, reason, text, msgdata
+                self.__db[id] = op, (when, sender, subject, reason,
+                                     text, msgdata)
         # All done
         self.__closedb()
 

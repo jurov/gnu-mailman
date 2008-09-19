@@ -4,6 +4,25 @@ Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.12? (xx-xxx-xxxx)
+
+  Bug fixes and other patches
+
+    - Fixed a bug in admin.py which would result in chunked pages of the
+      membership list for members whose address begins with a non-alphanumeric
+      character to not be visible or retrievable.
+
+    - Changed ListAdmin.py to make rejected post messages From: the -owner
+      address instead of the -bounces address.
+
+    - With MTA = 'Postfix', if the STANZA END for a list being removed is
+      missing or munged, the remainder of the aliases and/or virtual-mailman
+      file is lost.  Fixed.
+
+    - Since Mailman 2.1.1, 2.0.x outstanding subscription and held message
+      requests have not been migrated properly.  This is fixed.
+      Bug #266106 (sf998384).
+
 2.1.11 (30-Jun-2008)
 
   New Features
