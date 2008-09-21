@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -206,8 +206,11 @@ def process_lists(glock):
         # Open the newsgroup, but let most exceptions percolate up.
         try:
             conn, first, last = open_newsgroup(mlist)
-        except (socket.error, nntplib.NNTPError):
-            break
+        except (socket.error, nntplib.NNTPError), e:
+            syslog('fromusenet',
+                   "%s: couldn't open newsgroup %s: skipping\n%s",
+                   listname, mlist.linked_newsgroup, e)
+            continue
         syslog('fromusenet', '%s: [%d..%d]' % (listname, first, last))
         try:
             try:
