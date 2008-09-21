@@ -538,7 +538,21 @@ class ListAdmin:
             except IOError, e:
                 if e.errno <> errno.ENOENT: raise
                 self.__db = {}
-        for id, (op, info) in self.__db.items():
+        for id, x in self.__db.items():
+            # A bug in versions 2.1.1 through 2.1.11 could have resulted in
+            # just info being stored instead of (op, info)
+            if len(x) == 2:
+                op, info = x
+            elif len(x) == 6:
+                # This is the buggy info. Check for digest flag.
+                if x[4] in (0, 1):
+                    op = SUBSCRIPTION
+                else:
+                    op = HELDMSG
+                self.__db[id] = op, x
+                continue
+            else:
+                assert False, 'Unknown record format in %s' % self.__filename
             if op == SUBSCRIPTION:
                 if len(info) == 4:
                     # pre-2.1a2 compatibility
