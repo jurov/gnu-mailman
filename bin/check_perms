@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -334,6 +334,7 @@ def checkdata():
     checkfiles = ('config.pck', 'config.pck.last',
                   'config.db', 'config.db.last',
                   'next-digest', 'next-digest-topics',
+                  'digest.mbox', 'pending.pck',
                   'request.db', 'request.db.tmp')
     if STATE.VERBOSE:
         print _('checking permissions on list data')
