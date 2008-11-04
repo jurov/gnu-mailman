@@ -52,8 +52,7 @@ AC_SUBST(PYTHON)
 PYTHON=$with_python
 AC_MSG_RESULT($PYTHON)
 
-# See if Python is new enough.  2.1 or better is required, with 2.1.3
-# recommended.
+# See if Python is new enough.
 AC_MSG_CHECKING(Python version)
 changequote(,)
 cat > conftest.py <<EOF
@@ -62,8 +61,7 @@ try:
     v = sys.hexversion
 except AttributeError:
     v = 0
-# int of hexversion 0x2010000
-if v >= 0x2010000:
+if v >= 0x2030000:
     s = sys.version.split()[0]
 else:
     s = ""
@@ -80,10 +78,45 @@ then
     AC_MSG_ERROR([
 
 ***** $PYTHON is too old (or broken)
-***** Python 2.1 or newer is required
-***** Python 2.1.3 or better is recommended])
+***** Python 2.3 or newer is required])
 fi
 AC_MSG_RESULT($version)
+
+# Check the email package version.
+AC_MSG_CHECKING(Python's email package)
+changequote(,)
+cat > conftest.py <<EOF
+import sys
+try:
+    import email
+except ImportError:
+    res = "not ok"
+else:
+    provided = (2, 5, 8)
+    version = tuple([int(v) for v in email.__version__.split('.')])
+    if provided > version:
+        res = "not ok"
+    else:
+        res = "ok"
+fp = open("conftest.out", "w")
+fp.write("%s\n" % res)
+fp.close()
+EOF
+changequote([, ])
+$PYTHON conftest.py
+needemailpkg=`cat conftest.out`
+rm -f conftest.out conftest.py
+
+# Should we rely on Python's own email package or use the pre-packaged version?
+AC_SUBST(EMAILPKG)
+if test "$needemailpkg" = "ok"
+then
+    EMAILPKG=""
+else
+    EMAILPKG=email-2.5.8
+fi
+AC_MSG_RESULT($needemailpkg)
+
 
 # Make sure distutils is available.  Some Linux Python packages split
 # distutils into the "-devel" package, so they need both.
@@ -488,6 +521,7 @@ else
         URLHOST=$with_urlhost
 fi
 AC_MSG_RESULT($with_urlhost)
+
 
 changequote(,)
 cat > conftest.py <<EOF
