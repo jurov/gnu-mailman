@@ -27,9 +27,9 @@ the mailing lists, and whatever else doesn't belong elsewhere.
 from __future__ import nested_scopes
 
 import os
+import sys
 import re
 import cgi
-import sha
 import time
 import errno
 import base64
@@ -54,6 +54,16 @@ from Mailman import Errors
 from Mailman import Site
 from Mailman.SafeDict import SafeDict
 from Mailman.Logging.Syslog import syslog
+
+try:
+    import hashlib
+    md5_new = hashlib.md5
+    sha_new = hashlib.sha1
+except ImportError:
+    import md5
+    import sha
+    md5_new = md5.new
+    sha_new = sha.new
 
 try:
     True, False
@@ -384,7 +394,7 @@ def set_global_password(pw, siteadmin=True):
     omask = os.umask(026)
     try:
         fp = open(filename, 'w')
-        fp.write(sha.new(pw).hexdigest() + '\n')
+        fp.write(sha_new(pw).hexdigest() + '\n')
         fp.close()
     finally:
         os.umask(omask)
@@ -410,7 +420,7 @@ def check_global_password(response, siteadmin=True):
     challenge = get_global_password(siteadmin)
     if challenge is None:
         return None
-    return challenge == sha.new(response).hexdigest()
+    return challenge == sha_new(response).hexdigest()
 
 
 
@@ -1034,3 +1044,4 @@ def suspiciousHTML(html):
         return True
     else:
         return False
+

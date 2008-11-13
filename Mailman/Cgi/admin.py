@@ -24,7 +24,6 @@ import sys
 import os
 import re
 import cgi
-import sha
 import urllib
 import signal
 from types import *
@@ -41,6 +40,7 @@ from Mailman.UserDesc import UserDesc
 from Mailman.htmlformat import *
 from Mailman.Cgi import Auth
 from Mailman.Logging.Syslog import syslog
+from Mailman.Utils import sha_new
 
 # Set up i18n
 _ = i18n._
@@ -1269,7 +1269,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
     confirm = cgidata.getvalue('confirmmodpw', '').strip()
     if new or confirm:
         if new == confirm:
-            mlist.mod_password = sha.new(new).hexdigest()
+            mlist.mod_password = sha_new(new).hexdigest()
             # No re-authentication necessary because the moderator's
             # password doesn't get you into these pages.
         else:
@@ -1279,7 +1279,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
     confirm = cgidata.getvalue('confirmpw', '').strip()
     if new or confirm:
         if new == confirm:
-            mlist.password = sha.new(new).hexdigest()
+            mlist.password = sha_new(new).hexdigest()
             # Set new cookie
             print mlist.MakeCookie(mm_cfg.AuthListAdmin)
         else:

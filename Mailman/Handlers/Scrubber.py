@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,7 +21,6 @@ from __future__ import nested_scopes
 
 import os
 import re
-import sha
 import time
 import errno
 import binascii
@@ -41,6 +40,7 @@ from Mailman import Message
 from Mailman.Errors import DiscardMessage
 from Mailman.i18n import _
 from Mailman.Logging.Syslog import syslog
+from Mailman.Utils import sha_new
 
 # Path characters for common platforms
 pre = re.compile(r'[/\\:]')
@@ -158,7 +158,7 @@ def calculate_attachments_dir(mlist, msg, msgdata):
     if msgid is None:
         msgid = msg['Message-ID'] = Utils.unique_message_id(mlist)
     # We assume that the message id actually /is/ unique!
-    digest = sha.new(msgid).hexdigest()
+    digest = sha_new(msgid).hexdigest()
     return os.path.join('attachments', datedir, digest[:4] + digest[-4:])
 
 

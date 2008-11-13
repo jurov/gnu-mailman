@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -66,7 +66,6 @@ Options:
 """
 
 import sys
-import sha
 import getopt
 
 import paths
@@ -147,7 +146,7 @@ def main():
     if password is not None:
         if not password:
             usage(1, _('Empty list passwords are not allowed'))
-        shapassword = sha.new(password).hexdigest()
+        shapassword = Utils.sha_new(password).hexdigest()
 
     if domains:
         for name in Utils.list_names():
@@ -167,7 +166,7 @@ def main():
             if password is None:
                 randompw = Utils.MakeRandomPassword(
                     mm_cfg.ADMIN_PASSWORD_LENGTH)
-                shapassword = sha.new(randompw).hexdigest()
+                shapassword = Utils.sha_new(randompw).hexdigest()
                 notifypassword = randompw
             else:
                 notifypassword = password

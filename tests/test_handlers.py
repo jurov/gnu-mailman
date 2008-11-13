@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,13 +12,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """Unit tests for the various Mailman/Handlers/*.py modules.
 """
 
 import os
-import sha
 import time
 import email
 import errno
@@ -53,13 +53,14 @@ from Mailman.Handlers import ToArchive
 from Mailman.Handlers import ToDigest
 from Mailman.Handlers import ToOutgoing
 from Mailman.Handlers import ToUsenet
+from Mailman.Utils import sha_new
 
 from TestBase import TestBase
 
 
 
 def password(plaintext):
-    return sha.new(plaintext).hexdigest()
+    return sha_new(plaintext).hexdigest()
 
 
 

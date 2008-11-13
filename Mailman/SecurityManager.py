@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -49,7 +49,6 @@
 
 import os
 import re
-import sha
 import time
 import Cookie
 import marshal
@@ -62,12 +61,12 @@ try:
     import crypt
 except ImportError:
     crypt = None
-import md5
 
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Errors
 from Mailman.Logging.Syslog import syslog
+from Mailman.Utils import md5_new, sha_new
 
 try:
     True, False
@@ -171,11 +170,11 @@ class SecurityManager:
                 key, secret = self.AuthContextInfo(ac)
                 if secret is None:
                     continue
-                sharesponse = sha.new(response).hexdigest()
+                sharesponse = sha_new(response).hexdigest()
                 upgrade = ok = False
                 if sharesponse == secret:
                     ok = True
-                elif md5.new(response).digest() == secret:
+                elif md5_new(response).digest() == secret:
                     ok = upgrade = True
                 elif cryptmatchp(response, secret):
                     ok = upgrade = True
@@ -196,7 +195,7 @@ class SecurityManager:
             elif ac == mm_cfg.AuthListModerator:
                 # The list moderator password must be sha'd
                 key, secret = self.AuthContextInfo(ac)
-                if secret and sha.new(response).hexdigest() == secret:
+                if secret and sha_new(response).hexdigest() == secret:
                     return ac
             elif ac == mm_cfg.AuthUser:
                 if user is not None:
@@ -237,7 +236,7 @@ class SecurityManager:
         # Timestamp
         issued = int(time.time())
         # Get a digest of the secret, plus other information.
-        mac = sha.new(secret + `issued`).hexdigest()
+        mac = sha_new(secret + `issued`).hexdigest()
         # Create the cookie object.
         c = Cookie.SimpleCookie()
         c[key] = binascii.hexlify(marshal.dumps((issued, mac)))
@@ -336,7 +335,7 @@ class SecurityManager:
             return False
         # Calculate what the mac ought to be based on the cookie's timestamp
         # and the shared secret.
-        mac = sha.new(secret + `issued`).hexdigest()
+        mac = sha_new(secret + `issued`).hexdigest()
         if mac <> received_mac:
             return False
         # Authenticated!
