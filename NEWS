@@ -27,6 +27,10 @@ Here is a history of user visible changes to Mailman.
       certain errors that can be caused by configuration of a particular list.
       Bug #265941 (sf775100).
 
+    - Fixed a bug in AvoidDuplicates.py that caused it to fail if the address
+      in the To: or Cc: header differed in case from the case-preserved member
+      address.  Bug #297795.
+
 2.1.11 (30-Jun-2008)
 
   New Features
