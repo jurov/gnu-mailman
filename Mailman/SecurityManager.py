@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -299,7 +299,8 @@ class SecurityManager:
                         usernames.append(k[len(prefix):])
             # If any check out, we're golden.  Note: `@'s are no longer legal
             # values in cookie keys.
-            for user in [Utils.UnobscureEmail(u) for u in usernames]:
+            for user in [Utils.UnobscureEmail(urllib.unquote(u))
+                         for u in usernames]:
                 ok = self.__checkone(c, authcontext, user)
                 if ok:
                     return True

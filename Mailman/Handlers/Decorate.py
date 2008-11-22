@@ -227,7 +227,8 @@ def decorate(mlist, template, what, extradict=None):
         template = Utils.to_percent(template)
     # Interpolate into the template
     try:
-        text = re.sub(r' *\r?\n', r'\n', template % d)
+        text = re.sub(r'(?m)(?<!^--) +(?=\n)', '',
+                      re.sub(r'\r\n', r'\n', template % d))
     except (ValueError, TypeError), e:
         syslog('error', 'Exception while calculating %s:\n%s', what, e)
         what = what.upper()
