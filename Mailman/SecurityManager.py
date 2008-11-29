@@ -298,7 +298,8 @@ class SecurityManager:
                         usernames.append(k[len(prefix):])
             # If any check out, we're golden.  Note: `@'s are no longer legal
             # values in cookie keys.
-            for user in [Utils.UnobscureEmail(u) for u in usernames]:
+            for user in [Utils.UnobscureEmail(urllib.unquote(u))
+                         for u in usernames]:
                 ok = self.__checkone(c, authcontext, user)
                 if ok:
                     return True
