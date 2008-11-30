@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -61,7 +61,7 @@ try:
     v = sys.hexversion
 except AttributeError:
     v = 0
-if v >= 0x2030000:
+if v >= 0x2040000:
     s = sys.version.split()[0]
 else:
     s = ""
@@ -78,7 +78,7 @@ then
     AC_MSG_ERROR([
 
 ***** $PYTHON is too old (or broken)
-***** Python 2.3 or newer is required])
+***** Python 2.4 or newer is required])
 fi
 AC_MSG_RESULT($version)
 
@@ -93,7 +93,7 @@ except ImportError:
     res = "not ok"
 else:
     provided = (2, 5, 8)
-    version = tuple([int(v) for v in email.__version__.split('.')])
+    version = tuple(int(v) for v in email.__version__.split('.'))
     if provided > version:
         res = "not ok"
     else:
@@ -249,7 +249,7 @@ else
 fi
 
 # new macro for finding group names
-AC_DEFUN(MM_FIND_GROUP_NAME, [
+AC_DEFUN([MM_FIND_GROUP_NAME], [
 # $1 == variable name
 # $2 == user id to check for
 AC_SUBST($1)
@@ -281,7 +281,7 @@ rm -f conftest.out conftest.py])
 
 
 # new macro for finding UIDs
-AC_DEFUN(MM_FIND_USER_NAME, [
+AC_DEFUN([MM_FIND_USER_NAME], [
 # $1 == variable name
 # $2 == user id to check for
 AC_SUBST($1)
@@ -583,7 +583,7 @@ AC_CHECK_FUNCS(vsnprintf)
 
 dnl Expand PYTHON path in the scripts, output into build/scriptname
 
-AC_DEFUN(MM_SCRIPTS, [dnl
+AC_DEFUN([MM_SCRIPTS], [dnl
 bin/add_members \
 bin/arch \
 bin/change_pw \
