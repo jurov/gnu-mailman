@@ -189,7 +189,7 @@ def process(mlist, msg, msgdata=None):
     # Now walk over all subparts of this message and scrub out various types
     format = delsp = None
     for part in msg.walk():
-        ctype = part.get_type(part.get_default_type())
+        ctype = part.get_content_type()
         # If the part is text/plain, we leave it alone
         if ctype == 'text/plain':
             # We need to choose a charset for the scrubbed message, so we'll
@@ -300,7 +300,7 @@ URL: %(url)s
         # will transform the url into a hyperlink.
         elif part.get_payload() and not part.is_multipart():
             payload = part.get_payload(decode=True)
-            ctype = part.get_type()
+            ctype = part.get_content_type()
             # XXX Under email 2.5, it is possible that payload will be None.
             # This can happen when you have a Content-Type: multipart/* with
             # only one part and that part has two blank lines between the
