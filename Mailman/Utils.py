@@ -905,7 +905,8 @@ def oneline(s, cset):
 # Many thanks are due to Moritz Naumann for his assistance with this.
 _badwords = [
     '<i?frame',
-    '<link',
+    # Kludge to allow the specific tag that's in the options.html template.
+    '<link(?! rel="SHORTCUT ICON" href="<mm-favicon>">)',
     '<meta',
     '<script',
     r'(?:^|\W)j(?:ava)?script(?:\W|$)',
