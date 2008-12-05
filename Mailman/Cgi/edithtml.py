@@ -168,7 +168,7 @@ must have shell access to your Mailman server.
              """)))
         doc.AddItem(_('See '))
         doc.AddItem(Link(
-'http://www.python.org/cgi-bin/faqw-mm.py?req=show&file=faq04.048.htp',
+'http://wiki.list.org/x/jYA9',
                 _('FAQ 4.48.')))
         doc.AddItem(Header(3,_("Page Unchanged.")))
         doc.AddItem('<hr>')
