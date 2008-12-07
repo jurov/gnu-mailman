@@ -98,8 +98,16 @@ def process(mlist, msg, msgdata):
         # TK: Try to keep the message plain by converting the header/
         # footer/oldpayload into unicode and encode with mcset/lcset.
         # Try to decode qp/base64 also.
-        uheader = unicode(header, lcset, 'ignore')
-        ufooter = unicode(footer, lcset, 'ignore')
+        # It is possible header/footer is already unicode if it was
+        # interpolated with a unicode.
+        if isinstance(header, unicode):
+            uheader = header
+        else:
+            uheader = unicode(header, lcset, 'ignore')
+        if isinstance(footer, unicode):
+            ufooter = footer
+        else:
+            ufooter = unicode(footer, lcset, 'ignore')
         try:
             oldpayload = unicode(msg.get_payload(decode=True), mcset)
             frontsep = endsep = u''

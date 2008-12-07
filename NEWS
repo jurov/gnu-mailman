@@ -46,6 +46,10 @@ Here is a history of user visible changes to Mailman.
     - Fixed an issue that prevented editing the options.html template from
       the web admin interface. SF Bug #2164798.
 
+    - Fixed a problem in Decorate which could throw a TypeError on conversion
+      to unicode of a header/footer that was already unicode because of
+      interpolating a unicode value.
+
 2.1.11 (30-Jun-2008)
 
   New Features
