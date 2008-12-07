@@ -50,6 +50,10 @@ Here is a history of user visible changes to Mailman.
       to unicode of a header/footer that was already unicode because of
       interpolating a unicode value.
 
+    - Fixed an issue where list creation would report bad owner email
+      instead of bad listname when the list name had non-ascii characters.
+      SF Bug #2126489.
+
 2.1.11 (30-Jun-2008)
 
   New Features
