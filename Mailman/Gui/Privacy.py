@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -160,7 +160,7 @@ class Privacy(GUIBase):
         adminurl = mlist.GetScriptURL('admin', absolute=1)
         sender_rtn = [
             _("""When a message is posted to the list, a series of
-            moderation steps are take to decide whether the a moderator must
+            moderation steps are taken to decide whether a moderator must
             first approve the message or not.  This section contains the
             controls for moderation of both member and non-member postings.
 
