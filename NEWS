@@ -54,6 +54,11 @@ Here is a history of user visible changes to Mailman.
       instead of bad listname when the list name had non-ascii characters.
       SF Bug #2126489.
 
+    - Fixed an issue where in some circumstances HyperArch.py would translate
+      ' at ' into the wrong language ultimately throwing a UnicodeDecodeError
+      when the translation was decoded with a different character set.
+      Bug #308152.
+
 2.1.11 (30-Jun-2008)
 
   New Features

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -574,8 +574,8 @@ class Article(pipermail.Article):
         if mm_cfg.ARCHIVER_OBSCURES_EMAILADDRS:
             otrans = i18n.get_translation()
             try:
-                atmark = unicode(_(' at '), cset)
                 i18n.set_language(self._lang)
+                atmark = unicode(_(' at '), cset)
                 body = re.sub(r'([-+,.\w]+)@([-+.\w]+)',
                               '\g<1>' + atmark + '\g<2>', body)
             finally:
