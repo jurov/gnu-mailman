@@ -156,7 +156,12 @@ REpat = re.compile( r"\s*RE\s*(\[\d+\]\s*)?:\s*", re.IGNORECASE)
 emailpat = re.compile(r'([-+,.\w]+@[-+.\w]+)')
 
 #  Argh!  This pattern is buggy, and will choke on URLs with GET parameters.
-urlpat = re.compile(r'(\w+://[^>)\s]+)') # URLs in text
+# MAS: Given that people are not constrained in how they write URIs in plain
+# text, it is not possible to have a single regexp to reliably match them.
+# The regexp below is intended to match straightforward cases.  Even humans
+# can't reliably tell whether various punctuation at the end of a URI is part
+# of the URI or not.
+urlpat = re.compile(r'([a-z]+://.*?)(?:_\s|_$|$|[]})>\'"\s])', re.IGNORECASE)
 
 # Blank lines
 blankpat = re.compile(r'^\s*$')
