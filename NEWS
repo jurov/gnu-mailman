@@ -68,6 +68,13 @@ Here is a history of user visible changes to Mailman.
     - Added missing --bare option to French translation of list_lists help.
       Bug #312119.
 
+    - Fixed a long standing error that stopped relative hrefs from being
+      generated for links on Mailman's web pages.
+
+    - Changed the admindb interface so that when messages are rejected from
+      the summary page, the reject reason is the rejection message from the
+      Errors.HoldMessage subclass instead of the generic "No reason given".
+
 2.1.11 (30-Jun-2008)
 
   New Features

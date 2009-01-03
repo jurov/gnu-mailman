@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -554,12 +554,8 @@ def show_detailed_requests(mlist, form):
 
 
 def show_post_requests(mlist, id, info, total, count, form):
-    # For backwards compatibility with pre 2.0beta3
-    if len(info) == 5:
-        ptime, sender, subject, reason, filename = info
-        msgdata = {}
-    else:
-        ptime, sender, subject, reason, filename, msgdata = info
+    # Mailman.ListAdmin.__handlepost no longer tests for pre 2.0beta3
+    ptime, sender, subject, reason, filename, msgdata = info
     form.AddItem('<hr>')
     # Header shown on each held posting (including count of total)
     msg = _('Posting Held for Approval')
@@ -709,10 +705,12 @@ def process_form(mlist, doc, cgidata):
             preserve = actions.get('senderpreserve', 0)
             forward = actions.get('senderforward', 0)
             forwardaddr = actions.get('senderforwardto', '')
-            comment = _('No reason given')
             bysender = helds_by_sender(mlist)
             for id in bysender.get(sender, []):
                 try:
+                    msgdata = mlist.GetRecord(id)[5]
+                    comment = msgdata.get('rejection_notice',
+                                      _('[No explanation given]'))
                     mlist.HandleRequest(id, action, comment, preserve,
                                         forward, forwardaddr)
                 except (KeyError, Errors.LostHeldMessage):
@@ -771,7 +769,8 @@ def process_form(mlist, doc, cgidata):
         forwardaddrkey = 'forward-addr-%d' % request_id
         bankey = 'ban-%d' % request_id
         # Defaults
-        comment = _('[No reason given]')
+        msgdata = mlist.GetRecord(request_id)[5]
+        comment = msgdata.get('rejection_notice', _('[No explanation given]'))
         preserve = 0
         forward = 0
         forwardaddr = ''

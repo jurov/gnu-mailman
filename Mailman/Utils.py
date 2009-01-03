@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -266,7 +266,7 @@ def ScriptURL(target, web_page_url=None, absolute=False):
         fullpath = os.environ.get('SCRIPT_NAME', '') + \
                    os.environ.get('PATH_INFO', '')
     baseurl = urlparse.urlparse(web_page_url)[2]
-    if not absolute and fullpath.endswith(baseurl):
+    if not absolute and fullpath.startswith(baseurl):
         # Use relative addressing
         fullpath = fullpath[len(baseurl):]
         i = fullpath.find('?')
