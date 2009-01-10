@@ -75,6 +75,13 @@ Here is a history of user visible changes to Mailman.
       the summary page, the reject reason is the rejection message from the
       Errors.HoldMessage subclass instead of the generic "No reason given".
 
+    - Fixed the admin Membership List Find member function so the 'letter'
+      links to a chunked result would still be limited to the Find member
+      search. SF patch #1532081.
+
+    - Changed scripts/driver to return a 405 status for non GET, POST, HEAD
+      methods. SF patch #1578756.
+
 2.1.11 (30-Jun-2008)
 
   New Features
