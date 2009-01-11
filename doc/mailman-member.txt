@@ -12,7 +12,7 @@ GNU Mailman - List Member Manual
    terri(at)zone12.com
 
    Release 2.1
-   June 29, 2008
+   January 11, 2009
 
                                  Front Matter
 
@@ -535,8 +535,8 @@ Contents
        message. (See Section 3.2 for more information about sending mail
        commands.)
        If you are not sending mail from your subscribed address, you can
-       also specify this address by sending the command
-       password address=ADDRESS.
+       also specify this address by sending the command password address=
+       $<$ ADDRESS $>$ .
 
 6.2 How do I change my password?
 
@@ -555,13 +555,14 @@ Contents
    Section 10.1 for information about changing settings globally.
 
    From the email interface:
-    1. Send a mail to LISTNAME-request@DOMAIN with the command
-       password OLDPASSWORD NEWPASSWORD.
+    1. Send a mail to LISTNAME-request@DOMAIN with the command password
+       $<$ OLDPASSWORD $>$   $<$ NEWPASSWORD $>$ .
        Commands can appear in either the body or the subject of the
        message. (See Section 3.2 for more information about sending mail
        commands.)
        If you are not sending mail from your membership address, you can
-       also specify this address with address=ADDRESS after NEWPASSWORD.
+       also specify this address with address= $<$ ADDRESS $>$ after $<$
+       NEWPASSWORD $>$ .
        For example, if kathy@here.com wanted to change her mylist
        password from zirc to miko, but she was sending mail from her work
        address kathy@work.com, she could send a message to
@@ -1169,7 +1170,7 @@ option)
 
                        1 Email commands quick reference
 
-     * confirm CONFIRMATION-STRING
+     * confirm $<$ CONFIRMATION-STRING $>$
           + Confirm an action. The confirmation-string is required and
             should be supplied within a mailback confirmation notice.
      * end
@@ -1182,10 +1183,11 @@ option)
      * lists
           + See a list of the public mailing lists on this GNU Mailman
             server.
-     * password [OLDPASSWORD NEWPASSWORD] [address=ADDRESS]
+     * password [ $<$ OLDPASSWORD $>$ $<$ NEWPASSWORD $>$ ] [address= $<$
+       ADDRESS $>$ ]
           + Retrieve or change your password. With no arguments, this
-            returns your current password. With arguments OLDPASSWORD and
-            NEWPASSWORD you can change your password.
+            returns your current password. With arguments $<$ OLDPASSWORD
+            $>$ and $<$ NEWPASSWORD $>$ you can change your password.
      * set ...
           + Set or view your membership options.
             Use `set help' (without the quotes) to get a more detailed
@@ -1193,46 +1195,47 @@ option)
             in Appendix B.
             Use `set show' (without the quotes) to view your current
             option settings.
-     * subscribe [PASSWORD] [digest|nodigest] [address=ADDRESS]
+     * subscribe [ $<$ PASSWORD $>$ ] [digest|nodigest] [address= $<$
+       ADDRESS $>$ ]
           + Subscribe to this mailing list. Your password must be given
             to unsubscribe or change your options, but if you omit the
             password, one will be generated for you. You may be
             periodically reminded of your password.
             The next argument may be either: `nodigest' or `digest' (no
             quotes!). If you wish to subscribe an address other than the
-            address you sent this request from, you may specify
-            `address=ADDRESS' (no brackets around the email address, and
+            address you sent this request from, you may specify `address=
+            $<$ ADDRESS $>$ ' (no brackets around the email address, and
             no quotes!)
-     * unsubscribe [PASSWORD] [address=ADDRESS]
+     * unsubscribe [ $<$ PASSWORD $>$ ] [address= $<$ ADDRESS $>$ ]
           + Unsubscribe from the mailing list. If given, your password
             must match your current password. If omitted, a confirmation
             email will be sent to the unsubscribing address. If you wish
             to unsubscribe an address other than the address you sent
-            this request from, you may specify `address=ADDRESS' (no
-            brackets around the email address, and no quotes!)
-     * who [PASSWORD] [address=ADDRESS]
+            this request from, you may specify `address= $<$ ADDRESS $>$
+            ' (no brackets around the email address, and no quotes!)
+     * who [ $<$ PASSWORD $>$ ] [address= $<$ ADDRESS $>$ ]
           + See everyone who is on this mailing list. The roster is
             limited to list members only, and you must supply your
             membership password to retrieve it. If you're posting from an
             address other than your membership address, specify your
-            membership address with `address=ADDRESS' (no brackets around
-            the email address, and no quotes!)
+            membership address with `address= $<$ ADDRESS $>$ ' (no
+            brackets around the email address, and no quotes!)
 
                        2 Member options quick reference
 
      * set help
           + Show this detailed help.
-     * set show [address=ADDRESS]
+     * set show [address= $<$ ADDRESS $>$ ]
           + View your current option settings. If you're posting from an
             address other than your membership address, specify your
-            membership address with `address=ADDRESS' (no brackets around
-            the email address, and no quotes!).
-     * set authenticate PASSWORD [address=ADDRESS]
+            membership address with `address= $<$ ADDRESS $>$ ' (no
+            brackets around the email address, and no quotes!).
+     * set authenticate $<$ PASSWORD $>$ [address= $<$ ADDRESS $>$ ]
           + To set any of your options, you must include this command
             first, along with your membership password. If you're posting
             from an address other than your membership address, specify
-            your membership address with `address=ADDRESS' (no brackets
-            around the email address, and no quotes!).
+            your membership address with `address= $<$ ADDRESS $>$ ' (no
+            brackets around the email address, and no quotes!).
      * set ack on
        set ack off
           + When the `ack' option is turned on, you will receive an
@@ -1275,7 +1278,7 @@ option)
 
                             About this document ...
 
-   GNU Mailman - List Member Manual, June 29, 2008, Release 2.1
+   GNU Mailman - List Member Manual, January 11, 2009, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1292,4 +1295,4 @@ option)
    Previous Page Up one Level Next Page GNU Mailman - List Member Manual
      _________________________________________________________________
 
-   Release 2.1, documentation updated on June 29, 2008.
+   Release 2.1, documentation updated on January 11, 2009.

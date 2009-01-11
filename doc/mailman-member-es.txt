@@ -13,7 +13,7 @@ GNU Mailman Manual del Suscriptor de Listas
    terri(en)zone12.com
 
    Release 2.1
-   29 de junio 2008
+   11 de enero 2009
 
                                    Prefacio
 
@@ -281,8 +281,6 @@ GNU Mailman Manual del Suscriptor de Listas
    las que se describen abajo. Nosotros describiremos la configuraci贸n
    m谩s com煤n, pero consulte los detalles con su administrador de sitio
    o proveedor del servicio.
-
-   =-1
 
    P谩gina de informaci贸n de la lista (listinfo)
 
@@ -616,7 +614,7 @@ GNU Mailman Manual del Suscriptor de Listas
        sobre env胦 de 贸rdenes de correo).
        Si usted no est谩 enviando correo desde la direcci贸n suscrita,
        tambi茅n puede especificar esta direcci贸n enviando la orden
-       password address=DIRECCI肗.
+       password address= $<$ DIRECCI肗 $>$ .
 
 6.2 驴C贸mo cambio mi contrase帽a?
 
@@ -638,14 +636,14 @@ GNU Mailman Manual del Suscriptor de Listas
 
    Desde el interfaz de correo electr贸nico:
     1. Env胑 un correo a la direcci贸n de correo
-       NOMBRELISTA-request@DOMINIO con la orden
-       password CONTRASE肁 - ANTERIOR CONTRASE肁 - NUEVA.
+       NOMBRELISTA-request@DOMINIO con la orden password  $<$
+       CONTRASE肁 - ANTERIOR $>$   $<$ CONTRASE肁 - NUEVA $>$ .
        Las 贸rdenes pueden aparecer ya sea en cuerpo o en la l胣ea de
        asunto del mensaje (mire en la Secci贸n 3.2 la informaci贸n sobre
        el env胦 de 贸rdenes de correo).
        Si usted no est谩 enviando correo desde su direcci贸n de membres铆
-       a, usted puede tambi茅n especificar esta direcci贸n con
-       address=DIRECCI肗 despu茅s de CONTRASE肁-NUEVA.
+       a, usted puede tambi茅n especificar esta direcci贸n con address=
+       $<$ DIRECCI肗 $>$ despu茅s de $<$ CONTRASE肁-NUEVA $>$ .
        Por ejemplo, si maria@micasa.com deseaba cambiar su contrase帽a de
        la lista milista, de zirc a miko, pero ella estaba enviando correo
        desde la direcci贸n de la oficina maria@trabajo.com, podr胊 enviar
@@ -1369,7 +1367,7 @@ solicitado (spam)?
 
             1 Referencia r谩pida de 贸rdenes de correo electr贸nico
 
-     * confirm CADENA-DE-CONFIRMACI肗
+     * confirm $<$ CADENA-DE-CONFIRMACI肗 $>$
           + Confirma una acci贸n. La cadena de confirmaci贸n es
             obligatoria y se deber胊 enviar en la respuesta al mensaje de
             confirmaci贸n enviado por Mailman.
@@ -1384,12 +1382,12 @@ solicitado (spam)?
      * lists
           + Obtiene una listado de las listas de correo (cuyos nombres se
             muestran p煤blicamente), del servidor GNU Mailman.
-     * password [CONTRASE肁-ANTERIOR CONTRASE肁-NUEVA]
-       [address=DIRECCI肗]
+     * password [ $<$ CONTRASE肁-ANTERIOR $>$ $<$ CONTRASE肁-NUEVA $>$ ]
+       [address= $<$ DIRECCI肗 $>$ ]
           + Obtiene o cambia su contrase帽a. Sin argumentos, devuelve su
             contrase帽a actual. Usted puede cambiar su contrase帽a
-            indicando los argumentos CONTRASE肁-ANTERIOR y
-            CONTRASE肁-NUEVA
+            indicando los argumentos $<$ CONTRASE肁-ANTERIOR $>$ y $<$
+            CONTRASE肁-NUEVA $>$
      * set ...
           + Cambia o muestra sus opciones de membres胊.
             Use `set help' (sin las comillas) para obtener una lista m谩s
@@ -1397,7 +1395,8 @@ solicitado (spam)?
             tambi茅n se presenta en el Ap茅ndice B.
             Use `set show' (sin las comillas) para mirar la
             configuraci贸n actual de sus opciones.
-     * subscribe [CONTRASE肁] [digest|nodigest] [address=DIRECCI肗]
+     * subscribe [ $<$ CONTRASE肁 $>$ ] [digest|nodigest] [address= $<$
+       DIRECCI肗 $>$ ]
           + Suscribirse a la lista de correo. Usted debe proporcionar su
             contrase帽a para desuscribirse o cambiar sus opciones, pero
             si omite la contrase帽a, Mailman le generar谩 una. Usted
@@ -1406,42 +1405,42 @@ solicitado (spam)?
             El siguiente par谩metro puede ser ya sea: `nodigest' o
             `digest' (sin comillas). Si usted desea suscribir una
             direcci贸n diferente de la direcci贸n desde donde est谩
-            enviando esta solicitud, puede especificar
-            `address=DIRECCI肗' (sin par茅ntesis angulares ni comillas).
-     * unsubscribe [CONTRASE肁] [address=DIRECCI肗]
+            enviando esta solicitud, puede especificar `address= $<$
+            DIRECCI肗 $>$ ' (sin par茅ntesis angulares ni comillas).
+     * unsubscribe [ $<$ CONTRASE肁 $>$ ] [address= $<$ DIRECCI肗 $>$ ]
           + Desuscribirse de la lista de correo. Si usted suministra una
             contrase帽a, 茅sta debe concordar con su contrase帽a actual.
             Si se omite, el sistema le enviar谩 un mensaje de
             confirmaci贸n para desuscribir la direcci贸n. Si usted desea
             desuscribir una direcci贸n diferente a la direcci贸n desde
-            donde env胊 esta solicitud, puede especificar
-            `address=DIRECCI肗' (sin par茅ntesis angulares ni comillas).
-     * who [CONTRASE肁] [address=DIRECCI肗]
+            donde env胊 esta solicitud, puede especificar `address= $<$
+            DIRECCI肗 $>$ ' (sin par茅ntesis angulares ni comillas).
+     * who [ $<$ CONTRASE肁 $>$ ] [address= $<$ DIRECCI肗 $>$ ]
           + Muestra quien pertenece a la lista de correo. La lista est谩
             limitada 煤nicamente a los suscriptores, y usted debe
             proporcionar su contrase帽a de membres胊 para obtenerla. Si
             usted est谩 enviando desde una direcci贸n diferente a su
             direcci贸n de membres胊, especifique su direcci贸n de
-            membres胊 con `address=DIRECCI肗' (sin par茅ntesis angulares
-            ni comillas).
+            membres胊 con `address= $<$ DIRECCI肗 $>$ ' (sin par茅ntesis
+            angulares ni comillas).
 
                 2 Referencia r谩pida de opciones del suscriptor
 
      * set help
           + Muestra esta ayuda detallada.
-     * set show [address=DIRECCI肗]
+     * set show [address= $<$ DIRECCI肗 $>$ ]
           + Muestra la configuraci贸n actual de sus opciones. Si usted
             est谩 enviando desde una direcci贸n diferente de su
             direcci贸n de membres胊, especifique su direcci贸n de
-            membres胊 con `address=DIRECCI肗' (sin par茅ntesis angulares
-            ni comillas).
-     * set authenticate CONTRASE肁 [address=DIRECCI肗]
+            membres胊 con `address= $<$ DIRECCI肗 $>$ ' (sin par茅ntesis
+            angulares ni comillas).
+     * set authenticate $<$ CONTRASE肁 $>$ [address= $<$ DIRECCI肗 $>$ ]
           + Para cambiar cualquiera de sus opciones, usted debe incluir
             este comando primero, junto con su contrase帽a de membres胊.
             Si usted est谩 enviando desde una direcci贸n diferente de su
             direcci贸n de membres胊, especifique su direcci贸n de
-            membres胊 con `address=DIRECCI肗' (sin par茅ntesis angulares
-            ni comillas).
+            membres胊 con `address= $<$ DIRECCI肗 $>$ ' (sin par茅ntesis
+            angulares ni comillas).
      * set ack on
        set ack off
           + Cuando se activa la opci贸n `ack', usted recibir谩 un mensaje
@@ -1486,7 +1485,7 @@ solicitado (spam)?
 
                             Sobre este documento...
 
-   GNU Mailman Manual del Suscriptor de Listas, 29 de junio 2008, Release
+   GNU Mailman Manual del Suscriptor de Listas, 11 de enero 2009, Release
    2.1
 
    This document was generated using the LaTeX2HTML translator.
@@ -1505,4 +1504,4 @@ solicitado (spam)?
                       Manual del Suscriptor de Listas
      _________________________________________________________________
 
-   Release 2.1, documentation updated on 29 de junio 2008.
+   Release 2.1, documentation updated on 11 de enero 2009.
