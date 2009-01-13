@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -167,6 +167,9 @@ def replace_payload_by_text(msg, text, charset):
     # message by a text (scrubbing).
     del msg['content-type']
     del msg['content-transfer-encoding']
+    if isinstance(charset, unicode):
+        # email 3.0.1 (python 2.4) doesn't like unicode
+        charset = charset.encode('us-ascii')
     msg.set_payload(text, charset)
 
 
