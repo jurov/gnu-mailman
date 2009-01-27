@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman 2.1.11\n"
 "POT-Creation-Date: Fri Jun  6 11:25:34 2008\n"
-"PO-Revision-Date: 2008-11-23 17:30+0100\n"
+"PO-Revision-Date: 2009-01-27 21:53+0100\n"
 "Last-Translator: David Planella <david.planella@gmail.com>\n"
 "Language-Team: Catalan <mailman@llistes.softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -1366,7 +1366,7 @@ msgstr "Envia"
 
 #: Mailman/Cgi/confirm.py:231
 msgid "Confirm subscription request"
-msgstr "Confirma la sol·licitud de subscripció"
+msgstr "Confirmeu la sol·licitud de subscripció"
 
 #: Mailman/Cgi/confirm.py:246
 msgid ""
@@ -1394,11 +1394,11 @@ msgstr ""
 "    opcions de subscripció.\n"
 "\n"
 "    <p>Nota: un cop s'hagi confirmat la subscripció se us enviarà la vostra\n"
-"    contrasena, la qual podreu canviar més endavant si aneu a la vostra pàgina\n"
+"    contrasenya, la qual podreu canviar més endavant si aneu a la vostra pàgina\n"
 "    d'opcions.\n"
 "\n"
-"    <p>O bé premeu <em>Cancel·la la sol·licitud de subscripció</em> en cas que\n"
-"    no us vulgueu subscriure a aquesta llista."
+"    <p>O bé premeu <em>Cancel·la la meva sol·licitud de subscripció</em> en \n"
+"    cas que no us vulgueu subscriure a aquesta llista."
 
 #: Mailman/Cgi/confirm.py:261
 msgid ""
@@ -1440,7 +1440,7 @@ msgstr "El vostre nom real:"
 
 #: Mailman/Cgi/confirm.py:289
 msgid "Receive digests?"
-msgstr "Rebre resums?"
+msgstr "Voleu rebre resums?"
 
 #: Mailman/Cgi/confirm.py:298
 msgid "Preferred language:"
@@ -1452,7 +1452,7 @@ msgstr "Cancel·la la meva sol·licitud de subscripció"
 
 #: Mailman/Cgi/confirm.py:304
 msgid "Subscribe to list %(listname)s"
-msgstr "Subscriure a la llista %(listname)s"
+msgstr "Subscriu-me a la llista %(listname)s"
 
 #: Mailman/Cgi/confirm.py:321
 msgid "You have canceled your subscription request."
@@ -1525,10 +1525,11 @@ msgid ""
 "            <a href=\"%(optionsurl)s\">proceed to your membership login\n"
 "            page</a>."
 msgstr ""
-"            Heu confirmat la vostra sol·licitud de subscripció satisfactòriament\n"
-"            per \"%(addr)s\" a la llista de correu %(listname)s. Un missatge\n"
-"            de confirmació se us serà enviat per separat a la vosta adreça de correu\n"
-"            electrònic amb la vostra contrasenya i altra informació i enllaços d'interès.\n"
+"            Heu confirmat amb èxit la vostra sol·licitud de subscripció\n"
+"            per a «%(addr)s» a la llista de correu %(listname)s. Se us \n"
+"            enviarà un missatge de confirmació a la vosta adreça de \n"
+"            correu electrònic juntament amb la vostra contrasenya i \n"
+"            altra informació i enllaços d'interès.\n"
 "\n"
 "            <p>Ara podeu\n"
 "            <a href=\"%(optionsurl)s\">anar a la pàgina d'entrada de la\n"
@@ -2556,7 +2557,7 @@ msgstr "Llista %(realname)s: pàgina d'entrada a les opcions de membre "
 
 #: Mailman/Cgi/options.py:847
 msgid "email address and "
-msgstr "Enviar l'adreça per correu electrònic i"
+msgstr "adreça electrònica i "
 
 #: Mailman/Cgi/options.py:850
 msgid "%(realname)s list: member options for user %(safeuser)s"
@@ -2576,14 +2577,17 @@ msgid ""
 "    effect.\n"
 "    "
 msgstr ""
-"Per canviar les vostres opcions de subscripció, primer heu d'entrar\n"
-"    amb la vostra %(extra)s contrasenya de subscripció. Si no recordeu\n"
-"    la vostra contrasenya, feu clic al botó de sota i se us enviarà a la vostra\n"
-"    adreça electrònics. Si voleu cancel·lar la vostra subscripció, feu\n"
-"    clic al botó <em>Cancel·la la subscripció</em> i se us enviarà un missatge de confirmació.\n"
+"Si voleu canviar les vostres opcions de subscripció, haureu d'entrar\n"
+"    introduint la vostra %(extra)scontrasenya de subscripció a la secció de \n"
+"    més avall. En cas que no la recordeu, feu clic al botó de sota i se us \n"
+"    enviarà a la vostra adreça electrònica. Si voleu cancel·lar la vostra \n"
+"    subscripció, feu clic al botó <em>Cancel·la la subscripció</em> i se us \n"
+"    enviarà un missatge de confirmació.\n"
 "\n"
-"    <p><strong><em>Important:</em></strong> A partir d'aquest punt heu\n"
-"    de tenir activades les galetes al teu navegador o bé els canvis no tindran efecte."
+"    <p><strong><em>Important:</em></strong> A partir d'aquest punt haureu\n"
+"    de tenir activades les galetes al navegador o bé els canvis no tindran \n"
+"    efecte.\n"
+"    "
 
 #: Mailman/Cgi/options.py:890
 msgid "Email address:"
@@ -2605,11 +2609,12 @@ msgid ""
 "    also confirm by email; see the instructions in the confirmation\n"
 "    message)."
 msgstr ""
-"Fent click en el botó <em>Cancel·la la subscripció</em>\n"
-"    se't enviarà un missatge de confirmació. Aquest missatge tindrà un\n"
-"    enllaç que hauràs de clickar per a completar el procés d'eliminació\n"
-"    (també ho pots confirmar amb el correu electrònic, pots veure les\n"
-"    instruccions en el missatge de confirmació)."
+"En fer clic en el botó <em>Cancel·la la subscripció</em>\n"
+"    se us enviarà un missatge de confirmació. Aquest missatge contindrà\n"
+"    un enllaç on haureu de fer clic per a completar el procés de supressió\n"
+"    (també podeu dur a terme la confirmació per correu electrònic; vegeu \n"
+"    les instruccions en el missatge de confirmació per a obtenir-ne més \n"
+"    informació)."
 
 #: Mailman/Cgi/options.py:912
 msgid "Password reminder"
@@ -2620,8 +2625,8 @@ msgid ""
 "By clicking on the <em>Remind</em> button, your\n"
 "    password will be emailed to you."
 msgstr ""
-"Fent click en el botó <em>Recorda-me-la</em>, se't enviarà\n"
-"    la teva contrasenya a la teva adreça de correu electrònic."
+"En fer clic en el botó <em>Recorda-me-la</em>, se us enviarà\n"
+"    la contrasenya per correu electrònic."
 
 #: Mailman/Cgi/options.py:919
 msgid "Remind"
@@ -5058,7 +5063,7 @@ msgstr ""
 
 #: Mailman/Gui/General.py:268
 msgid "Send monthly password reminders?"
-msgstr "Enviar recordatoris mensuals de la contrasenya?"
+msgstr "Voleu enviar recordatoris mensuals de la contrasenya?"
 
 #: Mailman/Gui/General.py:270
 msgid ""
@@ -5112,7 +5117,7 @@ msgstr ""
 
 #: Mailman/Gui/General.py:295
 msgid "Send welcome message to newly subscribed members?"
-msgstr "Enviar un missatge de benvinguda als nous membres subscrits?"
+msgstr "Voleu enviar un missatge de benvinguda als subscriptors nous?"
 
 #: Mailman/Gui/General.py:296
 msgid ""
@@ -5136,7 +5141,7 @@ msgstr ""
 
 #: Mailman/Gui/General.py:306
 msgid "Send goodbye message to members when they are unsubscribed?"
-msgstr "Enviar un missatge de comiat quan els membres cancel·lin la seva subscripció?"
+msgstr "Voleu enviar un missatge de comiat quan els membres cancel·lin la seva subscripció?"
 
 #: Mailman/Gui/General.py:309
 msgid ""
@@ -5172,11 +5177,11 @@ msgstr ""
 
 #: Mailman/Gui/General.py:324
 msgid "Send mail to poster when their posting is held for approval?"
-msgstr "Enviar un missatge al remitent quan el seu missatge quedi retingut per a la seva aprovació?"
+msgstr "Voleu enviar un missatge al remitent se li retingui un missatge per a aprovar-lo?"
 
 #: Mailman/Gui/General.py:327
 msgid "Additional settings"
-msgstr "Configuració addicional."
+msgstr "Paràmetres addicionals"
 
 #: Mailman/Gui/General.py:330
 msgid "Emergency moderation of all list traffic."
@@ -6861,7 +6866,7 @@ msgstr "Lliurament de correu"
 
 #: Mailman/HTMLFormatter.py:151 Mailman/HTMLFormatter.py:296
 msgid "the list administrator"
-msgstr "el administrador de la llista"
+msgstr "l'administrador de la llista"
 
 #: Mailman/HTMLFormatter.py:152
 msgid ""
@@ -10767,11 +10772,11 @@ msgstr ""
 
 #: bin/update:665
 msgid "getting rid of old source files"
-msgstr "Desfent-me dels antics fitxers font"
+msgstr "supressió dels dels fitxers font vells"
 
 #: bin/update:675
 msgid "no lists == nothing to do, exiting"
-msgstr "si no hi ha llistes == no hi ha res per fer, sortint"
+msgstr "si no hi ha llistes, no hi ha res per fer, per la qual cosa se sortirà"
 
 #: bin/update:682
 msgid ""
@@ -10792,7 +10797,7 @@ msgstr "S'està actualitzant la llista de correu: %(listname)s"
 
 #: bin/update:692
 msgid "Updating Usenet watermarks"
-msgstr "S'estan actualitzant les marques d'aigua de Usenet"
+msgstr "S'estan actualitzant les marques d'aigua de l'Usenet"
 
 #: bin/update:697
 msgid "- nothing to update here"
@@ -10800,7 +10805,7 @@ msgstr "- aquí no hi ha res per a actualitzar"
 
 #: bin/update:720
 msgid "- usenet watermarks updated and gate_watermarks removed"
-msgstr "- s'han suprimit les marques d' aigua i les gate_watermarks de usenet"
+msgstr "- s'han suprimit les marques d' aigua i les gate_watermarks de l'Usenet"
 
 #: bin/update:734
 msgid ""
@@ -10841,7 +10846,7 @@ msgstr ""
 
 #: bin/update:791
 msgid "No updates are necessary."
-msgstr "No hi ha actualitzacions necessàries."
+msgstr "No cal fer cap actualització."
 
 #: bin/update:794
 msgid ""
@@ -10855,7 +10860,7 @@ msgstr ""
 
 #: bin/update:799
 msgid "Upgrading from version %(hexlversion)s to %(hextversion)s"
-msgstr "Actualitzant de la versió %(hexlversion)s a la %(hextversion)s"
+msgstr "S'està actualitzant la versió %(hexlversion)s a la %(hextversion)s"
 
 #: bin/update:808
 msgid ""
@@ -11091,15 +11096,15 @@ msgstr ""
 
 #: bin/withlist:175
 msgid "Unlocking (but not saving) list: %(listname)s"
-msgstr "Desbloquejant (però no guardant) la llista: %(listname)s"
+msgstr "S'està desbloquejant (però no desant) la llista: %(listname)s"
 
 #: bin/withlist:179
 msgid "Finalizing"
-msgstr "Finalitzant"
+msgstr "S'està finalitzant"
 
 #: bin/withlist:188
 msgid "Loading list %(listname)s"
-msgstr "Carregant llista %(listname)s"
+msgstr "S'està carregant la llista %(listname)s"
 
 #: bin/withlist:190
 msgid "(locked)"
@@ -11131,7 +11136,7 @@ msgstr "Executant %(module)s.%(callable)s()..."
 
 #: bin/withlist:291
 msgid "The variable `m' is the %(listname)s MailList instance"
-msgstr "La variable `m' és la instància de la llista de correu %(listname)s"
+msgstr "La variable «m» és la instància de la llista de correu %(listname)s"
 
 #: cron/bumpdigests:19
 msgid ""
