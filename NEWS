@@ -4,9 +4,11 @@ Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.12? (xx-xxx-xxxx)
+2.1.12rc1 (12-Jan-2009)
 
   Bug fixes and other patches
+
+    - Fix compatibility with Python 2.6.
 
     - Fixed a bug in admin.py which would result in chunked pages of the
       membership list for members whose address begins with a non-alphanumeric
@@ -34,6 +36,51 @@ Here is a history of user visible changes to Mailman.
     - Fixed a problem in SecurityManager that caused it to not find the
       cookie when CheckCookie was not given a user and the user in the cookie
       had a %xx encoded character.  Bug # 299220.
+
+    - Fixed a minor fromusenet reporting issue in the contributed mmdsr
+      script.
+
+    - Fixed a minor issue in cron/gate_news that could cause a list's
+      watermark to not be completely updated.
+
+    - Fixed an issue that prevented editing the options.html template from
+      the web admin interface. SF Bug #2164798.
+
+    - Fixed a problem in Decorate which could throw a TypeError on conversion
+      to unicode of a header/footer that was already unicode because of
+      interpolating a unicode value.
+
+    - Fixed an issue where list creation would report bad owner email
+      instead of bad listname when the list name had non-ascii characters.
+      SF Bug #2126489.
+
+    - Fixed an issue where in some circumstances HyperArch.py would translate
+      ' at ' into the wrong language ultimately throwing a UnicodeDecodeError
+      when the translation was decoded with a different character set.
+      Bug #308152.
+
+    - Corrected a typo in Mailman/Gui/Privacy.py. Bug #309757.
+
+    - Changed the pattern used to recognize URLs in messages for the pipermail
+      archive in order to try to do a better job of making hyperlinks.
+      Bug #310124.
+
+    - Added missing --bare option to French translation of list_lists help.
+      Bug #312119.
+
+    - Fixed a long standing error that stopped relative hrefs from being
+      generated for links on Mailman's web pages.
+
+    - Changed the admindb interface so that when messages are rejected from
+      the summary page, the reject reason is the rejection message from the
+      Errors.HoldMessage subclass instead of the generic "No reason given".
+
+    - Fixed the admin Membership List Find member function so the 'letter'
+      links to a chunked result would still be limited to the Find member
+      search. SF patch #1532081.
+
+    - Changed scripts/driver to return a 405 status for non GET, POST, HEAD
+      methods. SF patch #1578756.
 
 2.1.11 (30-Jun-2008)
 

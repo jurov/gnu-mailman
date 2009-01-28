@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -24,7 +24,6 @@ import sys
 import os
 import re
 import cgi
-import sha
 import urllib
 import signal
 from types import *
@@ -41,6 +40,7 @@ from Mailman.UserDesc import UserDesc
 from Mailman.htmlformat import *
 from Mailman.Cgi import Auth
 from Mailman.Logging.Syslog import syslog
+from Mailman.Utils import sha_new
 
 # Set up i18n
 _ = i18n._
@@ -852,7 +852,8 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     container.AddItem(header)
     # Add a "search for member" button
     table = Table(width='100%')
-    link = Link('http://www.python.org/doc/current/lib/re-syntax.html',
+    link = Link('http://docs.python.org/library/re.html'
+                '#regular-expression-syntax',
                 _('(help)')).Format()
     table.AddRow([Label(_('Find member %(link)s:')),
                   TextBox('findmember',
@@ -940,7 +941,10 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     if bucket:
         cells = []
         for letter in keys:
-            url = adminurl + '/members?letter=%s' % letter
+            findfrag = ''
+            if regexp:
+                findfrag = '&findmember=' + urllib.quote(regexp)
+            url = adminurl + '/members?letter=' + letter + findfrag
             if letter == bucket:
                 show = Bold('[%s]' % letter.upper()).Format()
             else:
@@ -1269,7 +1273,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
     confirm = cgidata.getvalue('confirmmodpw', '').strip()
     if new or confirm:
         if new == confirm:
-            mlist.mod_password = sha.new(new).hexdigest()
+            mlist.mod_password = sha_new(new).hexdigest()
             # No re-authentication necessary because the moderator's
             # password doesn't get you into these pages.
         else:
@@ -1279,7 +1283,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
     confirm = cgidata.getvalue('confirmpw', '').strip()
     if new or confirm:
         if new == confirm:
-            mlist.password = sha.new(new).hexdigest()
+            mlist.password = sha_new(new).hexdigest()
             # Set new cookie
             print mlist.MakeCookie(mm_cfg.AuthListAdmin)
         else:

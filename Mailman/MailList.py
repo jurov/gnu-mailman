@@ -491,7 +491,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         postingaddr = '%s@%s' % (name, emailhost)
         try:
             Utils.ValidateEmail(postingaddr)
-        except Errors.MMBadEmailError:
+        except Errors.EmailAddressError:
             raise Errors.BadListNameError, postingaddr
         # Validate the admin's email address
         Utils.ValidateEmail(admin)

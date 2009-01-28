@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2006-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,7 +21,6 @@
 
 import os
 import sys
-import sha
 import base64
 import codecs
 import datetime
@@ -289,13 +288,13 @@ def plaintext_password(password):
 
 
 def sha_password(password):
-    h = sha.new(password)
+    h = Utils.sha_new(password)
     return '{SHA}' + base64.b64encode(h.digest())
 
 
 def ssha_password(password):
     salt = os.urandom(SALT_LENGTH)
-    h = sha.new(password)
+    h = Utils.sha_new(password)
     h.update(salt)
     return '{SSHA}' + base64.b64encode(h.digest() + salt)
 

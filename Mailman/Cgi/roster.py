@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -72,16 +72,18 @@ def main():
     # that, we check roster-email and roster-pw fields for a valid password.
     # (also allowed: the list moderator, the list admin, and the site admin).
     password = cgidata.getvalue('roster-pw', '')
-    list_hidden = mlist.WebAuthenticate((mm_cfg.AuthListModerator,
-                                         mm_cfg.AuthListAdmin,
-                                         mm_cfg.AuthSiteAdmin),
-                                        password)
+    addr = cgidata.getvalue('roster-email', '')
+    list_hidden = (not mlist.WebAuthenticate((mm_cfg.AuthUser,),
+                                             password, addr)
+                   and mlist.WebAuthenticate((mm_cfg.AuthListModerator,
+                                              mm_cfg.AuthListAdmin,
+                                              mm_cfg.AuthSiteAdmin),
+                                             password))
     if mlist.private_roster == 0:
         # No privacy
         ok = 1
     elif mlist.private_roster == 1:
         # Members only
-        addr = cgidata.getvalue('roster-email', '')
         ok = mlist.WebAuthenticate((mm_cfg.AuthUser,
                                     mm_cfg.AuthListModerator,
                                     mm_cfg.AuthListAdmin,

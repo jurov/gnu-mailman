@@ -1090,10 +1090,14 @@ MIME_DIGEST_KEEP_HEADERS = [
     'Message',
     ]
 
+# The order in this list controls the order of the RFC 1153 digest headers.
+# Also, any headers in this list will be kept in the MIME digest even if they
+# don't appear in the MIME list above.  Finally, headers appearing in both
+# lists must be casewise the same or duplication can result in the digest.
 PLAIN_DIGEST_KEEP_HEADERS = [
-    'Message', 'Date', 'From',
-    'Subject', 'To', 'Cc',
-    'Message-ID', 'Keywords',
+    'Message',
+    # RFC 1153 headers in order
+    'Date', 'From', 'To', 'Cc', 'Subject', 'Message-ID', 'Keywords',
     'Content-Type',
     ]
 

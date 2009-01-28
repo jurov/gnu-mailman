@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -160,7 +160,7 @@ class Privacy(GUIBase):
         adminurl = mlist.GetScriptURL('admin', absolute=1)
         sender_rtn = [
             _("""When a message is posted to the list, a series of
-            moderation steps are take to decide whether the a moderator must
+            moderation steps are taken to decide whether a moderator must
             first approve the message or not.  This section contains the
             controls for moderation of both member and non-member postings.
 
@@ -185,7 +185,7 @@ class Privacy(GUIBase):
 
             <p>In the text boxes below, add one address per line; start the
             line with a ^ character to designate a <a href=
-            "http://www.python.org/doc/current/lib/module-re.html"
+            "http://docs.python.org/library/re.html"
             >Python regular expression</a>.  When entering backslashes, do so
             as if you were using Python raw strings (i.e. you generally just
             use a single backslash).

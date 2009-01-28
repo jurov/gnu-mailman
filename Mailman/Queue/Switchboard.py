@@ -35,7 +35,6 @@
 # needs.
 
 import os
-import sha
 import time
 import email
 import errno
@@ -46,6 +45,7 @@ from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Message
 from Mailman.Logging.Syslog import syslog
+from Mailman.Utils import sha_new
 
 # 20 bytes of all bits set, maximum sha.digest() value
 shamax = 0xffffffffffffffffffffffffffffffffffffffffL
@@ -118,7 +118,7 @@ class Switchboard:
         # this system) and the sha hex digest.
         #rcvtime = data.setdefault('received_time', now)
         rcvtime = data.setdefault('received_time', now)
-        filebase = `rcvtime` + '+' + sha.new(hashfood).hexdigest()
+        filebase = `rcvtime` + '+' + sha_new(hashfood).hexdigest()
         filename = os.path.join(self.__whichq, filebase + '.pck')
         tmpfile = filename + '.tmp'
         # Always add the metadata schema version number

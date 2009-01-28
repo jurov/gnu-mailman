@@ -34,7 +34,6 @@ some previous version.  It knows about versions back to 1.0b4 (?).
 """
 
 import os
-import md5
 import sys
 import time
 import errno
@@ -131,7 +130,7 @@ def move_language_templates(mlist):
             # No global template
             continue
 
-        gcksum = md5.new(fp.read()).digest()
+        gcksum = Utils.md5_new(fp.read()).digest()
         fp.close()
         # Match against the lists/<list>/* template
         try:
@@ -139,7 +138,7 @@ def move_language_templates(mlist):
         except IOError, e:
             if e.errno <> errno.ENOENT: raise
         else:
-            tcksum = md5.new(fp.read()).digest()
+            tcksum = Utils.md5_new(fp.read()).digest()
             fp.close()
             if gcksum == tcksum:
                 os.unlink(os.path.join(mlist.fullpath(), gtemplate))
@@ -149,7 +148,7 @@ def move_language_templates(mlist):
         except IOError, e:
             if e.errno <> errno.ENOENT: raise
         else:
-            tcksum = md5.new(fp.read()).digest()
+            tcksum = Utils.md5_new(fp.read()).digest()
             fp.close()
             if gcksum == tcksum:
                 os.unlink(os.path.join(mlist.fullpath(), gtemplate + '.prev'))
@@ -159,7 +158,7 @@ def move_language_templates(mlist):
         except IOError, e:
             if e.errno <> errno.ENOENT: raise
         else:
-            tcksum = md5.new(fp.read()).digest()
+            tcksum = Utils.md5_new(fp.read()).digest()
             fp.close()
             if gcksum == tcksum:
                 os.unlink(os.path.join(mlist.fullpath(), 'en', gtemplate))
@@ -169,7 +168,7 @@ def move_language_templates(mlist):
         except IOError, e:
             if e.errno <> errno.ENOENT: raise
         else:
-            tcksum = md5.new(fp.read()).digest()
+            tcksum = Utils.md5_new(fp.read()).digest()
             fp.close()
             if gcksum == tcksum:
                 os.unlink(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
@@ -179,7 +178,7 @@ def move_language_templates(mlist):
         except IOError, e:
             if e.errno <> errno.ENOENT: raise
         else:
-            tcksum = md5.new(fp.read()).digest()
+            tcksum = Utils.md5_new(fp.read()).digest()
             fp.close()
             if gcksum == tcksum:
                 os.unlink(os.path.join(mm_cfg.TEMPLATE_DIR,

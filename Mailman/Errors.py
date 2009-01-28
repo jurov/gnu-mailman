@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 
 """Shared mailman errors and messages."""
@@ -49,14 +50,21 @@ class MMCookieError(MMAuthenticationError): pass
 class MMExpiredCookieError(MMCookieError): pass
 class MMInvalidCookieError(MMCookieError): pass
 
-# BAW: these still need to be converted to classes.
-MMMustDigestError    = "MMMustDigestError"
-MMCantDigestError    = "MMCantDigestError"
-MMNeedApproval       = "MMNeedApproval"
-MMSubscribeNeedsConfirmation = "MMSubscribeNeedsConfirmation"
-MMBadConfirmation    = "MMBadConfirmation"
-MMAlreadyDigested    = "MMAlreadyDigested"
-MMAlreadyUndigested  = "MMAlreadyUndigested"
+class MMMustDigestError: pass
+class MMCantDigestError: pass
+class MMNeedApproval:
+    def __init__(self, message=None):
+        self.message = message
+    def __str__(self):
+        return self.message or ''
+class MMSubscribeNeedsConfirmation: pass
+class MMBadConfirmation:
+    def __init__(self, message=None):
+        self.message = message
+    def __str__(self):
+        return self.message or ''
+class MMAlreadyDigested: pass
+class MMAlreadyUndigested: pass
 
 MODERATED_LIST_MSG    = "Moderated list"
 IMPLICIT_DEST_MSG     = "Implicit destination"

@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,7 +21,6 @@ from __future__ import nested_scopes
 
 import os
 import re
-import sha
 import time
 import errno
 import binascii
@@ -41,6 +40,7 @@ from Mailman import Message
 from Mailman.Errors import DiscardMessage
 from Mailman.i18n import _
 from Mailman.Logging.Syslog import syslog
+from Mailman.Utils import sha_new
 
 # Path characters for common platforms
 pre = re.compile(r'[/\\:]')
@@ -158,7 +158,7 @@ def calculate_attachments_dir(mlist, msg, msgdata):
     if msgid is None:
         msgid = msg['Message-ID'] = Utils.unique_message_id(mlist)
     # We assume that the message id actually /is/ unique!
-    digest = sha.new(msgid).hexdigest()
+    digest = sha_new(msgid).hexdigest()
     return os.path.join('attachments', datedir, digest[:4] + digest[-4:])
 
 
@@ -167,6 +167,9 @@ def replace_payload_by_text(msg, text, charset):
     # message by a text (scrubbing).
     del msg['content-type']
     del msg['content-transfer-encoding']
+    if isinstance(charset, unicode):
+        # email 3.0.1 (python 2.4) doesn't like unicode
+        charset = charset.encode('us-ascii')
     msg.set_payload(text, charset)
 
 
@@ -189,7 +192,7 @@ def process(mlist, msg, msgdata=None):
     # Now walk over all subparts of this message and scrub out various types
     format = delsp = None
     for part in msg.walk():
-        ctype = part.get_type(part.get_default_type())
+        ctype = part.get_content_type()
         # If the part is text/plain, we leave it alone
         if ctype == 'text/plain':
             # We need to choose a charset for the scrubbed message, so we'll
@@ -300,7 +303,7 @@ URL: %(url)s
         # will transform the url into a hyperlink.
         elif part.get_payload() and not part.is_multipart():
             payload = part.get_payload(decode=True)
-            ctype = part.get_type()
+            ctype = part.get_content_type()
             # XXX Under email 2.5, it is possible that payload will be None.
             # This can happen when you have a Content-Type: multipart/* with
             # only one part and that part has two blank lines between the
