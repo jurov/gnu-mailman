@@ -1583,7 +1583,7 @@ msgid ""
 msgstr ""
 "%(newaddr)s חסום מרישום לרישימת %(realname)s.\n"
 "        אם לדעתך הגבלה זו שגויה, נא ליצור קשר\n"
-"        עם בעל הרשימה בכתובת %(listowner)s."
+"        עם בעל הרשימה בכתובת %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:534
 #, fuzzy
@@ -2743,7 +2743,7 @@ msgstr "אפשריות לא חוקיות הועברו לאצווה CGI"
 
 #: Mailman/Cgi/roster.py:102
 msgid "%(realname)s roster authentication failed."
-msgstr "%אימות לוח שמות של (realname)s נכשל"
+msgstr "%אימות לוח שמות של %(realname)s נכשל"
 
 #: Mailman/Cgi/roster.py:130 Mailman/Cgi/roster.py:131
 #: Mailman/Cgi/subscribe.py:49 Mailman/Cgi/subscribe.py:60
@@ -9943,7 +9943,7 @@ msgstr ""
 "ניתן להשתמש בסיסמת האתר ברוב, אם לכל, המקומות בהם ניתן להשתמש בסיסמת המנהל.\n"
 "שהוא, בתורו, ניתן לשימוש ברוב המקומות בהם ניתן להשתמש בסיסמת משתמש.\n"
 "\n"
-"השימוש: %(סיסמא)s [אפשריות] [password]\n"
+"השימוש: %(PROGRAM)s [אפשריות] [password]\n"
 "\n"
 "אפשריות:\n"
 "\n"
@@ -11065,9 +11065,9 @@ msgid ""
 "You can integrate that into the archives if you want by using the 'arch'\n"
 "script.\n"
 msgstr ""
-"ל- %(listname)s יש ארכיונים mbox פרטיים וגם ציבוריים.  מכיוון שרשימה זו "
+"ל- %s יש ארכיונים mbox פרטיים וגם ציבוריים.  מכיוון שרשימה זו "
 "משתמשת\n"
-"בארכיונים ציבוריים, אני מתקין את הארכיון mbox הציבורי -- %(o_pri_mbox_file)s "
+"בארכיונים ציבוריים, אני מתקין את הארכיון mbox הציבורי -- %s "
 "--\n"
 "כארכיון הפעיל, ומשנה את השם\n"
 "        %s\n"
