@@ -82,6 +82,9 @@ Here is a history of user visible changes to Mailman.
     - Changed scripts/driver to return a 405 status for non GET, POST, HEAD
       methods. SF patch #1578756.
 
+    - Fixed a bug in admindb.py in the implementation of replacing "No Reason
+      Given" with the default rejection reason.  Bug #325016.
+
 2.1.11 (30-Jun-2008)
 
   New Features
