@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -166,6 +166,10 @@ PATTERNS = [
     (_c('- no such user here'),
      _c('There is no user'),
      _c('^(?P<addr>[^\s@]+@[^\s@]+)\s')),
+    # fastdnsservers.com
+    (_c('The following recipient.*could not be reached'),
+     _c('bogus stop pattern'),
+     _c('^(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
     # Next one goes here...
     ]
 
