@@ -72,6 +72,7 @@ class BounceTest(unittest.TestCase):
         ('SimpleMatch', 'simple_32.txt', ['teteyn@agence-forbin.com']),
         ('SimpleMatch', 'simple_33.txt', ['hmu@extralumin.com']),
         ('SimpleMatch', 'simple_34.txt', ['roland@xxx.com']),
+        ('SimpleMatch', 'simple_36.txt', ['garyt@xxx.com']),
         ('SimpleMatch', 'bounce_02.txt', ['acinsp1@midsouth.rr.com']),
         ('SimpleMatch', 'bounce_03.txt', ['james@jeborall.demon.co.uk']),
         # SimpleWarning
@@ -79,6 +80,7 @@ class BounceTest(unittest.TestCase):
         ('SimpleWarning', 'simple_21.txt', Stop),
         ('SimpleWarning', 'simple_22.txt', Stop),
         ('SimpleWarning', 'simple_28.txt', Stop),
+        ('SimpleWarning', 'simple_35.txt', Stop),
         # GroupWise
         ('GroupWise', 'groupwise_01.txt', ['thoff@MAINEX1.ASU.EDU']),
         # This one really sucks 'cause it's text/html.  Just make sure it

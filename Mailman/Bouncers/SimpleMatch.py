@@ -170,6 +170,10 @@ PATTERNS = [
     (_c('The following recipient.*could not be reached'),
      _c('bogus stop pattern'),
      _c('^(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
+    # lttf.com
+    (_c('Could not deliver message to'),
+     _c('^\s*--'),
+     _c('^Failed Recipient:\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
     # Next one goes here...
     ]
 
