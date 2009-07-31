@@ -174,6 +174,10 @@ PATTERNS = [
     (_c('Could not deliver message to'),
      _c('^\s*--'),
      _c('^Failed Recipient:\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
+    # uci.edu
+    (_c('--------Message not delivered'),
+     _c('--------Error Detail'),
+     _c('^\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
     # Next one goes here...
     ]
 
@@ -195,7 +199,7 @@ def process(msg, patterns=None):
     # we process the message multiple times anyway.
     for scre, ecre, acre in patterns:
         state = 0
-        for line in email.Iterators.body_line_iterator(msg):
+        for line in email.Iterators.body_line_iterator(msg, decode=True):
             if state == 0:
                 if scre.search(line):
                     state = 1

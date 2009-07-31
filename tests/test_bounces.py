@@ -73,6 +73,7 @@ class BounceTest(unittest.TestCase):
         ('SimpleMatch', 'simple_33.txt', ['hmu@extralumin.com']),
         ('SimpleMatch', 'simple_34.txt', ['roland@xxx.com']),
         ('SimpleMatch', 'simple_36.txt', ['garyt@xxx.com']),
+        ('SimpleMatch', 'simple_37.txt', ['user@uci.edu']),
         ('SimpleMatch', 'bounce_02.txt', ['acinsp1@midsouth.rr.com']),
         ('SimpleMatch', 'bounce_03.txt', ['james@jeborall.demon.co.uk']),
         # SimpleWarning
@@ -163,6 +164,7 @@ class BounceTest(unittest.TestCase):
                                    'turtle4jne@yahoo.com']),
         # sina.com appears to use their own weird SINAEMAIL MTA
         ('Sina', 'sina_01.txt', ['boboman76@sina.com', 'alan_t18@sina.com']),
+        ('AOL', 'aol_01.txt', ['screenname@aol.com']),
         # No address can be detected in these...
         # dumbass_01.txt - We love Microsoft. :(
         # Done
