@@ -262,7 +262,7 @@ URL: %(url)s
                 # mono-space font.  Still looks hideous to me, but then I'd
                 # just as soon discard them.
                 def doreplace(s):
-                    return s.replace(' ', '&nbsp;').replace('\t', '&nbsp'*8)
+                    return s.expandtabs(8).replace(' ', '&nbsp;')
                 lines = [doreplace(s) for s in payload.split('\n')]
                 payload = '<tt>\n' + BR.join(lines) + '\n</tt>\n'
                 part.set_payload(payload)

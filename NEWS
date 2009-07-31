@@ -8,6 +8,27 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Scrubbed HTML attachments containing tab characters would get the tabs
+      replaced by a string of '&nbsp' without a semicolon.  Fixed.
+
+    - Caught a TypeError in content filtering, collapse alternatives that
+      occurred with a malformed message if a multipart/alternative part
+      wasn't multi-part.  Reported in comments to bug #266230.
+
+    - Fixed a few things in bin/update:
+      - Changed some old messages for more current meaning.
+      - Fixed qfiles update to not lose metadata from 2.1.5+ format entries.
+      - Fixed 2.0.x template migration to not die if the templates/ tree
+        contains subdirectories from a version control system.
+
+    - Fixed a bug that would show a list on the admin and listinfo overview
+      pages if its web_page_url host contained the current host as a
+      substring.  Bug #342162.
+
+    - Fixed a bug in Utils.canonstr() that would throw a UnicodeDecodeError
+      if the string contained an HTML entity > 255 and also characters in the
+      128-255 range.  Bug #341594.
+
     - Added recognition for more bounces.
 
     - Updated contrib/mmdsr to report preserved messages.

@@ -808,12 +808,25 @@ def canonstr(s, lang=None):
     newparts = []
     parts = re.split(r'&(?P<ref>[^;]+);', s)
     def appchr(i):
-        if i < 256:
-            newparts.append(chr(i))
+        # do everything in unicode
+        newparts.append(unichr(i))
+    def tounicode(s):
+        # We want the default fallback to be iso-8859-1 even if the language
+        # is English (us-ascii).  This seems like a practical compromise so
+        # that non-ASCII characters in names can be used in English lists w/o
+        # having to change the global charset for English from us-ascii (which
+        # I superstitiously think may have unintended consequences).
+        if isinstance(s, unicode):
+            return s
+        if lang is None:
+            charset = 'iso-8859-1'
         else:
-            newparts.append(unichr(i))
+            charset = GetCharSet(lang)
+            if charset == 'us-ascii':
+                charset = 'iso-8859-1'
+        return unicode(s, charset, 'replace')
     while True:
-        newparts.append(parts.pop(0))
+        newparts.append(tounicode(parts.pop(0)))
         if not parts:
             break
         ref = parts.pop(0)
@@ -822,28 +835,16 @@ def canonstr(s, lang=None):
                 appchr(int(ref[1:]))
             except ValueError:
                 # Non-convertable, stick with what we got
-                newparts.append('&'+ref+';')
+                newparts.append(tounicode('&'+ref+';'))
         else:
             c = htmlentitydefs.entitydefs.get(ref, '?')
             if c.startswith('#') and c.endswith(';'):
                 appchr(int(ref[1:-1]))
             else:
-                newparts.append(c)
+                newparts.append(tounicode(c))
     newstr = EMPTYSTRING.join(newparts)
-    if isinstance(newstr, UnicodeType):
-        return newstr
-    # We want the default fallback to be iso-8859-1 even if the language is
-    # English (us-ascii).  This seems like a practical compromise so that
-    # non-ASCII characters in names can be used in English lists w/o having to
-    # change the global charset for English from us-ascii (which I
-    # superstitiously think may have unintended consequences).
-    if lang is None:
-        charset = 'iso-8859-1'
-    else:
-        charset = GetCharSet(lang)
-        if charset == 'us-ascii':
-            charset = 'iso-8859-1'
-    return unicode(newstr, charset, 'replace')
+    # newstr is unicode
+    return newstr
 
 
 # The opposite of canonstr() -- sorta.  I.e. it attempts to encode s in the
