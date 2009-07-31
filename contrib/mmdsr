@@ -168,6 +168,10 @@
 #		Changed processing of fromusenet posts.  Previously, mmdsr
 #		reported as gated only the first and last of a gated range.
 #		Now mmdsr reports every post from the 'posted to' entries.
+#
+# 0.0.20	Update by Mark Sapiro <mark@msapiro.net>
+#		Updated on: Sun Jul 26 08:56:41 PDT 2009
+#		Added report of files in the preserved messages directory.
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -215,6 +219,11 @@ LOGDIR="/usr/local/mailman/logs"
 # Mailman data directory
 ###############################################################################
 DATADIR="/usr/local/mailman/data"
+
+###############################################################################
+# Mailman preserved messages directory
+###############################################################################
+SPAMDIR="/usr/local/mailman/spam"
 
 ###############################################################################
 # Maximum number of subdirectory entries to display in report
@@ -593,6 +602,33 @@ echo "" >> $TMP
 
 $AWK '{ print $NF }' $TMPLOG | $GREP -i '^heldmsg-' | $SED -e 's/^heldmsg-//' -e 's/-[0-9]*\.pck$//' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 echo "" >> $TMP
+
+if [ -d $SPAMDIR ] ; then
+    cd $SPAMDIR
+    $RM -f $TMPLOG
+    $TOUCH $TMPLOG
+    $LS -la | $GREP -i '\.msg$' >> $TMPLOG
+    LINES=`$WC -l < $TMPLOG`
+    
+    echo "******************************" >> $TMP
+    echo "Preserved Messages Directory Contents" >> $TMP
+    echo "        (.msg files only)" >> $TMP
+    echo "******************************" >> $TMP
+    echo "Files: $LINES" >> $TMP
+    echo "==============================" >> $TMP
+    echo "" >> $TMP
+    
+    if [ $LINES -le $MAX_DATA_LINES ] ; then
+        $CAT $TMPLOG >> $TMP
+    else
+        $HEAD $TMPLOG >> $TMP
+        echo "" >> $TMP
+        echo "  More than $MAX_DATA_LINES total entries, skipping ..." >> $TMP
+        echo "" >> $TMP
+        $TAIL $TMPLOG >> $TMP
+    fi
+    echo "" >> $TMP
+fi
 
 ###############################################################################
 # Okay, we're done with all the code stuff, now handle the output
