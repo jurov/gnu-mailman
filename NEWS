@@ -8,6 +8,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Mailman no longer folds long sub-part headers in multipart messages.
+      In addition, Mailman no longer escapes From_ lines in the body of
+      messages sent to regular list members, although MTA's may do it anyway.
+      This is to avoid breaking signatures per Bug #265967.
+
     - XSS protection in the web interface went too far in escaping HTML
       entities.  Fixed.
 

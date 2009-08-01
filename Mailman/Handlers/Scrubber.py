@@ -90,27 +90,6 @@ def guess_extension(ctype, ext):
     return all and all[0]
 
 
-
-# We're using a subclass of the standard Generator because we want to suppress
-# headers in the subparts of multiparts.  We use a hack -- the ctor argument
-# skipheaders to accomplish this.  It's set to true for the outer Message
-# object, but false for all internal objects.  We recognize that
-# sub-Generators will get created passing only mangle_from_ and maxheaderlen
-# to the ctors.
-#
-# This isn't perfect because we still get stuff like the multipart boundaries,
-# but see below for how we corrupt that to our nefarious goals.
-class ScrubberGenerator(Generator):
-    def __init__(self, outfp, mangle_from_=True,
-                 maxheaderlen=78, skipheaders=True):
-        Generator.__init__(self, outfp, mangle_from_=False)
-        self.__skipheaders = skipheaders
-
-    def _write_headers(self, msg):
-        if not self.__skipheaders:
-            Generator._write_headers(self, msg)
-
-
 def safe_strftime(fmt, t):
     try:
         return time.strftime(fmt, t)
