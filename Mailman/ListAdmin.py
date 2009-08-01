@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -202,7 +202,7 @@ class ListAdmin:
                     cPickle.dump(msg, fp, 1)
                 else:
                     g = Generator(fp)
-                    g(msg, 1)
+                    g.flatten(msg, 1)
                 fp.flush()
                 os.fsync(fp.fileno())
             finally:
@@ -251,7 +251,7 @@ class ListAdmin:
             outfp = open(outpath, 'w')
             try:
                 g = Generator(outfp)
-                g(msg, 1)
+                g.flatten(msg, 1)
             finally:
                 outfp.close()
         # Now handle updates to the database
