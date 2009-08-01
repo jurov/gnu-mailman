@@ -424,8 +424,10 @@ def check_global_password(response, siteadmin=True):
 
 
 
+_ampre = re.compile('&amp;((?:#[0-9]+|[a-z]+);)', re.IGNORECASE)
 def websafe(s):
-    return cgi.escape(s, quote=True)
+    # Don't double escape html entities
+    return _ampre.sub(r'&\1', cgi.escape(s, quote=True))
 
 
 def nntpsplit(s):

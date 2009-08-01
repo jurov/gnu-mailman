@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - XSS protection in the web interface went too far in escaping HTML
+      entities.  Fixed.
+
     - Removed or anonymized additional headers in posts to anonymous lists.
 
     - Fixed a bug that could cause incorrect threading of replies to archived
