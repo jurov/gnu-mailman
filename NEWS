@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug that could cause incorrect threading of replies to archived
+      messages that arrive with timestamps in the same second.
+
     - Scrubbed HTML attachments containing tab characters would get the tabs
       replaced by a string of '&nbsp' without a semicolon.  Fixed.
 
