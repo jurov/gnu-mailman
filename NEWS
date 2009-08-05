@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Replies to commands sent to list-request now come From: list-owner
+      instead of list-bounces.
+
     - Mailman no longer folds long sub-part headers in multipart messages.
       In addition, Mailman no longer escapes From_ lines in the body of
       messages sent to regular list members, although MTA's may do it anyway.
