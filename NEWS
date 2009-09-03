@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed VERP_CONFIRM_REGEXP  in Defaults.py to work if the replying
+      MUA folds the To: header and in cases where the list name includes '+'.
+
     - Fixed some paths in contrib/check_perms_grsecurity.py. Bug #411192.
 
     - Replies to commands sent to list-request now come From: list-owner
