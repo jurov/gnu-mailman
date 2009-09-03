@@ -8,6 +8,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Inadvertently setting a null site or list password allowed access
+      to a list's web admin interface without authentication.  Fixed by
+      not accepting null passwords.
+
     - Changed VERP_CONFIRM_REGEXP  in Defaults.py to work if the replying
       MUA folds the To: header and in cases where the list name includes '+'.
 
