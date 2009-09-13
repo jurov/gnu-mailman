@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Configure/make no longer builds Japanese and Korean codecs in
+      pythonlib if Python already has them.
+
     - Inadvertently setting a null site or list password allowed access
       to a list's web admin interface without authentication.  Fixed by
       not accepting null passwords.
