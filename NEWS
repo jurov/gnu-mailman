@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed the auto-responder to treat messages to -confirm, -join, -leave,
+      -subscribe and -unsubscribe as requests rather than posts.  Bug #427962.
+
     - Configure/make no longer builds Japanese and Korean codecs in
       pythonlib if Python already has them.
 
