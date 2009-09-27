@@ -312,8 +312,8 @@ if [ "${SLEEPTIME}" != "" -a "${RCPTS}x" != "${SENDER}x" ] ; then
     fi
 fi
 
-TMP=`$MKTEMP -d $TMPDIR`
-TMPLOG=`$MKTEMP -d $TMPDIR`
+TMP=`$MKTEMP -p $TMPDIR`
+TMPLOG=`$MKTEMP -p $TMPDIR`
 
 if [ "${RCPTS}x" != "x" ] ; then
     echo "From: ${SENDER}" >> $TMP
