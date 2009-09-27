@@ -205,9 +205,10 @@ XARGS="/usr/bin/xargs"
 WC="/usr/bin/wc"
 
 ###############################################################################
-# Directory for temporary files
+# Arguments for your mktemp command to specify directory and/or create file.
+# For example, HPUX mktemp requires "-c"; FreeBSD doesn't accept "-p <dir>".
 ###############################################################################
-TMPDIR="/tmp"
+TMPDIR="-p /tmp"
 
 ###############################################################################
 # Mailman queue directory
@@ -312,8 +313,8 @@ if [ "${SLEEPTIME}" != "" -a "${RCPTS}x" != "${SENDER}x" ] ; then
     fi
 fi
 
-TMP=`$MKTEMP -p $TMPDIR`
-TMPLOG=`$MKTEMP -p $TMPDIR`
+TMP=`$MKTEMP $TMPDIR`
+TMPLOG=`$MKTEMP $TMPDIR`
 
 if [ "${RCPTS}x" != "x" ] ; then
     echo "From: ${SENDER}" >> $TMP
