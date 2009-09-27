@@ -172,6 +172,10 @@
 # 0.0.20	Update by Mark Sapiro <mark@msapiro.net>
 #		Updated on: Sun Jul 26 08:56:41 PDT 2009
 #		Added report of files in the preserved messages directory.
+#
+# 0.0.21	Update by Mark Sapiro <mark@msapiro.net>
+#		Updated on: Sun Sep 27 12:45:44 PDT 2009
+#		Refactored to use mktemp to create temp files
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -187,6 +191,7 @@ FMT="/usr/bin/fmt"
 GREP="/bin/grep"
 HEAD="/usr/bin/head"
 LS="/bin/ls"
+MKTEMP="/bin/mktemp"
 PS="/bin/ps"
 RM="/bin/rm"
 SED="/bin/sed"
@@ -194,7 +199,6 @@ SENDMAIL="/usr/sbin/sendmail"
 SLEEP="/bin/sleep"
 SORT="/usr/bin/sort"
 TAIL="/usr/bin/tail"
-TOUCH="/bin/touch"
 TR="/usr/bin/tr"
 UNIQ="/usr/bin/uniq"
 XARGS="/usr/bin/xargs"
@@ -308,10 +312,8 @@ if [ "${SLEEPTIME}" != "" -a "${RCPTS}x" != "${SENDER}x" ] ; then
     fi
 fi
 
-TMP="$TMPDIR/.$PROG.$$"
-TMPLOG="$TMP.log"
-$RM -f $TMP
-$TOUCH $TMP
+TMP=`$MKTEMP -d $TMPDIR`
+TMPLOG=`$MKTEMP -d $TMPDIR`
 
 if [ "${RCPTS}x" != "x" ] ; then
     echo "From: ${SENDER}" >> $TMP
@@ -332,16 +334,14 @@ echo "" >> $TMP
 for LOG in $SUM_LOGS
 do
 
-    $RM -f $TMPLOG
-    $TOUCH $TMPLOG
     echo "Log file: $LOG" >> $TMP
     echo "==============================" >> $TMP
 
     if [ -f "$LOGDIR/${LOG}" ] ; then
       if [ -f "$LOGDIR/${LOG}.1" ] ; then
-        $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' ${LOGDIR}/${LOG}.1 $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
+        $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' ${LOGDIR}/${LOG}.1 $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" > $TMPLOG
       else
-        $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" >> $TMPLOG
+        $SED -e :a -e '$!N;s/\n //;ta' -e 'P;D' $LOGDIR/$LOG | $GREP -si "^$DAY [0-9][0-9:]* $YEAR" > $TMPLOG
       fi
 
 	if [ "${LOG}" = "post" ] ; then
@@ -406,16 +406,14 @@ echo "" >> $TMP
 
 for LOG in $ERR_LOGS
 do
-    $RM -f $TMPLOG
-    $TOUCH $TMPLOG
     echo "Log file: $LOG" >> $TMP
     echo "==============================" >> $TMP
 
     if [ -f "$LOGDIR/${LOG}" ] ; then
       if [ -f "$LOGDIR/${LOG}.1" ] ; then
-        $GREP -si "^$DAY [0-9][0-9:]* $YEAR" ${LOGDIR}/${LOG}.1 ${LOGDIR}/${LOG} | $SED "s/^[^:]*://" >> $TMPLOG
+        $GREP -si "^$DAY [0-9][0-9:]* $YEAR" ${LOGDIR}/${LOG}.1 ${LOGDIR}/${LOG} | $SED "s/^[^:]*://" > $TMPLOG
       else
-        $GREP -si "^$DAY [0-9][0-9:]* $YEAR" ${LOGDIR}/${LOG} >> $TMPLOG
+        $GREP -si "^$DAY [0-9][0-9:]* $YEAR" ${LOGDIR}/${LOG} > $TMPLOG
       fi
 
 	if [ "${LOG}" = "error" ] ; then
@@ -543,9 +541,7 @@ for DIR in $SUBDIRS
 do
 
   if [ -d $DIR ] ; then
-    $RM -f $TMPLOG
-    $TOUCH $TMPLOG
-    $LS -la $DIR >> $TMPLOG
+    $LS -la $DIR > $TMPLOG
     LINES=`$WC -l < $TMPLOG`
     LINES=`expr $LINES - 3`
 
@@ -575,9 +571,7 @@ echo "******************************" >> $TMP
 
 cd $DATADIR
 
-$RM -f $TMPLOG
-$TOUCH $TMPLOG
-$LS -la | $GREP -i '\.pck$' >> $TMPLOG
+$LS -la | $GREP -i '\.pck$' > $TMPLOG
 LINES=`$WC -l < $TMPLOG`
 
 echo "Python pickle files: $LINES" >> $TMP
@@ -605,9 +599,7 @@ echo "" >> $TMP
 
 if [ -d $SPAMDIR ] ; then
     cd $SPAMDIR
-    $RM -f $TMPLOG
-    $TOUCH $TMPLOG
-    $LS -la | $GREP -i '\.msg$' >> $TMPLOG
+    $LS -la | $GREP -i '\.msg$' > $TMPLOG
     LINES=`$WC -l < $TMPLOG`
     
     echo "******************************" >> $TMP
