@@ -206,7 +206,7 @@ WC="/usr/bin/wc"
 
 ###############################################################################
 # Arguments for your mktemp command to specify directory and/or create file.
-# For example, HPUX mktemp requires "-c"; FreeBSD doesn't accept "-p <dir>".
+# For example, HPUX mktemp requires "-c -d <dir>"; FreeBSD requires "-t <dir>".
 ###############################################################################
 TMPDIR="-p /tmp"
 
