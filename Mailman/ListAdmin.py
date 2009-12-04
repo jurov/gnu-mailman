@@ -410,11 +410,14 @@ class ListAdmin:
         if value == mm_cfg.DEFER:
             return DEFER
         elif value == mm_cfg.DISCARD:
-            pass
+            syslog('vette', '%s: discarded subscription request from %s',
+                   self.internal_name(), addr)
         elif value == mm_cfg.REJECT:
             self.__refuse(_('Subscription request'), addr,
                           comment or _('[No reason given]'),
                           lang=lang)
+            syslog('vette', """%s: rejected subscription request from %s
+\tReason: %s""", self.internal_name(), addr, comment or '[No reason given]')
         else:
             # subscribe
             assert value == mm_cfg.SUBSCRIBE
@@ -462,9 +465,12 @@ class ListAdmin:
         if value == mm_cfg.DEFER:
             return DEFER
         elif value == mm_cfg.DISCARD:
-            pass
+            syslog('vette', '%s: discarded unsubscription request from %s',
+                   self.internal_name(), addr)
         elif value == mm_cfg.REJECT:
             self.__refuse(_('Unsubscription request'), addr, comment)
+            syslog('vette', """%s: rejected unsubscription request from %s
+\tReason: %s""", self.internal_name(), addr, comment or '[No reason given]')
         else:
             assert value == mm_cfg.UNSUBSCRIBE
             try:

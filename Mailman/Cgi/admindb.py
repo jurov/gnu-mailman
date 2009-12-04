@@ -340,7 +340,7 @@ def show_pending_unsubs(mlist, form):
     # Alphabetical order by email address
     byaddrs = {}
     for id in pendingunsubs:
-        addr = mlist.GetRecord(id)[1]
+        addr = mlist.GetRecord(id)
         byaddrs.setdefault(addr, []).append(id)
     addrs = byaddrs.keys()
     addrs.sort()

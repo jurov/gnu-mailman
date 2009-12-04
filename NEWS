@@ -8,6 +8,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Added vette logging for rejected and discarded (un)subscribe requests.
+
+    - Fixed a bug in admindb.py that could erroneously discard an unsubscribe
+      request as a duplicate.
+
     - Decoded RFC 2047 encoded message subjects for a few reports.
       Bug #266428.
 
