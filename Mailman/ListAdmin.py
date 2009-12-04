@@ -292,9 +292,11 @@ class ListAdmin:
         elif value == mm_cfg.REJECT:
             # Rejected
             rejection = 'Refused'
+            lang = self.getMemberLanguage(sender)
+            subject = Utils.oneline(subject, Utils.GetCharSet(lang))
             self.__refuse(_('Posting of your message titled "%(subject)s"'),
                           sender, comment or _('[No reason given]'),
-                          lang=self.getMemberLanguage(sender))
+                          lang=lang)
         else:
             assert value == mm_cfg.DISCARD
             # Discarded

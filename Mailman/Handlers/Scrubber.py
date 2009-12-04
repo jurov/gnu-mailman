@@ -266,6 +266,7 @@ URL: %(url)s
             finally:
                 os.umask(omask)
             subject = submsg.get('subject', _('no subject'))
+            subject = Utils.oneline(subject, lcset)
             date = submsg.get('date', _('no date'))
             who = submsg.get('from', _('unknown sender'))
             size = len(str(submsg))
