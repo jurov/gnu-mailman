@@ -1,36 +1,33 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>Autentificaci&oacute;n para los archivos privados de %(realname)s</title></head><body bgcolor="#ffffff">
-<form method="post" action="%(action)s">
+<html>
+<head>
+    <title>Autentificaci&oacute;n para los archivos privados de %(realname)s</title>
+</head>
+<body bgcolor="#ffffff">
+<FORM METHOD=POST ACTION="%(action)s">
 %(message)s
-  <table border="0" cellpadding="5" cellspacing="4" width="100%">
-    <tbody><tr>
-      <td colspan="2" align="center" bgcolor="#99ccff" width="100%">
-	<b><font color="#000000" size="+1">Autentificaci&oacute;n d'archivos 
-	        privaos de %(realname)s </font></b>
+  <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+    <TR>
+      <TD COLSPAN="2" WIDTH="100%%" BGCOLOR="#99CCFF" ALIGN="CENTER">
+	<B><FONT COLOR="#000000" SIZE="+1">Autentificaci&oacute;n d'archivos privaos de %(realname)s</FONT></B>
+      </TD>
+    </TR>
+    <tr>
+        <TD><div ALIGN="Right">Direici&oacute;n::</div></TD>
+        <TD><INPUT TYPE="text" NAME="username" SIZE="30"></TD>
+    </tr>
+    <tr>
+      <TD><div ALIGN="Right">Contrase&ntilde;a:</div></TD>
+      <TD><INPUT TYPE="password" NAME="password" SIZE="30"></TD>
+    </tr>
+    <tr>
+      <td colspan=2 align="middle"><INPUT type="SUBMIT"
+                                          name="submit"
+					  value="Con permisu...">
       </td>
     </tr>
-    <tr>
-      <td> <div align="right">Direici&oacute;n:  </div></td>
-      <td> <input name="username" size="30" type="text"> </td>
-    </tr>
-    <tr>
-      <td> <div align="right"> Clave: </div> </td>
-      <td> <input name="password" size="30" type="password"></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center"><input name="submit" value="Con permisu..." type="submit">
-      </td>
-    </tr>
-  </tbody></table>
+  </TABLE>
       <p><strong><em>Importante:</em></strong> A partir d'agora, tienes de tener habilitaes les cookies nel restolador web, de nun ser asina, los cambeos nun fadr&aacute;n efeutu.
-      </p><p>Les
-sesiones basaes en cookies &uacute;sense na interface alministrativa de
-Mailman, de mou que nun necesites identificate de contino con cada
-operaci&oacute;n alministrativa que faigas. La cookie caducar&aacute; autom&aacute;ticamente
-cuando salgas del restolador, o puedes facela caducar seleicionando la
-opci&oacute;n <em>Salida</em> baxo la seici&oacute;n titulada
- <em> Otres Actividaes Alministratives</em> (que ver&aacute;s una vegada que consigas entrar 
-con &eacute;xitu).
-
-
-</p></form></body></html>
+      <p>Les sesiones basaes en cookies &uacute;sense na interface alministrativa de Mailman, de mou que nun necesites identificate de contino con cada operaci&oacute;n alministrativa que faigas. La cookie caducar&aacute; autom&aacute;ticamente cuando salgas del restolador, o puedes facela caducar seleicionando la opci&oacute;n <em>Salida</em> baxo la seici&oacute;n titulada  <em> Otres Actividaes Alministratives</em> (que ver&aacute;s una vegada que consigas entrar  con &eacute;xitu).
+</FORM>
+</body>
+</html>

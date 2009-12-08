@@ -1,20 +1,23 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<html><head><title>%(title)s</title>
-
- 
-   
+<HTML>
+ <HEAD>
+   <TITLE> %(title)s
+   </TITLE>
    <link rel="Index" href="index.html">
    <link rel="made" href="mailto:%(email_url)s?Subject=%(subject_url)s&amp;In-Reply-To=%(in_reply_to_url)s">
-   <meta name="robots" content="index,nofollow"></head><body bgcolor="#ffffff">%(encoding)s
+   <META NAME="robots" CONTENT="index,nofollow">
+   %(encoding)s
    %(prev)s
    %(next)s
- 
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
    <h1>%(subject_html)s </h1>
     <b>%(author_html)s</b> 
-    <a href="mailto:%(email_url)s?Subject=%(subject_url)s&amp;In-Reply-To=%(in_reply_to_url)s" title="%(subject_html)s">%(email_html)s
+    <a href="mailto:%(email_url)s?Subject=%(subject_url)s&amp;In-Reply-To=%(in_reply_to_url)s" 
+		title="%(subject_html)s">%(email_html)s
        </a><br>
     <i>%(datestr_html)s</i>
-    <p></p><ul>
+    <p><ul>
         %(prev_wsubj)s
         %(next_wsubj)s
          <li> <b>Mensaxes axeitaos por:</b> 
@@ -29,7 +32,7 @@
 %(body)s
 <!--endarticle-->
     <hr>
-    <p></p><ul>
+    <p><ul>
         <!--threads-->
 	%(prev_wsubj)s
 	%(next_wsubj)s
