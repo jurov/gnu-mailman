@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -340,6 +340,8 @@ def checkdata():
         print _('checking permissions on list data')
     # BAW: This needs to be converted to the Site module abstraction
     for dir in os.listdir(mm_cfg.LIST_DATA_DIR):
+        if not os.path.isdir(os.path.join(mm_cfg.LIST_DATA_DIR, dir)):
+            continue
         for file in checkfiles:
             path = os.path.join(mm_cfg.LIST_DATA_DIR, dir, file)
             if STATE.VERBOSE:
