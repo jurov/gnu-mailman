@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,11 +43,17 @@ NL = '\n'
 
 def process(mlist, msg, msgdata):
     # Short circuits
-    if msgdata.get('approved'):
+    # Do not short circuit. The problem is SpamDetect comes before Approve.
+    # Suppose a message with an Approved: header is held by SpamDetect (or
+    # any other handler that might come before Approve) and then approved
+    # by a moderator. When the approved message reaches Approve in the
+    # pipeline, we still need to remove the Approved: (pseudo-)header, so
+    # we can't short circuit.
+    #if msgdata.get('approved'):
         # Digests, Usenet postings, and some other messages come pre-approved.
         # TBD: we may want to further filter Usenet messages, so the test
         # above may not be entirely correct.
-        return
+        #return
     # See if the message has an Approved or Approve header with a valid
     # list-moderator, list-admin.  Also look at the first non-whitespace line
     # in the file to see if it looks like an Approved header.  We are

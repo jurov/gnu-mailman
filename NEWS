@@ -11,6 +11,12 @@ Here is a history of user visible changes to Mailman.
     - Changed a few DOCTYPE directives in templates for compliance.
       Bug #500952 and Bug #500955.
 
+  Bug Fixes and other patches
+
+    - Fixed a bug where a message with an Approved: header held by a handler
+      that precedes Approve (SpamDetect by default) would not have the
+      Approved: header removed if the held message was approved.  Bug #501739.
+
 2.1.13 (22-Dec-2009)
 
   i18n
