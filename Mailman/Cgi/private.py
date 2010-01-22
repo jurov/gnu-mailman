@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -137,6 +137,8 @@ def main():
         # Put the original full path in the authorization form, but avoid
         # trailing slash if we're not adding parts.  We add it below.
         action = mlist.GetScriptURL('private', absolute=1)
+        if mboxfile:
+            action += '.mbox'
         if parts[1:]:
             action = os.path.join(action, SLASH.join(parts[1:]))
         # If we added '/index.html' to true_filename, add a slash to the URL.

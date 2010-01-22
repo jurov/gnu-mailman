@@ -13,6 +13,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug where going to an archives/private/list.mbox/list.mbox URL
+      would result in a munged URL if authentication was required. Bug #266164.
+
     - Fixed a bug where check_perms would throw an OSError if an entry in
       Mailman's lists/ directory was not a directory.  Bug #265613.
 
