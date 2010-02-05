@@ -131,6 +131,8 @@ def main():
         if cgidata.has_key('submit'):
             # This is a re-authorization attempt
             message = Bold(FontSize('+1', _('Authorization failed.'))).Format()
+            # give an HTTP 401 for authentication failure
+            print 'Status: 401 Unauthorized'
         # Output the password form
         charset = Utils.GetCharSet(mlist.preferred_language)
         print 'Content-type: text/html; charset=' + charset + '\n\n'

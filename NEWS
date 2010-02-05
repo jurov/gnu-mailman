@@ -13,6 +13,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - We now give an HTTP 401 status for authentication failures from admin,
+      admindb, private and options logins.
+
     - Backported the listinfo template change from the 2.2 branch to fix
       Bug #514050.
 

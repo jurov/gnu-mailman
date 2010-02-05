@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -252,6 +252,8 @@ def main():
                        'Login failure with private rosters: %s',
                        user)
                 user = None
+            # give an HTTP 401 for authentication failure
+            print 'Status: 401 Unauthorized'
         loginpage(mlist, doc, user, language)
         print doc.Format()
         return

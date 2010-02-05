@@ -1,4 +1,4 @@
-# Copyright (C) 1998,1999,2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -42,6 +42,8 @@ def loginpage(mlist, scriptname, msg='', frontpage=None):
         actionurl = Utils.GetRequestURI(url)
     if msg:
         msg = FontAttr(msg, color='#ff0000', size='+1').Format()
+        # give an HTTP 401 for authentication failure
+        print 'Status: 401 Unauthorized'
     if scriptname == 'admindb':
         who = _('Moderator')
     else:
