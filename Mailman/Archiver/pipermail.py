@@ -664,8 +664,12 @@ class T:
         else:
             # Get the oldest article with a matching subject, and
             # assume this is a follow-up to that article
-            parentID = self.database.getOldestArticle(archive,
-                                                      article.subject)
+            # But, use the subject that's in the database
+            if article.decoded.has_key('stripped'):
+                subject = article.decoded['stripped'].lower()
+            else:
+                subject = article.subject.lower()
+            parentID = self.database.getOldestArticle(archive, subject)
 
         if parentID and not self.database.hasArticle(archive, parentID):
             parentID = None
