@@ -12,6 +12,9 @@ Here is a history of user visible changes to Mailman.
       Bug #500952 and Bug #500955.
 
   Bug Fixes and other patches
+
+    - When daemonizing mailmanctl, we now ensure terminal files are closed.
+
     - Fixed a bug in pipermail archiving that caused fallback threading by
       subject to fail.  Bug #266572.
 
