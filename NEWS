@@ -13,6 +13,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Added the List-Post header to the default list of headers retained in
+      messages in the MIME digest.  Bug #526143.
+
     - When daemonizing mailmanctl, we now ensure terminal files are closed.
 
     - Fixed a bug in pipermail archiving that caused fallback threading by
