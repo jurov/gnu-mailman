@@ -651,8 +651,10 @@ class T:
     def get_parent_info(self, archive, article):
         parentID = None
         if article.in_reply_to:
-            parentID = article.in_reply_to
-        elif article.references:
+            if self.database.hasArticle(archive, article.in_reply_to):
+                # Only use In-Reply-To if it's in the archive.
+                parentID = article.in_reply_to
+        if not parentID and article.references:
             refs = self._remove_external_references(article.references)
             if refs:
                 maxdate = self.database.getArticle(archive, refs[0])
@@ -661,7 +663,7 @@ class T:
                     if a.date > maxdate.date:
                         maxdate = a
                 parentID = maxdate.msgid
-        else:
+        if not parentID:
             # Get the oldest article with a matching subject, and
             # assume this is a follow-up to that article
             # But, use the subject that's in the database
