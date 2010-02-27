@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -290,7 +290,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 continue
             self._gui.append(getattr(Gui, component)())
 
-    def InitVars(self, name=None, admin='', crypted_password=''):
+    def InitVars(self, name=None, admin='', crypted_password='',
+                 urlhost=None):
         """Assign default values - some will be overriden by stored state."""
         # Non-configurable list info
         if name:
@@ -322,7 +323,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.host_name = mm_cfg.DEFAULT_HOST_NAME or mm_cfg.DEFAULT_EMAIL_HOST
         self.web_page_url = (
             mm_cfg.DEFAULT_URL or
-            mm_cfg.DEFAULT_URL_PATTERN % mm_cfg.DEFAULT_URL_HOST)
+            mm_cfg.DEFAULT_URL_PATTERN % (urlhost or mm_cfg.DEFAULT_URL_HOST))
         self.owner = [admin]
         self.moderator = []
         self.reply_goes_to_list = mm_cfg.DEFAULT_REPLY_GOES_TO_LIST
@@ -471,7 +472,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
     # List creation
     #
     def Create(self, name, admin, crypted_password,
-               langs=None, emailhost=None):
+               langs=None, emailhost=None, urlhost=None):
         assert name == name.lower(), 'List name must be all lower case.'
         if Utils.list_exists(name):
             raise Errors.MMListAlreadyExistsError, name
@@ -499,7 +500,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self._full_path = Site.get_listpath(name, create=1)
         # Don't use Lock() since that tries to load the non-existant config.pck
         self.__lock.lock()
-        self.InitVars(name, admin, crypted_password)
+        self.InitVars(name, admin, crypted_password, urlhost=urlhost)
         self.CheckValues()
         if langs is None:
             self.available_languages = [self.preferred_language]

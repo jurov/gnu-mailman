@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -187,7 +187,8 @@ def process_request(doc, cgidata):
         oldmask = os.umask(002)
         try:
             try:
-                mlist.Create(listname, owner, pw, langs, emailhost)
+                mlist.Create(listname, owner, pw, langs, emailhost,
+                             urlhost=hostname)
             finally:
                 os.umask(oldmask)
         except Errors.EmailAddressError, e:

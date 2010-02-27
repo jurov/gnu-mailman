@@ -13,6 +13,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Added a urlhost argument to the MailList.MailList.Create() method to
+      allow bin/newlist and the the create CGI to pass urlhost so the host
+      will be correct in the listinfo link on the emptyarchive page.
+      Bug #529100.
+
     - Added the List-Post header to the default list of headers retained in
       messages in the MIME digest.  Bug #526143.
 
