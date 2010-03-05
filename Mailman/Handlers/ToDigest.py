@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@ import os
 import re
 import copy
 import time
+import traceback
 from types import ListType
 from cStringIO import StringIO
 
@@ -100,6 +101,9 @@ def process(mlist, msg, msgdata):
             # Bare except is generally prohibited in Mailman, but we can't
             # forecast what exceptions can occur here.
             syslog('error', 'send_digests() failed: %s', errmsg)
+            s = StringIO()
+            traceback.print_exc(file=s)
+            syslog('error', s.getvalue())
     mboxfp.close()
 
 
