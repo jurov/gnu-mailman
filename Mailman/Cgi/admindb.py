@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -507,6 +507,7 @@ def show_helds_overview(mlist, form):
             if when:
                 t.AddRow(['&nbsp;', Bold(_('Received:')),
                           time.ctime(when)])
+            t.AddRow([InputObj(qsender, 'hidden', str(id), False).Format()])
             counter += 1
             right.AddRow([t])
         stable.AddRow([left, right])
@@ -684,9 +685,13 @@ def process_form(mlist, doc, cgidata):
                        'senderclearmodp-', 'senderbanp-'):
             if k.startswith(prefix):
                 action = k[:len(prefix)-1]
-                sender = unquote_plus(k[len(prefix):])
+                qsender = k[len(prefix):]
+                sender = unquote_plus(qsender)
                 value = cgidata.getvalue(k)
                 senderactions.setdefault(sender, {})[action] = value
+                for id in cgidata.getlist(qsender):
+                    senderactions[sender].setdefault('message_ids',
+                                                     []).append(int(id))
     # discard-all-defers
     try:
         discardalldefersp = cgidata.getvalue('discardalldefersp', 0)
@@ -708,6 +713,9 @@ def process_form(mlist, doc, cgidata):
             forwardaddr = actions.get('senderforwardto', '')
             bysender = helds_by_sender(mlist)
             for id in bysender.get(sender, []):
+                if id not in senderactions[sender]['message_ids']:
+                    # It arrived after the page was displayed. Skip it.
+                    continue
                 try:
                     msgdata = mlist.GetRecord(id)[5]
                     comment = msgdata.get('rejection_notice',
