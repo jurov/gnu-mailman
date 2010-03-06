@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -300,8 +300,8 @@ def subscription_prompt(mlist, doc, cookie, userdesc):
     table.AddRow([Hidden('cookie', cookie)])
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=2)
     table.AddRow([
-        Label(SubmitButton('cancel', _('Cancel my subscription request'))),
-        SubmitButton('submit', _('Subscribe to list %(listname)s'))
+        Label(SubmitButton('submit', _('Subscribe to list %(listname)s'))),
+        SubmitButton('cancel', _('Cancel my subscription request'))
         ])
     form.AddItem(table)
     doc.AddItem(form)
