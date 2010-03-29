@@ -39,7 +39,8 @@ Here is a history of user visible changes to Mailman.
       subject to fail.  Bug #266572.
 
     - We now give an HTTP 401 status for authentication failures from admin,
-      admindb, private and options logins.
+      admindb, private, options and roster CGIs, and an HTTP 404 status from
+      all the CGIs for an invalid list name.
 
     - Backported the listinfo template change from the 2.2 branch to fix
       Bug #514050.

@@ -61,6 +61,8 @@ def main():
         safelistname = Utils.websafe(listname)
         bad_confirmation(doc, _('No such list <em>%(safelistname)s</em>'))
         doc.AddItem(MailmanLogo())
+        # Send this with a 404 status.
+        print 'Status: 404 Not Found'
         print doc.Format()
         syslog('error', 'No such list "%s": %s', listname, e)
         return

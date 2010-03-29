@@ -108,6 +108,8 @@ def main():
         msg = _('No such list <em>%(safelistname)s</em>')
         doc.SetTitle(_("Private Archive Error - %(msg)s"))
         doc.AddItem(Header(2, msg))
+        # Send this with a 404 status.
+        print 'Status: 404 Not Found'
         print doc.Format()
         syslog('error', 'No such list "%s": %s\n', listname, e)
         return

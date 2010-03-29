@@ -68,6 +68,8 @@ def main():
         # Avoid cross-site scripting attacks
         safelistname = Utils.websafe(listname)
         doc.AddItem(Header(2, _('No such list <em>%(safelistname)s</em>')))
+        # Send this with a 404 status.
+        print 'Status: 404 Not Found'
         print doc.Format()
         syslog('error', 'No such list "%s": %s', listname, e)
         return

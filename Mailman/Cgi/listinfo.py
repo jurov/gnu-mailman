@@ -49,6 +49,8 @@ def main():
     except Errors.MMListError, e:
         # Avoid cross-site scripting attacks
         safelistname = Utils.websafe(listname)
+        # Send this with a 404 status.
+        print 'Status: 404 Not Found'
         listinfo_overview(_('No such list <em>%(safelistname)s</em>'))
         syslog('error', 'No such list "%s": %s', listname, e)
         return

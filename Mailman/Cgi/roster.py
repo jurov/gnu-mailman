@@ -54,6 +54,8 @@ def main():
     except Errors.MMListError, e:
         # Avoid cross-site scripting attacks
         safelistname = Utils.websafe(listname)
+        # Send this with a 404 status.
+        print 'Status: 404 Not Found'
         error_page(_('No such list <em>%(safelistname)s</em>'))
         syslog('error', 'roster: no such list "%s": %s', listname, e)
         return
@@ -99,6 +101,8 @@ def main():
         realname = mlist.real_name
         doc = Document()
         doc.set_language(lang)
+        # Send this with a 401 status.
+        print 'Status: 401 Unauthorized'
         error_page_doc(doc, _('%(realname)s roster authentication failed.'))
         doc.AddItem(mlist.GetMailmanFooter())
         print doc.Format()
