@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -33,6 +33,9 @@ def process(mlist, msg, msgdata):
     del msg['approved']
     # Remove this one too.
     del msg['approve']
+    # And these too.
+    del msg['x-approved']
+    del msg['x-approve']
     # Also remove this header since it can contain a password
     del msg['urgent']
     # We remove other headers from anonymous lists

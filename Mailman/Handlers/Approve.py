@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -61,7 +61,10 @@ def process(mlist, msg, msgdata):
     # because we want to discourage the practice of sending the site admin
     # password through email in the clear.
     missing = []
-    passwd = msg.get('approved', msg.get('approve', missing))
+    for hdr in ('approved', 'approve', 'x-approved', 'x-approve'):
+        passwd = msg.get(hdr, missing)
+        if passwd is not missing:
+            break
     if passwd is missing:
         # Find the first text/plain part in the message
         part = None
@@ -80,7 +83,11 @@ def process(mlist, msg, msgdata):
             if i >= 0:
                 name = line[:i]
                 value = line[i+1:]
-                if name.lower() in ('approve', 'approved'):
+                if name.lower() in ('approve',
+                                    'approved',
+                                    'x-approve',
+                                    'x-approved',
+                                    ):
                     passwd = value.lstrip()
                     # Now strip the first line from the payload so the
                     # password doesn't leak.
