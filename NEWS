@@ -17,8 +17,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed Content Filtering collapse_alternatives to work on deeply nested
+      multipart/alternative parts.  Bug #576675.
+
     - We now accept/remove X-Approved: and X-Approve: headers in addition to
-      Approved: and Approve: for pre-approving posts.  Bug ##557750.
+      Approved: and Approve: for pre-approving posts.  Bug #557750.
 
     - Reordered the 'cancel' and 'subscribe' buttons on the subscription
       confirmation web page so the default action upon 'enter' will be the

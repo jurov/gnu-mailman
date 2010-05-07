@@ -185,6 +185,9 @@ def collapse_multipart_alternatives(msg):
                 newpayload.append(firstalt)
             except (IndexError, TypeError):
                 pass
+        elif subpart.is_multipart():
+            collapse_multipart_alternatives(subpart)
+            newpayload.append(subpart)
         else:
             newpayload.append(subpart)
     msg.set_payload(newpayload)
