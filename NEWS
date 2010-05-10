@@ -17,6 +17,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Made a minor change to the removal of an Approved: pseudo-header from
+      a text/html alternative to allow for an inserted '\xA0' before the
+      password.
+
     - Fixed Content Filtering collapse_alternatives to work on deeply nested
       multipart/alternative parts.  Bug #576675.
 

@@ -111,7 +111,7 @@ def process(mlist, msg, msgdata):
             # line of HTML or other fancy text may include additional message
             # text.  This pattern works with HTML.  It may not work with rtf
             # or whatever else is possible.
-            pattern = name + ':(\s|&nbsp;)*' + re.escape(passwd)
+            pattern = name + ':(\xA0|\s|&nbsp;)*' + re.escape(passwd)
             for part in typed_subpart_iterator(msg, 'text'):
                 if part is not None and part.get_payload() is not None:
                     lines = part.get_payload(decode=True)
