@@ -396,6 +396,24 @@ MTA = 'Manual'
 # for details.
 POSTFIX_STYLE_VIRTUAL_DOMAINS = []
 
+# If you specify any virtual domains in the above list, Mailman will generate
+# a virtual-mailman file containing virtual mappings of the form
+#
+# listaddress@dom2.ain   listaddress
+# etc.
+#
+# to map the list addresses in those domains to local addresses. If you need
+# mappings that specify a domain on the right hand side such as
+#
+# listaddress@dom2.ain   listaddress@localhost
+# or
+# listaddress@dom2.ain   listaddress@other.local.domain
+#
+# specify the desired local domain in mm_cfg.py as for example
+#
+# VIRTUAL_MAILMAN_LOCAL_DOMAIN = 'localhost'
+VIRTUAL_MAILMAN_LOCAL_DOMAIN = None
+
 # These variables describe the program to use for regenerating the aliases.db
 # and virtual-mailman.db files, respectively, from the associated plain text
 # files.  The file being updated will be appended to this string (with a

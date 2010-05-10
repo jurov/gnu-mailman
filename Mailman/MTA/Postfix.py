@@ -146,8 +146,12 @@ def _addvirtual(mlist, fp):
     # Now add all the standard alias entries
     for k, v in makealiases(listname):
         fqdnaddr = '%s@%s' % (k, hostname)
+        if mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN:
+            localaddr = '%s@%s' % (k, mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN)
+        else:
+            localaddr = k
         # Format the text file nicely
-        print >> fp, fqdnaddr, ((fieldsz - len(k)) * ' '), k
+        print >> fp, fqdnaddr, ((fieldsz - len(k)) * ' '), localaddr
     # Finish the text file stanza
     print >> fp, '# STANZA END:', listname
     print >> fp

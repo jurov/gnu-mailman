@@ -17,6 +17,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Provided the ability to specify in mm_cfg.py a local domain (e.g.
+      'localhost') for the local addresses in the generated virtual-mailman
+      when MTA = 'Postfix'.  See VIRTUAL_MAILMAN_LOCAL_DOMAIN in Defaults.py.
+      Bug #328907.
+
     - Made a minor change to the removal of an Approved: pseudo-header from
       a text/html alternative to allow for an inserted '\xA0' before the
       password.
