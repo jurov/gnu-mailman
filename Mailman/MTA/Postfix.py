@@ -123,6 +123,8 @@ def _addvirtual(mlist, fp):
     # Set up the mailman-loop address
     loopaddr = Utils.get_site_email(mlist.host_name, extra='loop')
     loopdest = Utils.ParseEmail(loopaddr)[0]
+    if mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN:
+        loopdest += '@' + mm_cfg.VIRTUAL_MAILMAN_LOCAL_DOMAIN
     # Seek to the end of the text file, but if it's empty write the standard
     # disclaimer, and the loop catch address.
     fp.seek(0, 2)
