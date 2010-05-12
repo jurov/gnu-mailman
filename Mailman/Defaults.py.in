@@ -412,6 +412,11 @@ POSTFIX_STYLE_VIRTUAL_DOMAINS = []
 # specify the desired local domain in mm_cfg.py as for example
 #
 # VIRTUAL_MAILMAN_LOCAL_DOMAIN = 'localhost'
+# or
+# VIRTUAL_MAILMAN_LOCAL_DOMAIN = 'other.local.domain'
+#
+# Whatever string value you set will be literally appended with an '@' to the
+# listaddress local parts on the right hand side.
 VIRTUAL_MAILMAN_LOCAL_DOMAIN = None
 
 # These variables describe the program to use for regenerating the aliases.db
