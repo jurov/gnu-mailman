@@ -79,6 +79,12 @@ def main():
     if args:
         usage(1)
 
+    if not mm_cfg.MTA:
+        mta = repr(mm_cfg.MTA)
+        usage(2, _(
+            "genaliases can't do anything useful with mm_cfg.MTA = %(mta)s."
+             ))
+
     # Import the MTA specific module
     modulename = 'Mailman.MTA.' + mm_cfg.MTA
     __import__(modulename)

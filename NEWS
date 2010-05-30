@@ -17,6 +17,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed bin/genaliases to not throw TypeError when MTA = None.
+      Bug #587657.
+
     - Provided the ability to specify in mm_cfg.py a local domain (e.g.
       'localhost') for the local addresses in the generated virtual-mailman
       when MTA = 'Postfix'.  See VIRTUAL_MAILMAN_LOCAL_DOMAIN in Defaults.py.
