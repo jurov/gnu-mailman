@@ -239,6 +239,5 @@ def decorate(mlist, template, what, extradict=None):
                       re.sub(r'\r\n', r'\n', template % d))
     except (ValueError, TypeError), e:
         syslog('error', 'Exception while calculating %s:\n%s', what, e)
-        what = what.upper()
         text = template
     return text
