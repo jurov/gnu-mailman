@@ -17,6 +17,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug which would fail to show a list on the admin and listinfo
+      overview pages if its web_page_url contained a :port.  Bug # 597741.
+
     - Fixed bin/genaliases to not throw TypeError when MTA = None.
       Bug #587657.
 
