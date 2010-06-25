@@ -17,6 +17,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed an issue in admindb that could result in a KeyError and "we hit a
+      bug" response when a moderator acts on a post that had been handled by
+      someone else after the first moderator had retrieved it.  Bug #598671.
+
     - Fixed a bug which would fail to show a list on the admin and listinfo
       overview pages if its web_page_url contained a :port.  Bug # 597741.
 

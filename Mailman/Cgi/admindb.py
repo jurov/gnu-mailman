@@ -780,12 +780,16 @@ def process_form(mlist, doc, cgidata):
         forwardaddrkey = 'forward-addr-%d' % request_id
         bankey = 'ban-%d' % request_id
         # Defaults
-        if mlist.GetRecordType(request_id) == HELDMSG:
-            msgdata = mlist.GetRecord(request_id)[5]
-            comment = msgdata.get('rejection_notice',
-                                  _('[No explanation given]'))
-        else:
-            comment = _('[No explanation given]')
+        try:
+            if mlist.GetRecordType(request_id) == HELDMSG:
+                msgdata = mlist.GetRecord(request_id)[5]
+                comment = msgdata.get('rejection_notice',
+                                      _('[No explanation given]'))
+            else:
+                comment = _('[No explanation given]')
+        except KeyError:
+            # Someone else must have handled this one after we got the page.
+            continue
         preserve = 0
         forward = 0
         forwardaddr = ''
