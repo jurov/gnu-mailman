@@ -355,10 +355,26 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     # the Sender header at all.  Brad Knowles points out that MTAs tend to
     # wipe existing Return-Path headers, and old MTAs may still honor
     # Errors-To while new ones will at worst ignore the header.
-    del msg['sender']
+    #
+    # With some MUAs (eg. Outlook 2003) rewriting the Sender header with our
+    # envelope sender causes more problems than it solves, because some will 
+    # include the Sender address in a reply-to-all, which is not only 
+    # confusing to subscribers, but can actually disable/unsubscribe them from
+    # lists, depending on how often they accidentally reply to it.  Also, when
+    # forwarding mail inline, the sender is replaced with the string "Full 
+    # Name (on behalf bounce@addr.ess)", essentially losing the original
+    # sender address.
+    # 
+    # The drawback of not touching the Sender: header is that some MTAs might
+    # still send bounces to it, so by not trapping it, we can miss bounces.
+    # (Or worse, MTAs might send bounces to the From: address if they can't
+    # find a Sender: header.)  So instead of completely disabling the sender
+    # rewriting, we offer an option to disable it.
     del msg['errors-to']
-    msg['Sender'] = envsender
     msg['Errors-To'] = envsender
+    if mlist.include_sender_header:
+        del msg['sender']
+        msg['Sender'] = envsender
     # Get the plain, flattened text of the message, sans unixfrom
     # using our as_string() method to not mangle From_ and not fold
     # sub-part headers possibly breaking signatures.

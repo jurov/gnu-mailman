@@ -363,6 +363,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.available_languages = []
         self.include_rfc2369_headers = 1
         self.include_list_post_header = 1
+        self.include_sender_header = 1
         self.filter_mime_types = mm_cfg.DEFAULT_FILTER_MIME_TYPES
         self.pass_mime_types = mm_cfg.DEFAULT_PASS_MIME_TYPES
         self.filter_filename_extensions = \

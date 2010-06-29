@@ -1040,6 +1040,14 @@ DEFAULT_OBSCURE_ADDRESSES = Yes
 # lists with no archives).
 ALLOW_RFC2369_OVERRIDES = Yes
 
+# RFC 2822 suggests that not adding a Sender header when Mailman is the agent
+# responsible for the actual transmission is a breach of the RFC.  However,
+# some MUAs (notably Outlook) tend to display the Sender header instead of the
+# From details, confusing users and actually losing the original sender when
+# forwarding mail.  By setting this variable to Yes, list owners will be
+# given the option to avoid setting this header.
+ALLOW_SENDER_OVERRIDES = Yes
+
 # Defaults for content filtering on mailing lists.  DEFAULT_FILTER_CONTENT is
 # a flag which if set to true, turns on content filtering.
 DEFAULT_FILTER_CONTENT = No

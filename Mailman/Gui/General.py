@@ -414,6 +414,29 @@ class General(GUIBase):
              does not affect the inclusion of the other <tt>List-*:</tt>
              headers.)"""))
             )
+        # Suppression of Sender header modification
+        if mm_cfg.ALLOW_SENDER_OVERRIDES:
+            rtn.append(
+                ('include_sender_header', mm_cfg.Radio,
+                 (_('No'), _('Yes')), 0,
+                 _("""Should the <tt>Sender</tt> header be rewritten for this
+                 mailing list to avoid stray bounces?  <em>Yes</em> is
+                 recommended."""),
+
+                 _(""""<a href="http://www.faqs.org/rfcs/rfc2822.html">RFC
+                 2822</a> defines the <tt>Sender</tt> header and defines it
+                 as "the mailbox of the agent responsible for the actual
+                 transmission of the message."  Mailman replaces this header
+                 per default with the list's bounce address.
+                 
+                 <p>While it is debatable if Mailman is such an agent, setting
+                 this header helps directing bounces from some broken MTAs to
+                 the right destination.  On the other hand do some mail
+                 readers show unexpected behaviour if this header is set (like
+                 missing addresses in forwarded mails and copies sent to the
+                 bounce address on reply-to-all), so it can be disabled 
+                 here."""))
+                )
 
         # Discard held messages after this number of days
         rtn.append(
