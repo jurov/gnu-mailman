@@ -5,7 +5,7 @@
    <TITLE> %(title)s
    </TITLE>
    <LINK REL="Index" HREF="index.html" >
-   <LINK REL="made" HREF="mailto:%(email_url)s">
+   <LINK REL="made" HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s">
    <META NAME="robots" CONTENT="index,nofollow">
    <style type="text/css">
        pre {
@@ -21,7 +21,7 @@
    </H1>
     <B>%(author_html)s
     </B> 
-    <A HREF="mailto:%(email_url)s"
+    <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
        TITLE="%(subject_html)s">%(email_html)s
        </A><BR>
     <I>%(datestr_html)s</I>
@@ -51,4 +51,8 @@
               <a href="author.html#%(sequence)s">[ kirjoittaja ]</a>
          </LI>
        </UL>
-</body></html>
+
+<hr>
+<a href="%(listurl)s">Lisätietoja postituslistasta %(listname)s</a><br>
+</body>
+</html>
