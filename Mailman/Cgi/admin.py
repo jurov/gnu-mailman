@@ -246,7 +246,7 @@ def admin_overview(msg=''):
     if msg:
         greeting = FontAttr(msg, color="ff5060", size="+1")
     else:
-        greeting = _("Welcome!")
+        greeting = FontAttr(_('Welcome!'), size='+2')
 
     welcome = []
     mailmanlink = Link(mm_cfg.MAILMAN_URL, _('Mailman')).Format()
