@@ -1,10 +1,25 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
 
 2.1.14 (xx-xxx-xxxx)
+
+  New Features
+
+    - A new feature for controlling the addition/replacement of the Sender:
+      header in outgoing mail has been implemented.  This allows a list owner
+      to set include_sender_header on the list's General Options page in the
+      admin GUI.  The default for this setting is Yes which preserves the prior
+      behavior of removing any pre-existing Sender: and setting it to the
+      list's -bounces address.  Setting this to No stops Mailman from adding or
+      modifying the Sender: at all.
+
+      Additionally, there is a new Defaults.py/mm_cfg.py setting
+      ALLOW_SENDER_OVERRIDES which defaults to Yes but which can be set to No
+      to remove the include_sender_header setting from General Options, and
+      thus preserve the prior behavior completely.
 
   i18n
 

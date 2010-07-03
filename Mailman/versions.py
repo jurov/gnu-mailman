@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -353,6 +353,7 @@ def NewVars(l):
     add_only_if_missing('send_goodbye_msg', mm_cfg.DEFAULT_SEND_GOODBYE_MSG)
     add_only_if_missing('include_rfc2369_headers', 1)
     add_only_if_missing('include_list_post_header', 1)
+    add_only_if_missing('include_sender_header', 1)
     add_only_if_missing('bounce_score_threshold',
                         mm_cfg.DEFAULT_BOUNCE_SCORE_THRESHOLD)
     add_only_if_missing('bounce_info_stale_after',
