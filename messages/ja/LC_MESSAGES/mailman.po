@@ -1,6 +1,6 @@
 # Mailman Japanese Translation
-# Copyright (C) 2002-2008
-# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2008
+# Copyright (C) 2002-2010
+# Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2010
 # Yukihiro Yasuda <yukihiro@poem.co.jp>, 2004
 #
 msgid ""
@@ -3557,9 +3557,8 @@ msgid "Arabic"
 msgstr "アラビア語"
 
 #: Mailman/Defaults.py:1411
-#, fuzzy
 msgid "Asturian"
-msgstr "エストニア語"
+msgstr "アストゥリアス語"
 
 #: Mailman/Defaults.py:1412
 msgid "Catalan"
@@ -5346,14 +5345,13 @@ msgstr ""
 "(この設定は他の <tt>List-*:</tt>ヘッダに影響しません.)"
 
 #: Mailman/Gui/General.py:422
-#, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
 "                 mailing list to avoid stray bounces?  <em>Yes</em> is\n"
 "                 recommended."
 msgstr ""
-"配送エラー自動検出で検知できなかったエラーメールをリスト管理者\n"
-"宛に送りますか? <em>はい</em>を推奨します."
+"<tt>Sender (送信者)</tt> ヘッダを書き変えて, エラーメールが迷子に\n"
+" ならないようにしますか? <em>はい</em>を推奨します."
 
 #: Mailman/Gui/General.py:426
 msgid ""
@@ -5376,6 +5374,16 @@ msgid ""
 "                 bounce address on reply-to-all), so it can be disabled \n"
 "                 here."
 msgstr ""
+"<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC 2822</a>\n"
+"で, <tt>Sender (送信者)</tt>ヘッダが定義され, \"実際のメール送信に\n"
+"責任を持つ代理人 (agent) のメールボックス\" となっている. \n"
+"Mailman はこのヘッダをリストのエラー処理 (bounce) アドレスに置き換えている.\n"
+"<p>\n"
+"Mailman がこのような代理人であるかどうかについては議論の余地があるが,\n"
+"間違った実装の MTA からのエラー通知を正しいアドレスに向けるのを助けている.\n"
+"一方であるメールリーダはこのヘッダが設定されていると期待はずれの動作をする.\n"
+"(例えば, 転送したときにアドレスが空白になるとか, 「全員に返信」したときに\n"
+"このエラー通知アドレスにも送信するとか) 従って, ここで無効にできるようにした.\n"
 
 #: Mailman/Gui/General.py:444
 msgid ""
@@ -11818,9 +11826,3 @@ msgstr ""
 "        リスト名をあげたリストについてだけ, まとめ読みを送信する.\n"
 "        これが無い場合, すべてのリストの処理をする.\n"
 
-#~ msgid ""
-#~ "    looks like you have a really recent CVS installation...\n"
-#~ "    you're either one brave soul, or you already ran me"
-#~ msgstr ""
-#~ "    とても新しい CVS がインストールされてるようです...\n"
-#~ "    勇敢な魂をお持ちか, 私を乗り越えてる"
