@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@ from Mailman import Utils
 from Mailman import Message
 from Mailman import MemberAdaptor
 from Mailman import Pending
+from Mailman.Errors import MMUnknownListError
 from Mailman.Logging.Syslog import syslog
 from Mailman import i18n
 
@@ -102,8 +103,36 @@ class Bouncer:
         # New style delivery status
         self.delivery_status = {}
 
-    def registerBounce(self, member, msg, weight=1.0, day=None):
+    def registerBounce(self, member, msg, weight=1.0, day=None, sibling=False):
         if not self.isMember(member):
+            # check regular_include_lists, only one level
+            if not self.regular_include_lists or sibling:
+                return
+            from Mailman.MailList import MailList
+            for listaddr in self.regular_include_lists:
+                listname, hostname = listaddr.split('@')
+                listname = listname.lower()
+                if listname == self.internal_name():
+                    syslog('error',
+                           'Bouncer: %s: Include list self reference',
+                           listname)
+                    continue
+                try:
+                    siblist = None
+                    try:
+                        siblist = MailList(listname)
+                    except MMUnknownListError:
+                        syslog('error',
+                               'Bouncer: %s: Include list "%s" not found.',
+                               self.real_name,
+                               listname)
+                        continue
+                    siblist.registerBounce(member, msg, weight, day,
+                                           sibling=True)
+                    siblist.Save()
+                finally:
+                    if siblist and siblist.Locked():
+                        siblist.Unlock()
             return
         info = self.getBounceInfo(member)
         if day is None:

@@ -21,7 +21,15 @@ Here is a history of user visible changes to Mailman.
       to remove the include_sender_header setting from General Options, and
       thus preserve the prior behavior completely.
 
+    - Bounce processing has been enhanced so that if a bounce is returned to a
+      list from a non-member who is a member of a regular_include_list, the
+      bounce will be processed as a bounce for the included list.
+
   i18n
+
+    - Updated Dutch translation from Jan Veuger.
+
+    - Updated Japanese Translation from Tokio Kikuchi.
 
     - Updated Finnish translation from Joni Töyrylä.
 
