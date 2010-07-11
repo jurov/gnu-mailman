@@ -1,4 +1,4 @@
-# Copyright (C) 2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2003-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,6 +20,10 @@
 import email
 import unittest
 import thread
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman import mm_cfg
 from Mailman.Handlers import SMTPDirect

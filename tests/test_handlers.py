@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -26,6 +26,10 @@ import cPickle
 import unittest
 from types import ListType
 from email.Generator import Generator
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman import mm_cfg
 from Mailman.MailList import MailList
@@ -208,7 +212,7 @@ class TestAfterDelivery(TestBase):
 class TestApprove(TestBase):
     def test_short_circuit(self):
         msgdata = {'approved': 1}
-        rtn = Approve.process(self._mlist, None, msgdata)
+        rtn = Approve.process(self._mlist, Message.Message(), msgdata)
         # Not really a great test, but there's little else to assert
         self.assertEqual(rtn, None)
 
@@ -549,7 +553,7 @@ Subject: About Mailman...
 
 """, Message.Message)
         CookHeaders.process(self._mlist, msg, {})
-        self.assertEqual(msg['subject'], '[XTEST] About Mailman...')
+        self.assertEqual(str(msg['subject']), '[XTEST] About Mailman...')
 
     def test_no_subject_munging_for_digests(self):
         self._mlist.subject_prefix = '[XTEST] '
@@ -579,7 +583,9 @@ Subject: Re: [XTEST] About Mailman...
 
 """, Message.Message)
         CookHeaders.process(self._mlist, msg, {})
-        self.assertEqual(msg['subject'], 'Re: [XTEST] About Mailman...')
+        # prefixing depends on mm_cfg.py
+        self.failUnless(str(msg['subject']) == 'Re: [XTEST] About Mailman...' or
+                        str(msg['subject']) == '[XTEST] Re: About Mailman...')
 
     def test_reply_to_list(self):
         eq = self.assertEqual
@@ -692,7 +698,7 @@ From: aperson@dom.ain
         eq(msg['list-id'], '<_xtest.dom.ain>')
         eq(msg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
         eq(msg['list-unsubscribe'],
-           '<http://www.dom.ain/mailman/listinfo/_xtest>,'
+           '<http://www.dom.ain/mailman/options/_xtest>,'
            '\n\t<mailto:_xtest-request@dom.ain?subject=unsubscribe>')
         eq(msg['list-subscribe'],
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
@@ -709,10 +715,10 @@ From: aperson@dom.ain
 
 """, Message.Message)
         CookHeaders.process(self._mlist, msg, {})
-        eq(msg['list-id'].__unicode__(), 'A Test List <_xtest.dom.ain>')
+        eq(unicode(msg['list-id']), 'A Test List <_xtest.dom.ain>')
         eq(msg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
         eq(msg['list-unsubscribe'],
-           '<http://www.dom.ain/mailman/listinfo/_xtest>,'
+           '<http://www.dom.ain/mailman/options/_xtest>,'
            '\n\t<mailto:_xtest-request@dom.ain?subject=unsubscribe>')
         eq(msg['list-subscribe'],
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
@@ -1115,7 +1121,7 @@ From: aperson@dom.ain
         cookie = confirmlines[-3].split('/')[-1]
         # We also need to make sure there's an entry in the Pending database
         # for the heold message.
-        data = Pending.confirm(cookie)
+        data = self._mlist.pend_confirm(cookie)
         eq(data, ('H', 1))
         heldmsg = os.path.join(mm_cfg.DATA_DIR, 'heldmsg-_xtest-1.pck')
         self.failUnless(os.path.exists(heldmsg))
@@ -1499,7 +1505,8 @@ It rocks!
         files = self._sb.files()
         eq(len(files), 1)
         msg2, data = self._sb.dequeue(files[0])
-        eq(len(data), 2)
+        eq(len(data), 3)
+        eq(data['_parsemsg'], False)
         eq(data['version'], 3)
         # Clock skew makes this unreliable
         #self.failUnless(data['received_time'] <= time.time())
@@ -1567,7 +1574,7 @@ Here is message %(i)d
         # is the RFC 1153 digest.
         for filebase in files:
             qmsg, qdata = self._sb.dequeue(filebase)
-            if qmsg.get_main_type() == 'multipart':
+            if qmsg.get_content_maintype() == 'multipart':
                 mimemsg = qmsg
                 mimedata = qdata
             else:
@@ -1611,12 +1618,14 @@ It rocks!
         eq(len(files), 1)
         msg2, data = self._sb.dequeue(files[0])
         eq(msg.as_string(unixfrom=0), msg2.as_string(unixfrom=0))
-        eq(len(data), 6)
+        self.failUnless(len(data) >= 6 and len(data) <= 7)
         eq(data['foo'], 1)
         eq(data['bar'], 2)
         eq(data['version'], 3)
         eq(data['listname'], '_xtest')
-        eq(data['verp'], 1)
+        eq(data['_parsemsg'], False)
+        # Can't test verp. presence/value depend on mm_cfg.py
+        #eq(data['verp'], 1)
         # Clock skew makes this unreliable
         #self.failUnless(data['received_time'] <= time.time())
 

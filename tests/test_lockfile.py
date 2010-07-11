@@ -1,4 +1,4 @@
-# Copyright (C) 2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,6 +18,10 @@
 """
 
 import unittest
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman.LockFile import LockFile
 

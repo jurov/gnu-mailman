@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,6 +28,10 @@ except ImportError:
     crypt = None
 # Don't use cStringIO because we're going to inherit
 from StringIO import StringIO
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -171,14 +175,16 @@ class TestAuthenticate(TestBase):
     def test_wrong_user(self):
         mlist = self._mlist
         mlist.addNewMember('aperson@dom.ain', password='nosrepa')
-        self.assertRaises(Errors.NotAMemberError, mlist.Authenticate,
-                          [mm_cfg.AuthUser], 'nosrepa', 'bperson@dom.ain')
+        self.assertEqual(mlist.Authenticate(
+                [mm_cfg.AuthUser], 'nosrepa', 'bperson@dom.ain'),
+                mm_cfg.UnAuthorized)
 
     def test_no_user(self):
         mlist = self._mlist
         mlist.addNewMember('aperson@dom.ain', password='nosrepa')
-        self.assertRaises(AttributeError, mlist.Authenticate,
-                          [mm_cfg.AuthUser], 'nosrepa')
+        self.assertEqual(mlist.Authenticate(
+                [mm_cfg.AuthUser], 'nosrepa'),
+                mm_cfg.UnAuthorized)
 
     def test_user_unauth(self):
         mlist = self._mlist

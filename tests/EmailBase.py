@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -49,6 +49,8 @@ class SinkServer(smtpd.SMTPServer):
 class EmailBase(TestBase):
     def setUp(self):
         TestBase.setUp(self)
+        if mm_cfg.SMTPPORT == 0:
+            mm_cfg.SMTPPORT = 25
         # Second argument tuple is ignored.
         self._server = SinkServer(('localhost', mm_cfg.SMTPPORT),
                                   ('localhost', 25))

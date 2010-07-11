@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,6 +21,10 @@ import sys
 import os
 import unittest
 import email
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman.Bouncers.BouncerAPI import Stop
 

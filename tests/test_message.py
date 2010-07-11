@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,8 +17,13 @@
 """Unit tests for the various Message class methods.
 """
 
+import sys
 import unittest
 import email
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman import Message
 from Mailman import Version
@@ -28,7 +33,7 @@ from EmailBase import EmailBase
 
 
 
-class TestSentMessage(EmailBase):
+class TestSentMessage1(EmailBase):
     def test_user_notification(self):
         eq = self.assertEqual
         unless = self.failUnless
@@ -46,23 +51,16 @@ class TestSentMessage(EmailBase):
         msgid = qmsg['message-id']
         unless(msgid.startswith('<mailman.'))
         unless(msgid.endswith('._xtest@dom.ain>'))
-        eq(qmsg['sender'], '_xtest-admin@dom.ain')
-        eq(qmsg['errors-to'], '_xtest-admin@dom.ain')
+        eq(qmsg['sender'], '_xtest-bounces@dom.ain')
+        eq(qmsg['errors-to'], '_xtest-bounces@dom.ain')
         eq(qmsg['x-beenthere'], '_xtest@dom.ain')
         eq(qmsg['x-mailman-version'], Version.VERSION)
         eq(qmsg['precedence'], 'bulk')
-        eq(qmsg['list-help'], '<mailto:_xtest-request@dom.ain?subject=help>')
-        eq(qmsg['list-post'], '<mailto:_xtest@dom.ain>')
-        eq(qmsg['list-subscribe'], """\
-<http://www.dom.ain/mailman/listinfo/_xtest>,
-	<mailto:_xtest-request@dom.ain?subject=subscribe>""")
         eq(qmsg['list-id'], '<_xtest.dom.ain>')
-        eq(qmsg['list-unsubscribe'], """\
-<http://www.dom.ain/mailman/listinfo/_xtest>,
-	<mailto:_xtest-request@dom.ain?subject=unsubscribe>""")
-        eq(qmsg['list-archive'], '<http://www.dom.ain/pipermail/_xtest>')
+        eq(qmsg['x-list-administrivia'], 'yes')
         eq(qmsg.get_payload(), 'About your test list')
 
+class TestSentMessage2(EmailBase):
     def test_bounce_message(self):
         eq = self.assertEqual
         unless = self.failUnless
@@ -82,21 +80,35 @@ yadda yadda yadda
         # message.
         msg1 = qmsg.get_payload(0)
         eq(msg1.get_content_type(), 'text/plain')
-        eq(msg1.get_payload(), '[No bounce details are available]\n')
+        eq(msg1.get_payload(), '[No bounce details are available]')
         msg2 = qmsg.get_payload(1)
         eq(msg2.get_content_type(), 'message/rfc822')
-        unless(not msg2.is_multipart())
-        msg3 = msg2.get_payload()
+        unless(msg2.is_multipart())
+        msg3 = msg2.get_payload(0)
         eq(msg3.get_payload(), 'yadda yadda yadda\n')
 
 
 
-def suite():
+def suite(x):
     suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestSentMessage))
+    if x == '1':
+        suite.addTest(unittest.makeSuite(TestSentMessage1))
+    elif x == '2':
+        suite.addTest(unittest.makeSuite(TestSentMessage2))
     return suite
 
 
 
 if __name__ == '__main__':
-    unittest.main(defaultTest='suite')
+    # There is some issue in asyncore.py that prevents successfully running more than
+    # one test at a time, so specify which of the two tests as an argument.
+    if len(sys.argv) == 1:
+        x = '1'
+    else:
+        x = sys.argv[1]
+    if x not in ('1', '2'):
+        print >> sys.stderr, (
+            'usage: python test_message.py [n] where n = 1, 2 is the sub-test to run.')
+        sys.exit(1)
+    unittest.TextTestRunner(verbosity=2).run(suite(x)) 
+

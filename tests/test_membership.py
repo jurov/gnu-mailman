@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,6 +20,10 @@
 import os
 import time
 import unittest
+try:
+    from Mailman import __init__
+except ImportError:
+    import paths
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -196,6 +200,7 @@ class TestMembers(TestBase):
 
     def test_set_language(self):
         self._mlist.available_languages.append('xx')
+        mm_cfg.LC_DESCRIPTIONS.setdefault('xx', 0)
         self._mlist.setMemberLanguage('person@dom.ain', 'xx')
         self.assertEqual(self._mlist.getMemberLanguage('person@dom.ain'), 'xx')
 
