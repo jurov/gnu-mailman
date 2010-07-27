@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -69,6 +69,11 @@ def fix_url(mlist, *args):
         elif opt in ('-v', '--verbose'):
             verbose = 1
 
+    # Make sure list is locked.
+    if not mlist.Locked():
+        if verbose:
+            print _('Locking list')
+        mlist.Lock()
     if urlhost:
         web_page_url = mm_cfg.DEFAULT_URL_PATTERN % urlhost
         mailhost = mm_cfg.VIRTUAL_HOSTS.get(urlhost.lower(), urlhost)
