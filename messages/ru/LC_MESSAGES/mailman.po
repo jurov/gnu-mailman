@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman v2.1\n"
-"POT-Creation-Date: Sun Jul  4 14:27:07 2010\n"
+"POT-Creation-Date: Tue Jul 27 08:05:43 2010\n"
 "PO-Revision-Date: Fri Apr 08 23:26:45 2005\n"
 "Last-Translator: Mikhail Sobolev <mss@mawhrin.net>\n"
 "Language-Team: Russian <mailman-ru@only.mawhrin.net>\n"
@@ -203,43 +203,43 @@ msgstr "  Темы дискуссий"
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
-#: Mailman/Bouncer.py:44
+#: Mailman/Bouncer.py:45
 msgid "due to excessive bounces"
 msgstr "в силу большого количества ошибок, возникших при доставке"
 
-#: Mailman/Bouncer.py:45
+#: Mailman/Bouncer.py:46
 msgid "by yourself"
 msgstr "по вашему собственному указанию"
 
-#: Mailman/Bouncer.py:46
+#: Mailman/Bouncer.py:47
 msgid "by the list administrator"
 msgstr "по указанию администратора списка рассылки"
 
-#: Mailman/Bouncer.py:47 Mailman/Bouncer.py:257
+#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:286
 #: Mailman/Commands/cmd_set.py:182
 msgid "for unknown reasons"
 msgstr "по неизвестной причине"
 
-#: Mailman/Bouncer.py:204
+#: Mailman/Bouncer.py:233
 msgid "disabled"
 msgstr "заблокирована"
 
-#: Mailman/Bouncer.py:209
+#: Mailman/Bouncer.py:238
 msgid "Bounce action notification"
 msgstr "Извещение об ошибке"
 
-#: Mailman/Bouncer.py:264
+#: Mailman/Bouncer.py:293
 msgid " The last bounce received from you was dated %(date)s"
 msgstr " Последнее сообщение об ошибке, полученное от вас, датировано %(date)s"
 
-#: Mailman/Bouncer.py:292 Mailman/Deliverer.py:143
+#: Mailman/Bouncer.py:321 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:286
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:239
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(без темы)"
 
-#: Mailman/Bouncer.py:296
+#: Mailman/Bouncer.py:325
 msgid "[No bounce details are available]"
 msgstr "[Дополнительная информация об ошибке отсутствует]"
 
@@ -9232,7 +9232,7 @@ msgstr ""
 "\n"
 "% bin/withlist -l -r convert <имя_списка>\n"
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/convert.py:38 bin/fix_url.py:90
 msgid "Saving list"
 msgstr "Сохранение списка"
 
@@ -9567,11 +9567,16 @@ msgstr ""
 "При запуске только самого сценария выводится данная подсказка и работа\n"
 "сценария завершается.\n"
 
-#: bin/fix_url.py:80
+#: bin/fix_url.py:75
+#, fuzzy
+msgid "Locking list"
+msgstr "Сохранение списка"
+
+#: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "Смена значения параметра web_page_url на: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/fix_url.py:88
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "Смена значения параметра host_name на: %(mailhost)s"
 

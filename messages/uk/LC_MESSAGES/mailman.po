@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman v2.1.5\n"
-"POT-Creation-Date: Sun Jul  4 14:27:07 2010\n"
+"POT-Creation-Date: Tue Jul 27 08:05:43 2010\n"
 "PO-Revision-Date: 2005-02-24 17:37+0200\n"
 "Last-Translator: Maxim Dzumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -189,44 +189,44 @@ msgstr "  Теми дискусій"
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
-#: Mailman/Bouncer.py:44
+#: Mailman/Bouncer.py:45
 msgid "due to excessive bounces"
 msgstr "внаслідок численних помилок доставки"
 
 # Mailman/Bouncer.p:45
-#: Mailman/Bouncer.py:45
+#: Mailman/Bouncer.py:46
 msgid "by yourself"
 msgstr "за вашою вказівкою"
 
-#: Mailman/Bouncer.py:46
+#: Mailman/Bouncer.py:47
 msgid "by the list administrator"
 msgstr "за вказівкою керівника списку"
 
-#: Mailman/Bouncer.py:47 Mailman/Bouncer.py:257
+#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:286
 #: Mailman/Commands/cmd_set.py:182
 msgid "for unknown reasons"
 msgstr "з невідомої причини"
 
-#: Mailman/Bouncer.py:204
+#: Mailman/Bouncer.py:233
 msgid "disabled"
 msgstr "заблоковано"
 
-#: Mailman/Bouncer.py:209
+#: Mailman/Bouncer.py:238
 msgid "Bounce action notification"
 msgstr "Повідомлення про помилку доставки"
 
-#: Mailman/Bouncer.py:264
+#: Mailman/Bouncer.py:293
 msgid " The last bounce received from you was dated %(date)s"
 msgstr " Останнє повідомлення про помилку доставки до вас датовано %(date)s"
 
-#: Mailman/Bouncer.py:292 Mailman/Deliverer.py:143
+#: Mailman/Bouncer.py:321 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:286
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:239
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(тема відсутня)"
 
-#: Mailman/Bouncer.py:296
+#: Mailman/Bouncer.py:325
 msgid "[No bounce details are available]"
 msgstr "[Додаткова інформація про помилку відсутня]"
 
@@ -9157,7 +9157,7 @@ msgstr ""
 "\n"
 "% bin/withlist -l -r convert <мій_список>\n"
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/convert.py:38 bin/fix_url.py:90
 msgid "Saving list"
 msgstr "Збереження списку"
 
@@ -9489,11 +9489,16 @@ msgstr ""
 "\n"
 "Якщо використовується окремо, виводить цю довідку та завершується.\n"
 
-#: bin/fix_url.py:80
+#: bin/fix_url.py:75
+#, fuzzy
+msgid "Locking list"
+msgstr "Збереження списку"
+
+#: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "web_page_url встановлюється у: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/fix_url.py:88
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "host_name встановлюється у: %(mailhost)s"
 

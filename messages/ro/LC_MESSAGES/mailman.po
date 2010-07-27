@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"POT-Creation-Date: Sun Jul  4 14:27:07 2010\n"
+"POT-Creation-Date: Tue Jul 27 08:05:43 2010\n"
 "PO-Revision-Date: 2005-05-12 07:35+0300\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian <en@li.org>\n"
@@ -193,45 +193,45 @@ msgstr "  Thread"
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
-#: Mailman/Bouncer.py:44
+#: Mailman/Bouncer.py:45
 msgid "due to excessive bounces"
 msgstr "datoritã eºecurilor de livrare (bounces) excesive"
 
-#: Mailman/Bouncer.py:45
+#: Mailman/Bouncer.py:46
 msgid "by yourself"
 msgstr "de cãtre dumneavoastrã"
 
-#: Mailman/Bouncer.py:46
+#: Mailman/Bouncer.py:47
 msgid "by the list administrator"
 msgstr "de cãtre administratorul listei"
 
-#: Mailman/Bouncer.py:47 Mailman/Bouncer.py:257
+#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:286
 #: Mailman/Commands/cmd_set.py:182
 msgid "for unknown reasons"
 msgstr "din motive necunoscute"
 
-#: Mailman/Bouncer.py:204
+#: Mailman/Bouncer.py:233
 msgid "disabled"
 msgstr "dezactivat"
 
-#: Mailman/Bouncer.py:209
+#: Mailman/Bouncer.py:238
 msgid "Bounce action notification"
 msgstr "Notificare de eºec la livrare (bounce)"
 
-#: Mailman/Bouncer.py:264
+#: Mailman/Bouncer.py:293
 msgid " The last bounce received from you was dated %(date)s"
 msgstr ""
 "Ultimul eºec la livrarea mesajelor cãtre adresa dumneavoastrã este datat %"
 "(date)s"
 
-#: Mailman/Bouncer.py:292 Mailman/Deliverer.py:143
+#: Mailman/Bouncer.py:321 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:286
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:239
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(fãrã subiect)"
 
-#: Mailman/Bouncer.py:296
+#: Mailman/Bouncer.py:325
 msgid "[No bounce details are available]"
 msgstr "[Nu sunt disponibile detalii despre eºec]"
 
@@ -8976,7 +8976,7 @@ msgstr ""
 "\n"
 "% bin/withlist -l -r convert <mylist>\n"
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/convert.py:38 bin/fix_url.py:90
 msgid "Saving list"
 msgstr "Salvez lista"
 
@@ -9317,11 +9317,16 @@ msgstr ""
 "\n"
 "If run standalone, it prints this help text and exits.\n"
 
-#: bin/fix_url.py:80
+#: bin/fix_url.py:75
+#, fuzzy
+msgid "Locking list"
+msgstr "Salvez lista"
+
+#: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "Setez web_page_url la valoarea: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/fix_url.py:88
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "Setez host_name la valoarea: %(mailhost)s"
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"POT-Creation-Date: Sun Jul  4 14:27:07 2010\n"
+"POT-Creation-Date: Tue Jul 27 08:05:43 2010\n"
 "PO-Revision-Date: 2008-03-24 19:19+0100\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team:  <it@li.org>\n"
@@ -205,40 +205,40 @@ msgstr "  Argomento"
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
-#: Mailman/Bouncer.py:44
+#: Mailman/Bouncer.py:45
 msgid "due to excessive bounces"
 msgstr "per troppi errori"
 
-#: Mailman/Bouncer.py:45
+#: Mailman/Bouncer.py:46
 msgid "by yourself"
 msgstr "per decisione tua"
 
 # /home/mailman/Mailman/HTMLFormatter.py:156
-#: Mailman/Bouncer.py:46
+#: Mailman/Bouncer.py:47
 msgid "by the list administrator"
 msgstr "dall'amministratore della lista"
 
-#: Mailman/Bouncer.py:47 Mailman/Bouncer.py:257
+#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:286
 #: Mailman/Commands/cmd_set.py:182
 msgid "for unknown reasons"
 msgstr "per qualche ragione ignota"
 
-#: Mailman/Bouncer.py:204
+#: Mailman/Bouncer.py:233
 msgid "disabled"
 msgstr "disabilitata"
 
 # /home/mailman/Mailman/Cgi/roster.py:72
-#: Mailman/Bouncer.py:209
+#: Mailman/Bouncer.py:238
 msgid "Bounce action notification"
 msgstr "Notifica errore"
 
-#: Mailman/Bouncer.py:264
+#: Mailman/Bouncer.py:293
 msgid " The last bounce received from you was dated %(date)s"
 msgstr " L'ultimo errore sul tuo indirizzo è datato %(date)s"
 
 # /home/mailman/Mailman/Archiver/pipermail.py:95
 # /home/mailman/Mailman/Archiver/pipermail.py:96
-#: Mailman/Bouncer.py:292 Mailman/Deliverer.py:143
+#: Mailman/Bouncer.py:321 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:286
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:239
 #: Mailman/ListAdmin.py:223
@@ -246,7 +246,7 @@ msgid "(no subject)"
 msgstr "(senza oggetto)"
 
 # /home/mailman/Mailman/MailCommandHandler.py:426
-#: Mailman/Bouncer.py:296
+#: Mailman/Bouncer.py:325
 msgid "[No bounce details are available]"
 msgstr "[Non ci sono dettagli disponibili sugli errori]"
 
@@ -9919,7 +9919,7 @@ msgstr ""
 "% bin/withlist -l -r convert <mialista>\n"
 
 # /home/mailman/Mailman/MailCommandHandler.py:379
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/convert.py:38 bin/fix_url.py:90
 msgid "Saving list"
 msgstr "Salvo la lista"
 
@@ -10268,11 +10268,17 @@ msgstr ""
 "\n"
 "Se eseguito da solo (senza withlist), scrive questo messaggio ed esce.\n"
 
-#: bin/fix_url.py:80
+# /home/mailman/Mailman/MailCommandHandler.py:379
+#: bin/fix_url.py:75
+#, fuzzy
+msgid "Locking list"
+msgstr "Salvo la lista"
+
+#: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "Imposto web_page_url a: %(web_page_url)s"
 
-#: bin/fix_url.py:83
+#: bin/fix_url.py:88
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "Imposto host_nama a: %(mailhost)s"
 

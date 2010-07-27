@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1.11\n"
-"POT-Creation-Date: Sun Jul  4 14:27:07 2010\n"
+"POT-Creation-Date: Tue Jul 27 08:05:43 2010\n"
 "PO-Revision-Date: 2008-07-06 09:00+09:00\n"
 "Last-Translator: Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>\n"
 "Language-Team: Japanese <mmjp-users@mm.tkikuchi.net>\n"
@@ -190,43 +190,43 @@ msgstr "  スレッド"
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
-#: Mailman/Bouncer.py:44
+#: Mailman/Bouncer.py:45
 msgid "due to excessive bounces"
 msgstr "エラーメール過剰により"
 
-#: Mailman/Bouncer.py:45
+#: Mailman/Bouncer.py:46
 msgid "by yourself"
 msgstr "本人により"
 
-#: Mailman/Bouncer.py:46
+#: Mailman/Bouncer.py:47
 msgid "by the list administrator"
 msgstr "リスト管理者により"
 
-#: Mailman/Bouncer.py:47 Mailman/Bouncer.py:257
+#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:286
 #: Mailman/Commands/cmd_set.py:182
 msgid "for unknown reasons"
 msgstr "何らかの理由により"
 
-#: Mailman/Bouncer.py:204
+#: Mailman/Bouncer.py:233
 msgid "disabled"
 msgstr "配送停止"
 
-#: Mailman/Bouncer.py:209
+#: Mailman/Bouncer.py:238
 msgid "Bounce action notification"
 msgstr "配送エラー処理通知"
 
-#: Mailman/Bouncer.py:264
+#: Mailman/Bouncer.py:293
 msgid " The last bounce received from you was dated %(date)s"
 msgstr "最後にエラーメールを受信した日付は %(date)s です"
 
-#: Mailman/Bouncer.py:292 Mailman/Deliverer.py:143
+#: Mailman/Bouncer.py:321 Mailman/Deliverer.py:143
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:286
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:239
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(無題)"
 
-#: Mailman/Bouncer.py:296
+#: Mailman/Bouncer.py:325
 msgid "[No bounce details are available]"
 msgstr "[詳しい配送エラー情報はありません.]"
 
@@ -5383,7 +5383,8 @@ msgstr ""
 "間違った実装の MTA からのエラー通知を正しいアドレスに向けるのを助けている.\n"
 "一方であるメールリーダはこのヘッダが設定されていると期待はずれの動作をする.\n"
 "(例えば, 転送したときにアドレスが空白になるとか, 「全員に返信」したときに\n"
-"このエラー通知アドレスにも送信するとか) 従って, ここで無効にできるようにした.\n"
+"このエラー通知アドレスにも送信するとか) 従って, ここで無効にできるようにし"
+"た.\n"
 
 #: Mailman/Gui/General.py:444
 msgid ""
@@ -8845,7 +8846,7 @@ msgstr ""
 "\n"
 "% bin/withlist -l -r convert <リスト名>\n"
 
-#: bin/convert.py:38 bin/fix_url.py:85
+#: bin/convert.py:38 bin/fix_url.py:90
 msgid "Saving list"
 msgstr "リストを保存中"
 
@@ -9182,11 +9183,16 @@ msgstr ""
 "\n"
 "もし単独で実行するとヘルプメッセージを表示して終了する.\n"
 
-#: bin/fix_url.py:80
+#: bin/fix_url.py:75
+#, fuzzy
+msgid "Locking list"
+msgstr "リストを保存中"
+
+#: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
 msgstr "web_page_url を %(web_page_url)s に設定"
 
-#: bin/fix_url.py:83
+#: bin/fix_url.py:88
 msgid "Setting host_name to: %(mailhost)s"
 msgstr "host_name を %(mailhost)s に設定"
 
@@ -11825,4 +11831,3 @@ msgstr ""
 "    --listname=リスト名\n"
 "        リスト名をあげたリストについてだけ, まとめ読みを送信する.\n"
 "        これが無い場合, すべてのリストの処理をする.\n"
-
