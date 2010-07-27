@@ -179,7 +179,8 @@ def main():
                     forwarded to the list administrator for approval."""),
                                  tag='')
                 else:
-                    mlist.ConfirmUnsubscription(user, userlang)
+                    ip = os.environ.get('REMOTE_ADDR')
+                    mlist.ConfirmUnsubscription(user, userlang, remote=ip)
                     doc.addError(_('The confirmation email has been sent.'),
                                  tag='')
                 mlist.Save()
