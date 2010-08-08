@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -196,7 +196,7 @@ def print_environment(logfp=None):
     print >> logfp, 'sys.executable  =', sys.executable
     print >> logfp, 'sys.prefix      =', sys.prefix
     print >> logfp, 'sys.exec_prefix =', sys.exec_prefix
-    print >> logfp, 'sys.path        =', sys.exec_prefix
+    print >> logfp, 'sys.path        =', sys.path
     print >> logfp, 'sys.platform    =', sys.platform
 
     # Write the same information to the HTML sink.
