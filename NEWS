@@ -44,6 +44,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed admindb interface to decode base64 and quoted-printable encoded
+      message body excerpts for display.  Bug #629738.
+
     - Fixed web CGI tracebacks to properly report sys.path.  Bug #615114.
 
     - Changed the member options login page unsubscribe request to include the

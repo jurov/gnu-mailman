@@ -599,7 +599,7 @@ def show_post_requests(mlist, id, info, total, count, form):
     chars = 0
     # A negative value means, include the entire message regardless of size
     limit = mm_cfg.ADMINDB_PAGE_TEXT_LIMIT
-    for line in email.Iterators.body_line_iterator(msg):
+    for line in email.Iterators.body_line_iterator(msg, decode=True):
         lines.append(line)
         chars += len(line)
         if chars > limit > 0:
