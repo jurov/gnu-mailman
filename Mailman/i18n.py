@@ -1,4 +1,4 @@
-# Copyright (C) 2000-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 2000-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -87,7 +87,11 @@ def _(s):
     for k, v in dict.items():
         if isinstance(v, UnicodeType):
             dict[k] = v.encode(charset, 'replace')
-    return tns % dict
+    try:
+        return tns % dict
+    except (ValueError, KeyError, TypeError):
+        # Bad interpolation format. Punt.
+        return tns
 
 
 
