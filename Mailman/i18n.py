@@ -89,7 +89,7 @@ def _(s):
             dict[k] = v.encode(charset, 'replace')
     try:
         return tns % dict
-    except (ValueError, KeyError, TypeError):
+    except (ValueError, TypeError):
         # Bad interpolation format. Punt.
         return tns
 
