@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -383,8 +383,9 @@ class HTMLFormatter:
             '<mm-mailman-footer>' : self.GetMailmanFooter(),
             '<mm-list-name>' : self.real_name,
             '<mm-email-user>' : self._internal_name,
-            '<mm-list-description>' : self.description,
-            '<mm-list-info>' : BR.join(self.info.split(NL)),
+            '<mm-list-description>' : Utils.websafe(self.description),
+            '<mm-list-info>' : 
+                '<!---->' + BR.join(self.info.split(NL)) + '<!---->',
             '<mm-form-end>'  : self.FormatFormEnd(),
             '<mm-archive>'   : self.FormatArchiveAnchor(),
             '</mm-archive>'  : '</a>',

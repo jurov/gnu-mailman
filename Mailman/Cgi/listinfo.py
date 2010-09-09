@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -97,7 +97,7 @@ def listinfo_overview(msg=''):
             else:
                 advertised.append((mlist.GetScriptURL('listinfo'),
                                    mlist.real_name,
-                                   mlist.description))
+                                   Utils.websafe(mlist.description)))
     if msg:
         greeting = FontAttr(msg, color="ff5060", size="+1")
     else:
