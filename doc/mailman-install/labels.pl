@@ -6,6 +6,10 @@ $key = q/exim3-transport/;
 $external_labels{$key} = "$URL/" . q|node19.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/postfix-integration/;
+$external_labels{$key} = "$URL/" . q|node13.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/front/;
 $external_labels{$key} = "$URL/" . q|node1.html|; 
 $noresave{$key} = "$nosave";
@@ -56,6 +60,10 @@ $noresave{$key} = "$nosave";
 # LaTeX2HTML 2002-2-1 (1.71)
 # labels from external_latex_labels array.
 
+
+$key = q/postfix-integration/;
+$external_latex_labels{$key} = q|6.1|; 
+$noresave{$key} = "$nosave";
 
 $key = q/exim3-transport/;
 $external_latex_labels{$key} = q|6.2|; 

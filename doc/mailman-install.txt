@@ -12,7 +12,7 @@ GNU Mailman - Installation Manual
    barry (at) list dot org
 
    Release 2.1
-   December 14, 2009
+   September 9, 2010
 
                                  Front Matter
 
@@ -342,6 +342,19 @@ GNU Mailman - Installation Manual
    described in the following subsections, try to generalize from the
    existing documentation, and consider contributing documentation
    updates to the Mailman developers.
+
+   Under rare circumstances or due to mis-configuration, mail to the
+   owner(s) of the 'mailman' site-list (see section 8) can bounce. In
+   order to prevent a mail loop this mail is sent with envelope from
+   mailman-loop which is normally aliased as
+
+    mailman-loop: $varprefix/data/owner-bounces.mbox
+
+   but which can be aliased to any, always deliverable, local address or
+   file. If you are using the Postfix MTA integrated as described in
+   section 6.1, this alias will be generated automatically. In all other
+   cases, you should install this alias along with your normal system
+   aliases.
 
 6.1 Using the Postfix mail server
 
@@ -1525,7 +1538,7 @@ tar xvf MailmanStartup.tar
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, December 14, 2009, Release 2.1
+   GNU Mailman - Installation Manual, September 9, 2010, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1580,4 +1593,4 @@ tar xvf MailmanStartup.tar
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
      _________________________________________________________________
 
-   Release 2.1, documentation updated on December 14, 2009.
+   Release 2.1, documentation updated on September 9, 2010.

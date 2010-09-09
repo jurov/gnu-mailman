@@ -6,6 +6,10 @@ $key = q/exim3-transport/;
 $ref_files{$key} = "$dir".q|node19.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/postfix-integration/;
+$ref_files{$key} = "$dir".q|node13.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/front/;
 $ref_files{$key} = "$dir".q|node1.html|; 
 $noresave{$key} = "$nosave";
