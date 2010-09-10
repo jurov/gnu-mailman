@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -82,7 +82,7 @@ class NonDigest(GUIBase):
                  address.
 
                  <p>When personalization is enabled, a few more expansion
-                 variables that can be included in the <a
+                 variables can be included in the <a
                  href="?VARHELP=nondigest/msg_header">message header</a> and
                  <a href="?VARHELP=nondigest/msg_footer">message footer</a>.
 
@@ -139,10 +139,10 @@ and footers:
         info.extend([
             ('scrub_nondigest', mm_cfg.Toggle, (_('No'), _('Yes')), 0,
              _('Scrub attachments of regular delivery message?'),
-             _('''When you scrub attachments, they are stored in archive
+             _('''When you scrub attachments, they are stored in the archive
              area and links are made in the message so that the member can
-             access via web browser. If you want the attachments totally
-             disappear, you can use content filter options.''')),
+             access them via a web browser. If you want the attachments to
+             totally disappear, you can use content filtering options.''')),
             ])
 
         info.extend([

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
-"POT-Creation-Date: Tue Jul 27 08:05:43 2010\n"
+"POT-Creation-Date: Fri Sep 10 10:50:49 2010\n"
 "PO-Revision-Date: 2008-03-24 19:19+0100\n"
 "Last-Translator: Simone Piunno <pioppo@ferrara.linux.it>\n"
 "Language-Team:  <it@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Luglio"
 msgid "June"
 msgstr "Giugno"
 
-#: Mailman/Archiver/HyperArch.py:923 Mailman/i18n.py:103
+#: Mailman/Archiver/HyperArch.py:923 Mailman/i18n.py:107
 msgid "May"
 msgstr "Maggio"
 
@@ -301,10 +301,12 @@ msgstr ""
 "                riceveranno posta."
 
 #: Mailman/Cgi/admin.py:194
+#, fuzzy
 msgid ""
 "You have regular list members but non-digestified mail is\n"
-"                turned off.  They will receive mail until you fix this\n"
-"                problem."
+"                turned off.  They will receive non-digestified mail until "
+"you\n"
+"                fix this problem."
 msgstr ""
 "Hai degli iscritti regolari ma le impostazioni della lista lo vietano.\n"
 "                Essi riceveranno i messaggi normalmente finché non\n"
@@ -562,7 +564,7 @@ msgstr "Regexp:"
 # /home/mailman/Mailman/Cgi/admin.py:260
 # /home/mailman/Mailman/Cgi/admin.py:352
 # /home/mailman/Mailman/Cgi/listinfo.py:159
-#: Mailman/Cgi/admin.py:709 Mailman/Cgi/options.py:1046
+#: Mailman/Cgi/admin.py:709 Mailman/Cgi/options.py:1047
 msgid "Description:"
 msgstr "Descrizione:"
 
@@ -1751,8 +1753,8 @@ msgstr ""
 "    richiesta di cancellazione."
 
 # /home/mailman/Mailman/Cgi/admindb.py:213
-#: Mailman/Cgi/confirm.py:491 Mailman/Cgi/options.py:760
-#: Mailman/Cgi/options.py:904 Mailman/Cgi/options.py:914
+#: Mailman/Cgi/confirm.py:491 Mailman/Cgi/options.py:761
+#: Mailman/Cgi/options.py:905 Mailman/Cgi/options.py:915
 msgid "Unsubscribe"
 msgstr "Cancellami"
 
@@ -2481,7 +2483,7 @@ msgid "Edit Options"
 msgstr "Modifica Opzioni"
 
 # /home/mailman/Mailman/Cgi/listinfo.py:199
-#: Mailman/Cgi/listinfo.py:201 Mailman/Cgi/options.py:869
+#: Mailman/Cgi/listinfo.py:201 Mailman/Cgi/options.py:870
 #: Mailman/Cgi/roster.py:118
 msgid "View this page in"
 msgstr "Vedi questa pagina in"
@@ -2511,8 +2513,8 @@ msgstr "Nessun indirizzo fornito"
 msgid "Illegal Email Address: %(safeuser)s"
 msgstr "Indirizzo email errato/non valido: %(safeuser)s"
 
-#: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:192
-#: Mailman/Cgi/options.py:214
+#: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:193
+#: Mailman/Cgi/options.py:215
 msgid "No such member: %(safeuser)s."
 msgstr "Nessun iscritto: %(safeuser)s."
 
@@ -2524,20 +2526,20 @@ msgstr ""
 "La tua richiesta di iscrizione è stata inoltrata \n"
 "all'amministratore della lista per essere approvata."
 
-#: Mailman/Cgi/options.py:183 Mailman/Cgi/options.py:197
+#: Mailman/Cgi/options.py:184 Mailman/Cgi/options.py:198
 msgid "The confirmation email has been sent."
 msgstr "L'email di conferma &egrave; stata spedita."
 
-#: Mailman/Cgi/options.py:208 Mailman/Cgi/options.py:220
-#: Mailman/Cgi/options.py:277
+#: Mailman/Cgi/options.py:209 Mailman/Cgi/options.py:221
+#: Mailman/Cgi/options.py:278
 msgid "A reminder of your password has been emailed to you."
 msgstr "Un promemoria della tua password ti &egrave; stato inviato."
 
-#: Mailman/Cgi/options.py:249
+#: Mailman/Cgi/options.py:250
 msgid "Authentication failed."
 msgstr "Autenticazione fallita."
 
-#: Mailman/Cgi/options.py:284
+#: Mailman/Cgi/options.py:285
 msgid ""
 "The list administrator may not view the other\n"
 "            subscriptions for this user."
@@ -2545,24 +2547,24 @@ msgstr ""
 "L'amministratore della lista non può vedere le altre iscrizioni di questo "
 "utente."
 
-#: Mailman/Cgi/options.py:285 Mailman/Cgi/options.py:328
-#: Mailman/Cgi/options.py:456 Mailman/Cgi/options.py:672
+#: Mailman/Cgi/options.py:286 Mailman/Cgi/options.py:329
+#: Mailman/Cgi/options.py:457 Mailman/Cgi/options.py:673
 msgid "Note: "
 msgstr "Nota: "
 
 # /home/mailman/Mailman/Cgi/handle_opts.py:147
-#: Mailman/Cgi/options.py:290
+#: Mailman/Cgi/options.py:291
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
 msgstr "Lista delle iscrizioni per %(safeuser)s su %(hostname)s"
 
 # /home/mailman/Mailman/Cgi/handle_opts.py:149
-#: Mailman/Cgi/options.py:293
+#: Mailman/Cgi/options.py:294
 msgid ""
 "Click on a link to visit your options page for the\n"
 "        requested mailing list."
 msgstr "Clicca su un link per visitare le tue opzioni per la lista"
 
-#: Mailman/Cgi/options.py:325
+#: Mailman/Cgi/options.py:326
 msgid ""
 "The list administrator may not change the names\n"
 "            or addresses for this user's other subscriptions.  However, the\n"
@@ -2573,16 +2575,16 @@ msgstr ""
 "a\n"
 "            questa lista è stata cambiata."
 
-#: Mailman/Cgi/options.py:348
+#: Mailman/Cgi/options.py:349
 msgid "Addresses did not match!"
 msgstr "Gli indirizzi non sono uguali|"
 
 # /home/mailman/Mailman/MailCommandHandler.py:351
-#: Mailman/Cgi/options.py:353
+#: Mailman/Cgi/options.py:354
 msgid "You are already using that email address"
 msgstr "Stai già usando questo indirizzo"
 
-#: Mailman/Cgi/options.py:365
+#: Mailman/Cgi/options.py:366
 msgid ""
 "The new address you requested %(newaddr)s is already a member of the\n"
 "%(listname)s mailing list, however you have also requested a global change "
@@ -2595,34 +2597,34 @@ msgstr ""
 "cambio globale di indirizzo.  Se confermi, ogni altra lista contenente\n"
 "l'indirizzo %(safeuser)s sar&agrave; cambiata."
 
-#: Mailman/Cgi/options.py:374
+#: Mailman/Cgi/options.py:375
 msgid "The new address is already a member: %(newaddr)s"
 msgstr "Il nuovo indirizzo è già un iscritto: %(newaddr)s"
 
-#: Mailman/Cgi/options.py:380
+#: Mailman/Cgi/options.py:381
 msgid "Addresses may not be blank"
 msgstr "Gli indirizzi non possono essere vuoti"
 
-#: Mailman/Cgi/options.py:394
+#: Mailman/Cgi/options.py:395
 msgid "A confirmation message has been sent to %(newaddr)s. "
 msgstr "Una richiesta di conferma &egrave; stata spedita a %(newaddr)s"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: Mailman/Cgi/options.py:403
+#: Mailman/Cgi/options.py:404
 msgid "Bad email address provided"
 msgstr "Indirizzo email errato/non valido"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: Mailman/Cgi/options.py:405
+#: Mailman/Cgi/options.py:406
 msgid "Illegal email address provided"
 msgstr "Indirizzo email errato/non valido"
 
 # /home/mailman/Mailman/MailCommandHandler.py:297
-#: Mailman/Cgi/options.py:407
+#: Mailman/Cgi/options.py:408
 msgid "%(newaddr)s is already a member of the list."
 msgstr "%(newaddr)s è già iscritto alla lista."
 
-#: Mailman/Cgi/options.py:410
+#: Mailman/Cgi/options.py:411
 msgid ""
 "%(newaddr)s is banned from this list.  If you\n"
 "                      think this restriction is erroneous, please contact\n"
@@ -2633,11 +2635,11 @@ msgstr ""
 "della lista all'indirizzo %(owneraddr)s."
 
 # /home/mailman/Mailman/Cgi/edithtml.py:194
-#: Mailman/Cgi/options.py:421
+#: Mailman/Cgi/options.py:422
 msgid "Member name successfully changed. "
 msgstr "Nome dell'iscritto modificato con successo."
 
-#: Mailman/Cgi/options.py:431
+#: Mailman/Cgi/options.py:432
 #, fuzzy
 msgid ""
 "The list administrator may not change the\n"
@@ -2646,15 +2648,15 @@ msgstr ""
 "L'amministratore della lista non può vedere le altre iscrizioni di questo "
 "utente."
 
-#: Mailman/Cgi/options.py:440
+#: Mailman/Cgi/options.py:441
 msgid "Passwords may not be blank"
 msgstr "Le password non possono essere vuote"
 
-#: Mailman/Cgi/options.py:445
+#: Mailman/Cgi/options.py:446
 msgid "Passwords did not match!"
 msgstr "Le password non sono uguali!"
 
-#: Mailman/Cgi/options.py:453
+#: Mailman/Cgi/options.py:454
 msgid ""
 "The list administrator may not change the\n"
 "            password for this user's other subscriptions.  However, the\n"
@@ -2665,12 +2667,12 @@ msgstr ""
 "            per questa lista &egrave; stata cambiata."
 
 # /home/mailman/Mailman/Cgi/edithtml.py:194
-#: Mailman/Cgi/options.py:470 Mailman/Commands/cmd_password.py:83
+#: Mailman/Cgi/options.py:471 Mailman/Commands/cmd_password.py:83
 #: Mailman/Commands/cmd_password.py:109
 msgid "Password successfully changed."
 msgstr "Password modificata con successo."
 
-#: Mailman/Cgi/options.py:479
+#: Mailman/Cgi/options.py:480
 msgid ""
 "You must confirm your unsubscription request by turning\n"
 "                on the checkbox below the <em>Unsubscribe</em> button.  You\n"
@@ -2681,11 +2683,11 @@ msgstr ""
 "                Non sei stato cancellato!"
 
 # /home/mailman/Mailman/Cgi/admindb.py:289
-#: Mailman/Cgi/options.py:511
+#: Mailman/Cgi/options.py:512
 msgid "Unsubscription results"
 msgstr "Risultati di cancellazione"
 
-#: Mailman/Cgi/options.py:515
+#: Mailman/Cgi/options.py:516
 msgid ""
 "Your unsubscription request has been received and\n"
 "            forwarded on to the list moderators for approval.  You will\n"
@@ -2697,7 +2699,7 @@ msgstr ""
 "            Riceverai una notifica quando i moderatori avranno \n"
 "            preso una decisione."
 
-#: Mailman/Cgi/options.py:520
+#: Mailman/Cgi/options.py:521
 msgid ""
 "You have been successfully unsubscribed from the\n"
 "            mailing list %(fqdn_listname)s.  If you were receiving digest\n"
@@ -2712,7 +2714,7 @@ msgstr ""
 "        a proposito della tua cancellazione, contatta i gestori della\n"
 "        lista all'indirizzo %(owneraddr)s."
 
-#: Mailman/Cgi/options.py:669
+#: Mailman/Cgi/options.py:670
 msgid ""
 "The list administrator may not change the\n"
 "                options for this user's other subscriptions.  However the\n"
@@ -2723,7 +2725,7 @@ msgstr ""
 "               iscrizioni di questo utente.  Tuttavia, le opzioni per\n"
 "               l'iscrizione a questa lista sono state cambiate."
 
-#: Mailman/Cgi/options.py:679
+#: Mailman/Cgi/options.py:680
 msgid ""
 "The list administrator has disabled digest delivery for\n"
 "            this list, so your delivery option has not been set.  However "
@@ -2735,7 +2737,7 @@ msgstr ""
 "            state modificate. In ogni caso tutti gli altri parametri\n"
 "            sono stati salvati correttamente."
 
-#: Mailman/Cgi/options.py:683
+#: Mailman/Cgi/options.py:684
 msgid ""
 "The list administrator has disabled non-digest delivery\n"
 "            for this list, so your delivery option has not been set.  "
@@ -2748,69 +2750,69 @@ msgstr ""
 "            sono stati salvati correttamente."
 
 # /home/mailman/Mailman/Cgi/handle_opts.py:242
-#: Mailman/Cgi/options.py:687
+#: Mailman/Cgi/options.py:688
 msgid "You have successfully set your options."
 msgstr "Le tue opzioni sono state modificate con successo."
 
 # /home/mailman/Mailman/Cgi/handle_opts.py:248
-#: Mailman/Cgi/options.py:690
+#: Mailman/Cgi/options.py:691
 msgid "You may get one last digest."
 msgstr "Potresti ricevere un ultimo digest."
 
-#: Mailman/Cgi/options.py:762
+#: Mailman/Cgi/options.py:763
 msgid "<em>Yes, I really want to unsubscribe</em>"
 msgstr "<em>S&igrave;, voglio veramente cancellarmi</em>"
 
 # /home/mailman/Mailman/Cgi/options.py:140
-#: Mailman/Cgi/options.py:766
+#: Mailman/Cgi/options.py:767
 msgid "Change My Password"
 msgstr "Cambia la mia password"
 
 # /home/mailman/Mailman/Cgi/options.py:138
-#: Mailman/Cgi/options.py:769
+#: Mailman/Cgi/options.py:770
 msgid "List my other subscriptions"
 msgstr "Elenco delle altre mie iscrizioni"
 
 # /home/mailman/Mailman/Cgi/options.py:146
-#: Mailman/Cgi/options.py:775
+#: Mailman/Cgi/options.py:776
 msgid "Email My Password To Me"
 msgstr "Mandami la mia password via email"
 
 # /home/mailman/Mailman/Cgi/options.py:149
-#: Mailman/Cgi/options.py:777
+#: Mailman/Cgi/options.py:778
 msgid "password"
 msgstr "password"
 
-#: Mailman/Cgi/options.py:779
+#: Mailman/Cgi/options.py:780
 msgid "Log out"
 msgstr "Termina Sessione"
 
-#: Mailman/Cgi/options.py:781
+#: Mailman/Cgi/options.py:782
 msgid "Submit My Changes"
 msgstr "Esegui le variazioni"
 
-#: Mailman/Cgi/options.py:793
+#: Mailman/Cgi/options.py:794
 msgid "days"
 msgstr "giorni"
 
-#: Mailman/Cgi/options.py:795
+#: Mailman/Cgi/options.py:796
 msgid "day"
 msgstr "giorno"
 
-#: Mailman/Cgi/options.py:796
+#: Mailman/Cgi/options.py:797
 msgid "%(days)d %(units)s"
 msgstr "%(days)d %(units)s"
 
-#: Mailman/Cgi/options.py:802
+#: Mailman/Cgi/options.py:803
 msgid "Change My Address and Name"
 msgstr "Cambia il mio nome e indirizzo"
 
-#: Mailman/Cgi/options.py:828
+#: Mailman/Cgi/options.py:829
 msgid "<em>No topics defined</em>"
 msgstr "<em>Non sono stati definiti argomenti</em>"
 
 # /home/mailman/Mailman/Cgi/options.py:151
-#: Mailman/Cgi/options.py:836
+#: Mailman/Cgi/options.py:837
 msgid ""
 "\n"
 "You are subscribed to this list with the case-preserved address\n"
@@ -2821,20 +2823,20 @@ msgstr ""
 "(conservando maiuscole e minuscole)\n"
 "<em>%(cpuser)s</em>."
 
-#: Mailman/Cgi/options.py:850
+#: Mailman/Cgi/options.py:851
 msgid "%(realname)s list: member options login page"
 msgstr "lista %(realname)s: login alla pagina di opzioni per gli iscritti"
 
 # /home/mailman/Mailman/Cgi/admin.py:861
-#: Mailman/Cgi/options.py:851
+#: Mailman/Cgi/options.py:852
 msgid "email address and "
 msgstr "indirizzo email e"
 
-#: Mailman/Cgi/options.py:854
+#: Mailman/Cgi/options.py:855
 msgid "%(realname)s list: member options for user %(safeuser)s"
 msgstr "Lista %(realname)s: opzioni di iscrizione per %(safeuser)s"
 
-#: Mailman/Cgi/options.py:880
+#: Mailman/Cgi/options.py:881
 msgid ""
 "In order to change your membership option, you must\n"
 "    first log in by giving your %(extra)smembership password in the section\n"
@@ -2866,20 +2868,20 @@ msgstr ""
 
 # In this entry insert a space at the end of string, it will be stripped.
 # /home/mailman/Mailman/HTMLFormatter.py:287
-#: Mailman/Cgi/options.py:894
+#: Mailman/Cgi/options.py:895
 msgid "Email address:"
 msgstr "Indirizzo email:"
 
 # /home/mailman/Mailman/HTMLFormatter.py:301
-#: Mailman/Cgi/options.py:898
+#: Mailman/Cgi/options.py:899
 msgid "Password:"
 msgstr "Password:"
 
-#: Mailman/Cgi/options.py:900
+#: Mailman/Cgi/options.py:901
 msgid "Log in"
 msgstr "Entra"
 
-#: Mailman/Cgi/options.py:908
+#: Mailman/Cgi/options.py:909
 msgid ""
 "By clicking on the <em>Unsubscribe</em> button, a\n"
 "    confirmation message will be emailed to you.  This message will have a\n"
@@ -2894,11 +2896,11 @@ msgstr ""
 "        email; vedi le istruzioni nel messaggio)."
 
 # /home/mailman/Mailman/HTMLFormatter.py:301
-#: Mailman/Cgi/options.py:916
+#: Mailman/Cgi/options.py:917
 msgid "Password reminder"
 msgstr "Promemoria password"
 
-#: Mailman/Cgi/options.py:920
+#: Mailman/Cgi/options.py:921
 msgid ""
 "By clicking on the <em>Remind</em> button, your\n"
 "    password will be emailed to you."
@@ -2906,27 +2908,27 @@ msgstr ""
 "Cliccando sul pulsante <em>Promemoria</em>,\n"
 "        ti sar&agrave; spedita la tua password."
 
-#: Mailman/Cgi/options.py:923
+#: Mailman/Cgi/options.py:924
 msgid "Remind"
 msgstr "Promemoria"
 
-#: Mailman/Cgi/options.py:1023
+#: Mailman/Cgi/options.py:1024
 msgid "<missing>"
 msgstr "<mancante>"
 
-#: Mailman/Cgi/options.py:1034
+#: Mailman/Cgi/options.py:1035
 msgid "Requested topic is not valid: %(topicname)s"
 msgstr "L'argomento richiesto non &egrave; valido: %(topicname)s"
 
-#: Mailman/Cgi/options.py:1039
+#: Mailman/Cgi/options.py:1040
 msgid "Topic filter details"
 msgstr "Dettagli sul filtro per argomenti"
 
-#: Mailman/Cgi/options.py:1042
+#: Mailman/Cgi/options.py:1043
 msgid "Name:"
 msgstr "Nome:"
 
-#: Mailman/Cgi/options.py:1044
+#: Mailman/Cgi/options.py:1045
 msgid "Pattern (as regexp):"
 msgstr "Pattern (come regexp):"
 
@@ -2998,8 +3000,9 @@ msgid "Permanently remove mailing list <em>%(realname)s</em>"
 msgstr "Rimuovi permanentemente la lista <em>%(realname)s</em>"
 
 #: Mailman/Cgi/rmlist.py:204
+#, fuzzy
 msgid ""
-"This page allows you as the list owner, to permanent\n"
+"This page allows you as the list owner, to permanently\n"
 "    remove this mailing list from the system.  <strong>This action is not\n"
 "    undoable</strong> so you should undertake it only if you are absolutely\n"
 "    sure this mailing list has served its purpose and is no longer "
@@ -5895,9 +5898,10 @@ msgstr ""
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
 
 #: Mailman/Gui/General.py:346
+#, fuzzy
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
-"             set of options is taken from the this variable's setting."
+"             set of options is taken from this variable's setting."
 msgstr ""
 "Quando un nuovo utente si iscrive alla lista, le sue opzioni\n"
 "              iniziali vengono prese da questa variabile."
@@ -6071,18 +6075,18 @@ msgstr ""
 
 #: Mailman/Gui/General.py:426
 msgid ""
-"\"<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
+"<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
 "                 2822</a> defines the <tt>Sender</tt> header and defines it\n"
 "                 as \"the mailbox of the agent responsible for the actual\n"
 "                 transmission of the message.\"  Mailman replaces this "
 "header\n"
-"                 per default with the list's bounce address.\n"
+"                 by default with the list's bounce address.\n"
 "                 \n"
 "                 <p>While it is debatable if Mailman is such an agent, "
 "setting\n"
 "                 this header helps directing bounces from some broken MTAs "
 "to\n"
-"                 the right destination.  On the other hand do some mail\n"
+"                 the right destination.  On the other hand, some mail\n"
 "                 readers show unexpected behaviour if this header is set "
 "(like\n"
 "                 missing addresses in forwarded mails and copies sent to "
@@ -6331,6 +6335,7 @@ msgstr ""
 "                 importanti effetti sulle prestazioni."
 
 #: Mailman/Gui/NonDigest.py:61
+#, fuzzy
 msgid ""
 "Normally, Mailman sends the regular delivery messages to\n"
 "                 the mail server in batches.  This is much more efficent\n"
@@ -6363,7 +6368,7 @@ msgid ""
 "                 address.\n"
 "\n"
 "                 <p>When personalization is enabled, a few more expansion\n"
-"                 variables that can be included in the <a\n"
+"                 variables can be included in the <a\n"
 "                 href=\"?VARHELP=nondigest/msg_header\">message header</a> "
 "and\n"
 "                 <a href=\"?VARHELP=nondigest/msg_footer\">message footer</"
@@ -6501,11 +6506,12 @@ msgid "Scrub attachments of regular delivery message?"
 msgstr "Filtra gli allegati dei messaggi non-digest?"
 
 #: Mailman/Gui/NonDigest.py:142
+#, fuzzy
 msgid ""
-"When you scrub attachments, they are stored in archive\n"
+"When you scrub attachments, they are stored in the archive\n"
 "             area and links are made in the message so that the member can\n"
-"             access via web browser. If you want the attachments totally\n"
-"             disappear, you can use content filter options."
+"             access them via a web browser. If you want the attachments to\n"
+"             totally disappear, you can use content filtering options."
 msgstr ""
 "Quando gli allegati vengono filtrati, essi vengono salvati in un'area "
 "archivio e vengono creati collegamenti nel testo del messaggio in modo che "
@@ -8145,7 +8151,7 @@ msgstr ""
 "Una volta al mese, la tua password ti verr&agrave; spedita come promemoria."
 
 # /home/mailman/Mailman/HTMLFormatter.py:373
-#: Mailman/HTMLFormatter.py:393
+#: Mailman/HTMLFormatter.py:394
 msgid "The current archive"
 msgstr "L'archivio corrente"
 
@@ -8768,64 +8774,64 @@ msgid "Gnu's Not Unix"
 msgstr "Gnu's Not Unix"
 
 # /home/mailman/Mailman/MailList.py:539
-#: Mailman/i18n.py:98
+#: Mailman/i18n.py:102
 msgid "Mon"
 msgstr "Lun"
 
-#: Mailman/i18n.py:98
+#: Mailman/i18n.py:102
 msgid "Thu"
 msgstr "Gio"
 
-#: Mailman/i18n.py:98
+#: Mailman/i18n.py:102
 msgid "Tue"
 msgstr "Mar"
 
-#: Mailman/i18n.py:98
+#: Mailman/i18n.py:102
 msgid "Wed"
 msgstr "Mer"
 
-#: Mailman/i18n.py:99
+#: Mailman/i18n.py:103
 msgid "Fri"
 msgstr "Ven"
 
-#: Mailman/i18n.py:99
+#: Mailman/i18n.py:103
 msgid "Sat"
 msgstr "Sab"
 
-#: Mailman/i18n.py:99
+#: Mailman/i18n.py:103
 msgid "Sun"
 msgstr "Dom"
 
 # /home/mailman/Mailman/Cgi/admindb.py:225
-#: Mailman/i18n.py:103
+#: Mailman/i18n.py:107
 msgid "Apr"
 msgstr "Apr"
 
-#: Mailman/i18n.py:103
+#: Mailman/i18n.py:107
 msgid "Feb"
 msgstr "Feb"
 
-#: Mailman/i18n.py:103
+#: Mailman/i18n.py:107
 msgid "Jan"
 msgstr "Gen"
 
-#: Mailman/i18n.py:103
+#: Mailman/i18n.py:107
 msgid "Jun"
 msgstr "Giu"
 
-#: Mailman/i18n.py:103
+#: Mailman/i18n.py:107
 msgid "Mar"
 msgstr "Mar"
 
-#: Mailman/i18n.py:104
+#: Mailman/i18n.py:108
 msgid "Aug"
 msgstr "Ago"
 
-#: Mailman/i18n.py:104
+#: Mailman/i18n.py:108
 msgid "Dec"
 msgstr "Dic"
 
-#: Mailman/i18n.py:104
+#: Mailman/i18n.py:108
 msgid "Jul"
 msgstr "Lug"
 
@@ -8841,23 +8847,23 @@ msgstr "Lug"
 # /home/mailman/Mailman/MailList.py:599 /home/mailman/Mailman/MailList.py:611
 # /home/mailman/Mailman/MailList.py:614 /home/mailman/Mailman/MailList.py:642
 # /home/mailman/Mailman/MailList.py:699 /home/mailman/Mailman/MailList.py:707
-#: Mailman/i18n.py:104
+#: Mailman/i18n.py:108
 msgid "Nov"
 msgstr "Nov"
 
-#: Mailman/i18n.py:104
+#: Mailman/i18n.py:108
 msgid "Oct"
 msgstr "Ott"
 
-#: Mailman/i18n.py:104
+#: Mailman/i18n.py:108
 msgid "Sep"
 msgstr "Set"
 
-#: Mailman/i18n.py:107
+#: Mailman/i18n.py:111
 msgid "Server Local Time"
 msgstr "Ora locale del server"
 
-#: Mailman/i18n.py:146
+#: Mailman/i18n.py:150
 msgid ""
 "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 msgstr ""
