@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -244,7 +244,10 @@ def main():
             realname = mlist.real_name
             subject = _('%(realname)s subscription notification')
             msg = Message.UserNotification(
-                mlist.owner, Utils.get_site_email(), subject, s.getvalue(),
+                mlist.owner,
+                Utils.get_site_email(mlist.host_name),
+                subject,
+                s.getvalue(),
                 mlist.preferred_language)
             msg.send(mlist)
 
