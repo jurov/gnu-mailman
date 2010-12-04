@@ -1258,7 +1258,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                     except IndexError:
                         subpart = None
                     if subpart:
-                        s = StringIO(subpart.get_payload())
+                        s = StringIO(subpart.get_payload(decode=True))
                         while True:
                             line = s.readline()
                             if not line:
@@ -1267,8 +1267,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                                 continue
                             i = line.find(':')
                             if i > 0:
-                                if (line[:i].lower() == 'approve' or
-                                    line[:i].lower() == 'approved'):
+                                if (line[:i].strip().lower() == 'approve' or
+                                    line[:i].strip().lower() == 'approved'):
                                     # then
                                     approved = line[i+1:].strip()
                             break

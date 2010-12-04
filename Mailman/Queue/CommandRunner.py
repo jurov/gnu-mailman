@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -76,7 +76,8 @@ class Results:
         try:
             subj = make_header(decode_header(subj)).__unicode__()
             # TK: Currently we don't allow 8bit or multibyte in mail command.
-            subj = subj.encode('us-ascii')
+            # MAS: However, an l10n 'Re:' may contain non-ascii so ignore it.
+            subj = subj.encode('us-ascii', 'ignore')
             # Always process the Subject: header first
             self.commands.append(subj)
         except (HeaderParseError, UnicodeError, LookupError):
