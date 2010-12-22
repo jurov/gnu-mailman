@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -178,6 +178,12 @@ PATTERNS = [
     (_c('--------Message not delivered'),
      _c('--------Error Detail'),
      _c('^\s*(?P<addr>[^\s@]+@[^\s@]+)\s*$')),
+    # Dovecot LDA Over quota MDN (bogus - should be DSN).
+    (_c('^Your message'),
+     _c('^Reporting'),
+     _c(
+        'Your message to (?P<addr>[^\s@]+@[^\s@]+) was automatically rejected'
+       )),
     # Next one goes here...
     ]
 
