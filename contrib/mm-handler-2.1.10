@@ -176,7 +176,12 @@ sub split_addr {
 		# If an undefined action, restore list name
 		$list = $addr;
 		$cmd = "post";
+	} elsif (! list_exists($list) and list_exists("$list-$cmd")) {
+	# Supposed command is actually part of list name, restore list name
+		$list = $addr;
+		$cmd = "post";
 	}
+
 	## Otherwise use $list and $cmd as already assigned
 
 	return ($list, $cmd);
@@ -186,8 +191,8 @@ sub split_addr {
 sub list_exists {
 	my ($name) = @_;
 
-	return 1 if (-f "$MMLISTDIR/$list/config.pck");
-	return 1 if (-f "$MMLISTDIR/$list/config.db");
+	return 1 if (-f "$MMLISTDIR/$name/config.pck");
+	return 1 if (-f "$MMLISTDIR/$name/config.db");
 	return 0;
 }
 
