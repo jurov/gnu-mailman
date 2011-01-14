@@ -13,6 +13,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug that could erroneously handle posts from addresses in
+      *_these_nonmembers and send held/rejected notices to bogus addresses when
+      The From or other sender header is RFC 2047 encoded.  Bug #702516.
+
     - Updated contrib/mm-handler-2.1.10 to better handle lists with names that
       look like admin addresses.  Bug #697161.
 
