@@ -13,6 +13,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed bin/rmlist to also remove heldmsg files for the removed list and
+      fixed a problem with removal of stale locks for the list.  Bug #700528.
+
     - Fixed a bug where content filtering could leave a multipart message or
       part with just one sub-part. These should be recast to just the sub-part.
       Bug #701558.

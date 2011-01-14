@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -37,6 +37,7 @@ Where:
 """
 
 import os
+import re
 import sys
 import getopt
 import shutil
@@ -121,7 +122,7 @@ def main():
             sys.modules[modname].remove(mlist)
 
         REMOVABLES = [
-            (os.path.join('lists', listname), _('list info')),
+            (os.path.join(mm_cfg.LIST_DATA_DIR, listname), _('list info')),
             ]
 
     # Remove any stale locks associated with the list
@@ -131,20 +132,27 @@ def main():
             REMOVABLES.append((os.path.join(mm_cfg.LOCK_DIR, filename),
                                _('stale lock file')))
 
+    # Remove any held messages for this list
+    for filename in os.listdir(mm_cfg.DATA_DIR):
+        cre = re.compile('^heldmsg-%s-\d+\.(pck|txt)$' % listname,
+                         re.IGNORECASE)
+        if cre.match(filename):
+            REMOVABLES.append((os.path.join(mm_cfg.DATA_DIR, filename),
+                               _('held message file')))
+
     if removeArchives:
         REMOVABLES.extend([
-            (os.path.join('archives', 'private', listname),
+            (os.path.join(mm_cfg.PRIVATE_ARCHIVE_FILE_DIR, listname),
              _('private archives')),
-            (os.path.join('archives', 'private', listname + '.mbox'),
+            (os.path.join(mm_cfg.PRIVATE_ARCHIVE_FILE_DIR, listname + '.mbox'),
              _('private archives')),
-            (os.path.join('archives', 'public', listname),
+            (os.path.join(mm_cfg.PUBLIC_ARCHIVE_FILE_DIR, listname),
              _('public archives')),
-            (os.path.join('archives', 'public', listname + '.mbox'),
+            (os.path.join(mm_cfg.PUBLIC_ARCHIVE_FILE_DIR, listname + '.mbox'),
              _('public archives')),
             ])
 
-    for dirtmpl, msg in REMOVABLES:
-        dir = os.path.join(mm_cfg.VAR_PREFIX, dirtmpl)
+    for dir, msg in REMOVABLES:
         remove_it(listname, dir, msg)
 
 
