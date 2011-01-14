@@ -13,6 +13,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug where content filtering could leave a multipart message or
+      part with just one sub-part. These should be recast to just the sub-part.
+      Bug #701558.
+
     - Fixed a bug that could erroneously handle posts from addresses in
       *_these_nonmembers and send held/rejected notices to bogus addresses when
       The From or other sender header is RFC 2047 encoded.  Bug #702516.

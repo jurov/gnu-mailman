@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -96,6 +96,11 @@ def process(mlist, msg, msgdata):
         if ctype == 'multipart/alternative':
             firstalt = msg.get_payload(0)
             reset_payload(msg, firstalt)
+    # Now that we've collapsed the MPA parts, go through the message
+    # and recast any multipart parts with only one sub-part as just
+    # the sub-part.
+    if msg.is_multipart():
+        recast_multipart(msg)
     # If we removed some parts, make note of this
     changedp = 0
     if numparts <> len([subpart for subpart in msg.walk()]):
@@ -191,6 +196,21 @@ def collapse_multipart_alternatives(msg):
         else:
             newpayload.append(subpart)
     msg.set_payload(newpayload)
+
+
+
+def recast_multipart(msg):
+    # If we're left with a multipart message with only one sub-part, recast
+    # the message to just the sub-part.
+    if msg.is_multipart():
+        if len(msg.get_payload()) == 1:
+            reset_payload(msg, msg.get_payload(0))
+            # now that we've recast this part, check the subordinate parts
+            recast_multipart(msg)
+        else:
+            # This part's OK but check deeper.
+            for part in msg.get_payload():
+                recast_multipart(part)
 
 
 
