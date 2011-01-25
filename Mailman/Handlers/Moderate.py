@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -136,19 +136,20 @@ def matches_p(sender, nonmembers, listname):
         elif are.startswith('@'):
             # XXX Needs to be reviewed for list@domain names.
             try:
-                if are[1:] == listname:
+                mname = are[1:].lower().strip()
+                if mname == listname:
                     # don't reference your own list
                     syslog('error',
                         '*_these_nonmembers in %s references own list',
                         listname)
                 else:
-                    mother = MailList(are[1:], lock=0)
+                    mother = MailList(mname, lock=0)
                     if mother.isMember(sender):
                         return 1
             except Errors.MMUnknownListError:
                 syslog('error',
                   '*_these_nonmembers in %s references non-existent list %s',
-                  listname, are[1:])
+                  listname, mname)
     return 0
 
 
