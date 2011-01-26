@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -1139,6 +1139,7 @@ class TestMimeDel(TestBase):
         self._mlist.filter_mime_types = ['image/jpeg']
         self._mlist.pass_mime_types = []
         self._mlist.convert_html_to_plaintext = 1
+        self._mlist.collapse_alternatives = 1
 
     def test_outer_matches(self):
         msg = email.message_from_string("""\
@@ -1172,10 +1173,9 @@ yyy
 --BOUNDARY--
 """)
         MimeDel.process(self._mlist, msg, {})
-        eq(len(msg.get_payload()), 1)
-        subpart = msg.get_payload(0)
-        eq(subpart.get_content_type(), 'image/gif')
-        eq(subpart.get_payload(), 'yyy')
+        self.assertTrue(not msg.is_multipart())
+        eq(msg.get_content_type(), 'image/gif')
+        eq(msg.get_payload(), 'yyy')
 
     def test_collapse_multipart_alternative(self):
         eq = self.assertEqual
@@ -1204,11 +1204,9 @@ yyy
 --BOUNDARY--
 """)
         MimeDel.process(self._mlist, msg, {})
-        eq(len(msg.get_payload()), 1)
-        eq(msg.get_content_type(), 'multipart/mixed')
-        subpart = msg.get_payload(0)
-        eq(subpart.get_content_type(), 'image/gif')
-        eq(subpart.get_payload(), 'yyy')
+        self.assertTrue(not msg.is_multipart())
+        eq(msg.get_content_type(), 'image/gif')
+        eq(msg.get_payload(), 'yyy')
 
     def test_convert_to_plaintext(self):
         # BAW: This test is dependent on your particular lynx version
@@ -1300,6 +1298,70 @@ This is plain text
         MimeDel.process(self._mlist, msg, {})
         eq(msg.get_content_type(), 'text/plain')
         eq(msg.get_payload(), 'This is plain text')
+
+    def test_recast_multipart(self):
+        eq = self.assertEqual
+        self._mlist.filter_mime_types.append('application/pdf')
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+MIME-Version: 1.0
+Content-type: multipart/mixed;
+ boundary="Boundary_0"
+
+--Boundary_0
+Content-Type: multipart/mixed;
+ boundary="Boundary_1"
+
+--Boundary_1
+Content-type: multipart/mixed;
+ boundary="Boundary_2"
+
+--Boundary_2
+Content-type: multipart/alternative;
+ boundary="Boundary_3"
+
+--Boundary_3
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+Plain text part
+--Boundary_3
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+HTML part
+--Boundary_3--
+
+
+--Boundary_2
+Content-type: application/pdf
+Content-transfer-encoding: 7BIT
+
+PDF part inner 2
+--Boundary_2--
+--Boundary_1
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+second text
+--Boundary_1--
+
+--Boundary_0
+Content-Type: application/pdf
+Content-transfer-encoding: 7BIT
+
+PDF part outer
+--Boundary_0--
+""")
+        MimeDel.process(self._mlist, msg, {})
+        payload = msg.get_payload()
+        eq(len(payload), 2)
+        part1 = msg.get_payload(0)
+        eq(part1.get_content_type(), 'text/plain')
+        eq(part1.get_payload(), 'Plain text part')
+        part2 = msg.get_payload(1)
+        eq(part2.get_content_type(), 'text/plain')
+        eq(part2.get_payload(), 'second text')
 
 
 
