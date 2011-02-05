@@ -185,6 +185,7 @@ def main():
         msg = _('Private archive file not found')
         doc.SetTitle(msg)
         doc.AddItem(Header(2, msg))
+        print 'Status: 404 Not Found'
         print doc.Format()
         syslog('error', 'Private archive file not found: %s', true_filename)
     else:
