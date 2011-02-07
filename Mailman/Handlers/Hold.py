@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -237,9 +237,6 @@ def hold_for_approval(mlist, msg, msgdata, exc):
     # languages (the user's preferred and the list's preferred for the admin),
     # we need to play some i18n games here.  Since the current language
     # context ought to be set up for the user, let's craft his message first.
-    #
-    # This message should appear to come from <list>-admin so as to handle any
-    # bounce processing that might be needed.
     cookie = mlist.pend_new(Pending.HELD_MESSAGE, id)
     if not fromusenet and ackp(msg) and mlist.respond_to_post_requests and \
            mlist.autorespondToSender(sender, mlist.getMemberLanguage(sender)):
@@ -249,7 +246,7 @@ def hold_for_approval(mlist, msg, msgdata, exc):
         lang = msgdata.get('lang', mlist.getMemberLanguage(sender))
         subject = _('Your message to %(listname)s awaits moderator approval')
         text = Utils.maketext('postheld.txt', d, lang=lang, mlist=mlist)
-        nmsg = Message.UserNotification(sender, adminaddr, subject, text, lang)
+        nmsg = Message.UserNotification(sender, owneraddr, subject, text, lang)
         nmsg.send(mlist)
     # Now the message for the list owners.  Be sure to include the list
     # moderators in this message.  This one should appear to come from
