@@ -6,6 +6,27 @@ Here is a history of user visible changes to Mailman.
 
 2.1.15 (xx-xxx-xxxx)
 
+  New Features
+
+    - A new mm_cfg.py setting RESPONSE_INCLUDE_LEVEL has been added to control
+      how much of the original message is included in automatic responses to
+      email commands.  The default is 2 to preserve the prior behavior of
+      including the full message.  Setting this to 1 in mm_cfg.py will include
+      only the original headers, and 0 will include none of the original.  It
+      is recommended to set this to 0 in mm_cfg.py to minimize the effects of
+      backscatter.  Bug #265835.
+
+    - A new mm_cfg.py setting DEFAULT_RESPOND_TO_POST_REQUESTS has been added
+      to control the default for respond_to_post_requests for new lists.  It is
+      set to Yes for backwards compatibility, but it is recommended that
+      serious consideration be given to setting it to No.  Bug #266051.
+
+    - A new mm_cfg.py setting DISCARD_MESSAGE_WITH_NO_COMMAND has been added to
+      control whether a message to the -request address without any commands or
+      a message to -confirm whose To: address doesn't match VERP_CONFIRM_REGEXP
+      is responded to or just logged.  It defaults to Yes which is different
+      from prior behavior.  Bug #410236.
+
   i18n
 
     - Fixed a missing format character in the Spanish translation.

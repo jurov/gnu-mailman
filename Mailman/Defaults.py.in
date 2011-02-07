@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -690,7 +690,7 @@ VERP_CONFIRM_FORMAT = '%(addr)s+%(cookie)s'
 # To: "local_part@host" <local_part@host>
 # and may even fold the header when replying, so we skip everything up to '<'
 # if any and include ($s) so dot will match the newline in a folded header.
-VERP_CONFIRM_REGEXP = r'(?s)^(.*<)?(?P<addr>.+)\+(?P<cookie>[^@+]+)@.*$'
+VERP_CONFIRM_REGEXP = r'(?s)^(.*<)?(?P<addr>.+)\+(?P<cookie>[0-9a-f]{40})@.*$'
 
 # Set this to Yes to enable VERP-like (more user friendly) confirmations
 VERP_CONFIRMATIONS = No
@@ -703,6 +703,36 @@ VERP_CONFIRMATIONS = No
 # be set fairly high.  Set to 0 for no limit (probably useful only for
 # debugging).
 MAX_AUTORESPONSES_PER_DAY = 10
+
+
+
+#####
+# Backscatter mitigation
+#####
+
+# This controls whether a message to the -request address without any
+# commands or a message to -confirm whose To: address doesn't match
+# VERP_CONFIRM_REGEXP above is responded to or just logged.
+DISCARD_MESSAGE_WITH_NO_COMMAND = Yes
+
+# This controls how much of the original message is included in automatic
+# responses to email commands.  The values are:
+# 0 - Do not include any unprocessed or ignored commands.  Do not include
+#     the original message.
+# 1 - Do not include any unprocessed or ignored commands.  Include only the
+#     headers from the original message.
+# 2 - Include unprocessed and ignored commands.  Include the complete original
+#     message.
+#
+# In order to minimize the effect of backscatter due to spam sent to
+# administrative addresses, it is recommended to set this to 0, however the
+# default is 2 for backwards compatibility.
+RESPONSE_INCLUDE_LEVEL = 2
+
+# This sets the default for respond_to_post_requests for new lists.  It is
+# set to Yes for backwards compatibility, but it is recommended that serious
+# consideration be given to setting it to No.
+DEFAULT_RESPOND_TO_POST_REQUESTS = Yes
 
 
 
