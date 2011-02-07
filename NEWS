@@ -34,6 +34,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed an uncaught KeyError when poster tries to cancel a post which was
+      already handled.  Bug #266224.
+
     - Held message user notifications now come From: list-owner instead of
       list-bounces.  Bug #714424.
 

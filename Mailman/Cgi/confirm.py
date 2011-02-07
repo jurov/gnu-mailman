@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -634,6 +634,7 @@ def heldmsg_confirm(mlist, doc, cookie):
         try:
             # Do this in two steps so we can get the preferred language for
             # the user who posted the message.
+            subject = 'n/a'
             op, id = mlist.pend_confirm(cookie)
             ign, sender, msgsubject, ign, ign, ign = mlist.GetRecord(id)
             lang = mlist.getMemberLanguage(sender)
@@ -644,7 +645,7 @@ def heldmsg_confirm(mlist, doc, cookie):
             # Discard the message
             mlist.HandleRequest(id, mm_cfg.DISCARD,
                                 _('Sender discarded message via web.'))
-        except Errors.LostHeldMessage:
+        except (Errors.LostHeldMessage, KeyError):
             bad_confirmation(doc, _('''The held message with the Subject:
             header <em>%(subject)s</em> could not be found.  The most likely
             reason for this is that the list moderator has already approved or
