@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -75,7 +75,7 @@ except NameError:
 
 
 
-def usage(status, msg=''):
+def usage(code, msg=''):
     if code:
         fd = sys.stderr
     else:
