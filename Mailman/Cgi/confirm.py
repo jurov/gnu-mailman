@@ -471,7 +471,7 @@ def unsubscription_prompt(mlist, doc, cookie, addr):
     if fullname is None:
         fullname = _('<em>Not available</em>')
     else:
-        fullname = Utils.uncanonstr(fullname, lang)
+        fullname = Utils.websafe(Utils.uncanonstr(fullname, lang))
     table.AddRow([_("""Your confirmation is required in order to complete the
     unsubscription request from the mailing list <em>%(listname)s</em>.  You
     are currently subscribed with
@@ -573,7 +573,7 @@ def addrchange_prompt(mlist, doc, cookie, oldaddr, newaddr, globally):
     if fullname is None:
         fullname = _('<em>Not available</em>')
     else:
-        fullname = Utils.uncanonstr(fullname, lang)
+        fullname = Utils.websafe(Utils.uncanonstr(fullname, lang))
     if globally:
         globallys = _('globally')
     else:
@@ -815,7 +815,7 @@ def reenable_prompt(mlist, doc, cookie, list, member):
     if username is None:
         username = _('<em>not available</em>')
     else:
-        username = Utils.uncanonstr(username, lang)
+        username = Utils.websafe(Utils.uncanonstr(username, lang))
 
     table.AddRow([_("""Your membership in the %(realname)s mailing list is
     currently disabled due to excessive bounces.  Your confirmation is
