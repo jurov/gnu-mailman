@@ -38,6 +38,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed the maximum number of arguments for the who command to be
+      considered administrivia from 2 to 1 to help avoid false positives.
+      Bug #739524.
+
     - Added the list name as 'display-name' in added Sender: headers to help
       mitigate Outlook et al 'on behalf of' displays.  Bug #736849.
 

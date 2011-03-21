@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -593,7 +593,7 @@ ADMINDATA = {
     'set':         (3, 3),
     'subscribe':   (0, 3),
     'unsubscribe': (0, 1),
-    'who':         (0, 2),
+    'who':         (0, 1),
     }
 
 # Given a Message.Message object, test for administrivia (eg subscribe,
