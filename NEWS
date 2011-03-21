@@ -38,6 +38,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Added the list name as 'display-name' in added Sender: headers to help
+      mitigate Outlook et al 'on behalf of' displays.  Bug #736849.
+
     - Fixed a typo in the usage() definition cron/gate_news.  Bug #721015.
 
     - Fixed an uncaught KeyError when poster tries to cancel a post which was

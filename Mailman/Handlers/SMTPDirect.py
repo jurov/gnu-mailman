@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -363,7 +363,8 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     # lists, depending on how often they accidentally reply to it.  Also, when
     # forwarding mail inline, the sender is replaced with the string "Full 
     # Name (on behalf bounce@addr.ess)", essentially losing the original
-    # sender address.
+    # sender address.  To partially mitigate this, we add the list name as a
+    # display-name in the Sender: header that we add.
     # 
     # The drawback of not touching the Sender: header is that some MTAs might
     # still send bounces to it, so by not trapping it, we can miss bounces.
@@ -374,7 +375,7 @@ def bulkdeliver(mlist, msg, msgdata, envsender, failures, conn):
     msg['Errors-To'] = envsender
     if mlist.include_sender_header:
         del msg['sender']
-        msg['Sender'] = envsender
+        msg['Sender'] = '"%s" <%s>' % (mlist.real_name, envsender)
     # Get the plain, flattened text of the message, sans unixfrom
     # using our as_string() method to not mangle From_ and not fold
     # sub-part headers possibly breaking signatures.
