@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -109,7 +109,7 @@ def process_form(mlist, doc, cgidata, lang):
     results = []
 
     # The email address being subscribed, required
-    email = cgidata.getvalue('email', '')
+    email = cgidata.getvalue('email', '').strip()
     if not email:
         results.append(_('You must supply a valid email address.'))
 

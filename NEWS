@@ -38,6 +38,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed the subscribe CGI to strip leading and trailing whitespace from
+      the supplied email address.  Bug #745432.
+
     - Changed the maximum number of arguments for the who command to be
       considered administrivia from 2 to 1 to help avoid false positives.
       Bug #739524.
