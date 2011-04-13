@@ -37,6 +37,9 @@ Here is a history of user visible changes to Mailman.
       Bug #670988.
 
   Bug Fixes and other patches
+    - Fixed a problem where content filtering could remove the headers from
+      an attached message/rfc822 part if the message in that part is
+      multipart/alternative and collapse_alternatives is Yes.  Bug #757062.
 
     - Changed the subscribe CGI to strip leading and trailing whitespace from
       the supplied email address.  Bug #745432.

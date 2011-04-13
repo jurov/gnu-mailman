@@ -187,7 +187,14 @@ def collapse_multipart_alternatives(msg):
         if subpart.get_content_type() == 'multipart/alternative':
             try:
                 firstalt = subpart.get_payload(0)
-                newpayload.append(firstalt)
+                if msg.get_content_type() == 'message/rfc822':
+                    # This is a multipart/alternative message in a
+                    # message/rfc822 part. We treat it specially so as not to
+                    # lose the headers.
+                    reset_payload(subpart, firstalt)
+                    newpayload.append(subpart)
+                else:
+                    newpayload.append(firstalt)
             except (IndexError, TypeError):
                 pass
         elif subpart.is_multipart():
