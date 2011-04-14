@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -187,13 +187,15 @@ def main():
         if not mlist.digestable and mlist.getDigestMemberKeys():
             doc.addError(
                 _('''You have digest members, but digests are turned
-                off. Those people will not receive mail.'''),
+                off. Those people will not receive mail.
+                Affected member(s) %r.''' % mlist.getDigestMemberKeys()),
                 tag=_('Warning: '))
         if not mlist.nondigestable and mlist.getRegularMemberKeys():
             doc.addError(
                 _('''You have regular list members but non-digestified mail is
                 turned off.  They will receive non-digestified mail until you
-                fix this problem.'''), tag=_('Warning: '))
+                fix this problem. Affected member(s) %r.''' %
+                mlist.getRegularMemberKeys()), tag=_('Warning: '))
         # Glom up the results page and print it out
         show_results(mlist, doc, category, subcat, cgidata)
         print doc.Format()

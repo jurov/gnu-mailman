@@ -37,6 +37,11 @@ Here is a history of user visible changes to Mailman.
       Bug #670988.
 
   Bug Fixes and other patches
+
+    - Added a report of the affected members to the warnings issued when
+      setting a list with digest members digestable=No and when setting a list
+      with non-digest members nondigestable=no.  Bug #761232.
+
     - Fixed a problem where content filtering could remove the headers from
       an attached message/rfc822 part if the message in that part is
       multipart/alternative and collapse_alternatives is Yes.  Bug #757062.
