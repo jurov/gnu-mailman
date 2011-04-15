@@ -184,18 +184,20 @@ def main():
                 non-digest delivery or your mailing list will basically be
                 unusable.'''), tag=_('Warning: '))
 
-        if not mlist.digestable and mlist.getDigestMemberKeys():
+        dm = mlist.getDigestMemberKeys()
+        if not mlist.digestable and dm:
             doc.addError(
                 _('''You have digest members, but digests are turned
                 off. Those people will not receive mail.
-                Affected member(s) %r.''' % mlist.getDigestMemberKeys()),
+                Affected member(s) %(dm)r.'''),
                 tag=_('Warning: '))
-        if not mlist.nondigestable and mlist.getRegularMemberKeys():
+        rm = mlist.getRegularMemberKeys()
+        if not mlist.nondigestable and rm:
             doc.addError(
                 _('''You have regular list members but non-digestified mail is
                 turned off.  They will receive non-digestified mail until you
-                fix this problem. Affected member(s) %r.''' %
-                mlist.getRegularMemberKeys()), tag=_('Warning: '))
+                fix this problem. Affected member(s) %(rm)r.'''),
+                tag=_('Warning: '))
         # Glom up the results page and print it out
         show_results(mlist, doc, category, subcat, cgidata)
         print doc.Format()
