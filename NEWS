@@ -38,6 +38,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed bin/genaliases to only call the POSTFIX_*_CMD commands once when
+      MTA = 'Postfix'.  Bug #266408.
+
     - Added a report of the affected members to the warnings issued when
       setting a list with digest members digestable=No and when setting a list
       with non-digest members nondigestable=no.  Bug #761232.

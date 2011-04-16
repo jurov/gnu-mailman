@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2001-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -113,8 +113,10 @@ def main():
                     # Be verbose for only the first printed list
                     quiet = True
     finally:
-        os.umask(omask)
         lock.unlock(unconditionally=True)
+        # Postfix has not been updating the maps. This call will do it.
+        MTA.create(None, quiet=True)
+        os.umask(omask)
 
 
 

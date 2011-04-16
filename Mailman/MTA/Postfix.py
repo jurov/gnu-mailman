@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -235,7 +235,10 @@ def create(mlist, cgi=False, nolock=False, quiet=False):
         _do_create(mlist, ALIASFILE, _addlist)
         if mlist and mlist.host_name in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS:
             _do_create(mlist, VIRTFILE, _addvirtual)
-        _update_maps()
+        # bin/genaliases is the only one that calls create with nolock = True.
+        # Use that to only update the maps at the end of genaliases.
+        if not nolock:
+            _update_maps()
     finally:
         if lock:
             lock.unlock(unconditionally=True)
