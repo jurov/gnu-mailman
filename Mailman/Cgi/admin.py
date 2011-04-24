@@ -107,6 +107,9 @@ def main():
 
     # Is this a log-out request?
     if category == 'logout':
+        # site-wide admin should also be able to logout.
+        if mlist.AuthContextInfo(mm_cfg.AuthSiteAdmin)[0] == 'site':
+            print mlist.ZapCookie(mm_cfg.AuthSiteAdmin)
         print mlist.ZapCookie(mm_cfg.AuthListAdmin)
         Auth.loginpage(mlist, 'admin', frontpage=1)
         return
