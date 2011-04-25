@@ -425,7 +425,15 @@ def check_global_password(response, siteadmin=True):
 
 
 _ampre = re.compile('&amp;((?:#[0-9]+|[a-z]+);)', re.IGNORECASE)
+# Characters misinterpreted as < or > by some broken browsers.
+_broken_browser = {'\x8b': '&#8249;',
+                   '\x9b': '&#8250;',
+                   '\xbc': '&#188;',
+                   '\xbd': '&#190;',
+                  }
 def websafe(s):
+    for k in _broken_browser:
+        s = s.replace(k, _broken_browser[k])
     # Don't double escape html entities
     return _ampre.sub(r'&\1', cgi.escape(s, quote=True))
 
