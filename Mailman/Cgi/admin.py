@@ -1258,6 +1258,22 @@ and also provide the email addresses of the list moderators in the
                    PasswordBox('confirmmodpw', size=20)])
     # Add these tables to the overall password table
     table.AddRow([atable, mtable])
+    table.AddRow([_("""\
+In addition to the above passwords you may specify a password for
+pre-approving posts to the list. Either of the above two passwords can
+be used in an Approved: header or first body line pseudo-header to
+pre-approve a post that would otherwise be held for moderation. In
+addition, the password below, if set, can be used for that purpose and
+no other.""")])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=2)
+    # Set up the post password table
+    ptable = Table(border=0, cellspacing=3, cellpadding=4,
+                   bgcolor=mm_cfg.WEB_ADMINPW_COLOR)
+    ptable.AddRow([Label(_('Enter new poster password:')),
+                   PasswordBox('newpostpw', size=20)])
+    ptable.AddRow([Label(_('Confirm poster password:')),
+                   PasswordBox('confirmpostpw', size=20)])
+    table.AddRow([ptable])
     return table
 
 
@@ -1288,6 +1304,17 @@ def change_options(mlist, category, subcat, cgidata, doc):
             # password doesn't get you into these pages.
         else:
             doc.addError(_('Moderator passwords did not match'))
+    # Handle changes to the list poster password.  Do this before checking
+    # the new admin password, since the latter will force a reauthentication.
+    new = cgidata.getvalue('newpostpw', '').strip()
+    confirm = cgidata.getvalue('confirmpostpw', '').strip()
+    if new or confirm:
+        if new == confirm:
+            mlist.post_password = sha_new(new).hexdigest()
+            # No re-authentication necessary because the poster's
+            # password doesn't get you into these pages.
+        else:
+            doc.addError(_('Poster passwords did not match'))
     # Handle changes to the list administrator password
     new = cgidata.getvalue('newpw', '').strip()
     confirm = cgidata.getvalue('confirmpw', '').strip()

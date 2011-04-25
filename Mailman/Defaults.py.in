@@ -1375,6 +1375,11 @@ OPTINFO = {'hide'    : ConcealSubscription,
 #   option settings
 # - List creator, someone who can create and delete lists, but cannot
 #   (necessarily) configure the list.
+# - List poster, someone who can pre-approve her/his own posts to the list by
+#   including an Approved: or X-Approved: header or first body line pseudo-
+#   header containing the poster password. The list admin and moderator
+#   passwords can also be used for this purpose, but the poster password can
+#   only be used for this and nothing else.
 # - List moderator, someone who can tend to pending requests such as
 #   subscription requests, or held messages
 # - List administrator, someone who has total control over a list, can
@@ -1389,7 +1394,8 @@ AuthUser = 1          # Joe Shmoe User
 AuthCreator = 2       # List Creator / Destroyer
 AuthListAdmin = 3     # List Administrator (total control over list)
 AuthListModerator = 4 # List Moderator (can only handle held requests)
-AuthSiteAdmin = 5     # Site Administrator (total control over everything)
+AuthListPoster = 5    # List poster (Approved: <pw> header in posts only)
+AuthSiteAdmin = 6     # Site Administrator (total control over everything)
 
 # Useful directories
 LIST_DATA_DIR   = os.path.join(VAR_PREFIX, 'lists')

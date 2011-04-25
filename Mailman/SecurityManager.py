@@ -83,6 +83,7 @@ class SecurityManager:
         # self.password is really a SecurityManager attribute, but it's set in
         # MailList.InitVars().
         self.mod_password = None
+        self.post_password = None
         # Non configurable
         self.passwords = {}
 
@@ -106,6 +107,9 @@ class SecurityManager:
             secret = self.getMemberPassword(user)
             userdata = urllib.quote(Utils.ObscureEmail(user), safe='')
             key += 'user+%s' % userdata
+        elif authcontext == mm_cfg.AuthListPoster:
+            secret = self.post_password
+            key += 'poster'
         elif authcontext == mm_cfg.AuthListModerator:
             secret = self.mod_password
             key += 'moderator'
@@ -197,6 +201,11 @@ class SecurityManager:
                     return ac
             elif ac == mm_cfg.AuthListModerator:
                 # The list moderator password must be sha'd
+                key, secret = self.AuthContextInfo(ac)
+                if secret and sha_new(response).hexdigest() == secret:
+                    return ac
+            elif ac == mm_cfg.AuthListPoster:
+                # The list poster password must be sha'd
                 key, secret = self.AuthContextInfo(ac)
                 if secret and sha_new(response).hexdigest() == secret:
                     return ac

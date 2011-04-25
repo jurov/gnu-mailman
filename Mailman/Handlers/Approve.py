@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -117,7 +117,8 @@ def process(mlist, msg, msgdata):
                     lines = part.get_payload(decode=True)
                     if re.search(pattern, lines):
                         reset_payload(part, re.sub(pattern, '', lines))
-    if passwd is not missing and mlist.Authenticate((mm_cfg.AuthListModerator,
+    if passwd is not missing and mlist.Authenticate((mm_cfg.AuthListPoster,
+                                                     mm_cfg.AuthListModerator,
                                                      mm_cfg.AuthListAdmin),
                                                     passwd):
         # BAW: should we definitely deny if the password exists but does not

@@ -12,6 +12,11 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
+    - A new list poster password has been implemented.  This password may only
+      be used in Approved: or X-Approved: headers for pre-approving posts.
+      Using this password for that purpose precludes compromise of a more
+      valuable password sent in plain text email.  Bug #770581.
+
     - A new mm_cfg.py setting AUTHENTICATION_COOKIE_LIFETIME has been added.
       If this is set to a non-zero value, web authentication cookies will
       expire that many seconds following their last use.  Its default value is

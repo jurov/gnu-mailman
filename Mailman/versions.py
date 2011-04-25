@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -339,6 +339,7 @@ def NewVars(l):
                         mm_cfg.DEFAULT_DIGEST_VOLUME_FREQUENCY)
     add_only_if_missing('digest_last_sent_at', 0)
     add_only_if_missing('mod_password', None)
+    add_only_if_missing('post_password', None)
     add_only_if_missing('moderator', [])
     add_only_if_missing('topics', [])
     add_only_if_missing('topics_enabled', 0)
