@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -224,6 +224,8 @@ class SecurityManager:
         for ac in authcontexts:
             ok = self.CheckCookie(ac, user)
             if ok:
+                # Refresh the cookie
+                print self.MakeCookie(ac, user)
                 return True
         # Check passwords
         ac = self.Authenticate(authcontexts, response, user)
@@ -341,6 +343,9 @@ class SecurityManager:
         # Make sure the issued timestamp makes sense
         now = time.time()
         if now < issued:
+            return False
+        if (mm_cfg.AUTHENTICATION_COOKIE_LIFETIME and
+                issued + mm_cfg.AUTHENTICATION_COOKIE_LIFETIME < now):
             return False
         # Calculate what the mac ought to be based on the cookie's timestamp
         # and the shared secret.

@@ -104,6 +104,10 @@ MAILMAN_SITE_LIST = 'mailman'
 # the site.  Set this value to Yes to allow site admin cookies.
 ALLOW_SITE_ADMIN_COOKIES = No
 
+# If the following is set to a non-zero value, web authentication cookies will
+# expire that many seconds following their last use.
+AUTHENTICATION_COOKIE_LIFETIME = 0
+
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
 # name of the temporary file that the program should operate on.

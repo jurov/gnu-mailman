@@ -12,6 +12,11 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
+    - A new mm_cfg.py setting AUTHENTICATION_COOKIE_LIFETIME has been added.
+      If this is set to a non-zero value, web authentication cookies will
+      expire that many seconds following their last use.  Its default value is
+      zero to preserve current behavior.
+
     - A new mm_cfg.py setting RESPONSE_INCLUDE_LEVEL has been added to control
       how much of the original message is included in automatic responses to
       email commands.  The default is 2 to preserve the prior behavior of
