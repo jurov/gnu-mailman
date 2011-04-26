@@ -429,7 +429,8 @@ _ampre = re.compile('&amp;((?:#[0-9]+|[a-z]+);)', re.IGNORECASE)
 _broken_browser = {'\x8b': '&#8249;',
                    '\x9b': '&#8250;',
                    '\xbc': '&#188;',
-                   '\xbd': '&#190;',
+                   '\xbe': '&#190;',
+                   '\xa2': '&#162;'
                   }
 def websafe(s):
     # Archiver can pass unicode here. Just skip them as the
