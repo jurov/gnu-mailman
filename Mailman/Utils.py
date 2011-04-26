@@ -432,8 +432,11 @@ _broken_browser = {'\x8b': '&#8249;',
                    '\xbd': '&#190;',
                   }
 def websafe(s):
-    for k in _broken_browser:
-        s = s.replace(k, _broken_browser[k])
+    # Archiver can pass unicode here. Just skip them as the
+    # archiver escapes non-ascii anyway.
+    if isinstance(s, str):
+        for k in _broken_browser:
+            s = s.replace(k, _broken_browser[k])
     # Don't double escape html entities
     return _ampre.sub(r'&\1', cgi.escape(s, quote=True))
 
