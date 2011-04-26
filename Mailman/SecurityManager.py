@@ -233,8 +233,6 @@ class SecurityManager:
         for ac in authcontexts:
             ok = self.CheckCookie(ac, user)
             if ok:
-                # Refresh the cookie
-                print self.MakeCookie(ac, user)
                 return True
         # Check passwords
         ac = self.Authenticate(authcontexts, response, user)
@@ -321,6 +319,8 @@ class SecurityManager:
                          for u in usernames]:
                 ok = self.__checkone(c, authcontext, user)
                 if ok:
+                    # Refresh the cookie
+                    print self.MakeCookie(authcontext, user)
                     return True
             return False
         else:
