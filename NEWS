@@ -41,6 +41,13 @@ Here is a history of user visible changes to Mailman.
       is responded to or just logged.  It defaults to Yes which is different
       from prior behavior.  Bug #410236.
 
+    - Two new mm_cfg.py settings, BROKEN_BROWSER_WORKAROUND and
+      BROKEN_BROWSER_REPLACEMENTS, have been added to control escaping of
+      additional characters beyond the standard <, >, &, and " in the web UI.
+      See the documentation of these settings in Defaults.py.  The default
+      values for these settings result in no change from the prior release.
+      Bug #774588.
+
   i18n
 
     - Fixed a missing format character in the Spanish translation.

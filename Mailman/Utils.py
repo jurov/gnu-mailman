@@ -425,19 +425,13 @@ def check_global_password(response, siteadmin=True):
 
 
 _ampre = re.compile('&amp;((?:#[0-9]+|[a-z]+);)', re.IGNORECASE)
-# Characters misinterpreted as < or > by some broken browsers.
-_broken_browser = {'\x8b': '&#8249;',
-                   '\x9b': '&#8250;',
-                   '\xbc': '&#188;',
-                   '\xbe': '&#190;',
-                   '\xa2': '&#162;'
-                  }
 def websafe(s):
-    # Archiver can pass unicode here. Just skip them as the
-    # archiver escapes non-ascii anyway.
-    if isinstance(s, str):
-        for k in _broken_browser:
-            s = s.replace(k, _broken_browser[k])
+    if mm_cfg.BROKEN_BROWSER_WORKAROUND:
+        # Archiver can pass unicode here. Just skip them as the
+        # archiver escapes non-ascii anyway.
+        if isinstance(s, str):
+            for k in mm_cfg.BROKEN_BROWSER_REPLACEMENTS:
+                s = s.replace(k, mm_cfg.BROKEN_BROWSER_REPLACEMENTS[k])
     # Don't double escape html entities
     return _ampre.sub(r'&\1', cgi.escape(s, quote=True))
 

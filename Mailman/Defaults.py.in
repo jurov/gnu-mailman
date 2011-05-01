@@ -201,6 +201,31 @@ WEB_VLINK_COLOR = ''                              # If true, forces VLINK=
 WEB_HIGHLIGHT_COLOR = '#dddddd'                   # If true, alternating rows
                                                   # in listinfo & admin display
 
+# User entered data is escaped for redisplay in web responses to avoid Cross
+# Site Scripting (XSS) attacks. The normal escaping replaces the characters
+# <, >, & and " with the respective HTML entities &lt;, &gt;, &amp; and
+# &quot;.  There are apparently some older, broken browsers that misinterpret
+# certain non-ascii characters as <, > or ".  The following two settings
+# control whether additional characters are escaped, and what characters are
+# replaced with what.  Note that in character sets that represent some
+# characters as multi-byte sequences, enabling the escaping of additional
+# characters can replace part of a multi-byte sequence with an HTML entity,
+# thus breaking an otherwise harmless character.
+#
+# Enable the replacement of additional characters when escaping strings for
+# the web.
+BROKEN_BROWSER_WORKAROUND = No
+#
+# If the above setting is Yes, the following dictionary definition determines
+# what additional characters are replaced with what.
+BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
+                               '\x9b': '&#8250;',  # single right angle quote
+                               '\xbc': '&#188;',   # < plus high order bit
+                               '\xbe': '&#190;',   # > plus high order bit
+                               '\xa2': '&#162;',   # " plus high order bit
+                              }
+
+
 
 #####
 # Archive defaults
