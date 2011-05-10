@@ -125,12 +125,12 @@ def process_form(mlist, doc, cgidata, lang):
         syslog('mischief', 'Attempt to self subscribe %s: %s', email, remote)
         results.append(_('You may not subscribe a list to itself!'))
     # If the user did not supply a password, generate one for him
-    password = cgidata.getvalue('pw')
-    confirmed = cgidata.getvalue('pw-conf')
+    password = cgidata.getvalue('pw', '').strip()
+    confirmed = cgidata.getvalue('pw-conf', '').strip()
 
-    if password is None and confirmed is None:
+    if not password and not confirmed:
         password = Utils.MakeRandomPassword()
-    elif password is None or confirmed is None:
+    elif not password or not confirmed:
         results.append(_('If you supply a password, you must confirm it.'))
     elif password <> confirmed:
         results.append(_('Your passwords did not match.'))

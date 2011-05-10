@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -434,8 +434,8 @@ address.  Upon confirmation, any other mailing list containing the address
             options_page(mlist, doc, user, cpuser, userlang)
             print doc.Format()
             return
-        newpw = cgidata.getvalue('newpw')
-        confirmpw = cgidata.getvalue('confpw')
+        newpw = cgidata.getvalue('newpw', '').strip()
+        confirmpw = cgidata.getvalue('confpw', '').strip()
         if not newpw or not confirmpw:
             options_page(mlist, doc, user, cpuser, userlang,
                          _('Passwords may not be blank'))

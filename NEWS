@@ -55,8 +55,8 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
-    - Strengthened escaping of user web data by including some characters that
-      some older browsers misinterpret as < or >.
+    - Prevented setting user passwords with leading/trailing whitespace.
+      Bug #778088.
 
     - Mailman now sets the 'secure' flag in cookies set via https URLs.
       Bug #770377.

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -73,8 +73,8 @@ def main():
     # "admin"-only, then we try to cookie authenticate the user, and failing
     # that, we check roster-email and roster-pw fields for a valid password.
     # (also allowed: the list moderator, the list admin, and the site admin).
-    password = cgidata.getvalue('roster-pw', '')
-    addr = cgidata.getvalue('roster-email', '')
+    password = cgidata.getvalue('roster-pw', '').strip()
+    addr = cgidata.getvalue('roster-email', '').strip()
     list_hidden = (not mlist.WebAuthenticate((mm_cfg.AuthUser,),
                                              password, addr)
                    and mlist.WebAuthenticate((mm_cfg.AuthListModerator,
