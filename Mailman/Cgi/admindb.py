@@ -631,7 +631,14 @@ def show_post_requests(mlist, id, info, total, count, form):
     else:
         body = EMPTYSTRING.join(lines)
     # Get message charset and try encode in list charset
-    mcset = msg.get_param('charset', 'us-ascii').lower()
+    # We get it from the first text part.
+    for part in msg.walk():
+        if part.get_content_maintype() == 'text':
+            # Watchout for charset= with no value.
+            mcset = part.get_content_charset() or 'us-ascii'
+            break
+    else:
+        mcset = 'us-ascii'
     lcset = Utils.GetCharSet(mlist.preferred_language)
     if mcset <> lcset:
         try:

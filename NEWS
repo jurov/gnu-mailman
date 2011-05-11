@@ -55,6 +55,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a problem in admindb.py where the character set for the display of
+      the message body excerpt was not correctly determined.  Bug #779751.
+
     - Prevented setting user passwords with leading/trailing whitespace.
       Bug #778088.
 
