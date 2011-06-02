@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -314,7 +314,7 @@ URL: %(url)s
     # We still have to sanitize multipart messages to flat text because
     # Pipermail can't handle messages with list payloads.  This is a kludge;
     # def (n) clever hack ;).
-    if msg.is_multipart() and sanitize <> 2:
+    if msg.is_multipart():
         # By default we take the charset of the first text/plain part in the
         # message, but if there was none, we'll use the list's preferred
         # language's charset.
@@ -335,9 +335,12 @@ URL: %(url)s
             # MAS test payload - if part may fail if there are no headers.
             if not part.get_payload() or part.is_multipart():
                 continue
-            # All parts should be scrubbed to text/plain by now.
+            # All parts should be scrubbed to text/plain by now, except
+            # if sanitize == 2, there could be text/html parts so keep them
+            # but skip any other parts.
             partctype = part.get_content_type()
-            if partctype <> 'text/plain':
+            if partctype <> 'text/plain' and (partctype <> 'text/html' or
+                                              sanitize <> 2):
                 text.append(_('Skipped content of type %(partctype)s\n'))
                 continue
             try:
