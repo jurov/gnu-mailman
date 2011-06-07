@@ -298,8 +298,14 @@ def main():
         # the user is a member.  If so, add it to the list.
         onlists = []
         for gmlist in lists_of_member(mlist, user) + [mlist]:
+            extra = ''
             url = gmlist.GetOptionsURL(user)
             link = Link(url, gmlist.real_name)
+            if gmlist.getDeliveryStatus(user) <> MemberAdaptor.ENABLED:
+                extra += ', ' + _('nomail')
+            if user in gmlist.getDigestMemberKeys():
+                extra += ', ' + _('digest')
+            link = HTMLFormatObject(link, 0) + extra
             onlists.append((gmlist.real_name, link))
         onlists.sort()
         items = OrderedList(*[link for name, link in onlists])
