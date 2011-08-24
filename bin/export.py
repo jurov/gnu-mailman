@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2006-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -369,7 +369,7 @@ def main():
             listnames = opts.listnames
         else:
             listnames = Utils.list_names()
-        dumper.dump(listnames, SCHEMES[opts.password_scheme])
+        dumper.dump(listnames, SCHEMES[opts.password_scheme.lower()])
         dumper.close()
     finally:
         if fp is not sys.stdout:
