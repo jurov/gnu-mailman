@@ -216,6 +216,8 @@ _badchars = re.compile(r'[][()<>|;^,\000-\037\177-\377]')
 # characters in addition to _badchars which are not allowed in
 # unquoted local parts.
 _specials = re.compile(r'[:\\"]')
+# Only characters allowed in domain parts.
+_valid_domain = re.compile('[-a-z0-9]', re.IGNORECASE)
 
 def ValidateEmail(s):
     """Verify that an email address isn't grossly evil."""
@@ -234,6 +236,10 @@ def ValidateEmail(s):
         # local part is not quoted so it can't contain specials
         if _specials.search(user):
             raise Errors.MMBadEmailError, s
+    # domain parts may only contain ascii letters, digits and hyphen
+    for p in domain_parts:
+        if len(_valid_domain.sub('', p)) > 0:
+            raise Errors.MMHostileAddress, s
 
 
 
