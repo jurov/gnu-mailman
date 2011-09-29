@@ -66,6 +66,12 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - A problem with the logic avoiding unnecessarily reloading a current list
+      object from the config.pck arises if the list is updated by another
+      process within the same second that it was last read/written.  That can
+      cause the reading of latest version of the list to be skipped.  This has
+      been fixed.  Bug #862675.
+
     - Fixed bin/export.py to accept case insensitive password schemes.
       Bug #833134.
 

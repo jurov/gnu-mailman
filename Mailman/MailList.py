@@ -599,8 +599,16 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             # file doesn't exist, we'll get an EnvironmentError with errno set
             # to ENOENT (EnvironmentError is the base class of IOError and
             # OSError).
+            # We test strictly less than here because the resolution is whole
+            # seconds and we have seen cases of the file being updated by
+            # another process in the same second.
+            # Even this is not sufficient in shared file system environments
+            # if there is time skew between servers.  In those cases, the test
+            # could be
+            # if mtime + MAX_SKEW < self.__timestamp:
+            # or the "if ...: return" just deleted.
             mtime = os.path.getmtime(dbfile)
-            if mtime <= self.__timestamp:
+            if mtime < self.__timestamp:
                 # File is not newer
                 return None, None
             fp = open(dbfile)
@@ -618,8 +626,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 return None, e
         finally:
             fp.close()
-        # Update timestamp
-        self.__timestamp = mtime
+        # Update the timestamp.  We use current time here rather than mtime
+        # so the test above might succeed the next time.
+        self.__timestamp = int(time.time())
         return dict, None
 
     def Load(self, check_version=True):
