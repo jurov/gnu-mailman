@@ -14,6 +14,11 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
+    - Eliminated the list cache from the qrunners.  Indirect self-references
+      caused lists to never be dropped from the cache which in turn caused
+      the qrunners to grow very large in installations with many lists or
+      multiple large lists.  Bug #862683.
+
     - The user options 'list my other subscriptions' page now indicates for
       each list if the subscription is 'nomail' or 'digest'.  Bug #793669.
 

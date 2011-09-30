@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,7 +20,6 @@
 
 import time
 import traceback
-import weakref
 from cStringIO import StringIO
 
 from Mailman import mm_cfg
@@ -198,22 +197,18 @@ class Runner:
         if keepqueued:
             self._switchboard.enqueue(msg, msgdata)
 
-    # Mapping of listnames to MailList instances as a weak value dictionary.
-    _listcache = weakref.WeakValueDictionary()
-
     def _open_list(self, listname):
-        # Cache the open list so that any use of the list within this process
-        # uses the same object.  We use a WeakValueDictionary so that when the
-        # list is no longer necessary, its memory is freed.
-        mlist = self._listcache.get(listname)
-        if not mlist:
-            try:
-                mlist = MailList.MailList(listname, lock=False)
-            except Errors.MMListError, e:
-                syslog('error', 'error opening list: %s\n%s', listname, e)
-                return None
-            else:
-                self._listcache[listname] = mlist
+        # We no longer cache the list instances.  Because of changes to
+        # MailList.py needed to avoid not reloading an updated list, caching
+        # is not as effective as it once was.  Also, with OldStyleMemberships
+        # as the MemberAdaptor, there was a self-reference to the list which
+        # kept all lists in the cache.  Changing this reference to a
+        # weakref.proxy created other issues.
+        try:
+            mlist = MailList.MailList(listname, lock=False)
+        except Errors.MMListError, e:
+            syslog('error', 'error opening list: %s\n%s', listname, e)
+            return None
         return mlist
 
     def _log(self, exc):
