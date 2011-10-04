@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -25,6 +25,7 @@ from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Errors
 from Mailman.i18n import _
+from Mailman.htmlformat import Document
 from Mailman.Gui.GUIBase import GUIBase
 
 OPTIONS = ('hide', 'ack', 'notmetoo', 'nodupes')
@@ -455,11 +456,22 @@ class General(GUIBase):
             changed!  It must differ from the list's name by case
             only."""))
         elif property == 'new_member_options':
-            newopts = 0
-            for opt in OPTIONS:
+            # Get current value because there are valid bits not in OPTIONS.
+            # If we're the admin CGI, we then process the bits in OPTIONS,
+            # turning them on or off as appropriate.  Otherwise we process all
+            # the bits in mm_cfg.OPTINFO so that config_list can set and reset
+            # them.
+            newopts = mlist.new_member_options
+            if isinstance(doc, Document):
+                opts = OPTIONS
+            else:
+                opts = mm_cfg.OPTINFO
+            for opt in opts:
                 bitfield = mm_cfg.OPTINFO[opt]
                 if opt in val:
                     newopts |= bitfield
+                else:
+                    newopts &= ~bitfield
             mlist.new_member_options = newopts
         elif property == 'subject_prefix':
             # Convert any html entities to Unicode

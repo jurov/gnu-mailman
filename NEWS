@@ -71,6 +71,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - A bug that would cause reset of any new_member_options bits other than
+      the four displayed as checkboxes on the list admin General Options page
+      whenever the page was updated or bin/config_list attempted to update
+      new_member_options has been fixed.  Bug #865825.
+
     - A problem with the logic avoiding unnecessarily reloading a current list
       object from the config.pck arises if the list is updated by another
       process within the same second that it was last read/written.  That can
