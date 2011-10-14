@@ -71,6 +71,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed cron/checkdbs to report unsubscriptions waiting approval.
+      Bug #873821.
+
     - The fix for BUG #266220 (sf1181161) has been enhanced so that if there
       is a pathological HTML part such that the Approved: password text isn't
       found, but it is found after stripping out HTML tags, the post is

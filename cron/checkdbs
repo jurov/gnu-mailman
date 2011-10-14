@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -14,7 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """Check for pending admin requests and mail the list owners if necessary.
 
@@ -148,6 +149,13 @@ def pending_requests(mlist):
                 fullname = fullname.encode(lcset, 'replace')
             fullname = ' (%s)' % fullname
         pending.append('    %s%s %s' % (addr, fullname, time.ctime(when)))
+    first = 1
+    for id in mlist.GetUnsubscriptionIds():
+        if first:
+            pending.append(_('Pending unsubscriptions:'))
+            first = 0
+        addr = mlist.GetRecord(id)
+        pending.append('    %s' % addr)
     first = 1
     for id in mlist.GetHeldMessageIds():
         if first:
