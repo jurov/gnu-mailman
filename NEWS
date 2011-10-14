@@ -71,6 +71,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - The fix for BUG #266220 (sf1181161) has been enhanced so that if there
+      is a pathological HTML part such that the Approved: password text isn't
+      found, but it is found after stripping out HTML tags, the post is
+      rejected with an informative message.
+
     - A bug that would cause reset of any new_member_options bits other than
       the four displayed as checkboxes on the list admin General Options page
       whenever the page was updated or bin/config_list attempted to update

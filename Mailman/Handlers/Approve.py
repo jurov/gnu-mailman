@@ -39,6 +39,16 @@ except NameError:
 
 NL = '\n'
 
+def _(s):
+    # message is translated when used.
+    return s
+REJECT = _("""Message rejected.
+It appears that this message contains an HTML part with the
+Approved: password line, but due to the way it is coded in the
+HTML it can't be safely removed.
+""")
+del _
+
 
 
 def process(mlist, msg, msgdata):
@@ -100,7 +110,8 @@ def process(mlist, msg, msgdata):
             # text part.  We make a pattern from the Approved line and delete
             # it from all text/* parts in which we find it.  It would be
             # better to just iterate forward, but email compatability for pre
-            # Python 2.2 returns a list, not a true iterator.
+            # Python 2.2 returns a list, not a true iterator.  Also, there
+            # are pathological MUAs that put the HTML part first.
             #
             # This will process all the multipart/alternative parts in the
             # message as well as all other text parts.  We shouldn't find the
@@ -111,12 +122,18 @@ def process(mlist, msg, msgdata):
             # line of HTML or other fancy text may include additional message
             # text.  This pattern works with HTML.  It may not work with rtf
             # or whatever else is possible.
+            #
+            # If we don't find the pattern in the decoded part, but we do
+            # find it after stripping HTML tags, we don't know how to remove
+            # it, so we just reject the post.
             pattern = name + ':(\xA0|\s|&nbsp;)*' + re.escape(passwd)
             for part in typed_subpart_iterator(msg, 'text'):
                 if part is not None and part.get_payload() is not None:
                     lines = part.get_payload(decode=True)
                     if re.search(pattern, lines):
                         reset_payload(part, re.sub(pattern, '', lines))
+                    elif re.search(pattern, re.sub('(?s)<.*?>', '', lines)):
+                        raise Errors.RejectMessage, REJECT
     if passwd is not missing and mlist.Authenticate((mm_cfg.AuthListPoster,
                                                      mm_cfg.AuthListModerator,
                                                      mm_cfg.AuthListAdmin),
