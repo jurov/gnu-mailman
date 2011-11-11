@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -361,15 +361,16 @@ def send_i18n_digests(mlist, mboxfp):
         footer['Content-Description'] = _('Digest Footer')
         mimemsg.attach(footer)
         # RFC 1153
-        # BAW: This is not strictly conformant RFC 1153.  The trailer is only
-        # supposed to contain two lines, i.e. the "End of ... Digest" line and
-        # the row of asterisks.  If this screws up MUAs, the solution is to
-        # add the footer as the last message in the RFC 1153 digest.  I just
-        # hate the way that VM does that and I think it's confusing to users,
-        # so don't do it unless there's a clamor.
+        # MAS: There is no real place for the digest_footer in an RFC 1153
+        # compliant digest, so add it as an additional message with
+        # Subject: Digest Footer
         print >> plainmsg, separator30
         print >> plainmsg
+        print >> plainmsg, 'Subject: ' + _('Digest Footer')
+        print >> plainmsg
         print >> plainmsg, footertxt
+        print >> plainmsg
+        print >> plainmsg, separator30
         print >> plainmsg
     # Do the last bit of stuff for each digest type
     signoff = _('End of ') + digestid
