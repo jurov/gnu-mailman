@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -46,6 +46,7 @@ def main():
         ('subscribe.html',   _('Subscribe results page')),
         ('options.html',     _('User specific options page')),
         ('subscribeack.txt', _('Welcome email text file')),
+        ('masthead.txt',     _('Digest masthead')),
         )
 
     _ = i18n._
