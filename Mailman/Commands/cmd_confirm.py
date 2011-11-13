@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2005 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -84,14 +84,25 @@ Bad approval password given.  Held message is still being held."""))
             # We don't also need to send a confirmation succeeded message
             res.respond = 0
         else:
-            res.results.append(_('Confirmation succeeded'))
+            if results[0] == Pending.HELD_MESSAGE:
+                if results[1] == mm_cfg.APPROVE:
+                    res.results.append(_('Confirmation succeeded') + 
+                               ' (' + _('Approve') + ')')
+                else:
+                    res.results.append(_('Confirmation succeeded') + 
+                               ' (' + _('Discard') + ')')
+            else:
+                res.results.append(_('Confirmation succeeded'))
             # Consume any other confirmation strings with the same cookie so
             # the user doesn't get a misleading "unprocessed" message.
+            # Also consume any Approve(d): line as it was processed.
             match = 'confirm ' + cookie
             unprocessed = []
             for line in res.commands:
                 try:
-                    if line.lstrip() == match:
+                    if (line.lstrip() == match or
+                            line.lstrip().lower().startswith('approved:') or
+                            line.lstrip().lower().startswith('approve:')):
                         continue
                 except UnicodeError:
                     pass

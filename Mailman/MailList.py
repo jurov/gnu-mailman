@@ -1302,7 +1302,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                 # Most likely because the message has already been disposed of
                 # via the admindb page.
                 syslog('error', 'Could not process HELD_MESSAGE: %s', id)
-            return (op,)
+            return op, action
         elif op == Pending.RE_ENABLE:
             member = data[1]
             self.setDeliveryStatus(member, MemberAdaptor.ENABLED)
