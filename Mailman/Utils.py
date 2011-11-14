@@ -212,10 +212,9 @@ def LCDomain(addr):
 
 
 # TBD: what other characters should be disallowed?
-_badchars = re.compile(r'[][()<>|;^,\000-\037\177-\377]')
-# characters in addition to _badchars which are not allowed in
-# unquoted local parts.
-_specials = re.compile(r'[:\\"]')
+_badchars = re.compile(r'[][()<>|:;^,\\"\000-\037\177-\377]')
+# Strictly speaking, some of the above are allowed in quoted local parts, but
+# this can open the door to certain web exploits so we don't allow them.
 # Only characters allowed in domain parts.
 _valid_domain = re.compile('[-a-z0-9]', re.IGNORECASE)
 
@@ -232,10 +231,6 @@ def ValidateEmail(s):
         raise Errors.MMBadEmailError, s
     if len(domain_parts) < 2:
         raise Errors.MMBadEmailError, s
-    if not (user.startswith('"') and user.endswith('"')):
-        # local part is not quoted so it can't contain specials
-        if _specials.search(user):
-            raise Errors.MMBadEmailError, s
     # domain parts may only contain ascii letters, digits and hyphen
     for p in domain_parts:
         if len(_valid_domain.sub('', p)) > 0:
