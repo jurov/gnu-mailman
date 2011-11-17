@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -23,6 +23,9 @@ import email.Errors
 import email.Iterators
 import email.Parser
 
+from email.Header import decode_header
+
+from Mailman import Utils
 from Mailman.Logging.Syslog import syslog
 
 CRNL = '\r\n'
@@ -34,10 +37,16 @@ NLTAB = '\n\t'
 def process(mlist, msg, msgdata):
     if not mlist.topics_enabled:
         return
+    # Helper function.  Return RFC 2047 decoded header as a string in the
+    # charset of the list's preferred language.
+    def _decode(h):
+        if not h:
+            return h
+        return Utils.oneline(h, Utils.GetCharSet(mlist.preferred_language))
     # Extract the Subject:, Keywords:, and possibly body text
     matchlines = []
-    matchlines.append(msg.get('subject', None))
-    matchlines.append(msg.get('keywords', None))
+    matchlines.append(_decode(msg.get('subject', None)))
+    matchlines.append(_decode(msg.get('keywords', None)))
     if mlist.topics_bodylines_limit == 0:
         # Don't scan any body lines
         pass
@@ -84,7 +93,7 @@ def scanbody(msg, numlines=None):
     # the first numlines of body text.
     lines = []
     lineno = 0
-    reader = list(email.Iterators.body_line_iterator(msg))
+    reader = list(email.Iterators.body_line_iterator(msg, decode=True))
     while numlines is None or lineno < numlines:
         try:
             line = reader.pop(0)

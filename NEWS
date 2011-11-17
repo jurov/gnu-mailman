@@ -71,6 +71,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a problem where topics regexps would not match RFC 2047 encoded
+      Keywords: and/or Subject: headers.  Bug #891676.
+
     - Fixed misleading response to an email approval of a held message.
       Bug #889968.
 
