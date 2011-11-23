@@ -71,6 +71,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed subject prefixing to allow for possible whitespace between an
+      'Re' and the following colon when determining how to add the prefix.
+      Bug #893290.
+
     - Fixed a problem where topics regexps would not match RFC 2047 encoded
       Keywords: and/or Subject: headers.  Bug #891676.
 

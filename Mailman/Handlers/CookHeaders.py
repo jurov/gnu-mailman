@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -274,7 +274,7 @@ def prefix_subject(mlist, msg, msgdata):
     else:
         old_style = mm_cfg.OLD_STYLE_PREFIXING
     subject = re.sub(prefix_pattern, '', subject)
-    rematch = re.match('((RE|AW|SV|VS)(\[\d+\])?:\s*)+', subject, re.I)
+    rematch = re.match('((RE|AW|SV|VS)\s*(\[\d+\])?\s*:\s*)+', subject, re.I)
     if rematch:
         subject = subject[rematch.end():]
         recolon = 'Re:'
