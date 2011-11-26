@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: Fri Oct 14 10:54:44 2011\n"
+"POT-Creation-Date: Sat Nov 26 10:46:18 2011\n"
 "PO-Revision-Date: 2002-03-28 19:21+09:00\n"
 "Last-Translator: Hyejin Soang, Wongyo Jung<redcloak@igrus.inha.ac.kr, "
 "andsoon@igrus.inha.ac.kr>\n"
@@ -255,7 +255,7 @@ msgid "Administrator"
 msgstr "관리자"
 
 #: Mailman/Cgi/admin.py:76 Mailman/Cgi/admindb.py:93 Mailman/Cgi/confirm.py:62
-#: Mailman/Cgi/edithtml.py:70 Mailman/Cgi/listinfo.py:54
+#: Mailman/Cgi/edithtml.py:71 Mailman/Cgi/listinfo.py:54
 #: Mailman/Cgi/options.py:78 Mailman/Cgi/private.py:108
 #: Mailman/Cgi/rmlist.py:64 Mailman/Cgi/roster.py:59
 #: Mailman/Cgi/subscribe.py:62
@@ -263,7 +263,7 @@ msgid "No such list <em>%(safelistname)s</em>"
 msgstr "<em>%(safelistname)s</em> 라는 메일링 리스트가 존재하지 않습니다."
 
 #: Mailman/Cgi/admin.py:91 Mailman/Cgi/admindb.py:109
-#: Mailman/Cgi/edithtml.py:90 Mailman/Cgi/private.py:135
+#: Mailman/Cgi/edithtml.py:91 Mailman/Cgi/private.py:135
 msgid "Authorization failed."
 msgstr "인성 실패"
 
@@ -573,8 +573,9 @@ msgstr "잡아두기"
 
 #: Mailman/Cgi/admin.py:773 Mailman/Cgi/admindb.py:330
 #: Mailman/Cgi/admindb.py:389 Mailman/Cgi/admindb.py:431
-#: Mailman/Cgi/admindb.py:669 Mailman/Gui/ContentFilter.py:37
-#: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:297
+#: Mailman/Cgi/admindb.py:669 Mailman/Commands/cmd_confirm.py:93
+#: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:216
+#: Mailman/Gui/Privacy.py:297
 msgid "Discard"
 msgstr "버리기"
 
@@ -1149,7 +1150,7 @@ msgid "Reason for refusal"
 msgstr "거절 이유"
 
 #: Mailman/Cgi/admindb.py:328 Mailman/Cgi/admindb.py:387
-#: Mailman/Cgi/admindb.py:669
+#: Mailman/Cgi/admindb.py:669 Mailman/Commands/cmd_confirm.py:90
 msgid "Approve"
 msgstr "승인하기"
 
@@ -2120,51 +2121,56 @@ msgstr "사용자 정의 페이지"
 msgid "Welcome email text file"
 msgstr ""
 
-#: Mailman/Cgi/edithtml.py:60
+#: Mailman/Cgi/edithtml.py:49
+#, fuzzy
+msgid "Digest masthead"
+msgstr "묶음배달 머릿말"
+
+#: Mailman/Cgi/edithtml.py:61
 msgid "List name is required."
 msgstr "리스트 이름이 필요합니다."
 
-#: Mailman/Cgi/edithtml.py:102
+#: Mailman/Cgi/edithtml.py:103
 msgid "%(realname)s -- Edit html for %(template_info)s"
 msgstr "%(realname)s -- %(template_info)s HTML 수정하기"
 
-#: Mailman/Cgi/edithtml.py:108
+#: Mailman/Cgi/edithtml.py:109
 msgid "Edit HTML : Error"
 msgstr "HTML 수정 : 에러"
 
-#: Mailman/Cgi/edithtml.py:109
+#: Mailman/Cgi/edithtml.py:110
 msgid "%(safetemplatename)s: Invalid template"
 msgstr "%(safetemplatename)s: 잘못된 템플릿"
 
-#: Mailman/Cgi/edithtml.py:114 Mailman/Cgi/edithtml.py:115
+#: Mailman/Cgi/edithtml.py:115 Mailman/Cgi/edithtml.py:116
 msgid "%(realname)s -- HTML Page Editing"
 msgstr "%(realname)s -- HTML 페이지 수정하기"
 
-#: Mailman/Cgi/edithtml.py:116
+#: Mailman/Cgi/edithtml.py:117
 msgid "Select page to edit:"
 msgstr "수정할 페이지를 선택하세요:"
 
-#: Mailman/Cgi/edithtml.py:142
+#: Mailman/Cgi/edithtml.py:143
 msgid "View or edit the list configuration information."
 msgstr "메일링 리스트 설정 정보 수정, 혹은 보기."
 
-#: Mailman/Cgi/edithtml.py:151
+#: Mailman/Cgi/edithtml.py:152
 msgid "When you are done making changes..."
 msgstr "수정을 다 하셨다면 \"변경하기\" 를 눌러주세요."
 
-#: Mailman/Cgi/edithtml.py:152
+#: Mailman/Cgi/edithtml.py:153
 msgid "Submit Changes"
 msgstr "변경하기"
 
-#: Mailman/Cgi/edithtml.py:159
+#: Mailman/Cgi/edithtml.py:160
 msgid "Can't have empty html page."
 msgstr "빈 html 페이지를 가질 수 없습니다."
 
-#: Mailman/Cgi/edithtml.py:160
+#: Mailman/Cgi/edithtml.py:161
 msgid "HTML Unchanged."
 msgstr "HTML 이 변경되지 않았습니다."
 
-#: Mailman/Cgi/edithtml.py:166
+#: Mailman/Cgi/edithtml.py:167
 msgid ""
 "The page you saved contains suspicious HTML that could\n"
 "potentially expose your users to cross-site scripting attacks.  This change\n"
@@ -2173,20 +2179,20 @@ msgid ""
 "             "
 msgstr ""
 
-#: Mailman/Cgi/edithtml.py:171
+#: Mailman/Cgi/edithtml.py:172
 msgid "See "
 msgstr ""
 
-#: Mailman/Cgi/edithtml.py:174
+#: Mailman/Cgi/edithtml.py:175
 msgid "FAQ 4.48."
 msgstr ""
 
-#: Mailman/Cgi/edithtml.py:175
+#: Mailman/Cgi/edithtml.py:176
 #, fuzzy
 msgid "Page Unchanged."
 msgstr "HTML 이 변경되지 않았습니다."
 
-#: Mailman/Cgi/edithtml.py:193
+#: Mailman/Cgi/edithtml.py:194
 msgid "HTML successfully updated."
 msgstr "HTML 이 성공적으로 업데이트 되었습니다."
 
@@ -2956,7 +2962,8 @@ msgstr ""
 msgid "Bad approval password given.  Held message is still being held."
 msgstr ""
 
-#: Mailman/Commands/cmd_confirm.py:87
+#: Mailman/Commands/cmd_confirm.py:89 Mailman/Commands/cmd_confirm.py:92
+#: Mailman/Commands/cmd_confirm.py:95
 #, fuzzy
 msgid "Confirmation succeeded"
 msgstr "확인 문자열:"
@@ -7135,11 +7142,11 @@ msgstr ""
 msgid "digest footer"
 msgstr "묶음배달 꼬리말"
 
-#: Mailman/Handlers/ToDigest.py:361
+#: Mailman/Handlers/ToDigest.py:361 Mailman/Handlers/ToDigest.py:369
 msgid "Digest Footer"
 msgstr "묶음배달 꼬리말"
 
-#: Mailman/Handlers/ToDigest.py:375
+#: Mailman/Handlers/ToDigest.py:376
 msgid "End of "
 msgstr "끝부분 --"
 

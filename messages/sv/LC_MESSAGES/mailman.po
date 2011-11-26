@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b1\n"
-"POT-Creation-Date: Fri Oct 14 10:54:44 2011\n"
+"POT-Creation-Date: Sat Nov 26 10:46:18 2011\n"
 "PO-Revision-Date: 2002-12-24 14:35+0100\n"
 "Last-Translator: Eva Österlind <eva.osterlind@arvika.se>\n"
 "Language-Team: Swedish <information@arvika.se>\n"
@@ -357,7 +357,7 @@ msgstr "Administratör"
 # Mailman/Cgi/rmlist.py:62 Mailman/Cgi/roster.py:57
 # Mailman/Cgi/subscribe.py:61
 #: Mailman/Cgi/admin.py:76 Mailman/Cgi/admindb.py:93 Mailman/Cgi/confirm.py:62
-#: Mailman/Cgi/edithtml.py:70 Mailman/Cgi/listinfo.py:54
+#: Mailman/Cgi/edithtml.py:71 Mailman/Cgi/listinfo.py:54
 #: Mailman/Cgi/options.py:78 Mailman/Cgi/private.py:108
 #: Mailman/Cgi/rmlist.py:64 Mailman/Cgi/roster.py:59
 #: Mailman/Cgi/subscribe.py:62
@@ -369,7 +369,7 @@ msgstr "Listan finns inte: <em>%(safelistname)s</em>"
 # Mailman/Cgi/admin.py:85 Mailman/Cgi/admindb.py:105
 # Mailman/Cgi/edithtml.py:85 Mailman/Cgi/private.py:123
 #: Mailman/Cgi/admin.py:91 Mailman/Cgi/admindb.py:109
-#: Mailman/Cgi/edithtml.py:90 Mailman/Cgi/private.py:135
+#: Mailman/Cgi/edithtml.py:91 Mailman/Cgi/private.py:135
 msgid "Authorization failed."
 msgstr "Felaktigt lösenord"
 
@@ -812,8 +812,9 @@ msgstr "Hålla tillbaka"
 # Mailman/Gui/Privacy.py:281
 #: Mailman/Cgi/admin.py:773 Mailman/Cgi/admindb.py:330
 #: Mailman/Cgi/admindb.py:389 Mailman/Cgi/admindb.py:431
-#: Mailman/Cgi/admindb.py:669 Mailman/Gui/ContentFilter.py:37
-#: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:297
+#: Mailman/Cgi/admindb.py:669 Mailman/Commands/cmd_confirm.py:93
+#: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:216
+#: Mailman/Gui/Privacy.py:297
 msgid "Discard"
 msgstr "Kasta"
 
@@ -1694,7 +1695,7 @@ msgstr "Anledning"
 # Mailman/Cgi/admindb.py:287 Mailman/Cgi/admindb.py:335
 # Mailman/Cgi/admindb.py:589
 #: Mailman/Cgi/admindb.py:328 Mailman/Cgi/admindb.py:387
-#: Mailman/Cgi/admindb.py:669
+#: Mailman/Cgi/admindb.py:669 Mailman/Commands/cmd_confirm.py:90
 msgid "Approve"
 msgstr "Godkänn"
 
@@ -3017,73 +3018,80 @@ msgstr "Brukarinställningar"
 msgid "Welcome email text file"
 msgstr ""
 
+# Mailman/Handlers/ToDigest.py:178
+# Mailman/Handlers/ToDigest.py:181
+#: Mailman/Cgi/edithtml.py:49
+#, fuzzy
+msgid "Digest masthead"
+msgstr "topptext"
+
 # Mailman/Cgi/edithtml.py:57
 # Mailman/Cgi/edithtml.py:57
-#: Mailman/Cgi/edithtml.py:60
+#: Mailman/Cgi/edithtml.py:61
 msgid "List name is required."
 msgstr "Listans namn krävs"
 
 # Mailman/Cgi/edithtml.py:97
 # Mailman/Cgi/edithtml.py:97
-#: Mailman/Cgi/edithtml.py:102
+#: Mailman/Cgi/edithtml.py:103
 msgid "%(realname)s -- Edit html for %(template_info)s"
 msgstr "%(realname)s -- Redigera html för %(template_info)s"
 
 # Mailman/Cgi/edithtml.py:103
 # Mailman/Cgi/edithtml.py:103
-#: Mailman/Cgi/edithtml.py:108
+#: Mailman/Cgi/edithtml.py:109
 msgid "Edit HTML : Error"
 msgstr "Redigera HTML : Fel"
 
 # Mailman/Cgi/edithtml.py:104
 # Mailman/Cgi/edithtml.py:104
-#: Mailman/Cgi/edithtml.py:109
+#: Mailman/Cgi/edithtml.py:110
 msgid "%(safetemplatename)s: Invalid template"
 msgstr "%(safetemplatename)s: Ogiltig mall"
 
 # Mailman/Cgi/edithtml.py:109 Mailman/Cgi/edithtml.py:110
 # Mailman/Cgi/edithtml.py:109 Mailman/Cgi/edithtml.py:110
-#: Mailman/Cgi/edithtml.py:114 Mailman/Cgi/edithtml.py:115
+#: Mailman/Cgi/edithtml.py:115 Mailman/Cgi/edithtml.py:116
 msgid "%(realname)s -- HTML Page Editing"
 msgstr "%(realname)s -- Redigera HTML-kod för webbsidor"
 
 # Mailman/Cgi/edithtml.py:111
 # Mailman/Cgi/edithtml.py:111
-#: Mailman/Cgi/edithtml.py:116
+#: Mailman/Cgi/edithtml.py:117
 msgid "Select page to edit:"
 msgstr "Välj webbsidan som du vill redigera:"
 
 # Mailman/Cgi/edithtml.py:137
 # Mailman/Cgi/edithtml.py:137
-#: Mailman/Cgi/edithtml.py:142
+#: Mailman/Cgi/edithtml.py:143
 msgid "View or edit the list configuration information."
 msgstr "Titta eller redigera avseende listans konfigurationsinformation."
 
 # Mailman/Cgi/edithtml.py:146
 # Mailman/Cgi/edithtml.py:145
-#: Mailman/Cgi/edithtml.py:151
+#: Mailman/Cgi/edithtml.py:152
 msgid "When you are done making changes..."
 msgstr "När du är färdig med att göra ändringar..."
 
 # Mailman/Cgi/edithtml.py:147
 # Mailman/Cgi/edithtml.py:146
-#: Mailman/Cgi/edithtml.py:152
+#: Mailman/Cgi/edithtml.py:153
 msgid "Submit Changes"
 msgstr "Spara ändringar"
 
 # Mailman/Cgi/edithtml.py:154
 # Mailman/Cgi/edithtml.py:153
-#: Mailman/Cgi/edithtml.py:159
+#: Mailman/Cgi/edithtml.py:160
 msgid "Can't have empty html page."
 msgstr "HTML-sidan kan inte vara tom."
 
 # Mailman/Cgi/edithtml.py:155
 # Mailman/Cgi/edithtml.py:154
-#: Mailman/Cgi/edithtml.py:160
+#: Mailman/Cgi/edithtml.py:161
 msgid "HTML Unchanged."
 msgstr "Inga ändringar i HTML-koden."
 
-#: Mailman/Cgi/edithtml.py:166
+#: Mailman/Cgi/edithtml.py:167
 msgid ""
 "The page you saved contains suspicious HTML that could\n"
 "potentially expose your users to cross-site scripting attacks.  This change\n"
@@ -3092,24 +3100,24 @@ msgid ""
 "             "
 msgstr ""
 
-#: Mailman/Cgi/edithtml.py:171
+#: Mailman/Cgi/edithtml.py:172
 msgid "See "
 msgstr ""
 
-#: Mailman/Cgi/edithtml.py:174
+#: Mailman/Cgi/edithtml.py:175
 msgid "FAQ 4.48."
 msgstr ""
 
 # Mailman/Cgi/edithtml.py:155
 # Mailman/Cgi/edithtml.py:154
-#: Mailman/Cgi/edithtml.py:175
+#: Mailman/Cgi/edithtml.py:176
 #, fuzzy
 msgid "Page Unchanged."
 msgstr "Inga ändringar i HTML-koden."
 
 # Mailman/Cgi/edithtml.py:170
 # Mailman/Cgi/edithtml.py:169
-#: Mailman/Cgi/edithtml.py:193
+#: Mailman/Cgi/edithtml.py:194
 msgid "HTML successfully updated."
 msgstr "HTML-koden är uppdaterad."
 
@@ -4172,7 +4180,8 @@ msgstr ""
 
 # Mailman/Commands/cmd_confirm.py:69
 # Mailman/Commands/cmd_confirm.py:66
-#: Mailman/Commands/cmd_confirm.py:87
+#: Mailman/Commands/cmd_confirm.py:89 Mailman/Commands/cmd_confirm.py:92
+#: Mailman/Commands/cmd_confirm.py:95
 msgid "Confirmation succeeded"
 msgstr "Bekräftelse mottagen"
 
@@ -9980,13 +9989,13 @@ msgstr "bottentext"
 
 # Mailman/Handlers/ToDigest.py:290
 # Mailman/Handlers/ToDigest.py:295
-#: Mailman/Handlers/ToDigest.py:361
+#: Mailman/Handlers/ToDigest.py:361 Mailman/Handlers/ToDigest.py:369
 msgid "Digest Footer"
 msgstr "Bottentext"
 
 # Mailman/Handlers/ToDigest.py:304
 # Mailman/Handlers/ToDigest.py:309
-#: Mailman/Handlers/ToDigest.py:375
+#: Mailman/Handlers/ToDigest.py:376
 msgid "End of "
 msgstr "Slut på "
 
