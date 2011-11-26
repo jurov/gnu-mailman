@@ -255,11 +255,11 @@ class SecurityManager:
         # The path to all Mailman stuff, minus the scheme and host,
         # i.e. usually the string `/mailman'
         parsed = urlparse(self.web_page_url)
-        path = parsed.path
+        path = parsed[2]
         c[key]['path'] = path
         # Make sure to set the 'secure' flag on the cookie if mailman is
         # accessed by an https url.
-        if parsed.scheme == 'https':
+        if parsed[0] == 'https':
             c[key]['secure'] = True
         # We use session cookies, so don't set `expires' or `max-age' keys.
         # Set the RFC 2109 required header.
