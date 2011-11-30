@@ -73,6 +73,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - A held message with a null sender caused a crash in the admindb
+      interface.  This is fixed by changing the sender to <missing>.
+      Bug #897103.
+
     - Changed subject prefixing to allow for possible whitespace between an
       'Re' and the following colon when determining how to add the prefix.
       Bug #893290.

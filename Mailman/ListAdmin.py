@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -221,6 +221,8 @@ class ListAdmin:
         # an additional dictionary of message metadata
         #
         msgsubject = msg.get('subject', _('(no subject)'))
+        if not sender:
+            sender = _('<missing>')
         data = time.time(), sender, msgsubject, reason, filename, msgdata
         self.__db[id] = (HELDMSG, data)
         return id
