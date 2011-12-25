@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -135,6 +135,7 @@ class BounceTest(unittest.TestCase):
         ('Qmail', 'qmail_04.txt', ['merotiia@tennisnsw.com.au']),
         ('Qmail', 'qmail_05.txt', ['ivokggrrdvc@caixaforte.freeservers.com']),
         ('Qmail', 'qmail_06.txt', ['ntl@xxx.com']),
+        ('Qmail', 'qmail_07.txt', ['user@example.net']),
         # LLNL's custom Sendmail
         ('LLNL', 'llnl_01.txt', ['trotts1@llnl.gov']),
         # Netscape's server...
