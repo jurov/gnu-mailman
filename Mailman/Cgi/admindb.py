@@ -632,6 +632,8 @@ def show_post_requests(mlist, id, info, total, count, form):
         body = EMPTYSTRING.join(lines)
     # Get message charset and try encode in list charset
     # We get it from the first text part.
+    # We need to replace invalid characters here or we can throw an uncaught
+    # exception in doc.Format().
     for part in msg.walk():
         if part.get_content_maintype() == 'text':
             # Watchout for charset= with no value.
@@ -642,7 +644,7 @@ def show_post_requests(mlist, id, info, total, count, form):
     lcset = Utils.GetCharSet(mlist.preferred_language)
     if mcset <> lcset:
         try:
-            body = unicode(body, mcset).encode(lcset)
+            body = unicode(body, mcset).encode(lcset, 'replace')
         except (LookupError, UnicodeError, ValueError):
             pass
     hdrtxt = NL.join(['%s: %s' % (k, v) for k, v in msg.items()])

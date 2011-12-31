@@ -73,6 +73,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fix for bug #629738 could cause a crash in the admindb details display
+      if the decoded message body contained characters not in the character
+      set of the list's preferred language.  Fixed.  Bug #910440.
+
     - Added recognition for another Qmail bounce format.
 
     - Fixed an erroneous seek in the Mailman.Mailbox.Mailbox.AppendMessage
