@@ -81,6 +81,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Backported 2.2 branch fix for a problem in SpamDetect.py that could
+      cause header_filter_rules to fail to match RFC 2047 encoded headers.
+
     - Fix for bug #629738 could cause a crash in the admindb details display
       if the decoded message body contained characters not in the character
       set of the list's preferred language.  Fixed.  Bug #910440.

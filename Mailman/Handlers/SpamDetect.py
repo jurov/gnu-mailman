@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -26,13 +26,13 @@ TBD: This needs to be made more configurable and robust.
 """
 
 import re
-from cStringIO import StringIO
 
-from email.Generator import Generator
+from email.Header import decode_header
 
 from Mailman import mm_cfg
 from Mailman import Errors
 from Mailman import i18n
+from Mailman.Utils import GetCharSet
 from Mailman.Handlers.Hold import hold_for_approval
 
 try:
@@ -60,34 +60,21 @@ _ = i18n._
 
 
 
-class Tee:
-    def __init__(self, outfp_a, outfp_b):
-        self._outfp_a = outfp_a
-        self._outfp_b = outfp_b
+def getDecodedHeaders(msg, cset='utf-8'):
+    """Returns a string containing all the headers of msg, unfolded and
+    RFC 2047 decoded and encoded in cset.
+    """
 
-    def write(self, s):
-        self._outfp_a.write(s)
-        self._outfp_b.write(s)
-
-
-# Class to capture the headers separate from the message body
-class HeaderGenerator(Generator):
-    def __init__(self, outfp, mangle_from_=True, maxheaderlen=78):
-        Generator.__init__(self, outfp, mangle_from_, maxheaderlen)
-        self._headertxt = ''
-
-    def _write_headers(self, msg):
-        sfp = StringIO()
-        oldfp = self._fp
-        self._fp = Tee(oldfp, sfp)
-        try:
-            Generator._write_headers(self, msg)
-        finally:
-            self._fp = oldfp
-        self._headertxt = sfp.getvalue()
-
-    def header_text(self):
-        return self._headertxt
+    headers = ''
+    for h, v in msg.items():
+        uvalue = u''
+        v = decode_header(re.sub('\n\s', ' ', v))
+        for frag, cs in v:
+            if not cs:
+                cs = 'us-ascii'
+            uvalue += unicode(frag, cs, 'replace')
+        headers += '%s: %s\n' % (h, uvalue.encode(cset, 'replace'))
+    return headers
 
 
 
@@ -106,13 +93,10 @@ def process(mlist, msg, msgdata):
     # TK: Collect headers in sub-parts because attachment filename
     # extension may be a clue to possible virus/spam.
     headers = ''
+    # Get the character set of the lists preferred language for headers
+    lcset = GetCharSet(mlist.preferred_language)
     for p in msg.walk():
-        g = HeaderGenerator(StringIO())
-        g.flatten(p)
-        headers += g.header_text()
-    # Now reshape headers (remove extra CR and connect multiline).
-    headers = re.sub('\n+', '\n', headers)
-    headers = re.sub('\n\s', ' ', headers)
+        headers += getDecodedHeaders(p, lcset)
     for patterns, action, empty in mlist.header_filter_rules:
         if action == mm_cfg.DEFER:
             continue
