@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -107,6 +107,9 @@ ALLOW_SITE_ADMIN_COOKIES = No
 # If the following is set to a non-zero value, web authentication cookies will
 # expire that many seconds following their last use.
 AUTHENTICATION_COOKIE_LIFETIME = 0
+
+# Form lifetime is set against Cross Site Request Forgery.
+FORM_LIFETIME = hours(1)
 
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
