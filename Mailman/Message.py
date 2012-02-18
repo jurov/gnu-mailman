@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -268,7 +268,7 @@ class UserNotification(Message):
             self['To'] = recip
             self.recips = [recip]
 
-    def send(self, mlist, **_kws):
+    def send(self, mlist, noprecedence=False, **_kws):
         """Sends the message by enqueuing it to the `virgin' queue.
 
         This is used for all internally crafted messages.
@@ -284,7 +284,7 @@ class UserNotification(Message):
         # UserNotifications are typically for admin messages, and for messages
         # other than list explosions.  Send these out as Precedence: bulk, but
         # don't override an existing Precedence: header.
-        if not self.has_key('precedence'):
+        if not (self.has_key('precedence') or noprecedence):
             self['Precedence'] = 'bulk'
         self._enqueue(mlist, **_kws)
 

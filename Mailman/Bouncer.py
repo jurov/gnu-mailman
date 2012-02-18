@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -307,7 +307,8 @@ class Bouncer:
         # set the Subject this way.
         del msg['subject']
         msg['Subject'] = 'confirm ' + info.cookie
-        msg.send(self)
+        # Send without Precedence: bulk.  Bug #808821.
+        msg.send(self, noprecedence=True)
         info.noticesleft -= 1
         info.lastnotice = time.localtime()[:3]
         # In case the MemberAdaptor stores bounce info externally to

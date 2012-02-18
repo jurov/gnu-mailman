@@ -81,6 +81,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Subscription disabled warnings are now sent without a Precedence:
+      header.  Bug #808821.
+
     - Backported 2.2 branch fix for a problem in SpamDetect.py that could
       cause header_filter_rules to fail to match RFC 2047 encoded headers.
 
