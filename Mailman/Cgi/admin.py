@@ -87,7 +87,8 @@ def main():
     cgidata = cgi.FieldStorage(keep_blank_values=1)
 
     # CSRF check
-    safe_params = ['VARHELP', 'adminpw', 'admlogin']
+    safe_params = ['VARHELP', 'adminpw', 'admlogin',
+                   'letter', 'chunk', 'findmember']
     params = cgidata.keys()
     if set(params) - set(safe_params):
         csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
