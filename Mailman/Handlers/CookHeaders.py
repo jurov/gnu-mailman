@@ -215,8 +215,6 @@ def process(mlist, msg, msgdata):
         # Add this header if we're archiving
         if mlist.archive:
             archiveurl = mlist.GetBaseArchiveURL()
-            if archiveurl.endswith('/'):
-                archiveurl = archiveurl[:-1]
             headers['List-Archive'] = '<%s>' % archiveurl
     # First we delete any pre-existing headers because the RFC permits only
     # one copy of each, and we want to be sure it's ours.
