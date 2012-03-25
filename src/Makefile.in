@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,6 +43,8 @@ MAILMAN_USER=	@MAILMAN_USER@
 # Customizable but not set by configure
 OPT=		@OPT@
 CFLAGS=		@CFLAGS@ $(OPT) $(DEFS) $(LIBS)
+CPPFLAGS=	@CPPFLAGS@
+LDFLAGS=	@LDFLAGS@
 CGIDIR= 	$(exec_prefix)/cgi-bin
 CGIEXT=		@CGIEXT@
 MAILDIR=	$(exec_prefix)/mail
@@ -91,19 +93,19 @@ PROGRAMS= $(CGI_PROGS) $(MAIL_PROGS) $(ALIAS_PROGS)
 all: $(PROGRAMS)
 
 mailman: $(srcdir)/mail-wrapper.c $(COMMONOBJS)
-	$(CC) -I. $(MAIL_FLAGS) $(CFLAGS) $(COMMONOBJS) -o $@ $(srcdir)/mail-wrapper.c
+	$(CC) -I. $(MAIL_FLAGS) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(COMMONOBJS) -o $@ $(srcdir)/mail-wrapper.c
 
 #addaliases: $(srcdir)/alias-wrapper.c $(COMMONOBJS)
-#	$(CC) -I. $(ALIAS_FLAGS) $(CFLAGS) -o $@ $(srcdir)/alias-wrapper.c
+#	$(CC) -I. $(ALIAS_FLAGS) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $(srcdir)/alias-wrapper.c
 
 $(CGI_PROGS): $(srcdir)/cgi-wrapper.c $(COMMONOBJS)
-	$(CC) -DSCRIPT="\"$@\"" -I. $(CGI_FLAGS) $(CFLAGS) $(COMMONOBJS) -o $@ $(srcdir)/cgi-wrapper.c
+	$(CC) -DSCRIPT="\"$@\"" -I. $(CGI_FLAGS) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(COMMONOBJS) -o $@ $(srcdir)/cgi-wrapper.c
 
 common.o: $(srcdir)/common.c $(srcdir)/common.h Makefile
-	$(CC) -c -I. $(COMMON_FLAGS) $(CFLAGS) $(srcdir)/common.c
+	$(CC) -c -I. $(COMMON_FLAGS) $(CFLAGS) $(CPPFLAGS) $(srcdir)/common.c
 
 vsnprintf.o: $(srcdir)/vsnprintf.c Makefile
-	$(CC) -c -I. $(COMMON_FLAGS) $(CFLAGS) $(srcdir)/vsnprintf.c
+	$(CC) -c -I. $(COMMON_FLAGS) $(CFLAGS) $(CPPFLAGS) $(srcdir)/vsnprintf.c
 
 install: all
 	for f in $(CGI_PROGS); \
