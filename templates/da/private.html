@@ -1,9 +1,10 @@
 <html>
 <head>
     <title>%(realname)s Login til Private Arkiver</title>
+<script>function sf(){document.f.username.focus();}</script>
 </head>
-<body bgcolor="#ffffff">
-<FORM METHOD=POST ACTION="%(action)s">
+<body bgcolor="#ffffff" onLoad="sf()">
+<FORM METHOD=POST ACTION="%(action)s" name="f">
 %(message)s
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
     <TR>

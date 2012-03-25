@@ -1,9 +1,10 @@
 <html>
 <head>
 <title>Autenticazione per %(who)s di %(listname)s</title>
+<script>function sf(){document.f.adminpw.focus();}</script>
 </head>
-<body bgcolor="#ffffff">
-<FORM METHOD=POST ACTION="%(path)s">
+<body bgcolor="#ffffff" onLoad="sf()">
+<FORM METHOD=POST ACTION="%(path)s" name="f">
 %(message)s
   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
     <TR>
