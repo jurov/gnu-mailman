@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -135,6 +135,27 @@ def main():
             message = Bold(FontSize('+1', _('Authorization failed.'))).Format()
             # give an HTTP 401 for authentication failure
             print 'Status: 401 Unauthorized'
+        # Are we processing a password reminder from the login screen?
+        if cgidata.has_key('login-remind'):
+            if username:
+                message = Bold(FontSize('+1', _("""If you are a list member,
+                          your password has been emailed to you."""))).Format()
+            else:
+                message = Bold(FontSize('+1',
+                                _('Please enter your email address'))).Format()
+            if mlist.isMember(username):
+                mlist.MailUserPassword(username)
+            elif username:
+                # Not a member
+                if mlist.private_roster == 0:
+                    # Public rosters
+                    safeuser = Utils.websafe(username)
+                    message = Bold(FontSize('+1',
+                                  _('No such member: %(safeuser)s.'))).Format()
+                else:
+                    syslog('mischief',
+                       'Reminder attempt of non-member w/ private rosters: %s',
+                       username)
         # Output the password form
         charset = Utils.GetCharSet(mlist.preferred_language)
         print 'Content-type: text/html; charset=' + charset + '\n\n'
