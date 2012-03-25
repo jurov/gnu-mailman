@@ -22,6 +22,13 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
+    - There is a new list attribute regular_exclude_ignore set from mm_cfg.py
+      DEFAULT_REGULAR_EXCLUDE_IGNORE.  This defaults to True even though the
+      prior behavior is equivalent to False.  A True setting will ignore an
+      exclude list if the poster is not a member of that list.  The False
+      setting can result in list members not receiving posts if the nonmember
+      post is not accepted by the exclude list.  Backported from 2.2 branch.
+
     - Eliminated the list cache from the qrunners.  Indirect self-references
       caused lists to never be dropped from the cache which in turn caused
       the qrunners to grow very large in installations with many lists or

@@ -416,6 +416,8 @@ def NewVars(l):
                         mm_cfg.DEFAULT_REGULAR_EXCLUDE_LISTS)
     add_only_if_missing('regular_include_lists',
                         mm_cfg.DEFAULT_REGULAR_INCLUDE_LISTS)
+    add_only_if_missing('regular_exclude_ignore',
+                        mm_cfg.DEFAULT_REGULAR_EXCLUDE_IGNORE)
 
 
 

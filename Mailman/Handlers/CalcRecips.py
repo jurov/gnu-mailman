@@ -179,6 +179,12 @@ def do_exclude(mlist, msg, msgdata, recips):
             syslog('error', 'Exclude list %s is not in the same domain.',
                     listname)
             continue
+        if mlist.regular_exclude_ignore:
+            for sender in msg.get_senders():
+                if slist.isMember(sender):
+                    break
+            else:
+                continue
         srecips = set([slist.getMemberCPAddress(m)
                    for m in slist.getRegularMemberKeys()
                    if slist.getDeliveryStatus(m) == ENABLED])

@@ -159,6 +159,17 @@ and footers:
              Note also that the site administrator may prohibit cross domain
              siblings.""")),
 
+            ('regular_exclude_ignore', mm_cfg.Toggle, (_('No'), _('Yes')), 0,
+             _("""Ignore regular_exlude_lists of which the poster is not a
+             member."""),
+             _("""If a post is addressed to this list and to one or more of
+             the exclude lists, regular members of those lists will not be
+             sent the post from this list, but if the poster is not a member
+             of an excluded list, the post may not be accepted by that list
+             which leaves the members of that list with no copy of the post.
+             Setting this to Yes ignores any of the exclude lists of which the
+             poster is not a member.""")),
+
             ('regular_include_lists', mm_cfg.EmailList, (3, WIDTH), 0,
              _("""Other mailing lists on this site whose members are
              included in the regular (non-digest) delivery if those
