@@ -53,7 +53,7 @@ msgstr "Diskussionsfaden"
 # Mailman/Handlers/ToDigest.py:213 Mailman/ListAdmin.py:202
 #: Mailman/Archiver/HyperArch.py:705 Mailman/Archiver/HyperArch.py:741
 msgid "subject"
-msgstr "(kein Betreff)"
+msgstr "Betreff"
 
 #: Mailman/Archiver/HyperArch.py:706 Mailman/Archiver/HyperArch.py:742
 msgid "author"
@@ -292,7 +292,7 @@ msgstr "Zugang verweigert."
 
 #: Mailman/Cgi/admin.py:198
 msgid "The form lifetime has expired. (request forgery check)"
-msgstr ""
+msgstr "Die Gültigkeitsdauer des Formular ist abgelaufen. (request forgery check)"
 
 # Mailman/Cgi/admin.py:165
 #: Mailman/Cgi/admin.py:204
@@ -391,7 +391,7 @@ msgid ""
 "        <p>General list information can be found at "
 msgstr ""
 "Um die Konfigurationsseite für eine nicht öffentlich verfügbare Liste zu "
-"sehen, hängen sie einfach '/' und den %(extra)s an diese Addresse an. Falls "
+"sehen, hängen sie einfach '/' und den %(extra)s an diese Adresse an. Falls "
 "Sie die erforderliche Zugangsberechtigung haben, können sie auch eine <a "
 "href=\"%(creatorurl)s\">neue Liste einrichten</a>.\n"
 "\n"
@@ -1145,18 +1145,23 @@ msgid ""
 "addition, the password below, if set, can be used for that purpose and\n"
 "no other."
 msgstr ""
+"Zusätzlich zu den oben genannten Passwörter können Sie ein Passwort\n"
+"für die Vor-Genehmigung von Beiträge an die Liste definieren. Eines\n"
+"der beiden oben genannten Passwörter kann in einer Approved: Kopfzeile\n"
+"oder als Pseudo-Kopfzeile im Text verwendet werden, um ein Beitrag\n"
+"vorgenehmigen zu lassen, welcher ansonsten für die Moderation\n"
+"zurückgehalten würde. Darüber hinaus kann das Passwort unten, falls\n"
+"gesetzt, dafür verwendet werden, aber für keinen anderen Zweck.\n"
 
 # Mailman/Cgi/admin.py:1024
 #: Mailman/Cgi/admin.py:1293
-#, fuzzy
 msgid "Enter new poster password:"
-msgstr "Neues Moderatoren-Passwort einsetzen:"
+msgstr "Neues Genehmigungs-Passwort einsetzen:"
 
 # Mailman/Cgi/admin.py:1026
 #: Mailman/Cgi/admin.py:1295
-#, fuzzy
 msgid "Confirm poster password:"
-msgstr "Moderatoren-Passwort bestätigen:"
+msgstr "Genehmigungs-Passwort bestätigen:"
 
 # Mailman/Cgi/admin.py:1036
 #: Mailman/Cgi/admin.py:1304
@@ -1166,18 +1171,17 @@ msgstr "Änderungen speichern"
 # Mailman/Cgi/admin.py:1111
 #: Mailman/Cgi/admin.py:1327
 msgid "Moderator passwords did not match"
-msgstr "Das Moderatoren-Passwort und die Bestätigung sind nicht gleich"
+msgstr "Die Moderatoren-Passwörter stimmen nicht überein"
 
 # Mailman/Cgi/subscribe.py:140
 #: Mailman/Cgi/admin.py:1338
-#, fuzzy
 msgid "Poster passwords did not match"
-msgstr "Die Passwörter waren nicht identisch."
+msgstr "Die Genehmigungs-Passwörter stimmen nicht überein"
 
 # Mailman/Cgi/admin.py:1123
 #: Mailman/Cgi/admin.py:1348
 msgid "Administrator passwords did not match"
-msgstr "Die Administrator-Passwörter stimmten nicht überein"
+msgstr "Die Administrator-Passwörter stimmen nicht überein"
 
 # Mailman/Cgi/admin.py:1228
 #: Mailman/Cgi/admin.py:1398
@@ -1192,12 +1196,12 @@ msgstr "&lt;Leerzeile&gt;"
 # Mailman/Cgi/admin.py:1232 Mailman/Cgi/admin.py:1235
 #: Mailman/Cgi/admin.py:1402 Mailman/Cgi/admin.py:1405
 msgid "Bad/Invalid email address"
-msgstr "Ungültige E-Mail-Addresse"
+msgstr "Ungültige E-Mail-Adresse"
 
 # Mailman/Cgi/admin.py:1238
 #: Mailman/Cgi/admin.py:1408
 msgid "Hostile address (illegal characters)"
-msgstr "Unzulässige E-Mailadresse (illegale Zeichen!)"
+msgstr "Unzulässige E-Mail-Adresse (illegale Zeichen!)"
 
 #: Mailman/Cgi/admin.py:1411 bin/add_members:140 bin/clone_member:136
 #: bin/sync_members:264
@@ -1473,7 +1477,7 @@ msgstr "Erhalten:"
 # Mailman/Cgi/admindb.py:216
 #: Mailman/Cgi/admindb.py:586
 msgid "Posting Held for Approval"
-msgstr "e-Mail zur Kontrolle zurückgehalten"
+msgstr "E-Mail zur Kontrolle zurückgehalten"
 
 # Mailman/Cgi/admindb.py:218
 #: Mailman/Cgi/admindb.py:588
@@ -1521,7 +1525,7 @@ msgstr "Mail-Header:"
 # Mailman/Cgi/admindb.py:312
 #: Mailman/Cgi/admindb.py:702
 msgid "Message Excerpt:"
-msgstr "Mail-Auszug: "
+msgstr "Nachricht-Auszug: "
 
 # Mailman/Cgi/admindb.py:361
 #: Mailman/Cgi/admindb.py:854
@@ -1604,7 +1608,7 @@ msgid ""
 "    confirmation step."
 msgstr ""
 "Bitte geben Sie unten den Bestätigungscode (z.B. <em>cookie</em>) ein, den "
-"Sie in der e-Mail erhalten haben. Dann klicken Sie auf <em>Abschicken</em>, "
+"Sie in der E-Mail erhalten haben. Dann klicken Sie auf <em>Abschicken</em>, "
 "um den nächsten Bestätigungschritt aufzurufen."
 
 # Mailman/Cgi/confirm.py:166
@@ -1697,7 +1701,7 @@ msgstr ""
 # Mailman/Cgi/confirm.py:200
 #: Mailman/Cgi/confirm.py:281
 msgid "Your email address:"
-msgstr "Ihre E-Mailadresse:"
+msgstr "Ihre E-Mail-Adresse:"
 
 # Mailman/Cgi/confirm.py:201
 #: Mailman/Cgi/confirm.py:282
@@ -1766,7 +1770,7 @@ msgid ""
 "            address that has already been unsubscribed."
 msgstr ""
 "Ungültiger Bestätigungscode. Es ist möglich das Sie versuchen einen Abo-"
-"Antrag für eine E-Mailadresse zu bestätigen, die bereits das Abonnement "
+"Antrag für eine E-Mail-Adresse zu bestätigen, die bereits das Abonnement "
 "gekündigt hat."
 
 # Mailman/Deliverer.py:76
@@ -1780,7 +1784,7 @@ msgid ""
 "            this list.  If you think this restriction is erroneous, please\n"
 "            contact the list owners at %(owneraddr)s."
 msgstr ""
-"Ihre E-Mailadresse wurde permanent von der Mailingliste verbannt. \n"
+"Ihre E-Mail-Adresse wurde permanent von der Mailingliste verbannt. \n"
 "Wenn Sie glauben, dass ein Fehler vorliegt, wenden Sie sich bitte an\n"
 "den Listen-Administrator %(listowner)s. "
 
@@ -1871,7 +1875,7 @@ msgstr ""
 " Mailingliste <em>%(listname)s</em> abzuschliessen.  Sie sind im Moment\n"
 " mit folgenden Daten Mitglied:\n"
 " <ul><li><b>Name:</b> %(fullname)s\n"
-"     <li><b>E-Mailadresse:</b> %(addr)s\n"
+"     <li><b>E-Mail-Adresse:</b> %(addr)s\n"
 " </ul>\n"
 "\n"
 " Klicken Sie auf <em>Kündigung des Abos</em>, um die Kündigung zu "
@@ -1918,7 +1922,7 @@ msgid ""
 "            subscribed."
 msgstr ""
 "%(newaddr)s ist bereits Mitglied der Liste %(realname)s.  Es ist möglich das "
-"Sie versuchen einen Abo-Antrag für eine E-Mailadresse zu bestätigen, der "
+"Sie versuchen einen Abo-Antrag für eine E-Mail-Adresse zu bestätigen, der "
 "bereits bestätigt wurde. "
 
 # Mailman/Cgi/confirm.py:427
@@ -1975,12 +1979,12 @@ msgid ""
 msgstr ""
 "Ihre Bestätigung ist erforderlich, um die Änderung Ihrer Adresse für die\n"
 " Mailingliste <em>%(listname)s</em> abzuschliessen. Sie sind im Moment\n"
-" mit folgender E-Mailadresse eingetragen:\n"
+" mit folgender E-Mail-Adresse eingetragen:\n"
 " <ul><li><b>Name:</b> %(fullname)s \n"
-"     <li><b>Alte E-Mailadresse:</b> %(oldaddr)s\n"
+"     <li><b>Alte E-Mail-Adresse:</b> %(oldaddr)s\n"
 " </ul>\n"
-" und wollen Ihre E-Mailadresse %(globallys)s ändern auf die\n"
-" <ul><li><b>Neue E-Mailadresse:</b> %(newaddr)s\n"
+" und wollen Ihre E-Mail-Adresse %(globallys)s ändern auf die\n"
+" <ul><li><b>Neue E-Mail-Adresse:</b> %(newaddr)s\n"
 " </ul>\n"
 " Klicken Sie auf <em>Adresse ändern</em>, um die Änderung zu bestätigen.\n"
 " <p>Oder klicken Sie auf <em>Abbrechen und verwerfen</em>, um die\n"
@@ -2154,7 +2158,7 @@ msgid ""
 "    "
 msgstr ""
 "Ihr Bezug der Mailingliste %(realname)s ist derzeit deaktiviert,\n"
-"da Ihre E-Mailadresse über längere Zeit unzustellbar war. Das kann\n"
+"da Ihre E-Mail-Adresse über längere Zeit unzustellbar war. Das kann\n"
 "z.B. an Mailservern liegen, die nicht erreichbar waren, oder an E-Mail-"
 "Accounts,\n"
 "überfüllt waren und keine E-Mails mehr annahmen.\n"
@@ -2166,7 +2170,7 @@ msgstr ""
 "<ul> <li><b>Mailadresse:</b> %(member)s\n"
 "<li><b>Vollständiger Name:</b> %(username)s\n"
 "<li><b>Letzte unzustellbare Nachricht:</b> %(date)s\n"
-"<li><b>Anzahl der Tage, bevor Ihre E-Mailadresse\n"
+"<li><b>Anzahl der Tage, bevor Ihre E-Mail-Adresse\n"
 "vollständig gelöscht wird:</b> %(daysleft)s\n"
 "</ul>\n"
 "\n"
@@ -2267,7 +2271,7 @@ msgstr "Unbekannter virtueller host: %(safehostname)s"
 # Mailman/Cgi/create.py:170
 #: Mailman/Cgi/create.py:200 bin/newlist:207
 msgid "Bad owner email address: %(s)s"
-msgstr "Falsche E-Mailadresse des Eigentümers: %(s)s"
+msgstr "Falsche E-Mail-Adresse des Eigentümers: %(s)s"
 
 # Mailman/Cgi/create.py:101 Mailman/Cgi/create.py:174 bin/newlist:122
 # bin/newlist:154
@@ -2364,7 +2368,7 @@ msgid ""
 "    "
 msgstr ""
 "Sie können hier eine neue Mailingliste erzeugen. Der Name der Mailingliste "
-"wird als E-Mailadresse zum Empfang und Versand von Nachrichten benutzt, "
+"wird als E-Mail-Adresse zum Empfang und Versand von Nachrichten benutzt, "
 "daher bitte nur Kleinbuchstaben verwenden. Nachdem die Liste erst einmal "
 "angelegt wurde, können Sie den Namen nicht mehr ändern.\n"
 " <p>Sie müssen auch einen Eigentümer der Mailingliste angeben. Sobald die "
@@ -2391,7 +2395,7 @@ msgstr "Name der Mailingliste:"
 # Mailman/Cgi/create.py:291
 #: Mailman/Cgi/create.py:343
 msgid "Initial list owner address:"
-msgstr "E-Mailadresse des Eigentümers:"
+msgstr "E-Mail-Adresse des Eigentümers:"
 
 # Mailman/Cgi/create.py:300
 #: Mailman/Cgi/create.py:352
@@ -2472,9 +2476,8 @@ msgstr "Text-Datei der Willkommens-Mail"
 
 # Mailman/Handlers/ToDigest.py:186
 #: Mailman/Cgi/edithtml.py:49
-#, fuzzy
 msgid "Digest masthead"
-msgstr "Kopfzeile der Nachrichtensammlung"
+msgstr "Impressum Nachrichtensammlung"
 
 # Mailman/Cgi/edithtml.py:57
 #: Mailman/Cgi/edithtml.py:61
@@ -2651,12 +2654,12 @@ msgstr "Ungültige Optionen für das CGI Skript."
 # Mailman/Cgi/admindb.py:338 Mailman/ListAdmin.py:258
 #: Mailman/Cgi/options.py:109
 msgid "No address given"
-msgstr "[Keine E-Mailadresse angegeben / kein Login erfolgt]"
+msgstr "[Keine E-Mail-Adresse angegeben / kein Login erfolgt]"
 
 # Mailman/Cgi/admin.py:1232 Mailman/Cgi/admin.py:1235
 #: Mailman/Cgi/options.py:121
 msgid "Illegal Email Address: %(safeuser)s"
-msgstr "Ungültige E-Mailadresse: %(safeuser)s"
+msgstr "Ungültige E-Mail-Adresse: %(safeuser)s"
 
 # Mailman/Cgi/options.py:93
 #: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:193
@@ -2716,7 +2719,7 @@ msgstr ""
 
 #: Mailman/Cgi/options.py:305
 msgid "nomail"
-msgstr ""
+msgstr "Keine E-Mail"
 
 #: Mailman/Cgi/options.py:332
 msgid ""
@@ -2736,7 +2739,7 @@ msgstr "Die Adressen sind nicht identisch!"
 # Mailman/Cgi/options.py:236
 #: Mailman/Cgi/options.py:360
 msgid "You are already using that email address"
-msgstr "Sie verwenden bereits diese E-Mailadresse"
+msgstr "Sie verwenden bereits diese E-Mail-Adresse"
 
 #: Mailman/Cgi/options.py:372
 msgid ""
@@ -2746,11 +2749,11 @@ msgid ""
 "address.  Upon confirmation, any other mailing list containing the address\n"
 "%(safeuser)s will be changed. "
 msgstr ""
-"Die neue E-Mailadresse %(newaddr)s ist bereits ein Mitglied der "
+"Die neue E-Mail-Adresse %(newaddr)s ist bereits ein Mitglied der "
 "Mailingliste\n"
 "%(listname)s. Da Sie aber eine globale Änderung in allen Mailinglisten "
 "gewünscht\n"
-"haben, wird in allen anderen Listen die E-Mailadresse\n"
+"haben, wird in allen anderen Listen die E-Mail-Adresse\n"
 " %(safeuser)s entsprechend angepaßt."
 
 # Mailman/Cgi/admindb.py:364
@@ -2771,12 +2774,12 @@ msgstr "Eine Bestätigung wurde an %(newaddr)s geschickt. "
 # Mailman/Cgi/options.py:267
 #: Mailman/Cgi/options.py:410
 msgid "Bad email address provided"
-msgstr "Ungültige E-Mailadresse"
+msgstr "Ungültige E-Mail-Adresse"
 
 # Mailman/Cgi/options.py:269
 #: Mailman/Cgi/options.py:412
 msgid "Illegal email address provided"
-msgstr "E-Mailadresse ist nicht erlaubt"
+msgstr "E-Mail-Adresse ist nicht erlaubt"
 
 # Mailman/Cgi/options.py:271
 #: Mailman/Cgi/options.py:414
@@ -2789,7 +2792,7 @@ msgid ""
 "                      think this restriction is erroneous, please contact\n"
 "                      the list owners at %(owneraddr)s."
 msgstr ""
-"Die E-Mailadresse %(newaddr)s ist von der Liste verbannt worden. Wenn Sie "
+"Die E-Mail-Adresse %(newaddr)s ist von der Liste verbannt worden. Wenn Sie "
 "glauben,\n"
 "dass ein Fehler vorliegt, so kontaktieren Sie bitte den Listenbesitzer:\n"
 "%(owneraddr)s."
@@ -2974,7 +2977,7 @@ msgstr "%(days)d %(units)s "
 # Mailman/Cgi/options.py:570
 #: Mailman/Cgi/options.py:809
 msgid "Change My Address and Name"
-msgstr "Meine E-Mailadresse und Namen ändern "
+msgstr "Meine E-Mail-Adresse und Namen ändern "
 
 # Mailman/Cgi/options.py:598
 #: Mailman/Cgi/options.py:835
@@ -3000,7 +3003,7 @@ msgstr "Mailingliste %(realname)s: Login für Mitglieder"
 # Mailman/Cgi/options.py:621
 #: Mailman/Cgi/options.py:858
 msgid "email address and "
-msgstr "und E-Mailadresse"
+msgstr "und E-Mail-Adresse"
 
 # Mailman/Cgi/options.py:623
 #: Mailman/Cgi/options.py:861
@@ -3026,16 +3029,16 @@ msgid ""
 "    "
 msgstr ""
 "<p>Wenn Sie bereits in dieser Mailingliste eingetragen sind, können Sie hier "
-"Ihre persönlichen Einstellungen und auch die hier eingetragene E-Mailadresse "
+"Ihre persönlichen Einstellungen und auch die hier eingetragene E-Mail-Adresse "
 "ändern. Geben Sie dazu Passwort %(extra)s ein und klicken Sie auf <em>Login</"
 "em>.\n"
 "</p><p>Wenn Sie sich aus der <b>Mailingliste austragen</b> wollen, geben Sie "
-"bitte<b>E-Mailadresse und Passwort</b> ein und klicken Sie unten auf "
+"bitte<b>E-Mail-Adresse und Passwort</b> ein und klicken Sie unten auf "
 "<em>Kündigung des Abos</em>.</p><p>Wenn Sie damals bei der Anmeldung zur "
 "Liste kein Passwort angegeben haben, wurde ein Zufallspasswort für Sie "
 "erzeugt. Sie können es sich per E-Mail zuschicken lassen, indem Sie ihre "
 "Mailadresse angeben und dann unten auf <em>Passwort zumailen</em> klicken.</"
-"p><p>Falls Sie mehrere E-Mailadressen besitzen, achten Sie darauf, daß Sie "
+"p><p>Falls Sie mehrere E-Mail-Adressen besitzen, achten Sie darauf, daß Sie "
 "bitte stets die hier eingetragene Mailadresse angeben! Sie kriegen i.d.R. "
 "monatlich eine Passworterinnerungsmail, in der die hier eingetragene Adresse "
 "und auch das Passwort ausdrücklich genannt sind.</p><p><em>Wichtig:</em> Ihr "
@@ -3045,7 +3048,7 @@ msgstr ""
 # Mailman/Cgi/options.py:656
 #: Mailman/Cgi/options.py:901
 msgid "Email address:"
-msgstr "E-Mailadresse:"
+msgstr "E-Mail-Adresse:"
 
 # Mailman/Cgi/confirm.py:203 Mailman/Cgi/options.py:658
 #: Mailman/Cgi/options.py:905
@@ -3067,15 +3070,15 @@ msgid ""
 "    message)."
 msgstr ""
 "<p>Möchten Sie keine E-Mails der Liste mehr bekommen? Tragen Sie oben Ihre\n"
-" E-Mailadresse und Ihr Kennwort ein und klicken Sie hier auf <em>Kündigung\n"
+" E-Mail-Adresse und Ihr Kennwort ein und klicken Sie hier auf <em>Kündigung\n"
 " des Abos</em>.</p><p>Um Mißbrauch zu verhindern, bekommen Sie eine E-Mail "
 "zugesandt, in der Sie gebeten werden die Kündigung nochmals zu bestätigen. "
 "Erst wenn diese Rückbestätigung bei uns eingegangen ist, werden Sie aus der "
 "Liste ausgetragen.\n"
 "</p><p><b>Wichtig:</b> Sie müssen hier genau die\n"
-" E-Mailadresse angeben, mit der Sie in der Mailingliste eingetragen sind!\n"
+" E-Mail-Adresse angeben, mit der Sie in der Mailingliste eingetragen sind!\n"
 " Bedenken Sie das bitte, falls Sie sich E-Mails von anderen\n"
-" E-Mailkonten weiterleiten lassen!</p>"
+" E-Mail-Konten weiterleiten lassen!</p>"
 
 # Mailman/Cgi/options.py:679
 #: Mailman/Cgi/options.py:923
@@ -3089,7 +3092,7 @@ msgid ""
 "    password will be emailed to you."
 msgstr ""
 "Haben Sie Ihr Passwort vergessen? Tragen Sie oben bitte die <b>hier "
-"eingetragene</b> E-Mailadresse ein und klicken Sie auf <em>Passwort "
+"eingetragene</b> E-Mail-Adresse ein und klicken Sie auf <em>Passwort "
 "zumailen</em>. Sie bekommen Ihr Passwort dann in wenigen Sekunden per E-Mail "
 "zugeschickt. "
 
@@ -3144,17 +3147,15 @@ msgstr " Fehler im privaten Archiv  - %(msg)s"
 
 # Mailman/Cgi/options.py:144 Mailman/Cgi/options.py:181
 #: Mailman/Cgi/private.py:141
-#, fuzzy
 msgid ""
 "If you are a list member,\n"
 "                          your password has been emailed to you."
-msgstr "An Sie wurde eine E-Mail mit Ihrem Passwort geschickt."
+msgstr "Wenn Sie ein Mitglieder der Liste sind, dann wurde Ihnen ihr Passwort zugesendet."
 
 # Mailman/Cgi/confirm.py:200
 #: Mailman/Cgi/private.py:145
-#, fuzzy
 msgid "Please enter your email address"
-msgstr "Ihre E-Mailadresse:"
+msgstr "Bitte Ihre E-Mail-Adresse eingeben"
 
 # Mailman/Cgi/private.py:155
 #: Mailman/Cgi/private.py:206
@@ -3282,7 +3283,7 @@ msgstr "Fehler"
 # Mailman/Cgi/subscribe.py:103
 #: Mailman/Cgi/subscribe.py:114
 msgid "You must supply a valid email address."
-msgstr "Sie müssen eine gültige E-Mailadresse angeben."
+msgstr "Sie müssen eine gültige E-Mail-Adresse angeben."
 
 # Mailman/Cgi/subscribe.py:121
 #: Mailman/Cgi/subscribe.py:126
@@ -3320,7 +3321,7 @@ msgid ""
 "        mailing list.  If you think this restriction is erroneous, please\n"
 "        contact the list owners at %(listowner)s."
 msgstr ""
-"Ihre E-Mailadresse wurde permanent von der Mailingliste verbannt. \n"
+"Ihre E-Mail-Adresse wurde permanent von der Mailingliste verbannt. \n"
 "Wenn Sie glauben, dass ein Fehler vorliegt, wenden Sie sich bitte an\n"
 "den Listen-Administrator %(listowner)s."
 
@@ -3329,7 +3330,7 @@ msgid ""
 "The email address you supplied is not valid.  (E.g. it must contain an\n"
 "`@'.)"
 msgstr ""
-"Die von Ihnen angegebene E-Mailadresse ist ungültig (diese muss wenigstens\n"
+"Die von Ihnen angegebene E-Mail-Adresse ist ungültig (diese muss wenigstens\n"
 "ein '@' enthalten)."
 
 # Mailman/Cgi/subscribe.py:188
@@ -3338,7 +3339,7 @@ msgid ""
 "Your subscription is not allowed because the email address you gave is\n"
 "insecure."
 msgstr ""
-"Sie dürfen nicht abonnieren weil die von Ihnen angegebene E-Mailadresse als\n"
+"Sie dürfen nicht abonnieren weil die von Ihnen angegebene E-Mail-Adresse als\n"
 "unsicher betrachtet wird.<p>"
 
 # Mailman/Cgi/subscribe.py:174
@@ -3349,7 +3350,7 @@ msgid ""
 "%(email)s.  Please note your subscription will not start until you confirm\n"
 "your subscription."
 msgstr ""
-"Eine Bestätigung von Ihrer E-Mailadresse aus ist erforderlich, damit Sie\n"
+"Eine Bestätigung von Ihrer E-Mail-Adresse aus ist erforderlich, damit Sie\n"
 "nicht irgend jemand ohne Ihre Erlaubnis eintragen kann. Eine Anleitung wird\n"
 "an %(email)s geschickt. Bitte beachten Sie, dass das Abonnement erst nach\n"
 "erfolgter Bestätigung beginnt."
@@ -3394,12 +3395,12 @@ msgid ""
 "message\n"
 "to the list administrator at %(listowner)s.\n"
 msgstr ""
-"Es wurde versucht, unter Verwendung Ihrer E-Mailadresse die Mailingliste\n"
+"Es wurde versucht, unter Verwendung Ihrer E-Mail-Adresse die Mailingliste\n"
 "%(listaddr)s zu abonnieren. Sie sind aber bereits Mitglied dieser Liste.\n"
 "\n"
 "Beachten Sie bitte, dass die Mitgliederliste dieser Mailingliste nicht\n"
 "öffentlich ist. Gewisse Personen könnten ein Interesse daran haben,\n"
-"herauszufinden, welche E-Mailadressen hier eingetragen sind.\n"
+"herauszufinden, welche E-Mail-Adressen hier eingetragen sind.\n"
 "Um den notwendigen Datenschutz  zu gewährleisten, lassen\n"
 " wir sowas natürlich nicht zu!\n"
 "Sollten Sie befürchten, dass hier ein solcher Versuch vorliegt,\n"
@@ -3484,7 +3485,7 @@ msgid ""
 "restriction is erroneous, please contact the list owners at\n"
 "%(owneraddr)s."
 msgstr ""
-"Ihre E-Mailadresse ist von der Liste verbannt worden. Wenn Sie glauben,\n"
+"Ihre E-Mail-Adresse ist von der Liste verbannt worden. Wenn Sie glauben,\n"
 "dass ein Fehler vorliegt, so kontaktieren Sie bitte den Listenbesitzer:\n"
 "%(owneraddr)s."
 
@@ -3570,7 +3571,7 @@ msgstr "Beschreibung:  %(description)s"
 
 #: Mailman/Commands/cmd_info.py:46
 msgid "Postings to:  %(postaddr)s"
-msgstr "e-Mails an:  %(postaddr)s"
+msgstr "E-Mails an:  %(postaddr)s"
 
 #: Mailman/Commands/cmd_info.py:47
 msgid "List Helpbot: %(requestaddr)s"
@@ -3642,14 +3643,14 @@ msgstr ""
 "        zu. Mit den Argumenten <oldpassword> und <newpassword>\n"
 "        können Sie Ihr Passwort ändern lassen.\n"
 "\n"
-"        Wenn Sie von einer anderen als der eingetragenen E-Mailadresse aus\n"
+"        Wenn Sie von einer anderen als der eingetragenen E-Mail-Adresse aus\n"
 "        senden, können Sie mit `address=<address>' eine andere Adresse\n"
 "         angeben, für die dieses Kommando gelten soll (natürlich ohne "
 "Angabe\n"
 "        der spitzen Klammern und ohne Anführungszeichen!).\n"
 "\n"
 "        Beachten Sie, dass in diesem Fall das Ergebnis des Kommandos aus \n"
-"        Sicherheitsgründen immer an die hier eingetragene E-Mailadresse "
+"        Sicherheitsgründen immer an die hier eingetragene E-Mail-Adresse "
 "geschickt\n"
 "        wird!\n"
 
@@ -3674,7 +3675,7 @@ msgstr ""
 "Sie haben das alte, bisherige Passwort nicht richtig angegeben. Das\n"
 "Passwort wurde deshalb nicht geändert!\n"
 "Senden Sie den Befehl 'password' ohne weitere Parameter, dann wird\n"
-"Ihnen Ihr bisheriges Passwort zuge-Mailt."
+"Ihnen Ihr bisheriges Passwort per E-Mail zugesendet."
 
 # Mailman/MailCommandHandler.py:444
 #: Mailman/Commands/cmd_password.py:89 Mailman/Commands/cmd_password.py:115
@@ -3790,7 +3791,7 @@ msgstr ""
 "\n"
 "    set show [address=<address>]\n"
 "        Zeigt Ihre aktuellen Einstellungen.         Wenn Sie von einer "
-"anderen als der eingetragenen E-Mailadresse aus\n"
+"anderen als der eingetragenen E-Mail-Adresse aus\n"
 "        senden, können Sie mit `address=<address>' eine andere Adresse\n"
 "        angeben, für die dieses Kommando gelten soll (natürlich ohne Angabe\n"
 "        der spitzen Klammern und ohne Anführungszeichen!).\n"
@@ -3801,7 +3802,7 @@ msgstr ""
 "        mit Ihrem Passwort in die Mail schreiben um sich zu legitimieren. "
 "Danach \n"
 "        können Sie die unten aufgeführten Optionen setzen.\n"
-"        Wenn Sie von einer anderen als der eingetragenen E-Mailadresse aus\n"
+"        Wenn Sie von einer anderen als der eingetragenen E-Mail-Adresse aus\n"
 "        senden, können Sie mit `address=<address>' eine andere Adresse\n"
 "        angeben, für die dieses Kommando gelten soll (natürlich ohne Angabe\n"
 "        der spitzen Klammern und ohne Anführungszeichen!).\n"
@@ -3818,7 +3819,7 @@ msgstr ""
 "        gesammelt in einer täglichen Zusammenfassung. \n"
 "        Mit `set digest plain' ist diese Zusammenfassung eine reine Text- \n"
 "        Mail, mit `set digest mime' können Sie Einstellen, dass die \n"
-"        Nachrichten dieses Archives als große MIMe-Mail erstellt wird.\n"
+"        Nachrichten dieses Archives als große MIME-E-Mail erstellt wird.\n"
 "\n"
 "    set delivery on\n"
 "    set delivery off\n"
@@ -3836,7 +3837,7 @@ msgstr ""
 "\n"
 "    set hide on\n"
 "    set hide off\n"
-"        Mit dieser Option können Sie verhindern, dass Ihre E-Mailadresse\n"
+"        Mit dieser Option können Sie verhindern, dass Ihre E-Mail-Adresse\n"
 "        in der Mitgliedsübersicht aufgeführt wird.\n"
 "\n"
 "    set duplicates on\n"
@@ -4033,9 +4034,9 @@ msgstr ""
 "        Ihr Passwort erinnert.\n"
 "        Der nächste Parameter kann entweder `nodigest' oder `digest'\n"
 "        sein (ohne Anführunsgzeichen!). Geben Sie 'digest' an, falls Sie\n"
-"        alle Mails in einer täglichen Sammel-Mail erhalten möchten.\n"
+"        alle Mails in einer täglichen Sammel-E-Mail erhalten möchten.\n"
 "\n"
-"        Wenn Sie von einer anderen als der eingetragenen E-Mailadresse aus\n"
+"        Wenn Sie von einer anderen als der eingetragenen E-Mail-Adresse aus\n"
 "        senden, können Sie mit `address=<address>' eine andere Adresse\n"
 "         angeben, für die dieses Kommando gelten soll (natürlich ohne "
 "Angabe\n"
@@ -4056,7 +4057,7 @@ msgid ""
 "If you think this restriction is erroneous, please contact the list\n"
 "owners at %(listowner)s."
 msgstr ""
-"Ihre E-Mailadresse ist von der Liste verbannt worden. Wenn Sie glauben,\n"
+"Ihre E-Mail-Adresse ist von der Liste verbannt worden. Wenn Sie glauben,\n"
 "dass ein Fehler vorliegt, so kontaktieren Sie bitte den Listenbesitzer:\n"
 "%(listowner)s."
 
@@ -4066,7 +4067,7 @@ msgid ""
 "Mailman won't accept the given email address as a valid address.\n"
 "(E.g. it must have an @ in it.)"
 msgstr ""
-"Mailman wird die angegebene E-Mailadresse nicht als gültige Adresse\n"
+"Mailman wird die angegebene E-Mail-Adresse nicht als gültige Adresse\n"
 "akzeptieren (möglicherweise fehlt das '@' darin)."
 
 # Mailman/MailCommandHandler.py:652
@@ -4075,7 +4076,7 @@ msgid ""
 "Your subscription is not allowed because\n"
 "the email address you gave is insecure."
 msgstr ""
-"Das Abonnieren wurde abgelehnt, da Sie eine unsichere E-Mailadresse\n"
+"Das Abonnieren wurde abgelehnt, da Sie eine unsichere E-Mail-Adresse\n"
 "angegeben haben."
 
 # Mailman/MailCommandHandler.py:656
@@ -4165,6 +4166,13 @@ msgid ""
 "        See everyone who is on this mailing list. The password is the\n"
 "        list's admin or moderator password.\n"
 msgstr ""
+"\n"
+"    who\n"
+"        Anzeige der nicht-versteckten Mitglieder dieser Mailingliste\n"
+"    who password\n"
+"        Erzeugt eine Übersicht über die Mitglieder der Liste. Da dies nur\n"
+"        dem Listenadministrator oder -moderator erlaubt ist, müssen Sie\n"
+"        ein Admin- oder Moderationskennwort der Liste mit angeben.\n"
 
 #: Mailman/Commands/cmd_who.py:35
 msgid ""
@@ -4183,7 +4191,7 @@ msgstr ""
 "        Erzeugt eine Übersicht der Mitglieder der Liste. Da dies nur für\n"
 "        Listenmitglieder erlaubt ist, müssen Sie Ihr Listenkennwort mit\n"
 "        angeben.\n"
-"        Wenn Sie von einer anderen als der eingetragenen E-Mailadresse aus\n"
+"        Wenn Sie von einer anderen als der eingetragenen E-Mail-Adresse aus\n"
 "        senden, können Sie mit `address=<address>' eine andere Adresse\n"
 "        angeben, für die dieses Kommando gelten soll (natürlich ohne Angabe\n"
 "        der spitzen Klammern und ohne Anführungszeichen!).         Wenn Sie "
@@ -4202,7 +4210,7 @@ msgstr ""
 "    who password\n"
 "        Erzeugt eine Übersicht über die Mitglieder der Liste. Da dies nur\n"
 "        dem Listenadministrator oder -moderator erlaubt ist, müssen Sie\n"
-"         ein Admin- oder Moderationskennwort der Liste mit angeben.\n"
+"        ein Admin- oder Moderationskennwort der Liste mit angeben.\n"
 
 # Mailman/Cgi/create.py:140
 #: Mailman/Commands/cmd_who.py:128
@@ -4228,9 +4236,8 @@ msgid "Arabic"
 msgstr "Arabisch"
 
 #: Mailman/Defaults.py:1483
-#, fuzzy
 msgid "Asturian"
-msgstr "Estonian"
+msgstr "Asturisch"
 
 # Mailman/Defaults.py:777
 #: Mailman/Defaults.py:1484
@@ -4283,7 +4290,7 @@ msgstr "Galicisch"
 
 #: Mailman/Defaults.py:1495
 msgid "Greek"
-msgstr ""
+msgstr "Grichisch"
 
 #: Mailman/Defaults.py:1496
 msgid "Hebrew"
@@ -4767,7 +4774,7 @@ msgid ""
 "             interim.  This value must be an integer."
 msgstr ""
 "Die Anzahl der Tage, nachdenen die Bounce-Überwachung eines Nutzers\n"
-"beendet wird, wenn seine E-Mailadresse wieder zustellbar ist und keine\n"
+"beendet wird, wenn seine E-Mail-Adresse wieder zustellbar ist und keine\n"
 "Bounces mehr zurückkommen. Geben Sie einen ganzzahligen positiven Wert an."
 
 #: Mailman/Gui/Bounce.py:107
@@ -5261,7 +5268,7 @@ msgstr "Ungültiger Wert: %(property)s"
 # Mailman/Cgi/admin.py:1169
 #: Mailman/Gui/GUIBase.py:173
 msgid "Bad email address for option %(property)s: %(val)s"
-msgstr "Ungültige E-Mailadresse für  %(property)s: %(val)s"
+msgstr "Ungültige E-Mail-Adresse für  %(property)s: %(val)s"
 
 #: Mailman/Gui/GUIBase.py:199
 msgid ""
@@ -5356,7 +5363,7 @@ msgid ""
 "The list administrator email addresses.  Multiple\n"
 "             administrator addresses, each on separate line is okay."
 msgstr ""
-"Die E-Mailadresse des Administrators der Liste. Mehrere Adressen können "
+"Die E-Mail-Adresse des Administrators der Liste. Mehrere Adressen können "
 "angegeben werden (eine pro Zeile)."
 
 # Mailman/Cgi/admin.py:997
@@ -5414,7 +5421,7 @@ msgid ""
 "The list moderator email addresses.  Multiple\n"
 "             moderator addresses, each on separate line is okay."
 msgstr ""
-"Die E-Mailadresse des Listenmoderators. Mehrere Adressen können angegeben "
+"Die E-Mail-Adresse des Listenmoderators. Mehrere Adressen können angegeben "
 "werden (eine pro Zeile)."
 
 # Mailman/Cgi/admin.py:997
@@ -5680,7 +5687,6 @@ msgstr "Expliziter <tt>Reply-To:</tt> Header"
 
 # Mailman/Gui/General.py:188
 #: Mailman/Gui/General.py:210
-#, fuzzy
 msgid ""
 "This is the address set in the <tt>Reply-To:</tt> header\n"
 "             when the <a\n"
@@ -5720,13 +5726,13 @@ msgid ""
 "             <tt>Reply-To:</tt> header, it will not be changed."
 msgstr ""
 "Dies ist die Adresse, die im <tt>Reply-To:</tt> Header benutzt wird, wenn "
-"die <a href=\"?VARHELP=general/reply_goes_to_list\"> Anwort geht an Liste</"
+"die <a href=\"?VARHELP=general/reply_goes_to_list\">Anwort geht an Liste</"
 "a> Option auf den Wert <em>Explizite Adresse</em> gesetzt ist. <p>Es gibt "
 "viele Gründe, den <tt>Reply-To:</tt> Header unberührt zu lassen. Einer davon "
 "ist, das einige Benutzer selbst vom Wert des <tt>Reply-To:</tt> Header "
 "abhängen, da sie damit ihre korrekte Rücksendeadresse übermitteln. Ein "
 "weiterer Grund ist, dass es ein modifizierter <tt>Reply-To:</tt> Header es "
-"viel schwieriger macht, private E-Mailantworten zu verschicken. Siehe hier "
+"viel schwieriger macht, private E-Mail-Antworten zu verschicken. Siehe hier "
 "zu die Diskussion auf: <a href=\"http://www.unicom.com/pw/reply-to-harmful."
 "html\"> Reply-To Munging Considered Harmful</a>. Und um sich vom Gegenteil "
 "zu überzeugen, siehe: <a href=\"http://www.metasystema.org/essays/reply-to-"
@@ -6077,10 +6083,10 @@ msgid ""
 msgstr ""
 "RFC 2369 definiert einen Satz von List-* Headern, die normalerweise in jede "
 "Nachricht eingefügt werden, die an die Listenmitglieder gesendet wird. Das "
-"ist eine grossartige Sache für Endbenutzer, die Standard-e-Mailsoftware "
+"ist eine grossartige Sache für Endbenutzer, die Standard-E-Mail-Software "
 "verwenden, weshalb diese Option in der Regel immer eingeschaltet sein "
 "sollte.\n"
-" <p>Leider halten sich jedoch noch nicht alle E-Mailprogramme an diese "
+" <p>Leider halten sich jedoch noch nicht alle E-Mail-Programme an diese "
 "Standards, und wenn Ihre Mitglieder überwiegend solche Software verwenden, "
 "können Sie diese Headererzeugung abschalten, um Ihre Leserschaft nicht zu "
 "verärgern. Allerdings sollten Sie zuvor versuchen, Ihre Benutzer zur "
@@ -6122,14 +6128,14 @@ msgstr ""
 "davon einfügen lassen können, oder auch nicht.... "
 
 #: Mailman/Gui/General.py:423
-#, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
 "                 mailing list to avoid stray bounces?  <em>Yes</em> is\n"
 "                 recommended."
 msgstr ""
-"Soll Mailman an den Listenbesitzer nicht erkannte Bounce-Nachrichten\n"
-"zur Ansicht weiterleiten?"
+"Sollte die <tt>Sender</tt> Kopfzeile für diese Mailingliste\n"
+"                umgeschrieben werden um streunende Rückmeldungen zu\n"
+"                vermeiden?  <em>Ja</em> wird empfohlen.\n"
 
 #: Mailman/Gui/General.py:427
 msgid ""
@@ -6546,7 +6552,7 @@ msgstr ""
 # Mailman/MailCommandHandler.py:444
 #: Mailman/Gui/NonDigest.py:149
 msgid "Sibling lists"
-msgstr ""
+msgstr "Verwandte Listen"
 
 #: Mailman/Gui/NonDigest.py:152
 msgid ""
@@ -6554,6 +6560,10 @@ msgid ""
 "             excluded from the regular (non-digest) delivery if those\n"
 "             list addresses appear in a To: or Cc: header."
 msgstr ""
+"Andere Mailinglisten auf diesem Server, dessen Mitglieder\n"
+"             aus dem regulären (non-digesst) Zustellung ausgeschlossen\n"
+"             sind, wenn diese Adressen in To: oder Cc: Zeilen vorhanden\n"
+"             sind.\n"
 
 #: Mailman/Gui/NonDigest.py:155
 msgid ""
@@ -6571,6 +6581,8 @@ msgid ""
 "Ignore regular_exlude_lists of which the poster is not a\n"
 "             member."
 msgstr ""
+"Ignorieren von regular_exlude_lists von welcher der Beitragsender\n"
+"             kein Mitglied ist."
 
 #: Mailman/Gui/NonDigest.py:165
 msgid ""
@@ -6712,7 +6724,7 @@ msgid ""
 "                           mischievous (or malicious) people from creating\n"
 "                           subscriptions for others without their consent."
 msgstr ""
-"Bestätigung (*) - Bestätigungs-e-Mail erforderlich <br>\n"
+"Bestätigung (*) - Bestätigungs-E-Mail erforderlich <br>\n"
 "   Genehmigung erforderlich - erfordert die Genehmigung des Administrators\n"
 "                             der Liste, um eine Liste zu abonnieren.<br>\n"
 "   Bestätigung und Genehmigung - erfordert beides.\n"
@@ -6809,7 +6821,7 @@ msgid ""
 msgstr ""
 "Adressen dieser Liste können sich grundsätzlich nicht in die Mailingliste\n"
 "eintragen, der Admin erhält darüber auch keine weitere Nachricht. \n"
-"Fügen Sie eine E-Mailadresse pro Zeile hinzu.\n"
+"Fügen Sie eine E-Mail-Adresse pro Zeile hinzu.\n"
 "Beginnen Sie mit einem ^, um reguläre Ausdrücke einzuleiten. "
 
 # Mailman/Gui/Privacy.py:92
@@ -6852,7 +6864,7 @@ msgid ""
 "Show member addresses so they're not directly recognizable\n"
 "             as email addresses?"
 msgstr ""
-"Sollen E-Mailadressen so dargestellt werden, dass sie nicht mehr direkt als "
+"Sollen E-Mail-Adressen so dargestellt werden, dass sie nicht mehr direkt als "
 "Mailadresse erkannt werden (z.B. von Suchrobotern der SPAM-Versender)"
 
 # Mailman/Gui/Privacy.py:103
@@ -6866,7 +6878,7 @@ msgid ""
 "             spammers."
 msgstr ""
 "Das Einschalten dieser Option bewirkt eine Transformation der Darstellung "
-"von E-Mailadressen auf Mailinglisten-Webseiten (sowohl im Text, als auch in "
+"von E-Mail-Adressen auf Mailinglisten-Webseiten (sowohl im Text, als auch in "
 "den Links). Damit wird Spammern und deren automatisierten Webscannern das "
 "Leben schwerer gemacht. Ansonsten könnten die sich die Adressen einfach so "
 "reinschnorcheln."
@@ -6933,7 +6945,7 @@ msgstr ""
 " <a href=\"?VARHELP=privacy/sender/generic_nonmember_action\">generellen "
 "Filterregeln für Nichmitglieder</a>. \n"
 "\n"
-"<p>Fügen Sie eine E-Mailadresse pro Zeile hinzu.\n"
+"<p>Fügen Sie eine E-Mail-Adresse pro Zeile hinzu.\n"
 "Beginnen Sie mit einem ^, um\n"
 " <a href=\"http://docs.python.org/library/re.html\">reguläre\n"
 " Ausdrücke(RegExp)</a> einzuleiten. Geben Sie einen Backslash so an, wie in\n"
@@ -7063,7 +7075,7 @@ msgid ""
 "             addresses will be accepted for this list."
 msgstr ""
 "Nachrichten von jedem dieser Nichtmitglieder werden automatisch und ohne\n"
-"weitere Moderation akzeptiert. Fügen Sie eine E-Mailadresse pro Zeile "
+"weitere Moderation akzeptiert. Fügen Sie eine E-Mail-Adresse pro Zeile "
 "hinzu.\n"
 "Beginnen Sie mit einem ^, um reguläre Ausdrücke einzuleiten.\n"
 "Eine Zeile, die mit einem @ und einem anderen Mailinglistennamen beginnt "
@@ -7091,7 +7103,7 @@ msgstr ""
 "Nachrichten von jedem dieser Nichtmitglieder werden automatisch "
 "zurückgehalten zur Moderation durch den Listenmoderator. Der Absender erhält "
 "eine Benachrichtigung, die es ihm erlaubt, die zurückgehaltene "
-"Veröffentlichung zu löschen. Fügen Sie eine E-Mailadresse pro Zeile hinzu.\n"
+"Veröffentlichung zu löschen. Fügen Sie eine E-Mail-Adresse pro Zeile hinzu.\n"
 "Beginnen Sie mit einem ^, um reguläre Ausdrücke einzuleiten."
 
 #: Mailman/Gui/Privacy.py:268
@@ -7122,7 +7134,7 @@ msgstr ""
 "Zurückweisung an den Absender zurückgeschickt. Diese Option ist nicht "
 "geeignet für Spam-Versender - deren deren Nachrichten sollten Sie <a href=\"?"
 "VARHELP=privacy/sender/discard_these_nonmembers\" >automatisch verwerfen "
-"lassen</a>. <p>Fügen Sie eine E-Mailadresse pro Zeile hinzu.\n"
+"lassen</a>. <p>Fügen Sie eine E-Mail-Adresse pro Zeile hinzu.\n"
 "Beginnen Sie mit einem ^, um reguläre Ausdrücke einzuleiten."
 
 #: Mailman/Gui/Privacy.py:283
@@ -7153,7 +7165,7 @@ msgstr ""
 "Absender erhält keinerlei Information, jedoch kann der Listenmoderator\n"
 "optionalerweise <a href=\"?VARHELP=privacy/sender/forward_auto_discards\">\n"
 "Kopien von automatisch verworfenen Nachrichten</a> beziehen. <p>Fügen Sie "
-"eine E-Mailadresse pro Zeile hinzu.\n"
+"eine E-Mail-Adresse pro Zeile hinzu.\n"
 "Beginnen Sie mit einem ^, um reguläre Ausdrücke einzuleiten."
 
 #: Mailman/Gui/Privacy.py:298
@@ -7228,7 +7240,7 @@ msgid ""
 "Must posts have list named in destination (to, cc) field\n"
 "             (or be among the acceptable alias names, specified below)?"
 msgstr ""
-"Nachrichten an die Liste müssen exakt an die Listen-Mailadresse (oder an "
+"Nachrichten an die Liste müssen exakt an die Listen-Mail-Adresse (oder an "
 "einen der unten einstellbaren Aliasnamen) adressiert sein ('To:', 'Cc'). "
 
 # Mailman/Gui/Privacy.py:151
@@ -7254,13 +7266,13 @@ msgid ""
 msgstr ""
 "Viele (fast alle) SPAM-Mails adressieren die myriaden Empfänger \n"
 "nicht einzeln im Mailheader, sonden enthalten im 'To:'-Feld eine \n"
-"beliebige E-Mailadresse als Platzhalter. Wenn Sie nur Mails durchlassen, "
+"beliebige E-Mail-Adresse als Platzhalter. Wenn Sie nur Mails durchlassen, "
 "die \n"
 "explizit an die Listenadresse gerichtet sind, können Sie eine Menge SPAM "
 "ausfiltern. \n"
 "<p> Allerdings akzeptiert Mailman dann ggf. keine Mails mehr, die "
 "automatisch an die Liste \n"
-"weitergeleitetet werden. Sie können weitere E-Mailadressen der Liste im "
+"weitergeleitetet werden. Sie können weitere E-Mail-Adressen der Liste im "
 "nächsten \n"
 "Konfigurations-Feld als \"Aliase\" definieren."
 
@@ -7270,7 +7282,7 @@ msgid ""
 "Alias names (regexps) which qualify as explicit to or cc\n"
 "             destination names for this list."
 msgstr ""
-"Weitere E-Mailadressen (\"Aliase\") der Liste, die Mailman akzeptieren soll "
+"Weitere E-Mail-Adressen (\"Aliase\") der Liste, die Mailman akzeptieren soll "
 "(reguläre Ausdrücke)."
 
 # Mailman/Gui/Privacy.py:172
@@ -7477,7 +7489,7 @@ msgid ""
 "\">topics_bodylines_limit</a>\n"
 "             configuration variable."
 msgstr ""
-"Der Themenfilter kategorisiert jede eingehende E-Mailnachricht gemäss <a "
+"Der Themenfilter kategorisiert jede eingehende E-Mail-Nachricht gemäss <a "
 "href=\"http://docs.python.org/library/re.html\">Filterregeln mit regulären "
 "Ausdrücken</a>, die Sie weiter unten festlegen können. Wenn die "
 "<code>Subject:</code> oder <code>Keywords:</code> Header der Nachricht mit "
@@ -7825,7 +7837,7 @@ msgid ""
 msgstr ""
 "<p>%(note)s\n"
 " <p>Sie haben womöglich absichlich den Mailversand abgeschaltet, oder dies "
-"wurde durch Bounces Ihrer E-Mailadresse ausgelöst. Um die Zustellung von "
+"wurde durch Bounces Ihrer E-Mail-Adresse ausgelöst. Um die Zustellung von "
 "Nachrichten wieder einzuschalten, benutzen Sie die %(link)s Option unten. "
 "Sollten Sie Hilfe benötigen oder Fragen haben, setzen Sie sich bitte mit %"
 "(mailto)s in Verbindung."
@@ -7841,10 +7853,10 @@ msgid ""
 "            this address.  Your bounce score will be automatically reset if\n"
 "            the problems are corrected soon."
 msgstr ""
-"<p>Wir haben mehrere Bounces von Ihrer E-Mailadresse bekommen, d.h.\n"
+"<p>Wir haben mehrere Bounces von Ihrer E-Mail-Adresse bekommen, d.h.\n"
 "Mails an Ihre Adresse waren mehrmals unzustellbar. Ihr aktueller\n"
 "<em>Bounce-Wert</em> ist %(score)s von %(total)s.\n"
-"Bitte prüfen Sie, ob die eingetragene E-Mailadresse wirklich korrekt ist "
+"Bitte prüfen Sie, ob die eingetragene E-Mail-Adresse wirklich korrekt ist "
 "und\n"
 "es keine Zustellprobleme (z.B. überfüllte Postfächer o.ä.) gibt.\n"
 "Der Bounce-Wert wird automatisch auf Null zurückgesetzt, wenn die Probleme\n"
@@ -7866,7 +7878,7 @@ msgid ""
 "You will be sent email requesting confirmation, to\n"
 "            prevent others from gratuitously subscribing you."
 msgstr ""
-"In Kürze erhalten Sie eine Bestätigungs-e-Mail, um sicherzustellen, dass es "
+"In Kürze erhalten Sie eine Bestätigungs-E-Mail, um sicherzustellen, dass es "
 "wirklich Sie sind, der abonnieren möchte."
 
 # Mailman/HTMLFormatter.py:164
@@ -7895,7 +7907,7 @@ msgid ""
 "            by the list moderator.  You will be notified of the moderator's\n"
 "            decision by email."
 msgstr ""
-"In Kürze erhalten Sie eine Bestätigungs-e-Mail, um sicherzustellen, dass es "
+"In Kürze erhalten Sie eine Bestätigungs-E-Mail, um sicherzustellen, dass es "
 "wirklich Sie sind, der abonnieren möchte. Nach Eingang Ihrer Bestätigung "
 "wird diese dem Moderator der Liste zur Zulassung - oder Ablehnung - "
 "vorgelegt. Sie erhalten die Entscheidung des Moderators per E-Mail."
@@ -7965,12 +7977,12 @@ msgstr ""
 "<b>Sie können hier den Bezug der Liste kündigen</b>, ihre eingetragene "
 "Mailadresse und andere \n"
 "Einstellungen ändern und sich das Kennwort zusenden lassen, wenn Sie es "
-"vergessen haben. Geben Sie dazu %(either)s Ihre E-Mailadresse an.<br><br>\n"
+"vergessen haben. Geben Sie dazu %(either)s Ihre E-Mail-Adresse an.<br><br>\n"
 "<B>Wichtig:</B> Geben Sie genau die Adresse an, mit der Sie in der Liste "
 "eingetragen sind!\n"
 "Sie erhalten monatlich eine Infomail, in der diese Adresse auch explizit "
 "genannt ist. Achten Sie \n"
-"darauf, wenn Sie mehrere E-Mailadressen haben und diese ggf. an andere "
+"darauf, wenn Sie mehrere E-Mail-Adressen haben und diese ggf. an andere "
 "Adressen weiterleiten lassen!\n"
 "<br><center> "
 
@@ -7994,7 +8006,7 @@ msgid ""
 " If you leave the field blank, you will be prompted for\n"
 "        your email address"
 msgstr ""
-"Wenn Sie dieses Feld leer lassen, werden Sie nach Ihrer E-Mailadresse "
+"Wenn Sie dieses Feld leer lassen, werden Sie nach Ihrer E-Mail-Adresse "
 "gefragt."
 
 # Mailman/HTMLFormatter.py:244
@@ -8035,12 +8047,12 @@ msgstr "Mitglieder"
 # Mailman/HTMLFormatter.py:265
 #: Mailman/HTMLFormatter.py:294
 msgid "Address:"
-msgstr "E-Mailadresse:"
+msgstr "E-Mail-Adresse:"
 
 # Mailman/HTMLFormatter.py:268
 #: Mailman/HTMLFormatter.py:297
 msgid "Admin address:"
-msgstr "E-Mailadresse des Administrators:"
+msgstr "E-Mail-Adresse des Administrators:"
 
 # Mailman/HTMLFormatter.py:270
 #: Mailman/HTMLFormatter.py:300
@@ -8090,6 +8102,10 @@ msgid ""
 "Approved: password line, but due to the way it is coded in the\n"
 "HTML it can't be safely removed.\n"
 msgstr ""
+"Nachricht zurückgewiesen.\n"
+"Es sieht danach aus, dass diese Nachricht einen HTML-Teil mit der\n"
+"Approved: Passwort Zeile enthält. Diese ist so im HTML engebettet,\n"
+"dass sie nicht korrekt entfernt werden kann.\n"
 
 #: Mailman/Handlers/CalcRecips.py:78
 msgid ""
@@ -8310,7 +8326,7 @@ msgid ""
 msgstr ""
 "Es ist Ihnen nicht gestattet, Nachrichten auf dieser Mailingliste zu\n"
 "veröffentlichen, vielleicht, weil Sie nicht Mitglied der Liste sind oder "
-"unter einer anderen, nicht eingetragenenen E-Mailadresse geschrieben haben. "
+"unter einer anderen, nicht eingetragenenen E-Mail-Adresse geschrieben haben. "
 "Ihre E-Mail wurden deshalb automatisch abgewiesen. Sollten Sie der Meinung "
 "sein, dass dies auf einem Fehler beruht, setzen\n"
 "Sie sich bitte mit dem Eigentümer der Mailingliste, %(listowner)s, in\n"
@@ -8693,7 +8709,7 @@ msgid ""
 "\n"
 msgstr ""
 "Die angehängte Nachricht kam als unzustellbar an die Liste zurück. Leider "
-"wurde entweder das Bounce-Format nicht erkannt, oder keine E-Mailadresse "
+"wurde entweder das Bounce-Format nicht erkannt, oder keine E-Mail-Adresse "
 "eines Mailinglistenmitglieds konnte extrahiert werden.\n"
 "Da diese Mailingliste so konfiguriert wurde, dass Sie Kopien von unerkannten "
 "Bounces erhalten möchten, kriegen Sie den Bounce zur Ansicht zugesandt.\n"
@@ -8763,11 +8779,11 @@ msgstr "Das Ergebnis Ihres E-Mail-Kommandos"
 
 #: Mailman/Queue/CommandRunner.py:215
 msgid "Message body suppressed by Mailman site configuration\n"
-msgstr ""
+msgstr "Nachrichteninhalt durch Mailmain Konfiguration unterdrückt\n"
 
 #: Mailman/Queue/CommandRunner.py:217
 msgid "Original message suppressed by Mailman site configuration\n"
-msgstr ""
+msgstr "Original Nachricht durch Mailmain Konfiguration unterdrückt\n"
 
 # Mailman/htmlformat.py:611
 #: Mailman/htmlformat.py:648
@@ -8990,12 +9006,12 @@ msgstr "Ist bereits Mitglied: %(member)s"
 # Mailman/Cgi/admin.py:1232 Mailman/Cgi/admin.py:1235
 #: bin/add_members:143
 msgid "Bad/Invalid email address: blank line"
-msgstr "Ungültige E-Mailaddresse: leere Zeile"
+msgstr "Ungültige E-Mail-Adresse: leere Zeile"
 
 # Mailman/Cgi/admin.py:1232 Mailman/Cgi/admin.py:1235
 #: bin/add_members:145
 msgid "Bad/Invalid email address: %(member)s"
-msgstr "Ungültige E-Mailaddresse: %(member)s"
+msgstr "Ungültige E-Mail-Adresse: %(member)s"
 
 # Mailman/Cgi/admin.py:1238
 #: bin/add_members:147
@@ -9721,12 +9737,12 @@ msgstr "    geklonte Adresse ist bereits Mitglied: "
 # Mailman/Cgi/options.py:267
 #: bin/clone_member:151
 msgid "    original address removed:"
-msgstr "    originale E-Mailadresse wurde entfernt: "
+msgstr "    originale E-Mail-Adresse wurde entfernt: "
 
 # Mailman/Cgi/create.py:170
 #: bin/clone_member:202
 msgid "Not a valid email address: %(toaddr)s"
-msgstr "Ungültige E-Mailadresse: %(toaddr)s"
+msgstr "Ungültige E-Mail-Adresse: %(toaddr)s"
 
 #: bin/clone_member:215
 msgid ""
@@ -9878,7 +9894,7 @@ msgstr "Ungültiger Wert für %(k)s"
 # Mailman/Cgi/admin.py:1169
 #: bin/config_list:288
 msgid "Bad email address for option %(k)s: %(v)s"
-msgstr "Ungültige E-Mailadresse für %(k)s: %(v)s"
+msgstr "Ungültige E-Mail-Adresse für %(k)s: %(v)s"
 
 #: bin/config_list:345
 msgid "Only one of -i or -o is allowed"
@@ -10093,12 +10109,12 @@ msgstr ""
 
 #: bin/export.py:345
 msgid "Unexpected arguments"
-msgstr ""
+msgstr "Unerwartetes Argument"
 
 # Mailman/Cgi/create.py:307
 #: bin/export.py:351
 msgid "Invalid password scheme"
-msgstr ""
+msgstr "Ungültiges Passwort Schema"
 
 #: bin/find_member:19
 msgid ""
@@ -10226,9 +10242,8 @@ msgstr ""
 
 # Mailman/MailCommandHandler.py:444
 #: bin/fix_url.py:75
-#, fuzzy
 msgid "Locking list"
-msgstr "Speichere Liste"
+msgstr "Blockiere Liste"
 
 #: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
@@ -10510,7 +10525,7 @@ msgstr ""
 "\n"
 "    --preserve\n"
 "    -p\n"
-"        Behält die Schreibweise der Mitglieder-E-Mailadressen so bei, wie "
+"        Behält die Schreibweise der Mitglieder-E-Mail-Adressen so bei, wie "
 "sie\n"
 "        eingetragen wurden. Ansonsten werden die Adressen in "
 "Kleinbuchstaben\n"
@@ -10956,14 +10971,13 @@ msgstr ""
 
 #: bin/msgfmt.py:49
 msgid "Add a non-fuzzy translation to the dictionary."
-msgstr ""
+msgstr "Hinzufügen einer deutlichen Übersetzung zum Lexikon."
 
 #: bin/msgfmt.py:57
 msgid "Return the generated output."
 msgstr "Gibt die erzeugte Ausgabe zurück."
 
 #: bin/newlist:20
-#, fuzzy
 msgid ""
 "Create a new, unpopulated mailing list.\n"
 "\n"
@@ -11051,7 +11065,7 @@ msgid ""
 msgstr ""
 "Erzeugt eine neue, leere Mailingliste.\n"
 "\n"
-"Benutzung: %(PROGRAM)s [opt.] [listenname [listadmin-e-Mail [admin-"
+"Benutzung: %(PROGRAM)s [opt.] [listenname [listadmin-E-Mail [admin-"
 "passwd]]]\n"
 "\n"
 "Optionen:\n"
@@ -11075,22 +11089,26 @@ msgstr ""
 "        Mailingliste angelegt wurde. Diese Option unterdrückt diese E-Mail.\n"
 "\n"
 "    -h/--help\n"
-"        Ausgabe dieser Meldung und Schluss.\n"
+"        Ausgabe dieser Meldung und Programm beenden.\n"
 "\n"
 "Auf der Kommandozeile können so viele Argumente angegeben werden, wie Sie\n"
-"wollen. Auf fehlende Parameter werden Sie vom Programm aufmerksam gemacht.\n"
+"wollen. Fehlende Parameter werden vom Programm abgefragt.\n"
 "\n"
 "Jede Mailman-Liste hat zwei Parameter, die den Standard-Hostnamen\n"
-"für ausgehende Mails und die Standard-URL für das Web-Interface\n"
+"für ausgehende E-Mails und die Standard-URL für das Web-Interface\n"
 "festlegen. Mailman kommt zwar mit einer sinnvollen Grundeinstellung daher,\n"
 "wenn Sie aber mehrere virtuelle Mailman-Sites betreiben sollten, kann es\n"
-"durchaus vorkommen, dass die Standardwerte ungenügend sind.\n"
+"durchaus vorkommen, dass die Standardwerte ungenügend sind für die Liste\n"
+"welche Sie erstellen wollen.\n"
 "\n"
 "Die Domäne, die zur Erzeugung neuer Listen benutzt wird, kann wie folgt\n"
 "angegeben werden:\n"
 "\n"
 "    newlist --urlhost=www.mydom.ain mylist\n"
-"wobei `www.mydom.ain` der Hostname der URL dieser Mailingliste sein sollte. "
+"\n"
+"wobei `www.mydom.ain' der Hostname der URL dieser Mailingliste sein sollte. "
+"Mit dieser Einstellung werden die Benutzer via die Allgemeine "
+"Listenübersicht unter http://www.mydom.ain/mailman/listinfo sehen. "
 "Bei virtuellen Mailinglisten muss eine entsprechende Zuordnung im "
 "VIRTUAL_HOST-Mapping in mm_cfg.py/Defaults.py eingetragen sein, wenn der "
 "Mail-Hostname automatisch bestimmt werden soll. Wird keine Zuordnung "
@@ -11101,14 +11119,19 @@ msgstr ""
 "\n"
 "    newlist --urlhost=www.mydom.ain --emailhost=mydom.ain mylist\n"
 "\n"
-"Abwärtskompatibel zu älteren Versionen können Sie auch die Variante\n"
+"wobei `mydom.ain' der Mail-Domäne-Name ist. Wenn Sie emailhost nicht angeben "
+"und urlhost ist nicht in der Liste der virtuellen Host, dann wird "
+"mm_cfg.DEFAULT_EMAIL_HOST für die E-Mail Schnittstelle verwendet\n"
+"\n"
+"Abwärtskompatibel zu älteren Versionen können Sie zum erstellen der neuen "
+"Liste auch folgende Variante verwenden:\n"
 "\n"
 "    mylist@www.mydom.ain\n"
 "\n"
-"nutzen, wobei `www.mydom.ain' wieder der URL-Hostname sein sollte. der Basis-"
+"wobei `www.mydom.ain' wieder der URL-Hostname sein sollte. der Basis-"
 "Hostname der virtuellen Hosts sein sollte.\n"
 "\n"
-"Werden beie Varianten parallel genutzt, so haben die Angaben von --urlhost "
+"Werden beide Varianten parallel genutzt, so haben die Angaben von --urlhost "
 "und --emailhost Vorrang.\n"
 "\n"
 "Bei Angabe eines einfachen Listennamens (`mylist'), wird der E-Mail-"
@@ -11128,7 +11151,7 @@ msgstr "Name der Mailingliste: "
 
 #: bin/newlist:176
 msgid "Enter the email of the person running the list: "
-msgstr "E-Mailadresse des Listenverwalters: "
+msgstr "E-Mail-Adresse des Listenverwalters: "
 
 # Mailman/Cgi/create.py:307
 #: bin/newlist:181
@@ -11378,7 +11401,7 @@ msgstr ""
 "\n"
 "    --fromall\n"
 "       Entfernt die Adresse von allen Mailinglisten des Servers, unabhängig\n"
-"       von eventuellen virtuellen Domains. Diese Option kann nicht zusammen\n"
+"       von eventuellen virtuellen Domänen. Diese Option kann nicht zusammen\n"
 "       mit  -a/--all benutzt werden. Außerdem sollten Sie bei dieser Option\n"
 "       keinen Listennamen angeben...\n"
 "\n"
@@ -11526,9 +11549,8 @@ msgstr "liegengebliebene Lock-Datei"
 
 # Mailman/Cgi/confirm.py:547
 #: bin/rmlist:141
-#, fuzzy
 msgid "held message file"
-msgstr "alle zurückgehaltene Nachrichten"
+msgstr "Datei der zurückgehaltenen Nachrichten"
 
 # Mailman/Cgi/private.py:62
 #: bin/rmlist:146 bin/rmlist:148
@@ -11686,7 +11708,7 @@ msgstr ""
 "    -f <dateiname | ->\n"
 "        Diese Angabe ist erforderlich. Sie spezifiziert die "
 "Synchronisations\n"
-"        datei.  Pro Zeile darf eine E-Mailadresse drin stehen. Ist statt "
+"        datei.  Pro Zeile darf eine E-Mail-Adresse drin stehen. Ist statt "
 "des\n"
 "        Dateinames ein `-' angegeben, wird stdin benutzt.\n"
 "\n"
@@ -12567,9 +12589,8 @@ msgstr "Noch offene Abonnementanträge:"
 
 # Mailman/Cgi/admin.py:707
 #: cron/checkdbs:155
-#, fuzzy
 msgid "Pending unsubscriptions:"
-msgstr "Noch offene Abonnementanträge:"
+msgstr "Noch offene Abmeldeanträge:"
 
 #: cron/checkdbs:162
 msgid ""
