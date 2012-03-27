@@ -1,4 +1,4 @@
-# Copyright (C) 2000-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2000-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -89,6 +89,7 @@ class OutgoingRunner(Runner, BounceMixin):
                 syslog('error', 'Cannot connect to SMTP server %s on port %s',
                        mm_cfg.SMTPHOST, port)
                 self.__logged = True
+            self._snooze(0)
             return True
         except Errors.SomeRecipientsFailed, e:
             # Handle local rejects of probe messages differently.

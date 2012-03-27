@@ -98,6 +98,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a possible CPU bound loop in OutgoingRunner if the attempt to
+      Connect to the SMTP server throws a socket.error.  (LP: #966531)
+
     - Fixed a potential crash in the web UI if a language is removed from the
       LC_DESCRIPTIONS dictionary.  (LP: #966565)
 
