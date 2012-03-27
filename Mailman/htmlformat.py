@@ -300,7 +300,7 @@ class Document(Container):
 
     def Format(self, indent=0, **kws):
         charset = 'us-ascii'
-        if self.language:
+        if self.language and Utils.IsLanguage(self.language):
             charset = Utils.GetCharSet(self.language)
         output = ['Content-Type: text/html; charset=%s\n' % charset]
         if not self.suppress_head:

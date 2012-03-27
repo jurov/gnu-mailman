@@ -98,6 +98,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a potential crash in the web UI if a language is removed from the
+      LC_DESCRIPTIONS dictionary.  (LP: #966565)
+
     - Added an Auto-Submitted: header to invitations and (un)subscription
       confirmation requests to reduce the possibility of an autoresponder
       confirming the request.  (LP: #265831)
