@@ -339,6 +339,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.umbrella_member_suffix = \
                 mm_cfg.DEFAULT_UMBRELLA_MEMBER_ADMIN_SUFFIX
         self.regular_exclude_lists = mm_cfg.DEFAULT_REGULAR_EXCLUDE_LISTS
+        self.regular_exclude_ignore = mm_cfg.DEFAULT_REGULAR_EXCLUDE_IGNORE
         self.regular_include_lists = mm_cfg.DEFAULT_REGULAR_INCLUDE_LISTS
         self.send_reminders = mm_cfg.DEFAULT_SEND_REMINDERS
         self.send_welcome_msg = mm_cfg.DEFAULT_SEND_WELCOME_MSG
