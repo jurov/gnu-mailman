@@ -98,6 +98,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug that could send an admin notice of a held subscription with
+      the subject in the user's preferred language instead of the list's
+      preferred language and possibly not properly RFC 2047 encoded.
+      (LP: #998949)
+
     - Fixed a possible CPU bound loop in OutgoingRunner if the attempt to
       Connect to the SMTP server throws a socket.error.  (LP: #966531)
 
