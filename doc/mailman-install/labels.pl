@@ -39,7 +39,7 @@ $external_labels{$key} = "$URL/" . q|node39.html|;
 $noresave{$key} = "$nosave";
 
 $key = q/building/;
-$external_labels{$key} = "$URL/" . q|node46.html|; 
+$external_labels{$key} = "$URL/" . q|node6.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/about/;
@@ -94,7 +94,7 @@ $external_latex_labels{$key} = q|7|;
 $noresave{$key} = "$nosave";
 
 $key = q/building/;
-$external_latex_labels{$key} = q|14|; 
+$external_latex_labels{$key} = q|3|; 
 $noresave{$key} = "$nosave";
 
 $key = q/postfix-virtual/;

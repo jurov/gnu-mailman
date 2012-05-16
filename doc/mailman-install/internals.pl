@@ -39,7 +39,7 @@ $ref_files{$key} = "$dir".q|node39.html|;
 $noresave{$key} = "$nosave";
 
 $key = q/building/;
-$ref_files{$key} = "$dir".q|node46.html|; 
+$ref_files{$key} = "$dir".q|node6.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/about/;

@@ -12,7 +12,7 @@ GNU Mailman - Installation Manual
    barry (at) list dot org
 
    Release 2.1
-   September 9, 2010
+   May 15, 2012
 
                                  Front Matter
 
@@ -448,6 +448,13 @@ GNU Mailman - Installation Manual
 
   6.1.2 Virtual domains
 
+   Note: This section describes how to integrate Mailman with Postfix for
+   automatic generation of Postfix virtual_alias_maps for Mailman list
+   addresses. Mailman's support of virtual domains is limited in that
+   list names must be globally unique within a single Mailman instance,
+   i.e., two lists may not have the same name even if they are in
+   different domains.
+
    Postfix 2.0 supports ``virtual alias domains'', essentially what used
    to be called ``Postfix-style virtual domains'' in earlier Postfix
    versions. To make virtual alias domains work with Mailman, you need to
@@ -459,10 +466,12 @@ GNU Mailman - Installation Manual
    First, you need to set up the Postfix virtual alias domains as
    described in the Postfix documentation (see Postfix's virtual(5)
    manpage). Note that it's your responsibility to include the
-   virtual-alias.domain anything line as described manpage; Mailman will
-   not include this line in virtual-mailman. You are highly encouraged to
-   make sure your virtual alias domains are working properly before
-   integrating with Mailman.
+   virtual-alias.domain anything line as described manpage (in recent
+   Postfix this is not required if the domain is included in
+   virtual_alias_domains in main.cf); Mailman will not include this line
+   in virtual-mailman. You are highly encouraged to make sure your
+   virtual alias domains are working properly before integrating with
+   Mailman.
 
    Next, add a path to Postfix's virtual_alias_maps variable, pointing to
    the virtual-mailman file, e.g.:
@@ -541,8 +550,10 @@ GNU Mailman - Installation Manual
 
    Note: This section is derived from Nigel Metheringham's ``HOWTO -
    Using Exim and Mailman together'', which covers Mailman 2.0.x and Exim
-   3. It has been updated to cover Mailman 2.1 and Exim 4. The original
-   document is here: http://www.exim.org/howto/mailman.html.
+   3. It has been updated to cover Mailman 2.1 and Exim 4. The updated
+   document is here: http://www.exim.org/howto/mailman21.html and is
+   recommended over the information in the subsections below if you are
+   using Exim 4.
 
    There is no Mailman configuration needed other than the standard
    options detailed in the Mailman install documentation. The Exim
@@ -1107,7 +1118,7 @@ fi
    Mailman installation by if you change these.
 
    You should make any changes to mm_cfg.py using the account you
-   installed Mailman under in the 14 section.
+   installed Mailman under in the 3 section.
 
                        8 Create a site-wide mailing list
 
@@ -1326,7 +1337,7 @@ fi
        If you see a line like
             Attempt to exec script with invalid gid 51, expected 99
        you will need to reinstall Mailman, specifying the proper CGI
-       group id, as described in the section.
+       group id, as described in the 3 section.
      * Problem: I send mail to the list, and get back mail saying the
        list is not found!
        Solution: You probably didn't add the necessary aliases to the
@@ -1342,7 +1353,7 @@ fi
        files; if you see a line like
             Attempt to exec script with invalid gid 51, expected 99
        you will need to reinstall Mailman, specifying the proper mail
-       group id as described in the section.
+       group id as described in the 3 section.
      * Problem: I use Postfix as my mail server and the mail wrapper
        programs are logging complaints about the wrong GID.
        Solution: Make sure the $prefix/data/aliases.db file is user owned
@@ -1538,7 +1549,7 @@ tar xvf MailmanStartup.tar
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, September 9, 2010, Release 2.1
+   GNU Mailman - Installation Manual, May 15, 2012, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1593,4 +1604,4 @@ tar xvf MailmanStartup.tar
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
      _________________________________________________________________
 
-   Release 2.1, documentation updated on September 9, 2010.
+   Release 2.1, documentation updated on May 15, 2012.
