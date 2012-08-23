@@ -1436,10 +1436,12 @@ def change_options(mlist, category, subcat, cgidata, doc):
         removals += cgidata['unsubscribees_upload'].value
     if removals:
         names = filter(None, [n.strip() for n in removals.splitlines()])
-        send_unsub_notifications = int(
-            cgidata['send_unsub_notifications_to_list_owner'].value)
-        userack = int(
-            cgidata['send_unsub_ack_to_this_batch'].value)
+        send_unsub_notifications = safeint(
+            'send_unsub_notifications_to_list_owner',
+            mlist.admin_notify_mchanges)
+        userack = safeint(
+            'send_unsub_ack_to_this_batch',
+            mlist.send_goodbye_msg)
         unsubscribe_errors = []
         unsubscribe_success = []
         for addr in names:
@@ -1463,11 +1465,7 @@ def change_options(mlist, category, subcat, cgidata, doc):
             doc.AddItem('<p>')
     # See if this was a moderation bit operation
     if cgidata.has_key('allmodbit_btn'):
-        val = cgidata.getvalue('allmodbit_val')
-        try:
-            val = int(val)
-        except VallueError:
-            val = None
+        val = safeint('allmodbit_val')
         if val not in (0, 1):
             doc.addError(_('Bad moderation flag value'))
         else:

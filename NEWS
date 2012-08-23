@@ -5,9 +5,13 @@ Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.15-1 (xx-xxx-xxxx)
+2.1.16 (xx-xxx-xxxx)
 
   Bug Fixes and other patches
+
+    - The query fragments send_unsub_notifications_to_list_owner and
+      send_unsub_ack_to_this_batch will now assume default values if not set
+      in mass unsubscribe URLs.  (LP: #1032378)
 
     - Replaced utf-8 encoded characters in newly added German templates with
       HTML entities. (LP: #1018208)
