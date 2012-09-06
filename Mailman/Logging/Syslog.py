@@ -62,6 +62,10 @@ class _Syslog:
             logf.write(msg + '\n')
         except UnicodeError:
             # Python 2.4 may fail to write 8bit (non-ascii) characters
+            # Also, if msg is unicode with non-ascii, quopri.encodestring()
+            # will throw UnicodeEncodeError, so avoid that.
+            if isinstance(msg, unicode):
+                msg = msg.encode('iso-8859-1', 'replace')
             logf.write(quopri.encodestring(msg) + '\n')
 
     # For the ultimate in convenience
