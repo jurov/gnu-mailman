@@ -165,6 +165,13 @@ class IncomingRunner(Runner):
                 # longer needs to be queued.
                 return 0
             except Errors.RejectMessage, e:
+                # Log this.
+                syslog('vette', """Message rejected, msgid: %s
+        list: %s,
+        handler: %s,
+        reason: %s""",
+                       msg.get('message-id', 'n/a'),
+                       mlist.real_name, handler, e.notice())
                 mlist.BounceMessage(msg, msgdata, e)
                 return 0
             except:
