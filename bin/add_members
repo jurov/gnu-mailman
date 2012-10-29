@@ -52,6 +52,10 @@ Options:
         the success/failure of these subscriptions, overriding whatever the
         list's `admin_notify_mchanges' setting is.
 
+    --nomail
+    -n
+        Set the newly added members mail delivery to disabled by admin.
+
     --help
     -h
         Print this help message and exit.
@@ -73,12 +77,13 @@ import paths
 # Import this /after/ paths so that the sys.path is properly hacked
 from email.Utils import parseaddr
 
-from Mailman import MailList
-from Mailman import Utils
-from Mailman import Message
-from Mailman import Errors
-from Mailman import mm_cfg
 from Mailman import i18n
+from Mailman import Utils
+from Mailman import mm_cfg
+from Mailman import Errors
+from Mailman import Message
+from Mailman import MailList
+from Mailman import MemberAdaptor
 
 _ = i18n._
 
@@ -124,7 +129,7 @@ class UserDesc: pass
 
 
 
-def addall(mlist, members, digest, ack, outfp):
+def addall(mlist, members, digest, ack, outfp, nomail):
     tee = Tee(outfp)
     for member in members:
         userdesc = UserDesc()
@@ -147,18 +152,20 @@ def addall(mlist, members, digest, ack, outfp):
             print >> tee, _('Hostile address (illegal characters): %(member)s')
         else:
             print >> tee, _('Subscribed: %(member)s')
+            if nomail:
+                mlist.setDeliveryStatus(member, MemberAdaptor.BYADMIN)
 
 
 
 def main():
     try:
         opts, args = getopt.getopt(sys.argv[1:],
-                                   'a:n:r:d:w:h',
+                                   'a:r:d:w:nh',
                                    ['admin-notify=',
                                     'regular-members-file=',
-                                    'non-digest-members-file=',
                                     'digest-members-file=',
                                     'welcome-msg=',
+                                    'nomail',
                                     'help'])
     except getopt.error, msg:
         usage(1, msg)
@@ -171,20 +178,14 @@ def main():
     dfile = None
     send_welcome_msg = None
     admin_notif = None
+    nomail = False
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             usage(0)
         elif opt in ('-d', '--digest-members-file'):
             dfile = arg
-        # Deprecate -/--non-digest-members-file or consistency with
-        # list_members
         elif opt in ('-r', '--regular-members-file'):
             nfile = arg
-        elif opt in ('-n', '--non-digest-members-file'):
-            nfile = arg
-            # I don't think we need to use the warnings module here.
-            print >> sys.stderr, 'option', opt, \
-                  'is deprecated, use -r/--regular-members-file'
         elif opt in ('-w', '--welcome-msg'):
             if arg.lower()[0] == 'y':
                 send_welcome_msg = 1
@@ -199,6 +200,8 @@ def main():
                 admin_notif = 0
             else:
                 usage(1, _('Bad argument to -a/--admin-notify: %(arg)s'))
+        elif opt in ('-n', '--nomail'):
+            nomail = True
 
     if dfile is None and nfile is None:
         usage(1)
@@ -235,10 +238,10 @@ def main():
         s = StringIO()
         i18n.set_language(mlist.preferred_language)
         if nmembers:
-            addall(mlist, nmembers, 0, send_welcome_msg, s)
+            addall(mlist, nmembers, 0, send_welcome_msg, s, nomail)
 
         if dmembers:
-            addall(mlist, dmembers, 1, send_welcome_msg, s)
+            addall(mlist, dmembers, 1, send_welcome_msg, s, nomail)
 
         if admin_notif:
             realname = mlist.real_name
