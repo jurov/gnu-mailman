@@ -2,16 +2,16 @@
 # Deutsche Übersetzung der Mailman messages
 #
 # Jens Vagelpohl <jens@zope.com>,
-# Dieter Kirchner <dkirchner@bupnet.de> und
-#
-# Holger Jahn <holja@t-online.de>, 2001-2002 und.
-# Peer Heinlein <p.heinlein@heinlein-support.de.de>, 2003, 2004, 2005, 2006, 2008.
+# Dieter Kirchner <dkirchner@bupnet.de>,
+# Holger Jahn <holja@t-online.de>, 2001-2002,
+# Peer Heinlein <p.heinlein@heinlein-support.de.de>, 2003, 2004, 2005, 2006, 2008 und
+# Ralf Hildebrandt <ralf.hildebrandt@charite.de>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Sun Mar 25 16:40:47 2012\n"
-"PO-Revision-Date: 2008-06-23 22:21+0200\n"
-"Last-Translator: Peer Heinlein <p.heinlein@heinlein-support.de>\n"
+"PO-Revision-Date: 2012-10-26 11:21+0200\n"
+"Last-Translator: Ralf Hildebrandt <ralf.hildebrandt@charite.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -173,7 +173,7 @@ msgstr "Berechne verketteten Index\n"
 # Mailman/Archiver/pipermail.py:414
 #: Mailman/Archiver/HyperArch.py:1315
 msgid "Updating HTML for article %(seq)s"
-msgstr "Akutalisiere HTML für Artikel %(seq)s"
+msgstr "Aktualisiere HTML für Artikel %(seq)s"
 
 #: Mailman/Archiver/HyperArch.py:1322
 msgid "article file %(filename)s is missing!"
@@ -634,7 +634,7 @@ msgstr "Spam-Filter Regexp:"
 #: Mailman/Cgi/admindb.py:386 Mailman/Cgi/admindb.py:431
 #: Mailman/Cgi/admindb.py:671
 msgid "Defer"
-msgstr "Verschieben"
+msgstr "Enscheidung aufschieben"
 
 # Mailman/Cgi/admindb.py:182 Mailman/Cgi/admindb.py:280
 #: Mailman/Cgi/admin.py:793 Mailman/Cgi/admindb.py:329
@@ -749,7 +749,7 @@ msgstr "Mitglieder-Adresse<br>Mitgliedsname"
 # Mailman/Cgi/admin.py:816
 #: Mailman/Cgi/admin.py:992
 msgid "hide"
-msgstr "Verstecken"
+msgstr "verstecken"
 
 # Mailman/Bouncer.py:168
 #: Mailman/Cgi/admin.py:992
@@ -816,7 +816,7 @@ msgid ""
 "        set, postings from them will be moderated, otherwise they will be\n"
 "        approved."
 msgstr ""
-"<b>mod</b> -- Die Moderationeinstellung fÃ¼r dieses Mitglied. Wenn diese\n"
+"<b>moderiert</b> -- Die Moderationeinstellung f&uuml;r dieses Mitglied. Wenn diese\n"
 "        Einstellung gesetzt ist, werden alle Nachrichten dieses Benutzers\n"
 "        moderiert, ansonsten werden sie sofort verteilt."
 
@@ -826,7 +826,7 @@ msgid ""
 "<b>hide</b> -- Is the member's address concealed on\n"
 "        the list of subscribers?"
 msgstr ""
-"<b>Verstecken</b> -- Ist diese Mitgliedsaddresse auf der\n"
+"<b>verstecken</b> -- Ist diese Mitgliedsaddresse auf der\n"
 "        Abonnentenliste unsichtbar?"
 
 #: Mailman/Cgi/admin.py:1091
@@ -847,14 +847,14 @@ msgid ""
 "                    in older versions of Mailman.\n"
 "            </ul>"
 msgstr ""
-"<b>nomail</b> -- Ist die Auslieferung von Mails an diesen User deaktiviert? "
+"<b>keine Nachricht</b> -- Ist die Auslieferung von Mails an diesen User deaktiviert? "
 "Wenn ja, wird\n"
 "        Ihnen ein Kürzel den Grund dafür angeben:\n"
 "            <ul><li><b>U</b> -- Die Zustellung wurde durch den User selbst "
 "deaktiviert.\n"
 "                <li><b>A</b> -- Die Zustellung wurde durch den Listen-"
 "Administrator deaktiviert.\n"
-"                <li><b>B</b> -- Die Zustellung wurde von Mailman deaktivert, "
+"                <li><b>B</b> -- Die Zustellung wurde von Mailman deaktiviert, "
 "da E-Mails an diese Adresse mehrfach unzustellbar waren.\n"
 "                <li><b>?</b> -- Der Grund für die Deaktivierung ist nicht "
 "bekannt (i.d.R. erfolgte die Deaktivierung in einer älteren Mailman-"
@@ -885,8 +885,8 @@ msgid ""
 "<b>nodupes</b> -- Does the member want to avoid duplicates of the\n"
 "        same message?"
 msgstr ""
-"<b>Keine eigenen</b> -- Möchte dieses Mitglied keine Mitteilungen\n"
-"        erhalten, die von Ihm selber gesendet wurden?"
+"<b>Keine Duplikate</b> -- Möchte dieses Mitglied keine Mitteilungen\n"
+"        erhalten, die Ihm direkt und &uml;ber die Liste gesendet wurden?"
 
 # Mailman/Cgi/admin.py:892
 #: Mailman/Cgi/admin.py:1115
@@ -1298,7 +1298,7 @@ msgstr "Alle Daten senden"
 
 #: Mailman/Cgi/admindb.py:218 Mailman/Cgi/admindb.py:266
 msgid "Discard all messages marked <em>Defer</em>"
-msgstr "Alle mit <em>Verschieben</em> markierten Nachrichten verwerfen."
+msgstr "Alle mit <em>Entscheidung aufschieben</em> markierten Nachrichten verwerfen."
 
 #: Mailman/Cgi/admindb.py:232
 msgid "all of %(esender)s's held messages."
@@ -4268,7 +4268,7 @@ msgstr "Spanisch (Spanien)"
 
 #: Mailman/Defaults.py:1490
 msgid "Estonian"
-msgstr "Estonian"
+msgstr "Estnisch"
 
 #: Mailman/Defaults.py:1491
 msgid "Euskara"
@@ -4326,7 +4326,7 @@ msgstr "Koreanisch"
 
 #: Mailman/Defaults.py:1503
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr "Litauisch"
 
 #: Mailman/Defaults.py:1504
 msgid "Dutch"
@@ -4339,15 +4339,15 @@ msgstr "Norwegisch"
 
 #: Mailman/Defaults.py:1506
 msgid "Polish"
-msgstr "Polish"
+msgstr "Polnisch"
 
 #: Mailman/Defaults.py:1507
 msgid "Portuguese"
-msgstr "Portuguese"
+msgstr "Portugiesisch"
 
 #: Mailman/Defaults.py:1508
 msgid "Portuguese (Brazil)"
-msgstr "Portuguese (Brazil)"
+msgstr "Brasilianisches Portugiesisch"
 
 #: Mailman/Defaults.py:1509
 msgid "Romanian"
@@ -6561,7 +6561,7 @@ msgid ""
 "             list addresses appear in a To: or Cc: header."
 msgstr ""
 "Andere Mailinglisten auf diesem Server, dessen Mitglieder\n"
-"             aus dem regulären (non-digesst) Zustellung ausgeschlossen\n"
+"             aus der regulären (non-digest) Zustellung ausgeschlossen\n"
 "             sind, wenn diese Adressen in To: oder Cc: Zeilen vorhanden\n"
 "             sind.\n"
 
