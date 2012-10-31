@@ -88,7 +88,8 @@ def main():
 
     # CSRF check
     safe_params = ['VARHELP', 'adminpw', 'admlogin',
-                   'letter', 'chunk', 'findmember']
+                   'letter', 'chunk', 'findmember',
+                   'legend']
     params = cgidata.keys()
     if set(params) - set(safe_params):
         csrf_checked = csrf_check(mlist, cgidata.getvalue('csrf_token'))
