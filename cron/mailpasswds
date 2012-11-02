@@ -226,6 +226,8 @@ def main():
             finally:
                 i18n.set_translation(otrans)
             msg['X-No-Archive'] = 'yes'
+            del msg['auto-submitted']
+            msg['Auto-Submitted'] = 'auto-generated'
             # We want to make this look like it's coming from the siteowner's
             # list, but we also want to be sure that the apparent host name is
             # the current virtual host.  Look in CookHeaders.py for why this
