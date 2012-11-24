@@ -844,6 +844,12 @@ BAD_SHUNT_ARCHIVE_DIRECTORY = None
 # affects both message pickles and MailList config.pck files.
 SYNC_AFTER_WRITE = No
 
+# This is the name used for the mailmanctl master lock file. In a clustered
+# load sharing environment with a shared 'locks' directory, it is desirable
+# to have separate locks for each host mailmanctl. This can be used to enable
+# that.
+MASTER_LOCK_FILE = 'master-qrunner'
+
 
 
 #####
