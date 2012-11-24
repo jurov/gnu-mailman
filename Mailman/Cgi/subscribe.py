@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,6 +20,7 @@
 import sys
 import os
 import cgi
+import time
 import signal
 
 from Mailman import mm_cfg
@@ -120,6 +121,23 @@ def process_form(mlist, doc, cgidata, lang):
     remote = os.environ.get('REMOTE_HOST',
                             os.environ.get('REMOTE_ADDR',
                                            'unidentified origin'))
+    # Are we checking the hidden data?
+    if mm_cfg.SUBSCRIBE_FORM_SECRET:
+        now = int(time.time())
+        try:
+            ftime, fhash = cgidata.getvalue('sub_form_token', '').split(':')
+            then = int(ftime)
+        except ValueError:
+            ftime = fhash = ''
+            then = now
+        token = Utils.sha_new(mm_cfg.SUBSCRIBE_FORM_SECRET +
+                              ftime +
+                              mlist.internal_name() +
+                              remote).hexdigest()
+        if now - then > mm_cfg.FORM_LIFETIME:
+            results.append(_('The form is too old.  Please GET it again.'))
+        if token != fhash:
+            results.append(_('You must GET the form before submitting it.'))
     # Was an attempt made to subscribe the list to itself?
     if email == mlist.GetListEmail():
         syslog('mischief', 'Attempt to self subscribe %s: %s', email, remote)

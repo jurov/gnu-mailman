@@ -9,6 +9,14 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
+    - There is a new mm_cfg.py setting SUBSCRIBE_FORM_SECRET which will put
+      a dynamically generated, hidden hash in the listinfo subscribe form and
+      check it upon submission.  Setting this will prevent automated processes
+      (bots) from successfully POSTing web subscribes without first retrieving
+      and parsing the form from the listinfo page.  Note that enabling this
+      will break ant static subscribe forms on your site.  See the description
+      in Defaults.py for more info.  (LP: 1082746)
+
     - add_members now has an option to add members with mail delivery disabled
       by admin.  (LP: 1070574)
 

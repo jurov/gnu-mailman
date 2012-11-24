@@ -111,6 +111,21 @@ AUTHENTICATION_COOKIE_LIFETIME = 0
 # Form lifetime is set against Cross Site Request Forgery.
 FORM_LIFETIME = hours(1)
 
+# If the following is set to a non-empty string, this string in combination
+# with the time, list name and the IP address of the requestor is used to
+# create a hidden hash as part of the subscribe form on the listinfo page.
+# This hash is checked upon form submission and the subscribe fails if it
+# doesn't match.  I.e. the form posted must be first retrieved from the
+# listinfo CGI by the same IP that posts it.  The subscribe also fails if
+# the time the form was retrieved is more than the above FORM_LIFETIME
+# before submission.
+# Important: If you have any static subscribe forms on your web site, setting
+# this option will break them.  With this option set, subscribe forms must be
+# dynamically generated to include the hidden data.  See the code block
+# beginning with "if mm_cfg.SUBSCRIBE_FORM_SECRET:" in Mailman/Cgi/listinfo.py
+# for the details of the hidden data.
+SUBSCRIBE_FORM_SECRET = None
+
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the
 # name of the temporary file that the program should operate on.

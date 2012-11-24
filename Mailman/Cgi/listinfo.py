@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 
 import os
 import cgi
+import time
 
 from Mailman import mm_cfg
 from Mailman import Utils
@@ -184,6 +185,19 @@ def list_listinfo(mlist, lang):
     replacements['<mm-confirm-password>'] = mlist.FormatSecureBox('pw-conf')
     replacements['<mm-subscribe-form-start>'] = mlist.FormatFormStart(
         'subscribe')
+    if mm_cfg.SUBSCRIBE_FORM_SECRET:
+        now = str(int(time.time()))
+        replacements['<mm-subscribe-form-start>'] += (
+                '<input type="hidden" name="sub_form_token" value="%s:%s">\n'
+                % (now, Utils.sha_new(mm_cfg.SUBSCRIBE_FORM_SECRET +
+                          now +
+                          mlist.internal_name() +
+                          os.environ.get('REMOTE_HOST',
+                                         os.environ.get('REMOTE_ADDR',
+                                                        'w.x.y.z'))
+                          ).hexdigest()
+                    )
+                )
     # Roster form substitutions
     replacements['<mm-roster-form-start>'] = mlist.FormatFormStart('roster')
     replacements['<mm-roster-option>'] = mlist.FormatRosterOptionForUser(lang)
