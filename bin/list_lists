@@ -25,6 +25,9 @@ Where:
     -a / --advertised
         List only those mailing lists that are publically advertised
 
+    -p / --public-archive
+        List only those lists with public archives.
+
     --virtual-host-overview=domain
     -V domain
         List only those mailing lists that are homed to the given virtual
@@ -65,14 +68,15 @@ def usage(code, msg=''):
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'abV:h',
-                                   ['advertised', 'bare',
+        opts, args = getopt.getopt(sys.argv[1:], 'apbV:h',
+                                   ['advertised', 'public-archive', 'bare',
                                     'virtual-host-overview=',
                                     'help'])
     except getopt.error, msg:
         usage(1, msg)
 
     advertised = 0
+    public = 0
     vhost = None
     bare = 0
     for opt, arg in opts:
@@ -80,6 +84,8 @@ def main():
             usage(0)
         elif opt in ('-a', '--advertised'):
             advertised = 1
+        elif opt in ('-p', '--public-archive'):
+            public = 1
         elif opt in ('-V', '--virtual-host-overview'):
             vhost = arg
         elif opt in ('-b', '--bare'):
@@ -93,6 +99,8 @@ def main():
     for n in names:
         mlist = MailList.MailList(n, lock=0)
         if advertised and not mlist.advertised:
+            continue
+        if public and mlist.archive_private:
             continue
         if vhost and mm_cfg.VIRTUAL_HOST_OVERVIEW and \
                vhost.find(mlist.web_page_url) == -1 and \
