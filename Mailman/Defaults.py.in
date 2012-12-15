@@ -117,14 +117,19 @@ FORM_LIFETIME = hours(1)
 # This hash is checked upon form submission and the subscribe fails if it
 # doesn't match.  I.e. the form posted must be first retrieved from the
 # listinfo CGI by the same IP that posts it.  The subscribe also fails if
-# the time the form was retrieved is more than the above FORM_LIFETIME
-# before submission.
+# the time the form was retrieved is more than the above FORM_LIFETIME or less
+# than the below SUBSCRIBE_FORM_MIN_TIME before submission.
 # Important: If you have any static subscribe forms on your web site, setting
 # this option will break them.  With this option set, subscribe forms must be
 # dynamically generated to include the hidden data.  See the code block
 # beginning with "if mm_cfg.SUBSCRIBE_FORM_SECRET:" in Mailman/Cgi/listinfo.py
 # for the details of the hidden data.
 SUBSCRIBE_FORM_SECRET = None
+
+# If SUBSCRIBE_FORM_SECRET is not None, this is the minimum time the user must
+# take after retrieving the form before submitting it.  Set to 0 to skip this
+# test.
+SUBSCRIBE_FORM_MIN_TIME = seconds(5)
 
 # Command that is used to convert text/html parts into plain text.  This
 # should output results to standard output.  %(filename)s will contain the

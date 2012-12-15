@@ -136,6 +136,10 @@ def process_form(mlist, doc, cgidata, lang):
                               remote).hexdigest()
         if now - then > mm_cfg.FORM_LIFETIME:
             results.append(_('The form is too old.  Please GET it again.'))
+        if now - then < mm_cfg.SUBSCRIBE_FORM_MIN_TIME:
+            results.append(
+    _('Please take a few seconds to fill out the form before submitting it.')
+                          )
         if token != fhash:
             results.append(_('You must GET the form before submitting it.'))
     # Was an attempt made to subscribe the list to itself?

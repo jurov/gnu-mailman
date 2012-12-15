@@ -13,9 +13,11 @@ Here is a history of user visible changes to Mailman.
       a dynamically generated, hidden hash in the listinfo subscribe form and
       check it upon submission.  Setting this will prevent automated processes
       (bots) from successfully POSTing web subscribes without first retrieving
-      and parsing the form from the listinfo page.  Note that enabling this
-      will break ant static subscribe forms on your site.  See the description
-      in Defaults.py for more info.  (LP: 1082746)
+      and parsing the form from the listinfo page.  The form must also be
+      submitted no later than FORM_LIFETIME nor no earlier than
+      SUBSCRIBE_FORM_MIN_TIME after retrieval.  Note that enabling this will
+      break any static subscribe forms on your site.  See the description in
+      Defaults.py for more info.  (LP: 1082746)
 
     - add_members now has an option to add members with mail delivery disabled
       by admin.  (LP: 1070574)
