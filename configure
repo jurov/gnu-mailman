@@ -2053,7 +2053,7 @@ else:
         # some RedHat packages put distutils in python, but the C headers
         # are in python-devel so check for headers too.
         import os.path
-        pdothpath = distutils.sysconfig.get_config_var('CONFINCLUDEPY')
+        pdothpath = distutils.sysconfig.get_python_inc()
         if os.path.isfile(os.path.join(pdothpath, "Python.h")):
             res = "yes"
         else:

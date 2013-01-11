@@ -45,6 +45,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Changed configure's method for getting Python's include directory from
+      distutils.sysconfig.get_config_var('CONFINCLUDEPY') to
+      distutils.sysconfig.get_python_inc().  (LP: 1098162)
+
     - Added an Auto-Generated: header to password reminders.  (LP: 558240)
 
     - Fixed a bug where non-ascii characters in the real name in a subscription
