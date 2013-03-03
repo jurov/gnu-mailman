@@ -56,6 +56,31 @@ def process(mlist, msg, msgdata):
     else:
         sender = None
     if sender:
+        if Utils.IsDmarcProhibited(sender):
+            # Note that for dmarc_moderation_action, 0==Hold, 1=Reject,
+            # 2==Discard
+            if mlist.dmarc_moderation_action == 0:
+                msgdata['sender'] = sender
+                Hold.hold_for_approval(mlist, msg, msgdata,
+                                       ModeratedMemberPost)
+            elif mlist.dmarc_moderation_action == 1:
+                # Reject
+                text = mlist.dmarc_moderation_notice
+                if text:
+                    text = Utils.wrap(text)
+                else:
+                    # Use the default RejectMessage notice string
+                    text = None
+                raise Errors.RejectMessage, text
+            elif mlist.dmarc_moderation_action == 2:
+                raise Errors.DiscardMessage
+            else:
+                assert 0, 'bad dmarc_moderation_action'
+
+            # sender's domain has a 'p=reject' _dmarc TXT record,
+            # we should NOT automatically reflect this email
+            return
+
         # If the member's moderation flag is on, then perform the moderation
         # action.
         if mlist.getMemberOption(sender, mm_cfg.Moderate):

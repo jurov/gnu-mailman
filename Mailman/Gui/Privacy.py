@@ -235,6 +235,30 @@ class Privacy(GUIBase):
              >rejection notice</a> to
              be sent to moderated members who post to this list.""")),
 
+            ('dmarc_moderation_action', mm_cfg.Radio,
+             (_('Hold'), _('Reject'), _('Discard')), 0,
+             _("""Action to take when anyone posts to the
+             list from a domain with a DMARC Reject Policy."""),
+             _("""<ul><li><b>Hold</b> -- this holds the message for approval
+             by the list moderators.
+
+             <p><li><b>Reject</b> -- this automatically rejects the message by
+             sending a bounce notice to the post's author.  The text of the
+             bounce notice can be <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_notice"
+             >configured by you</a>.
+
+             <p><li><b>Discard</b> -- this simply discards the message, with
+             no notice sent to the post's author.
+             </ul>""")),
+
+            ('dmarc_moderation_notice', mm_cfg.Text, (10, WIDTH), 1,
+             _("""Text to include in any
+             <a href="?VARHELP/privacy/sender/dmarc_moderation_action"
+             >rejection notice</a> to
+             be sent to anyone who posts to this list from a domain
+             with DMARC Reject Policy.""")),
+
             _('Non-member filters'),
 
             ('accept_these_nonmembers', mm_cfg.EmailListEx, (10, WIDTH), 1,

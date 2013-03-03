@@ -71,6 +71,13 @@ except NameError:
     True = 1
     False = 0
 
+try:
+    import dns.resolver
+    from dns.exception import DNSException
+    dns_resolver = True
+except ImportError:
+    dns_resolver = False
+
 EMPTYSTRING = ''
 UEMPTYSTRING = u''
 NL = '\n'
@@ -1056,4 +1063,36 @@ def suspiciousHTML(html):
         return True
     else:
         return False
+
+
+# This takes an email address, and returns True if DMARC policy is p=reject
+def IsDmarcProhibited(email):
+    if not dns_resolver:
+         return False
+
+    email = email.lower()
+    at_sign = email.find('@')
+    if at_sign < 1:
+        return False
+    dmarc_domain = '_dmarc.' + email[at_sign+1:]
+
+    try:
+        resolver = dns.resolver.Resolver()
+        resolver.timeout = 1
+        resolver.lifetime = 5
+        txt_recs = resolver.query(dmarc_domain, dns.rdatatype.TXT)
+    except dns.resolver.NXDOMAIN:
+        return False
+    except DNSException, e:
+        syslog('error', 'DNSException: Unable to query DMARC policy for %s (%s). %s',
+              email, dmarc_domain, e.__class__)
+        return False
+    else:
+        for txt_rec in txt_recs.response.answer:
+            assert( txt_rec.rdtype == dns.rdatatype.TXT)
+            if re.search(r"[^s]p=reject", "".join(txt_rec.items[0].strings), re.IGNORECASE):
+               return True
+    
+    return False
+
 
