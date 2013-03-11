@@ -9,6 +9,10 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
+    - Setting digest_size_threshhold to zero now means no digests will be
+      sent based on size instead of a digest being sent with every post.
+      (LP: 558274)
+
     - There is a new mm_cfg.py setting SUBSCRIBE_FORM_SECRET which will put
       a dynamically generated, hidden hash in the listinfo subscribe form and
       check it upon submission.  Setting this will prevent automated processes

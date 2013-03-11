@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -86,7 +86,8 @@ def process(mlist, msg, msgdata):
     # whether the size threshold has been reached.
     mboxfp.flush()
     size = os.path.getsize(mboxfile)
-    if size / 1024.0 >= mlist.digest_size_threshhold:
+    if (mlist.digest_size_threshhold > 0 and
+        size / 1024.0 >= mlist.digest_size_threshhold):
         # This is a bit of a kludge to get the mbox file moved to the digest
         # queue directory.
         try:
