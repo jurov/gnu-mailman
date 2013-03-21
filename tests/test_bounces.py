@@ -168,6 +168,7 @@ class BounceTest(unittest.TestCase):
         ('Yahoo', 'yahoo_10.txt', ['jajcchoo@yahoo.com',
                                    'lyons94706@yahoo.com',
                                    'turtle4jne@yahoo.com']),
+        ('Yahoo', 'yahoo_11.txt', ['bad_user@aol.com']),
         # sina.com appears to use their own weird SINAEMAIL MTA
         ('Sina', 'sina_01.txt', ['boboman76@sina.com', 'alan_t18@sina.com']),
         ('AOL', 'aol_01.txt', ['screenname@aol.com']),
