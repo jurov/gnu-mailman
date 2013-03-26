@@ -1749,7 +1749,7 @@ msgstr ""
 "    cambio de dirección de la lista de distribución\n"
 "    <em>%(listname)s</em>. Actualmente está suscrito como\n"
 "    <ul><li><b>Nombre y Apellidos:</b> %(fullname)s\n"
-"        <li><b>Dirección de correo electrónico antigua:</b> %(addr)s\n"
+"        <li><b>Dirección de correo electrónico antigua:</b> %(oldaddr)s\n"
 "    </ul>\n"
 "\n"
 "    has solicitado cambiar %(globallys)s su dirección de correo\n"
@@ -1886,7 +1886,7 @@ msgid ""
 msgstr ""
 "            Ha reactivado satisfactoriamente su suscripción de la lista de "
 "distribución\n"
-"            %(listname)s. Ahora puede <a href=\"%(optionsourl)s\">visitar\n"
+"            %(listname)s. Ahora puede <a href=\"%(optionsurl)s\">visitar\n"
 "            la página con sus preferencias de suscripción</a>.\n"
 "            "
 
@@ -2459,7 +2459,7 @@ msgid ""
 "%(safeuser)s will be changed. "
 msgstr ""
 "La direccion nueva %(newaddr)s que ha solicitado ya está suscrita en\n"
-"la lista de distribución %(listname), sin embargo también ha pedido\n"
+"la lista de distribución %(listname)s, sin embargo también ha pedido\n"
 "un cambio global de su dirección. Una vez que confirme, también se\n"
 "cambiará cualquier otra lista de distribución que contenga la dirección\n"
 "%(safeuser)s. "
@@ -3308,13 +3308,13 @@ msgstr ""
 
 #: Mailman/Commands/cmd_password.py:51 Mailman/Commands/cmd_password.py:66
 msgid "Your password is: %(password)s"
-msgstr "Clave nueva de %(listname)s: %(notifypassword)s"
+msgstr "Clave nueva: %(password)s"
 
 #: Mailman/Commands/cmd_password.py:57 Mailman/Commands/cmd_password.py:72
 #: Mailman/Commands/cmd_password.py:95 Mailman/Commands/cmd_password.py:121
 #: Mailman/Commands/cmd_set.py:149 Mailman/Commands/cmd_set.py:219
 msgid "You are not a member of the %(listname)s mailing list"
-msgstr "Se ha dado de baja de la lista de distribución %(realname)s"
+msgstr "Se ha dado de baja de la lista de distribución %(listname)s"
 
 #: Mailman/Commands/cmd_password.py:85 Mailman/Commands/cmd_password.py:111
 msgid ""
@@ -3521,7 +3521,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_set.py:122
 msgid "Bad set command: %(subcmd)s"
-msgstr "Orden set incorrecta: %()subcmds"
+msgstr "Orden set incorrecta: %(subcmd)s"
 
 #: Mailman/Commands/cmd_set.py:151
 msgid "Your current option settings:"
@@ -3602,7 +3602,7 @@ msgstr "La clave que ha enviado no es la correcta"
 
 #: Mailman/Commands/cmd_set.py:236 Mailman/Commands/cmd_set.py:283
 msgid "Bad argument: %(arg)s"
-msgstr "Argumentos incorrectos: %(args)s"
+msgstr "Argumentos incorrectos: %(arg)s"
 
 #: Mailman/Commands/cmd_set.py:241 Mailman/Commands/cmd_set.py:261
 msgid "Not authenticated"
@@ -3732,7 +3732,7 @@ msgid ""
 "at %(listowner)s for review."
 msgstr ""
 "Su solicitud de  suscripción ha sido reenviada a la dirección\n"
-"%(adminemail)s del administrador de la lista para que le de el visto bueno."
+"%(listowner)s del administrador de la lista para que le de el visto bueno."
 
 #: Mailman/Commands/cmd_subscribe.py:147
 msgid "Subscription request succeeded."
@@ -4151,7 +4151,7 @@ msgstr ""
 "Carácterísticas del contestador automático.<p>\n"
 "\n"
 "En cada uno de los campos que están abajo. Python realiza \n"
-"interpolación de %(string)s con las siguientes correspondencias clave/"
+"interpolación de cadena con las siguientes correspondencias clave/"
 "valor:\n"
 "<p><ul>\n"
 "    <li><b>listname</b> - <em>corresponde al nombre de la lista de "
@@ -7336,7 +7336,7 @@ msgid ""
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"La regla con el patrón de filtrado de la cabecera `%(pattern)s' no es una\n"
+"La regla con el patrón de filtrado de la cabecera `%(safepattern)s' no es una\n"
 "                expresión regular correcta. Esta regla se descartará."
 
 #: Mailman/Gui/Topics.py:36
@@ -7748,7 +7748,7 @@ msgstr "<em>(No se muestra un suscriptor oculto)</em>"
 #: Mailman/HTMLFormatter.py:79
 msgid "<em>(%(num_concealed)d private members not shown)</em>"
 msgstr ""
-"<em>(No se muestran %(num_concealed)d miembro%(plu)s oculto%(plu)s)</em>"
+"<em>(No se muestran %(num_concealed)d miembro oculto)</em>"
 
 #: Mailman/HTMLFormatter.py:135
 msgid "; it was disabled by you"
@@ -7829,8 +7829,8 @@ msgid ""
 "notice will be sent to the admin address for your membership, %(addr)s.)<p>"
 msgstr ""
 "Atención - está suscrito a una lista que manda a otras listas de "
-"distribución, por lo que la notificación de %s se mandará a la dirección "
-"administrativa de su dirección, %s.)<p>"
+"distribución, por lo que la notificación de %(type)s se mandará a la dirección "
+"administrativa de su dirección, %(addr)s.)<p>"
 
 #: Mailman/HTMLFormatter.py:186
 msgid ""
@@ -9323,7 +9323,7 @@ msgstr "Comprobando los permisos en %(private)s"
 
 #: bin/check_perms:214
 msgid "%(private)s must not be other-readable"
-msgstr "%(private) no puede se legible por terceros"
+msgstr "%(private)s no puede se legible por terceros"
 
 #: bin/check_perms:223
 msgid ""
@@ -12040,8 +12040,8 @@ msgid ""
 "For some reason, %(mbox_dir)s exists as a file.  This won't work with\n"
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
 msgstr ""
-"Por cualquier razón, %(mbox_dir) existe como fichero. Esto no funcionará\n"
-"con b6, por lo que lo estoy renombrando a %(mobox_dir)s.tmp y procediendo."
+"Por cualquier razón, %(mbox_dir)s existe como fichero. Esto no funcionará\n"
+"con b6, por lo que lo estoy renombrando a %(mbox_dir)s.tmp y procediendo."
 
 #: bin/update:255
 msgid ""
