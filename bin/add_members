@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -137,7 +137,11 @@ def addall(mlist, members, digest, ack, outfp, nomail):
         userdesc.digest = digest
 
         try:
-            mlist.ApprovedAddMember(userdesc, ack, 0)
+            mlist.ApprovedAddMember(userdesc,
+                                    ack=ack,
+                                    admin_notif=False,
+                                    whence='bin/add_members',
+                                   )
         except Errors.MMAlreadyAMember:
             print >> tee, _('Already a member: %(member)s')
         except Errors.MembershipIsBanned, pattern:
