@@ -244,6 +244,7 @@ class BounceRunner(Runner, BounceMixin):
                 return
         # If that still didn't return us any useful addresses, then send it on
         # or discard it.
+        addrs = filter(None, addrs)
         if not addrs:
             syslog('bounce',
                    '%s: bounce message w/no discernable addresses: %s',
@@ -254,7 +255,8 @@ class BounceRunner(Runner, BounceMixin):
         # BAW: It's possible that there are None's in the list of addresses,
         # although I'm unsure how that could happen.  Possibly ScanMessages()
         # can let None's sneak through.  In any event, this will kill them.
-        addrs = filter(None, addrs)
+        # addrs = filter(None, addrs)
+        # MAS above filter moved up so we don't try to queue an empty list.
         self._queue_bounces(mlist.internal_name(), addrs, msg)
 
     _doperiodic = BounceMixin._doperiodic

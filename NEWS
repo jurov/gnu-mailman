@@ -58,6 +58,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug where BounceRunner could create and leave behind zero length
+      bounce-events files.  (LP: 1161610)
+
     - Added recognition for another Yahoo bounce format.  LP: #1157961
     - Changed configure's method for getting Python's include directory from
       distutils.sysconfig.get_config_var('CONFINCLUDEPY') to
