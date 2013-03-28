@@ -58,6 +58,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a bug where the Subject: of the user notification of a
+      bin/remove_members unsubscribe was not in the user's language.
+      (LP: 1161445)
+
     - Fixed a bug where BounceRunner could create and leave behind zero length
       bounce-events files.  (LP: 1161610)
 
