@@ -58,6 +58,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Defended against buggy web servers that don't include an empty
+      QUERY_STRING in the CGI environment.  (LP: 1160647)
+
     - The Switchboard.finish() method now logs the text of the exception when
       it fails to unlink/preserve a .bak file.  (LP: 1165589)
 
