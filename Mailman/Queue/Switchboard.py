@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -184,8 +184,8 @@ class Switchboard:
             else:
                 os.unlink(bakfile)
         except EnvironmentError, e:
-            syslog('error', 'Failed to unlink/preserve backup file: %s',
-                   bakfile)
+            syslog('error', 'Failed to unlink/preserve backup file: %s\n%s',
+                   bakfile, e)
 
     def files(self, extension='.pck'):
         times = {}

@@ -58,6 +58,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - The Switchboard.finish() method now logs the text of the exception when
+      it fails to unlink/preserve a .bak file.  (LP: 1165589)
+
     - The pending (un)subscriptions waiting approval are now sorted by email
       address in the admindb interface as intended.  (LP: 1164160)
 
