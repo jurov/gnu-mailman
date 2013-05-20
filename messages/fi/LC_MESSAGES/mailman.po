@@ -13,10 +13,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.15\n"
-"POT-Creation-Date: Sun Mar 25 16:40:47 2012\n"
+"POT-Creation-Date: Sun May 19 21:23:56 2013\n"
 "PO-Revision-Date: 2010-07-26 10:25+0300\n"
 "Last-Translator: Joni Töyrylä <joni.toyryla@stonelake.fi>\n"
 "Language-Team: Finnish Language Team\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: \n"
@@ -225,9 +226,9 @@ msgstr "Viestin palautusilmoitus"
 msgid " The last bounce received from you was dated %(date)s"
 msgstr " Viimeisin palautus osoitteestasi oli päivätty  %(date)s"
 
-#: Mailman/Bouncer.py:322 Mailman/Deliverer.py:143
+#: Mailman/Bouncer.py:322 Mailman/Deliverer.py:144
 #: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:284
-#: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:239
+#: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:240
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(ei otsikkoa)"
@@ -246,23 +247,23 @@ msgid "Administrator"
 msgstr "Ylläpitäjä"
 
 #: Mailman/Cgi/admin.py:79 Mailman/Cgi/admindb.py:93 Mailman/Cgi/confirm.py:62
-#: Mailman/Cgi/edithtml.py:71 Mailman/Cgi/listinfo.py:54
+#: Mailman/Cgi/edithtml.py:71 Mailman/Cgi/listinfo.py:55
 #: Mailman/Cgi/options.py:78 Mailman/Cgi/private.py:108
 #: Mailman/Cgi/rmlist.py:64 Mailman/Cgi/roster.py:59
-#: Mailman/Cgi/subscribe.py:62
+#: Mailman/Cgi/subscribe.py:63
 msgid "No such list <em>%(safelistname)s</em>"
 msgstr "Listaa <em>%(safelistname)s</em> ei ole olemassa."
 
-#: Mailman/Cgi/admin.py:107 Mailman/Cgi/admindb.py:109
+#: Mailman/Cgi/admin.py:108 Mailman/Cgi/admindb.py:109
 #: Mailman/Cgi/edithtml.py:91 Mailman/Cgi/private.py:135
 msgid "Authorization failed."
 msgstr "Kirjautuminen epäonnistui."
 
-#: Mailman/Cgi/admin.py:198
+#: Mailman/Cgi/admin.py:199
 msgid "The form lifetime has expired. (request forgery check)"
 msgstr ""
 
-#: Mailman/Cgi/admin.py:204
+#: Mailman/Cgi/admin.py:205
 msgid ""
 "You have turned off delivery of both digest and\n"
 "                non-digest messages.  This is an incompatible state of\n"
@@ -276,12 +277,12 @@ msgstr ""
 "               koostettu lähetys tai tavallinen lähetys tai postituslistasi\n"
 "               on käyttökelvoton."
 
-#: Mailman/Cgi/admin.py:208 Mailman/Cgi/admin.py:216 Mailman/Cgi/admin.py:223
-#: Mailman/Cgi/admin.py:1498 Mailman/Gui/GUIBase.py:204
+#: Mailman/Cgi/admin.py:209 Mailman/Cgi/admin.py:217 Mailman/Cgi/admin.py:224
+#: Mailman/Cgi/admin.py:1497 Mailman/Gui/GUIBase.py:204
 msgid "Warning: "
 msgstr "Varoitus: "
 
-#: Mailman/Cgi/admin.py:213
+#: Mailman/Cgi/admin.py:214
 msgid ""
 "You have digest members, but digests are turned\n"
 "                off. Those people will not receive mail.\n"
@@ -290,7 +291,7 @@ msgstr ""
 " Listalla on koosteiden vastaanottajia, mutta koosteet\n"
 " ovat poissa käytöstä. Nämä henkilöt eivät saa viestejä.%(dm)r"
 
-#: Mailman/Cgi/admin.py:220
+#: Mailman/Cgi/admin.py:221
 msgid ""
 "You have regular list members but non-digestified mail is\n"
 "                turned off.  They will receive non-digestified mail until "
@@ -300,19 +301,19 @@ msgstr ""
 "Listalla on tavallisia jäseniä, mutta ei-koostetut\n"
 " viestit ovat poissa käytöstä. Nämä henkilöt eivät saa viestejä.%(rm)r"
 
-#: Mailman/Cgi/admin.py:245
+#: Mailman/Cgi/admin.py:246
 msgid "%(hostname)s mailing lists - Admin Links"
 msgstr "%(hostname)s postituslistat - Ylläpitäjän linkit"
 
-#: Mailman/Cgi/admin.py:276 Mailman/Cgi/listinfo.py:104
+#: Mailman/Cgi/admin.py:277 Mailman/Cgi/listinfo.py:105
 msgid "Welcome!"
 msgstr "Tervetuloa!"
 
-#: Mailman/Cgi/admin.py:279 Mailman/Cgi/listinfo.py:107
+#: Mailman/Cgi/admin.py:280 Mailman/Cgi/listinfo.py:108
 msgid "Mailman"
 msgstr "Mailman"
 
-#: Mailman/Cgi/admin.py:283
+#: Mailman/Cgi/admin.py:284
 msgid ""
 "<p>There currently are no publicly-advertised %(mailmanlink)s\n"
 "            mailing lists on %(hostname)s."
@@ -320,7 +321,7 @@ msgstr ""
 "<p>Tällä hetkellä palvelimella %(hostname)s ei ole julkisia\n"
 " %(mailmanlink)s postituslistoja."
 
-#: Mailman/Cgi/admin.py:289
+#: Mailman/Cgi/admin.py:290
 msgid ""
 "<p>Below is the collection of publicly-advertised\n"
 "            %(mailmanlink)s mailing lists on %(hostname)s.  Click on a list\n"
@@ -331,11 +332,11 @@ msgstr ""
 "            Napsauta listan nimeä siirtyäksesi postituslistan "
 "ylläpitosivulle."
 
-#: Mailman/Cgi/admin.py:296
+#: Mailman/Cgi/admin.py:297
 msgid "right "
 msgstr "oikea "
 
-#: Mailman/Cgi/admin.py:298
+#: Mailman/Cgi/admin.py:299
 msgid ""
 "To visit the administrators configuration page for an\n"
 "        unadvertised list, open a URL similar to this one, but with a '/' "
@@ -356,32 +357,32 @@ msgstr ""
 " \n"
 " <p> Julkisten postituslistojen infosivulle pääset tästä linkistä, "
 
-#: Mailman/Cgi/admin.py:305
+#: Mailman/Cgi/admin.py:306
 msgid "the mailing list overview page"
 msgstr "postituslistan esittelysivu"
 
-#: Mailman/Cgi/admin.py:307
+#: Mailman/Cgi/admin.py:308
 msgid "<p>(Send questions and comments to "
 msgstr "<p>(Lähetä kysymykset ja kommentit osoitteeseen "
 
-#: Mailman/Cgi/admin.py:317 Mailman/Cgi/listinfo.py:139 cron/mailpasswds:216
+#: Mailman/Cgi/admin.py:318 Mailman/Cgi/listinfo.py:140 cron/mailpasswds:216
 msgid "List"
 msgstr "Lista"
 
-#: Mailman/Cgi/admin.py:318 Mailman/Cgi/admin.py:586
-#: Mailman/Cgi/listinfo.py:140
+#: Mailman/Cgi/admin.py:319 Mailman/Cgi/admin.py:587
+#: Mailman/Cgi/listinfo.py:141
 msgid "Description"
 msgstr "Kuvaus"
 
-#: Mailman/Cgi/admin.py:324 Mailman/Cgi/listinfo.py:146 bin/list_lists:116
+#: Mailman/Cgi/admin.py:325 Mailman/Cgi/listinfo.py:147 bin/list_lists:124
 msgid "[no description available]"
 msgstr "[ei kuvausta saatavilla]"
 
-#: Mailman/Cgi/admin.py:358
+#: Mailman/Cgi/admin.py:359
 msgid "No valid variable name found."
 msgstr "Kelvollista muuttujanimeä ei löydy."
 
-#: Mailman/Cgi/admin.py:368
+#: Mailman/Cgi/admin.py:369
 msgid ""
 "%(realname)s Mailing list Configuration Help\n"
 "    <br><em>%(varname)s</em> Option"
@@ -389,11 +390,11 @@ msgstr ""
 "%(realname)s Postituslistan konfiguroinnin ohje\n"
 " <br><em>%(varname)s</em> Optio"
 
-#: Mailman/Cgi/admin.py:375
+#: Mailman/Cgi/admin.py:376
 msgid "Mailman %(varname)s List Option Help"
 msgstr "Mailman %(varname)s Listan Muokkaus Ohje"
 
-#: Mailman/Cgi/admin.py:393
+#: Mailman/Cgi/admin.py:394
 msgid ""
 "<em><strong>Warning:</strong> changing this option here\n"
 "    could cause other screens to be out-of-sync.  Be sure to reload any "
@@ -408,60 +409,60 @@ msgstr ""
 " tämän valinnan. Voit myös\n"
 " "
 
-#: Mailman/Cgi/admin.py:404
+#: Mailman/Cgi/admin.py:405
 msgid "return to the %(categoryname)s options page."
 msgstr "palaa %(categoryname)s valintojen sivulle."
 
-#: Mailman/Cgi/admin.py:419
+#: Mailman/Cgi/admin.py:420
 msgid "%(realname)s Administration (%(label)s)"
 msgstr "%(realname)s ylläpito (%(label)s)"
 
-#: Mailman/Cgi/admin.py:420
+#: Mailman/Cgi/admin.py:421
 msgid "%(realname)s mailing list administration<br>%(label)s Section"
 msgstr "%(realname)s postituslistan ylläpito <br>%(label)s"
 
-#: Mailman/Cgi/admin.py:437
+#: Mailman/Cgi/admin.py:438
 msgid "Configuration Categories"
 msgstr "Konfigurointiluokat"
 
-#: Mailman/Cgi/admin.py:438
+#: Mailman/Cgi/admin.py:439
 msgid "Other Administrative Activities"
 msgstr "Muut ylläpidon toiminnot"
 
-#: Mailman/Cgi/admin.py:442
+#: Mailman/Cgi/admin.py:443
 msgid "Tend to pending moderator requests"
 msgstr "Hoida odottavat pyynnöt pääkäyttäjälle"
 
-#: Mailman/Cgi/admin.py:444
+#: Mailman/Cgi/admin.py:445
 msgid "Go to the general list information page"
 msgstr "Mene listan yleisesittelysivulle"
 
-#: Mailman/Cgi/admin.py:446
+#: Mailman/Cgi/admin.py:447
 msgid "Edit the public HTML pages and text files"
 msgstr "Muokkaa julkisia HTML sivuja"
 
-#: Mailman/Cgi/admin.py:448
+#: Mailman/Cgi/admin.py:449
 msgid "Go to list archives"
 msgstr "Mene listan arkistoon"
 
-#: Mailman/Cgi/admin.py:454
+#: Mailman/Cgi/admin.py:455
 msgid "Delete this mailing list"
 msgstr "Poista tämä postituslista"
 
-#: Mailman/Cgi/admin.py:455
+#: Mailman/Cgi/admin.py:456
 msgid " (requires confirmation)<br>&nbsp;<br>"
 msgstr " (vaatii vahvistuksen)<br>&nbsp;<br>"
 
-#: Mailman/Cgi/admin.py:461 Mailman/Cgi/admindb.py:195
+#: Mailman/Cgi/admin.py:462 Mailman/Cgi/admindb.py:195
 #: Mailman/Cgi/admindb.py:272
 msgid "Logout"
 msgstr "Poistu"
 
-#: Mailman/Cgi/admin.py:505
+#: Mailman/Cgi/admin.py:506
 msgid "Emergency moderation of all list traffic is enabled"
 msgstr "Hätäylläpito kaikelle listaliikenteelle on päällä"
 
-#: Mailman/Cgi/admin.py:516
+#: Mailman/Cgi/admin.py:517
 msgid ""
 "Make your changes in the following section, then submit them\n"
 "        using the <em>Submit Your Changes</em> button below."
@@ -469,11 +470,11 @@ msgstr ""
 "Tee muutoksesi seuraavassa kappaleessa ja lähetä\n"
 " ne painamalla allaolevaa <em>Lähetä muutokset</em> nappia."
 
-#: Mailman/Cgi/admin.py:534
+#: Mailman/Cgi/admin.py:535
 msgid "Additional Member Tasks"
 msgstr "Jäsenen lisätehtävät"
 
-#: Mailman/Cgi/admin.py:540
+#: Mailman/Cgi/admin.py:541
 msgid ""
 "<li>Set everyone's moderation bit, including\n"
 "            those members not currently visible"
@@ -481,23 +482,23 @@ msgstr ""
 "<li>Aseta kaikkien muutosoikeudet, myös\n"
 "            niiden jäsenten, jotka eivät nyt ole näkyvissä"
 
-#: Mailman/Cgi/admin.py:544
+#: Mailman/Cgi/admin.py:545
 msgid "Off"
 msgstr "Pois"
 
-#: Mailman/Cgi/admin.py:544
+#: Mailman/Cgi/admin.py:545
 msgid "On"
 msgstr "Käytössä"
 
-#: Mailman/Cgi/admin.py:546
+#: Mailman/Cgi/admin.py:547
 msgid "Set"
 msgstr "Aseta"
 
-#: Mailman/Cgi/admin.py:587
+#: Mailman/Cgi/admin.py:588
 msgid "Value"
 msgstr "Arvo"
 
-#: Mailman/Cgi/admin.py:641
+#: Mailman/Cgi/admin.py:642
 msgid ""
 "Badly formed options entry:\n"
 " %(record)s"
@@ -505,73 +506,73 @@ msgstr ""
 "Väärin muotoiltu arvo:\n"
 " %(record)s"
 
-#: Mailman/Cgi/admin.py:699
+#: Mailman/Cgi/admin.py:700
 msgid "<em>Enter the text below, or...</em><br>"
 msgstr "<em>Syötä teksti alapuolelle, tai...</em><br>"
 
-#: Mailman/Cgi/admin.py:701
+#: Mailman/Cgi/admin.py:702
 msgid "<br><em>...specify a file to upload</em><br>"
 msgstr "<br><em>...määrittele lähetettävä tiedosto</em><br>"
 
-#: Mailman/Cgi/admin.py:727 Mailman/Cgi/admin.py:730
+#: Mailman/Cgi/admin.py:728 Mailman/Cgi/admin.py:731
 msgid "Topic %(i)d"
 msgstr "Aihe %(i)d"
 
-#: Mailman/Cgi/admin.py:731 Mailman/Cgi/admin.py:781
+#: Mailman/Cgi/admin.py:732 Mailman/Cgi/admin.py:782
 msgid "Delete"
 msgstr "Poista"
 
-#: Mailman/Cgi/admin.py:732
+#: Mailman/Cgi/admin.py:733
 msgid "Topic name:"
 msgstr "Aiheen nimi:"
 
-#: Mailman/Cgi/admin.py:734
+#: Mailman/Cgi/admin.py:735
 msgid "Regexp:"
 msgstr "Päättyy:"
 
-#: Mailman/Cgi/admin.py:737 Mailman/Cgi/options.py:1053
+#: Mailman/Cgi/admin.py:738 Mailman/Cgi/options.py:1053
 msgid "Description:"
 msgstr "Kuvaus:"
 
-#: Mailman/Cgi/admin.py:741 Mailman/Cgi/admin.py:799
+#: Mailman/Cgi/admin.py:742 Mailman/Cgi/admin.py:800
 msgid "Add new item..."
 msgstr "Lisää uusi aihe..."
 
-#: Mailman/Cgi/admin.py:743 Mailman/Cgi/admin.py:801
+#: Mailman/Cgi/admin.py:744 Mailman/Cgi/admin.py:802
 msgid "...before this one."
 msgstr "...ennen tätä."
 
-#: Mailman/Cgi/admin.py:744 Mailman/Cgi/admin.py:802
+#: Mailman/Cgi/admin.py:745 Mailman/Cgi/admin.py:803
 msgid "...after this one."
 msgstr "...tämän jälkeen."
 
-#: Mailman/Cgi/admin.py:777 Mailman/Cgi/admin.py:780
+#: Mailman/Cgi/admin.py:778 Mailman/Cgi/admin.py:781
 msgid "Spam Filter Rule %(i)d"
 msgstr "Roskapostisuodatus sääntä %(i)d"
 
-#: Mailman/Cgi/admin.py:782
+#: Mailman/Cgi/admin.py:783
 msgid "Spam Filter Regexp:"
 msgstr "Roskapostisuodatus Regexp:"
 
-#: Mailman/Cgi/admin.py:793 Mailman/Cgi/admindb.py:327
+#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:327
 #: Mailman/Cgi/admindb.py:386 Mailman/Cgi/admindb.py:431
 #: Mailman/Cgi/admindb.py:671
 msgid "Defer"
 msgstr "Lykkää"
 
-#: Mailman/Cgi/admin.py:793 Mailman/Cgi/admindb.py:329
+#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:329
 #: Mailman/Cgi/admindb.py:388 Mailman/Cgi/admindb.py:431
 #: Mailman/Cgi/admindb.py:671 Mailman/Gui/ContentFilter.py:37
 #: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:297
 msgid "Reject"
 msgstr "Torju"
 
-#: Mailman/Cgi/admin.py:793 Mailman/Gui/Privacy.py:216
+#: Mailman/Cgi/admin.py:794 Mailman/Gui/Privacy.py:216
 #: Mailman/Gui/Privacy.py:297
 msgid "Hold"
 msgstr "Pidätä"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:330
+#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:330
 #: Mailman/Cgi/admindb.py:389 Mailman/Cgi/admindb.py:431
 #: Mailman/Cgi/admindb.py:671 Mailman/Commands/cmd_confirm.py:93
 #: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:216
@@ -579,32 +580,32 @@ msgstr "Pidätä"
 msgid "Discard"
 msgstr "Hylkää"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:431
+#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:431
 #: Mailman/Gui/Privacy.py:297
 msgid "Accept"
 msgstr "Hyväksy"
 
-#: Mailman/Cgi/admin.py:797 Mailman/Cgi/admindb.py:677
+#: Mailman/Cgi/admin.py:798 Mailman/Cgi/admindb.py:677
 msgid "Action:"
 msgstr "Toiminto:"
 
-#: Mailman/Cgi/admin.py:809
+#: Mailman/Cgi/admin.py:810
 msgid "Move rule up"
 msgstr "Siirrä sääntö ylös"
 
-#: Mailman/Cgi/admin.py:810
+#: Mailman/Cgi/admin.py:811
 msgid "Move rule down"
 msgstr "Siirrä sääntö alas"
 
-#: Mailman/Cgi/admin.py:843
+#: Mailman/Cgi/admin.py:844
 msgid "<br>(Edit <b>%(varname)s</b>)"
 msgstr "<br>(Muokkaa <b>%(varname)s</b>)"
 
-#: Mailman/Cgi/admin.py:845
+#: Mailman/Cgi/admin.py:846
 msgid "<br>(Details for <b>%(varname)s</b>)"
 msgstr "<br>(Yksityiskohdat <b>%(varname)s</b>)"
 
-#: Mailman/Cgi/admin.py:852
+#: Mailman/Cgi/admin.py:853
 msgid ""
 "<br><em><strong>Note:</strong>\n"
 "        setting this value performs an immediate action but does not modify\n"
@@ -614,107 +615,107 @@ msgstr ""
 "        tämän arvon asettaminen suoritetaan heti, mutta se ei muokkaa\n"
 "        sitä pysyvästi.</em>"
 
-#: Mailman/Cgi/admin.py:866
+#: Mailman/Cgi/admin.py:867
 msgid "Mass Subscriptions"
 msgstr "Joukkoliittymiset"
 
-#: Mailman/Cgi/admin.py:873
+#: Mailman/Cgi/admin.py:874
 msgid "Mass Removals"
 msgstr "Joukkopoistot"
 
-#: Mailman/Cgi/admin.py:880
+#: Mailman/Cgi/admin.py:881
 msgid "Membership List"
 msgstr "Jäsenien listaus"
 
-#: Mailman/Cgi/admin.py:888
+#: Mailman/Cgi/admin.py:889
 msgid "(help)"
 msgstr "(apua)"
 
-#: Mailman/Cgi/admin.py:889
+#: Mailman/Cgi/admin.py:890
 msgid "Find member %(link)s:"
 msgstr "Etsi jäsen %(link)s:"
 
-#: Mailman/Cgi/admin.py:892
+#: Mailman/Cgi/admin.py:893
 msgid "Search..."
 msgstr "Etsitään..."
 
-#: Mailman/Cgi/admin.py:909
+#: Mailman/Cgi/admin.py:910
 msgid "Bad regular expression: "
 msgstr "Väärä vakioilmaus: "
 
-#: Mailman/Cgi/admin.py:963
+#: Mailman/Cgi/admin.py:964
 msgid "%(allcnt)s members total, %(membercnt)s shown"
 msgstr "%(allcnt)s jäsentä yhteensä, %(membercnt)s näytetään"
 
-#: Mailman/Cgi/admin.py:966
+#: Mailman/Cgi/admin.py:967
 msgid "%(allcnt)s members total"
 msgstr "%(allcnt)s jäsentä yhteensä"
 
-#: Mailman/Cgi/admin.py:990
+#: Mailman/Cgi/admin.py:991
 msgid "unsub"
 msgstr "irtisano"
 
-#: Mailman/Cgi/admin.py:991
+#: Mailman/Cgi/admin.py:992
 msgid "member address<br>member name"
 msgstr "jäsenen osoite<br>jäsenen nimi"
 
-#: Mailman/Cgi/admin.py:992
+#: Mailman/Cgi/admin.py:993
 msgid "hide"
 msgstr "piilota"
 
-#: Mailman/Cgi/admin.py:992
+#: Mailman/Cgi/admin.py:993
 msgid "mod"
 msgstr "muokkaa"
 
-#: Mailman/Cgi/admin.py:993
+#: Mailman/Cgi/admin.py:994
 msgid "nomail<br>[reason]"
 msgstr "ei postia<br>[syy]"
 
-#: Mailman/Cgi/admin.py:994
+#: Mailman/Cgi/admin.py:995
 msgid "ack"
 msgstr "hyväksyntä"
 
-#: Mailman/Cgi/admin.py:994
+#: Mailman/Cgi/admin.py:995
 msgid "not metoo"
 msgstr "ei (metoo)"
 
-#: Mailman/Cgi/admin.py:995
+#: Mailman/Cgi/admin.py:996
 msgid "nodupes"
 msgstr "nodupes"
 
-#: Mailman/Cgi/admin.py:996
+#: Mailman/Cgi/admin.py:997
 msgid "plain"
 msgstr "tavallinen"
 
-#: Mailman/Cgi/admin.py:996 Mailman/Cgi/options.py:307
+#: Mailman/Cgi/admin.py:997 Mailman/Cgi/options.py:307
 msgid "digest"
 msgstr "kokoelma"
 
-#: Mailman/Cgi/admin.py:997
+#: Mailman/Cgi/admin.py:998
 msgid "language"
 msgstr "kieli"
 
-#: Mailman/Cgi/admin.py:1008
+#: Mailman/Cgi/admin.py:1009
 msgid "?"
 msgstr "?"
 
-#: Mailman/Cgi/admin.py:1009
+#: Mailman/Cgi/admin.py:1010
 msgid "U"
 msgstr "U"
 
-#: Mailman/Cgi/admin.py:1010
+#: Mailman/Cgi/admin.py:1011
 msgid "A"
 msgstr "A"
 
-#: Mailman/Cgi/admin.py:1011
+#: Mailman/Cgi/admin.py:1012
 msgid "B"
 msgstr "B"
 
-#: Mailman/Cgi/admin.py:1083
+#: Mailman/Cgi/admin.py:1084
 msgid "<b>unsub</b> -- Click on this to unsubscribe the member."
 msgstr "<b>irtisano</b> -- Klikkaa tästä irtisanoaksesi jäsenen."
 
-#: Mailman/Cgi/admin.py:1085
+#: Mailman/Cgi/admin.py:1086
 msgid ""
 "<b>mod</b> -- The user's personal moderation flag.  If this is\n"
 "        set, postings from them will be moderated, otherwise they will be\n"
@@ -724,7 +725,7 @@ msgstr ""
 "        asetetaan, heidän lähetyksensä muokataan, muuten heidät on\n"
 "        hyväksytty."
 
-#: Mailman/Cgi/admin.py:1089
+#: Mailman/Cgi/admin.py:1090
 msgid ""
 "<b>hide</b> -- Is the member's address concealed on\n"
 "        the list of subscribers?"
@@ -732,7 +733,7 @@ msgstr ""
 "<b>piilota</b> -- Onko jäsenen osoite piilotettuna\n"
 "        tilaajien listaan?"
 
-#: Mailman/Cgi/admin.py:1091
+#: Mailman/Cgi/admin.py:1092
 msgid ""
 "<b>nomail</b> -- Is delivery to the member disabled?  If so, an\n"
 "        abbreviation will be given describing the reason for the disabled\n"
@@ -764,7 +765,7 @@ msgstr ""
 "                     käyttäjille\n"
 "            </ul>"
 
-#: Mailman/Cgi/admin.py:1106
+#: Mailman/Cgi/admin.py:1107
 msgid ""
 "<b>ack</b> -- Does the member get acknowledgements of their\n"
 "        posts?"
@@ -772,7 +773,7 @@ msgstr ""
 "<b>Ilmoitukset</b> -- Saavatko jäsenet ilmoitukset\n"
 "        lähetetyistä viesteistä?"
 
-#: Mailman/Cgi/admin.py:1109
+#: Mailman/Cgi/admin.py:1110
 msgid ""
 "<b>not metoo</b> -- Does the member want to avoid copies of their\n"
 "        own postings?"
@@ -780,7 +781,7 @@ msgstr ""
 "<b>ei kopiota itselle</b> -- Estetäänkö jäsenelle omien viestien\n"
 "        saaminen?"
 
-#: Mailman/Cgi/admin.py:1112
+#: Mailman/Cgi/admin.py:1113
 msgid ""
 "<b>nodupes</b> -- Does the member want to avoid duplicates of the\n"
 "        same message?"
@@ -788,7 +789,7 @@ msgstr ""
 "<b>ei duplikaatteja</b> -- Estetäänkö jäsenelle omien viestien\n"
 "        saaminen, jos ne ovat samoja?"
 
-#: Mailman/Cgi/admin.py:1115
+#: Mailman/Cgi/admin.py:1116
 msgid ""
 "<b>digest</b> -- Does the member get messages in digests?\n"
 "        (otherwise, individual messages)"
@@ -796,7 +797,7 @@ msgstr ""
 "<b>kooste</b> -- Saako jäsen viestit koosteena?\n"
 "        (muuten yksittäiset viestit)"
 
-#: Mailman/Cgi/admin.py:1118
+#: Mailman/Cgi/admin.py:1119
 msgid ""
 "<b>plain</b> -- If getting digests, does the member get plain\n"
 "        text digests?  (otherwise, MIME)"
@@ -804,19 +805,19 @@ msgstr ""
 "<b>tavallinen</b> -- Jos koosteena, saako jäsen koosteen\n"
 "        tavallisena tekstinä?  (muuten, MIME)"
 
-#: Mailman/Cgi/admin.py:1120
+#: Mailman/Cgi/admin.py:1121
 msgid "<b>language</b> -- Language preferred by the user"
 msgstr "<b>kieli</b> -- Käyttäjän kielivalinta"
 
-#: Mailman/Cgi/admin.py:1134
+#: Mailman/Cgi/admin.py:1135
 msgid "Click here to hide the legend for this table."
 msgstr "Napsauta tähän piilottaaksesi tämän taulun selosteen."
 
-#: Mailman/Cgi/admin.py:1138
+#: Mailman/Cgi/admin.py:1139
 msgid "Click here to include the legend for this table."
 msgstr "Napsauta tähän nähdäksesi tämän taulun selosteen."
 
-#: Mailman/Cgi/admin.py:1145
+#: Mailman/Cgi/admin.py:1146
 msgid ""
 "<p><em>To view more members, click on the appropriate\n"
 "        range listed below:</em>"
@@ -824,28 +825,28 @@ msgstr ""
 "<p><em>Nähdäksesi lisää jäseniä, klikkaa allaolevasta listasta\n"
 "        sopivaa aluetta:</em>"
 
-#: Mailman/Cgi/admin.py:1154
+#: Mailman/Cgi/admin.py:1155
 msgid "from %(start)s to %(end)s"
 msgstr "%(start)s sta %(end)s aan"
 
-#: Mailman/Cgi/admin.py:1167
+#: Mailman/Cgi/admin.py:1168
 msgid "Subscribe these users now or invite them?"
 msgstr "Liitä nämä käyttäjät nyt tai kutsu heidät?"
 
-#: Mailman/Cgi/admin.py:1169
+#: Mailman/Cgi/admin.py:1170
 msgid "Invite"
 msgstr "Kutsu"
 
-#: Mailman/Cgi/admin.py:1169 Mailman/Cgi/listinfo.py:182
+#: Mailman/Cgi/admin.py:1170 Mailman/Cgi/listinfo.py:183
 msgid "Subscribe"
 msgstr "Liity"
 
-#: Mailman/Cgi/admin.py:1175
+#: Mailman/Cgi/admin.py:1176
 msgid "Send welcome messages to new subscribees?"
 msgstr "Lähetä tervetuloviestit uusille jäsenille?"
 
-#: Mailman/Cgi/admin.py:1177 Mailman/Cgi/admin.py:1186
-#: Mailman/Cgi/admin.py:1219 Mailman/Cgi/admin.py:1227
+#: Mailman/Cgi/admin.py:1178 Mailman/Cgi/admin.py:1187
+#: Mailman/Cgi/admin.py:1220 Mailman/Cgi/admin.py:1228
 #: Mailman/Cgi/confirm.py:292 Mailman/Cgi/create.py:353
 #: Mailman/Cgi/create.py:388 Mailman/Cgi/create.py:426
 #: Mailman/Cgi/rmlist.py:230 Mailman/Gui/Archive.py:33
@@ -872,8 +873,8 @@ msgstr "Lähetä tervetuloviestit uusille jäsenille?"
 msgid "No"
 msgstr "Ei"
 
-#: Mailman/Cgi/admin.py:1177 Mailman/Cgi/admin.py:1186
-#: Mailman/Cgi/admin.py:1219 Mailman/Cgi/admin.py:1227
+#: Mailman/Cgi/admin.py:1178 Mailman/Cgi/admin.py:1187
+#: Mailman/Cgi/admin.py:1220 Mailman/Cgi/admin.py:1228
 #: Mailman/Cgi/confirm.py:292 Mailman/Cgi/create.py:353
 #: Mailman/Cgi/create.py:388 Mailman/Cgi/create.py:426
 #: Mailman/Cgi/rmlist.py:230 Mailman/Gui/Archive.py:33
@@ -900,19 +901,19 @@ msgstr "Ei"
 msgid "Yes"
 msgstr "Kyllä"
 
-#: Mailman/Cgi/admin.py:1184
+#: Mailman/Cgi/admin.py:1185
 msgid "Send notifications of new subscriptions to the list owner?"
 msgstr "Lähetä ilmoitus uusista liittyneistä listan omistajalle?"
 
-#: Mailman/Cgi/admin.py:1192 Mailman/Cgi/admin.py:1233
+#: Mailman/Cgi/admin.py:1193 Mailman/Cgi/admin.py:1234
 msgid "Enter one address per line below..."
 msgstr "Syötä yksi osoite per rivi alapuolelle..."
 
-#: Mailman/Cgi/admin.py:1197 Mailman/Cgi/admin.py:1238
+#: Mailman/Cgi/admin.py:1198 Mailman/Cgi/admin.py:1239
 msgid "...or specify a file to upload:"
 msgstr "... tai määrittele lähetettävä tiedosto:"
 
-#: Mailman/Cgi/admin.py:1202
+#: Mailman/Cgi/admin.py:1203
 msgid ""
 "Below, enter additional text to be added to the\n"
 "    top of your invitation or the subscription notification.  Include at "
@@ -922,19 +923,19 @@ msgstr ""
 "Syötä lisätietoteksti alla olevaan kenttään. Teksti lisätään\n"
 "liittymisilmoituksen alkuun. Lisää vähintään yksi tyhjä rivi loppuun..."
 
-#: Mailman/Cgi/admin.py:1217
+#: Mailman/Cgi/admin.py:1218
 msgid "Send unsubscription acknowledgement to the user?"
 msgstr "Lähetä irtisanomisilmoitus käyttäjälle?"
 
-#: Mailman/Cgi/admin.py:1225
+#: Mailman/Cgi/admin.py:1226
 msgid "Send notifications to the list owner?"
 msgstr "Lähetä ilmoitukset listan omistajalle?"
 
-#: Mailman/Cgi/admin.py:1247
+#: Mailman/Cgi/admin.py:1248
 msgid "Change list ownership passwords"
 msgstr "Vaihda listan omistussuhteen salasanat"
 
-#: Mailman/Cgi/admin.py:1250
+#: Mailman/Cgi/admin.py:1251
 msgid ""
 "The <em>list administrators</em> are the people who have ultimate control "
 "over\n"
@@ -968,23 +969,23 @@ msgstr ""
 "ja syöttää listan pääkäyttäjien sähköpostiosoitteet \n"
 "<a href=\"%(adminurl)s/general\">yleisten valintojen osassa</a>."
 
-#: Mailman/Cgi/admin.py:1269
+#: Mailman/Cgi/admin.py:1270
 msgid "Enter new administrator password:"
 msgstr "Anna uusi ylläpitäjän salasana:"
 
-#: Mailman/Cgi/admin.py:1271
+#: Mailman/Cgi/admin.py:1272
 msgid "Confirm administrator password:"
 msgstr "Vahvista ylläpitäjän salasana:"
 
-#: Mailman/Cgi/admin.py:1276
+#: Mailman/Cgi/admin.py:1277
 msgid "Enter new moderator password:"
 msgstr "Anna uusi pääkäyttäjän salasana:"
 
-#: Mailman/Cgi/admin.py:1278
+#: Mailman/Cgi/admin.py:1279
 msgid "Confirm moderator password:"
 msgstr "Vahvista pääkäyttäjän salasana:"
 
-#: Mailman/Cgi/admin.py:1282
+#: Mailman/Cgi/admin.py:1283
 msgid ""
 "In addition to the above passwords you may specify a password for\n"
 "pre-approving posts to the list. Either of the above two passwords can\n"
@@ -994,96 +995,96 @@ msgid ""
 "no other."
 msgstr ""
 
-#: Mailman/Cgi/admin.py:1293
+#: Mailman/Cgi/admin.py:1294
 #, fuzzy
 msgid "Enter new poster password:"
 msgstr "Anna uusi pääkäyttäjän salasana:"
 
-#: Mailman/Cgi/admin.py:1295
+#: Mailman/Cgi/admin.py:1296
 #, fuzzy
 msgid "Confirm poster password:"
 msgstr "Vahvista pääkäyttäjän salasana:"
 
-#: Mailman/Cgi/admin.py:1304
+#: Mailman/Cgi/admin.py:1305
 msgid "Submit Your Changes"
 msgstr "Lähetä muutoksesi"
 
-#: Mailman/Cgi/admin.py:1327
+#: Mailman/Cgi/admin.py:1328
 msgid "Moderator passwords did not match"
 msgstr "Pääkäyttäjän salasanat eivät täsmänneet"
 
-#: Mailman/Cgi/admin.py:1338
+#: Mailman/Cgi/admin.py:1339
 #, fuzzy
 msgid "Poster passwords did not match"
 msgstr "Salasanasi eivät täsmää."
 
-#: Mailman/Cgi/admin.py:1348
+#: Mailman/Cgi/admin.py:1349
 msgid "Administrator passwords did not match"
 msgstr "Ylläpitäjän salasanat eivät täsmänneet"
 
-#: Mailman/Cgi/admin.py:1398
+#: Mailman/Cgi/admin.py:1399
 msgid "Already a member"
 msgstr "Jo jäsen"
 
-#: Mailman/Cgi/admin.py:1401
+#: Mailman/Cgi/admin.py:1402
 msgid "&lt;blank line&gt;"
 msgstr "&lt;tyhjä rivi&gt;"
 
-#: Mailman/Cgi/admin.py:1402 Mailman/Cgi/admin.py:1405
+#: Mailman/Cgi/admin.py:1403 Mailman/Cgi/admin.py:1406
 msgid "Bad/Invalid email address"
 msgstr "Väärä/Virheellinen sähköpostiosoite"
 
-#: Mailman/Cgi/admin.py:1408
+#: Mailman/Cgi/admin.py:1409
 msgid "Hostile address (illegal characters)"
 msgstr "Vahingollinen osoite (vääriä kirjaimia)"
 
-#: Mailman/Cgi/admin.py:1411 bin/add_members:140 bin/clone_member:136
+#: Mailman/Cgi/admin.py:1412 bin/add_members:149 bin/clone_member:136
 #: bin/sync_members:264
 msgid "Banned address (matched %(pattern)s)"
 msgstr ""
 "Osoite on kiellettyjen osoitteiden listalla (täsmäsi kaavaan %(pattern)s)"
 
-#: Mailman/Cgi/admin.py:1417
+#: Mailman/Cgi/admin.py:1418
 msgid "Successfully invited:"
 msgstr "Kutsuttu onnistuneesti:"
 
-#: Mailman/Cgi/admin.py:1419
+#: Mailman/Cgi/admin.py:1420
 msgid "Successfully subscribed:"
 msgstr "Onnistuneesti liitetty:"
 
-#: Mailman/Cgi/admin.py:1424
+#: Mailman/Cgi/admin.py:1425
 msgid "Error inviting:"
 msgstr "Virhe kutsuttaessa:"
 
-#: Mailman/Cgi/admin.py:1426
+#: Mailman/Cgi/admin.py:1427
 msgid "Error subscribing:"
 msgstr "Virhe liittäessä:"
 
-#: Mailman/Cgi/admin.py:1455
+#: Mailman/Cgi/admin.py:1458
 msgid "Successfully Unsubscribed:"
 msgstr "Erotettu onnistuneesti:"
 
-#: Mailman/Cgi/admin.py:1460
+#: Mailman/Cgi/admin.py:1463
 msgid "Cannot unsubscribe non-members:"
 msgstr "Ei voi erottaa ei-jäseniä:"
 
-#: Mailman/Cgi/admin.py:1472
+#: Mailman/Cgi/admin.py:1471
 msgid "Bad moderation flag value"
 msgstr "Virheellinen muutosasetuksen arvo"
 
-#: Mailman/Cgi/admin.py:1494
+#: Mailman/Cgi/admin.py:1493
 msgid "Not subscribed"
 msgstr "Ei liitetty"
 
-#: Mailman/Cgi/admin.py:1497
+#: Mailman/Cgi/admin.py:1496
 msgid "Ignoring changes to deleted member: %(user)s"
 msgstr "Ei käsitellä muutoksia poistetulle käyttäjälle: %(user)s"
 
-#: Mailman/Cgi/admin.py:1537
+#: Mailman/Cgi/admin.py:1536
 msgid "Successfully Removed:"
 msgstr "Poistettu onnistuneesti:"
 
-#: Mailman/Cgi/admin.py:1541
+#: Mailman/Cgi/admin.py:1540
 msgid "Error Unsubscribing:"
 msgstr "Virhe eroamisessa:"
 
@@ -2246,11 +2247,11 @@ msgstr "Sivua ei muutettu."
 msgid "HTML successfully updated."
 msgstr "HMTL on muutettu onnistuneesti."
 
-#: Mailman/Cgi/listinfo.py:76
+#: Mailman/Cgi/listinfo.py:77
 msgid "%(hostname)s Mailing Lists"
 msgstr "%(hostname)s postituslistat"
 
-#: Mailman/Cgi/listinfo.py:110
+#: Mailman/Cgi/listinfo.py:111
 msgid ""
 "<p>There currently are no publicly-advertised\n"
 "            %(mailmanlink)s mailing lists on %(hostname)s."
@@ -2258,7 +2259,7 @@ msgstr ""
 "<p>Palvelimella %(hostname)s ei ole julkisia\n"
 "            %(mailmanlink)s postituslistoja."
 
-#: Mailman/Cgi/listinfo.py:114
+#: Mailman/Cgi/listinfo.py:115
 msgid ""
 "<p>Below is a listing of all the public mailing lists on\n"
 "            %(hostname)s.  Click on a list name to get more information "
@@ -2272,11 +2273,11 @@ msgstr ""
 "            lisätietoja listasta, liittyäksesi, erotaksesi, tai\n"
 "            muuttaaksesi liittymisasetuksiasi."
 
-#: Mailman/Cgi/listinfo.py:120
+#: Mailman/Cgi/listinfo.py:121
 msgid "right"
 msgstr "oikea"
 
-#: Mailman/Cgi/listinfo.py:123
+#: Mailman/Cgi/listinfo.py:124
 msgid ""
 " To visit the general information page for an unadvertised list,\n"
 "        open a URL similar to this one, but with a '/' and the %(adj)s\n"
@@ -2289,11 +2290,11 @@ msgstr ""
 "        <p>Postituslistojen ylläpidon yhteenvetosivulle pääset tästä "
 "linkistä, "
 
-#: Mailman/Cgi/listinfo.py:128
+#: Mailman/Cgi/listinfo.py:129
 msgid "the list admin overview page"
 msgstr "listan ylläpidon yhteenvetosivu"
 
-#: Mailman/Cgi/listinfo.py:129
+#: Mailman/Cgi/listinfo.py:130
 msgid ""
 " to find the management interface for your list.\n"
 "         <p>If you are having trouble using the lists, please contact "
@@ -2301,11 +2302,11 @@ msgstr ""
 ".\n"
 "         <p>Lähetä kysymykset ja kommentit osoitteeseen "
 
-#: Mailman/Cgi/listinfo.py:194
+#: Mailman/Cgi/listinfo.py:208
 msgid "Edit Options"
 msgstr "Muokkaa valintoja"
 
-#: Mailman/Cgi/listinfo.py:201 Mailman/Cgi/options.py:876
+#: Mailman/Cgi/listinfo.py:215 Mailman/Cgi/options.py:876
 #: Mailman/Cgi/roster.py:118
 msgid "View this page in"
 msgstr "Näytä tämä sivu"
@@ -2861,7 +2862,7 @@ msgstr "<b>Peruuta</b> ja palaa listan ylläpitoon"
 msgid "Delete this list"
 msgstr "Poista tämä lista"
 
-#: Mailman/Cgi/roster.py:48 Mailman/Cgi/subscribe.py:51
+#: Mailman/Cgi/roster.py:48 Mailman/Cgi/subscribe.py:52
 msgid "Invalid options to CGI script"
 msgstr "CGI-koodissa on väärä välinta"
 
@@ -2870,27 +2871,39 @@ msgid "%(realname)s roster authentication failed."
 msgstr "%(realname)s luettelon todennus epäonnistui"
 
 #: Mailman/Cgi/roster.py:134 Mailman/Cgi/roster.py:135
-#: Mailman/Cgi/subscribe.py:50 Mailman/Cgi/subscribe.py:61
+#: Mailman/Cgi/subscribe.py:51 Mailman/Cgi/subscribe.py:62
 msgid "Error"
 msgstr "Virhe"
 
-#: Mailman/Cgi/subscribe.py:114
+#: Mailman/Cgi/subscribe.py:115
 msgid "You must supply a valid email address."
 msgstr "Sinun täytyy antaa kunnollinen sähköpostiosoite."
 
-#: Mailman/Cgi/subscribe.py:126
+#: Mailman/Cgi/subscribe.py:138
+msgid "The form is too old.  Please GET it again."
+msgstr ""
+
+#: Mailman/Cgi/subscribe.py:141
+msgid "Please take a few seconds to fill out the form before submitting it."
+msgstr ""
+
+#: Mailman/Cgi/subscribe.py:144
+msgid "You must GET the form before submitting it."
+msgstr ""
+
+#: Mailman/Cgi/subscribe.py:148
 msgid "You may not subscribe a list to itself!"
 msgstr "Et voi liittää listaa itseensä!"
 
-#: Mailman/Cgi/subscribe.py:134
+#: Mailman/Cgi/subscribe.py:156
 msgid "If you supply a password, you must confirm it."
 msgstr "Jos annat salasanan, sinun täytyy vahvistaa se."
 
-#: Mailman/Cgi/subscribe.py:136
+#: Mailman/Cgi/subscribe.py:158
 msgid "Your passwords did not match."
 msgstr "Salasanasi eivät täsmää."
 
-#: Mailman/Cgi/subscribe.py:170
+#: Mailman/Cgi/subscribe.py:192
 msgid ""
 "Your subscription request has been received, and will soon be acted upon.\n"
 "Depending on the configuration of this mailing list, your subscription "
@@ -2906,7 +2919,7 @@ msgstr ""
 "jossa on tarkemmat ohjeet."
 
 # #######
-#: Mailman/Cgi/subscribe.py:184
+#: Mailman/Cgi/subscribe.py:206
 msgid ""
 "The email address you supplied is banned from this\n"
 "        mailing list.  If you think this restriction is erroneous, please\n"
@@ -2917,7 +2930,7 @@ msgstr ""
 "        ota yhteyttä listan omistajiin %(listowner)s."
 
 # #######
-#: Mailman/Cgi/subscribe.py:188
+#: Mailman/Cgi/subscribe.py:210
 msgid ""
 "The email address you supplied is not valid.  (E.g. it must contain an\n"
 "`@'.)"
@@ -2925,7 +2938,7 @@ msgstr ""
 "Antamasi sähköpostiosoite ei ole kelvollinen.  (Sen täytyy esimerkiksi\n"
 "sisältää @-merkki."
 
-#: Mailman/Cgi/subscribe.py:192
+#: Mailman/Cgi/subscribe.py:214
 msgid ""
 "Your subscription is not allowed because the email address you gave is\n"
 "insecure."
@@ -2933,7 +2946,7 @@ msgstr ""
 "Liittymisesi ei ole sallittu, koska antamasi sähköpostiosoite\n"
 "turvaton."
 
-#: Mailman/Cgi/subscribe.py:200
+#: Mailman/Cgi/subscribe.py:222
 msgid ""
 "Confirmation from your email address is required, to prevent anyone from\n"
 "subscribing you without permission.  Instructions are being sent to you at\n"
@@ -2945,7 +2958,7 @@ msgstr ""
 "sähköpostiosoitteeseesi %(email)s.  Liittymisesi ei ole voimassa ennenkuin\n"
 "vahvistat liittymisesi."
 
-#: Mailman/Cgi/subscribe.py:212
+#: Mailman/Cgi/subscribe.py:234
 msgid ""
 "Your subscription request was deferred because %(x)s.  Your request has "
 "been\n"
@@ -2957,16 +2970,16 @@ msgstr ""
 "edelleen listan pääkäyttäjälle.  Saat sähköpostina tiedoa pääkäyttäjien \n"
 "päätöksestä, kun he saavat pyyntösi."
 
-#: Mailman/Cgi/subscribe.py:219 Mailman/Commands/cmd_confirm.py:61
+#: Mailman/Cgi/subscribe.py:241 Mailman/Commands/cmd_confirm.py:61
 msgid "You are already subscribed."
 msgstr "Olet jo liittynyt."
 
 # #######
-#: Mailman/Cgi/subscribe.py:233
+#: Mailman/Cgi/subscribe.py:255
 msgid "Mailman privacy alert"
 msgstr "Mailmanin varoitus yksityisyyden suojasta"
 
-#: Mailman/Cgi/subscribe.py:234
+#: Mailman/Cgi/subscribe.py:256
 msgid ""
 "An attempt was made to subscribe your address to the mailing list\n"
 "%(listaddr)s.  You are already subscribed to this mailing list.\n"
@@ -2997,15 +3010,15 @@ msgstr ""
 "ja olet huolestunut yksityisyydestäsi, voit vapaasti\n"
 "lähettää viestin listan ylläpitäjälle %(listowner)s.\n"
 
-#: Mailman/Cgi/subscribe.py:253
+#: Mailman/Cgi/subscribe.py:275
 msgid "This list does not support digest delivery."
 msgstr "Tämä lista ei tue lukemiston lähettämistä."
 
-#: Mailman/Cgi/subscribe.py:255
+#: Mailman/Cgi/subscribe.py:277
 msgid "This list only supports digest delivery."
 msgstr "Tämä lista tukee vain lukemistolähetyksiä. "
 
-#: Mailman/Cgi/subscribe.py:262
+#: Mailman/Cgi/subscribe.py:284
 msgid "You have been successfully subscribed to the %(realname)s mailing list."
 msgstr "Sinut on onnistuneesti liitetty  %(realname)s postituslistalle."
 
@@ -3756,165 +3769,169 @@ msgstr "Ei-kooste (tavanomaiset) jäsenet (Non-digest (regular) members):"
 msgid "Digest members:"
 msgstr "Koostejäsenet (Digest members):"
 
-#: Mailman/Defaults.py:1482
+#: Mailman/Defaults.py:1508
 msgid "Arabic"
 msgstr "Arabia"
 
 # #######
-#: Mailman/Defaults.py:1483
+#: Mailman/Defaults.py:1509
 #, fuzzy
 msgid "Asturian"
 msgstr "Viro"
 
-#: Mailman/Defaults.py:1484
+#: Mailman/Defaults.py:1510
 msgid "Catalan"
 msgstr "Katalonia"
 
-#: Mailman/Defaults.py:1485
+#: Mailman/Defaults.py:1511
 msgid "Czech"
 msgstr "Tsekki"
 
 # #######
-#: Mailman/Defaults.py:1486
+#: Mailman/Defaults.py:1512
 msgid "Danish"
 msgstr "Tanska"
 
-#: Mailman/Defaults.py:1487
+#: Mailman/Defaults.py:1513
 msgid "German"
 msgstr "Saksa"
 
-#: Mailman/Defaults.py:1488
+#: Mailman/Defaults.py:1514
 msgid "English (USA)"
 msgstr "Englanti (amerikan-)"
 
-#: Mailman/Defaults.py:1489
+#: Mailman/Defaults.py:1515
 msgid "Spanish (Spain)"
 msgstr "Espanja (Espanja)"
 
 # #######
-#: Mailman/Defaults.py:1490
+#: Mailman/Defaults.py:1516
 msgid "Estonian"
 msgstr "Viro"
 
-#: Mailman/Defaults.py:1491
+#: Mailman/Defaults.py:1517
 msgid "Euskara"
 msgstr "Euskara"
 
+#: Mailman/Defaults.py:1518
+msgid "Persian"
+msgstr ""
+
 # #######
-#: Mailman/Defaults.py:1492
+#: Mailman/Defaults.py:1519
 msgid "Finnish"
 msgstr "Suomi"
 
-#: Mailman/Defaults.py:1493
+#: Mailman/Defaults.py:1520
 msgid "French"
 msgstr "Ranska"
 
-#: Mailman/Defaults.py:1494
+#: Mailman/Defaults.py:1521
 msgid "Galician"
 msgstr "Galicia"
 
-#: Mailman/Defaults.py:1495
+#: Mailman/Defaults.py:1522
 msgid "Greek"
 msgstr ""
 
-#: Mailman/Defaults.py:1496
+#: Mailman/Defaults.py:1523
 msgid "Hebrew"
 msgstr "Heprea"
 
-#: Mailman/Defaults.py:1497
+#: Mailman/Defaults.py:1524
 msgid "Croatian"
 msgstr "Kroatia"
 
-#: Mailman/Defaults.py:1498
+#: Mailman/Defaults.py:1525
 msgid "Hungarian"
 msgstr "Unkari"
 
-#: Mailman/Defaults.py:1499
+#: Mailman/Defaults.py:1526
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: Mailman/Defaults.py:1500
+#: Mailman/Defaults.py:1527
 msgid "Italian"
 msgstr "Italia"
 
-#: Mailman/Defaults.py:1501
+#: Mailman/Defaults.py:1528
 msgid "Japanese"
 msgstr "Japani"
 
-#: Mailman/Defaults.py:1502
+#: Mailman/Defaults.py:1529
 msgid "Korean"
 msgstr "Korea"
 
-#: Mailman/Defaults.py:1503
+#: Mailman/Defaults.py:1530
 msgid "Lithuanian"
 msgstr "Liettua"
 
 # #######
-#: Mailman/Defaults.py:1504
+#: Mailman/Defaults.py:1531
 msgid "Dutch"
 msgstr "Flaami"
 
-#: Mailman/Defaults.py:1505
+#: Mailman/Defaults.py:1532
 msgid "Norwegian"
 msgstr "Norja"
 
-#: Mailman/Defaults.py:1506
+#: Mailman/Defaults.py:1533
 msgid "Polish"
 msgstr "Puola"
 
 # #######
-#: Mailman/Defaults.py:1507
+#: Mailman/Defaults.py:1534
 msgid "Portuguese"
 msgstr "Portugali"
 
 # #######
-#: Mailman/Defaults.py:1508
+#: Mailman/Defaults.py:1535
 msgid "Portuguese (Brazil)"
 msgstr "Portugali (Brasilia)"
 
 # #######
-#: Mailman/Defaults.py:1509
+#: Mailman/Defaults.py:1536
 msgid "Romanian"
 msgstr "Romania"
 
-#: Mailman/Defaults.py:1510
+#: Mailman/Defaults.py:1537
 msgid "Russian"
 msgstr "Venäjä"
 
-#: Mailman/Defaults.py:1511
+#: Mailman/Defaults.py:1538
 msgid "Slovak"
 msgstr "Slovakki"
 
-#: Mailman/Defaults.py:1512
+#: Mailman/Defaults.py:1539
 msgid "Slovenian"
 msgstr "Sloveeni"
 
-#: Mailman/Defaults.py:1513
+#: Mailman/Defaults.py:1540
 msgid "Serbian"
 msgstr "Serbia"
 
 # #######
-#: Mailman/Defaults.py:1514
+#: Mailman/Defaults.py:1541
 msgid "Swedish"
 msgstr "Ruotsi"
 
-#: Mailman/Defaults.py:1515
+#: Mailman/Defaults.py:1542
 msgid "Turkish"
 msgstr "Turkki"
 
-#: Mailman/Defaults.py:1516
+#: Mailman/Defaults.py:1543
 msgid "Ukrainian"
 msgstr "Ukraina"
 
-#: Mailman/Defaults.py:1517
+#: Mailman/Defaults.py:1544
 msgid "Vietnamese"
 msgstr "Vietnam"
 
-#: Mailman/Defaults.py:1518
+#: Mailman/Defaults.py:1545
 msgid "Chinese (China)"
 msgstr "Kiina (Kiina)"
 
-#: Mailman/Defaults.py:1519
+#: Mailman/Defaults.py:1546
 msgid "Chinese (Taiwan)"
 msgstr "Kiina (Taiwan)"
 
@@ -3936,23 +3953,23 @@ msgstr " (Lukemisto-muoto)"
 msgid "Welcome to the \"%(realname)s\" mailing list%(digmode)s"
 msgstr "Tervetuloa  \"%(realname)s\" postituslistalle %(digmode)s"
 
-#: Mailman/Deliverer.py:86
+#: Mailman/Deliverer.py:87
 msgid "You have been unsubscribed from the %(realname)s mailing list"
 msgstr "Sinut on irtisanottu %(realname)s postituslistalta"
 
-#: Mailman/Deliverer.py:113
+#: Mailman/Deliverer.py:114
 msgid "%(listfullname)s mailing list reminder"
 msgstr "%(listfullname)s postituslistan muistuttaja"
 
-#: Mailman/Deliverer.py:141
+#: Mailman/Deliverer.py:142
 msgid "No reason given"
 msgstr "Syytä ei annettu"
 
-#: Mailman/Deliverer.py:165 Mailman/Deliverer.py:184
+#: Mailman/Deliverer.py:166 Mailman/Deliverer.py:185
 msgid "Hostile subscription attempt detected"
 msgstr "Vihamielinen kirjautumisyritys havaittu"
 
-#: Mailman/Deliverer.py:166
+#: Mailman/Deliverer.py:167
 msgid ""
 "%(address)s was invited to a different mailing\n"
 "list, but in a deliberate malicious attempt they tried to confirm the\n"
@@ -3963,7 +3980,7 @@ msgstr ""
 "mutta yritti tarkoituksella vakuuttaa kutsun olleen sinun listallesi\n"
 "Lähetimme tämän viestin tiedoksesi, sinun ei tarvitse tehdä mitään."
 
-#: Mailman/Deliverer.py:185
+#: Mailman/Deliverer.py:186
 msgid ""
 "You invited %(address)s to your list, but in a\n"
 "deliberate malicious attempt, they tried to confirm the invitation to a\n"
@@ -3975,7 +3992,7 @@ msgstr ""
 "tarkoituksella vakuuttaa kutsun olevan toiselle listalle.\n"
 "Lähetimme tämän viestin tiedoksesi, sinun ei tarvitse tehdä mitään."
 
-#: Mailman/Deliverer.py:218
+#: Mailman/Deliverer.py:219
 msgid "%(listname)s mailing list probe message"
 msgstr "%(listname)s postituslistan muistuttaja"
 
@@ -4804,7 +4821,10 @@ msgid "When receiving digests, which format is default?"
 msgstr "Kun vastaanotetaan lukemistoja, mikä on oletusmuoto?"
 
 #: Mailman/Gui/Digest.py:59
-msgid "How big in Kb should a digest be before it gets sent out?"
+#, fuzzy
+msgid ""
+"How big in Kb should a digest be before it gets sent out?  0 implies no "
+"maximum size."
 msgstr "Kuinka suuri lukemisto pitäisi (Kb) olla ennenkuin se lähetetään?"
 
 #: Mailman/Gui/Digest.py:63
@@ -6891,8 +6911,8 @@ msgid ""
 msgstr ""
 "Teksti joka lisätään hylätyn viestin ilmoitukseen \n"
 "             kun listalle kuulumaton käyttäjä on postittanut listalle.\n"
-"             Tämä viesti voi sisältää listan omistajan osoitteen %%"
-"(listowners)s.\n"
+"             Tämä viesti voi sisältää listan omistajan osoitteen %"
+"%(listowners)s.\n"
 "             Tämä viesti korvaa oletusviestin."
 
 #: Mailman/Gui/Privacy.py:325
@@ -8106,39 +8126,39 @@ msgstr "Otsikkotiedot täsmäsivät suodatussääntöön"
 msgid "Message rejected by filter rule match"
 msgstr "Viesti torjuttu suodatussäännön perusteella"
 
-#: Mailman/Handlers/ToDigest.py:162
+#: Mailman/Handlers/ToDigest.py:163
 msgid "%(realname)s Digest, Vol %(volume)d, Issue %(issue)d"
 msgstr "%(realname)s Lukemisto, Vol %(volume)d, Aihe %(issue)d"
 
-#: Mailman/Handlers/ToDigest.py:208
+#: Mailman/Handlers/ToDigest.py:209
 msgid "digest header"
 msgstr "lukemiston otsikko"
 
-#: Mailman/Handlers/ToDigest.py:211
+#: Mailman/Handlers/ToDigest.py:212
 msgid "Digest Header"
 msgstr "Lukemiston otsikko"
 
-#: Mailman/Handlers/ToDigest.py:224
+#: Mailman/Handlers/ToDigest.py:225
 msgid "Today's Topics:\n"
 msgstr "Tämänpäivän Aiheet:\n"
 
-#: Mailman/Handlers/ToDigest.py:304
+#: Mailman/Handlers/ToDigest.py:305
 msgid "Today's Topics (%(msgcount)d messages)"
 msgstr "Tämänpäivän Aiheet (%(msgcount)d viestiä)"
 
-#: Mailman/Handlers/ToDigest.py:330
+#: Mailman/Handlers/ToDigest.py:331
 msgid "[Message discarded by content filter]"
 msgstr "[Sisällönsuodatus hylkäsi viestin]"
 
-#: Mailman/Handlers/ToDigest.py:358
+#: Mailman/Handlers/ToDigest.py:359
 msgid "digest footer"
 msgstr "lukemiston alatunniste"
 
-#: Mailman/Handlers/ToDigest.py:361 Mailman/Handlers/ToDigest.py:369
+#: Mailman/Handlers/ToDigest.py:362 Mailman/Handlers/ToDigest.py:370
 msgid "Digest Footer"
 msgstr "Lukemiston alatunniste"
 
-#: Mailman/Handlers/ToDigest.py:376
+#: Mailman/Handlers/ToDigest.py:377
 msgid "End of "
 msgstr "Loppu "
 
@@ -8146,7 +8166,7 @@ msgstr "Loppu "
 msgid "Posting of your message titled \"%(subject)s\""
 msgstr "Viestisi, jonka otsikko on \"%(subject)s\""
 
-#: Mailman/ListAdmin.py:300 Mailman/ListAdmin.py:419
+#: Mailman/ListAdmin.py:300 Mailman/ListAdmin.py:422
 msgid "[No reason given]"
 msgstr "[Syytä ei annettu]"
 
@@ -8154,27 +8174,27 @@ msgstr "[Syytä ei annettu]"
 msgid "Forward of moderated message"
 msgstr "Ylläpidetyn viestin edelleenlähetys"
 
-#: Mailman/ListAdmin.py:394
+#: Mailman/ListAdmin.py:395
 msgid "New subscription request to list %(realname)s from %(addr)s"
 msgstr "Uusi liittymispyyntö listalle %(realname)s %(addr)s lta"
 
-#: Mailman/ListAdmin.py:418
+#: Mailman/ListAdmin.py:421
 msgid "Subscription request"
 msgstr "Liittymispyyntö"
 
-#: Mailman/ListAdmin.py:449
+#: Mailman/ListAdmin.py:452
 msgid "New unsubscription request from %(realname)s by %(addr)s"
 msgstr "Uusi irtisanomispyyntö listalle %(realname)s  %(addr)s lta"
 
-#: Mailman/ListAdmin.py:473
+#: Mailman/ListAdmin.py:476
 msgid "Unsubscription request"
 msgstr "Irtisanoutumispyyntö"
 
-#: Mailman/ListAdmin.py:506
+#: Mailman/ListAdmin.py:509
 msgid "Original Message"
 msgstr "Alkuperäinen viesti"
 
-#: Mailman/ListAdmin.py:509
+#: Mailman/ListAdmin.py:512
 msgid "Request to mailing list %(realname)s rejected"
 msgstr "Pyyntö listalle %(realname)s on hylätty"
 
@@ -8287,35 +8307,35 @@ msgstr "Vahvista jäsenyytesi postituslistalle %(listname)s ennen liittymistä"
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
 msgstr "Vahvista jäsenyytesti postituslistalle %(listname)s ennen poistumista"
 
-#: Mailman/MailList.py:900 Mailman/MailList.py:1322
+#: Mailman/MailList.py:903 Mailman/MailList.py:1333
 msgid " from %(remote)s"
 msgstr " lähde: %(remote)s"
 
-#: Mailman/MailList.py:933
+#: Mailman/MailList.py:944
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr "listan %(realname)s tilaukset vaativat moderaattorin hyväksynnän"
 
-#: Mailman/MailList.py:1002 bin/add_members:245
+#: Mailman/MailList.py:1013 bin/add_members:252
 msgid "%(realname)s subscription notification"
 msgstr "ilmoitus listan %(realname)s tilauksesta"
 
-#: Mailman/MailList.py:1021
+#: Mailman/MailList.py:1032
 msgid "unsubscriptions require moderator approval"
 msgstr "listalta poistuminen vaatii moderaattorin hyväksynnän"
 
-#: Mailman/MailList.py:1041
+#: Mailman/MailList.py:1052
 msgid "%(realname)s unsubscribe notification"
 msgstr "ilmoitus listalta %(realname)s poistumisesta"
 
-#: Mailman/MailList.py:1231
+#: Mailman/MailList.py:1242
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr "listan %(name)s tilaaminen vaatii ylläpitäjän hyväksynnän"
 
-#: Mailman/MailList.py:1494
+#: Mailman/MailList.py:1507
 msgid "Last autoresponse notification for today"
 msgstr "Viimeinen automaattinen paluuviesti -ilmoitus tälle päivälle"
 
-#: Mailman/Queue/BounceRunner.py:341
+#: Mailman/Queue/BounceRunner.py:343
 msgid ""
 "The attached message was received as a bounce, but either the bounce format\n"
 "was not recognized, or no member addresses could be extracted from it.  "
@@ -8337,7 +8357,7 @@ msgstr ""
 "%(adminurl)s\n"
 "\n"
 
-#: Mailman/Queue/BounceRunner.py:351
+#: Mailman/Queue/BounceRunner.py:353
 msgid "Uncaught bounce notification"
 msgstr "Häirintätoimenpideilmoitus palautuksesta"
 
@@ -8498,6 +8518,7 @@ msgstr ""
 "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 
 #: bin/add_members:26
+#, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8529,6 +8550,10 @@ msgid ""
 "on\n"
 "        the success/failure of these subscriptions, overriding whatever the\n"
 "        list's `admin_notify_mchanges' setting is.\n"
+"\n"
+"    --nomail\n"
+"    -n\n"
+"        Set the newly added members mail delivery to disabled by admin.\n"
 "\n"
 "    --help\n"
 "    -h\n"
@@ -8584,45 +8609,45 @@ msgstr ""
 "Ainakin yksi -r sekä -d vaihtoehto on syötettävä. Maksimissaan yksi "
 "tiedostoista voi olla '-'.\n"
 
-#: bin/add_members:137
+#: bin/add_members:146
 msgid "Already a member: %(member)s"
 msgstr "Jo jäsen: %(member)s"
 
-#: bin/add_members:143
+#: bin/add_members:152
 msgid "Bad/Invalid email address: blank line"
 msgstr "Epäkelpo/väärä sähköpostiosoite: tyhjä rivi"
 
-#: bin/add_members:145
+#: bin/add_members:154
 msgid "Bad/Invalid email address: %(member)s"
 msgstr "Epäkelpo/väärä sähköpostiosoite: %(member)s"
 
-#: bin/add_members:147
+#: bin/add_members:156
 msgid "Hostile address (illegal characters): %(member)s"
 msgstr "Vihamielinen osoite (laittomia merkkejä): %(member)s"
 
-#: bin/add_members:149
+#: bin/add_members:158
 msgid "Subscribed: %(member)s"
 msgstr "Tilattu: %(member)s"
 
-#: bin/add_members:194
+#: bin/add_members:199
 msgid "Bad argument to -w/--welcome-msg: %(arg)s"
 msgstr "Väärät argumentit valitsimelle -w/--welcome-msg: %(arg)s"
 
-#: bin/add_members:201
+#: bin/add_members:206
 msgid "Bad argument to -a/--admin-notify: %(arg)s"
 msgstr "Väärät argumentit valitsimelle -a/--admin-notify: %(arg)s"
 
-#: bin/add_members:207
+#: bin/add_members:214
 msgid "Cannot read both digest and normal members from standard input."
 msgstr "Ei voida lukea sekä kooste- että normaalijäseniä vakiosyötteestä."
 
-#: bin/add_members:213 bin/config_list:109 bin/export.py:271
+#: bin/add_members:220 bin/config_list:109 bin/export.py:271
 #: bin/find_member:97 bin/inject:91 bin/list_admins:90 bin/list_members:232
 #: bin/sync_members:222 cron/bumpdigests:86
 msgid "No such list: %(listname)s"
 msgstr "Lista ei ole olemassa: %(listname)s"
 
-#: bin/add_members:233 bin/change_pw:158 bin/check_db:114 bin/discard:83
+#: bin/add_members:240 bin/change_pw:158 bin/check_db:114 bin/discard:83
 #: bin/sync_members:244 bin/update:302 bin/update:323 bin/update:577
 #: cron/bumpdigests:78
 msgid "Nothing to do."
@@ -8912,8 +8937,8 @@ msgid ""
 "\n"
 "    %(adminurl)s\n"
 msgstr ""
-"Sivuston ylläpitäjä osoitteessa %(hostname)s on muuttanut postituslistasi %"
-"(listname)s salasanan.\n"
+"Sivuston ylläpitäjä osoitteessa %(hostname)s on muuttanut postituslistasi "
+"%(listname)s salasanan.\n"
 "Salasana on nyt\n"
 "\n"
 "    %(notifypassword)s\n"
@@ -10053,6 +10078,7 @@ msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "Lista: %(listname)s, \tOmistajat: %(owners)s"
 
 #: bin/list_lists:19
+#, fuzzy
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -10062,6 +10088,9 @@ msgid ""
 "\n"
 "    -a / --advertised\n"
 "        List only those mailing lists that are publically advertised\n"
+"\n"
+"    -p / --public-archive\n"
+"        List only those lists with public archives.\n"
 "\n"
 "    --virtual-host-overview=domain\n"
 "    -V domain\n"
@@ -10098,11 +10127,11 @@ msgstr ""
 "        Print this text and exit.\n"
 "\n"
 
-#: bin/list_lists:105
+#: bin/list_lists:113
 msgid "No matching mailing lists found"
 msgstr "Vastaavia postituslistoja ei löydetty"
 
-#: bin/list_lists:109
+#: bin/list_lists:117
 msgid "matching mailing lists found:"
 msgstr "vastaavia postituslistoja löydetty:"
 
@@ -11948,8 +11977,8 @@ msgid ""
 "This is probably not safe.\n"
 "Exiting."
 msgstr ""
-"Havaittu päivitys taaksepäin versiosta %(hexlversion)s versioon %"
-"(hextversion)s\n"
+"Havaittu päivitys taaksepäin versiosta %(hexlversion)s versioon "
+"%(hextversion)s\n"
 "Tämä ei ole luultavasti turvallista.\n"
 "Poistutaan."
 
