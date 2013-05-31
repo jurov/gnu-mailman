@@ -42,7 +42,7 @@ PATTERNS = [
     # sz-sb.de, corridor.com, nfg.nl
     (_c('the following addresses had'),
      _c('transcript of session follows'),
-     _c(r'<(?P<fulladdr>[^>]*)>|\(expanded from: <?(?P<addr>[^>)]*)>?\)')),
+     _c(r'^ *(\(expanded from: )?<?(?P<addr>[^\s@]+@[^\s@>]+?)>?\)?\s*$')),
     # robanal.demon.co.uk
     (_c('this message was created automatically by mail delivery software'),
      _c('original message follows'),
@@ -184,6 +184,10 @@ PATTERNS = [
      _c(
         'Your message to (?P<addr>[^\s@]+@[^\s@]+) was automatically rejected'
        )),
+    # mail.ru
+    (_c('A message that you sent was rejected'),
+     _c('This is a copy of your message'),
+     _c('\s(?P<addr>[^\s@]+@[^\s@]+)')),
     # Next one goes here...
     ]
 

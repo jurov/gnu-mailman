@@ -41,7 +41,8 @@ class BounceTest(unittest.TestCase):
         # Exim bounces
         ('Exim', 'exim_01.txt', ['delangen@its.tudelft.nl']),
         # SimpleMatch bounces
-        ('SimpleMatch', 'sendmail_01.txt', ['zzzzz@nfg.nl']),
+        ('SimpleMatch', 'sendmail_01.txt', ['zzzzz@shaft.coal.nl',
+                                            'zzzzz@nfg.nl']),
         ('SimpleMatch', 'simple_01.txt', ['bbbsss@turbosport.com']),
         ('SimpleMatch', 'simple_02.txt', ['chris.ggggmmmm@usa.net']),
         ('SimpleMatch', 'simple_04.txt', ['claird@starbase.neosoft.com']),
@@ -79,6 +80,7 @@ class BounceTest(unittest.TestCase):
         ('SimpleMatch', 'simple_36.txt', ['garyt@xxx.com']),
         ('SimpleMatch', 'simple_37.txt', ['user@uci.edu']),
         ('SimpleMatch', 'simple_38.txt', ['prueba@domain.com']),
+        ('SimpleMatch', 'simple_39.txt', [b'foo@mail.ru']),
         ('SimpleMatch', 'bounce_02.txt', ['acinsp1@midsouth.rr.com']),
         ('SimpleMatch', 'bounce_03.txt', ['james@jeborall.demon.co.uk']),
         # SimpleWarning
@@ -136,6 +138,7 @@ class BounceTest(unittest.TestCase):
         ('Qmail', 'qmail_05.txt', ['ivokggrrdvc@caixaforte.freeservers.com']),
         ('Qmail', 'qmail_06.txt', ['ntl@xxx.com']),
         ('Qmail', 'qmail_07.txt', ['user@example.net']),
+        ('Qmail', 'qmail_08.txt', []),
         # LLNL's custom Sendmail
         ('LLNL', 'llnl_01.txt', ['trotts1@llnl.gov']),
         # Netscape's server...
