@@ -710,6 +710,7 @@ def show_post_requests(mlist, id, info, total, count, form):
 
 def process_form(mlist, doc, cgidata):
     senderactions = {}
+    badaddrs = []
     # Sender-centric actions
     for k in cgidata.keys():
         for prefix in ('senderaction-', 'senderpreserve-', 'senderforward-',
@@ -762,20 +763,27 @@ def process_form(mlist, doc, cgidata):
         # Now see if this sender should be added to one of the nonmember
         # sender filters.
         if actions.get('senderfilterp', 0):
+            # Check for an invalid sender address.
             try:
-                which = int(actions.get('senderfilter'))
-            except ValueError:
-                # Bogus form
-                which = 'ignore'
-            if which == mm_cfg.ACCEPT:
-                mlist.accept_these_nonmembers.append(sender)
-            elif which == mm_cfg.HOLD:
-                mlist.hold_these_nonmembers.append(sender)
-            elif which == mm_cfg.REJECT:
-                mlist.reject_these_nonmembers.append(sender)
-            elif which == mm_cfg.DISCARD:
-                mlist.discard_these_nonmembers.append(sender)
-            # Otherwise, it's a bogus form, so ignore it
+                Utils.ValidateEmail(sender)
+            except Errors.EmailAddressError:
+                # Don't check for dups.  Report it once for each checked box.
+                badaddrs.append(sender)
+            else:
+                try:
+                    which = int(actions.get('senderfilter'))
+                except ValueError:
+                    # Bogus form
+                    which = 'ignore'
+                if which == mm_cfg.ACCEPT:
+                    mlist.accept_these_nonmembers.append(sender)
+                elif which == mm_cfg.HOLD:
+                    mlist.hold_these_nonmembers.append(sender)
+                elif which == mm_cfg.REJECT:
+                    mlist.reject_these_nonmembers.append(sender)
+                elif which == mm_cfg.DISCARD:
+                    mlist.discard_these_nonmembers.append(sender)
+                # Otherwise, it's a bogus form, so ignore it
         # And now see if we're to clear the member's moderation flag.
         if actions.get('senderclearmodp', 0):
             try:
@@ -785,8 +793,15 @@ def process_form(mlist, doc, cgidata):
                 pass
         # And should this address be banned?
         if actions.get('senderbanp', 0):
-            if sender not in mlist.ban_list:
-                mlist.ban_list.append(sender)
+            # Check for an invalid sender address.
+            try:
+                Utils.ValidateEmail(sender)
+            except Errors.EmailAddressError:
+                # Don't check for dups.  Report it once for each checked box.
+                badaddrs.append(sender)
+            else:
+                if sender not in mlist.ban_list:
+                    mlist.ban_list.append(sender)
     # Now, do message specific actions
     banaddrs = []
     erroraddrs = []
@@ -836,6 +851,8 @@ def process_form(mlist, doc, cgidata):
         if cgidata.getvalue(bankey):
             sender = mlist.GetRecord(request_id)[1]
             if sender not in mlist.ban_list:
+                # We don't need to validate the sender.  An invalid address
+                # can't get here.
                 mlist.ban_list.append(sender)
         # Handle the request id
         try:
@@ -854,7 +871,14 @@ def process_form(mlist, doc, cgidata):
     doc.AddItem(Header(2, _('Database Updated...')))
     if erroraddrs:
         for addr in erroraddrs:
+            addr = Utils.websafe(addr)
             doc.AddItem(`addr` + _(' is already a member') + '<br>')
     if banaddrs:
         for addr, patt in banaddrs:
+            addr = Utils.websafe(addr)
             doc.AddItem(_('%(addr)s is banned (matched: %(patt)s)') + '<br>')
+    if badaddrs:
+        for addr in badaddrs:
+            addr = Utils.websafe(addr)
+            doc.AddItem(`addr` + ': ' + _('Bad/Invalid email address') +
+                        '<br>')
