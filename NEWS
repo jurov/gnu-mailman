@@ -61,6 +61,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed bin/mailmanctl -s to not remove the master lock if it can't be
+      determined to be truly stale.  (LP: #1189558)
+
     - It is no longer possible to add 'invalid' addresses to the ban_list
       and the *_these_nonmembers filters from the check boxes on the admindb
       interface.  (LP: #1187201)
