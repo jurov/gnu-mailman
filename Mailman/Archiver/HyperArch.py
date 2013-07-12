@@ -226,9 +226,9 @@ def quick_maketext(templatefile, dict=None, lang=None, mlist=None):
                                     Utils.GetCharSet(lang),
                                     'replace')
                 text = sdict.interpolate(utemplate)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError), e:
             # The template is really screwed up
-            pass
+            syslog('error', 'broken template: %s\n%s', filepath, e)
     # Make sure the text is in the given character set, or html-ify any bogus
     # characters.
     return Utils.uncanonstr(text, lang)
