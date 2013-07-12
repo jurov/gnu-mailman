@@ -204,7 +204,9 @@ def main():
         except Errors.BadListNameError, s:
             usage(1, _('Illegal list name: %(s)s'))
         except Errors.EmailAddressError, s:
-            usage(1, _('Bad owner email address: %(s)s'))
+            usage(1, _('Bad owner email address: %(s)s') +
+                     _(' - owner addresses need to be fully-qualified names'
+                       ' like "owner@example.com", not just "owner".'))
         except Errors.MMListAlreadyExistsError:
             usage(1, _('List already exists: %(listname)s'))
 
