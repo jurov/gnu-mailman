@@ -471,6 +471,7 @@ class Article(pipermail.Article):
             d["email_html"] = self.quote(self.email)
             d["title"] = self.quote(self.subject)
             d["subject_html"] = self.quote(self.subject)
+            d["message_id"] = self.quote(self._message_id)
             # TK: These two _url variables are used to compose a response
             # from the archive web page.  So, ...
             d["subject_url"] = url_quote('Re: ' + self.subject)
