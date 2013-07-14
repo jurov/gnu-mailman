@@ -5,7 +5,7 @@ Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.16 (xx-xxx-xxxx)
+2.1.16rc1 (14-Aug-2013)
 
   New Features
 
@@ -104,7 +104,8 @@ Here is a history of user visible changes to Mailman.
     - Fixed a bug where BounceRunner could create and leave behind zero length
       bounce-events files.  (LP: #1161610)
 
-    - Added recognition for another Yahoo bounce format.  LP: #1157961
+    - Added recognition for another Yahoo bounce format.  (LP: #1157961)
+
     - Changed configure's method for getting Python's include directory from
       distutils.sysconfig.get_config_var('CONFINCLUDEPY') to
       distutils.sysconfig.get_python_inc().  (LP: #1098162)

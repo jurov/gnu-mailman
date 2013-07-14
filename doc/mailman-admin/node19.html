@@ -126,9 +126,9 @@ href="http://www.faqs.org/rfcs/rfc1153.html">RFC 1153</a> format as described ab
     has reached a certain threshold, otherwise, the one digest they
     receive could be huge.  This variable controls the size threshold
     by specifying the maximum digest size in kilobytes.  Note that
-    this threshold isn't exact.  Set this variable to zero to specify
-    that there is no size threshold, in which case no more than one
-    digest will be sent out per day.
+    this threshold isn't exact.  Setting this to zero will cause a
+    digest to be produced with every post.  If you don't want a
+    maximum size, set this to a very large number.
 
 <p>
 </dd>
@@ -218,7 +218,7 @@ digest.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on May 15, 2012.</span>
+<span class="release-info">Release 2.1, documentation updated on July 14, 2013.</span>
 </div>
 <!--End of Navigation Panel-->
 
