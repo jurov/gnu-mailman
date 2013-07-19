@@ -18,9 +18,10 @@ Here is a history of user visible changes to Mailman.
       enabled by setting ALLOW_AUTHOR_IS_LIST to Yes in mm_cfg.py.
 
     - There is a new DISPLAY_HELD_SUMMARY_SORT_BUTTONS setting which if set
-      to Yes in mm_cfg.py will display a set of radio buttons in the admindb
-      held message summary to select how the held messages are sorted and
-      grouped for display.
+      in mm_cfg.py will display a set of radio buttons in the admindb held
+      message summary to select how the held messages are sorted and grouped
+      for display. The exact setting determines the default grouping and
+      sorting.  See the description in Defaults.py for details.
 
     - Setting digest_size_threshhold to zero now means no digests will be
       sent based on size instead of a digest being sent with every post.

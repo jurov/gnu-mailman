@@ -253,7 +253,10 @@ BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
                               }
 #
 # Shall the admindb held message summary display the grouping and sorting
-# option radio buttons?
+# option radio buttons?  Set this in mm_cfg.py to one of the following:
+# SSENDER -> Default to grouped and sorted by sender.
+# SSENDERTIME -> Default to grouped by sender and sorted by time.
+# STIME -> Default to ungrouped and sorted by time.
 DISPLAY_HELD_SUMMARY_SORT_BUTTONS = No
 
 
@@ -1410,6 +1413,11 @@ SUBSCRIBE = 4
 UNSUBSCRIBE = 5
 ACCEPT = 6
 HOLD = 7
+
+# admindb summary sort button settings.  All must evaluate to True.
+SSENDER = 1
+SSENDERTIME = 2
+STIME = 3
 
 # Standard text field width
 TEXTFIELDWIDTH = 40
