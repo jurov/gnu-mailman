@@ -10,7 +10,7 @@ GNU Mailman - List Administration Manual
    Barry A. Warsaw
 
    Release 2.1
-   July 14, 2013
+   July 19, 2013
 
                                   Front Matter
 
@@ -328,6 +328,11 @@ Contents
           The prefix can also contain characters in the list's preferred
           language. In this case, because of vagarities of the email
           standards, you may or may not want to add a trailing space.
+
+   author_is_list
+          Setting this variable to Yes causes the From: address to be
+          replaced by the list address so that policies like ADSP or DMARC
+          can be applied.
 
    anonymous_list
           This variable allows you to turn on some simple anonymizing
@@ -852,9 +857,11 @@ Description: An example of Mailman mailing lists
           size has reached a certain threshold, otherwise, the one digest
           they receive could be huge. This variable controls the size
           threshold by specifying the maximum digest size in kilobytes.
-          Note that this threshold isn't exact. Setting this to zero will
-          cause a digest to be produced with every post. If you don't want
-          a maximum size, set this to a very large number.
+          Note that this threshold isn't exact. Set this variable to zero
+          to specify that there is no size threshold, in which case no
+          more than one digest will be sent out per day, but ensure that
+          digest_send_periodic is Yes in this case or no digests will be
+          sent.
 
    digest_send_periodic
           This variable actually controls whether or not a digest is sent
@@ -1304,7 +1311,7 @@ Just add another \section{}, but don't say \appendix again.
 
                             About this document ...
 
-   GNU Mailman - List Administration Manual, July 14, 2013, Release 2.1
+   GNU Mailman - List Administration Manual, July 19, 2013, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1349,4 +1356,4 @@ Just add another \section{}, but don't say \appendix again.
                                                      Manual
      __________________________________________________________________
 
-   Release 2.1, documentation updated on July 14, 2013.
+   Release 2.1, documentation updated on July 19, 2013.

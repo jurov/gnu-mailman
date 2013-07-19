@@ -71,7 +71,7 @@ and it retains most of the headers of the original messages.
 <p>
 The second type is called ``plaintext'' digests because they are
 readable in mail readers that don't support MIME.  Actually, they
-adhere to the <a class="rfc" id='rfcref-1080' xml:id='rfcref-1080'
+adhere to the <a class="rfc" id='rfcref-1086' xml:id='rfcref-1086'
 href="http://www.faqs.org/rfcs/rfc1153.html">RFC 1153</a> digest standard.  The retain some, but not
 all of the original messages, but can also include a summary and
 headers and footers.
@@ -89,7 +89,7 @@ the message with a <span class="mailheader">Urgent:</span> header, where the val
 header is the list administrator's password.  Non-digest members will
 receive the message like normal, but digest members will receive the
 message immediately<a name="tex2html7"
-  href="#foot182"><sup>5</sup></a>.
+  href="#foot184"><sup>5</sup></a>.
 
 <p>
 Here are the variables which control digest delivery:
@@ -114,7 +114,7 @@ Here are the variables which control digest delivery:
 <dt><strong>mime_is_default_digest</strong></dt>
 <dd>If a member is allowed to choose digests, this variable controls
     which is the default digest style they will receive.  <em>Plain</em>
-    digests are <a class="rfc" id='rfcref-1082' xml:id='rfcref-1082'
+    digests are <a class="rfc" id='rfcref-1088' xml:id='rfcref-1088'
 href="http://www.faqs.org/rfcs/rfc1153.html">RFC 1153</a> format as described above.
 
 <p>
@@ -126,9 +126,11 @@ href="http://www.faqs.org/rfcs/rfc1153.html">RFC 1153</a> format as described ab
     has reached a certain threshold, otherwise, the one digest they
     receive could be huge.  This variable controls the size threshold
     by specifying the maximum digest size in kilobytes.  Note that
-    this threshold isn't exact.  Setting this to zero will cause a
-    digest to be produced with every post.  If you don't want a
-    maximum size, set this to a very large number.
+    this threshold isn't exact.  Set this variable to zero to specify
+    that there is no size threshold, in which case no more than one
+    digest will be sent out per day, but ensure that
+    digest_send_periodic is <em>Yes</em> in this case or no digests will
+    be sent.
 
 <p>
 </dd>
@@ -178,7 +180,7 @@ href="http://www.faqs.org/rfcs/rfc1153.html">RFC 1153</a> format as described ab
 <p>
 <br><hr><h4>Footnotes</h4>
 <dl>
-<dt><a name="foot182">... immediately</a><A
+<dt><a name="foot184">... immediately</a><A
  HREF="node19.html#tex2html7"><sup>5</sup></a></dt>
 <dd>They'll also receive the message in the
 digest.
@@ -218,7 +220,7 @@ digest.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on July 14, 2013.</span>
+<span class="release-info">Release 2.1, documentation updated on July 19, 2013.</span>
 </div>
 <!--End of Navigation Panel-->
 
