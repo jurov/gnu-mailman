@@ -50,16 +50,35 @@ i18n.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
 
 EXCERPT_HEIGHT = 10
 EXCERPT_WIDTH = 76
+SSENDER = 0
+SSENDERTIME = 1
+STIME = 2
+ssort = SSENDER
 
 
 
-def helds_by_sender(mlist):
+def helds_by_skey(mlist, ssort=SSENDER):
     heldmsgs = mlist.GetHeldMessageIds()
-    bysender = {}
+    byskey = {}
     for id in heldmsgs:
+        ptime = mlist.GetRecord(id)[0]
         sender = mlist.GetRecord(id)[1]
-        bysender.setdefault(sender, []).append(id)
-    return bysender
+        if ssort in (SSENDER, SSENDERTIME):
+            skey = (0, sender)
+        else:
+            skey = (ptime, sender)
+        byskey.setdefault(skey, []).append((ptime, id))
+    # Sort groups by time
+    for k, v in byskey.items():
+        if len(v) > 1:
+            v.sort()
+            byskey[k] = v
+        if ssort == SSENDERTIME:
+            # Rekey with time
+            newkey = (v[0][0], k[1])
+            del byskey[k]
+            byskey[newkey] = v
+    return byskey
 
 
 def hacky_radio_buttons(btnname, labels, values, defaults, spacing=3):
@@ -76,6 +95,7 @@ def hacky_radio_buttons(btnname, labels, values, defaults, spacing=3):
 
 
 def main():
+    global ssort
     # Figure out which list is being requested
     parts = Utils.GetPathPieces()
     if not parts:
@@ -253,7 +273,7 @@ def main():
                                        raw=1, mlist=mlist))
             num = show_pending_subs(mlist, form)
             num += show_pending_unsubs(mlist, form)
-            num += show_helds_overview(mlist, form)
+            num += show_helds_overview(mlist, form, ssort)
             addform = num > 0
         # Finish up the document, adding buttons to the form
         if addform:
@@ -402,20 +422,29 @@ def show_pending_unsubs(mlist, form):
 
 
 
-def show_helds_overview(mlist, form):
-    # Sort the held messages by sender
-    bysender = helds_by_sender(mlist)
-    if not bysender:
+def show_helds_overview(mlist, form, ssort=SSENDER):
+    # Sort the held messages.
+    byskey = helds_by_skey(mlist, ssort)
+    if not byskey:
         return 0
     form.AddItem('<hr>')
     form.AddItem(Center(Header(2, _('Held Messages'))))
+    # Add the sort sequence choices if wanted
+    if mm_cfg.DISPLAY_HELD_SUMMARY_SORT_BUTTONS:
+        form.AddItem(Center(_('Show this list grouped/sorted by')))
+        form.AddItem(Center(hacky_radio_buttons(
+                'summary_sort',
+                (_('sender/sender'), _('sender/time'), _('ungrouped/time')),
+                (SSENDER, SSENDERTIME, STIME),
+                (ssort == SSENDER, ssort == SSENDERTIME, ssort == STIME))))
     # Add the by-sender overview tables
     admindburl = mlist.GetScriptURL('admindb', absolute=1)
     table = Table(border=0)
     form.AddItem(table)
-    senders = bysender.keys()
-    senders.sort()
-    for sender in senders:
+    skeys = byskey.keys()
+    skeys.sort()
+    for skey in skeys:
+        sender = skey[1]
         qsender = quote_plus(sender)
         esender = Utils.websafe(sender)
         senderurl = admindburl + '?sender=' + qsender
@@ -499,7 +528,7 @@ def show_helds_overview(mlist, form):
         right.AddCellInfo(right.GetCurrentRowIndex(), 0, colspan=2)
         right.AddRow(['&nbsp;', '&nbsp;'])
         counter = 1
-        for id in bysender[sender]:
+        for ptime, id in byskey[skey]:
             info = mlist.GetRecord(id)
             ptime, sender, subject, reason, filename, msgdata = info
             # BAW: This is really the size of the message pickle, which should
@@ -540,13 +569,14 @@ def show_helds_overview(mlist, form):
 
 
 def show_sender_requests(mlist, form, sender):
-    bysender = helds_by_sender(mlist)
-    if not bysender:
+    byskey = helds_by_skey(mlist, SSENDER)
+    if not byskey:
         return
-    sender_ids = bysender.get(sender)
+    sender_ids = byskey.get((0, sender))
     if sender_ids is None:
         # BAW: should we print an error message?
         return
+    sender_ids = [x[1] for x in sender_ids]
     total = len(sender_ids)
     count = 1
     for id in sender_ids:
@@ -709,6 +739,7 @@ def show_post_requests(mlist, id, info, total, count, form):
 
 
 def process_form(mlist, doc, cgidata):
+    global ssort
     senderactions = {}
     badaddrs = []
     # Sender-centric actions
@@ -730,6 +761,8 @@ def process_form(mlist, doc, cgidata):
         discardalldefersp = cgidata.getvalue('discardalldefersp', 0)
     except ValueError:
         discardalldefersp = 0
+    # Get the summary sequence
+    ssort = int(cgidata.getvalue('summary_sort', SSENDER))
     for sender in senderactions.keys():
         actions = senderactions[sender]
         # Handle what to do about all this sender's held messages
@@ -744,8 +777,8 @@ def process_form(mlist, doc, cgidata):
             preserve = actions.get('senderpreserve', 0)
             forward = actions.get('senderforward', 0)
             forwardaddr = actions.get('senderforwardto', '')
-            bysender = helds_by_sender(mlist)
-            for id in bysender.get(sender, []):
+            byskey = helds_by_skey(mlist, SSENDER)
+            for ptime, id in byskey.get((0, sender), []):
                 if id not in senderactions[sender]['message_ids']:
                     # It arrived after the page was displayed. Skip it.
                     continue
