@@ -31,7 +31,9 @@ from Mailman import mm_cfg
 def process(mlist, msg, msgdata):
     if not mm_cfg.REMOVE_DKIM_HEADERS:
         return
-    if mm_cfg.REMOVE_DKIM_HEADERS == 1 and not mlist.author_is_list:
+    if (mm_cfg.ALLOW_AUTHOR_IS_LIST and
+            mm_cfg.REMOVE_DKIM_HEADERS == 1 and
+            not mlist.author_is_list):
         return
     del msg['domainkey-signature']
     del msg['dkim-signature']

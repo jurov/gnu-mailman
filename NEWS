@@ -14,7 +14,8 @@ Here is a history of user visible changes to Mailman.
       compatability with DMARC and or ADSP.  There is a new mm_cfg.py setting
       DEFAULT_AUTHOR_IS_LIST to control the default for new lists, and the
       existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
-      those headers only for author_is_list = Yes lists.
+      those headers only for author_is_list = Yes lists.  This feature must be
+      enabled by setting ALLOW_AUTHOR_IS_LIST to Yes in mm_cfg.py.
 
     - There is a new DISPLAY_HELD_SUMMARY_SORT_BUTTONS setting which if set
       to Yes in mm_cfg.py will display a set of radio buttons in the admindb

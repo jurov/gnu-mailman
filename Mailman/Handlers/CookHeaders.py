@@ -160,7 +160,8 @@ def process(mlist, msg, msgdata):
         # is already in From and Reply-To in this case and similarly for
         # an 'author is list' list.
         if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list and not mlist.author_is_list:
+           and not mlist.anonymous_list and not (mlist.author_is_list and
+                                                 mm_cfg.ALLOW_AUTHOR_IS_LIST):
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []

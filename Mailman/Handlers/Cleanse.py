@@ -21,6 +21,7 @@ import re
 
 from email.Utils import formataddr, getaddresses, parseaddr
 
+from Mailman import mm_cfg
 from Mailman.Utils import unique_message_id
 from Mailman.Logging.Syslog import syslog
 from Mailman.Handlers.CookHeaders import uheader
@@ -40,7 +41,7 @@ def process(mlist, msg, msgdata):
     del msg['urgent']
     # Do we change the from so the list takes ownership of the email
     # This really belongs in CookHeaders.
-    if mlist.author_is_list:
+    if mm_cfg.ALLOW_AUTHOR_IS_LIST and mlist.author_is_list:
         realname, email = parseaddr(msg['from'])
         replies = getaddresses(msg.get('reply-to', ''))
         reply_addrs = [x[1].lower() for x in replies]
