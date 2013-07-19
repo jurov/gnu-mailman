@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -157,9 +157,10 @@ def process(mlist, msg, msgdata):
         # Cc header.  BAW: should we force it into a Reply-To header in the
         # above code?
         # Also skip Cc if this is an anonymous list as list posting address
-        # is already in From and Reply-To in this case.
+        # is already in From and Reply-To in this case and similarly for
+        # an 'author is list' list.
         if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list:
+           and not mlist.anonymous_list and not mlist.author_is_list:
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []

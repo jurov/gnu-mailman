@@ -909,6 +909,7 @@ sub getMailmanConfig {
       'administrivia'             => 'True',
       'advertised'                => 1,
       'anonymous_list'            => 'False',
+      'author_is_list'            => 'False',
       # NOTE: some may wish to map some Majordomo setting, such as index_access
       # to Mailman's archive. As is, all archiving is turned off for imported
       # lists.

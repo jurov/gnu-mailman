@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -418,6 +418,8 @@ def NewVars(l):
                         mm_cfg.DEFAULT_REGULAR_INCLUDE_LISTS)
     add_only_if_missing('regular_exclude_ignore',
                         mm_cfg.DEFAULT_REGULAR_EXCLUDE_IGNORE)
+    add_only_if_missing('author_is_list',
+                        mm_cfg.DEFAULT_AUTHOR_IS_LIST)
 
 
 

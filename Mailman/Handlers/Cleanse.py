@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,7 +19,7 @@
 
 import re
 
-from email.Utils import formataddr
+from email.Utils import formataddr, getaddresses, parseaddr
 
 from Mailman.Utils import unique_message_id
 from Mailman.Logging.Syslog import syslog
@@ -38,6 +38,26 @@ def process(mlist, msg, msgdata):
     del msg['x-approve']
     # Also remove this header since it can contain a password
     del msg['urgent']
+    # Do we change the from so the list takes ownership of the email
+    # This really belongs in CookHeaders.
+    if mlist.author_is_list:
+        realname, email = parseaddr(msg['from'])
+        replies = getaddresses(msg.get('reply-to', ''))
+        reply_addrs = [x[1].lower() for x in replies]
+        if reply_addrs:
+            if email.lower() not in reply_addrs:
+                rt = msg['reply-to'] + ', ' + msg['from']
+            else:
+                rt = msg['reply-to']
+        else:
+            rt = msg['from']
+        del msg['reply-to']
+        msg['Reply-To'] = rt
+        del msg['from']
+        msg['From'] = formataddr(('%s via %s' % (realname, mlist.real_name),
+                                 mlist.GetListEmail()))
+        del msg['sender']
+        #MAS mlist.include_sender_header = 0
     # We remove other headers from anonymous lists
     if mlist.anonymous_list:
         syslog('post', 'post to %s from %s anonymized',

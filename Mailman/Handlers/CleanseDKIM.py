@@ -1,4 +1,4 @@
-# Copyright (C) 2006-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,8 +29,11 @@ from Mailman import mm_cfg
 
 
 def process(mlist, msg, msgdata):
-    if mm_cfg.REMOVE_DKIM_HEADERS:
-        del msg['domainkey-signature']
-        del msg['dkim-signature']
-        del msg['authentication-results']
+    if not mm_cfg.REMOVE_DKIM_HEADERS:
+        return
+    if mm_cfg.REMOVE_DKIM_HEADERS == 1 and not mlist.author_is_list:
+        return
+    del msg['domainkey-signature']
+    del msg['dkim-signature']
+    del msg['authentication-results']
 
