@@ -5,12 +5,12 @@
 # Dieter Kirchner <dkirchner@bupnet.de>,
 # Holger Jahn <holja@t-online.de>, 2001-2002,
 # Peer Heinlein <p.heinlein@heinlein-support.de.de>, 2003, 2004, 2005, 2006, 2008 und
-# Ralf Hildebrandt <ralf.hildebrandt@charite.de>, 2012
+# Ralf Hildebrandt <ralf.hildebrandt@charite.de>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Fri Jul 19 12:28:04 2013\n"
-"PO-Revision-Date: 2012-10-26 11:21+0200\n"
+"PO-Revision-Date: 2013-08-02 11:21+0200\n"
 "Last-Translator: Ralf Hildebrandt <ralf.hildebrandt@charite.de>\n"
 "Language-Team:  <de@li.org>\n"
 "Language: \n"
@@ -636,7 +636,7 @@ msgstr "Spam-Filter Regexp:"
 #: Mailman/Cgi/admindb.py:406 Mailman/Cgi/admindb.py:460
 #: Mailman/Cgi/admindb.py:701
 msgid "Defer"
-msgstr "Enscheidung aufschieben"
+msgstr "Entscheidung aufschieben"
 
 # Mailman/Cgi/admindb.py:182 Mailman/Cgi/admindb.py:280
 #: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:349
@@ -889,7 +889,7 @@ msgid ""
 "        same message?"
 msgstr ""
 "<b>Keine Duplikate</b> -- Möchte dieses Mitglied keine Mitteilungen\n"
-"        erhalten, die Ihm direkt und &uml;ber die Liste gesendet wurden?"
+"        erhalten, die Ihm direkt und &uuml;ber die Liste gesendet wurden?"
 
 # Mailman/Cgi/admin.py:892
 #: Mailman/Cgi/admin.py:1116
@@ -1155,7 +1155,7 @@ msgstr ""
 "oder als Pseudo-Kopfzeile im Text verwendet werden, um ein Beitrag\n"
 "vorgenehmigen zu lassen, welcher ansonsten für die Moderation\n"
 "zurückgehalten würde. Darüber hinaus kann das Passwort unten, falls\n"
-"gesetzt, dafür verwendet werden, aber für keinen anderen Zweck.\n"
+"gesetzt, dafür verwendet werden, aber für keinen anderen Zweck."
 
 # Mailman/Cgi/admin.py:1024
 #: Mailman/Cgi/admin.py:1294
@@ -1383,19 +1383,19 @@ msgstr "Zurückgehaltene Nachrichten"
 
 #: Mailman/Cgi/admindb.py:434
 msgid "Show this list grouped/sorted by"
-msgstr ""
+msgstr "Gruppiere/Sortiere nach"
 
 #: Mailman/Cgi/admindb.py:437
 msgid "sender/sender"
-msgstr ""
+msgstr "Absender/Absender"
 
 #: Mailman/Cgi/admindb.py:437
 msgid "sender/time"
-msgstr ""
+msgstr "Absender/Zeit"
 
 #: Mailman/Cgi/admindb.py:437
 msgid "ungrouped/time"
-msgstr ""
+msgstr "unsortiert/Zeit"
 
 # Mailman/Cgi/admindb.py:268
 #: Mailman/Cgi/admindb.py:453 Mailman/Cgi/admindb.py:684
@@ -4313,7 +4313,7 @@ msgstr "Euskarisch"
 
 #: Mailman/Defaults.py:1533
 msgid "Persian"
-msgstr ""
+msgstr "Farsi"
 
 #: Mailman/Defaults.py:1534
 msgid "Finnish"
@@ -4327,11 +4327,11 @@ msgstr "Französisch"
 # Mailman/Defaults.py:777
 #: Mailman/Defaults.py:1536
 msgid "Galician"
-msgstr "Galicisch"
+msgstr "Galizisch"
 
 #: Mailman/Defaults.py:1537
 msgid "Greek"
-msgstr "Grichisch"
+msgstr "Griechisch"
 
 #: Mailman/Defaults.py:1538
 msgid "Hebrew"
@@ -5611,7 +5611,13 @@ msgid ""
 "                 setting this to Yes, it is advised to set the MTA to DKIM "
 "sign\n"
 "                 all emails."
-msgstr ""
+msgstr "Ersetze die Absenderadresse durch die Listenadresse um mit ADSP "
+"und DMARC konform zu sein. Dies ersetzt die Adresse im From: Header "
+"durch die Listenadresse und ergänzt den Absender im Reply-To: "
+"Header; allerdings haben die Einstellungen für anonymous_list und "
+"die \"Reply-To: Header Optionen\" weiter unten Vorrang. Wenn diese "
+"Einstellung auf \"Ja\" gesetzt wird sollte Ihr MTA so eingestellt "
+"sein, daß alle Emails DKIM signiert werden."
 
 # Mailman/Gui/Privacy.py:222
 #: Mailman/Gui/General.py:172
@@ -6192,7 +6198,7 @@ msgid ""
 msgstr ""
 "Sollte die <tt>Sender</tt> Kopfzeile für diese Mailingliste\n"
 "                umgeschrieben werden um streunende Rückmeldungen zu\n"
-"                vermeiden?  <em>Ja</em> wird empfohlen.\n"
+"                vermeiden?  <em>Ja</em> wird empfohlen."
 
 #: Mailman/Gui/General.py:441
 msgid ""
@@ -6620,7 +6626,7 @@ msgstr ""
 "Andere Mailinglisten auf diesem Server, dessen Mitglieder\n"
 "             aus der regulären (non-digest) Zustellung ausgeschlossen\n"
 "             sind, wenn diese Adressen in To: oder Cc: Zeilen vorhanden\n"
-"             sind.\n"
+"             sind."
 
 #: Mailman/Gui/NonDigest.py:155
 msgid ""
@@ -7641,7 +7647,7 @@ msgstr ""
 # Mailman/Gui/Usenet.py:24
 #: Mailman/Gui/Usenet.py:25
 msgid "Mail&lt;-&gt;News&nbsp;gateways"
-msgstr "Mail&lt;-&gt;News&nbsp;Schnittstelle"
+msgstr "Mail &harr; News&nbsp;Schnittstelle"
 
 # Mailman/Gui/Usenet.py:30
 #: Mailman/Gui/Usenet.py:35
