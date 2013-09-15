@@ -1565,7 +1565,7 @@ msgid ""
 msgstr ""
 "Le adresse email que tu forniva es bannite de iste\n"
 "        lista.  Si tu crede que iste restriction es erronee,\n"
-"        contacta le proprietarios del lista a %(listowner)s."
+"        contacta le proprietarios del lista a %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1687,7 +1687,7 @@ msgid ""
 msgstr ""
 "Le adresse email que tu forniva es bannite de iste\n"
 "        lista.  Si tu crede que iste restriction es erronee,\n"
-"        contacta le proprietarios del lista a %(listowner)s."
+"        contacta le proprietarios del lista a %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2485,7 +2485,7 @@ msgstr ""
 "correspondentia.\n"
 "Si tu crede que iste restriction es erronee, per favor, contacta le possessor"
 "(es) del\n"
-"lista a %(listowner)s."
+"lista a %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -3108,7 +3108,7 @@ msgstr ""
 "correspondentia.\n"
 "Si tu crede que iste restriction es erronee, per favor, contacta le possessor"
 "(es) del\n"
-"lista a %(listowner)s."
+"lista a %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -7830,7 +7830,7 @@ msgstr ""
 "cosas,\n"
 "            isto significa que tu requesta de confirmation essera expedite "
 "al\n"
-"            `%conto de (sfx)s de tu adresse.)"
+"            `%conto de %(sfx)s de tu adresse.)"
 
 #: Mailman/HTMLFormatter.py:246
 msgid "<b><i>either</i></b> "
@@ -8423,9 +8423,8 @@ msgstr ""
 "%(dbfile)s in possession de %(owner)s (debe esser in possession de %(user)s"
 
 #: Mailman/MTA/Postfix.py:368
-#, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "permissiones de %(file)s debe esser 066x (tu ha %(octmode)s)"
+msgstr "permissiones de %(dbfile)s debe esser 066x (tu ha %(octmode)s)"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -8704,7 +8703,7 @@ msgstr ""
 
 #: bin/add_members:146
 msgid "Already a member: %(member)s"
-msgstr "Jam es un membro: %(membro)s"
+msgstr "Jam es un membro: %(member)s"
 
 #: bin/add_members:152
 msgid "Bad/Invalid email address: blank line"
@@ -11417,9 +11416,8 @@ msgid "updating old qfiles"
 msgstr ""
 
 #: bin/update:455
-#, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Mal directorio de cauda: %(qdir)s"
+msgstr "Mal directorio de cauda: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

@@ -1544,7 +1544,7 @@ msgid ""
 msgstr ""
 "Az általad megadott e-mail cím a listáról ki van tiltva.\n"
 "Ha úgy gondolod, hogy ez a korlátozás jogtalan, akkor\n"
-"kérlek írj a lista tulajdonosának a következõ címre: %(listowner)s"
+"kérlek írj a lista tulajdonosának a következõ címre: %(owneraddr)s"
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1658,7 +1658,7 @@ msgid ""
 msgstr ""
 "Az általad megadott e-mail cím a listáról ki van tiltva.\n"
 "Ha úgy gondolod, hogy ez a korlátozás jogtalan, akkor\n"
-"kérlek írj a lista tulajdonosának a következõ címre: %(listowner)s"
+"kérlek írj a lista tulajdonosának a következõ címre: %(owneraddr)s"
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2442,7 +2442,7 @@ msgid ""
 msgstr ""
 "A megadott e-mail cím ki van tiltva errõl a levelezõlistáról.\n"
 "Ha úgy gondolod, hogy ez a korlátozás jogtalan, akkor kérlek\n"
-"írj a lista tulajdonosának a következõ címre: %(listowner)s"
+"írj a lista tulajdonosának a következõ címre: %(owneraddr)s"
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -3048,7 +3048,7 @@ msgid ""
 msgstr ""
 "A megadott e-mail cím ki van tiltva errõl a levelezõlistáról.\n"
 "Ha úgy gondolod, hogy ez a korlátozás jogtalan, akkor kérlek\n"
-"írj a lista tulajdonosának a következõ címre: %(listowner)s"
+"írj a lista tulajdonosának a következõ címre: %(owneraddr)s"
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -8054,9 +8054,8 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "%(dbfile)s tulajdonosa %(owner)s (%(user)s legyen a tulajdonos)"
 
 #: Mailman/MTA/Postfix.py:368
-#, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "%(file)s jogosultságának 066x-nak kell lennie (most %(octmode)s)"
+msgstr "%(dbfile)s jogosultságának 066x-nak kell lennie (most %(octmode)s)"
 
 #: Mailman/MailList.py:216
 #, fuzzy
@@ -9241,15 +9240,16 @@ msgstr ""
 "\n"
 
 #: bin/config_list:117
-#, fuzzy
 msgid ""
 "# -*- python -*-\n"
 "# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" levelezõlista konfigurációs beállításai\n"
-"## -*- python -*- elmentve %(when)s-n\n"
+"## elmentve %(when)s-n\n"
 
 #: bin/config_list:143
 msgid "options"
@@ -9432,14 +9432,12 @@ msgid "Please specify either -p or -m."
 msgstr "Kérlek vagy a -p vagy az -m kapcsolót add meg."
 
 #: bin/dumpdb:133
-#, fuzzy
 msgid "[----- start %(typename)s file -----]"
-msgstr "[----- pickle fájl kezdete -----]"
+msgstr "[----- %(typename)s fájl kezdete -----]"
 
 #: bin/dumpdb:139
-#, fuzzy
 msgid "[----- end %(typename)s file -----]"
-msgstr "[----- pickle fájl vége -----]"
+msgstr "[----- %(typename)s fájl vége -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
@@ -11506,9 +11504,8 @@ msgid "updating old qfiles"
 msgstr "régi qfiles állományok frissítése"
 
 #: bin/update:455
-#, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Hibás feldolgozási sor könyvtár: %(qdir)s"
+msgstr "Hibás feldolgozási sor könyvtár: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

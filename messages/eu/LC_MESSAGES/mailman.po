@@ -1568,7 +1568,7 @@ msgid ""
 msgstr ""
 "Zuk emandako ePosta helbideak debekatuta du zerrenda\n"
 "        honetan parte hartzea.  Debeku horrentzat arrazoirik ez dagoela\n"
-"        uste baduzu, idatzi zerrenda jabeari %(listowner)s helbidera."
+"        uste baduzu, idatzi zerrenda jabeari %(owneraddr)s helbidera."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1686,7 +1686,7 @@ msgid ""
 msgstr ""
 "Zuk emandako ePosta helbideak debekatuta du zerrenda\n"
 "        honetan parte hartzea.  Debeku horrentzat arrazoirik ez dagoela\n"
-"        uste baduzu, idatzi zerrenda jabeari %(listowner)s helbidera."
+"        uste baduzu, idatzi zerrenda jabeari %(owneraddr)s helbidera."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -1975,14 +1975,12 @@ msgid "administrative list overview"
 msgstr "kudeaketarako zerrenda orokorra"
 
 #: Mailman/Cgi/create.py:104
-#, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Zerrenda izenak ezin du \"@\" ikurrik izan: %(listname)s "
+msgstr "Zerrenda izenak ezin du \"@\" ikurrik izan: %(safelistname)s "
 
 #: Mailman/Cgi/create.py:111
-#, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "Zerrenda hori dagoeneko badago: %(listname)s"
+msgstr "Zerrenda hori dagoeneko badago: %(safelistname)s"
 
 #: Mailman/Cgi/create.py:115
 msgid "You forgot to enter the list name"
@@ -2017,7 +2015,7 @@ msgstr "Ez duzu zerrenda berriak sortzeko baimenik"
 #: Mailman/Cgi/create.py:164
 #, fuzzy
 msgid "Unknown virtual host: %(safehostname)s"
-msgstr "Zerrenda ezezaguna: %(listname)s"
+msgstr "Zerrenda ezezaguna: %(safehostname)s"
 
 #: Mailman/Cgi/create.py:200 bin/newlist:207
 msgid "Bad owner email address: %(s)s"
@@ -2482,7 +2480,7 @@ msgstr ""
 "Zuk emandako ePosta helbideak debekatuta du zerrenda honetako harpidedun\n"
 "izatea. Debeku hori okerra dela uste baduzu, mesedez, idatzi zerrenda "
 "jabeari\n"
-"%(listowner)s helbidera."
+"%(owneraddr)s helbidera."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -3095,7 +3093,7 @@ msgstr ""
 "Zuk emandako ePosta helbideak debekatuta du zerrenda honetako harpidedun\n"
 "izatea. Debeku hori okerra dela uste baduzu, mesedez, idatzi zerrenda "
 "jabeari\n"
-"%(listowner)s helbidera."
+"%(owneraddr)s helbidera."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -3935,9 +3933,8 @@ msgstr ""
 "dugu. Ez da zure aldetik akziorik espero."
 
 #: Mailman/Deliverer.py:219
-#, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "%(listfullname)s posta zerrendaren gogorarazpena"
+msgstr "%(listname)s posta zerrendaren gogorarazpena"
 
 #: Mailman/Errors.py:122
 msgid "For some unknown reason"
@@ -7032,13 +7029,12 @@ msgstr ""
 "                Zerbait falta zaien definizioak ez dira onartuko."
 
 #: Mailman/Gui/Privacy.py:500
-#, fuzzy
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"`%(pattern)s' patroia ez da adierazpen erregular zuzena.\n"
+"`%(safepattern)s' patroia ez da adierazpen erregular zuzena.\n"
 "                Ezabatu egingo da."
 
 #: Mailman/Gui/Topics.py:36
@@ -7181,12 +7177,11 @@ msgstr ""
 "                Zerbait falta zaien definizioak ez dira onartuko."
 
 #: Mailman/Gui/Topics.py:133
-#, fuzzy
 msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"`%(pattern)s' patroia ez da adierazpen erregular zuzena.\n"
+"`%(safepattern)s' patroia ez da adierazpen erregular zuzena.\n"
 "                Ezabatu egingo da."
 
 #: Mailman/Gui/Usenet.py:25
@@ -7618,7 +7613,7 @@ msgid ""
 "(<i>%(which)s is only available to the list\n"
 "                members.</i>)"
 msgstr ""
-"(<i>%(wich)s zerrenda partaideek bakarrik\n"
+"(<i>%(which)s zerrenda partaideek bakarrik\n"
 "                 ikus dezakete.</i>)"
 
 #: Mailman/HTMLFormatter.py:276
@@ -8146,9 +8141,8 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "%(dbfile)s jabea %(owner)s da, ( %(user)s izan beharko litzateke)"
 
 #: Mailman/MTA/Postfix.py:368
-#, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "%(file)s baimena 066x izan behar du (got %(octmode)s)"
+msgstr "%(dbfile)s baimena 066x izan behar du (got %(octmode)s)"
 
 #: Mailman/MailList.py:216
 #, fuzzy
@@ -8554,7 +8548,7 @@ msgstr ""
 "ePosta zerrenda batetako fitxategia berregiteko erabili koamndo hau. Hau\n"
 "zerrendako mezuren bat aldatu edo ezabatu duzulako egin nahi dezakezu.\n"
 "\n"
-"Erabilera: (PROGRAM)s [aukerak] <zerrenda_izena> [<mbox_fitxategia>]\n"
+"Erabilera: %(PROGRAM)s [aukerak] <zerrenda_izena> [<mbox_fitxategia>]\n"
 "\n"
 "Non aukerak:     -h / --help\n"
 "        Mezu hau erakutsi eta irten.\n"
@@ -9186,14 +9180,15 @@ msgid ""
 msgstr ""
 
 #: bin/config_list:117
-#, fuzzy
 msgid ""
 "# -*- python -*-\n"
 "# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## \"%(listname)s\" Eposta zerrendaren hebaspen aukerak-*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## \"%(listname)s\" Eposta zerrendaren hebaspen aukerak\n"
 "## captured on %(when)s\n"
 
 #: bin/config_list:143
@@ -9269,6 +9264,7 @@ msgid ""
 msgstr ""
 
 #: bin/discard:94
+#, fuzzy
 msgid "Ignoring non-held message: %(f)s"
 msgstr "Ezabatutako %(user)s erabiltzailearen aldaketak ezikusiak egiten."
 
@@ -9277,6 +9273,7 @@ msgid "Ignoring held msg w/bad id: %(f)s"
 msgstr ""
 
 #: bin/discard:112
+#, fuzzy
 msgid "Discarded held msg #%(id)s for list %(listname)s"
 msgstr "%(listname)s zerrendara harpidetza egin."
 
@@ -11010,9 +11007,8 @@ msgid "updating old qfiles"
 msgstr "qfile zaharrak eguneratzen"
 
 #: bin/update:455
-#, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Ilara karpeta okerra: %(qdir)s"
+msgstr "Ilara karpeta okerra: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"
@@ -11427,7 +11423,7 @@ msgid ""
 msgstr ""
 "Bidaltzailea: %(sender)s %(date)s\n"
 "Gaia: %(subject)s\n"
-"Arrazoia: $(reason)s"
+"Arrazoia: %(reason)s"
 
 #: cron/cull_bad_shunt:20
 msgid ""

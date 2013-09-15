@@ -1563,7 +1563,7 @@ msgid ""
 msgstr ""
 "O endereço de email que forneceu foi banido desta\n"
 "        lista de discussão. Se achar que esta restrição está errada, por \n"
-"        favor contacte o dono da lista em %(listowner)s."
+"        favor contacte o dono da lista em %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1677,7 +1677,7 @@ msgid ""
 msgstr ""
 "O endereço de email que forneceu foi banido desta\n"
 "        lista de discussão. Se achar que esta restrição está errada, por \n"
-"        favor contacte o dono da lista em %(listowner)s."
+"        favor contacte o dono da lista em %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -1967,12 +1967,12 @@ msgstr "visão administrativa da lista"
 #: Mailman/Cgi/create.py:104
 #, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "O nome da lista não pode incluir \"@\": %(listname)s"
+msgstr "O nome da lista não pode incluir \"@\": %(safelistname)s"
 
 #: Mailman/Cgi/create.py:111
 #, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "A lista já existe: %(listname)s"
+msgstr "A lista já existe: %(safelistname)s"
 
 #: Mailman/Cgi/create.py:115
 msgid "You forgot to enter the list name"
@@ -2352,7 +2352,7 @@ msgstr "Não foi fornecido endereço"
 #: Mailman/Cgi/options.py:121
 #, fuzzy
 msgid "Illegal Email Address: %(safeuser)s"
-msgstr "Endereço de email incorrecto/inválido: %(member)s"
+msgstr "Endereço de email incorrecto/inválido: %(safeuser)s"
 
 #: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:193
 #: Mailman/Cgi/options.py:215 Mailman/Cgi/private.py:154
@@ -2395,7 +2395,7 @@ msgstr ""
 #: Mailman/Cgi/options.py:291
 #, fuzzy
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
-msgstr "Inscrições em listas para o utilizador %(user)s em %(hostname)s"
+msgstr "Inscrições em listas para o utilizador %(safeuser)s em %(hostname)s"
 
 #: Mailman/Cgi/options.py:294
 msgid ""
@@ -2436,7 +2436,7 @@ msgstr ""
 "O novo endereço que solicitou (%(newaddr)s) já é membro da lista\n"
 "de discussão %(listname)s, no entanto pediu uma\n"
 "modificação global do endereço. Após confirmação, qualquer outra lista de \n"
-"discussão contendo o endereço %(user)s será alterada."
+"discussão contendo o endereço %(safeuser)s será alterada."
 
 #: Mailman/Cgi/options.py:381
 msgid "The new address is already a member: %(newaddr)s"
@@ -2471,7 +2471,7 @@ msgid ""
 msgstr ""
 "O endereço de email que forneceu está banido desta lista de discussão.\n"
 "Se você acha que esta restrição está incorrecta, por favor contacte os \n"
-"donos da lista em %(listowner)s."
+"donos da lista em %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -2667,7 +2667,7 @@ msgstr "endereço de email e "
 #: Mailman/Cgi/options.py:861
 #, fuzzy
 msgid "%(realname)s list: member options for user %(safeuser)s"
-msgstr "lista %(realname)s: opções de membro para o utilizador %(user)s"
+msgstr "lista %(realname)s: opções de membro para o utilizador %(safeuser)s"
 
 #: Mailman/Cgi/options.py:887
 msgid ""
@@ -3102,7 +3102,7 @@ msgid ""
 msgstr ""
 "O endereço de email que forneceu está banido desta lista de discussão.\n"
 "Se você acha que esta restrição está incorrecta, por favor contacte os \n"
-"donos da lista em %(listowner)s."
+"donos da lista em %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -3996,7 +3996,7 @@ msgstr ""
 #: Mailman/Deliverer.py:219
 #, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "Nota da lista de discussão %(listfullname)s"
+msgstr "Nota da lista de discussão %(listname)s"
 
 #: Mailman/Errors.py:122
 msgid "For some unknown reason"
@@ -7051,7 +7051,7 @@ msgid ""
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"O padrão de tópico '%(pattern)s' não é uma expressão regular\n"
+"O padrão de tópico '%(safepattern)s' não é uma expressão regular\n"
 "        legal. Ela será ignorada."
 
 #: Mailman/Gui/Topics.py:36
@@ -7196,7 +7196,7 @@ msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"O padrão de tópico '%(pattern)s' não é uma expressão regular\n"
+"O padrão de tópico '%(safepattern)s' não é uma expressão regular\n"
 "        legal. Ela será ignorada."
 
 #: Mailman/Gui/Usenet.py:25
@@ -8107,13 +8107,11 @@ msgstr ""
 "Para completar a criação da sua lista de discussão, tem de editar o\n"
 "ficheiro /etc/aliases (ou equivalente) adicionando as seguintes linhas\n"
 "e, possivelmente, executando o comando 'newaliases'\n"
-"\n"
-"## lista de discussão %(listname)s"
 
 #: Mailman/MTA/Manual.py:82
 #, fuzzy
 msgid "## %(listname)s mailing list"
-msgstr "a lista de discussão \"%(realname)s"
+msgstr "## lista de discussão %(listname)s"
 
 #: Mailman/MTA/Manual.py:99
 msgid "Mailing list creation request for list %(listname)s"
@@ -8185,7 +8183,7 @@ msgstr "%(dbfile)s tem como dono %(owner)s (tem de ter como dono %(user)s"
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "As autorizações de %(file)s têm de ser 066x (faça %(octmode)s)"
+msgstr "As autorizações de %(dbfile)s têm de ser 066x (faça %(octmode)s)"
 
 #: Mailman/MailList.py:216
 #, fuzzy
@@ -9398,7 +9396,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## configuração da lista de discussão \"%(listname)s\" -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## configuração da lista de discussão \"%(listname)s\"\n"
 "## capturada em %(when)s\n"
 
 #: bin/config_list:143
@@ -11618,7 +11618,7 @@ msgstr "actualizando as antigas qfiles"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Directoria de fila de espera inválida: %(qdir)s"
+msgstr "Directoria de fila de espera inválida: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

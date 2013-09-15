@@ -1559,7 +1559,7 @@ msgid ""
 "            contact the list owners at %(owneraddr)s."
 msgstr ""
 "Epostadressen du oppga er utestengt fra denne epostlisten.\n"
-"Dersom du tror dette kan være en feil, kontakt listens eier på %(listowner)s."
+"Dersom du tror dette kan være en feil, kontakt listens eier på %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1680,7 +1680,7 @@ msgid ""
 "            please contact the list owners at %(owneraddr)s."
 msgstr ""
 "Epostadressen du oppga er utestengt fra denne epostlisten.\n"
-"Dersom du tror dette kan være en feil, kontakt listens eier på %(listowner)s."
+"Dersom du tror dette kan være en feil, kontakt listens eier på %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2473,7 +2473,7 @@ msgid ""
 "                      the list owners at %(owneraddr)s."
 msgstr ""
 "Epostadressen du har angitt er utestengt fra denne epostlisten.\n"
-"Dersom du tror dette kan være en feil, kontakt listens eier på %(listowner)s."
+"Dersom du tror dette kan være en feil, kontakt listens eier på %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -3104,7 +3104,7 @@ msgid ""
 "%(owneraddr)s."
 msgstr ""
 "Epostadressen du har angitt er utestengt fra denne epostlisten.\n"
-"Dersom du tror dette kan være en feil, kontakt listens eier på %(listowner)s."
+"Dersom du tror dette kan være en feil, kontakt listens eier på %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -8190,7 +8190,7 @@ msgstr "Filen %(dbfile)s eies av %(owner)s (må eies av %(user)s)"
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "rettighetene på %(file)s må være 066x (men er %(octmode)s)"
+msgstr "rettighetene på %(dbfile)s må være 066x (men er %(octmode)s)"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -9377,7 +9377,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## Innstillinger for epostlisten \"%(listname)s\"  -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## Innstillinger for epostlisten \"%(listname)s\"\n"
 "## Dato: %(when)s\n"
 
 #: bin/config_list:143
@@ -11510,7 +11512,7 @@ msgstr "oppdaterer gamle qfiler"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Ugyldig kø-katalog: %(qdir)s"
+msgstr "Ugyldig kø-katalog: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

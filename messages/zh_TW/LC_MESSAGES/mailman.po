@@ -146,11 +146,11 @@ msgstr "%(year)i年%(month)s"
 
 #: Mailman/Archiver/HyperArch.py:947
 msgid "The Week Of Monday %(day)i %(month)s %(year)i"
-msgstr "%(year)i年%(months)s%(day)i日（星期一）該週"
+msgstr "%(year)i年%(month)s%(day)i日（星期一）該週"
 
 #: Mailman/Archiver/HyperArch.py:951
 msgid "%(day)i %(month)s %(year)i"
-msgstr "%(year)i年%(months)s%(day)i日"
+msgstr "%(year)i年%(month)s%(day)i日"
 
 #: Mailman/Archiver/HyperArch.py:1051
 msgid "Computing threaded index\n"
@@ -1238,7 +1238,7 @@ msgstr "投書遭保留以待審查"
 
 #: Mailman/Cgi/admindb.py:618
 msgid " (%(count)d of %(total)d)"
-msgstr " (%(totla)d 中的 %(count)d)"
+msgstr " (%(total)d 中的 %(count)d)"
 
 #: Mailman/Cgi/admindb.py:629
 msgid "<em>Message with id #%(id)d was lost."
@@ -1483,7 +1483,7 @@ msgid ""
 "            contact the list owners at %(owneraddr)s."
 msgstr ""
 "您的 email 地址是本論壇的拒絕往來戶，如果您覺得這太離譜了，\n"
-"請聯絡論壇擁有人 %(listowner)s。"
+"請聯絡論壇擁有人 %(owneraddr)s。"
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1589,7 +1589,7 @@ msgid ""
 "            please contact the list owners at %(owneraddr)s."
 msgstr ""
 "您的 email 地址是本論壇的拒絕往來戶，如果您覺得這太離譜了，\n"
-"請聯絡論壇擁有人 %(listowner)s。"
+"請聯絡論壇擁有人 %(owneraddr)s。"
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2321,7 +2321,7 @@ msgid ""
 "                      the list owners at %(owneraddr)s."
 msgstr ""
 "你使用的這 email 目前被本論壇列入黑名單。\n"
-"如果認為這項限制有問題的話，請與 %(listowner)s 壇主聯絡"
+"如果認為這項限制有問題的話，請與 %(owneraddr)s 壇主聯絡"
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -2893,7 +2893,7 @@ msgid ""
 "%(owneraddr)s."
 msgstr ""
 "你使用的這 email 目前被本論壇列入黑名單。\n"
-"如果認為這項限制有問題的話，請與 %(listowner)s 壇主聯絡"
+"如果認為這項限制有問題的話，請與 %(owneraddr)s 壇主聯絡"
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -6781,14 +6781,14 @@ msgstr "您的信件含有可疑的標題。"
 msgid ""
 "Message body is too big: %(size)d bytes with a limit of\n"
 "%(limit)d KB"
-msgstr "信件內容過大： %d bytes （上限 %d KB)"
+msgstr "信件內容過大： %(size)d bytes （上限 %(limit)d KB)"
 
 #: Mailman/Handlers/Hold.py:106
 #, fuzzy
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
-msgstr "您的信件太大，請刪減信件到小於%(kb)s KB。"
+msgstr "您的信件太大，請刪減信件到小於%(kb)d KB。"
 
 #: Mailman/Handlers/Hold.py:110
 #, fuzzy
@@ -7123,16 +7123,16 @@ msgstr "修正中"
 
 #: Mailman/MTA/Postfix.py:348
 msgid "checking ownership of %(dbfile)s"
-msgstr "檢查 %(file)s 檔案所有權中"
+msgstr "檢查 %(dbfile)s 檔案所有權中"
 
 #: Mailman/MTA/Postfix.py:356
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
-msgstr "%(file)s的檔案所有權為 %(owner)s 所有，所有人需更改為 %(user)s"
+msgstr "%(dbfile)s的檔案所有權為 %(owner)s 所有，所有人需更改為 %(user)s"
 
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "%(file)s的檔案讀寫權為 %(octmode)s ，需更改為 066x"
+msgstr "%(dbfile)s的檔案讀寫權為 %(octmode)s ，需更改為 066x"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -8877,7 +8877,7 @@ msgstr ""
 
 #: bin/newlist:150
 msgid "Unknown language: %(lang)s"
-msgstr "未知的語言：%(lang)"
+msgstr "未知的語言：%(lang)s"
 
 #: bin/newlist:155
 msgid "Enter the name of the list: "
@@ -8889,7 +8889,7 @@ msgstr "輸入本論壇主持人的電子郵件："
 
 #: bin/newlist:181
 msgid "Initial %(listname)s password: "
-msgstr "論壇 %(listname) 的初始密碼："
+msgstr "論壇 %(listname)s 的初始密碼："
 
 #: bin/newlist:185
 msgid "The list password cannot be empty"
@@ -8903,7 +8903,7 @@ msgstr ""
 
 #: bin/newlist:232
 msgid "Hit enter to notify %(listname)s owner..."
-msgstr "按下輸入鍵來通知 %(listname) 論壇主持人"
+msgstr "按下輸入鍵來通知 %(listname)s 論壇主持人"
 
 #: bin/qrunner:20
 msgid ""
@@ -9064,19 +9064,19 @@ msgstr ""
 
 #: bin/remove_members:156
 msgid "Could not open file for reading: %(filename)s."
-msgstr "無法開啟檔案 %(filename) 讀取資料"
+msgstr "無法開啟檔案 %(filename)s 讀取資料"
 
 #: bin/remove_members:163
 msgid "Error opening list %(listname)s... skipping."
-msgstr "開啟論壇 %(listname) 設定檔案錯誤，略過"
+msgstr "開啟論壇 %(listname)s 設定檔案錯誤，略過"
 
 #: bin/remove_members:173
 msgid "No such member: %(addr)s"
-msgstr "沒有成員: %(addr)。"
+msgstr "沒有成員: %(addr)s。"
 
 #: bin/remove_members:178
 msgid "User `%(addr)s' removed from list: %(listname)s."
-msgstr "成員 `%(addr)s' 已由論壇 %(listname) 移除。"
+msgstr "成員 `%(addr)s' 已由論壇 %(listname)s 移除。"
 
 #: bin/reset_pw.py:21
 msgid ""

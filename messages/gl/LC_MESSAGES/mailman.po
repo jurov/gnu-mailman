@@ -1740,7 +1740,7 @@ msgstr ""
 "    cambio de enderezo da rolda de distribución\n"
 "    <em>%(listname)s</em>. Actualmente está subscrito cos datos seguintes:\n"
 "    <ul><li><b>Nome e apelidos:</b> %(fullname)s\n"
-"        <li><b>Enderezo de correo electrónico antigo:</b> %(addr)s\n"
+"        <li><b>Enderezo de correo electrónico antigo:</b> %(oldaddr)s\n"
 "    </ul>\n"
 "\n"
 "    solicitou cambiar %(globallys)s o seu enderezo de correo\n"
@@ -1875,7 +1875,7 @@ msgid ""
 msgstr ""
 "            Reactivou, con éxito, a súa subscrición da rolda de "
 "distribución\n"
-"            %(listname)s. Agora pode <a href=\"%(optionsourl)s\">visitar\n"
+"            %(listname)s. Agora pode <a href=\"%(optionsurl)s\">visitar\n"
 "            a páxina coas súas preferencias de subscrición</a>.\n"
 "            "
 
@@ -2016,7 +2016,7 @@ msgstr "A rolda xa existe: %(listname)s"
 
 #: Mailman/Cgi/create.py:213 bin/newlist:205
 msgid "Illegal list name: %(s)s"
-msgstr "O nome da rolda é ilegal: %(opt)s"
+msgstr "O nome da rolda é ilegal: %(s)s"
 
 #: Mailman/Cgi/create.py:218
 msgid ""
@@ -2432,7 +2432,7 @@ msgid ""
 "%(safeuser)s will be changed. "
 msgstr ""
 "O enderezo novo %(newaddr)s que solicitou xa está subscrito na\n"
-"rolda de distribución %(listname); porén tamén pediu\n"
+"rolda de distribución %(listname)s; porén tamén pediu\n"
 "un cambio global do seu enderezo.  Logo de o confirmar, tamén se\n"
 "cambiará calquera outra rolda de distribución que conteña o enderezo\n"
 "%(safeuser)s. "
@@ -2638,7 +2638,7 @@ msgid ""
 "<em>%(cpuser)s</em>."
 msgstr ""
 "\n"
-"Está subscrito á rolda de correo co enderezo <em>%s</em> respectando as "
+"Está subscrito á rolda de correo co enderezo <em>%(cpuser)s</em> respectando as "
 "maiúsculas e as minúsculas."
 
 #: Mailman/Cgi/options.py:857
@@ -3242,6 +3242,7 @@ msgstr ""
 "        a resposta sempre se enviará ao enderezo subscrito.\n"
 
 #: Mailman/Commands/cmd_password.py:51 Mailman/Commands/cmd_password.py:66
+#, fuzzy
 msgid "Your password is: %(password)s"
 msgstr "Contrasinal novo de %(listname)s: %(notifypassword)s"
 
@@ -3249,7 +3250,7 @@ msgstr "Contrasinal novo de %(listname)s: %(notifypassword)s"
 #: Mailman/Commands/cmd_password.py:95 Mailman/Commands/cmd_password.py:121
 #: Mailman/Commands/cmd_set.py:149 Mailman/Commands/cmd_set.py:219
 msgid "You are not a member of the %(listname)s mailing list"
-msgstr "Deuse de baixa da rolda de distribución %(realname)s"
+msgstr "Deuse de baixa da rolda de distribución %(listname)s"
 
 #: Mailman/Commands/cmd_password.py:85 Mailman/Commands/cmd_password.py:111
 msgid ""
@@ -3453,7 +3454,7 @@ msgstr ""
 
 #: Mailman/Commands/cmd_set.py:122
 msgid "Bad set command: %(subcmd)s"
-msgstr "A orde set é incorrecta: %()subcmds"
+msgstr "A orde set é incorrecta: %(subcmd)s"
 
 #: Mailman/Commands/cmd_set.py:151
 msgid "Your current option settings:"
@@ -3534,7 +3535,7 @@ msgstr "O contrasinal que enviou non é a correcto"
 
 #: Mailman/Commands/cmd_set.py:236 Mailman/Commands/cmd_set.py:283
 msgid "Bad argument: %(arg)s"
-msgstr "Argumentos incorrectos: %(args)s"
+msgstr "Argumentos incorrectos: %(arg)s"
 
 #: Mailman/Commands/cmd_set.py:241 Mailman/Commands/cmd_set.py:261
 msgid "Not authenticated"
@@ -3664,7 +3665,7 @@ msgid ""
 "at %(listowner)s for review."
 msgstr ""
 "A súa solicitude de  subscrición foi reenviada ao enderezo\n"
-"%(adminemail)s do administrador da rolda para que lle de a aprobación."
+"%(listowner)s do administrador da rolda para que lle de a aprobación."
 
 #: Mailman/Commands/cmd_subscribe.py:147
 msgid "Subscription request succeeded."
@@ -4843,10 +4844,9 @@ msgid "Invalid value for variable: %(property)s"
 msgstr "O valor da variable non é válido: %(property)s"
 
 #: Mailman/Gui/GUIBase.py:176
-#, fuzzy
 msgid "Bad email address for option %(property)s: %(error)s"
 msgstr ""
-"O enderezo de correo electrónico é incorrecto na opción %(property)s: %(val)s"
+"O enderezo de correo electrónico é incorrecto na opción %(property)s: %(error)s"
 
 #: Mailman/Gui/GUIBase.py:202
 msgid ""
@@ -7392,7 +7392,7 @@ msgstr "<em>(Non se amosa un subscritor oculto)</em>"
 
 #: Mailman/HTMLFormatter.py:79
 msgid "<em>(%(num_concealed)d private members not shown)</em>"
-msgstr "<em>(Non se amosan %(num_concealed)d membro%(plu)s oculto%(plu)s)</em>"
+msgstr "<em>(Non se amosan %(num_concealed)d membros ocultos)</em>"
 
 #: Mailman/HTMLFormatter.py:135
 msgid "; it was disabled by you"
@@ -7458,7 +7458,7 @@ msgid ""
 "            the problems are corrected soon."
 msgstr ""
 "<p>Recibíronse mensaxes devoltas que produciu o seu correo electrónico.\n"
-"            O contido das <em>mensaxes devoltas</em>, %(score), é maior que "
+"            O contido das <em>mensaxes devoltas</em>, %(score)s, é maior que "
 "o máximo de %(total)s.\n"
 "            Por favor, comprobe que o enderezo con que está subscrito é "
 "correcto e que non ten\n"
@@ -7472,8 +7472,8 @@ msgid ""
 "notice will be sent to the admin address for your membership, %(addr)s.)<p>"
 msgstr ""
 "Atención - está subscrito a unha rolda que manda a outras roldas de "
-"distribución, polo que a notificación de %s enviaránse ao enderezo "
-"administrativo do membro, %s.)<p>"
+"distribución, polo que a notificación de %(type)s enviaránse ao enderezo "
+"administrativo do membro, %(addr)s.)<p>"
 
 #: Mailman/HTMLFormatter.py:186
 msgid ""
@@ -8812,7 +8812,7 @@ msgstr "    estase a comprobar o gid e o modo de %(path)s"
 #: bin/check_perms:122
 msgid "%(path)s bad group (has: %(groupname)s, expected %(MAILMAN_GROUP)s)"
 msgstr ""
-"%(path) ten un grupo incorrecto (ten: %(groupname)s, pois agardábase que "
+"%(path)s ten un grupo incorrecto (ten: %(groupname)s, pois agardábase que "
 "tivese %(MAILMAN_GROUP)s)"
 
 #: bin/check_perms:151
@@ -8847,7 +8847,7 @@ msgstr "estase a comprobar os permisos en %(private)s"
 
 #: bin/check_perms:214
 msgid "%(private)s must not be other-readable"
-msgstr "%(private) non pode ser lido por terceiras persoas"
+msgstr "%(private)s non pode ser lido por terceiras persoas"
 
 #: bin/check_perms:223
 msgid ""
@@ -11100,7 +11100,7 @@ msgid ""
 "b6, so I'm renaming it to %(mbox_dir)s.tmp and proceeding."
 msgstr ""
 "Por calquera razón, %(mbox_dir) existe como ficheiro. Isto non funcionará\n"
-"con b6, polo que se lle está a cambiar o nome a %(mobox_dir)s.tmp e despois "
+"con b6, polo que se lle está a cambiar o nome a %(mbox_dir)s.tmp e despois "
 "continuarase."
 
 #: bin/update:255

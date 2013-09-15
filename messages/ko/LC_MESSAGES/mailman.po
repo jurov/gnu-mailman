@@ -415,7 +415,7 @@ msgstr ""
 #: Mailman/Cgi/admin.py:405
 #, fuzzy
 msgid "return to the %(categoryname)s options page."
-msgstr "%(category)s 설정 페이지로 돌아가실 수 있습니다."
+msgstr "%(categoryname)s 설정 페이지로 돌아가실 수 있습니다."
 
 #: Mailman/Cgi/admin.py:420
 msgid "%(realname)s Administration (%(label)s)"
@@ -1547,7 +1547,7 @@ msgid ""
 "            contact the list owners at %(owneraddr)s."
 msgstr ""
 "당신이 입력하신 E메일 주소는 이 메일링 리스트에서 추방당한 주소입니다. 만약 "
-"당신이 이것에 실수있다고 생각하시면 리스트 소유주(%(listowner)s)에게 연락하시"
+"당신이 이것에 실수있다고 생각하시면 리스트 소유주(%(owneraddr)s)에게 연락하시"
 "기 바랍니다."
 
 #: Mailman/Cgi/confirm.py:382
@@ -1653,7 +1653,7 @@ msgid ""
 "            please contact the list owners at %(owneraddr)s."
 msgstr ""
 "당신이 입력하신 E메일 주소는 이 메일링 리스트에서 추방당한 주소입니다. 만약 "
-"당신이 이것에 실수있다고 생각하시면 리스트 소유주(%(listowner)s)에게 연락하시"
+"당신이 이것에 실수있다고 생각하시면 리스트 소유주(%(owneraddr)s)에게 연락하시"
 "기 바랍니다."
 
 #: Mailman/Cgi/confirm.py:536
@@ -1929,12 +1929,12 @@ msgstr "관리 목록 소개"
 #: Mailman/Cgi/create.py:104
 #, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "메일링 리스트 이름은 \"@\" 를 포함하면 안됩니다. : %(listname)s"
+msgstr "메일링 리스트 이름은 \"@\" 를 포함하면 안됩니다. : %(safelistname)s"
 
 #: Mailman/Cgi/create.py:111
 #, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "메일링 리스트 이름이 이미 존재합니다: %(listname)s"
+msgstr "메일링 리스트 이름이 이미 존재합니다: %(safelistname)s"
 
 #: Mailman/Cgi/create.py:115
 msgid "You forgot to enter the list name"
@@ -1972,7 +1972,7 @@ msgstr ""
 #: Mailman/Cgi/create.py:200 bin/newlist:207
 #, fuzzy
 msgid "Bad owner email address: %(s)s"
-msgstr "잘못된 소유주 E메일 주소 : %(owner)s"
+msgstr "잘못된 소유주 E메일 주소 : %(s)s"
 
 #: Mailman/Cgi/create.py:205 bin/newlist:170 bin/newlist:211
 msgid "List already exists: %(listname)s"
@@ -1981,7 +1981,7 @@ msgstr "메일링 리스트 이름이 이미 존재합니다: %(listname)s"
 #: Mailman/Cgi/create.py:213 bin/newlist:205
 #, fuzzy
 msgid "Illegal list name: %(s)s"
-msgstr "메일링 리스트 이름은 \"@\" 를 포함하면 안됩니다. : %(listname)s"
+msgstr "메일링 리스트 이름은 \"@\" 를 포함하면 안됩니다. : %(s)s"
 
 #: Mailman/Cgi/create.py:218
 msgid ""
@@ -2337,7 +2337,7 @@ msgstr ""
 #: Mailman/Cgi/options.py:291
 #, fuzzy
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
-msgstr "%(hostname)s 상의 %(user)s 를 위한 리스트 가입"
+msgstr "%(hostname)s 상의 %(safeuser)s 를 위한 리스트 가입"
 
 #: Mailman/Cgi/options.py:294
 msgid ""
@@ -2407,7 +2407,7 @@ msgid ""
 "                      the list owners at %(owneraddr)s."
 msgstr ""
 "당신이 입력하신 E메일 주소는 이 메일링 리스트에서 추방된 것입니다. 이것에 대"
-"해 문제가 있다고 생각하시면 리스트 소유주( %(listowner)s )에게 연락하시기 바"
+"해 문제가 있다고 생각하시면 리스트 소유주( %(owneraddr)s )에게 연락하시기 바"
 "랍니다."
 
 #: Mailman/Cgi/options.py:428
@@ -2593,7 +2593,7 @@ msgstr "E메일 주소와"
 #: Mailman/Cgi/options.py:861
 #, fuzzy
 msgid "%(realname)s list: member options for user %(safeuser)s"
-msgstr "%(realname)s 리스트: %(user)s 회원 설정"
+msgstr "%(realname)s 리스트: %(safeuser)s 회원 설정"
 
 #: Mailman/Cgi/options.py:887
 #, fuzzy
@@ -2996,7 +2996,7 @@ msgid ""
 "%(owneraddr)s."
 msgstr ""
 "당신이 입력하신 E메일 주소는 이 메일링 리스트에서 추방된 것입니다. 이것에 대"
-"해 문제가 있다고 생각하시면 리스트 소유주( %(listowner)s )에게 연락하시기 바"
+"해 문제가 있다고 생각하시면 리스트 소유주( %(owneraddr)s )에게 연락하시기 바"
 "랍니다."
 
 #: Mailman/Commands/cmd_confirm.py:74
@@ -3461,7 +3461,7 @@ msgid ""
 "Your subscription request has been forwarded to the list administrator\n"
 "at %(listowner)s for review."
 msgstr ""
-"당신의 가입 요청은 메일링 리스트 관리자(%(adminemail)s) 에게 전달되었습니다. "
+"당신의 가입 요청은 메일링 리스트 관리자(%(listowner)s) 에게 전달되었습니다. "
 
 #: Mailman/Commands/cmd_subscribe.py:147
 #, fuzzy
@@ -3771,7 +3771,7 @@ msgstr ""
 #: Mailman/Deliverer.py:219
 #, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "%(listfullname)s 메일링 리스트 패스워드 메일"
+msgstr "%(listname)s 메일링 리스트 패스워드 메일"
 
 #: Mailman/Errors.py:122
 msgid "For some unknown reason"
@@ -6659,7 +6659,7 @@ msgstr "<em>(1 명의 비공개 회원이 보여지지 않습니다.)</em>"
 
 #: Mailman/HTMLFormatter.py:79
 msgid "<em>(%(num_concealed)d private members not shown)</em>"
-msgstr "<em>(%(num_concealed) 명의 비공개 회원들이 보여지지 않습니다.)</em>"
+msgstr "<em>(%(num_concealed)d 명의 비공개 회원들이 보여지지 않습니다.)</em>"
 
 #: Mailman/HTMLFormatter.py:135
 msgid "; it was disabled by you"
@@ -6704,7 +6704,7 @@ msgid ""
 "            %(link)s option below.  Contact %(mailto)s if you have any\n"
 "            questions or need assistance."
 msgstr ""
-"<p>%(notes)s<p>메일링 리스트 배달이 현재 못하도록 되어 있습니다. 당신이 일부"
+"<p>%(note)s<p>메일링 리스트 배달이 현재 못하도록 되어 있습니다. 당신이 일부"
 "러 배달 안오도록 설정했거나, 당신의 배달주소로부터 바운스가 일어났기 때문입니"
 "다. 그런 경우 배달 기능을 하도록 해야 하는데, %(link)s 설정을 바꾸시기 바랍니"
 "다.  만약 질문이 있다면 %(mailto)s 에게 연락하시기 바랍니다."
@@ -6730,7 +6730,7 @@ msgid ""
 "(Note - you are subscribing to a list of mailing lists, so the %(type)s "
 "notice will be sent to the admin address for your membership, %(addr)s.)<p>"
 msgstr ""
-"(참고 - 당신은 지금 편지를 당신의 회원( %addr)s ) 들에게 볼낼때 바로 가지 않"
+"(참고 - 당신은 지금 편지를 당신의 회원( %(addr)s ) 들에게 볼낼때 바로 가지 않"
 "고, 관리자의 주소로 %(type)s 공지가 보내지는 메일링리스트에 가입하고 있습니"
 "다.)<p>"
 
@@ -7028,7 +7028,7 @@ msgstr ""
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
-msgstr "당신의 글은 너무 큽니다. 크기를 %(kb)s 이내로 다듬어 주시기 바랍니다."
+msgstr "당신의 글은 너무 큽니다. 크기를 %(kb)d 이내로 다듬어 주시기 바랍니다."
 
 #: Mailman/Handlers/Hold.py:110
 #, fuzzy
@@ -7304,7 +7304,7 @@ msgstr ""
 #: Mailman/MTA/Manual.py:82
 #, fuzzy
 msgid "## %(listname)s mailing list"
-msgstr " \"%(realname)s\" 메일링 리스트"
+msgstr " \"%(listname)s\" 메일링 리스트"
 
 #: Mailman/MTA/Manual.py:99
 msgid "Mailing list creation request for list %(listname)s"
@@ -7376,17 +7376,17 @@ msgstr ""
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "%(file)s 퍼미션은 066x ( %(octmode)s )여야 합니다."
+msgstr "%(dbfile)s 퍼미션은 066x ( %(octmode)s )여야 합니다."
 
 #: Mailman/MailList.py:216
 #, fuzzy
 msgid "Your confirmation is required to join the %(listname)s mailing list"
-msgstr "%(realname)s 메일링 리스트에서 탈퇴되셨습니다."
+msgstr "%(listname)s 메일링 리스트에서 탈퇴되셨습니다."
 
 #: Mailman/MailList.py:227
 #, fuzzy
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
-msgstr "%(realname)s 메일링 리스트에서 탈퇴되셨습니다."
+msgstr "%(listname)s 메일링 리스트에서 탈퇴되셨습니다."
 
 #: Mailman/MailList.py:904 Mailman/MailList.py:1334
 msgid " from %(remote)s"
@@ -8248,12 +8248,12 @@ msgstr ""
 #: bin/config_list:286
 #, fuzzy
 msgid "Invalid value for property: %(k)s"
-msgstr "잘못된 값은 변수값 : %(property)s"
+msgstr "잘못된 값은 변수값 : %(k)s"
 
 #: bin/config_list:288
 #, fuzzy
 msgid "Bad email address for option %(k)s: %(v)s"
-msgstr "%(property)s 옵션을 위한 잘못된 E메일 주소 : %(val)s"
+msgstr "%(k)s 옵션을 위한 잘못된 E메일 주소 : %(v)s"
 
 #: bin/config_list:345
 msgid "Only one of -i or -o is allowed"

@@ -1611,7 +1611,7 @@ msgid ""
 msgstr ""
 "Указанный вами адрес запрещен для подписки на этот список рассылки.\n"
 "Если вы считаете это ошибкой, обратитесь к владельцам списка по адресу "
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1791,7 +1791,7 @@ msgstr ""
 "Ваше подтверждение необходимо для завершения процесса смены вашего адреса "
 "электронной почты в списке рассылки <em>%(listname)s</em>.\n"
 "\"<ul><li><b>Ваше имя пользователя:</b> %(fullname)s\n"
-"        <li><b>Старый адрес электронной почты:</b> %(addr)s\n"
+"        <li><b>Старый адрес электронной почты:</b> %(oldaddr)s\n"
 "    </ul>\n"
 "Вы собираетесь сменить этот адрес на\n"
 "<ul><li><b>Новый адрес электронной почты:</b> %(newaddr)s\n"
@@ -2502,7 +2502,7 @@ msgid ""
 msgstr ""
 "Указанный вами адрес запрещен для подписки на этот список рассылки.\n"
 "Если вы считаете это ошибкой, обратитесь к владельцам списка:\n"
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -3121,7 +3121,7 @@ msgid ""
 msgstr ""
 "Указанный вами адрес запрещен для подписки на этот список рассылки.\n"
 "Если вы считаете это ошибкой, обратитесь к владельцам списка:\n"
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -7844,7 +7844,7 @@ msgstr "Вложенное сообщение было автоматически удалено."
 
 #: Mailman/Handlers/Replybot.py:75
 msgid "Auto-response for your message to the \"%(realname)s\" mailing list"
-msgstr "Автоматический ответ на ваше сообщение в список рассылки %(listname)s"
+msgstr "Автоматический ответ на ваше сообщение в список рассылки %(realname)s"
 
 #: Mailman/Handlers/Replybot.py:108
 msgid "The Mailman Replybot"
@@ -8086,7 +8086,7 @@ msgstr "Запрос на удаление списка рассылки %(listname)s"
 
 #: Mailman/MTA/Postfix.py:320
 msgid "checking permissions on %(file)s"
-msgstr "проверяется режим доступа к %(files)s"
+msgstr "проверяется режим доступа к %(file)s"
 
 #: Mailman/MTA/Postfix.py:330
 msgid "%(file)s permissions must be 066x (got %(octmode)s)"
@@ -8112,7 +8112,7 @@ msgstr "владелец %(dbfile)s -- %(owner)s (должен быть %(user)s)"
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "режим доступа к %(file)s должен быть 066x (а не %(octmode)s)"
+msgstr "режим доступа к %(dbfile)s должен быть 066x (а не %(octmode)s)"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -9325,7 +9325,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## параметры списка рассылки \"%(listname)s\" -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## параметры списка рассылки \"%(listname)s\"\n"
 "## данные собраны %(when)s\n"
 
 #: bin/config_list:143
@@ -11567,7 +11569,7 @@ msgstr "удаляется %(src)s"
 
 #: bin/update:403
 msgid "Warning: couldn't remove %(src)s -- %(rest)s"
-msgstr "Предупреждение: не удалось удалить %(pyc)s -- %(rest)s"
+msgstr "Предупреждение: не удалось удалить %(src)s -- %(rest)s"
 
 #: bin/update:408
 msgid "couldn't remove old file %(pyc)s -- %(rest)s"
@@ -11580,7 +11582,7 @@ msgstr "обновляются старые файлы очереди"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Несуществующий каталог очереди: %(qdir)s"
+msgstr "Несуществующий каталог очереди: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

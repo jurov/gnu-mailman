@@ -1263,7 +1263,7 @@ msgid ""
 "                    mailing list"
 msgstr ""
 "Activeazã interdicþia definitivã de abonare pe aceastã listã a \n"
-"<strong>(esender)s</strong>"
+"<strong>%(esender)s</strong>"
 
 #: Mailman/Cgi/admindb.py:524
 msgid ""
@@ -1588,7 +1588,7 @@ msgid ""
 msgstr ""
 "Adresa pe care aþi dat-o este interzisã pe aceastã listã.\n"
 "        Dacã credeþi cã aceastã restricþie este eronatã, vã rugãm sã\n"
-"        contactaþi proprietarii listei la %(listowner)s."
+"        contactaþi proprietarii listei la %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1707,7 +1707,7 @@ msgid ""
 msgstr ""
 "Adresa pe care aþi dat-o este interzisã pe aceastã listã.\n"
 "        Dacã credeþi cã aceastã restricþie este eronatã, vã rugãm sã\n"
-"        contactaþi proprietarii listei la %(listowner)s."
+"        contactaþi proprietarii listei la %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -1998,11 +1998,11 @@ msgstr "meniul general administrativ al listei"
 
 #: Mailman/Cgi/create.py:104
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Numele listei nu poate include \"@\": %(listname)s"
+msgstr "Numele listei nu poate include \"@\": %(safelistname)s"
 
 #: Mailman/Cgi/create.py:111
 msgid "List already exists: %(safelistname)s"
-msgstr "Lista %(listname)s existã deja!"
+msgstr "Lista %(safelistname)s existã deja!"
 
 #: Mailman/Cgi/create.py:115
 msgid "You forgot to enter the list name"
@@ -2389,7 +2389,7 @@ msgstr "Nu aþi introdus nici o adresã"
 
 #: Mailman/Cgi/options.py:121
 msgid "Illegal Email Address: %(safeuser)s"
-msgstr "Adresã de email ilegalã: (safeuser)s"
+msgstr "Adresã de email ilegalã: %(safeuser)s"
 
 #: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:193
 #: Mailman/Cgi/options.py:215 Mailman/Cgi/private.py:154
@@ -2505,7 +2505,7 @@ msgid ""
 msgstr ""
 "Adresa de email pe care aþi specificat-o este interzisã pe aceastã listã.\n"
 "Dacã credeþi cã aceastã restricþie este eronatã, vã rugãm sã contactaþi\n"
-"proprietarii listei la adresa %(listowner)s."
+"proprietarii listei la adresa %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -2806,7 +2806,7 @@ msgstr ""
 
 #: Mailman/Cgi/private.py:109
 msgid "Private Archive Error - %(msg)s"
-msgstr "Eroare la arhiva privatã - (msg)s"
+msgstr "Eroare la arhiva privatã - %(msg)s"
 
 #: Mailman/Cgi/private.py:141
 #, fuzzy
@@ -2853,7 +2853,7 @@ msgid ""
 msgstr ""
 "Au apãrut niºte probleme la ºtergerea listei de discuþii\n"
 "        <b>%(listname)s</b>.  Contactaþi administratorul site-ului la "
-"(sitelist)s\n"
+"%(sitelist)s\n"
 "        pentru detalii."
 
 #: Mailman/Cgi/rmlist.py:190
@@ -3126,7 +3126,7 @@ msgid ""
 msgstr ""
 "Adresa de email pe care aþi specificat-o este interzisã pe aceastã listã.\n"
 "Dacã credeþi cã aceastã restricþie este eronatã, vã rugãm sã contactaþi\n"
-"proprietarii listei la adresa %(listowner)s."
+"proprietarii listei la adresa %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -3214,7 +3214,7 @@ msgstr "Publicarea la:  %(postaddr)s"
 
 #: Mailman/Commands/cmd_info.py:47
 msgid "List Helpbot: %(requestaddr)s"
-msgstr "Robotul de ajutor: %(requestaddr)"
+msgstr "Robotul de ajutor: %(requestaddr)s"
 
 #: Mailman/Commands/cmd_info.py:48
 msgid "List Owners:  %(owneraddr)s"
@@ -3986,7 +3986,7 @@ msgstr ""
 #: Mailman/Deliverer.py:219
 #, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "Mesaj de reamintire pentru lista de discuþii %(listfullname)s"
+msgstr "Mesaj de reamintire pentru lista de discuþii %(listname)s"
 
 #: Mailman/Errors.py:122
 msgid "For some unknown reason"
@@ -7906,7 +7906,7 @@ msgstr "verific permisiunile pentru %(file)s"
 
 #: Mailman/MTA/Postfix.py:330
 msgid "%(file)s permissions must be 066x (got %(octmode)s)"
-msgstr "Permisiunile %(file)s trebuie sã fie 066x (sunt octmode)s)"
+msgstr "Permisiunile %(file)s trebuie sã fie 066x (sunt %(octmode)s)"
 
 #: Mailman/MTA/Postfix.py:332 Mailman/MTA/Postfix.py:359
 #: Mailman/MTA/Postfix.py:370 bin/check_perms:125 bin/check_perms:153
@@ -7929,7 +7929,7 @@ msgstr ""
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "Permisiunile %(file)s trebuie sã fie 066x (sunt octmode)s)"
+msgstr "Permisiunile %(dbfile)s trebuie sã fie 066x (sunt %(octmode)s)"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -9066,8 +9066,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## Setãrile de configurare pentru lista de discuþii \"%(listname)s\" -*- "
-"python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## Setãrile de configurare pentru lista de discuþii \"%(listname)s\"\n"
 "## capturate în %(when)s\n"
 
 #: bin/config_list:143
@@ -9257,12 +9258,12 @@ msgstr "Specificaþi ori -p ori -m"
 #: bin/dumpdb:133
 #, fuzzy
 msgid "[----- start %(typename)s file -----]"
-msgstr "[----- start pickle file -----]"
+msgstr "[----- start %(typename)s file -----]"
 
 #: bin/dumpdb:139
 #, fuzzy
 msgid "[----- end %(typename)s file -----]"
-msgstr "[----- end pickle file -----]"
+msgstr "[----- end %(typename)s file -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
@@ -11333,7 +11334,7 @@ msgstr "actualizez vechile fiºiere qfiles"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Director de coadã eronat: %(qdir)s"
+msgstr "Director de coadã eronat: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

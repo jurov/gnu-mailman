@@ -1800,12 +1800,12 @@ msgstr "административни преглед листе"
 #: Mailman/Cgi/create.py:104
 #, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Име листе  %(listname)s"
+msgstr "Име листе  %(safelistname)s"
 
 #: Mailman/Cgi/create.py:111
 #, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "Листа са називом %(listname)s већ постоји"
+msgstr "Листа са називом %(safelistname)s већ постоји"
 
 #: Mailman/Cgi/create.py:115
 msgid "You forgot to enter the list name"
@@ -2166,7 +2166,7 @@ msgstr "Није дата адреса."
 #: Mailman/Cgi/options.py:121
 #, fuzzy
 msgid "Illegal Email Address: %(safeuser)s"
-msgstr "Лоша е-адреса: %(member)s"
+msgstr "Лоша е-адреса: %(safeuser)s"
 
 #: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:193
 #: Mailman/Cgi/options.py:215 Mailman/Cgi/private.py:154
@@ -9210,7 +9210,7 @@ msgstr "--all захтјева -run"
 
 #: bin/withlist:266
 msgid "Importing %(module)s..."
-msgstr "Увођење %(module=s..."
+msgstr "Увођење %(module)s..."
 
 #: bin/withlist:270
 msgid "Running %(module)s.%(callable)s()..."

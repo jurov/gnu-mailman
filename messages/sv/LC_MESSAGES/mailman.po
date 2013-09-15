@@ -2231,7 +2231,7 @@ msgid ""
 msgstr ""
 "E-postadressen som du uppgav är utestängd från denna e-postlista.\n"
 "Om du tror att detta kan vara felaktigt, kontakta listans ägare på "
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -2374,7 +2374,7 @@ msgid ""
 msgstr ""
 "E-postadressen som du uppgav är utestängd från denna e-postlista.\n"
 "Om du tror att detta kan vara felaktigt, kontakta listans ägare på "
-"%(listowner)s."
+"%(owneraddr)s."
 
 # Mailman/Cgi/confirm.py:325 Mailman/Cgi/confirm.py:378
 # Mailman/Cgi/confirm.py:464 Mailman/Cgi/confirm.py:675
@@ -2732,7 +2732,7 @@ msgstr "administrativ sida för e-postlistan"
 #: Mailman/Cgi/create.py:104
 #, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Listnamnet får inte innehålla \"@\": %(listname)s"
+msgstr "Listnamnet får inte innehålla \"@\": %(safelistname)s"
 
 # Mailman/Cgi/create.py:107 Mailman/Cgi/create.py:185 bin/newlist:130
 # bin/newlist:162
@@ -2741,7 +2741,7 @@ msgstr "Listnamnet får inte innehålla \"@\": %(listname)s"
 #: Mailman/Cgi/create.py:111
 #, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "Listan finns redan: %(listname)s !"
+msgstr "Listan finns redan: %(safelistname)s !"
 
 # Mailman/Cgi/create.py:111
 # Mailman/Cgi/create.py:111
@@ -3254,7 +3254,7 @@ msgstr "Ingen e-postadress angiven"
 #: Mailman/Cgi/options.py:121
 #, fuzzy
 msgid "Illegal Email Address: %(safeuser)s"
-msgstr "Fel/Ogiltig e-postadress: %(member)s"
+msgstr "Fel/Ogiltig e-postadress: %(safeuser)s"
 
 # Mailman/Cgi/options.py:107 Mailman/Cgi/options.py:154
 # Mailman/Cgi/options.py:176
@@ -3313,7 +3313,7 @@ msgstr ""
 #: Mailman/Cgi/options.py:291
 #, fuzzy
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
-msgstr "Visa listmedlemskap för %(user)s på %(hostname)s"
+msgstr "Visa listmedlemskap för %(safeuser)s på %(hostname)s"
 
 # Mailman/Cgi/options.py:234
 # Mailman/Cgi/options.py:234
@@ -3360,7 +3360,7 @@ msgstr ""
 "Den nya adress som du begärde %(newaddr)s är redan med på\n"
 "%(listname)s e-postlista. Eftersom du begärde en adressändring överallt "
 "kommer alla e-postlistor som innehåller adressen\n"
-"%(user)s att ändras. "
+"%(safeuser)s att ändras. "
 
 # bin/clone_member:138
 # Mailman/Cgi/options.py:309
@@ -3411,7 +3411,7 @@ msgid ""
 msgstr ""
 "E-postadressen som du har angett är utestängd från denna e-postlista.\n"
 "Om du tror att detta kan vara felaktigt, kontakta listans ägare på "
-"%(listowner)s."
+"%(owneraddr)s."
 
 # Mailman/Cgi/options.py:324
 # Mailman/Cgi/options.py:349
@@ -3663,7 +3663,7 @@ msgstr "din e-postadress och "
 #: Mailman/Cgi/options.py:861
 #, fuzzy
 msgid "%(realname)s list: member options for user %(safeuser)s"
-msgstr "%(realname)s: personliga inställningar för %(user)s"
+msgstr "%(realname)s: personliga inställningar för %(safeuser)s"
 
 # Mailman/Cgi/options.py:752
 # Mailman/Cgi/options.py:776
@@ -4219,7 +4219,7 @@ msgid ""
 msgstr ""
 "E-postadressen som du har angett är utestängd från denna e-postlista.\n"
 "Om du tror att detta kan vara felaktigt, kontakta listans ägare på "
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -5363,7 +5363,7 @@ msgstr ""
 #: Mailman/Deliverer.py:219
 #, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "Påminnelse från e-postlistan %(listfullname)s"
+msgstr "Påminnelse från e-postlistan %(listname)s"
 
 # Mailman/Errors.py:115
 # Mailman/Errors.py:116
@@ -8865,7 +8865,7 @@ msgid ""
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"Ämnesfiltret '%(pattern)s' är inte ett giltigt regexp.\n"
+"Ämnesfiltret '%(safepattern)s' är inte ett giltigt regexp.\n"
 "Det kommer att kastas."
 
 # Mailman/Gui/Topics.py:28
@@ -9030,7 +9030,7 @@ msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"Ämnesfiltret '%(pattern)s' är inte ett giltigt regexp.\n"
+"Ämnesfiltret '%(safepattern)s' är inte ett giltigt regexp.\n"
 "Det kommer att kastas."
 
 # Mailman/Gui/Usenet.py:25
@@ -10191,7 +10191,7 @@ msgstr ""
 #: Mailman/MTA/Manual.py:82
 #, fuzzy
 msgid "## %(listname)s mailing list"
-msgstr "e-postlistan \"%(realname)s\""
+msgstr "e-postlistan \"%(listname)s\""
 
 # Mailman/MTA/Manual.py:86
 # Mailman/MTA/Manual.py:88
@@ -10289,7 +10289,7 @@ msgstr "%(dbfile)s ägs av %(owner)s (måste ägas av %(user)s)"
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "rättigheterna på %(file)s måste vara 066x (men är %(octmode)s)"
+msgstr "rättigheterna på %(dbfile)s måste vara 066x (men är %(octmode)s)"
 
 # Mailman/Commands/cmd_password.py:55 Mailman/Commands/cmd_password.py:68
 # Mailman/Commands/cmd_password.py:91 Mailman/Commands/cmd_password.py:117
@@ -11733,7 +11733,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## Inställningar för e-postlistan \"%(listname)s\"  -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## Inställningar för e-postlistan \"%(listname)s\"\n"
 "## Datum: %(when)s\n"
 
 # bin/config_list:126
@@ -13455,7 +13457,7 @@ msgstr "Tar bort %(msg)s"
 #: bin/rmlist:81
 #, fuzzy
 msgid "%(listname)s %(msg)s not found as %(filename)s"
-msgstr "Hittade inte %(listname)s %(msg)s som %(dir)s"
+msgstr "Hittade inte %(listname)s %(msg)s som %(filename)s"
 
 # bin/rmlist:91
 # bin/rmlist:95
@@ -14059,7 +14061,7 @@ msgstr "uppdaterar gamla qfiler"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Ogiltig kökatalog: %(qdir)s"
+msgstr "Ogiltig kökatalog: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

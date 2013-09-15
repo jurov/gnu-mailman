@@ -1510,7 +1510,7 @@ msgid ""
 "            contact the list owners at %(owneraddr)s."
 msgstr ""
 "您提供的邮件地址被此邮件列表禁止了。若您认为这是错误的，请联系列表管理员\n"
-"         %(listowner)s。"
+"         %(owneraddr)s。"
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1620,7 +1620,7 @@ msgid ""
 "            please contact the list owners at %(owneraddr)s."
 msgstr ""
 "您提供的邮件地址被此邮件列表禁止了。若您认为这是错误的，请联系列表管理员\n"
-"         %(listowner)s。"
+"         %(owneraddr)s。"
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2372,7 +2372,7 @@ msgid ""
 "                      the list owners at %(owneraddr)s."
 msgstr ""
 "您提供的邮件地址被禁止。如果您觉得这些限制是错误的，\n"
-"请联系列表管理员 %(listowner)s"
+"请联系列表管理员 %(owneraddr)s"
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -2953,7 +2953,7 @@ msgid ""
 "%(owneraddr)s."
 msgstr ""
 "您提供的邮件地址被禁止。如果您觉得这些限制是错误的，\n"
-"请联系列表管理员 %(listowner)s"
+"请联系列表管理员 %(owneraddr)s"
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -7338,7 +7338,7 @@ msgstr "信件内容过大：%(size)d 字节 (上限为 %(limit)d KB)"
 msgid ""
 "Your message was too big; please trim it to less than\n"
 "%(kb)d KB in size."
-msgstr "您的信件过大，请修改信件内容至小于 %(kb)s KB"
+msgstr "您的信件过大，请修改信件内容至小于 %(kb)d KB"
 
 #: Mailman/Handlers/Hold.py:110
 msgid "Posting to a moderated newsgroup"
@@ -7683,7 +7683,7 @@ msgstr "%(dbfile)s 为 %(owner)s 所有(必须为 %(user)s 所有"
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "%(file)s 的权限必须是 066x （获得 %(octmode)s）"
+msgstr "%(dbfile)s 的权限必须是 066x （获得 %(octmode)s）"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -8831,7 +8831,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## \"%(listname)s\" 邮件列表配置选项 -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## \"%(listname)s\" 邮件列表配置选项\n"
 "## 在 %(when)s 被捕获\n"
 
 #: bin/config_list:143
@@ -9014,12 +9016,12 @@ msgstr "请指定 -p 或者 -m"
 #: bin/dumpdb:133
 #, fuzzy
 msgid "[----- start %(typename)s file -----]"
-msgstr "[----- start pickle file -----]"
+msgstr "[----- start %(typename)s file -----]"
 
 #: bin/dumpdb:139
 #, fuzzy
 msgid "[----- end %(typename)s file -----]"
-msgstr "[----- end pickle file -----]"
+msgstr "[----- end %(typename)s file -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
@@ -11059,7 +11061,7 @@ msgstr "升级旧的qfiles"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "队列目录错误： %(qdir)s"
+msgstr "队列目录错误： %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

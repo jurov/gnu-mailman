@@ -1553,7 +1553,7 @@ msgid ""
 msgstr ""
 "Вказана електронна адреса є забороненою у цьому списку\n"
 "        розсилки. Якщо ви вважаєте, що це обмеження помилкове,\n"
-"        зверніться до власника списку за адресою %(listowner)s."
+"        зверніться до власника списку за адресою %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1669,7 +1669,7 @@ msgid ""
 msgstr ""
 "Вказана електронна адреса є забороненою у цьому списку\n"
 "        розсилки. Якщо ви вважаєте, що це обмеження помилкове,\n"
-"        зверніться до власника списку за адресою %(listowner)s."
+"        зверніться до власника списку за адресою %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2452,7 +2452,7 @@ msgid ""
 msgstr ""
 "Вказана електронна адреса є забороненою у цьому списку.\n"
 "розсилки. Якщо ви вважаєте, що це обмеження помилкове,\n"
-"зверніться до власника списку за адресою %(listowner)s."
+"зверніться до власника списку за адресою %(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -3063,7 +3063,7 @@ msgid ""
 msgstr ""
 "Вказана електронна адреса є забороненою у цьому списку.\n"
 "розсилки. Якщо ви вважаєте, що це обмеження помилкове,\n"
-"зверніться до власника списку за адресою %(listowner)s."
+"зверніться до власника списку за адресою %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -8065,7 +8065,7 @@ msgstr "власником %(dbfile)s є %(owner)s (повинен бути %(us
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "режим доступу до %(file)s повинен бути 066x (а не %(octmode)s)"
+msgstr "режим доступу до %(dbfile)s повинен бути 066x (а не %(octmode)s)"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -9252,7 +9252,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## налаштовування списку розсилки \"%(listname)s\" -*- python -*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## налаштовування списку розсилки \"%(listname)s\"\n"
 "## отримано %(when)s\n"
 
 #: bin/config_list:143
@@ -9438,12 +9440,12 @@ msgstr "Вкажіть або -p або -m."
 #: bin/dumpdb:133
 #, fuzzy
 msgid "[----- start %(typename)s file -----]"
-msgstr "[----- початок файлу pickle -----]"
+msgstr "[----- початок файлу %(typename)s -----]"
 
 #: bin/dumpdb:139
 #, fuzzy
 msgid "[----- end %(typename)s file -----]"
-msgstr "[----- кінець файлу pickle -----]"
+msgstr "[----- кінець файлу %(typename)s -----]"
 
 #: bin/dumpdb:142
 msgid "<----- start object %(cnt)s ----->"
@@ -11542,7 +11544,7 @@ msgstr "оновлюються старі файли черги"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Неправильний каталог черги: %(qdir)s"
+msgstr "Неправильний каталог черги: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

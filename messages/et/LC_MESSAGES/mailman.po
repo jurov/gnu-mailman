@@ -1533,7 +1533,7 @@ msgid ""
 msgstr ""
 "Sisestatud meiliaadress on selle listi mustas nimekirjas. Kui sul on põhjust "
 "arvata, et see on eksitus, siis palun võta ühendust listi omanikuga "
-"aadressil %(listowner)s."
+"aadressil %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1643,7 +1643,7 @@ msgid ""
 msgstr ""
 "Sisestatud meiliaadress on selle listi mustas nimekirjas. Kui sul on põhjust "
 "arvata, et see on eksitus, siis palun võta ühendust listi omanikuga "
-"aadressil %(listowner)s."
+"aadressil %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:536
 #, fuzzy
@@ -2403,7 +2403,7 @@ msgid ""
 msgstr ""
 "See meiliaadress on listi mustas nimekirjas. Kui teil on põhjust arvata, et\n"
 "see on eksitus, siis võtke palun ühendust listi omanikuga aadressil \n"
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
@@ -2999,7 +2999,7 @@ msgid ""
 msgstr ""
 "See meiliaadress on listi mustas nimekirjas. Kui teil on põhjust arvata, et\n"
 "see on eksitus, siis võtke palun ühendust listi omanikuga aadressil \n"
-"%(listowner)s."
+"%(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -7768,9 +7768,8 @@ msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "Faili %(dbfile)s omanik on %(owner)s (aga peab olema %(user)s)"
 
 #: Mailman/MTA/Postfix.py:368
-#, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "faili %(file)s ligipääsuõigused peavad olema 066x (aga on %(octmode)s)"
+msgstr "faili %(dbfile)s ligipääsuõigused peavad olema 066x (aga on %(octmode)s)"
 
 #: Mailman/MailList.py:216
 msgid "Your confirmation is required to join the %(listname)s mailing list"
@@ -8887,13 +8886,14 @@ msgid ""
 msgstr ""
 
 #: bin/config_list:117
-#, fuzzy
 msgid ""
 "# -*- python -*-\n"
 "# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
 "## \"%(listname)s\" listi seaded -*- python -*-\n"
 "## loodud %(when)s\n"
 
@@ -11109,9 +11109,8 @@ msgid "updating old qfiles"
 msgstr "vanade qfile'de uuendamine"
 
 #: bin/update:455
-#, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Vigane järjekorra kataloog: %(qdir)s"
+msgstr "Vigane järjekorra kataloog: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"

@@ -1799,7 +1799,7 @@ msgid ""
 msgstr ""
 "Navedeni e-po¹tni naslov je prepovedan na tem\n"
 "        po¹tnem seznamu.  Èe menite, da gre za napako, se\n"
-"        obrnite na lastnike seznama na naslovu %(listowner)s."
+"        obrnite na lastnike seznama na naslovu %(owneraddr)s."
 
 #: Mailman/Cgi/confirm.py:382
 msgid ""
@@ -1927,7 +1927,7 @@ msgid ""
 msgstr ""
 "Navedeni e-po¹tni naslov je prepovedan na tem\n"
 "        po¹tnem seznamu.  Èe menite, da gre za napako, se\n"
-"        obrnite na lastnike seznama na naslovu %(listowner)s."
+"        obrnite na lastnike seznama na naslovu %(owneraddr)s."
 
 # Mailman/Cgi/confirm.py:278 Mailman/Cgi/confirm.py:339
 # Mailman/Cgi/confirm.py:421
@@ -2247,14 +2247,14 @@ msgstr "skrbni¹ki pregled seznama"
 #: Mailman/Cgi/create.py:104
 #, fuzzy
 msgid "List name must not include \"@\": %(safelistname)s"
-msgstr "Ime seznama ne sme vsebovati znaka \"@\": %(listname)s"
+msgstr "Ime seznama ne sme vsebovati znaka \"@\": %(safelistname)s"
 
 # Mailman/Cgi/create.py:101 Mailman/Cgi/create.py:174 bin/newlist:122
 # bin/newlist:154
 #: Mailman/Cgi/create.py:111
 #, fuzzy
 msgid "List already exists: %(safelistname)s"
-msgstr "Seznam ¾e obstaja: %(listname)s"
+msgstr "Seznam ¾e obstaja: %(safelistname)s"
 
 # Mailman/Cgi/create.py:105
 #: Mailman/Cgi/create.py:115
@@ -2824,7 +2824,7 @@ msgid ""
 msgstr ""
 "Navedeni e-po¹tni naslov ni dovoljen na tem po¹tnem seznamu.\n"
 "Èe menite, da je pri¹lo do napake, se obrnite na lastnike seznama\n"
-"na naslov %(listowner)s."
+"na naslov %(owneraddr)s."
 
 # Mailman/Cgi/options.py:280
 #: Mailman/Cgi/options.py:428
@@ -3512,7 +3512,7 @@ msgid ""
 msgstr ""
 "Navedeni e-po¹tni naslov ni dovoljen na tem po¹tnem seznamu.\n"
 "Èe menite, da je pri¹lo do napake, se obrnite na lastnike seznama\n"
-"na naslov %(listowner)s."
+"na naslov %(owneraddr)s."
 
 #: Mailman/Commands/cmd_confirm.py:74
 msgid ""
@@ -4481,7 +4481,7 @@ msgstr ""
 #: Mailman/Deliverer.py:219
 #, fuzzy
 msgid "%(listname)s mailing list probe message"
-msgstr "Opomnik za po¹tni seznam %(listfullname)s"
+msgstr "Opomnik za po¹tni seznam %(listname)s"
 
 #: Mailman/Errors.py:122
 msgid "For some unknown reason"
@@ -7698,7 +7698,7 @@ msgid ""
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
 "                rule will be ignored."
 msgstr ""
-"Tematski vzorec `%(pattern)s' ni veljavni\n"
+"Tematski vzorec `%(safepattern)s' ni veljavni\n"
 "                regularni izraz, zato bo zavrnjen."
 
 #: Mailman/Gui/Topics.py:36
@@ -7848,7 +7848,7 @@ msgid ""
 "The topic pattern '%(safepattern)s' is not a\n"
 "                legal regular expression.  It will be discarded."
 msgstr ""
-"Tematski vzorec `%(pattern)s' ni veljavni\n"
+"Tematski vzorec `%(safepattern)s' ni veljavni\n"
 "                regularni izraz, zato bo zavrnjen."
 
 # Mailman/Gui/Usenet.py:24
@@ -8919,7 +8919,7 @@ msgstr "%(dbfile)s ima v lasti %(owner)s (lastnik mora biti %(user)s)"
 #: Mailman/MTA/Postfix.py:368
 #, fuzzy
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
-msgstr "%(file)s dovoljenja morajo biti 066x (%(octmode)s)"
+msgstr "%(dbfile)s dovoljenja morajo biti 066x (%(octmode)s)"
 
 # Mailman/Deliverer.py:76
 #: Mailman/MailList.py:216
@@ -9910,7 +9910,7 @@ msgstr "Unix-From vrstica spremenjena: %(lineno)d"
 
 #: bin/cleanarch:111
 msgid "Bad status number: %(arg)s"
-msgstr "Neveljavna statusna ¹tevilka: %(args)s"
+msgstr "Neveljavna statusna ¹tevilka: %(arg)s"
 
 #: bin/cleanarch:167
 msgid "%(messages)d messages found"
@@ -10181,8 +10181,9 @@ msgid ""
 "## \"%(listname)s\" mailing list configuration settings\n"
 "## captured on %(when)s\n"
 msgstr ""
-"## konfiguracijske nastavitve za po¹tni seznam \"%(listname)s\" -*- python -"
-"*-\n"
+"# -*- python -*-\n"
+"# -*- coding: %(charset)s -*-\n"
+"## konfiguracijske nastavitve za po¹tni seznam \"%(listname)s\"\n"
 "## zajeto dne %(when)s\n"
 
 # Mailman/Gui/Digest.py:27
@@ -12471,7 +12472,7 @@ msgstr "posodobitev starih qdatotek"
 #: bin/update:455
 #, fuzzy
 msgid "Warning!  Not a directory: %(dirpath)s"
-msgstr "Neveljaven imenik s èakalno vrsto: %(qdir)s"
+msgstr "Neveljaven imenik s èakalno vrsto: %(dirpath)s"
 
 #: bin/update:530
 msgid "message is unparsable: %(filebase)s"
