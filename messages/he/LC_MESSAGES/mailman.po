@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman v2.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Fri Jul 19 12:28:04 2013\n"
+"POT-Creation-Date: Fri Sep 27 16:41:21 2013\n"
 "PO-Revision-Date: 2007-04-05 21:33+0300\n"
 "Last-Translator: Dov Zamir <linux@zamirfamily.com>\n"
 "Language-Team: Hebrew\n"
@@ -221,7 +221,7 @@ msgid " The last bounce received from you was dated %(date)s"
 msgstr " ההחזר האחרון שהתקבל ממך היה בתאריך %(date)s"
 
 #: Mailman/Bouncer.py:322 Mailman/Deliverer.py:144
-#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:286
+#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:317
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:240
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
@@ -239,7 +239,7 @@ msgstr "מפקח"
 msgid "Administrator"
 msgstr "מנהל"
 
-#: Mailman/Cgi/admin.py:79 Mailman/Cgi/admindb.py:113
+#: Mailman/Cgi/admin.py:79 Mailman/Cgi/admindb.py:116
 #: Mailman/Cgi/confirm.py:62 Mailman/Cgi/edithtml.py:71
 #: Mailman/Cgi/listinfo.py:55 Mailman/Cgi/options.py:78
 #: Mailman/Cgi/private.py:108 Mailman/Cgi/rmlist.py:64
@@ -247,7 +247,7 @@ msgstr "מנהל"
 msgid "No such list <em>%(safelistname)s</em>"
 msgstr "אין רשימה בשם <em>%(safelistname)s</em>"
 
-#: Mailman/Cgi/admin.py:108 Mailman/Cgi/admindb.py:129
+#: Mailman/Cgi/admin.py:108 Mailman/Cgi/admindb.py:132
 #: Mailman/Cgi/edithtml.py:91 Mailman/Cgi/private.py:135
 msgid "Authorization failed."
 msgstr "האימות נכשל."
@@ -438,8 +438,8 @@ msgstr "מחק רשימת דיוור זו"
 msgid " (requires confirmation)<br>&nbsp;<br>"
 msgstr " (מחייב אישור)<br>&nbsp;<br>"
 
-#: Mailman/Cgi/admin.py:462 Mailman/Cgi/admindb.py:215
-#: Mailman/Cgi/admindb.py:292
+#: Mailman/Cgi/admin.py:462 Mailman/Cgi/admindb.py:218
+#: Mailman/Cgi/admindb.py:295
 msgid "Logout"
 msgstr "יציאה"
 
@@ -539,15 +539,15 @@ msgstr "חוק סינון דואר זבל %(i)d"
 msgid "Spam Filter Regexp:"
 msgstr "ביטוי רגולרי לסינון דואר זבל:"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:347
-#: Mailman/Cgi/admindb.py:406 Mailman/Cgi/admindb.py:460
-#: Mailman/Cgi/admindb.py:701
+#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:350
+#: Mailman/Cgi/admindb.py:409 Mailman/Cgi/admindb.py:463
+#: Mailman/Cgi/admindb.py:704
 msgid "Defer"
 msgstr "השהה"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:349
-#: Mailman/Cgi/admindb.py:408 Mailman/Cgi/admindb.py:460
-#: Mailman/Cgi/admindb.py:701 Mailman/Gui/ContentFilter.py:37
+#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:352
+#: Mailman/Cgi/admindb.py:411 Mailman/Cgi/admindb.py:463
+#: Mailman/Cgi/admindb.py:704 Mailman/Gui/ContentFilter.py:37
 #: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:297
 msgid "Reject"
 msgstr "דחה"
@@ -557,20 +557,20 @@ msgstr "דחה"
 msgid "Hold"
 msgstr "החזק"
 
-#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:350
-#: Mailman/Cgi/admindb.py:409 Mailman/Cgi/admindb.py:460
-#: Mailman/Cgi/admindb.py:701 Mailman/Commands/cmd_confirm.py:93
+#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:353
+#: Mailman/Cgi/admindb.py:412 Mailman/Cgi/admindb.py:463
+#: Mailman/Cgi/admindb.py:704 Mailman/Commands/cmd_confirm.py:93
 #: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:216
 #: Mailman/Gui/Privacy.py:297
 msgid "Discard"
 msgstr "מחק"
 
-#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:460
+#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:463
 #: Mailman/Gui/Privacy.py:297
 msgid "Accept"
 msgstr "אשר"
 
-#: Mailman/Cgi/admin.py:798 Mailman/Cgi/admindb.py:707
+#: Mailman/Cgi/admin.py:798 Mailman/Cgi/admindb.py:710
 msgid "Action:"
 msgstr "פעולה:"
 
@@ -834,14 +834,14 @@ msgstr "שלח ברכת הצטרפות למנוים חדשים?"
 #: Mailman/Gui/Bounce.py:155 Mailman/Gui/ContentFilter.py:74
 #: Mailman/Gui/ContentFilter.py:116 Mailman/Gui/ContentFilter.py:120
 #: Mailman/Gui/Digest.py:46 Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84
-#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:160
-#: Mailman/Gui/General.py:171 Mailman/Gui/General.py:177
-#: Mailman/Gui/General.py:255 Mailman/Gui/General.py:282
-#: Mailman/Gui/General.py:309 Mailman/Gui/General.py:320
-#: Mailman/Gui/General.py:323 Mailman/Gui/General.py:333
-#: Mailman/Gui/General.py:338 Mailman/Gui/General.py:344
-#: Mailman/Gui/General.py:364 Mailman/Gui/General.py:396
-#: Mailman/Gui/General.py:419 Mailman/Gui/General.py:436
+#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:161
+#: Mailman/Gui/General.py:175 Mailman/Gui/General.py:181
+#: Mailman/Gui/General.py:259 Mailman/Gui/General.py:286
+#: Mailman/Gui/General.py:313 Mailman/Gui/General.py:324
+#: Mailman/Gui/General.py:327 Mailman/Gui/General.py:337
+#: Mailman/Gui/General.py:342 Mailman/Gui/General.py:348
+#: Mailman/Gui/General.py:368 Mailman/Gui/General.py:400
+#: Mailman/Gui/General.py:423 Mailman/Gui/General.py:440
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
@@ -863,20 +863,20 @@ msgstr "לא"
 #: Mailman/Gui/ContentFilter.py:74 Mailman/Gui/ContentFilter.py:116
 #: Mailman/Gui/ContentFilter.py:120 Mailman/Gui/Digest.py:46
 #: Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84 Mailman/Gui/Digest.py:89
-#: Mailman/Gui/General.py:160 Mailman/Gui/General.py:171
-#: Mailman/Gui/General.py:177 Mailman/Gui/General.py:255
-#: Mailman/Gui/General.py:282 Mailman/Gui/General.py:309
-#: Mailman/Gui/General.py:320 Mailman/Gui/General.py:323
-#: Mailman/Gui/General.py:333 Mailman/Gui/General.py:338
-#: Mailman/Gui/General.py:344 Mailman/Gui/General.py:364
-#: Mailman/Gui/General.py:396 Mailman/Gui/General.py:419
-#: Mailman/Gui/General.py:436 Mailman/Gui/NonDigest.py:45
-#: Mailman/Gui/NonDigest.py:53 Mailman/Gui/NonDigest.py:140
-#: Mailman/Gui/NonDigest.py:162 Mailman/Gui/Privacy.py:110
-#: Mailman/Gui/Privacy.py:116 Mailman/Gui/Privacy.py:149
-#: Mailman/Gui/Privacy.py:197 Mailman/Gui/Privacy.py:312
-#: Mailman/Gui/Privacy.py:331 Mailman/Gui/Usenet.py:52
-#: Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93 Mailman/Gui/Usenet.py:105
+#: Mailman/Gui/General.py:175 Mailman/Gui/General.py:181
+#: Mailman/Gui/General.py:259 Mailman/Gui/General.py:286
+#: Mailman/Gui/General.py:313 Mailman/Gui/General.py:324
+#: Mailman/Gui/General.py:327 Mailman/Gui/General.py:337
+#: Mailman/Gui/General.py:342 Mailman/Gui/General.py:348
+#: Mailman/Gui/General.py:368 Mailman/Gui/General.py:400
+#: Mailman/Gui/General.py:423 Mailman/Gui/General.py:440
+#: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
+#: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
+#: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:197
+#: Mailman/Gui/Privacy.py:312 Mailman/Gui/Privacy.py:331
+#: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
+#: Mailman/Gui/Usenet.py:105
 msgid "Yes"
 msgstr "כן"
 
@@ -1010,7 +1010,7 @@ msgid "&lt;blank line&gt;"
 msgstr "&lt;שורה ריקה&gt;"
 
 #: Mailman/Cgi/admin.py:1403 Mailman/Cgi/admin.py:1406
-#: Mailman/Cgi/admindb.py:916
+#: Mailman/Cgi/admindb.py:919
 msgid "Bad/Invalid email address"
 msgstr "כתובת דואר אלקטרוני לא חוקית/לא תקינה"
 
@@ -1067,167 +1067,167 @@ msgstr "הוסר בהצלחה:"
 msgid "Error Unsubscribing:"
 msgstr "שגיאה בביטול המנוי:"
 
-#: Mailman/Cgi/admindb.py:196 Mailman/Cgi/admindb.py:205
+#: Mailman/Cgi/admindb.py:199 Mailman/Cgi/admindb.py:208
 msgid "%(realname)s Administrative Database"
 msgstr "בסיס הנתונים המנהלתי %(realname)s"
 
-#: Mailman/Cgi/admindb.py:199
+#: Mailman/Cgi/admindb.py:202
 msgid "%(realname)s Administrative Database Results"
 msgstr "תוצאות בסיס הנתונים המנהלתי %(realname)s "
 
-#: Mailman/Cgi/admindb.py:208
+#: Mailman/Cgi/admindb.py:211
 msgid "There are no pending requests."
 msgstr "אין בקשות ממתינות."
 
-#: Mailman/Cgi/admindb.py:211
+#: Mailman/Cgi/admindb.py:214
 msgid "Click here to reload this page."
 msgstr "לחץ כאן לטעון עמוד זה מחדש."
 
-#: Mailman/Cgi/admindb.py:225
+#: Mailman/Cgi/admindb.py:228
 msgid "Detailed instructions for the administrative database"
 msgstr "הוראות מפורטות עבור בסיס הנתונים המנהלתי"
 
-#: Mailman/Cgi/admindb.py:229
+#: Mailman/Cgi/admindb.py:232
 msgid "Administrative requests for mailing list:"
 msgstr "בקשות מנהלתיות עבור רשימת הדיוור:"
 
-#: Mailman/Cgi/admindb.py:232 Mailman/Cgi/admindb.py:288
+#: Mailman/Cgi/admindb.py:235 Mailman/Cgi/admindb.py:291
 msgid "Submit All Data"
 msgstr "הגש את כל המידע"
 
-#: Mailman/Cgi/admindb.py:238 Mailman/Cgi/admindb.py:286
+#: Mailman/Cgi/admindb.py:241 Mailman/Cgi/admindb.py:289
 msgid "Discard all messages marked <em>Defer</em>"
 msgstr "מחק את כל המסרים המסומנים <em>השהה</em>"
 
-#: Mailman/Cgi/admindb.py:252
+#: Mailman/Cgi/admindb.py:255
 msgid "all of %(esender)s's held messages."
 msgstr "כל המסרים הממתינים של %(esender)s."
 
-#: Mailman/Cgi/admindb.py:257
+#: Mailman/Cgi/admindb.py:260
 msgid "a single held message."
 msgstr "מסר מוחזק יחיד"
 
-#: Mailman/Cgi/admindb.py:262
+#: Mailman/Cgi/admindb.py:265
 msgid "all held messages."
 msgstr "כל המסרים המוחזקים."
 
-#: Mailman/Cgi/admindb.py:307
+#: Mailman/Cgi/admindb.py:310
 msgid "Mailman Administrative Database Error"
 msgstr "שגיאת בסיס נתונים מנהלתי של דוור"
 
-#: Mailman/Cgi/admindb.py:312
+#: Mailman/Cgi/admindb.py:315
 msgid "list of available mailing lists."
 msgstr "רשימת רשימות הדיוור הזמינות."
 
-#: Mailman/Cgi/admindb.py:313
+#: Mailman/Cgi/admindb.py:316
 msgid "You must specify a list name.  Here is the %(link)s"
 msgstr "עליך לציין שם רשימת דיוור. הנה ה- %(link)s"
 
-#: Mailman/Cgi/admindb.py:326
+#: Mailman/Cgi/admindb.py:329
 msgid "Subscription Requests"
 msgstr "בקשות מנוי"
 
-#: Mailman/Cgi/admindb.py:328
+#: Mailman/Cgi/admindb.py:331
 msgid "Address/name"
 msgstr "כתובת/שם"
 
-#: Mailman/Cgi/admindb.py:329 Mailman/Cgi/admindb.py:380
+#: Mailman/Cgi/admindb.py:332 Mailman/Cgi/admindb.py:383
 msgid "Your decision"
 msgstr "החלטתך"
 
-#: Mailman/Cgi/admindb.py:330 Mailman/Cgi/admindb.py:381
+#: Mailman/Cgi/admindb.py:333 Mailman/Cgi/admindb.py:384
 msgid "Reason for refusal"
 msgstr "סיבת הסירוב"
 
-#: Mailman/Cgi/admindb.py:348 Mailman/Cgi/admindb.py:407
-#: Mailman/Cgi/admindb.py:701 Mailman/Commands/cmd_confirm.py:90
+#: Mailman/Cgi/admindb.py:351 Mailman/Cgi/admindb.py:410
+#: Mailman/Cgi/admindb.py:704 Mailman/Commands/cmd_confirm.py:90
 msgid "Approve"
 msgstr "אשר"
 
-#: Mailman/Cgi/admindb.py:358
+#: Mailman/Cgi/admindb.py:361
 msgid "Permanently ban from this list"
 msgstr "חסום מרשימה זו לצמיתות"
 
-#: Mailman/Cgi/admindb.py:379
+#: Mailman/Cgi/admindb.py:382
 msgid "User address/name"
 msgstr "כתובת/שם המשתמש"
 
-#: Mailman/Cgi/admindb.py:419
+#: Mailman/Cgi/admindb.py:422
 msgid "Unsubscription Requests"
 msgstr "בקשות ביטול מנוי"
 
-#: Mailman/Cgi/admindb.py:431
+#: Mailman/Cgi/admindb.py:434
 #, fuzzy
 msgid "Held Messages"
 msgstr "כל המסרים המוחזקים."
 
-#: Mailman/Cgi/admindb.py:434
+#: Mailman/Cgi/admindb.py:437
 msgid "Show this list grouped/sorted by"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:437
+#: Mailman/Cgi/admindb.py:440
 msgid "sender/sender"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:437
+#: Mailman/Cgi/admindb.py:440
 msgid "sender/time"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:437
+#: Mailman/Cgi/admindb.py:440
 msgid "ungrouped/time"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:453 Mailman/Cgi/admindb.py:684
+#: Mailman/Cgi/admindb.py:456 Mailman/Cgi/admindb.py:687
 msgid "From:"
 msgstr "מאת:"
 
-#: Mailman/Cgi/admindb.py:456
+#: Mailman/Cgi/admindb.py:459
 msgid "Action to take on all these held messages:"
 msgstr "הפעולה לבצע על כל המסרים הממתינים האלה:"
 
-#: Mailman/Cgi/admindb.py:468
+#: Mailman/Cgi/admindb.py:471
 msgid "Preserve messages for the site administrator"
 msgstr "שמור מסרים עבור מנהל האתר"
 
-#: Mailman/Cgi/admindb.py:474
+#: Mailman/Cgi/admindb.py:477
 msgid "Forward messages (individually) to:"
 msgstr "העבר מסרים (בבודדת) אל:"
 
-#: Mailman/Cgi/admindb.py:492
+#: Mailman/Cgi/admindb.py:495
 msgid "Clear this member's <em>moderate</em> flag"
 msgstr "נפה את דגל <em>פיקוח</em> של משתמש זה."
 
-#: Mailman/Cgi/admindb.py:496
+#: Mailman/Cgi/admindb.py:499
 msgid "<em>The sender is now a member of this list</em>"
 msgstr "<em>מעכשיו השולח הנו מנוי ברשימה זו</em>"
 
-#: Mailman/Cgi/admindb.py:505
+#: Mailman/Cgi/admindb.py:508
 msgid "Add <b>%(esender)s</b> to one of these sender filters:"
 msgstr "הוסף את <b>%(esender)s</b>  אל אחד ממסנני השולח האלה:"
 
-#: Mailman/Cgi/admindb.py:510
+#: Mailman/Cgi/admindb.py:513
 msgid "Accepts"
 msgstr "מאשר"
 
-#: Mailman/Cgi/admindb.py:510
+#: Mailman/Cgi/admindb.py:513
 msgid "Discards"
 msgstr "מוחק"
 
-#: Mailman/Cgi/admindb.py:510
+#: Mailman/Cgi/admindb.py:513
 msgid "Holds"
 msgstr "מחזיק"
 
-#: Mailman/Cgi/admindb.py:510
+#: Mailman/Cgi/admindb.py:513
 msgid "Rejects"
 msgstr "דוחה"
 
-#: Mailman/Cgi/admindb.py:519
+#: Mailman/Cgi/admindb.py:522
 msgid ""
 "Ban <b>%(esender)s</b> from ever subscribing to this\n"
 "                    mailing list"
 msgstr "חסום את <b>%(esender)s</b> מלהרשם אי פעם לרשימה זו"
 
-#: Mailman/Cgi/admindb.py:524
+#: Mailman/Cgi/admindb.py:527
 msgid ""
 "Click on the message number to view the individual\n"
 "            message, or you can "
@@ -1235,85 +1235,85 @@ msgstr ""
 "לחץ על מספר המסר כדי לצפות במסר\n"
 "            בודד, או שאפשר גם "
 
-#: Mailman/Cgi/admindb.py:526
+#: Mailman/Cgi/admindb.py:529
 msgid "view all messages from %(esender)s"
 msgstr "לצפות בכל המסרים מ- %(esender)s"
 
-#: Mailman/Cgi/admindb.py:548 Mailman/Cgi/admindb.py:687
+#: Mailman/Cgi/admindb.py:551 Mailman/Cgi/admindb.py:690
 msgid "Subject:"
 msgstr "נושא:"
 
-#: Mailman/Cgi/admindb.py:551
+#: Mailman/Cgi/admindb.py:554
 msgid " bytes"
 msgstr " בייטים"
 
-#: Mailman/Cgi/admindb.py:551
+#: Mailman/Cgi/admindb.py:554
 msgid "Size:"
 msgstr "גודל:"
 
-#: Mailman/Cgi/admindb.py:555 Mailman/Handlers/Scrubber.py:203
+#: Mailman/Cgi/admindb.py:558 Mailman/Handlers/Scrubber.py:203
 #: Mailman/Handlers/Scrubber.py:301 Mailman/Handlers/Scrubber.py:303
 msgid "not available"
 msgstr "לא זמין"
 
-#: Mailman/Cgi/admindb.py:556 Mailman/Cgi/admindb.py:690
+#: Mailman/Cgi/admindb.py:559 Mailman/Cgi/admindb.py:693
 msgid "Reason:"
 msgstr "הנימוק:"
 
-#: Mailman/Cgi/admindb.py:560 Mailman/Cgi/admindb.py:694
+#: Mailman/Cgi/admindb.py:563 Mailman/Cgi/admindb.py:697
 msgid "Received:"
 msgstr "התקבל:"
 
-#: Mailman/Cgi/admindb.py:616
+#: Mailman/Cgi/admindb.py:619
 msgid "Posting Held for Approval"
 msgstr "המסר ממתין לאישור"
 
-#: Mailman/Cgi/admindb.py:618
+#: Mailman/Cgi/admindb.py:621
 msgid " (%(count)d of %(total)d)"
 msgstr " (%(count)d מתוך %(total)d)"
 
-#: Mailman/Cgi/admindb.py:629
+#: Mailman/Cgi/admindb.py:632
 msgid "<em>Message with id #%(id)d was lost."
 msgstr "<em>המסר בעל זיהוי #%(id)d אבד."
 
-#: Mailman/Cgi/admindb.py:638
+#: Mailman/Cgi/admindb.py:641
 msgid "<em>Message with id #%(id)d is corrupted."
 msgstr "<em>המסר בעל זיהוי #%(id)d פגום."
 
-#: Mailman/Cgi/admindb.py:711
+#: Mailman/Cgi/admindb.py:714
 msgid "Preserve message for site administrator"
 msgstr "שמור מסר למנהל האתר"
 
-#: Mailman/Cgi/admindb.py:715
+#: Mailman/Cgi/admindb.py:718
 msgid "Additionally, forward this message to: "
 msgstr "בנוסף, העבר מסר זה אל: "
 
-#: Mailman/Cgi/admindb.py:719 Mailman/Cgi/admindb.py:788
-#: Mailman/Cgi/admindb.py:865 Mailman/Cgi/admindb.py:867
+#: Mailman/Cgi/admindb.py:722 Mailman/Cgi/admindb.py:791
+#: Mailman/Cgi/admindb.py:868 Mailman/Cgi/admindb.py:870
 msgid "[No explanation given]"
 msgstr "[ללא נימוק]"
 
-#: Mailman/Cgi/admindb.py:721
+#: Mailman/Cgi/admindb.py:724
 msgid "If you reject this post,<br>please explain (optional):"
 msgstr "אם דחית מסר זה,<br>נא לנמק (אפציונלי):"
 
-#: Mailman/Cgi/admindb.py:727
+#: Mailman/Cgi/admindb.py:730
 msgid "Message Headers:"
 msgstr "כותרות המסר:"
 
-#: Mailman/Cgi/admindb.py:732
+#: Mailman/Cgi/admindb.py:735
 msgid "Message Excerpt:"
 msgstr "קטע מתוך המסר:"
 
-#: Mailman/Cgi/admindb.py:904
+#: Mailman/Cgi/admindb.py:907
 msgid "Database Updated..."
 msgstr "בסיס הנתונים עודכן..."
 
-#: Mailman/Cgi/admindb.py:908
+#: Mailman/Cgi/admindb.py:911
 msgid " is already a member"
 msgstr " הנו כבר מנוי"
 
-#: Mailman/Cgi/admindb.py:912
+#: Mailman/Cgi/admindb.py:915
 msgid "%(addr)s is banned (matched: %(patt)s)"
 msgstr "%(addr)s חסום (התאים ל-%(patt)s)"
 
@@ -3664,162 +3664,162 @@ msgstr "מנוים ללא-תקצירים (רגילים):"
 msgid "Digest members:"
 msgstr "מנויי תקצירים:"
 
-#: Mailman/Defaults.py:1523
+#: Mailman/Defaults.py:1536
 msgid "Arabic"
 msgstr "Arabic"
 
-#: Mailman/Defaults.py:1524
+#: Mailman/Defaults.py:1537
 #, fuzzy
 msgid "Asturian"
 msgstr "Estonian"
 
-#: Mailman/Defaults.py:1525
+#: Mailman/Defaults.py:1538
 msgid "Catalan"
 msgstr "Catalan"
 
-#: Mailman/Defaults.py:1526
+#: Mailman/Defaults.py:1539
 msgid "Czech"
 msgstr "Czech"
 
-#: Mailman/Defaults.py:1527
+#: Mailman/Defaults.py:1540
 msgid "Danish"
 msgstr "Danish"
 
-#: Mailman/Defaults.py:1528
+#: Mailman/Defaults.py:1541
 msgid "German"
 msgstr "German"
 
-#: Mailman/Defaults.py:1529
+#: Mailman/Defaults.py:1542
 msgid "English (USA)"
 msgstr "English (USA)"
 
-#: Mailman/Defaults.py:1530
+#: Mailman/Defaults.py:1543
 msgid "Spanish (Spain)"
 msgstr "Spanish (Spain)"
 
-#: Mailman/Defaults.py:1531
+#: Mailman/Defaults.py:1544
 msgid "Estonian"
 msgstr "Estonian"
 
-#: Mailman/Defaults.py:1532
+#: Mailman/Defaults.py:1545
 msgid "Euskara"
 msgstr "Euskara"
 
-#: Mailman/Defaults.py:1533
+#: Mailman/Defaults.py:1546
 msgid "Persian"
 msgstr ""
 
-#: Mailman/Defaults.py:1534
+#: Mailman/Defaults.py:1547
 msgid "Finnish"
 msgstr "Finnish"
 
-#: Mailman/Defaults.py:1535
+#: Mailman/Defaults.py:1548
 msgid "French"
 msgstr "French"
 
-#: Mailman/Defaults.py:1536
+#: Mailman/Defaults.py:1549
 #, fuzzy
 msgid "Galician"
 msgstr "Italian"
 
-#: Mailman/Defaults.py:1537
+#: Mailman/Defaults.py:1550
 msgid "Greek"
 msgstr ""
 
-#: Mailman/Defaults.py:1538
+#: Mailman/Defaults.py:1551
 msgid "Hebrew"
 msgstr "עברית"
 
-#: Mailman/Defaults.py:1539
+#: Mailman/Defaults.py:1552
 msgid "Croatian"
 msgstr "Croatian"
 
-#: Mailman/Defaults.py:1540
+#: Mailman/Defaults.py:1553
 msgid "Hungarian"
 msgstr "Hungarian"
 
-#: Mailman/Defaults.py:1541
+#: Mailman/Defaults.py:1554
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: Mailman/Defaults.py:1542
+#: Mailman/Defaults.py:1555
 msgid "Italian"
 msgstr "Italian"
 
-#: Mailman/Defaults.py:1543
+#: Mailman/Defaults.py:1556
 msgid "Japanese"
 msgstr "Japanese"
 
-#: Mailman/Defaults.py:1544
+#: Mailman/Defaults.py:1557
 msgid "Korean"
 msgstr "Korean"
 
-#: Mailman/Defaults.py:1545
+#: Mailman/Defaults.py:1558
 msgid "Lithuanian"
 msgstr "Lithuanian"
 
-#: Mailman/Defaults.py:1546
+#: Mailman/Defaults.py:1559
 msgid "Dutch"
 msgstr "Dutch"
 
-#: Mailman/Defaults.py:1547
+#: Mailman/Defaults.py:1560
 msgid "Norwegian"
 msgstr "Norwegian"
 
-#: Mailman/Defaults.py:1548
+#: Mailman/Defaults.py:1561
 msgid "Polish"
 msgstr "Polish"
 
-#: Mailman/Defaults.py:1549
+#: Mailman/Defaults.py:1562
 msgid "Portuguese"
 msgstr "Portuguese"
 
-#: Mailman/Defaults.py:1550
+#: Mailman/Defaults.py:1563
 msgid "Portuguese (Brazil)"
 msgstr "Portuguese (Brazil)"
 
-#: Mailman/Defaults.py:1551
+#: Mailman/Defaults.py:1564
 msgid "Romanian"
 msgstr "Romanian"
 
-#: Mailman/Defaults.py:1552
+#: Mailman/Defaults.py:1565
 msgid "Russian"
 msgstr "Russian"
 
-#: Mailman/Defaults.py:1553
+#: Mailman/Defaults.py:1566
 #, fuzzy
 msgid "Slovak"
 msgstr "Slovanian"
 
-#: Mailman/Defaults.py:1554
+#: Mailman/Defaults.py:1567
 msgid "Slovenian"
 msgstr "Slovanian"
 
-#: Mailman/Defaults.py:1555
+#: Mailman/Defaults.py:1568
 msgid "Serbian"
 msgstr "Serbian"
 
-#: Mailman/Defaults.py:1556
+#: Mailman/Defaults.py:1569
 msgid "Swedish"
 msgstr "Swedish"
 
-#: Mailman/Defaults.py:1557
+#: Mailman/Defaults.py:1570
 msgid "Turkish"
 msgstr "Turkish"
 
-#: Mailman/Defaults.py:1558
+#: Mailman/Defaults.py:1571
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: Mailman/Defaults.py:1559
+#: Mailman/Defaults.py:1572
 msgid "Vietnamese"
 msgstr "Vietnamese"
 
-#: Mailman/Defaults.py:1560
+#: Mailman/Defaults.py:1573
 msgid "Chinese (China)"
 msgstr "Chinese (China)"
 
-#: Mailman/Defaults.py:1561
+#: Mailman/Defaults.py:1574
 msgid "Chinese (Taiwan)"
 msgstr "Chinese (Taiwan)"
 
@@ -4234,7 +4234,7 @@ msgstr ""
 "מספר הימים בין משלוחי הודעות <em>המנוי שלך מושהה</em>.\n"
 "             ערך זה חייב להיות מספר שלם."
 
-#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:280
+#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:284
 msgid "Notifications"
 msgstr "הודעות"
 
@@ -4985,6 +4985,15 @@ msgstr ""
 "             "
 
 #: Mailman/Gui/General.py:161
+msgid "Mung From"
+msgstr ""
+
+#: Mailman/Gui/General.py:161
+#, fuzzy
+msgid "Wrap Message"
+msgstr "ההודעה המקורית"
+
+#: Mailman/Gui/General.py:162
 msgid ""
 "Replace the sender with the list address to conform with\n"
 "                 policies like ADSP and DMARC.  It replaces the poster's\n"
@@ -4997,7 +5006,14 @@ msgid ""
 "                 all emails."
 msgstr ""
 
-#: Mailman/Gui/General.py:172
+#: Mailman/Gui/General.py:169
+msgid ""
+"<br>If this is set to Wrap Message, just wrap the message\n"
+"                 in an outer message From: the list with Content-Type:\n"
+"                 message/rfc822."
+msgstr ""
+
+#: Mailman/Gui/General.py:176
 msgid ""
 "Hide the sender of a message, replacing it with the list\n"
 "             address (Removes From, Sender and Reply-To fields)"
@@ -5005,11 +5021,11 @@ msgstr ""
 "הסתר את שולח המסר, והחלף אותו בכתובת הרשימה (מסיר את\n"
 "             שדות מאת, השולח והשב-אל)"
 
-#: Mailman/Gui/General.py:175
+#: Mailman/Gui/General.py:179
 msgid "<tt>Reply-To:</tt> header munging"
 msgstr "שינוי בלתי הפיך של כותרת <tt>השב-אל:</tt>"
 
-#: Mailman/Gui/General.py:178
+#: Mailman/Gui/General.py:182
 msgid ""
 "Should any existing <tt>Reply-To:</tt> header found in the\n"
 "             original message be stripped?  If so, this will be done\n"
@@ -5020,19 +5036,19 @@ msgstr ""
 "             המקורי? אם כן, זה יעשה בלי כל קשר לזה שדוור הוסיף כותרת\n"
 "             <tt>השב אל:</tt> מפורשת או לא."
 
-#: Mailman/Gui/General.py:184
+#: Mailman/Gui/General.py:188
 msgid "Explicit address"
 msgstr "כתובת מפורשת"
 
-#: Mailman/Gui/General.py:184
+#: Mailman/Gui/General.py:188
 msgid "Poster"
 msgstr "השולח"
 
-#: Mailman/Gui/General.py:184
+#: Mailman/Gui/General.py:188
 msgid "This list"
 msgstr "רשימה זו"
 
-#: Mailman/Gui/General.py:185
+#: Mailman/Gui/General.py:189
 msgid ""
 "Where are replies to list messages directed?\n"
 "             <tt>Poster</tt> is <em>strongly</em> recommended for most "
@@ -5042,7 +5058,7 @@ msgstr ""
 "לאן מענים למסרים של רשימה זו מיועדים?             <tt>השולח</tt> היא ההמלצה "
 "<em>החמה</em> עבור רוב רשימות דיוור."
 
-#: Mailman/Gui/General.py:190
+#: Mailman/Gui/General.py:194
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5118,11 +5134,11 @@ msgstr ""
 "             דיוור זה, בחר <tt>כתובת מפורשת</tt> וקבע את כתובת ה-\n"
 "             <tt>השב-אך:</tt> להצביע אל הרשימה המקבילה."
 
-#: Mailman/Gui/General.py:222
+#: Mailman/Gui/General.py:226
 msgid "Explicit <tt>Reply-To:</tt> header."
 msgstr "כותרת <tt>השב-אל:</tt> מפורשת."
 
-#: Mailman/Gui/General.py:224
+#: Mailman/Gui/General.py:228
 msgid ""
 "This is the address set in the <tt>Reply-To:</tt> header\n"
 "             when the <a\n"
@@ -5192,17 +5208,17 @@ msgstr ""
 "             <p>שים לב שאם המסר המקורי כולל כותרת <tt>השב-אל:</tt>, היא לא "
 "תשונה."
 
-#: Mailman/Gui/General.py:253
+#: Mailman/Gui/General.py:257
 msgid "Umbrella list settings"
 msgstr "הגדרות מיטרייה של רשימה"
 
-#: Mailman/Gui/General.py:256
+#: Mailman/Gui/General.py:260
 msgid ""
 "Send password reminders to, eg, \"-owner\" address instead of\n"
 "             directly to user."
 msgstr "שלח תזכורות סיסמא אל, למשל כתובת \"-owner\" במקום ישירות למשתמש."
 
-#: Mailman/Gui/General.py:259
+#: Mailman/Gui/General.py:263
 msgid ""
 "Set this to yes when this list is intended to cascade only\n"
 "             to other mailing lists.  When set, meta notices like\n"
@@ -5217,7 +5233,7 @@ msgstr ""
 "             תשלחנה אל כתובת המופקת מתוך הכתובת של המנוי.- הוא יקבל את\n"
 "             הסיומת \"umbrella_member_suffix\" מצורפת לשם חשבון המנוי."
 
-#: Mailman/Gui/General.py:267
+#: Mailman/Gui/General.py:271
 msgid ""
 "Suffix for use when this list is an umbrella for other\n"
 "             lists, according to setting of previous \"umbrella_list\"\n"
@@ -5226,7 +5242,7 @@ msgstr ""
 "הסיומת להשתמש כאשר רשימה זו היא מיטרייה עבור רשימות\n"
 "             אחרות, בהתאם להגדרה של \"רשימת מיטרייה\" הקודמת."
 
-#: Mailman/Gui/General.py:271
+#: Mailman/Gui/General.py:275
 msgid ""
 "When \"umbrella_list\" is set to indicate that this list has\n"
 "             other mailing lists as members, then administrative notices "
@@ -5249,11 +5265,11 @@ msgstr ""
 "             הטיפוסית היא `-owner'. להגדרה זו אין השפעה כלשהי כאשר הגדרת\n"
 "             \"רשימת מיטרייה\" בעלת ערך \"לא\"."
 
-#: Mailman/Gui/General.py:283
+#: Mailman/Gui/General.py:287
 msgid "Send monthly password reminders?"
 msgstr "שלח תזכורות סיסמא חודשיות?"
 
-#: Mailman/Gui/General.py:285
+#: Mailman/Gui/General.py:289
 msgid ""
 "Turn this on if you want password reminders to be sent once\n"
 "             per month to your members.  Note that members may disable "
@@ -5264,7 +5280,7 @@ msgstr ""
 "             חודשיות. שים לב שמנוים יכולים לקבוע את הערך ללא פעיל עבור "
 "התזכורות של עצמם."
 
-#: Mailman/Gui/General.py:290
+#: Mailman/Gui/General.py:294
 msgid ""
 "List-specific text prepended to new-subscriber welcome\n"
 "             message"
@@ -5272,7 +5288,7 @@ msgstr ""
 "טקסט מיוחד לרשימה שמקדימה את הודעת ברכת הצטרפות של מנויים\n"
 "             חדשים."
 
-#: Mailman/Gui/General.py:293
+#: Mailman/Gui/General.py:297
 msgid ""
 "This value, if any, will be added to the front of the\n"
 "             new-subscriber welcome message.  The rest of the welcome "
@@ -5308,11 +5324,11 @@ msgstr ""
 "                 <li>שורה ריקה מפרידה בין פיסקאות.\n"
 "             </ul>"
 
-#: Mailman/Gui/General.py:310
+#: Mailman/Gui/General.py:314
 msgid "Send welcome message to newly subscribed members?"
 msgstr "שלח הודעת \"ברכת המצטרף\" מנויים חדשים?"
 
-#: Mailman/Gui/General.py:311
+#: Mailman/Gui/General.py:315
 msgid ""
 "Turn this off only if you plan on subscribing people manually\n"
 "             and don't want them to know that you did so.  This option is "
@@ -5326,7 +5342,7 @@ msgstr ""
 "ממנהל\n"
 "             רשימות אחר אל דוור בצורה שקופה."
 
-#: Mailman/Gui/General.py:317
+#: Mailman/Gui/General.py:321
 msgid ""
 "Text sent to people leaving the list.  If empty, no special\n"
 "             text will be added to the unsubscribe message."
@@ -5334,11 +5350,11 @@ msgstr ""
 "טקסט שנשלח אל אנשים שעוזבים את הרשימה.  אם ריק, לא ייתווסף טקסט מיוחד\n"
 "             להודעת ביטול המנוי."
 
-#: Mailman/Gui/General.py:321
+#: Mailman/Gui/General.py:325
 msgid "Send goodbye message to members when they are unsubscribed?"
 msgstr "שלח הודעת פרידה לאנשים עם ביטול המנוי שלהם?"
 
-#: Mailman/Gui/General.py:324
+#: Mailman/Gui/General.py:328
 msgid ""
 "Should the list moderators get immediate notice of new\n"
 "             requests, as well as daily notices about collected ones?"
@@ -5346,7 +5362,7 @@ msgstr ""
 "האם מפקח הרשימה מקבל הודעה מידית בדבר בקשות חדשות,\n"
 "             בנוסף להודעות הנאספות ברמה היומית?"
 
-#: Mailman/Gui/General.py:327
+#: Mailman/Gui/General.py:331
 msgid ""
 "List moderators (and list administrators) are sent daily\n"
 "             reminders of requests pending approval, like subscriptions to "
@@ -5363,25 +5379,25 @@ msgstr ""
 "בקשות\n"
 "             חדשות."
 
-#: Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:338
 msgid ""
 "Should administrator get notices of subscribes and\n"
 "             unsubscribes?"
 msgstr "האם מנהלים צריכים לקבל הודעות על מנויים וביטול מינויים?"
 
-#: Mailman/Gui/General.py:339
+#: Mailman/Gui/General.py:343
 msgid "Send mail to poster when their posting is held for approval?"
 msgstr "שלח דואר אל השולח כאשר המסר שלו ממתין לאישור?"
 
-#: Mailman/Gui/General.py:342
+#: Mailman/Gui/General.py:346
 msgid "Additional settings"
 msgstr "הגדרות נוספות"
 
-#: Mailman/Gui/General.py:345
+#: Mailman/Gui/General.py:349
 msgid "Emergency moderation of all list traffic."
 msgstr "פיקוח חרום של כל תעבורת הרשימה."
 
-#: Mailman/Gui/General.py:346
+#: Mailman/Gui/General.py:350
 msgid ""
 "When this option is enabled, all list traffic is emergency\n"
 "             moderated, i.e. held for moderation.  Turn this option on when\n"
@@ -5394,7 +5410,7 @@ msgstr ""
 "תקופה\n"
 "             מתארכת של הודעות אויינות, וברצונך ליצור תקופת צינון."
 
-#: Mailman/Gui/General.py:358
+#: Mailman/Gui/General.py:362
 msgid ""
 "Default options for new members joining this list.<input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
@@ -5403,7 +5419,7 @@ msgstr ""
 "             <input·type=\"hidden\" name=\"new_member_options\"\n"
 "............·value=\"ignore\">"
 
-#: Mailman/Gui/General.py:361
+#: Mailman/Gui/General.py:365
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
 "             set of options is taken from this variable's setting."
@@ -5411,7 +5427,7 @@ msgstr ""
 "כאשר מנוי חדש נרשם לרשימה, קבוצת ההגדרות הראשנית שלו נלקחת\n"
 "             מערך משתנה זה."
 
-#: Mailman/Gui/General.py:365
+#: Mailman/Gui/General.py:369
 msgid ""
 "(Administrivia filter) Check postings and intercept ones\n"
 "             that seem to be administrative requests?"
@@ -5419,7 +5435,7 @@ msgstr ""
 "(מסנן מנהלתי) בדוק דיוור ויירט את אלה שנראים\n"
 "            כבקשות מנהלתיות?"
 
-#: Mailman/Gui/General.py:368
+#: Mailman/Gui/General.py:372
 msgid ""
 "Administrivia tests will check postings to see whether it's\n"
 "             really meant as an administrative request (like subscribe,\n"
@@ -5432,23 +5448,23 @@ msgstr ""
 "             בקשה מנהלתית (כמו הרשמה, ביטול הרשמה, וכו'), ותוסיף\n"
 "             אותו לתור בקשות המנהלתיות, תוך משלוח הודעה למנהל על הבקשה החדשה."
 
-#: Mailman/Gui/General.py:375
+#: Mailman/Gui/General.py:379
 msgid ""
 "Maximum length in kilobytes (KB) of a message body.  Use 0\n"
 "             for no limit."
 msgstr "אורך המירבי של גוף מסר בקילובייט (KB).  השתמש ב-0 ללא מוגבל."
 
-#: Mailman/Gui/General.py:379
+#: Mailman/Gui/General.py:383
 msgid ""
 "Maximum number of members to show on one page of the\n"
 "             Membership List."
 msgstr ""
 
-#: Mailman/Gui/General.py:383
+#: Mailman/Gui/General.py:387
 msgid "Host name this list prefers for email."
 msgstr "שם המארח המועדף עבור דוא\"ל של רשימה זו."
 
-#: Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:389
 msgid ""
 "The \"host_name\" is the preferred name for email to\n"
 "             mailman-related addresses on this host, and generally should "
@@ -5466,7 +5482,7 @@ msgstr ""
 "לו\n"
 "             כתובות שונות."
 
-#: Mailman/Gui/General.py:397
+#: Mailman/Gui/General.py:401
 msgid ""
 "Should messages from this mailing list include the\n"
 "                 <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</"
@@ -5478,7 +5494,7 @@ msgstr ""
 "             <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</a>\n"
 "             (קרי: <tt>List-*</tt>)? <em>כן</em> היא ההמלצה החמה."
 
-#: Mailman/Gui/General.py:402
+#: Mailman/Gui/General.py:406
 msgid ""
 "RFC 2369 defines a set of List-* headers that are\n"
 "                 normally added to every message sent to the list "
@@ -5518,11 +5534,11 @@ msgstr ""
 "             פעילות, אבל זה לא מומלץ (ולמעשה היכולת להעלים כותרות אלו עשויה "
 "להיעלם)."
 
-#: Mailman/Gui/General.py:420
+#: Mailman/Gui/General.py:424
 msgid "Should postings include the <tt>List-Post:</tt> header?"
 msgstr "האם דיוור להכיל את כותרת <tt>List-Post:</tt>?"
 
-#: Mailman/Gui/General.py:421
+#: Mailman/Gui/General.py:425
 msgid ""
 "The <tt>List-Post:</tt> header is one of the headers\n"
 "             recommended by\n"
@@ -5552,7 +5568,7 @@ msgstr ""
 "כותרות\n"
 "             <tt>List-*:</tt> אחרות.("
 
-#: Mailman/Gui/General.py:437
+#: Mailman/Gui/General.py:441
 #, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
@@ -5562,7 +5578,7 @@ msgstr ""
 "האם דוור ישלח לך, בעל הרשימה, הודעות החזרות\n"
 "             שמנוע ההחזרות לא גילה? <em>כן</em> מומלץ."
 
-#: Mailman/Gui/General.py:441
+#: Mailman/Gui/General.py:445
 msgid ""
 "<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
 "                 2822</a> defines the <tt>Sender</tt> header and defines it\n"
@@ -5584,7 +5600,7 @@ msgid ""
 "                 here."
 msgstr ""
 
-#: Mailman/Gui/General.py:459
+#: Mailman/Gui/General.py:463
 msgid ""
 "Discard held messages older than this number of days.\n"
 "            Use 0 for no automatic discarding."
@@ -5592,7 +5608,7 @@ msgstr ""
 "מחק מסרים ממתינים ישנים יותר ממספר ימים זה.\n"
 "             השתמש ב-0 שלא לבצע מחיקה אוטומטית."
 
-#: Mailman/Gui/General.py:469
+#: Mailman/Gui/General.py:473
 msgid ""
 "<b>real_name</b> attribute not\n"
 "            changed!  It must differ from the list's name by case\n"
@@ -5601,7 +5617,7 @@ msgstr ""
 "מאפיין <b>שם אמיתי</b> לא שונה!\n"
 "             מותר לו להיות שונה משם הרשימה בראשיות תווים בלבד."
 
-#: Mailman/Gui/General.py:497
+#: Mailman/Gui/General.py:501
 msgid ""
 "The <b>info</b> attribute you saved\n"
 "contains suspicious HTML that could potentially expose your users to cross-"
@@ -5615,7 +5631,7 @@ msgid ""
 "                        "
 msgstr ""
 
-#: Mailman/Gui/General.py:508
+#: Mailman/Gui/General.py:512
 #, fuzzy
 msgid ""
 "<b>admin_member_chunksize</b> attribute not\n"
@@ -5624,7 +5640,7 @@ msgstr ""
 "מאפיין <b>שם אמיתי</b> לא שונה!\n"
 "             מותר לו להיות שונה משם הרשימה בראשיות תווים בלבד."
 
-#: Mailman/Gui/General.py:518
+#: Mailman/Gui/General.py:522
 msgid ""
 "You cannot add a Reply-To: to an explicit\n"
 "            address if that address is blank.  Resetting these values."
