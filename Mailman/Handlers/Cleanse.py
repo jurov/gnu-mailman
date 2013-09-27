@@ -39,26 +39,6 @@ def process(mlist, msg, msgdata):
     del msg['x-approve']
     # Also remove this header since it can contain a password
     del msg['urgent']
-    # Do we change the from so the list takes ownership of the email
-    # This really belongs in CookHeaders.
-    if mm_cfg.ALLOW_AUTHOR_IS_LIST and mlist.author_is_list:
-        realname, email = parseaddr(msg['from'])
-        replies = getaddresses(msg.get('reply-to', ''))
-        reply_addrs = [x[1].lower() for x in replies]
-        if reply_addrs:
-            if email.lower() not in reply_addrs:
-                rt = msg['reply-to'] + ', ' + msg['from']
-            else:
-                rt = msg['reply-to']
-        else:
-            rt = msg['from']
-        del msg['reply-to']
-        msg['Reply-To'] = rt
-        del msg['from']
-        msg['From'] = formataddr(('%s via %s' % (realname, mlist.real_name),
-                                 mlist.GetListEmail()))
-        del msg['sender']
-        #MAS mlist.include_sender_header = 0
     # We remove other headers from anonymous lists
     if mlist.anonymous_list:
         syslog('post', 'post to %s from %s anonymized',

@@ -24,6 +24,7 @@ warning header, or pass it through, depending on the user's preferences.
 
 from email.Utils import getaddresses, formataddr
 from Mailman import mm_cfg
+from Mailman.Handlers.CookHeaders import change_header
 
 COMMASPACE = ', '
 
@@ -95,6 +96,10 @@ def process(mlist, msg, msgdata):
     # Set the new list of recipients
     msgdata['recips'] = newrecips
     # RFC 2822 specifies zero or one CC header
-    del msg['cc']
     if ccaddrs:
-        msg['Cc'] = COMMASPACE.join([formataddr(i) for i in ccaddrs.values()])
+        change_header('Cc',
+        COMMASPACE.join([formataddr(i) for i in ccaddrs.values()]),
+        mlist, msg, msgdata)
+    else:
+        del msg['cc']
+

@@ -33,7 +33,7 @@ def process(mlist, msg, msgdata):
         return
     if (mm_cfg.ALLOW_AUTHOR_IS_LIST and
             mm_cfg.REMOVE_DKIM_HEADERS == 1 and
-            not mlist.author_is_list):
+            mlist.author_is_list != 1):
         return
     del msg['domainkey-signature']
     del msg['dkim-signature']

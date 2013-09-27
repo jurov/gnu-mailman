@@ -27,6 +27,7 @@ from email.Header import decode_header
 
 from Mailman import Utils
 from Mailman.Logging.Syslog import syslog
+from Mailman.Handlers.CookHeaders import change_header
 
 CRNL = '\r\n'
 EMPTYSTRING = ''
@@ -69,8 +70,9 @@ def process(mlist, msg, msgdata):
                 break
     if hits:
         msgdata['topichits'] = hits.keys()
-        msg['X-Topics'] = NLTAB.join(hits.keys())
-    
+        change_header('X-Topics', NLTAB.join(hits.keys()),
+                      mlist, msg, msgdata, Delete=False)
+
 
 
 def scanbody(msg, numlines=None):

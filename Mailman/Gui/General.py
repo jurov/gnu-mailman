@@ -157,14 +157,18 @@ class General(GUIBase):
 
         if mm_cfg.ALLOW_AUTHOR_IS_LIST:
             rtn.append(
-                ('author_is_list', mm_cfg.Radio, (_('No'), _('Yes')), 0,
+                ('author_is_list', mm_cfg.Radio,
+                 (_('No'), _('Mung From'), _('Wrap Message')), 0,
                  _("""Replace the sender with the list address to conform with
                  policies like ADSP and DMARC.  It replaces the poster's
                  address in the From: header with the list address and adds the
                  poster to the Reply-To: header, but the anonymous_list and
                  Reply-To: header munging settings below take priority.  If
                  setting this to Yes, it is advised to set the MTA to DKIM sign
-                 all emails."""))
+                 all emails.""") +
+                 _("""<br>If this is set to Wrap Message, just wrap the message
+                 in an outer message From: the list with Content-Type:
+                 message/rfc822."""))
               )
 
         rtn.extend([

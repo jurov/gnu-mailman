@@ -561,7 +561,7 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # broken and even if the outgoing message is resigned.  However, some sites
 # may wish to remove these headers.  Possible values and meanings are:
 # No, 0, False -> do not remove headers.
-# 1 -> remove headers only if the list's author_is_list setting is Yes.
+# 1 -> remove headers only if the list's author_is_list setting is 1.
 # Yes, 2, True -> always remove headers.
 REMOVE_DKIM_HEADERS = No
 
@@ -594,6 +594,7 @@ GLOBAL_PIPELINE = [
     # (outgoing) path, finally leaving the message in the outgoing queue.
     'AfterDelivery',
     'Acknowledge',
+    'WrapMessage',
     'ToOutgoing',
     ]
 
@@ -1079,9 +1080,13 @@ DEFAULT_SEND_WELCOME_MSG = Yes
 # Send goodbye messages to unsubscribed members?
 DEFAULT_SEND_GOODBYE_MSG = Yes
 
-# Rewrite the From: header of posts replacing the posters address with
-# that of the list.  Also see REMOVE_DKIM_HEADERS above.
-DEFAULT_AUTHOR_IS_LIST = No
+# The following is a three way setting.
+# 0 -> Do not rewrite the From: or wrap the message.
+# 1 -> Rewrite the From: header of posts replacing the posters address with
+#      that of the list.  Also see REMOVE_DKIM_HEADERS above.
+# 2 -> Do not modify the From: of the message, but wrap the message in an outer
+#      message From the list address.
+DEFAULT_AUTHOR_IS_LIST = 0
 
 # Wipe sender information, and make it look like the list-admin
 # address sends all messages
