@@ -347,7 +347,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.bounce_matching_headers = \
                 mm_cfg.DEFAULT_BOUNCE_MATCHING_HEADERS
         self.header_filter_rules = []
-        self.author_is_list = mm_cfg.DEFAULT_AUTHOR_IS_LIST
+        self.from_is_list = mm_cfg.DEFAULT_FROM_IS_LIST
         self.anonymous_list = mm_cfg.DEFAULT_ANONYMOUS_LIST
         internalname = self.internal_name()
         self.real_name = internalname[0].upper() + internalname[1:]

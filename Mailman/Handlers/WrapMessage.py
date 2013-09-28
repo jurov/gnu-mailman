@@ -35,7 +35,7 @@ KEEPERS = ('to',
 
 
 def process(mlist, msg, msgdata):
-    if not mm_cfg.ALLOW_AUTHOR_IS_LIST or mlist.author_is_list != 2:
+    if not mm_cfg.ALLOW_FROM_IS_LIST or mlist.from_is_list != 2:
         return
 
     # There are various headers in msg that we don't want, so we basically

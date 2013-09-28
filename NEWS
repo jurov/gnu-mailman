@@ -9,14 +9,14 @@ Here is a history of user visible changes to Mailman.
 
   New Features
 
-    - There is a new list attribute author_is_list to either rewrite the From:
+    - There is a new list attribute from_is_list to either rewrite the From:
       header of posts replacing the posters address with that of the list or
       wrap the message in an outer message From: the list for compatability
       with DMARC and or ADSP.  There is a new mm_cfg.py setting
-      DEFAULT_AUTHOR_IS_LIST to control the default for new lists, and the
+      DEFAULT_FROM_IS_LIST to control the default for new lists, and the
       existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
-      those headers only for certain author_is_list lists.  This feature must
-      be enabled by setting ALLOW_AUTHOR_IS_LIST to Yes in mm_cfg.py.  See the 
+      those headers only for certain from_is_list lists.  This feature must
+      be enabled by setting ALLOW_FROM_IS_LIST to Yes in mm_cfg.py.  See the 
       description of these settings in Defaults.py for more detail.  This
       feature is experimental in 2.1.16, and it is subject to change or to
       become just one of the two methods in a subsequent release. People 

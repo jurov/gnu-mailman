@@ -109,8 +109,8 @@ ALLOW_SITE_ADMIN_COOKIES = No
 AUTHENTICATION_COOKIE_LIFETIME = 0
 
 # The following must be set to Yes to enable the 'author is list' feature.
-# See DEFAULT_AUTHOR_IS_LIST below.
-ALLOW_AUTHOR_IS_LIST = No
+# See DEFAULT_FROM_IS_LIST below.
+ALLOW_FROM_IS_LIST = No
 
 # Form lifetime is set against Cross Site Request Forgery.
 FORM_LIFETIME = hours(1)
@@ -561,7 +561,7 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # broken and even if the outgoing message is resigned.  However, some sites
 # may wish to remove these headers.  Possible values and meanings are:
 # No, 0, False -> do not remove headers.
-# 1 -> remove headers only if the list's author_is_list setting is 1.
+# 1 -> remove headers only if the list's from_is_list setting is 1.
 # Yes, 2, True -> always remove headers.
 REMOVE_DKIM_HEADERS = No
 
@@ -1086,7 +1086,7 @@ DEFAULT_SEND_GOODBYE_MSG = Yes
 #      that of the list.  Also see REMOVE_DKIM_HEADERS above.
 # 2 -> Do not modify the From: of the message, but wrap the message in an outer
 #      message From the list address.
-DEFAULT_AUTHOR_IS_LIST = 0
+DEFAULT_FROM_IS_LIST = 0
 
 # Wipe sender information, and make it look like the list-admin
 # address sends all messages

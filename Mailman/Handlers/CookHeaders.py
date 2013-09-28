@@ -65,7 +65,7 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     return Header(s, charset, maxlinelen, header_name, continuation_ws)
 
 def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
-    if mm_cfg.ALLOW_AUTHOR_IS_LIST and mlist.author_is_list == 2:
+    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list == 2:
         msgdata.setdefault('add_header', {})[name] = value
     elif repl or not msg.has_key(name):
         if delete:
@@ -116,7 +116,7 @@ def process(mlist, msg, msgdata):
     change_header('Precedence', 'list',
                   mlist, msg, msgdata, repl=False)
     # Do we change the from so the list takes ownership of the email
-    if mm_cfg.ALLOW_AUTHOR_IS_LIST and mlist.author_is_list:
+    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list:
         realname, email = parseaddr(msg['from'])
         replies = getaddresses(msg.get('reply-to', ''))
         reply_addrs = [x[1].lower() for x in replies]
@@ -132,7 +132,7 @@ def process(mlist, msg, msgdata):
                       formataddr(('%s via %s' % (realname, mlist.real_name),
                                  mlist.GetListEmail())),
                       mlist, msg, msgdata)
-        if mlist.author_is_list != 2:
+        if mlist.from_is_list != 2:
             del msg['sender']
         #MAS ?? mlist.include_sender_header = 0
     # Reply-To: munging.  Do not do this if the message is "fast tracked",
@@ -190,8 +190,8 @@ def process(mlist, msg, msgdata):
         # is already in From and Reply-To in this case and similarly for
         # an 'author is list' list.
         if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list and not (mlist.author_is_list and
-                                                 mm_cfg.ALLOW_AUTHOR_IS_LIST):
+           and not mlist.anonymous_list and not (mlist.from_is_list and
+                                                 mm_cfg.ALLOW_FROM_IS_LIST):
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
@@ -202,7 +202,7 @@ def process(mlist, msg, msgdata):
             add((str(i18ndesc), mlist.GetListEmail()))
             # We don't worry about what AvoidDuplicates may have done with a
             # Cc: header or using change_header here since we never get here
-            # if author_is_list is allowed and True.
+            # if from_is_list is allowed and True.
             del msg['Cc']
             msg['Cc'] = COMMASPACE.join([formataddr(pair) for pair in new])
     # Add list-specific headers as defined in RFC 2369 and RFC 2919, but only

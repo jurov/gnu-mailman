@@ -155,9 +155,9 @@ class General(GUIBase):
              """)),
           ]
 
-        if mm_cfg.ALLOW_AUTHOR_IS_LIST:
+        if mm_cfg.ALLOW_FROM_IS_LIST:
             rtn.append(
-                ('author_is_list', mm_cfg.Radio,
+                ('from_is_list', mm_cfg.Radio,
                  (_('No'), _('Mung From'), _('Wrap Message')), 0,
                  _("""Replace the sender with the list address to conform with
                  policies like ADSP and DMARC.  It replaces the poster's
