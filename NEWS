@@ -83,6 +83,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a crash in SpamDetect.py which caused messages with unparseable
+      RFC 2047 encoded headers to be shunted.  (LP: #1235101)
+
     - Fixed cron/disabled to send a fresh cookie when notifying disabled
       members.  (LP: #1203200)
 
