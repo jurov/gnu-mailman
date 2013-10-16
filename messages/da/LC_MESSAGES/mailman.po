@@ -8,15 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman\n"
 "POT-Creation-Date: Fri Sep 27 16:41:21 2013\n"
-"PO-Revision-Date: 2008-01-25 15:12+0100\n"
-"Last-Translator: Tom G. Christensen <mm-da@statsbiblioteket.dk>\n"
-"Language-Team: Dansk <mm-da@statsbiblioteket.dk>\n"
+"PO-Revision-Date: 2013-10-16 13:55+0200\n"
+"Last-Translator: Tom G. Christensen <tgc@statsbiblioteket.dk>\n"
+"Language-Team: Dansk mailman <mm-da@statsbiblioteket.dk>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.3\n"
-"X-Generator: KBabel 1.11.4\n"
 
 #: Mailman/Archiver/HyperArch.py:123
 msgid "size not available"
@@ -256,7 +255,7 @@ msgstr "Godkendelse mislykkedes"
 
 #: Mailman/Cgi/admin.py:199
 msgid "The form lifetime has expired. (request forgery check)"
-msgstr ""
+msgstr "Formularens levetid er udløbet. (beskyttelse mod forfalskning)"
 
 #: Mailman/Cgi/admin.py:205
 msgid ""
@@ -998,16 +997,20 @@ msgid ""
 "addition, the password below, if set, can be used for that purpose and\n"
 "no other."
 msgstr ""
+"I tillæg til ovenstående adgangskoder så kan du angive en adgangskode til\n"
+"at forhåndsgodkende meddelelser sendt til listen. Begge de ovenstående adgangskoder kan\n"
+"bruges i et Approved: felt i brevhovedet eller som et pseudo-felt i første linie af meddelelsen til\n"
+"at forhåndsgodkende en meddelelse der ellers ville være holdt tilbage til moderation. Derudover\n"
+"kan nedenstående adgangskode, hvis feltet er udfyldt, bruges til dette formål og\n"
+"intet andet."
 
 #: Mailman/Cgi/admin.py:1294
-#, fuzzy
 msgid "Enter new poster password:"
-msgstr "Ny moderator adgangskode:"
+msgstr "Ny adgangskode til forhåndsgodkendelse af meddelelser:"
 
 #: Mailman/Cgi/admin.py:1296
-#, fuzzy
 msgid "Confirm poster password:"
-msgstr "Tast moderator adgangskode igen:"
+msgstr "Tast adgangskode til forhåndsgodkendelse af meddelelser igen:"
 
 #: Mailman/Cgi/admin.py:1305
 msgid "Submit Your Changes"
@@ -1018,9 +1021,8 @@ msgid "Moderator passwords did not match"
 msgstr "Moderatoradgangskoder er ikke ens!"
 
 #: Mailman/Cgi/admin.py:1339
-#, fuzzy
 msgid "Poster passwords did not match"
-msgstr "Adgangskoderne er ikke ens."
+msgstr "Adgangskoderne til forhåndsgodkendelse af meddelelser er ikke ens."
 
 #: Mailman/Cgi/admin.py:1349
 msgid "Administrator passwords did not match"
@@ -1188,19 +1190,19 @@ msgstr "Tilbageholdte meddelelser."
 
 #: Mailman/Cgi/admindb.py:437
 msgid "Show this list grouped/sorted by"
-msgstr ""
+msgstr "Vis denne liste grupperet/sorteret efter"
 
 #: Mailman/Cgi/admindb.py:440
 msgid "sender/sender"
-msgstr ""
+msgstr "afsender/afsender"
 
 #: Mailman/Cgi/admindb.py:440
 msgid "sender/time"
-msgstr ""
+msgstr "afsender/tidsstempel"
 
 #: Mailman/Cgi/admindb.py:440
 msgid "ungrouped/time"
-msgstr ""
+msgstr "ikke grupperet/tidsstempel"
 
 #: Mailman/Cgi/admindb.py:456 Mailman/Cgi/admindb.py:687
 msgid "From:"
@@ -2211,9 +2213,8 @@ msgid "Welcome email text file"
 msgstr "Velkomst email tekst fil"
 
 #: Mailman/Cgi/edithtml.py:49
-#, fuzzy
 msgid "Digest masthead"
-msgstr "toptekst"
+msgstr "Sammendrag toptekst"
 
 #: Mailman/Cgi/edithtml.py:61
 msgid "List name is required."
@@ -2788,14 +2789,14 @@ msgid "Private Archive Error - %(msg)s"
 msgstr "Fejl i privat arkiv - %(msg)s"
 
 #: Mailman/Cgi/private.py:141
-#, fuzzy
 msgid ""
 "If you are a list member,\n"
 "                          your password has been emailed to you."
-msgstr "En e-mail med din adgangskode er sendt til dig."
+msgstr ""
+"Hvis du er medlem af listen,\n"
+"                            så er en e-mail med din adgangskode sendt til dig."
 
 #: Mailman/Cgi/private.py:145
-#, fuzzy
 msgid "Please enter your email address"
 msgstr "Din e-mail adresse:"
 
@@ -2913,15 +2914,15 @@ msgstr "Du skal angive en gyldig e-mailadresse."
 
 #: Mailman/Cgi/subscribe.py:138
 msgid "The form is too old.  Please GET it again."
-msgstr ""
+msgstr "Formularen er for gammel. Hent den igen med GET."
 
 #: Mailman/Cgi/subscribe.py:141
 msgid "Please take a few seconds to fill out the form before submitting it."
-msgstr ""
+msgstr "Brug venligst et øjeblik på at udfylde formularen før du indsender den."
 
 #: Mailman/Cgi/subscribe.py:144
 msgid "You must GET the form before submitting it."
-msgstr ""
+msgstr "Du skal hente formularen med GET før du indsender den."
 
 #: Mailman/Cgi/subscribe.py:148
 msgid "You may not subscribe a list to itself!"
@@ -3820,9 +3821,8 @@ msgid "Arabic"
 msgstr "Arabisk"
 
 #: Mailman/Defaults.py:1537
-#, fuzzy
 msgid "Asturian"
-msgstr "Estisk"
+msgstr "Asturisk"
 
 #: Mailman/Defaults.py:1538
 msgid "Catalan"
@@ -3858,7 +3858,7 @@ msgstr "Baskisk"
 
 #: Mailman/Defaults.py:1546
 msgid "Persian"
-msgstr ""
+msgstr "Persisk"
 
 #: Mailman/Defaults.py:1547
 msgid "Finnish"
@@ -3874,7 +3874,7 @@ msgstr "Galisisk"
 
 #: Mailman/Defaults.py:1550
 msgid "Greek"
-msgstr ""
+msgstr "Græsk"
 
 #: Mailman/Defaults.py:1551
 msgid "Hebrew"
@@ -4827,13 +4827,12 @@ msgid "When receiving digests, which format is default?"
 msgstr "Hvilket format skal benyttes som standard for samle-email?"
 
 #: Mailman/Gui/Digest.py:59
-#, fuzzy
 msgid ""
 "How big in Kb should a digest be before it gets sent out?  0 implies no "
 "maximum size."
 msgstr ""
 "Hvor stor (i KB) m&aring; en samle-email h&oslash;jst v&aelig;re f&oslash;r "
-"den udsendes?"
+"den udsendes? Brug værdien 0 for at slå begrænsningen fra."
 
 #: Mailman/Gui/Digest.py:63
 msgid ""
@@ -5209,12 +5208,11 @@ msgstr ""
 
 #: Mailman/Gui/General.py:161
 msgid "Mung From"
-msgstr ""
+msgstr "Skjul From"
 
 #: Mailman/Gui/General.py:161
-#, fuzzy
 msgid "Wrap Message"
-msgstr "Oprindelig meddelelse"
+msgstr "Brug omslag til meddelelse"
 
 #: Mailman/Gui/General.py:162
 msgid ""
@@ -5228,6 +5226,14 @@ msgid ""
 "sign\n"
 "                 all emails."
 msgstr ""
+"Erstat afsender med listens adresse for at tilpasse meddelelsen til\n"
+"                 retningslinier som ADSP og DMARC.  Dette erstatter afsenderens\n"
+"                 adresse i From: feltet i brevhovedet med listens adresse og tilføjer "
+"afsenderens\n"
+"                 adresse til Reply-To: feltet i brevhovedet, men indstillinger for ændring af\n"
+"                 anonymous_list og Reply-To: felterne nedenfor har højere prioritet.  Hvis\n"
+"                 denne indstilling sættes til Yes, så anbefales det at MTAen konfigureres til at underskrive\n"
+"                 alle emails med DKIM."
 
 #: Mailman/Gui/General.py:169
 msgid ""
@@ -5235,6 +5241,9 @@ msgid ""
 "                 in an outer message From: the list with Content-Type:\n"
 "                 message/rfc822."
 msgstr ""
+"<br>Hvis denne indstilling er sat til at bruge omslag til meddelelser, så tilføj et omslag\n"
+"                 med et From: felt i brevhovedet der har listens adresse og den oprindelige meddelelse som Content-Type:\n"
+"                 message/rfc822."
 
 #: Mailman/Gui/General.py:176
 msgid ""
@@ -5841,14 +5850,14 @@ msgstr ""
 "(Dette p&aring;virker ikke andre <tt>List-*:</tt> felter.)"
 
 #: Mailman/Gui/General.py:441
-#, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
 "                 mailing list to avoid stray bounces?  <em>Yes</em> is\n"
 "                 recommended."
 msgstr ""
-"Skal Mailman sende dig, ejeren af listen, returmails der ikke blev genkendt "
-"af den automatiske returh&aring;ndtering? <em>Ja</em> anbefales."
+"Skal <tt>Sender</tt> feltet i brevhovedet omskrives for denne\n"
+"                liste for at undgå vildfarne returmails?  <em>Yes</em> er\n"
+"                det anbefalede."
 
 #: Mailman/Gui/General.py:445
 msgid ""
@@ -5871,6 +5880,23 @@ msgid ""
 "                 bounce address on reply-to-all), so it can be disabled \n"
 "                 here."
 msgstr ""
+"<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
+"                 2822</a> definerer <tt>Sender</tt> feltet og definerer det\n"
+"                 som \"the mailbox of the agent responsible for the actual\n"
+"                 transmission of the message.\"  Mailman erstatter som udgangspunkt indholdet af\n "
+"feltet\n"
+"                 med listens retur adresse.\n"
+"                 \n"
+"                 <p>Der kan stilles spørgsmåltegn ved om Mailman er en sådan agent, "
+"men\n"
+"                 det hjælper og erstatte dette felt fordi det dirigerer returmail fra visse defekte MTA programmer "
+"til\n"
+"                 den rigtige adresse.  På den anden side set, så udviser nogle post\n"
+"                 programmer en uventet adfærd hvis dette felt erstattes "
+"(som f.eks.\n"
+"                 manglende adresser i vidersendte meddelelser og i kopier sendt til\n"
+"                 returadressen ved reply-to-all), derfor kan denne funktion slås fra\n"
+"                 her."
 
 #: Mailman/Gui/General.py:463
 msgid ""
@@ -6329,7 +6355,8 @@ msgstr ""
 msgid ""
 "Ignore regular_exlude_lists of which the poster is not a\n"
 "             member."
-msgstr ""
+msgstr "Ignorer regular_exclude_lists som afsenderen ikke er\n"
+"             medlem af."
 
 #: Mailman/Gui/NonDigest.py:165
 msgid ""
@@ -6344,6 +6371,15 @@ msgid ""
 "the\n"
 "             poster is not a member."
 msgstr ""
+"Hvis en meddelelse er adresseret til denne liste og en eller flere af\n"
+"             de ekskluderede lister, så vil normal-modus medlemmer af disse lister ikke få\n"
+"             tilsendt meddelelsen fra denne liste, men hvis afsender ikke er "
+"medlem\n"
+"             af en ekskluderet liste, så vil meddelelsen muligvis ikke blive accepteret af den liste\n"
+"             hvilket efterlader medlemmer af den liste uden en kopi af "
+"meddelelsen.\n"
+"             Hvis denne indstiling sættes til Yes så ignoreres alle ekskluderede lister som afsender\n"
+"             ikke er medlem af."
 
 #: Mailman/Gui/NonDigest.py:174
 msgid ""
@@ -7872,6 +7908,10 @@ msgid ""
 "Approved: password line, but due to the way it is coded in the\n"
 "HTML it can't be safely removed.\n"
 msgstr ""
+"Meddelelse afvist.\n"
+"Denne meddelelse har en HTML del som indeholder et\n"
+"Approved: adgangskode felt, men pga. den måde som HTML delen er skrevet\n"
+"kan feltet ikke fjernes sikkert.\n"
 
 #: Mailman/Handlers/CalcRecips.py:78
 msgid ""
@@ -8459,11 +8499,11 @@ msgstr "Resultatet af dine kommandoer"
 
 #: Mailman/Queue/CommandRunner.py:215
 msgid "Message body suppressed by Mailman site configuration\n"
-msgstr ""
+msgstr "Meddelelsens indhold er undertrykt pga. Mailmans site konfiguration\n"
 
 #: Mailman/Queue/CommandRunner.py:217
 msgid "Original message suppressed by Mailman site configuration\n"
-msgstr ""
+msgstr "Den oprindelige meddelelse er undertrykt pga. Mailmans site konfiguration\n"
 
 #: Mailman/htmlformat.py:648
 msgid "Delivered by Mailman<br>version %(version)s"
@@ -8560,7 +8600,6 @@ msgstr ""
 "%(wday)s %(mon)s %(day)2i %(hh)02i:%(mm)02i:%(ss)02i %(tzname)s %(year)04i"
 
 #: bin/add_members:26
-#, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8613,29 +8652,33 @@ msgstr ""
 "Brug:\n"
 " add_members [options] listname\n"
 "\n"
-"Options:<n\n"
+"Options:\n"
+"\n"
 "    --regular-members-file=file\n"
 "    -r file\n"
-"En fil der indeholder e-mailadresser for medlemmer, der skal tilføjes, en e-"
-"mailadresse pr. linie. Denne liste af medlemmer vil blive ikke-digest "
-"medlem. Hvis filen er '-', læses adresserne fra stdin. Bemærk at -n/--non-"
-"digest-members-file er synonym for denne option.\n"
+"        En fil der indeholder e-mailadresser for medlemmer, der skal tilføjes, en e-"
+"        mailadresse pr. linie. Denne liste af medlemmer vil blive ikke-digest "
+"        medlem. Hvis filen er '-', læses adresserne fra stdin. Bemærk at\n"
+"        -n/--non-digest-members-file er forældede synonymer for denne option.\n"
 "\n"
 "    --digest-members-file=file\n"
 "    -d file\n"
-"Samme som ovenstående men disse bliver sammendrags-modus medlemmer.\n"
+"        Samme som ovenstående men disse bliver sammendrags-modus medlemmer.\n"
 "\n"
 "    --welcome-msg=<y|n>\n"
 "    -w <y|n>\n"
-"Vælger hvorvidt der skal sendes en velkomsthilsen eller ej. denne \n"
-"indstilling har højere prioritet end hvad `send_welcome_msg' er indstil\n"
-"let til.\n"
+"        Vælger hvorvidt der skal sendes en velkomsthilsen eller ej. Denne \n"
+"        indstilling har højere prioritet end hvad `send_welcome_msg' er indstillet til.\n"
 "\n"
 "    --admin-notify=<y|n>\n"
 "    -a <y|n>\n"
-"indstiller hvorvidt der skal sendes en besked til liste\n"
-"administrator om til/framelding eller ej. Denne indstilling \n"
-"har højere prioritet end hvad `admin_notify_mchanges' er indstillet til.\n"
+"        indstiller hvorvidt der skal sendes en besked til liste\n"
+"        administrator om til/framelding eller ej. Denne indstilling \n"
+"        har højere prioritet end hvad `admin_notify_mchanges' er indstillet til.\n"
+"\n"
+"    --nomail\n"
+"    -n\n"
+"        Vælger om levering af meddelelser til nye medlemmer skal være deaktiveret af admin.\n"
 "\n"
 "    --help\n"
 "    -h\n"
@@ -8916,9 +8959,9 @@ msgstr ""
 "    --all / -a\n"
 "        Ændrer adgangskode for alle listerne.\n"
 "\n"
-"    --domain=domene\n"
-"    -d domene\n"
-"        Ændrer adgangskode for alle lister i det virtuelle domæne 'domene'.\n"
+"    --domain=domæne\n"
+"    -d domæne\n"
+"        Ændrer adgangskode for alle lister i det virtuelle domæne 'domæne'.\n"
 "        Dette valg kan benyttes flere gange.\n"
 "\n"
 "    --listname=listenavn\n"
@@ -9952,9 +9995,8 @@ msgstr ""
 "Køres scriptet alene, vises denne hjælpetekst.\n"
 
 #: bin/fix_url.py:75
-#, fuzzy
 msgid "Locking list"
-msgstr "Gemmer listen"
+msgstr "Låser listen"
 
 #: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
@@ -10000,7 +10042,7 @@ msgstr ""
 
 #: bin/genaliases:84
 msgid "genaliases can't do anything useful with mm_cfg.MTA = %(mta)s."
-msgstr ""
+msgstr "genaliases virker ikke med mm_cfg.MTA = %(mta)s."
 
 #: bin/inject:20
 msgid ""
@@ -10108,7 +10150,6 @@ msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "Liste: %(listname)s, \tEiere: %(owners)s"
 
 #: bin/list_lists:19
-#, fuzzy
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -10140,14 +10181,16 @@ msgstr ""
 "Brug: %(program)s [valg]\n"
 "\n"
 "Valg:\n"
-"    --advertised\n"
-"    -a\n"
+"    -a / --advertised\n"
 "        Viser kun de maillister som er offentligt tilgængelige.\n"
 "\n"
-"    --virtual-host-overview=domene\n"
-"    -V domene\n"
+"    -p / --public-archive\n"
+"        Viser de maillisten som har offentlige arkiver.\n"
+"\n"
+"    --virtual-host-overview=domæne\n"
+"    -V domæne\n"
 "        Viser kun e-maillister på det angivne domæne. Dette valg kan kun\n"
-"        benyttes hvis VIRTUAL_HOST_OVERVIEW variablen er sat til.\n"
+"        benyttes hvis VIRTUAL_HOST_OVERVIEW variablen er sat.\n"
 "\n"
 "    -b / --bare\n"
 "        Viser kun listenavnet, uden beskrivelse.\n"
@@ -10934,6 +10977,8 @@ msgid ""
 " - owner addresses need to be fully-qualified names like \"owner@example.com"
 "\", not just \"owner\"."
 msgstr ""
+" - ejer adresser skal være fuldt kvalificerede adresser som \"owner@example.com"
+"\", ikke kun \"owner\"."
 
 #: bin/newlist:232
 msgid "Hit enter to notify %(listname)s owner..."
@@ -11340,9 +11385,8 @@ msgid "stale lock file"
 msgstr "gammel lock file"
 
 #: bin/rmlist:141
-#, fuzzy
 msgid "held message file"
-msgstr "alle tilbageholdte meddelelser."
+msgstr "alle tilbageholdte meddelelser"
 
 #: bin/rmlist:146 bin/rmlist:148
 msgid "private archives"
@@ -12376,9 +12420,8 @@ msgid "Pending subscriptions:"
 msgstr "Anmodninger om medlemskab der venter på behandling:"
 
 #: cron/checkdbs:155
-#, fuzzy
 msgid "Pending unsubscriptions:"
-msgstr "Anmodninger om medlemskab der venter på behandling:"
+msgstr "Anmodninger om framelding der venter på behandling:"
 
 #: cron/checkdbs:162
 msgid ""
@@ -12418,6 +12461,23 @@ msgid ""
 "    -h / --help\n"
 "        Print this message and exit.\n"
 msgstr ""
+"Ryd op i bad og shunt køerne, det anbefales og gøre dette en gang om dagen.\n"
+"\n"
+"Dette script gennemgår 'bad' og 'shunt' kø katalogerne og,\n"
+"hvis mm_cfg.BAD_SHUNT_STALE_AFTER er > 0, så fjernes alle filer der er ældre end\n"
+"det angivne antal sekunder.\n"
+"\n"
+"Hvis mm_cfg.BAD_SHUNT_ARCHIVE_DIRECTOR er et skrivbart katalog, så flyttes\n"
+"de gamle filer dertil, og ellers så fjernes de.\n"
+"\n"
+"Kun almindelige filer umiddelbart underordnet 'bad' og 'shunt'\n"
+"katalogerne bliver gennemgået, alt andet springes over.\n"
+"\n"
+"Usage: %(PROGRAM)s [options]\n"
+"\n"
+"Options:\n"
+"    -h / --help\n"
+"        Vis denne hjælpetekst.\n"
 
 #: cron/disabled:20
 msgid ""
