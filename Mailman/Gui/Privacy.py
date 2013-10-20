@@ -236,7 +236,7 @@ class Privacy(GUIBase):
              be sent to moderated members who post to this list.""")),
 
             ('dmarc_moderation_action', mm_cfg.Radio,
-             (_('Hold'), _('Reject'), _('Discard')), 0,
+             (_('Accept'), _('Hold'), _('Reject'), _('Discard')), 0,
              _("""Action to take when anyone posts to the
              list from a domain with a DMARC Reject Policy."""),
              _("""<ul><li><b>Hold</b> -- this holds the message for approval
