@@ -1079,7 +1079,7 @@ def IsDmarcProhibited(email):
 
     try:
         resolver = dns.resolver.Resolver()
-        resolver.timeout = 1
+        resolver.timeout = 3
         resolver.lifetime = 5
         txt_recs = resolver.query(dmarc_domain, dns.rdatatype.TXT)
     except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
