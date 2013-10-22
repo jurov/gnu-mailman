@@ -9,6 +9,8 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a possible UnicodeDecodeError in bin/sync_members.  (LP: #1243343)
+
     - Fixed Makefile to not include $DESTDIR in paths compiled into .pyc
       files for traceback purposes.  (LP: #1241770)
 
