@@ -983,6 +983,27 @@ USER_FRIENDLY_PASSWORDS = Yes
 MEMBER_PASSWORD_LENGTH = 8
 ADMIN_PASSWORD_LENGTH = 10
 
+# The following headers are always removed from posts to anonymous lists as
+# they can reveal the identity of the poster or at least the poster's domain.
+#
+# From:, Reply-To:, Sender:, Return-Path:, X-Originating-Email:, Received:,
+# Message-ID: and X-Envelope-From:.
+#
+# In addition, Return-Receipt-To:, Disposition-Notification-To:,
+# X-Confirm-Reading-To: and X-Pmrqc: headers are removed from all posts as
+# they can be used to fish for list membership in addition to possibly
+# revealing sender information.
+#
+# In addition to the above removals, all other headers except those matching
+# regular expressions in the following setting are also removed. The default
+# setting below keeps all non X- headers, those X- headers added by Mailman
+# and any X-Spam- headers.
+ANONYMOUS_LIST_KEEP_HEADERS = ['^(?!x-)', '^x-mailman-',
+                               '^x-content-filtered-by:', '^x-topics:',
+                               '^x-ack:', '^x-beenthere:',
+                               '^x-list-administrivia:', '^x-spam-',
+                              ]
+
 
 
 #####

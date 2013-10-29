@@ -7,6 +7,16 @@ Here is a history of user visible changes to Mailman.
 
 2.1.17 (xx-xxx-xxxx)
 
+  New Features
+
+    - There is a new mm_cfg.py setting ANONYMOUS_LIST_KEEP_HEADERS.  Since it
+      is not possible to know which non-standard headers in a message might
+      reveal sender information, we now remove all headers from incoming posts
+      to anonymous lists except those which match regular expressions in this
+      list. The default setting keeps non X- headers except those known to
+      reveal sender information, Mailman added X- headers and x-Spam- headers.
+      See the description in Defaults.py for more information.  (LP: #1246039)
+
   Bug Fixes and other patches
 
     - Fixed a possible UnicodeDecodeError in bin/sync_members.  (LP: #1243343)
