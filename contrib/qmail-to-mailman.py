@@ -64,7 +64,8 @@ def main():
         sys.exit(100)
 
     local = string.lower(local)
-    local = re.sub("^mailman-","",local)
+    user = os.environ.get('USER', 'mailman')
+    local = re.sub('^%s-' % user, '', local)
 
     names = ("root", "postmaster", "mailer-daemon", "mailman-owner", "owner",
              "abuse")
@@ -77,10 +78,15 @@ def main():
     type = "post"
     types = (("-admin$", "bounces"),
              ("-bounces$", "bounces"),
+             ("-bounces[-+].*$", "bounces"),
+             ("-confirm$", "confirm"),
+             ("-confirm[-+].*$", "confirm"),
              ("-join$", "join"),
              ("-leave$", "leave"),
              ("-owner$", "owner"),
-             ("-request$", "request"))
+             ("-request$", "request"),
+             ("-subscribe$", "subscribe"),
+             ("-unsubscribe$", "unsubscribe"))
 
     for i in types:
         if re.search(i[0],local):

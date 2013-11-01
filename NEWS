@@ -19,6 +19,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed contrib/qmail-to-mailman.py to work with a user other than
+      'mailman' and to recognize more listname-* addresses.  (LP: #412293)
+
     - Fixed a possible UnicodeDecodeError in bin/sync_members.  (LP: #1243343)
 
     - Fixed Makefile to not include $DESTDIR in paths compiled into .pyc
