@@ -1132,6 +1132,11 @@ def IsDmarcProhibited(email):
                             email, dmarc_domain, name, entry)
                     return True
 
+                if re.search(r'\bp=quarantine\b', entry, re.IGNORECASE):
+                    syslog('info', 'DMARC lookup for %s (%s) found p=quarantine in %s = %s',
+                            email, dmarc_domain, name, entry)
+                    return True
+
     return False
 
 

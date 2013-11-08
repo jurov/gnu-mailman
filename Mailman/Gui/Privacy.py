@@ -238,7 +238,7 @@ class Privacy(GUIBase):
             ('dmarc_moderation_action', mm_cfg.Radio,
              (_('Accept'), _('Hold'), _('Reject'), _('Discard')), 0,
              _("""Action to take when anyone posts to the
-             list from a domain with a DMARC Reject Policy."""),
+             list from a domain with a DMARC Reject/Quarantine Policy."""),
              _("""<ul><li><b>Hold</b> -- this holds the message for approval
              by the list moderators.
 
@@ -257,7 +257,7 @@ class Privacy(GUIBase):
              <a href="?VARHELP/privacy/sender/dmarc_moderation_action"
              >rejection notice</a> to
              be sent to anyone who posts to this list from a domain
-             with DMARC Reject Policy.""")),
+             with DMARC Reject/Quarantine Policy.""")),
 
             _('Non-member filters'),
 
