@@ -1,15 +1,16 @@
 # Mailman Japanese Translation
-# Copyright (C) 2002-2010
+# Copyright (C) 2002-2013
+# SATOH Fumiyasu <fumiyas@osstech.co.jp>, 2013
 # Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>, 2002-2010
 # Yukihiro Yasuda <yukihiro@poem.co.jp>, 2004
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Mailman 2.1.11\n"
+"Project-Id-Version: Mailman 2.1.16\n"
 "POT-Creation-Date: Fri Sep 27 16:41:21 2013\n"
-"PO-Revision-Date: 2008-07-06 09:00+09:00\n"
-"Last-Translator: Tokio Kikuchi <tkikuchi@is.kochi-u.ac.jp>\n"
-"Language-Team: Japanese <mmjp-users@mm.tkikuchi.net>\n"
+"PO-Revision-Date: 2013-11-07 09:00+09:00\n"
+"Last-Translator: SATOH Fumiyasu <fumiyas@osstech.co.jp>\n"
+"Language-Team: Japanese <mailman-users-jp@python.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=EUC-JP\n"
@@ -973,14 +974,12 @@ msgid ""
 msgstr ""
 
 #: Mailman/Cgi/admin.py:1294
-#, fuzzy
 msgid "Enter new poster password:"
-msgstr "新しい司会者パスワードを入力してください:"
+msgstr "新しい投稿者パスワードを入力してください:"
 
 #: Mailman/Cgi/admin.py:1296
-#, fuzzy
 msgid "Confirm poster password:"
-msgstr "司会者パスワードの確認:"
+msgstr "投稿者パスワードの確認:"
 
 #: Mailman/Cgi/admin.py:1305
 msgid "Submit Your Changes"
@@ -988,12 +987,11 @@ msgstr "変更を送信する"
 
 #: Mailman/Cgi/admin.py:1328
 msgid "Moderator passwords did not match"
-msgstr "司会者のパスワードが一致しません.<br>"
+msgstr "司会者のパスワードが一致しません."
 
 #: Mailman/Cgi/admin.py:1339
-#, fuzzy
 msgid "Poster passwords did not match"
-msgstr "パスワードが一致しません."
+msgstr "投稿者のパスワードが一致しません."
 
 #: Mailman/Cgi/admin.py:1349
 msgid "Administrator passwords did not match"
@@ -2116,9 +2114,8 @@ msgid "Welcome email text file"
 msgstr "歓迎メールのテキストファイル"
 
 #: Mailman/Cgi/edithtml.py:49
-#, fuzzy
 msgid "Digest masthead"
-msgstr "まとめ読みヘッダ"
+msgstr "まとめ読みのヘッダーテキスト"
 
 #: Mailman/Cgi/edithtml.py:61
 msgid "List name is required."
@@ -2671,14 +2668,12 @@ msgid "Private Archive Error - %(msg)s"
 msgstr "限定公開保存書庫エラー - %(msg)s"
 
 #: Mailman/Cgi/private.py:141
-#, fuzzy
 msgid ""
 "If you are a list member,\n"
 "                          your password has been emailed to you."
 msgstr "パスワード備忘通知を送信しました."
 
 #: Mailman/Cgi/private.py:145
-#, fuzzy
 msgid "Please enter your email address"
 msgstr "メールアドレス:"
 
@@ -4566,11 +4561,11 @@ msgid "When receiving digests, which format is default?"
 msgstr "まとめ読みで配送するとき, どちらの形式をデフォルト値にしますか?"
 
 #: Mailman/Gui/Digest.py:59
-#, fuzzy
 msgid ""
 "How big in Kb should a digest be before it gets sent out?  0 implies no "
 "maximum size."
 msgstr "投稿メールが何Kb 以上になったら「まとめ読み」を発送しますか?"
+"0 に設定するとサイズ増加による発送はされません."
 
 #: Mailman/Gui/Digest.py:63
 msgid ""
@@ -4908,12 +4903,11 @@ msgstr ""
 
 #: Mailman/Gui/General.py:161
 msgid "Mung From"
-msgstr ""
+msgstr "送信者を書き換え"
 
 #: Mailman/Gui/General.py:161
-#, fuzzy
 msgid "Wrap Message"
-msgstr "元のメール"
+msgstr "メール内に添付"
 
 #: Mailman/Gui/General.py:162
 msgid ""
@@ -4938,7 +4932,9 @@ msgid ""
 "<br>If this is set to Wrap Message, just wrap the message\n"
 "                 in an outer message From: the list with Content-Type:\n"
 "                 message/rfc822."
-msgstr ""
+msgstr "「メール内に添付」の場合、"
+"送信者アドレスがメーリングリストでContent-Type: message/rfc822 形式のメールに"
+"元のメールが添付されます。"
 
 #: Mailman/Gui/General.py:176
 msgid ""
@@ -8007,7 +8003,6 @@ msgstr ""
 "%(tzname)s"
 
 #: bin/add_members:26
-#, fuzzy
 msgid ""
 "Add members to a list from the command line.\n"
 "\n"
@@ -8082,6 +8077,10 @@ msgstr ""
 "    -a <y|n>\n"
 "        リスト管理者に登録の成功/失敗を通知するかどうか.\n"
 "        これは `admin_notify_mchanges' の設定より優先します.\n"
+"\n"
+"    --nomail\n"
+"    -n\n"
+"        登録した会員のメール配送オプションを無効に設定します.\n"
 "\n"
 "    --help\n"
 "    -h\n"
@@ -9357,9 +9356,8 @@ msgstr ""
 "もし単独で実行するとヘルプメッセージを表示して終了する.\n"
 
 #: bin/fix_url.py:75
-#, fuzzy
 msgid "Locking list"
-msgstr "リストを保存中"
+msgstr "リストをロック中"
 
 #: bin/fix_url.py:85
 msgid "Setting web_page_url to: %(web_page_url)s"
@@ -9512,7 +9510,6 @@ msgid "List: %(listname)s, \tOwners: %(owners)s"
 msgstr "リスト: %(listname)s, \t管理者: %(owners)s"
 
 #: bin/list_lists:19
-#, fuzzy
 msgid ""
 "List all mailing lists.\n"
 "\n"
@@ -9547,6 +9544,9 @@ msgstr ""
 "\n"
 "    -a / --advertised\n"
 "        公開されたリストだけを表示する.\n"
+"\n"
+"    -p / --public-archive\n"
+"        公開保存書庫のリストだけを表示する.\n"
 "\n"
 "    --virtual-host-overview=ドメイン\n"
 "    -V ドメイン\n"
@@ -10708,9 +10708,8 @@ msgid "stale lock file"
 msgstr "古いロックファイル"
 
 #: bin/rmlist:141
-#, fuzzy
 msgid "held message file"
-msgstr "すべての保留メール."
+msgstr "保留メールファイル"
 
 #: bin/rmlist:146 bin/rmlist:148
 msgid "private archives"
@@ -11716,9 +11715,8 @@ msgid "Pending subscriptions:"
 msgstr "保留中の会員登録:"
 
 #: cron/checkdbs:155
-#, fuzzy
 msgid "Pending unsubscriptions:"
-msgstr "保留中の会員登録:"
+msgstr "保留中の退会申請:"
 
 #: cron/checkdbs:162
 msgid ""
