@@ -1,4 +1,4 @@
-# Copyright (C) 1998,1999,2000,2001,2002 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -56,8 +56,8 @@ class Digest(GUIBase):
 	     _('When receiving digests, which format is default?')),
 
 	    ('digest_size_threshhold', mm_cfg.Number, 3, 0,
-	     _('How big in Kb should a digest be before it gets sent out?')),
-            # Should offer a 'set to 0' for no size threshhold.
+	     _('How big in Kb should a digest be before it gets sent out?'
+               '  0 implies no maximum size.')),
 
  	    ('digest_send_periodic', mm_cfg.Radio, (_('No'), _('Yes')), 1,
 	     _('Should a digest be dispatched daily when the size threshold '

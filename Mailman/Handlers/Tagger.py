@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -27,6 +27,7 @@ from email.Header import decode_header
 
 from Mailman import Utils
 from Mailman.Logging.Syslog import syslog
+from Mailman.Handlers.CookHeaders import change_header
 
 CRNL = '\r\n'
 EMPTYSTRING = ''
@@ -69,8 +70,9 @@ def process(mlist, msg, msgdata):
                 break
     if hits:
         msgdata['topichits'] = hits.keys()
-        msg['X-Topics'] = NLTAB.join(hits.keys())
-    
+        change_header('X-Topics', NLTAB.join(hits.keys()),
+                      mlist, msg, msgdata, delete=False)
+
 
 
 def scanbody(msg, numlines=None):

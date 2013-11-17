@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,11 +19,31 @@
 
 import re
 
-from email.Utils import formataddr
+from email.Utils import formataddr, getaddresses, parseaddr
 
+from Mailman import mm_cfg
 from Mailman.Utils import unique_message_id
 from Mailman.Logging.Syslog import syslog
 from Mailman.Handlers.CookHeaders import uheader
+
+cres = []
+for regexp in mm_cfg.ANONYMOUS_LIST_KEEP_HEADERS:
+    try:
+        cres.append(re.compile(regexp, re.IGNORECASE))
+    except re.error, e:
+        syslog('error',
+               'ANONYMOUS_LIST_KEEP_HEADERS: ignored bad regexp %s: %s',
+               regexp, e)
+
+def remove_nonkeepers(msg):
+    for hdr in msg.keys():
+        keep = False
+        for cre in cres:
+            if cre.search(hdr):
+                keep = True
+                break
+        if not keep:
+            del msg[hdr]
 
 
 def process(mlist, msg, msgdata):
@@ -53,6 +73,10 @@ def process(mlist, msg, msgdata):
         # And so can the message-id so replace it.
         del msg['message-id']
         msg['Message-ID'] = unique_message_id(mlist)
+        # And something sets this
+        del msg['x-envelope-from']
+        # And now remove all but the keepers.
+        remove_nonkeepers(msg)
         i18ndesc = str(uheader(mlist, mlist.description, 'From'))
         msg['From'] = formataddr((i18ndesc, mlist.GetListEmail()))
         msg['Reply-To'] = mlist.GetListEmail()

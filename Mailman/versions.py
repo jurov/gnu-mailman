@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -313,6 +313,9 @@ def UpdateOldVars(l, stored_state):
             pass
         else:
             l.digest_members[k] = 0
+    # from_is_list was called author_is_list in 2.1.16rc2 (only).
+    PreferStored('author_is_list', 'from_is_list',
+                 mm_cfg.DEFAULT_FROM_IS_LIST)
 
 
 

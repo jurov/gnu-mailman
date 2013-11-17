@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 2011-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -55,8 +55,9 @@ def csrf_check(mlist, token):
     try:
         issued, keymac = marshal.loads(binascii.unhexlify(token))
         key, received_mac = keymac.split(':', 1)
-        klist, key = key.split('+', 1)
-        assert klist == mlist.internal_name()
+        if not key.startswith(mlist.internal_name() + '+'):
+            return False
+        key = key[len(mlist.internal_name()) + 1:]
         if '+' in key:
             key, user = key.split('+', 1)
         else:

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -27,6 +27,7 @@ TBD: This needs to be made more configurable and robust.
 
 import re
 
+from email.Errors import HeaderParseError
 from email.Header import decode_header
 
 from Mailman import mm_cfg
@@ -68,7 +69,10 @@ def getDecodedHeaders(msg, cset='utf-8'):
     headers = ''
     for h, v in msg.items():
         uvalue = u''
-        v = decode_header(re.sub('\n\s', ' ', v))
+        try:
+            v = decode_header(re.sub('\n\s', ' ', v))
+        except HeaderParseError:
+            v = [(v, 'us-ascii')]
         for frag, cs in v:
             if not cs:
                 cs = 'us-ascii'

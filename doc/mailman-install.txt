@@ -1,9 +1,8 @@
-
    #GNU mailman - installation Manual About this document... About this
    document...
 
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
-     _________________________________________________________________
+     __________________________________________________________________
 
 GNU Mailman - Installation Manual
 
@@ -12,9 +11,9 @@ GNU Mailman - Installation Manual
    barry (at) list dot org
 
    Release 2.1
-   May 15, 2012
+   September 28, 2013
 
-                                 Front Matter
+                                  Front Matter
 
   Abstract:
 
@@ -27,8 +26,8 @@ GNU Mailman - Installation Manual
 
                           1 Installation Requirements
 
-   Please note that the information on this page may be out of date.
-   Check for the latest installation information on the Mailman wiki.
+   Please note that the information on this page may be out of date. Check
+   for the latest installation information on the Mailman wiki.
 
    GNU Mailman works on most POSIX-based systems such as Unix, MacOSX, or
    GNU/Linux. It does not currently work on Windows. You must have a mail
@@ -44,7 +43,7 @@ GNU Mailman - Installation Manual
    system. As of this writing, Python 2.4.4 is recommended, but see the
    wiki page above for the latest information.
 
-                             2 Set up your system
+                              2 Set up your system
 
    Before installing Mailman, you need to prepare your system by adding
    certain users and groups. You will need to have root privileges to
@@ -52,13 +51,13 @@ GNU Mailman - Installation Manual
 
 2.1 Add the group and user
 
-   Mailman requires a unique user and group name which will own its
-   files, and under which its processes will run. Mailman's basic
-   security is based on group ownership permissions, so it's important to
-   get this step right^1. Typically, you will add a new user and a new
-   group, both called mailman. The mailman user must be a member of the
-   mailman group. Mailman will be installed under the mailman user and
-   group, with the set-group-id (setgid) bit enabled.
+   Mailman requires a unique user and group name which will own its files,
+   and under which its processes will run. Mailman's basic security is
+   based on group ownership permissions, so it's important to get this
+   step right^1. Typically, you will add a new user and a new group, both
+   called mailman. The mailman user must be a member of the mailman group.
+   Mailman will be installed under the mailman user and group, with the
+   set-group-id (setgid) bit enabled.
 
    If these names are already in use, you can choose different user and
    group names, as long as you remember these when you run configure. If
@@ -75,23 +74,22 @@ GNU Mailman - Installation Manual
 
 2.2 Create the installation directory
 
-   Typically, Mailman is installed into a single directory, which
-   includes both the Mailman source code and the run-time list and
-   archive data. It is possible to split the static program files from
-   the variable data files and install them in separate directories. This
-   section will describe the available options.
+   Typically, Mailman is installed into a single directory, which includes
+   both the Mailman source code and the run-time list and archive data. It
+   is possible to split the static program files from the variable data
+   files and install them in separate directories. This section will
+   describe the available options.
 
    The default is to install all of Mailman to /usr/local/mailman^2. You
    can change this base installation directory (referred to here as
    $prefix) by specifying the directory with the --prefix configure
-   option. If you're upgrading from a previous version of Mailman, you
-   may want to use the --prefix option unless you move your mailing
-   lists.
+   option. If you're upgrading from a previous version of Mailman, you may
+   want to use the --prefix option unless you move your mailing lists.
 
    Warning: You cannot install Mailman on a filesystem that is mounted
-   with the nosuid option. This will break Mailman, which relies on
-   setgid programs for its security. If this describes your environment,
-   simply install Mailman in a location that allows setgid programs.
+   with the nosuid option. This will break Mailman, which relies on setgid
+   programs for its security. If this describes your environment, simply
+   install Mailman in a location that allows setgid programs.
 
    Make sure the installation directory is set to group mailman (or
    whatever you're going to specify with --with-groupname) and has the
@@ -104,8 +102,8 @@ GNU Mailman - Installation Manual
     % chmod a+rx,g+ws .
 
    Warning: The installation directory, $prefix, cannot be the same
-   directory that the source tarball has been unpacked to and in which
-   you run configure, but it can, if you wish, be a subdirectory, e.g.,
+   directory that the source tarball has been unpacked to and in which you
+   run configure, but it can, if you wish, be a subdirectory, e.g.,
    $prefix/src.
 
    You are now ready to configure and install the Mailman software.
@@ -129,17 +127,15 @@ GNU Mailman - Installation Manual
    permission to create a setgid file in the file system where it resides
    (NFS and other mounts can be configured to inhibit setgid settings).
 
-   If you've installed other GNU software, you should be familiar with
-   the configure script. Usually you can just cd to the directory you
-   unpacked the Mailman source tarball into, and run configure with no
-   arguments:
+   If you've installed other GNU software, you should be familiar with the
+   configure script. Usually you can just cd to the directory you unpacked
+   the Mailman source tarball into, and run configure with no arguments:
 
   % cd mailman-<version>
   % ./configure
   % make install
 
-   The following options allow you to customize your Mailman
-   installation.
+   The following options allow you to customize your Mailman installation.
 
    --prefix=dir
           Standard GNU configure option which changes the base directory
@@ -148,9 +144,8 @@ GNU Mailman - Installation Manual
           set up as described in 2.2.
 
    --exec-prefix=dir
-          Standard GNU configure option which lets you specify a
-          different installation directory for architecture dependent
-          binaries.
+          Standard GNU configure option which lets you specify a different
+          installation directory for architecture dependent binaries.
 
    --with-var-prefix=dir
           Store mutable data under dir instead of under the $prefix or
@@ -158,9 +153,9 @@ GNU Mailman - Installation Manual
           and list settings database.
 
    --with-python=/path/to/python
-          Specify an alternative Python interpreter to use for the
-          wrapper programs. The default is to use the interpreter found
-          first on your shell's $PATH.
+          Specify an alternative Python interpreter to use for the wrapper
+          programs. The default is to use the interpreter found first on
+          your shell's $PATH.
 
    --with-username=username-or-uid
           Specify a different username than mailman. The value of this
@@ -198,11 +193,11 @@ GNU Mailman - Installation Manual
 
           Note: The proper value for this is dependent on your web server
           configuration. You must get this right, because the group id is
-          compiled into the CGI wrapper program for added security, and
-          no Mailman CGI scripts will run if this is incorrect.
+          compiled into the CGI wrapper program for added security, and no
+          Mailman CGI scripts will run if this is incorrect.
 
-          If you're using Apache, check the values for the Group option
-          in your httpd.conf file.
+          If you're using Apache, check the values for the Group option in
+          your httpd.conf file.
 
    --with-cgi-ext=extension
           Specify an extension for cgi-bin programs. The CGI wrappers
@@ -264,18 +259,17 @@ GNU Mailman - Installation Manual
    You need to know what user your web server runs as. It may be www,
    apache, httpd or nobody, depending on your server's configuration.
 
-                           5 Set up your web server
+                            5 Set up your web server
 
    Congratulations! You've installed the Mailman software. To get
    everything running you need to hook Mailman up to both your web server
    and your mail system.
 
-   If you plan on running your mail and web servers on different
-   machines, sharing Mailman installations via NFS, be sure that the
-   clocks on those two machines are synchronized closely. You might take
-   a look at the file Mailman/LockFile.py; the constant CLOCK_SLOP helps
-   the locking mechanism compensate for clock skew in this type of
-   environment.
+   If you plan on running your mail and web servers on different machines,
+   sharing Mailman installations via NFS, be sure that the clocks on those
+   two machines are synchronized closely. You might take a look at the
+   file Mailman/LockFile.py; the constant CLOCK_SLOP helps the locking
+   mechanism compensate for clock skew in this type of environment.
 
    This section describes some of the things you need to do to connect
    Mailman's web interface to your web server. The instructions here are
@@ -293,9 +287,9 @@ GNU Mailman - Installation Manual
 
     ScriptAlias /mailman/       $prefix/cgi-bin/
 
-   Warning: You want to be very sure that the user id under which your
-   CGI scripts run is not in the mailman group you created above,
-   otherwise private archives will be accessible to anyone.
+   Warning: You want to be very sure that the user id under which your CGI
+   scripts run is not in the mailman group you created above, otherwise
+   private archives will be accessible to anyone.
 
    Copy the Mailman, Python, and GNU logos to a location accessible to
    your web server. E.g. with Apache, you've usually got an icons
@@ -311,22 +305,22 @@ GNU Mailman - Installation Manual
    The default value for IMAGE_LOGOS is /icons/. Read the comment in
    Defaults.py.in for details.
 
-   Configure your web server to point to the Pipermail public mailing
-   list archives. For example, in Apache:
+   Configure your web server to point to the Pipermail public mailing list
+   archives. For example, in Apache:
 
     Alias   /pipermail/     $varprefix/archives/public/
 
    where $varprefix is usually $prefix unless you've used the
    --with-var-prefix option to configure. Also be sure to configure your
-   web server to follow symbolic links in this directory, otherwise
-   public Pipermail archives won't be accessible. For Apache users,
-   consult the FollowSymLinks option.
+   web server to follow symbolic links in this directory, otherwise public
+   Pipermail archives won't be accessible. For Apache users, consult the
+   FollowSymLinks option.
 
-   If you're going to be supporting internationalized public archives,
-   you will probably want to turn off any default charset directive for
-   the Pipermail directory, otherwise your multilingual archive pages
-   won't show up correctly. Here's an example for Apache, based on the
-   standard installation directories:
+   If you're going to be supporting internationalized public archives, you
+   will probably want to turn off any default charset directive for the
+   Pipermail directory, otherwise your multilingual archive pages won't
+   show up correctly. Here's an example for Apache, based on the standard
+   installation directories:
 
     <Directory "/usr/local/mailman/archives/public/">
         AddDefaultCharset Off
@@ -340,8 +334,8 @@ GNU Mailman - Installation Manual
    Mailman's email interface to your mail server. The instructions here
    are different for each mail server; if your mail server is not
    described in the following subsections, try to generalize from the
-   existing documentation, and consider contributing documentation
-   updates to the Mailman developers.
+   existing documentation, and consider contributing documentation updates
+   to the Mailman developers.
 
    Under rare circumstances or due to mis-configuration, mail to the
    owner(s) of the 'mailman' site-list (see section 8) can bounce. In
@@ -402,6 +396,7 @@ GNU Mailman - Installation Manual
 
      * Add this to the bottom of the $prefix/Mailman/mm_cfg.py file:
         MTA = 'Postfix'
+
        The MTA variable names a module in the Mailman/MTA directory which
        contains the mail server-specific functions to be executed when a
        list is created or removed.
@@ -424,6 +419,7 @@ GNU Mailman - Installation Manual
      * Hack your Postfix's main.cf file to include the following path in
        your alias_maps variable:
           /usr/local/mailman/data/aliases
+
        Note that there should be no trailing .db. Do not include this in
        your alias_database variable. This is because you do not want
        Postfix's newaliases command to modify Mailman's aliases.db file,
@@ -433,11 +429,12 @@ GNU Mailman - Installation Manual
        Here's an example:
         alias_maps = hash:/etc/postfix/aliases,
             hash:/usr/local/mailman/data/aliases
-     * When you configure Mailman, use the --with-mail-gid=mailman
-       switch; this will be the default if you configured Mailman after
-       adding the mailman owner. Because the owner of the aliases.db file
-       is mailman, Postfix will execute Mailman's wrapper program as uid
-       and gid mailman.
+
+     * When you configure Mailman, use the --with-mail-gid=mailman switch;
+       this will be the default if you configured Mailman after adding the
+       mailman owner. Because the owner of the aliases.db file is mailman,
+       Postfix will execute Mailman's wrapper program as uid and gid
+       mailman.
 
    That's it! One caveat: when you add or remove a list, the aliases.db
    file will updated, but it will not automatically run postfix reload.
@@ -450,10 +447,10 @@ GNU Mailman - Installation Manual
 
    Note: This section describes how to integrate Mailman with Postfix for
    automatic generation of Postfix virtual_alias_maps for Mailman list
-   addresses. Mailman's support of virtual domains is limited in that
-   list names must be globally unique within a single Mailman instance,
-   i.e., two lists may not have the same name even if they are in
-   different domains.
+   addresses. Mailman's support of virtual domains is limited in that list
+   names must be globally unique within a single Mailman instance, i.e.,
+   two lists may not have the same name even if they are in different
+   domains.
 
    Postfix 2.0 supports ``virtual alias domains'', essentially what used
    to be called ``Postfix-style virtual domains'' in earlier Postfix
@@ -469,9 +466,8 @@ GNU Mailman - Installation Manual
    virtual-alias.domain anything line as described manpage (in recent
    Postfix this is not required if the domain is included in
    virtual_alias_domains in main.cf); Mailman will not include this line
-   in virtual-mailman. You are highly encouraged to make sure your
-   virtual alias domains are working properly before integrating with
-   Mailman.
+   in virtual-mailman. You are highly encouraged to make sure your virtual
+   alias domains are working properly before integrating with Mailman.
 
    Next, add a path to Postfix's virtual_alias_maps variable, pointing to
    the virtual-mailman file, e.g.:
@@ -485,14 +481,14 @@ GNU Mailman - Installation Manual
 
    Next, in your mm_cfg.py file, you will want to set the variable
    POSTFIX_STYLE_VIRTUAL_DOMAINS to the list of virtual domains that
-   Mailman should update. This may not be all of the virtual alias
-   domains that your Postfix installation supports! The values in this
-   list will be matched against the host_name attribute of mailing lists
-   objects, and must be an exact match.
+   Mailman should update. This may not be all of the virtual alias domains
+   that your Postfix installation supports! The values in this list will
+   be matched against the host_name attribute of mailing lists objects,
+   and must be an exact match.
 
-   Here's an example. Say that Postfix is configured to handle the
-   virtual domains dom1.ain, dom2.ain, and dom3.ain, and further that in
-   your main.cf file you've got the following settings:
+   Here's an example. Say that Postfix is configured to handle the virtual
+   domains dom1.ain, dom2.ain, and dom3.ain, and further that in your
+   main.cf file you've got the following settings:
 
     myhostname = mail.dom1.ain
     mydomain = dom1.ain
@@ -525,8 +521,8 @@ GNU Mailman - Installation Manual
 
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['dom2.ain', 'dom3.ain']
 
-   Now, any list that Mailman creates in either of those two domains,
-   will have the correct entries written to
+   Now, any list that Mailman creates in either of those two domains, will
+   have the correct entries written to
    /usr/local/mailman/data/virtual-mailman.
 
    As above with the data/aliases* files, you want to make sure that both
@@ -542,18 +538,17 @@ GNU Mailman - Installation Manual
      * (English) http://listes.rezo.net/how.php
 
    This is a good (and simpler) alternative if you don't mind exposing an
-   additional hostname in the domain part of the addresses people will
-   use to contact your list. I.e. if people should use
-   mylist@lists.dom.ain instead of mylist@dom.ain.
+   additional hostname in the domain part of the addresses people will use
+   to contact your list. I.e. if people should use mylist@lists.dom.ain
+   instead of mylist@dom.ain.
 
 6.2 Using the Exim mail server
 
-   Note: This section is derived from Nigel Metheringham's ``HOWTO -
-   Using Exim and Mailman together'', which covers Mailman 2.0.x and Exim
-   3. It has been updated to cover Mailman 2.1 and Exim 4. The updated
-   document is here: http://www.exim.org/howto/mailman21.html and is
-   recommended over the information in the subsections below if you are
-   using Exim 4.
+   Note: This section is derived from Nigel Metheringham's ``HOWTO - Using
+   Exim and Mailman together'', which covers Mailman 2.0.x and Exim 3. It
+   has been updated to cover Mailman 2.1 and Exim 4. The updated document
+   is here: http://www.exim.org/howto/mailman21.html and is recommended
+   over the information in the subsections below if you are using Exim 4.
 
    There is no Mailman configuration needed other than the standard
    options detailed in the Mailman install documentation. The Exim
@@ -586,16 +581,16 @@ GNU Mailman - Installation Manual
 
    Note: The instructions in this document should work with either Exim 3
    or Exim 4. In Exim 3, you must have a local_domains configuration
-   setting; in Exim 4, you most likely have a local_domains domainlist.
-   If you don't, you probably know what you're doing and can adjust
+   setting; in Exim 4, you most likely have a local_domains domainlist. If
+   you don't, you probably know what you're doing and can adjust
    accordingly. Similarly, in Exim 4 the concept of ``directors'' has
    disappeared - there are only routers now. So if you're using Exim 4,
    whenever this document says ``director'', read ``router''.
 
    Whether you are using Exim 3 or Exim 4, you will need to add some
-   macros to the main section of your Exim config file. You will also
-   need to define one new transport. With Exim 3, you'll need to add a
-   new director; with Exim 4, a new router plays the same role.
+   macros to the main section of your Exim config file. You will also need
+   to define one new transport. With Exim 3, you'll need to add a new
+   director; with Exim 4, a new router plays the same role.
 
    Finally, the configuration supplied here should allow co-habiting
    Mailman 2.0 and 2.1 installations, with the proviso that you'll
@@ -604,8 +599,8 @@ GNU Mailman - Installation Manual
 
   6.2.2 Main configuration settings
 
-   First, you need to add some macros to the top of your Exim config
-   file. These just make the director (router) and transport below a bit
+   First, you need to add some macros to the top of your Exim config file.
+   These just make the director (router) and transport below a bit
    cleaner. Obviously, you'll need to edit these based on how you
    configured and installed Mailman.
 
@@ -659,10 +654,10 @@ GNU Mailman - Installation Manual
   6.2.5 Router for Exim 4
 
    In Exim 4, there's no such thing as directors - you need to add a new
-   router instead. Also, the canonical order of the configuration file
-   was changed so routers come before transports, so the router for Exim
-   4 comes first here. Put this router somewhere after the ``begin
-   routers'' line of your config file, and remember that order matters.
+   router instead. Also, the canonical order of the configuration file was
+   changed so routers come before transports, so the router for Exim 4
+   comes first here. Put this router somewhere after the ``begin routers''
+   line of your config file, and remember that order matters.
 
   mailman_router:
     driver = accept
@@ -686,45 +681,44 @@ GNU Mailman - Installation Manual
    Exim should be configured to allow reasonable volume - e.g. don't set
    max_recipients down to a silly value - and with normal degrees of
    security - specifically, be sure to allow relaying from 127.0.0.1, but
-   pretty much nothing else. Parallel deliveries and other tweaks can
-   also be used if you like; experiment with your setup to see what
-   works. Delay warning messages should be switched off or configured to
-   only happen for non-list mail, unless you like receiving tons of mail
-   when some random host is down.
+   pretty much nothing else. Parallel deliveries and other tweaks can also
+   be used if you like; experiment with your setup to see what works.
+   Delay warning messages should be switched off or configured to only
+   happen for non-list mail, unless you like receiving tons of mail when
+   some random host is down.
 
   6.2.8 Problems
 
      * Mailman will send as many MAIL FROM/RCPT TO as it needs. It may
        result in more than 10 or 100 messages sent in one connection,
        which will exceed the default value of Exim's
-       smtp_accept_queue_per_connection value. This is bad because it
-       will cause Exim to switch into queue mode and severely delay
-       delivery of your list messages. The way to fix this is to set
-       Mailman's SMTP_MAX_SESSIONS_PER_CONNECTION (in
-       $prefix/Mailman/mm_cfg.py) to a smaller value than Exim's
-       smtp_accept_queue_per_connection.
-     * Mailman should ignore Exim delay warning messages, even though
-       Exim should never send this to list messages. Mailman 2.1's
-       general bounce detection and VERP support should greatly improve
-       the bounce detector's hit rates.
+       smtp_accept_queue_per_connection value. This is bad because it will
+       cause Exim to switch into queue mode and severely delay delivery of
+       your list messages. The way to fix this is to set Mailman's
+       SMTP_MAX_SESSIONS_PER_CONNECTION (in $prefix/Mailman/mm_cfg.py) to
+       a smaller value than Exim's smtp_accept_queue_per_connection.
+     * Mailman should ignore Exim delay warning messages, even though Exim
+       should never send this to list messages. Mailman 2.1's general
+       bounce detection and VERP support should greatly improve the bounce
+       detector's hit rates.
      * List existence is determined by the existence of a config.pck file
        for a list. If you delete lists by foul means, be aware of this.
      * If you are getting Exim or Mailman complaining about user ids when
        you send mail to a list, check that the MAILMAN_USER and
-       MAILMAN_GROUP match those of Mailman itself (i.e. what were used
-       in the configure script). Also make sure you do not have aliases
-       in the main alias file for the list.
+       MAILMAN_GROUP match those of Mailman itself (i.e. what were used in
+       the configure script). Also make sure you do not have aliases in
+       the main alias file for the list.
 
   6.2.9 Receiver Verification
 
    Exim's receiver verification feature is very useful - it lets Exim
-   reject unrouteable addresses at SMTP time. However, this is most
-   useful for externally-originating mail that is addressed to mail in
-   one of your local domains. For Mailman list traffic, mail originates
-   on your server, and is addressed to random external domains that are
-   not under your control. Furthermore, each message is addressed to many
-   recipients - up to 500 if you use Mailman's default configuration and
-   don't tweak SMTP_MAX_RCPTS.
+   reject unrouteable addresses at SMTP time. However, this is most useful
+   for externally-originating mail that is addressed to mail in one of
+   your local domains. For Mailman list traffic, mail originates on your
+   server, and is addressed to random external domains that are not under
+   your control. Furthermore, each message is addressed to many recipients
+   - up to 500 if you use Mailman's default configuration and don't tweak
+   SMTP_MAX_RCPTS.
 
    Doing receiver verification on Mailman list traffic is a recipe for
    trouble. In particular, Exim will attempt to route every recipient
@@ -764,8 +758,8 @@ GNU Mailman - Installation Manual
    bounces are themselves not bounceable. Thus, you might want to disable
    SMTP callback on bounce messages.
 
-   With Exim 4, you can accomplish this using something like the
-   following in your RCPT TO ACL:
+   With Exim 4, you can accomplish this using something like the following
+   in your RCPT TO ACL:
 
   # Accept bounces to lists even if callbacks or other checks would fail
   warn     message      = X-WhitelistedRCPT-nohdrfromcallback: Yes
@@ -829,10 +823,10 @@ GNU Mailman - Installation Manual
 
   6.2.13 List Verification
 
-   This is how a set of address tests for the Exim lists look on a
-   working system. The list in question is
-   quixote-users@mems-exchange.org, and these commands were run on the
-   mems-exchange.org mail server ("% " indicates the Unix shell prompt):
+   This is how a set of address tests for the Exim lists look on a working
+   system. The list in question is quixote-users@mems-exchange.org, and
+   these commands were run on the mems-exchange.org mail server ("% "
+   indicates the Unix shell prompt):
 
   % exim -bt quixote-users
   quixote-users@mems-exchange.org
@@ -852,8 +846,8 @@ GNU Mailman - Installation Manual
 
    If your exim -bt output looks something like this, that's a start: at
    least it means Exim will pass the right messages to the right Mailman
-   commands. It by no means guarantees that your Exim/Mailman
-   installation is functioning perfectly, though!
+   commands. It by no means guarantees that your Exim/Mailman installation
+   is functioning perfectly, though!
 
   6.2.14 Document History
 
@@ -867,11 +861,11 @@ GNU Mailman - Installation Manual
    Warning: You may be tempted to set the DELIVERY_MODULE configuration
    variable in mm_cfg.py to 'Sendmail' when using the Sendmail mail
    server. Don't. The Sendmail.py module is misnamed - it's really a
-   command line based message handoff scheme as opposed to the SMTP
-   scheme used in SMTPDirect.py (the default). Sendmail.py has known
-   security holes and is provided as a proof-of-concept only^4. If you
-   are having problems using SMTPDirect.py fix those instead of using
-   Sendmail.py, or you may open your system up to security exploits.
+   command line based message handoff scheme as opposed to the SMTP scheme
+   used in SMTPDirect.py (the default). Sendmail.py has known security
+   holes and is provided as a proof-of-concept only^4. If you are having
+   problems using SMTPDirect.py fix those instead of using Sendmail.py, or
+   you may open your system up to security exploits.
 
   6.3.1 Sendmail ``smrsh'' compatibility
 
@@ -879,9 +873,9 @@ GNU Mailman - Installation Manual
    utility called ``smrsh'', which limits the executables that Sendmail
    will allow to be used as mail programs. You need to explicitly allow
    Mailman's wrapper program to be used with smrsh or Mailman will not
-   work. If mail is not getting delivered to Mailman's wrapper program
-   and you're getting an ``operating system error'' in your mail syslog,
-   this could be your problem.
+   work. If mail is not getting delivered to Mailman's wrapper program and
+   you're getting an ``operating system error'' in your mail syslog, this
+   could be your problem.
 
    One good way of enabling this is:
 
@@ -890,12 +884,11 @@ GNU Mailman - Installation Manual
 
      * Figure out where smrsh expects symlinks for allowable mail
        programs. At the very beginning of the following output you will
-       see a full path to some directory, e.g. /var/adm/sm.bin or
-       similar:
+       see a full path to some directory, e.g. /var/adm/sm.bin or similar:
             % strings $path_to_smrsh | less
 
-     * cd into /var/adm/sm.bin, or where ever it happens to reside on
-       your system - alternatives include /etc/smrsh, /var/smrsh and
+     * cd into /var/adm/sm.bin, or where ever it happens to reside on your
+       system - alternatives include /etc/smrsh, /var/smrsh and
        /usr/local/smrsh.
             % cd /var/adm/sm.bin
 
@@ -906,8 +899,8 @@ GNU Mailman - Installation Manual
 
    David Champion has contributed a recipe for more closely integrating
    Sendmail and Mailman, such that Sendmail will automatically recognize
-   and deliver to new mailing lists as they are created, without having
-   to manually edit alias tables.
+   and deliver to new mailing lists as they are created, without having to
+   manually edit alias tables.
 
    In the contrib directory of Mailman's source distribution, you will
    find four files:
@@ -920,27 +913,27 @@ GNU Mailman - Installation Manual
   6.3.3 Performance notes
 
    One of the surest performance killers for Sendmail users is when
-   Sendmail is configured to synchronously verify the recipient's host
-   via DNS. If it does this for messages posted to it from Mailman, you
-   will get horrible performance. Since Mailman usually connects via
-   localhost (i.e. 127.0.0.1) to the SMTP port of Sendmail, you should be
-   sure to configure Sendmail to not do DNS verification synchronously
-   for localhost connections.
+   Sendmail is configured to synchronously verify the recipient's host via
+   DNS. If it does this for messages posted to it from Mailman, you will
+   get horrible performance. Since Mailman usually connects via localhost
+   (i.e. 127.0.0.1) to the SMTP port of Sendmail, you should be sure to
+   configure Sendmail to not do DNS verification synchronously for
+   localhost connections.
 
 6.4 Using the Qmail mail server
 
-   There are some issues that users of the qmail mail transport agent
-   have encountered. None of the core maintainers use qmail, so all of
-   this information has been contributed by the Mailman user community,
-   especially Martin Preishuber and Christian Tismer, with notes by
-   Balazs Nagy (BN) and Norbert Bollow (NB).
+   There are some issues that users of the qmail mail transport agent have
+   encountered. None of the core maintainers use qmail, so all of this
+   information has been contributed by the Mailman user community,
+   especially Martin Preishuber and Christian Tismer, with notes by Balazs
+   Nagy (BN) and Norbert Bollow (NB).
 
      * You might need to set the mail-gid user to either qmail, mailman,
        or nofiles by using the --with-mail-gid configure option.
        BN: it highly depends on your mail storing policy. For example if
        you use the simple ~alias/.qmail-* files, you can use `id -g
-       alias`. But if you use /var/qmail/users, the specified mail gid
-       can be used.
+       alias`. But if you use /var/qmail/users, the specified mail gid can
+       be used.
        If you are going to be directing virtual domains directly to the
        mailman user (using ``virtualdomains'' on a list-only domain, for
        example), you will have to use --with-mail-gid=gid of mailman
@@ -949,17 +942,18 @@ GNU Mailman - Installation Manual
      * If there is a user mailman on your system, the alias mailman-owner
        will work only in ~mailman. You have to do a touch .qmail-owner in
        ~mailman directory to create this alias.
-       NB: An alternative, IMHO better solution is to chown root
-       ~mailman, that will stop qmail from considering mailman to be a
-       user to whom mail can be delivered. (See ``man 8 qmail-getpw''.)
-     * In a related issue, if you have any users with the same name as
-       one of your mailing lists, you will have problems if list names
-       contain "-" in them. Putting .qmail redirections into the user's
-       home directory doesn't work because the Mailman wrappers will not
-       get spawned with the proper GID. The solution is to put the
-       following lines in the /var/qmail/users/assign file:
+       NB: An alternative, IMHO better solution is to chown root ~mailman,
+       that will stop qmail from considering mailman to be a user to whom
+       mail can be delivered. (See ``man 8 qmail-getpw''.)
+     * In a related issue, if you have any users with the same name as one
+       of your mailing lists, you will have problems if list names contain
+       "-" in them. Putting .qmail redirections into the user's home
+       directory doesn't work because the Mailman wrappers will not get
+       spawned with the proper GID. The solution is to put the following
+       lines in the /var/qmail/users/assign file:
   +zope-:alias:112:11:/var/qmail/alias:-:zope-:
   .
+
        where in this case the listname is e.g. zope-users.
        NB: Alternatively, you could host the lists on a virtual domain,
        and use the /var/qmail/control/virtualdomains file to put the
@@ -981,26 +975,30 @@ GNU Mailman - Installation Manual
        Then make your aliases:
           .qmail              => mailman@...'s letters
           .qmail-owner        => mailman-owner's letters
+
        For list aliases, you can either create them manually:
           .qmail-list         => posts to the 'list' list
           .qmail-list-admin   => posts to the 'list's owner
           .qmail-list-request => requests to 'list'
           etc
+
        or for automatic list alias handling (when using the lists.kva.hu
        virtual as above), see contrib/qmail-to-mailman.py in the Mailman
-       source distribution. Modify the ~mailman/.qmail-default to
-       include:
+       source distribution. Modify the ~mailman/.qmail-default to include:
           |preline /path/to/python /path/to/qmail-to-mailman.py
+
        and new lists will automatically be picked up.
      * You have to make sure that the localhost can relay. If you start
        qmail via inetd and tcpenv, you need some line the following in
        your /etc/hosts.allow file:
       tcp-env: 127. 10.205.200. : setenv RELAYCLIENT
+
        where 10.205.200. is your IP address block. If you use tcpserver,
        then you need something like the following in your /etc/tcp.smtp
        file:
       10.205.200.:allow,RELAYCLIENT=""
       127.:allow,RELAYCLIENT=""
+
      * BN: Bigger /var/qmail/control/concurrencyremote values work better
        sending outbound messages, within reason. Unless you know your
        system can handle it (many if not most cannot) this should not be
@@ -1009,8 +1007,8 @@ GNU Mailman - Installation Manual
        in the qmail documentation.
 
    BN: Last but not least, here's a little script to generate aliases to
-   your lists (if for some reason you can/will not have them
-   automatically picked up using contrib/qmail-to-mailman.py):
+   your lists (if for some reason you can/will not have them automatically
+   picked up using contrib/qmail-to-mailman.py):
 
    This script is for the Mailman 2.0 series:
 
@@ -1036,22 +1034,22 @@ if [ $# = 1 ]; then
     echo Making links to $i in the current directory...
     echo "|preline /usr/local/mailman/mail/mailman post $i" > .qmail-$i
     echo "|preline /usr/local/mailman/mail/mailman admin $i" > .qmail-$i-admin
-    echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-boun
-ces
+    echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bounc
+es
     # The following line is for VERP
-    # echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bo
-unces-default
-    echo "|preline /usr/local/mailman/mail/mailman confirm $i" > .qmail-$i-conf
-irm
+    # echo "|preline /usr/local/mailman/mail/mailman bounces $i" > .qmail-$i-bou
+nces-default
+    echo "|preline /usr/local/mailman/mail/mailman confirm $i" > .qmail-$i-confi
+rm
     echo "|preline /usr/local/mailman/mail/mailman join $i" > .qmail-$i-join
     echo "|preline /usr/local/mailman/mail/mailman leave $i" > .qmail-$i-leave
     echo "|preline /usr/local/mailman/mail/mailman owner $i" > .qmail-$i-owner
-    echo "|preline /usr/local/mailman/mail/mailman request $i" > .qmail-$i-requ
-est
-    echo "|preline /usr/local/mailman/mail/mailman subscribe $i" > .qmail-$i-su
-bscribe
-    echo "|preline /usr/local/mailman/mail/mailman unsubscribe $i" > .qmail-$i-
-unsubscribe
+    echo "|preline /usr/local/mailman/mail/mailman request $i" > .qmail-$i-reque
+st
+    echo "|preline /usr/local/mailman/mail/mailman subscribe $i" > .qmail-$i-sub
+scribe
+    echo "|preline /usr/local/mailman/mail/mailman unsubscribe $i" > .qmail-$i-u
+nsubscribe
 fi
 
   6.4.1 Information on VERP
@@ -1067,8 +1065,8 @@ fi
 
    The second option is a patch on SourceForge located at:
 
-   http://sourceforge.net/tracker/?func=detail&atid=300103&aid=645513&gro
-   up_id=103
+   http://sourceforge.net/tracker/?func=detail&atid=300103&aid=645513&grou
+   p_id=103
 
    This patch currently needs more testing and might best be suitable for
    developers or people well familiar with qmail. Having said that, this
@@ -1080,11 +1078,10 @@ fi
    As mentioned in the 6.4 section for a virtual mail server, a patch
    under testing is located at:
 
-   http://sf.net/tracker/index.php?func=detail&aid=621257&group_id=103&at
-   id=300103
+   http://sf.net/tracker/index.php?func=detail&aid=621257&group_id=103&ati
+   d=300103
 
-   Again, this patch is for people familiar with their qmail
-   installation.
+   Again, this patch is for people familiar with their qmail installation.
 
   6.4.3 More information
 
@@ -1095,8 +1092,8 @@ fi
 
                           7 Review your site defaults
 
-   Mailman has a large number of site-wide configuration options which
-   you should now review and change according to your needs. Some of the
+   Mailman has a large number of site-wide configuration options which you
+   should now review and change according to your needs. Some of the
    options control how Mailman interacts with your environment, and other
    options select defaults for newly created lists^5. There are system
    tuning parameters and integration options.
@@ -1160,8 +1157,8 @@ fi
     % crontab -u mailman crontab.in
 
    If you used the --with-username option, use that user name instead of
-   mailman for the -u argument value. If your crontab does not support
-   the -u option, try these commands:
+   mailman for the -u argument value. If your crontab does not support the
+   -u option, try these commands:
 
     % cd $prefix/cron
     % su - mailman
@@ -1184,7 +1181,7 @@ fi
    output to be mailed to a real user or to the owner of the site list or
    to configure the site list (see section 8) to accept this mail.
 
-                         10 Start the Mailman qrunner
+                          10 Start the Mailman qrunner
 
    Mailman depends on a process called the ``qrunner'' to delivery all
    email messages it sees. You must start the qrunner by executing the
@@ -1231,13 +1228,12 @@ fi
     % cd ../rc6.d
     % ln -s ../init.d/mailman K12mailman
 
-                        11 Check the hostname settings
+                         11 Check the hostname settings
 
-   You should check the values for DEFAULT_EMAIL_HOST and
-   DEFAULT_URL_HOST in Defaults.py. Make any necessary changes in the
-   mm_cfg.py file, not in the Defaults.py file. If you change either of
-   these two values, you'll want to add the following afterwards in the
-   mm_cfg.py file:
+   You should check the values for DEFAULT_EMAIL_HOST and DEFAULT_URL_HOST
+   in Defaults.py. Make any necessary changes in the mm_cfg.py file, not
+   in the Defaults.py file. If you change either of these two values,
+   you'll want to add the following afterwards in the mm_cfg.py file:
 
     add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
@@ -1249,15 +1245,15 @@ fi
    There are two site-wide passwords that you can create from the command
    line, using the bin/mmsitepass script. The first is the ``site
    password'' which can be used anywhere a password is required in the
-   system. The site password will get you into the administration page
-   for any list, and it can be used to log in as any user. Think root for
-   a Unix system, so pick this password wisely!
+   system. The site password will get you into the administration page for
+   any list, and it can be used to log in as any user. Think root for a
+   Unix system, so pick this password wisely!
 
    The second password is a site-wide ``list creator'' password. You can
    use this to delegate the ability to create new mailing lists without
-   providing all the privileges of the site password. Of course, the
-   owner of the site password can also create new mailing lists, but the
-   list creator password is limited to just that special role.
+   providing all the privileges of the site password. Of course, the owner
+   of the site password can also create new mailing lists, but the list
+   creator password is limited to just that special role.
 
    To set the site password, use this command:
 
@@ -1267,25 +1263,25 @@ fi
 
     % $prefix/bin/mmsitepass -c <list-creator-password>
 
-   It is okay not to set a list creator password, but you probably do
-   want a site password.
+   It is okay not to set a list creator password, but you probably do want
+   a site password.
 
                        13 Create your first mailing list
 
    For more detailed information about using Mailman, including creating
    and configuring mailing lists, see the Mailman List Adminstration
-   Manual. These instructions provide a quick guide to creating your
-   first mailing list via the web interface:
+   Manual. These instructions provide a quick guide to creating your first
+   mailing list via the web interface:
 
      * Start by visiting the url http://my.dom.ain/mailman/create.
      * Fill out the form as described in the on-screen instructions, and
        in the ``List creator's password'' field, type the password you
-       entered in section 7. Type your own email address for the
-       ``Initial list owner address'', and select ``Yes'' to notify the
-       list administrator.
+       entered in section 7. Type your own email address for the ``Initial
+       list owner address'', and select ``Yes'' to notify the list
+       administrator.
      * Click on the ``Create List'' button.
-     * Check your email for a message from Mailman informing you that
-       your new mailing list was created.
+     * Check your email for a message from Mailman informing you that your
+       new mailing list was created.
      * Now visit the list's administration page, either by following the
        link on the confirmation web page or clicking on the link from the
        email Mailman just sent you. Typically the url will be something
@@ -1303,7 +1299,7 @@ fi
    mailing list. If you had any problems along the way, please see the 14
    section.
 
-                              14 Troubleshooting
+                               14 Troubleshooting
 
    If you encounter problems with running Mailman, first check the
    question and answer section below. If your problem is not covered
@@ -1324,8 +1320,8 @@ fi
    Here is a list of some common questions and answers:
 
      * Problem: All Mailman web pages give a 404 File not found error.
-       Solution: Your web server has not been set up properly for
-       handling Mailman's CGI programs. Make sure you have:
+       Solution: Your web server has not been set up properly for handling
+       Mailman's CGI programs. Make sure you have:
          1. configured the web server to give permissions to
             $prefix/cgi-bin
          2. restarted the web server properly.
@@ -1333,25 +1329,26 @@ fi
        do check these issues.
      * Problem: All Mailman web pages give an "Internal Server Error".
        Solution: The likely problem is that you are using the wrong user
-       or group for the CGI scripts. Check your web server's log files.
-       If you see a line like
+       or group for the CGI scripts. Check your web server's log files. If
+       you see a line like
             Attempt to exec script with invalid gid 51, expected 99
-       you will need to reinstall Mailman, specifying the proper CGI
-       group id, as described in the 3 section.
-     * Problem: I send mail to the list, and get back mail saying the
-       list is not found!
+
+       you will need to reinstall Mailman, specifying the proper CGI group
+       id, as described in the 3 section.
+     * Problem: I send mail to the list, and get back mail saying the list
+       is not found!
        Solution: You probably didn't add the necessary aliases to the
        system alias database, or you didn't properly integrate Mailman
        with your mail server. Perhaps you didn't update the alias
-       database, or your system requires you to run newaliases
-       explicitly. Refer to your server specific instructions in the 6
-       section.
+       database, or your system requires you to run newaliases explicitly.
+       Refer to your server specific instructions in the 6 section.
      * Problem: I send mail to the list, and get back mail saying,
        ``unknown mailer error''.
        Solution: The likely problem is that you are using the wrong user
        or group id for the mail wrappers. Check your mail server's log
        files; if you see a line like
             Attempt to exec script with invalid gid 51, expected 99
+
        you will need to reinstall Mailman, specifying the proper mail
        group id as described in the 3 section.
      * Problem: I use Postfix as my mail server and the mail wrapper
@@ -1374,22 +1371,21 @@ fi
        and add the link there. Note further any aliases newaliases spits
        out will need to be adjusted to point to the secure link to the
        wrapper.
-     * Problem: I messed up when I called configure. How do I clean
-       things up and re-install?
+     * Problem: I messed up when I called configure. How do I clean things
+       up and re-install?
        Solution:
         % make clean
         % ./configure --with-the-right-options
         % make install
 
-                    15 Platform and operating system notes
+                     15 Platform and operating system notes
 
-   Generally, Mailman runs on any POSIX-based system, such as Solaris,
-   the various BSD variants, Linux systems, MacOSX, and other generic
-   Unix systems. It doesn't run on Windows. For the most part, the
-   generic instructions given in this document should be sufficient to
-   get Mailman working on any supported platform. Some operating systems
-   have additional recommended installation or configuration
-   instructions.
+   Generally, Mailman runs on any POSIX-based system, such as Solaris, the
+   various BSD variants, Linux systems, MacOSX, and other generic Unix
+   systems. It doesn't run on Windows. For the most part, the generic
+   instructions given in this document should be sufficient to get Mailman
+   working on any supported platform. Some operating systems have
+   additional recommended installation or configuration instructions.
 
 15.1 GNU/Linux issues
 
@@ -1406,9 +1402,9 @@ fi
        build as the mailman user, you need to be sure mailman is in the
        cctools group.
      * If you installed Python from your Linux distribution's package
-       manager (e.g. .rpms for Redhat-derived systems or .deb for
-       Debian), you must install the ``development'' package of Python,
-       or you may not get everything you need.
+       manager (e.g. .rpms for Redhat-derived systems or .deb for Debian),
+       you must install the ``development'' package of Python, or you may
+       not get everything you need.
        For example, using Python 2.2 on Debian, you will need to install
        the python2.2-dev package. On Redhat, you probably need the
        python2-devel package.
@@ -1420,6 +1416,7 @@ fi
               import paths
           ImportError: No module named paths
           make: *** [update] Error 1
+
        If this happens, install the Python development package and try
        configure and make install again. Or install the latest version of
        Python from source, available from http://www.python.org.
@@ -1455,8 +1452,8 @@ fi
        http://www.afp548.com/Articles/mail/python-mailman.html
      * Kathleen Webb posted her experiences in getting Mailman running on
        Jaguar using Sendmail.
-       http://mail.python.org/pipermail/mailman-users/2002-October/022944
-       .html
+       http://mail.python.org/pipermail/mailman-users/2002-October/022944.
+       html
      * Panther server (MacOSX 10.3) comes with Mailman; Your operating
        system should contain documentation that will help you, and Apple
        has a tech document about a problem you might encounter running
@@ -1470,26 +1467,26 @@ fi
    installation. Users of earlier versions of Mac OSX contains Sendmail
    and those users should look at the Sendmail installation section for
    tips. You should follow the basic installation steps as described
-   earlier in this manual, substituting as appropriate, the steps
-   outlined in this section.
+   earlier in this manual, substituting as appropriate, the steps outlined
+   in this section.
 
    By default, Mac OSX 10.3 'client' version does not have a fully
-   functional version of Postfix. Setting up a working MTA such as
-   Postfix is beyond the scope of this guide and you should refer to
-   http://www.postfix.org for tips on getting Postfix running. An easy
-   way to set Postfix up is to install and run Postfix Enabler, a
-   stand-alone tool for configuring Postfix on Mac OSX, available from
+   functional version of Postfix. Setting up a working MTA such as Postfix
+   is beyond the scope of this guide and you should refer to
+   http://www.postfix.org for tips on getting Postfix running. An easy way
+   to set Postfix up is to install and run Postfix Enabler, a stand-alone
+   tool for configuring Postfix on Mac OSX, available from
    http://www.roadstead.com/weblog/Tutorials/PostfixEnabler.html.
 
-   Likewise, Mac OSX 'client' version from 10.1 onwards includes a
-   working Apache webserver. This is switched on using the System
-   Preferences control panel under the 'Sharing tab'. A useful tool for
-   configuring the Apache on Mac OSX is Webmin, which can be obtained
-   from http://www.webmin.com.
+   Likewise, Mac OSX 'client' version from 10.1 onwards includes a working
+   Apache webserver. This is switched on using the System Preferences
+   control panel under the 'Sharing tab'. A useful tool for configuring
+   the Apache on Mac OSX is Webmin, which can be obtained from
+   http://www.webmin.com.
 
-   Webmin can also perform configuration for other system tasks,
-   including Postfix, adding jobs to your crontab, adding user and
-   groups, plus adding startup and shutdown jobs.
+   Webmin can also perform configuration for other system tasks, including
+   Postfix, adding jobs to your crontab, adding user and groups, plus
+   adding startup and shutdown jobs.
 
    In a stock installation of OSX, the requirement for Mailman is to have
    Python installed. Python is not installed by default, so it is advised
@@ -1500,8 +1497,7 @@ fi
    will come in handy at a later date should you need other tools. The
    developer's tools are also know by the name XCode tools.
 
-   As a minimum, the Python version should be 2.2, but 2.3 is
-   recommended.
+   As a minimum, the Python version should be 2.2, but 2.3 is recommended.
 
    If you wish to add a user and group using the command line in OSX
    instead of via Webmin or another GUI interface, open your terminal
@@ -1549,19 +1545,19 @@ tar xvf MailmanStartup.tar
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, May 15, 2012, Release 2.1
+   GNU Mailman - Installation Manual, September 28, 2013, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
-   LaTeX2HTML is Copyright © 1993, 1994, 1995, 1996, 1997, Nikos Drakos,
-   Computer Based Learning Unit, University of Leeds, and Copyright ©
+   LaTeX2HTML is Copyright Â© 1993, 1994, 1995, 1996, 1997, Nikos Drakos,
+   Computer Based Learning Unit, University of Leeds, and Copyright Â©
    1997, 1998, Ross Moore, Mathematics Department, Macquarie University,
    Sydney.
 
    The application of LaTeX2HTML to the Python documentation has been
    heavily tailored by Fred L. Drake, Jr. Original navigation icons were
    contributed by Christopher Petrilli.
-     _________________________________________________________________
+     __________________________________________________________________
 
     Footnotes
 
@@ -1570,24 +1566,23 @@ tar xvf MailmanStartup.tar
           installation is complete.
 
    .../usr/local/mailman^2
-          This is the default for Mailman 2.1. Earlier versions of
-          Mailman installed everything under /home/mailman by default.
+          This is the default for Mailman 2.1. Earlier versions of Mailman
+          installed everything under /home/mailman by default.
 
    ... set^3
           BSD users should see the 15.2 section for additional
           information.
 
    ... only^4
-          In fact, in later versions of Mailman, this module is
-          explicitly sabotaged. You have to know what you're doing in
-          order to re-enable it.
+          In fact, in later versions of Mailman, this module is explicitly
+          sabotaged. You have to know what you're doing in order to
+          re-enable it.
 
    ... lists^5
-          In general, changing the list defaults described in this
-          section will not affect any already created lists. To make
-          changes after a list has been created, use the web interface or
-          the command line scripts, such as bin/withlist and
-          bin/config_list.
+          In general, changing the list defaults described in this section
+          will not affect any already created lists. To make changes after
+          a list has been created, use the web interface or the command
+          line scripts, such as bin/withlist and bin/config_list.
 
    ... time^6
           Note that if you're upgrading from a previous version of
@@ -1599,9 +1594,9 @@ tar xvf MailmanStartup.tar
    ... list^7
           You must subscribe to this mailing list in order to post to it,
           but the mailing list's archives are publicly visible.
-     _________________________________________________________________
+     __________________________________________________________________
 
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
-     _________________________________________________________________
+     __________________________________________________________________
 
-   Release 2.1, documentation updated on May 15, 2012.
+   Release 2.1, documentation updated on September 28, 2013.

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -64,13 +64,20 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
         charset = 'us-ascii'
     return Header(s, charset, maxlinelen, header_name, continuation_ws)
 
+def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
+    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list == 2:
+        msgdata.setdefault('add_header', {})[name] = value
+    elif repl or not msg.has_key(name):
+        if delete:
+            del msg[name]
+        msg[name] = value
+
 
 
 def process(mlist, msg, msgdata):
     # Set the "X-Ack: no" header if noack flag is set.
     if msgdata.get('noack'):
-        del msg['x-ack']
-        msg['X-Ack'] = 'no'
+        change_header('X-Ack', 'no', mlist, msg, msgdata)
     # Because we're going to modify various important headers in the email
     # message, we want to save some of the information in the msgdata
     # dictionary for later.  Specifically, the sender header will get waxed,
@@ -87,7 +94,8 @@ def process(mlist, msg, msgdata):
             pass
     # Mark message so we know we've been here, but leave any existing
     # X-BeenThere's intact.
-    msg['X-BeenThere'] = mlist.GetListEmail()
+    change_header('X-BeenThere', mlist.GetListEmail(),
+                  mlist, msg, msgdata, delete=False)
     # Add Precedence: and other useful headers.  None of these are standard
     # and finding information on some of them are fairly difficult.  Some are
     # just common practice, and we'll add more here as they become necessary.
@@ -101,12 +109,32 @@ def process(mlist, msg, msgdata):
     # known exploits in a particular version of Mailman and we know a site is
     # using such an old version, they may be vulnerable.  It's too easy to
     # edit the code to add a configuration variable to handle this.
-    if not msg.has_key('x-mailman-version'):
-        msg['X-Mailman-Version'] = mm_cfg.VERSION
+    change_header('X-Mailman-Version', mm_cfg.VERSION,
+                  mlist, msg, msgdata, repl=False)
     # We set "Precedence: list" because this is the recommendation from the
     # sendmail docs, the most authoritative source of this header's semantics.
-    if not msg.has_key('precedence'):
-        msg['Precedence'] = 'list'
+    change_header('Precedence', 'list',
+                  mlist, msg, msgdata, repl=False)
+    # Do we change the from so the list takes ownership of the email
+    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list:
+        realname, email = parseaddr(msg['from'])
+        replies = getaddresses(msg.get('reply-to', ''))
+        reply_addrs = [x[1].lower() for x in replies]
+        if reply_addrs:
+            if email.lower() not in reply_addrs:
+                rt = msg['reply-to'] + ', ' + msg['from']
+            else:
+                rt = msg['reply-to']
+        else:
+            rt = msg['from']
+        change_header('Reply-To', rt, mlist, msg, msgdata)
+        change_header('From',
+                      formataddr(('%s via %s' % (realname, mlist.real_name),
+                                 mlist.GetListEmail())),
+                      mlist, msg, msgdata)
+        if mlist.from_is_list != 2:
+            del msg['sender']
+        #MAS ?? mlist.include_sender_header = 0
     # Reply-To: munging.  Do not do this if the message is "fast tracked",
     # meaning it is internally crafted and delivered to a specific user.  BAW:
     # Yuck, I really hate this feature but I've caved under the sheer pressure
@@ -142,12 +170,14 @@ def process(mlist, msg, msgdata):
         if mlist.reply_goes_to_list == 1:
             i18ndesc = uheader(mlist, mlist.description, 'Reply-To')
             add((str(i18ndesc), mlist.GetListEmail()))
-        del msg['reply-to']
         # Don't put Reply-To: back if there's nothing to add!
         if new:
             # Preserve order
-            msg['Reply-To'] = COMMASPACE.join(
-                [formataddr(pair) for pair in new])
+            change_header('Reply-To', 
+                          COMMASPACE.join([formataddr(pair) for pair in new]),
+                          mlist, msg, msgdata)
+        else:
+            del msg['reply-to']
         # The To field normally contains the list posting address.  However
         # when messages are fully personalized, that header will get
         # overwritten with the address of the recipient.  We need to get the
@@ -157,9 +187,11 @@ def process(mlist, msg, msgdata):
         # Cc header.  BAW: should we force it into a Reply-To header in the
         # above code?
         # Also skip Cc if this is an anonymous list as list posting address
-        # is already in From and Reply-To in this case.
+        # is already in From and Reply-To in this case and similarly for
+        # an 'author is list' list.
         if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list:
+           and not mlist.anonymous_list and not (mlist.from_is_list and
+                                                 mm_cfg.ALLOW_FROM_IS_LIST):
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
@@ -168,6 +200,9 @@ def process(mlist, msg, msgdata):
                 add(pair)
             i18ndesc = uheader(mlist, mlist.description, 'Cc')
             add((str(i18ndesc), mlist.GetListEmail()))
+            # We don't worry about what AvoidDuplicates may have done with a
+            # Cc: header or using change_header here since we never get here
+            # if from_is_list is allowed and True.
             del msg['Cc']
             msg['Cc'] = COMMASPACE.join([formataddr(pair) for pair in new])
     # Add list-specific headers as defined in RFC 2369 and RFC 2919, but only
@@ -191,8 +226,7 @@ def process(mlist, msg, msgdata):
         # without desc we need to ensure the MUST brackets
         listid_h = '<%s>' % listid
     # We always add a List-ID: header.
-    del msg['list-id']
-    msg['List-Id'] = listid_h
+    change_header('List-Id', listid_h, mlist, msg, msgdata)
     # For internally crafted messages, we also add a (nonstandard),
     # "X-List-Administrivia: yes" header.  For all others (i.e. those coming
     # from list posts), we add a bunch of other RFC 2369 headers.
@@ -219,13 +253,12 @@ def process(mlist, msg, msgdata):
     # First we delete any pre-existing headers because the RFC permits only
     # one copy of each, and we want to be sure it's ours.
     for h, v in headers.items():
-        del msg[h]
         # Wrap these lines if they are too long.  78 character width probably
         # shouldn't be hardcoded, but is at least text-MUA friendly.  The
         # adding of 2 is for the colon-space separator.
         if len(h) + 2 + len(v) > 78:
             v = CONTINUATION.join(v.split(', '))
-        msg[h] = v
+        change_header(h, v, mlist, msg, msgdata)
 
 
 
@@ -302,8 +335,7 @@ def prefix_subject(mlist, msg, msgdata):
                     h = u' '.join([prefix, subject])
             h = h.encode('us-ascii')
             h = uheader(mlist, h, 'Subject', continuation_ws=ws)
-            del msg['subject']
-            msg['Subject'] = h
+            change_header('Subject', h, mlist, msg, msgdata)
             ss = u' '.join([recolon, subject])
             ss = ss.encode('us-ascii')
             ss = uheader(mlist, ss, 'Subject', continuation_ws=ws)
@@ -321,8 +353,7 @@ def prefix_subject(mlist, msg, msgdata):
     # TK: Subject is concatenated and unicode string.
     subject = subject.encode(cset, 'replace')
     h.append(subject, cset)
-    del msg['subject']
-    msg['Subject'] = h
+    change_header('Subject', h, mlist, msg, msgdata)
     ss = uheader(mlist, recolon, 'Subject', continuation_ws=ws)
     ss.append(subject, cset)
     msgdata['stripped_subject'] = ss

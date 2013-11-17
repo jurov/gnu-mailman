@@ -5,9 +5,66 @@ Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.16 (xx-xxx-xxxx)
+2.1.17 (xx-xxx-xxxx)
 
   New Features
+
+    - There is a new mm_cfg.py setting ANONYMOUS_LIST_KEEP_HEADERS.  Since it
+      is not possible to know which non-standard headers in a message might
+      reveal sender information, we now remove all headers from incoming posts
+      to anonymous lists except those which match regular expressions in this
+      list. The default setting keeps non X- headers except those known to
+      reveal sender information, Mailman added X- headers and x-Spam- headers.
+      See the description in Defaults.py for more information.  (LP: #1246039)
+
+  i18n
+
+    - The Japanese message catalog has been updated by SATOH Fumiyasu.
+      (LP: #1248855)
+
+  Bug Fixes and other patches
+
+    - Added a reopen command to the sample init.d script in misc/mailman.in.
+      (LP: #1251917)
+
+    - Fixed a misspelling in Tagger.py causing an "unexpected keyword argument
+      'Delete'" exception.  (LP: #1251495)
+
+    - Fixed contrib/qmail-to-mailman.py to work with a user other than
+      'mailman' and to recognize more listname-* addresses.  (LP: #412293)
+
+    - Fixed a possible UnicodeDecodeError in bin/sync_members.  (LP: #1243343)
+
+    - Fixed Makefile to not include $DESTDIR in paths compiled into .pyc
+      files for traceback purposes.  (LP: #1241770)
+
+2.1.16 (16-Oct-2013)
+
+  New Features
+
+    - There is a new list attribute from_is_list to either rewrite the From:
+      header of posts replacing the posters address with that of the list or
+      wrap the message in an outer message From: the list for compatability
+      with DMARC and or ADSP.  There is a new mm_cfg.py setting
+      DEFAULT_FROM_IS_LIST to control the default for new lists, and the
+      existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
+      those headers only for certain from_is_list lists.  This feature must
+      be enabled by setting ALLOW_FROM_IS_LIST to Yes in mm_cfg.py.  See the 
+      description of these settings in Defaults.py for more detail.  This
+      feature is experimental in 2.1.16, and it is subject to change or to
+      become just one of the two methods in a subsequent release. People 
+      interested in this feature are encouraged to try it and report their
+      experiences to the mailman-users@python.org list.
+
+    - There is a new DISPLAY_HELD_SUMMARY_SORT_BUTTONS setting which if set
+      in mm_cfg.py will display a set of radio buttons in the admindb held
+      message summary to select how the held messages are sorted and grouped
+      for display. The exact setting determines the default grouping and
+      sorting.  See the description in Defaults.py for details.
+
+    - Setting digest_size_threshhold to zero now means no digests will be
+      sent based on size instead of a digest being sent with every post.
+      (LP: #558274)
 
     - There is a new mm_cfg.py setting SUBSCRIBE_FORM_SECRET which will put
       a dynamically generated, hidden hash in the listinfo subscribe form and
@@ -17,21 +74,24 @@ Here is a history of user visible changes to Mailman.
       submitted no later than FORM_LIFETIME nor no earlier than
       SUBSCRIBE_FORM_MIN_TIME after retrieval.  Note that enabling this will
       break any static subscribe forms on your site.  See the description in
-      Defaults.py for more info.  (LP: 1082746)
+      Defaults.py for more info.  (LP: #1082746)
 
     - add_members now has an option to add members with mail delivery disabled
-      by admin.  (LP: 1070574)
+      by admin.  (LP: #1070574)
 
     - IncomingRunner now logs rejected messages to the vette log.
-      (LP: 1068837)
+      (LP: #1068837)
 
     - The name of the mailmanctl master lock file is now congigurable via the
-      mm_cfg.py setting MASTER_LOCK_FILE.  (LP: 1082308)
+      mm_cfg.py setting MASTER_LOCK_FILE.  (LP: #1082308)
 
     - list_lists now has an option to list only lists with public archives.
-      (LP: 1082711)
+      (LP: #1082711)
 
   Contributed programs
+
+    - A new import_majordomo_into_mailman.pl script has been contributed by
+      Geoff Mayes.  (LP: #1129742)
 
     - A new "sitemap" bash script has been contributed by Tomasz Chmielewski
       <mangoo@wpkg.org> to generate a sitemap.xml file of an installation's
@@ -39,21 +99,85 @@ Here is a history of user visible changes to Mailman.
 
   i18n
 
+    - The Danish translation has been updated thanks to Tom Christensen.
+
+    - Fixed a string in the Czech message catalog.  (LP: #1234567)
+
+    - A Farsi (Persian) translation has been added thanks to Javad Hoseini and
+      Mahyar Moghimi.
+
+    - Fixed several misspelled or garbled string replacements in the Spanish
+      message catalog.  (LP: #1160138)
+
+    - pt_BR message catalog has two new and an updated message per Hugo Koji
+      Kobayashi.  (LP: #1138578)
+
     - German message catalog has been updated per Ralf Hildebrandt.
 
     - Corrected typo in templates/it/private.html.
 
   Bug Fixes and other patches
 
+    - Fixed a crash in SpamDetect.py which caused messages with unparseable
+      RFC 2047 encoded headers to be shunted.  (LP: #1235101)
+
+    - Fixed cron/disabled to send a fresh cookie when notifying disabled
+      members.  (LP: #1203200)
+
+    - Added "message_id" to the interpolation dictionary for the Article.html
+      template.  (LP: #725498)
+
+    - Changed the admin GUI to report only the bad entries in a list of email
+      addresses if any are bad.  (LP: #558253)
+
+    - Added logging for template errors in HyperArch.py.  (LP: #558254)
+
+    - Added more explanation to the bad owner address message from
+      bin/newlist.  (LP: #1200763)
+
+    - Fixed a bug causing the admin web interface to fail CSRF checking if
+      the list name contains a '+' character.  (LP: #1190802)
+
+    - Fixed bin/mailmanctl -s to not remove the master lock if it can't be
+      determined to be truly stale.  (LP: #1189558)
+
+    - It is no longer possible to add 'invalid' addresses to the ban_list
+      and the *_these_nonmembers filters from the check boxes on the admindb
+      interface.  (LP: #1187201)
+
+    - Backported recognition for mail.ru DSNs and minor bug fixes from
+      lp:flufl.bounce.  (LP: #1074592, LP: #1079249 and #1079254)
+
+    - Defended against buggy web servers that don't include an empty
+      QUERY_STRING in the CGI environment.  (LP: #1160647)
+
+    - The Switchboard.finish() method now logs the text of the exception when
+      it fails to unlink/preserve a .bak file.  (LP: #1165589)
+
+    - The pending (un)subscriptions waiting approval are now sorted by email
+      address in the admindb interface as intended.  (LP: #1164160)
+
+    - The subscribe log entry for a bin/add_members subscribe now identifies
+      bin/add_members as the source.  (LP: #1161642)
+
+    - Fixed a bug where the Subject: of the user notification of a
+      bin/remove_members unsubscribe was not in the user's language.
+      (LP: #1161445)
+
+    - Fixed a bug where BounceRunner could create and leave behind zero length
+      bounce-events files.  (LP: #1161610)
+
+    - Added recognition for another Yahoo bounce format.  (LP: #1157961)
+
     - Changed configure's method for getting Python's include directory from
       distutils.sysconfig.get_config_var('CONFINCLUDEPY') to
-      distutils.sysconfig.get_python_inc().  (LP: 1098162)
+      distutils.sysconfig.get_python_inc().  (LP: #1098162)
 
-    - Added an Auto-Generated: header to password reminders.  (LP: 558240)
+    - Added an Auto-Generated: header to password reminders.  (LP: #558240)
 
     - Fixed a bug where non-ascii characters in the real name in a subscription
       request could throw a UnicodeEncodeError upon subscription approval and
-      perhaps in other situations too.  (LP: 1047100)
+      perhaps in other situations too.  (LP: #1047100)
 
     - The query fragments send_unsub_notifications_to_list_owner and
       send_unsub_ack_to_this_batch will now assume default values if not set

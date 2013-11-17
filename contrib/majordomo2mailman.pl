@@ -480,6 +480,7 @@ sub init_defaultmmconf {
 		  'max_num_recipients', "10",
 		  'forbidden_posters', "[]",
 		  'bounce_matching_headers',  "\"\"\"\n\"\"\"\n",
+		  'from_is_list', "0",
 		  'anonymous_list', "0",
 		  'nondigestable', "1",
 		  'digestable', "1",

@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2003 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -256,6 +256,8 @@ def main():
             try:
                 if not dryrun:
                     mlist.ApprovedAddMember(userdesc, welcome, notifyadmin)
+                # Avoid UnicodeError if name can't be decoded
+                name = unicode(name, errors='replace').encode(enc, 'replace')
                 s = email.Utils.formataddr((name, addr)).encode(enc, 'replace')
                 print _('Added  : %(s)s')
             except Errors.MMAlreadyAMember:
@@ -276,6 +278,8 @@ def main():
                     # reasons is in the database.  Use a lower level remove to
                     # get rid of this member's entry
                     mlist.removeMember(addr)
+            # Avoid UnicodeError if name can't be decoded
+            name = unicode(name, errors='replace').encode(enc, 'replace')
             s = email.Utils.formataddr((name, addr)).encode(enc, 'replace')
             print _('Removed: %(s)s')
 

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2006 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -81,6 +81,7 @@ your membership administrative address, %(addr)s.'''))
 
     def SendUnsubscribeAck(self, addr, lang):
         realname = self.real_name
+        i18n.set_language(lang)
         msg = Message.UserNotification(
             self.GetMemberAdminEmail(addr), self.GetBouncesEmail(),
             _('You have been unsubscribed from the %(realname)s mailing list'),

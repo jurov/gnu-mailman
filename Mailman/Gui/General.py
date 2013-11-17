@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -153,7 +153,25 @@ class General(GUIBase):
              directive. eg.; [listname %%d] -> [listname 123]
                             (listname %%05d) -> (listname 00123)
              """)),
+          ]
 
+        if mm_cfg.ALLOW_FROM_IS_LIST:
+            rtn.append(
+                ('from_is_list', mm_cfg.Radio,
+                 (_('No'), _('Mung From'), _('Wrap Message')), 0,
+                 _("""Replace the sender with the list address to conform with
+                 policies like ADSP and DMARC.  It replaces the poster's
+                 address in the From: header with the list address and adds the
+                 poster to the Reply-To: header, but the anonymous_list and
+                 Reply-To: header munging settings below take priority.  If
+                 setting this to Yes, it is advised to set the MTA to DKIM sign
+                 all emails.""") +
+                 _("""<br>If this is set to Wrap Message, just wrap the message
+                 in an outer message From: the list with Content-Type:
+                 message/rfc822."""))
+              )
+
+        rtn.extend([
             ('anonymous_list', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Hide the sender of a message, replacing it with the list
              address (Removes From, Sender and Reply-To fields)""")),
@@ -374,7 +392,7 @@ class General(GUIBase):
              useful for selecting among alternative names of a host that has
              multiple addresses.""")),
 
-          ]
+          ])
 
         if mm_cfg.ALLOW_RFC2369_OVERRIDES:
             rtn.append(

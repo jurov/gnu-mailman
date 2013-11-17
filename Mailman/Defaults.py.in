@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -107,6 +107,10 @@ ALLOW_SITE_ADMIN_COOKIES = No
 # If the following is set to a non-zero value, web authentication cookies will
 # expire that many seconds following their last use.
 AUTHENTICATION_COOKIE_LIFETIME = 0
+
+# The following must be set to Yes to enable the 'author is list' feature.
+# See DEFAULT_FROM_IS_LIST below.
+ALLOW_FROM_IS_LIST = No
 
 # Form lifetime is set against Cross Site Request Forgery.
 FORM_LIFETIME = hours(1)
@@ -247,6 +251,13 @@ BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
                                '\xbe': '&#190;',   # > plus high order bit
                                '\xa2': '&#162;',   # " plus high order bit
                               }
+#
+# Shall the admindb held message summary display the grouping and sorting
+# option radio buttons?  Set this in mm_cfg.py to one of the following:
+# SSENDER -> Default to grouped and sorted by sender.
+# SSENDERTIME -> Default to grouped by sender and sorted by time.
+# STIME -> Default to ungrouped and sorted by time.
+DISPLAY_HELD_SUMMARY_SORT_BUTTONS = No
 
 
 
@@ -548,7 +559,10 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # footer or scrubbing attachments or even reply-to munging can break these
 # signatures.  It is generally felt that these signatures have value, even if
 # broken and even if the outgoing message is resigned.  However, some sites
-# may wish to remove these headers by setting this to Yes.
+# may wish to remove these headers.  Possible values and meanings are:
+# No, 0, False -> do not remove headers.
+# 1 -> remove headers only if the list's from_is_list setting is 1.
+# Yes, 2, True -> always remove headers.
 REMOVE_DKIM_HEADERS = No
 
 # All `normal' messages which are delivered to the entire list membership go
@@ -580,6 +594,7 @@ GLOBAL_PIPELINE = [
     # (outgoing) path, finally leaving the message in the outgoing queue.
     'AfterDelivery',
     'Acknowledge',
+    'WrapMessage',
     'ToOutgoing',
     ]
 
@@ -968,6 +983,27 @@ USER_FRIENDLY_PASSWORDS = Yes
 MEMBER_PASSWORD_LENGTH = 8
 ADMIN_PASSWORD_LENGTH = 10
 
+# The following headers are always removed from posts to anonymous lists as
+# they can reveal the identity of the poster or at least the poster's domain.
+#
+# From:, Reply-To:, Sender:, Return-Path:, X-Originating-Email:, Received:,
+# Message-ID: and X-Envelope-From:.
+#
+# In addition, Return-Receipt-To:, Disposition-Notification-To:,
+# X-Confirm-Reading-To: and X-Pmrqc: headers are removed from all posts as
+# they can be used to fish for list membership in addition to possibly
+# revealing sender information.
+#
+# In addition to the above removals, all other headers except those matching
+# regular expressions in the following setting are also removed. The default
+# setting below keeps all non X- headers, those X- headers added by Mailman
+# and any X-Spam- headers.
+ANONYMOUS_LIST_KEEP_HEADERS = ['^(?!x-)', '^x-mailman-',
+                               '^x-content-filtered-by:', '^x-topics:',
+                               '^x-ack:', '^x-beenthere:',
+                               '^x-list-administrivia:', '^x-spam-',
+                              ]
+
 
 
 #####
@@ -1064,6 +1100,14 @@ DEFAULT_SEND_WELCOME_MSG = Yes
 
 # Send goodbye messages to unsubscribed members?
 DEFAULT_SEND_GOODBYE_MSG = Yes
+
+# The following is a three way setting.
+# 0 -> Do not rewrite the From: or wrap the message.
+# 1 -> Rewrite the From: header of posts replacing the posters address with
+#      that of the list.  Also see REMOVE_DKIM_HEADERS above.
+# 2 -> Do not modify the From: of the message, but wrap the message in an outer
+#      message From the list address.
+DEFAULT_FROM_IS_LIST = 0
 
 # Wipe sender information, and make it look like the list-admin
 # address sends all messages
@@ -1396,6 +1440,11 @@ UNSUBSCRIBE = 5
 ACCEPT = 6
 HOLD = 7
 
+# admindb summary sort button settings.  All must evaluate to True.
+SSENDER = 1
+SSENDERTIME = 2
+STIME = 3
+
 # Standard text field width
 TEXTFIELDWIDTH = 40
 
@@ -1515,6 +1564,7 @@ add_language('en',    _('English (USA)'),       'us-ascii',    'ltr')
 add_language('es',    _('Spanish (Spain)'),     'iso-8859-1',  'ltr')
 add_language('et',    _('Estonian'),            'iso-8859-15', 'ltr')
 add_language('eu',    _('Euskara'),             'iso-8859-15', 'ltr') # Basque
+add_language('fa',    _('Persian'),             'utf-8',       'rtl')
 add_language('fi',    _('Finnish'),             'iso-8859-1',  'ltr')
 add_language('fr',    _('French'),              'iso-8859-1',  'ltr')
 add_language('gl',    _('Galician'),            'utf-8',       'ltr')

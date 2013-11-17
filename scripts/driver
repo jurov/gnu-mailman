@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -92,6 +92,11 @@ def run_main():
         # Mailman.Cgi package.  That module must have a main() function, which
         # we dig out and call.
         scriptname = sys.argv[1]
+        # Then we truncate sys.argv because buggy web servers have been
+        # observed which do not provide an empty QUERY_STRING in the
+        # environment which causes cgi.FieldStorage() to add sys.argv[1:] to
+        # the constructed instance.
+        del sys.argv[1:]
         # See the reference manual for why we have to do things this way.
         # Note that importing should have no side-effects!
         pkg = __import__('Mailman.Cgi', globals(), locals(), [scriptname])

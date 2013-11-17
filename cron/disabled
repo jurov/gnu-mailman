@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 2001-2007 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -185,21 +185,24 @@ def main():
                     # other reason.
                     status = mlist.getDeliveryStatus(member)
                     if status == MemberAdaptor.BYBOUNCE:
+                        # Bouncing member with no bounce info.  Just log it and continue.
                         syslog(
                             'error',
                             '%s disabled BYBOUNCE lacks bounce info, list: %s',
                             member, mlist.internal_name())
                         continue
+                    # Disabled other than by bounce.  Create bounce info (why?)
                     info = _BounceInfo(
                         member, 0, today,
-                        mlist.bounce_you_are_disabled_warnings,
-                        mlist.pend_new(Pending.RE_ENABLE,
-                                       mlist.internal_name(),
-                                       member))
-                    mlist.setBounceInfo(member, info)
+                        mlist.bounce_you_are_disabled_warnings)
                 lastnotice = time.mktime(info.lastnotice + (0,) * 6)
                 if force or today >= lastnotice + interval:
                     notify.append(member)
+                # Get a fresh re-enable cookie and set it.
+                info.cookie = mlist.pend_new(Pending.RE_ENABLE,
+                                       mlist.internal_name(),
+                                       member)
+                mlist.setBounceInfo(member, info)
             # Now, send notifications to anyone who is due
             for member in notify:
                 syslog('bounce', 'Notifying disabled member %s for list: %s',

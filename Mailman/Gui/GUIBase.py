@@ -63,6 +63,7 @@ class GUIBase:
             if isinstance(val, ListType):
                 return val
             addrs = []
+            bad_addrs = []
             for addr in [s.strip() for s in val.split(NL)]:
                 # Discard empty lines
                 if not addr:
@@ -77,22 +78,24 @@ class GUIBase:
                         try:
                             re.compile(addr)
                         except re.error:
-                            raise ValueError
+                            bad_addrs.append(addr)
                     elif (wtype == mm_cfg.EmailListEx and addr.startswith('@')
                             and property.endswith('_these_nonmembers')):
                         # XXX Needs to be reviewed for list@domain names.
                         # don't reference your own list
                         if addr[1:] == mlist.internal_name():
-                            raise ValueError
+                            bad_addrs.append(addr)
                         # check for existence of list?  For now allow
                         # reference to list before creating it.
                     else:
-                        raise
+                        bad_addrs.append(addr)
                 if property in ('regular_exclude_lists',
                                 'regular_include_lists'):
                     if addr.lower() == mlist.GetListEmail().lower():
-                        raise Errors.EmailAddressError
+                        bad_addrs.append(addr)
                 addrs.append(addr)
+            if bad_addrs:
+                raise Errors.EmailAddressError, ', '.join(bad_addrs)
             return addrs
         # This is a host name, i.e. verbatim
         if wtype == mm_cfg.Host:
@@ -168,9 +171,9 @@ class GUIBase:
             except ValueError:
                 doc.addError(_('Invalid value for variable: %(property)s'))
             # This is the parent of MMBadEmailError and MMHostileAddress
-            except Errors.EmailAddressError:
+            except Errors.EmailAddressError, error:
                 doc.addError(
-                    _('Bad email address for option %(property)s: %(val)s'))
+                    _('Bad email address for option %(property)s: %(error)s'))
             else:
                 # Set the attribute, which will normally delegate to the mlist
                 self._setValue(mlist, property, val, doc)
