@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -47,7 +47,7 @@ class ModeratedMemberPost(Hold.ModeratedPost):
 
 
 def process(mlist, msg, msgdata):
-    if msgdata.get('approved') or msgdata.get('fromusenet'):
+    if msgdata.get('approved'):
         return
     # First of all, is the poster a member or not?
     for sender in msg.get_senders():
@@ -105,7 +105,7 @@ def process(mlist, msg, msgdata):
     # moderation configuration variables.  Handle by way of generic non-member
     # action.
     assert 0 <= mlist.generic_nonmember_action <= 4
-    if mlist.generic_nonmember_action == 0:
+    if mlist.generic_nonmember_action == 0 or msgdata.get('fromusenet'):
         # Accept
         return
     elif mlist.generic_nonmember_action == 1:
