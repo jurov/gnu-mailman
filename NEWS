@@ -5,9 +5,17 @@ Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.17 (xx-xxx-xxxx)
+2.1.17 (23-Nov-2013)
 
   New Features
+
+    - Handling of posts gated from usenet to a list via the Mail <-> News
+      gateway is changed.  Formerly, no list membership, moderation or
+      *_these_nonmembers checks were done.  Now, if the sender of the usenet
+      post is a moderated member or a nonmember matching a *_these_nonmembers
+      filter, those checks will be done and actions applied.  Nonmember posts
+      from senders not matching a *_these_nonmembers filter are still accepted
+      as before.  (LP: #1252575)
 
     - There is a new mm_cfg.py setting ANONYMOUS_LIST_KEEP_HEADERS.  Since it
       is not possible to know which non-standard headers in a message might
