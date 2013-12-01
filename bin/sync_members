@@ -257,7 +257,9 @@ def main():
                 if not dryrun:
                     mlist.ApprovedAddMember(userdesc, welcome, notifyadmin)
                 # Avoid UnicodeError if name can't be decoded
-                name = unicode(name, errors='replace').encode(enc, 'replace')
+                if isinstance(name, str):
+                    name = unicode(name, errors='replace')
+                name = name.encode(enc, 'replace')
                 s = email.Utils.formataddr((name, addr)).encode(enc, 'replace')
                 print _('Added  : %(s)s')
             except Errors.MMAlreadyAMember:
@@ -279,7 +281,9 @@ def main():
                     # get rid of this member's entry
                     mlist.removeMember(addr)
             # Avoid UnicodeError if name can't be decoded
-            name = unicode(name, errors='replace').encode(enc, 'replace')
+            if isinstance(name, str):
+                name = unicode(name, errors='replace')
+            name = name.encode(enc, 'replace')
             s = email.Utils.formataddr((name, addr)).encode(enc, 'replace')
             print _('Removed: %(s)s')
 
