@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -319,8 +319,6 @@ class SecurityManager:
                          for u in usernames]:
                 ok = self.__checkone(c, authcontext, user)
                 if ok:
-                    # Refresh the cookie
-                    print self.MakeCookie(authcontext, user)
                     return True
             return False
         else:
@@ -362,6 +360,8 @@ class SecurityManager:
         if mac <> received_mac:
             return False
         # Authenticated!
+        # Refresh the cookie
+        print self.MakeCookie(authcontext, user)
         return True
 
 

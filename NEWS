@@ -1,6 +1,6 @@
 -*- coding: iso-8859-1 -*-
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
@@ -8,6 +8,9 @@ Here is a history of user visible changes to Mailman.
 2.1.18 (xx-xxx-xxxx)
 
   Bug Fixes and other patches
+
+    - Fixed a bug which caused some authentication cookies to expire too soon
+      if AUTHENTICATION_COOKIE_LIFETIME is non-zero.  (LP: #1257112)
  
     - Fixed a possible TypeError in bin/sync_members introduced in 2.1.17.
       (LP: #1243343)
