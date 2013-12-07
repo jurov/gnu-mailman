@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -223,7 +223,7 @@ def ValidateEmail(s):
     # Pretty minimal, cheesy check.  We could do better...
     if not s or s.count(' ') > 0:
         raise Errors.MMBadEmailError
-    if _badchars.search(s) or s[0] == '-':
+    if _badchars.search(s):
         raise Errors.MMHostileAddress, s
     user, domain_parts = ParseEmail(s)
     # This means local, unqualified addresses, are not allowed
@@ -232,8 +232,9 @@ def ValidateEmail(s):
     if len(domain_parts) < 2:
         raise Errors.MMBadEmailError, s
     # domain parts may only contain ascii letters, digits and hyphen
+    # and must not begin with hyphen.
     for p in domain_parts:
-        if len(_valid_domain.sub('', p)) > 0:
+        if len(p) == 0 or p[0] == '-' or len(_valid_domain.sub('', p)) > 0:
             raise Errors.MMHostileAddress, s
 
 

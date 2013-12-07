@@ -9,6 +9,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed email address validation to do a bit better in obscure cases.
+      (LP: #1258703)
+
     - Fixed a bug which caused some authentication cookies to expire too soon
       if AUTHENTICATION_COOKIE_LIFETIME is non-zero.  (LP: #1257112)
  
