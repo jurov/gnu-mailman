@@ -552,6 +552,8 @@ class T:
         if start is None:
             start = 0
         counter = 0
+        if start:
+            mbox.skipping(True)
         while counter < start:
             try:
                 m = mbox.next()
@@ -560,6 +562,8 @@ class T:
             if m is None:
                 return
             counter += 1
+        if start:
+            mbox.skipping(False)
         while 1:
             try:
                 pos = input.tell()

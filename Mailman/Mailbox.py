@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -110,3 +110,11 @@ class ArchiverMailbox(Mailbox):
             return self._scrubber(self._mlist, msg)
         else:
             return msg
+
+    def skipping(self, flag):
+        """ This method allows the archiver to skip over messages without
+        scrubbing attachments into the attachments directory."""
+        if flag:
+            self.factory = _safeparser
+        else:
+            self.factory = _archfactory(self)

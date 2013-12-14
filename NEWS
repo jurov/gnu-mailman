@@ -9,6 +9,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed bin/arch to not create scrubbed attachments for messages skipped
+      when processing the --start= option.  (LP: #1260883)
+
     - Fixed email address validation to do a bit better in obscure cases.
       (LP: #1258703)
 
