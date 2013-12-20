@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -89,6 +89,7 @@ class BounceTest(unittest.TestCase):
         ('SimpleWarning', 'simple_22.txt', Stop),
         ('SimpleWarning', 'simple_28.txt', Stop),
         ('SimpleWarning', 'simple_35.txt', Stop),
+        ('SimpleWarning', 'simple_40.txt', Stop),
         # GroupWise
         ('GroupWise', 'groupwise_01.txt', ['thoff@MAINEX1.ASU.EDU']),
         # This one really sucks 'cause it's text/html.  Just make sure it

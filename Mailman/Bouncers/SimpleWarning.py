@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -57,6 +57,10 @@ patterns = [
     (_c('We will continue to try to deliver'),
      _c('.+'),
      _c('(?P<addr>.+)')),
+    # kundenserver.de
+    (_c('not yet been delivered'),
+     _c('No action is required on your part'),
+     _c(r'\s*<?(?P<addr>\S+@[^>\s]+)>?\s*')),
     # Next one goes here...
     ]
 
