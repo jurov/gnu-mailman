@@ -704,7 +704,7 @@ From: aperson@dom.ain
            '<http://www.dom.ain/mailman/listinfo/_xtest>,'
            '\n\t<mailto:_xtest-request@dom.ain?subject=subscribe>')
         eq(msg['list-post'], '<mailto:_xtest@dom.ain>')
-        eq(msg['list-archive'], '<http://www.dom.ain/pipermail/_xtest>')
+        eq(msg['list-archive'], '<http://www.dom.ain/pipermail/_xtest/>')
 
     def test_list_headers_with_description(self):
         eq = self.assertEqual
@@ -1221,7 +1221,8 @@ MIME-Version: 1.0
 """)
         MimeDel.process(self._mlist, msg, {})
         eq(msg.get_content_type(), 'text/plain')
-        eq(msg.get_payload(), '\n\n\n')
+        #eq(msg.get_payload(), '\n\n\n')
+        eq(msg.get_payload().strip(), '')
 
     def test_deep_structure(self):
         eq = self.assertEqual
@@ -1878,7 +1879,9 @@ Here is message %(i)d
         mlist = self._mlist
         msg = self._makemsg(99)
         size = os.path.getsize(self._path) + len(str(msg))
-        mlist.digest_size_threshhold = 0
+        # Set digest_size_threshhold to a very small value to force a digest.
+        # Setting to zero no longer works.
+        mlist.digest_size_threshhold = 0.001
         ToDigest.process(mlist, msg, {})
         files = self._sb.files()
         # There should be two files in the queue, one for the MIME digest and
