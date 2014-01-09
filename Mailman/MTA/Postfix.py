@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -116,6 +116,10 @@ def _addlist(mlist, fp):
 
 
 
+def _isvirtual(mlist):
+    return (mlist and mlist.host_name.lower() in
+            [d.lower() for d in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS])
+
 def _addvirtual(mlist, fp):
     listname = mlist.internal_name()
     fieldsz = len(listname) + len('-unsubscribe')
@@ -233,7 +237,7 @@ def create(mlist, cgi=False, nolock=False, quiet=False):
     # Do the aliases file, which need to be done in any case
     try:
         _do_create(mlist, ALIASFILE, _addlist)
-        if mlist and mlist.host_name in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS:
+        if _isvirtual(mlist):
             _do_create(mlist, VIRTFILE, _addvirtual)
         # bin/genaliases is the only one that calls create with nolock = True.
         # Use that to only update the maps at the end of genaliases.
@@ -304,7 +308,7 @@ def remove(mlist, cgi=False):
     lock.lock()
     try:
         _do_remove(mlist, ALIASFILE, False)
-        if mlist.host_name in mm_cfg.POSTFIX_STYLE_VIRTUAL_DOMAINS:
+        if _isvirtual(mlist):
             _do_remove(mlist, VIRTFILE, True)
         # Regenerate the alias and map files
         _update_maps()
