@@ -14,6 +14,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - The from_is_list header munging feature introduced in Mailman 2.1.16 is
+      no longer erroneously applied to Mailman generated notices.
+      (LP: #1279667)
+
     - Changed the message from the confirm CGI to not indicate approval is
       required for an acceptance of an invitation.  (LP: #1277744)
 

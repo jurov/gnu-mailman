@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -65,7 +65,10 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     return Header(s, charset, maxlinelen, header_name, continuation_ws)
 
 def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
-    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list == 2:
+    if (mm_cfg.ALLOW_FROM_IS_LIST and
+        mlist.from_is_list == 2 and
+        not msgdata.get('_fasttrack')
+       ):
         msgdata.setdefault('add_header', {})[name] = value
     elif repl or not msg.has_key(name):
         if delete:
@@ -116,7 +119,7 @@ def process(mlist, msg, msgdata):
     change_header('Precedence', 'list',
                   mlist, msg, msgdata, repl=False)
     # Do we change the from so the list takes ownership of the email
-    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list:
+    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list and not fasttrack:
         realname, email = parseaddr(msg['from'])
         replies = getaddresses(msg.get('reply-to', ''))
         reply_addrs = [x[1].lower() for x in replies]
