@@ -14,6 +14,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a NameError exception in cron/nightly_gzip when it tries to print
+      the usage message.  (LP: #1291038)
+
     - Fixed a bug in ListAdmin._handlepost that would crash when trying to
       preserve a held message for the site admin if HOLD_MESSAGES_AS_PICKLES
       is False.  (LP: #1282365)
