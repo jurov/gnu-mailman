@@ -191,7 +191,7 @@ def process(mlist, msg, msgdata):
         # above code?
         # Also skip Cc if this is an anonymous list as list posting address
         # is already in From and Reply-To in this case and similarly for
-        # an 'author is list' list.
+        # a 'from is list' list.
         if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
            and not mlist.anonymous_list and not (mlist.from_is_list and
                                                  mm_cfg.ALLOW_FROM_IS_LIST):
