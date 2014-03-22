@@ -64,7 +64,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s', listname, e)
+        syslog('error', 'confirm: No such list "%s": %s', listname, e)
         return
 
     # Set the language for the list

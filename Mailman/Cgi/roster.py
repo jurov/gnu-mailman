@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -57,7 +57,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         error_page(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'roster: no such list "%s": %s', listname, e)
+        syslog('error', 'roster: No such list "%s": %s', listname, e)
         return
 
     cgidata = cgi.FieldStorage()

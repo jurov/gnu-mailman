@@ -14,6 +14,15 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Added the list name to the vette log "held message approved" entry.
+      (LP: 1295875)
+
+    - Added the CGI module name to various "No such list" error log entries.
+      (LP: 1295875)
+
+    - Modified contrib/mmdsr to report module name if present in "No such list
+      error log entries.
+
     - Fixed a NameError exception in cron/nightly_gzip when it tries to print
       the usage message.  (LP: #1291038)
 

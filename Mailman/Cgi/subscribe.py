@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -64,7 +64,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         print doc.Format()
-        syslog('error', 'No such list "%s": %s\n', listname, e)
+        syslog('error', 'subscribe: No such list "%s": %s\n', listname, e)
         return
 
     # See if the form data has a preferred language set, in which case, use it

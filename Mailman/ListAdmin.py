@@ -292,7 +292,8 @@ class ListAdmin:
             # message directly here can lead to a huge delay in web
             # turnaround.  Log the moderation and add a header.
             msg['X-Mailman-Approved-At'] = email.Utils.formatdate(localtime=1)
-            syslog('vette', 'held message approved, message-id: %s',
+            syslog('vette', '%s: held message approved, message-id: %s',
+                   self.internal_name(),
                    msg.get('message-id', 'n/a'))
             # Stick the message back in the incoming queue for further
             # processing.

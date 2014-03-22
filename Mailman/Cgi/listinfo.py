@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -53,7 +53,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         listinfo_overview(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'No such list "%s": %s', listname, e)
+        syslog('error', 'listinfo: No such list "%s": %s', listname, e)
         return
 
     # See if the user want to see this page in other language

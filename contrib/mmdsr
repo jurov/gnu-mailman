@@ -176,6 +176,11 @@
 # 0.0.21	Update by Mark Sapiro <mark@msapiro.net>
 #		Updated on: Sun Sep 27 12:45:44 PDT 2009
 #		Refactored to use mktemp to create temp files
+#
+# 0.0.22        Update by Mark Sapiro <mark@msapiro.net>
+#               Updated on: Fri Mar 21 19:47:19 PDT 2014
+#               Updated the "No such list" error report to include the newly
+#               added name of the CGI module.
 
 ###############################################################################
 # Set up locations of standard commands, directories, etc....
@@ -426,7 +431,7 @@ do
 	    echo "" >> $TMP
 	    echo "No Such List:" >> $TMP
 	    echo "------------------------------" >> $TMP
-	    $GREP 'No such list' $TMPLOG | $SED -e 's/^.* "//' -e 's/".*$//' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
+	    $GREP 'No such list' $TMPLOG | $SED -e 's/^[^)]*) //' -e 's/No such list "//' -e 's/".*$//' | $SORT | $UNIQ -c | $SORT -nr >> $TMP
 
 	    CNT=`$GREP -i 'shunting' $TMPLOG | $WC -l`
 	    if [ "${CNT}x" != "x" ] ; then

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -114,7 +114,7 @@ def main():
         # Send this with a 404 status.
         print 'Status: 404 Not Found'
         handle_no_list(_('No such list <em>%(safelistname)s</em>'))
-        syslog('error', 'No such list "%s": %s\n', listname, e)
+        syslog('error', 'admindb: No such list "%s": %s\n', listname, e)
         return
 
     # Now that we know which list to use, set the system's language to it.
