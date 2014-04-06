@@ -121,6 +121,8 @@ def process(mlist, msg, msgdata):
     # Do we change the from so the list takes ownership of the email
     if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list and not fasttrack:
         realname, email = parseaddr(msg['from'])
+        if not realname:
+            realname = email
         replies = getaddresses(msg.get('reply-to', ''))
         reply_addrs = [x[1].lower() for x in replies]
         if reply_addrs:
