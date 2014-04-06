@@ -561,8 +561,8 @@ NNTP_REWRITE_DUPLICATE_HEADERS = [
 # broken and even if the outgoing message is resigned.  However, some sites
 # may wish to remove these headers.  Possible values and meanings are:
 # No, 0, False -> do not remove headers.
-# 1 -> remove headers only if the list's from_is_list setting is 1.
-# Yes, 2, True -> always remove headers.
+# Yes, 1, True -> remove headers only if the list's from_is_list setting is 1.
+# 2 -> always remove headers.
 REMOVE_DKIM_HEADERS = No
 
 # All `normal' messages which are delivered to the entire list membership go
