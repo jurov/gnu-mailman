@@ -123,6 +123,8 @@ def process(mlist, msg, msgdata):
         realname, email = parseaddr(msg['from'])
         if not realname:
             realname = email
+        # Remove domain from realname if it looks like an email address
+        realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
         replies = getaddresses(msg.get('reply-to', ''))
         reply_addrs = [x[1].lower() for x in replies]
         if reply_addrs:

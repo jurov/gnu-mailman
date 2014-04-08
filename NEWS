@@ -14,6 +14,10 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - For from_is_list feature, use email address from original From: if
+      original From: has no display name and strip domain part from resultant
+      names that look like email addresses.  (LP: #1304511)
+
     - Added the list name to the vette log "held message approved" entry.
       (LP: 1295875)
 
