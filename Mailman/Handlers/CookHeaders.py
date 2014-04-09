@@ -122,7 +122,10 @@ def process(mlist, msg, msgdata):
     if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list and not fasttrack:
         realname, email = parseaddr(msg['from'])
         if not realname:
-            realname = email
+            if mlist.isMember(email):
+                realname = mlist.getMemberName(email) or email
+            else:
+                realname = email
         # Remove domain from realname if it looks like an email address
         realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
         replies = getaddresses(msg.get('reply-to', ''))
