@@ -247,11 +247,11 @@ class Privacy(GUIBase):
              list from a domain with a DMARC Reject%(quarantine)s Policy."""),
 
              _("""<ul><li><b>Wrap Message</b> -- applies the <a
-             href="?VARHELP=general/from_is_list">from_is _list Wrap
+             href="?VARHELP=general/from_is_list">from_is_list Wrap
              Message</a> transformation to these messages.
 
              <p><li><b>Munge From</b> -- applies the <a
-             href="?VARHELP=general/from_is_list">from_is _list Munge From</a>
+             href="?VARHELP=general/from_is_list">from_is_list Munge From</a>
              transformation to these messages.
 
              <p><li><b>Reject</b> -- this automatically rejects the message by

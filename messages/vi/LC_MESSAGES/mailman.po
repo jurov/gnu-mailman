@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mailman-2.1.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Fri Sep 27 16:41:21 2013\n"
+"POT-Creation-Date: Tue Apr 15 13:12:46 2014\n"
 "PO-Revision-Date: 2008-01-03 22:05+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -189,7 +189,7 @@ msgstr "Đang cập nhật các tập tin chỉ mục cho kho [%(archive)s]..."
 msgid "  Thread"
 msgstr "  Nhánh"
 
-#: Mailman/Archiver/pipermail.py:579
+#: Mailman/Archiver/pipermail.py:583
 msgid "#%(counter)05d %(msgid)s"
 msgstr "#%(counter)05d %(msgid)s"
 
@@ -223,7 +223,7 @@ msgid " The last bounce received from you was dated %(date)s"
 msgstr " Thư đã nảy về được nhận từ bạn có ngày %(date)s"
 
 #: Mailman/Bouncer.py:322 Mailman/Deliverer.py:144
-#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:317
+#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:327
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:240
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
@@ -558,25 +558,26 @@ msgstr "Hoãn"
 #: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:352
 #: Mailman/Cgi/admindb.py:411 Mailman/Cgi/admindb.py:463
 #: Mailman/Cgi/admindb.py:704 Mailman/Gui/ContentFilter.py:37
-#: Mailman/Gui/Privacy.py:216 Mailman/Gui/Privacy.py:297
+#: Mailman/Gui/Privacy.py:221 Mailman/Gui/Privacy.py:244
+#: Mailman/Gui/Privacy.py:338
 msgid "Reject"
 msgstr "Bỏ ra"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Gui/Privacy.py:216
-#: Mailman/Gui/Privacy.py:297
+#: Mailman/Cgi/admin.py:794 Mailman/Gui/Privacy.py:221
+#: Mailman/Gui/Privacy.py:338
 msgid "Hold"
 msgstr "Giữ"
 
 #: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:353
 #: Mailman/Cgi/admindb.py:412 Mailman/Cgi/admindb.py:463
 #: Mailman/Cgi/admindb.py:704 Mailman/Commands/cmd_confirm.py:93
-#: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:216
-#: Mailman/Gui/Privacy.py:297
+#: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:221
+#: Mailman/Gui/Privacy.py:245 Mailman/Gui/Privacy.py:338
 msgid "Discard"
 msgstr "Hủy"
 
 #: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:463
-#: Mailman/Gui/Privacy.py:297
+#: Mailman/Gui/Privacy.py:244 Mailman/Gui/Privacy.py:338
 msgid "Accept"
 msgstr "Nhận"
 
@@ -841,7 +842,7 @@ msgstr "Gởi thư chào đón cho người mới đăng ký không?"
 
 #: Mailman/Cgi/admin.py:1178 Mailman/Cgi/admin.py:1187
 #: Mailman/Cgi/admin.py:1220 Mailman/Cgi/admin.py:1228
-#: Mailman/Cgi/confirm.py:292 Mailman/Cgi/create.py:353
+#: Mailman/Cgi/confirm.py:293 Mailman/Cgi/create.py:353
 #: Mailman/Cgi/create.py:388 Mailman/Cgi/create.py:426
 #: Mailman/Cgi/rmlist.py:230 Mailman/Gui/Archive.py:33
 #: Mailman/Gui/Autoresponse.py:54 Mailman/Gui/Autoresponse.py:62
@@ -850,19 +851,19 @@ msgstr "Gởi thư chào đón cho người mới đăng ký không?"
 #: Mailman/Gui/Bounce.py:155 Mailman/Gui/ContentFilter.py:74
 #: Mailman/Gui/ContentFilter.py:116 Mailman/Gui/ContentFilter.py:120
 #: Mailman/Gui/Digest.py:46 Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84
-#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:161
-#: Mailman/Gui/General.py:175 Mailman/Gui/General.py:181
-#: Mailman/Gui/General.py:259 Mailman/Gui/General.py:286
-#: Mailman/Gui/General.py:313 Mailman/Gui/General.py:324
-#: Mailman/Gui/General.py:327 Mailman/Gui/General.py:337
-#: Mailman/Gui/General.py:342 Mailman/Gui/General.py:348
-#: Mailman/Gui/General.py:368 Mailman/Gui/General.py:400
-#: Mailman/Gui/General.py:423 Mailman/Gui/General.py:440
+#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:158
+#: Mailman/Gui/General.py:177 Mailman/Gui/General.py:183
+#: Mailman/Gui/General.py:261 Mailman/Gui/General.py:288
+#: Mailman/Gui/General.py:315 Mailman/Gui/General.py:326
+#: Mailman/Gui/General.py:329 Mailman/Gui/General.py:339
+#: Mailman/Gui/General.py:344 Mailman/Gui/General.py:350
+#: Mailman/Gui/General.py:370 Mailman/Gui/General.py:402
+#: Mailman/Gui/General.py:425 Mailman/Gui/General.py:442
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
-#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:197
-#: Mailman/Gui/Privacy.py:312 Mailman/Gui/Privacy.py:331
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:202
+#: Mailman/Gui/Privacy.py:353 Mailman/Gui/Privacy.py:372
 #: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
 #: Mailman/Gui/Usenet.py:105
 msgid "No"
@@ -870,7 +871,7 @@ msgstr "Không"
 
 #: Mailman/Cgi/admin.py:1178 Mailman/Cgi/admin.py:1187
 #: Mailman/Cgi/admin.py:1220 Mailman/Cgi/admin.py:1228
-#: Mailman/Cgi/confirm.py:292 Mailman/Cgi/create.py:353
+#: Mailman/Cgi/confirm.py:293 Mailman/Cgi/create.py:353
 #: Mailman/Cgi/create.py:388 Mailman/Cgi/create.py:426
 #: Mailman/Cgi/rmlist.py:230 Mailman/Gui/Archive.py:33
 #: Mailman/Gui/Autoresponse.py:54 Mailman/Gui/Autoresponse.py:62
@@ -879,18 +880,18 @@ msgstr "Không"
 #: Mailman/Gui/ContentFilter.py:74 Mailman/Gui/ContentFilter.py:116
 #: Mailman/Gui/ContentFilter.py:120 Mailman/Gui/Digest.py:46
 #: Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84 Mailman/Gui/Digest.py:89
-#: Mailman/Gui/General.py:175 Mailman/Gui/General.py:181
-#: Mailman/Gui/General.py:259 Mailman/Gui/General.py:286
-#: Mailman/Gui/General.py:313 Mailman/Gui/General.py:324
-#: Mailman/Gui/General.py:327 Mailman/Gui/General.py:337
-#: Mailman/Gui/General.py:342 Mailman/Gui/General.py:348
-#: Mailman/Gui/General.py:368 Mailman/Gui/General.py:400
-#: Mailman/Gui/General.py:423 Mailman/Gui/General.py:440
+#: Mailman/Gui/General.py:177 Mailman/Gui/General.py:183
+#: Mailman/Gui/General.py:261 Mailman/Gui/General.py:288
+#: Mailman/Gui/General.py:315 Mailman/Gui/General.py:326
+#: Mailman/Gui/General.py:329 Mailman/Gui/General.py:339
+#: Mailman/Gui/General.py:344 Mailman/Gui/General.py:350
+#: Mailman/Gui/General.py:370 Mailman/Gui/General.py:402
+#: Mailman/Gui/General.py:425 Mailman/Gui/General.py:442
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
-#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:197
-#: Mailman/Gui/Privacy.py:312 Mailman/Gui/Privacy.py:331
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:202
+#: Mailman/Gui/Privacy.py:353 Mailman/Gui/Privacy.py:372
 #: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
 #: Mailman/Gui/Usenet.py:105
 msgid "Yes"
@@ -1038,7 +1039,7 @@ msgid "Hostile address (illegal characters)"
 msgstr "Địa chỉ đối nghịch (có ký tự cấm)"
 
 #: Mailman/Cgi/admin.py:1412 bin/add_members:149 bin/clone_member:136
-#: bin/sync_members:264
+#: bin/sync_members:268
 msgid "Banned address (matched %(pattern)s)"
 msgstr "Địa chỉ cấm (khớp mẫu %(pattern)s)"
 
@@ -1447,7 +1448,7 @@ msgstr ""
 "<p>Hoặc bấm <em>Thôi yêu cầu đăng ký</em> nếu bạn không còn muốn\n"
 "đăng ký với hộp thư này."
 
-#: Mailman/Cgi/confirm.py:263
+#: Mailman/Cgi/confirm.py:264
 msgid ""
 "Your confirmation is required in order to continue with\n"
 "        the subscription request to the mailing list <em>%(listname)s</em>.\n"
@@ -1482,39 +1483,39 @@ msgstr ""
 "\t<p>Hoặc bấm <em>Thôi yêu cầu đăng ký</em> nếu bạn không\n"
 "\tcòn muốn đăng ký với hộp thư này."
 
-#: Mailman/Cgi/confirm.py:281
+#: Mailman/Cgi/confirm.py:282
 msgid "Your email address:"
 msgstr "Địa chỉ thư của bạn:"
 
-#: Mailman/Cgi/confirm.py:282
+#: Mailman/Cgi/confirm.py:283
 msgid "Your real name:"
 msgstr "Tên thật của bạn:"
 
-#: Mailman/Cgi/confirm.py:291
+#: Mailman/Cgi/confirm.py:292
 msgid "Receive digests?"
 msgstr "Nhận bó thư ?"
 
-#: Mailman/Cgi/confirm.py:300
+#: Mailman/Cgi/confirm.py:301
 msgid "Preferred language:"
 msgstr "Ngôn ngữ ưa thích:"
 
-#: Mailman/Cgi/confirm.py:305
+#: Mailman/Cgi/confirm.py:306
 msgid "Subscribe to list %(listname)s"
 msgstr "Đăng ký với hộp thư %(listname)s"
 
-#: Mailman/Cgi/confirm.py:306
+#: Mailman/Cgi/confirm.py:307
 msgid "Cancel my subscription request"
 msgstr "Thôi yêu cầu đăng ký"
 
-#: Mailman/Cgi/confirm.py:323
+#: Mailman/Cgi/confirm.py:324
 msgid "You have canceled your subscription request."
 msgstr "Bạn đã thôi yêu cầu đăng ký mình."
 
-#: Mailman/Cgi/confirm.py:361
+#: Mailman/Cgi/confirm.py:362
 msgid "Awaiting moderator approval"
 msgstr "Đang đợi điều tiết viên tán thành"
 
-#: Mailman/Cgi/confirm.py:364
+#: Mailman/Cgi/confirm.py:365
 msgid ""
 "            You have successfully confirmed your subscription request to "
 "the\n"
@@ -1530,8 +1531,8 @@ msgstr ""
 "\tYêu cầu của bạn đã được chuyển tiếp tới điều tiết viên của hộp thư này, và "
 "bạn sẽ nhận thư về cách quyết định."
 
-#: Mailman/Cgi/confirm.py:371 Mailman/Cgi/confirm.py:436
-#: Mailman/Cgi/confirm.py:525 Mailman/Cgi/confirm.py:762
+#: Mailman/Cgi/confirm.py:372 Mailman/Cgi/confirm.py:437
+#: Mailman/Cgi/confirm.py:526 Mailman/Cgi/confirm.py:763
 msgid ""
 "Invalid confirmation string.  It is\n"
 "            possible that you are attempting to confirm a request for an\n"
@@ -1540,11 +1541,11 @@ msgstr ""
 "Chuỗi xác nhận không hợp lệ. Có lẽ bạn đang cố xác nhận\n"
 "\tyêu cầu cho mỗi địa chỉ đã được bỏ đăng ký."
 
-#: Mailman/Cgi/confirm.py:375
+#: Mailman/Cgi/confirm.py:376
 msgid "You are already a member of this mailing list!"
 msgstr "Bạn đã có là thành viên của hộp thư chung này."
 
-#: Mailman/Cgi/confirm.py:378
+#: Mailman/Cgi/confirm.py:379
 msgid ""
 "You are currently banned from subscribing to\n"
 "            this list.  If you think this restriction is erroneous, please\n"
@@ -1554,7 +1555,7 @@ msgstr ""
 "\tNếu bạn xem là hạn chế này không đúng,\n"
 "\tvui lòng liên lạc với quản trị hộp thư tại %(owneraddr)s."
 
-#: Mailman/Cgi/confirm.py:382
+#: Mailman/Cgi/confirm.py:383
 msgid ""
 "            You were not invited to this mailing list.  The invitation has\n"
 "            been discarded, and both list administrators have been\n"
@@ -1564,11 +1565,11 @@ msgstr ""
 "\tLời mời đã bị hủy, và cả hai quản trị hộp thư\n"
 "\tđã được cảnh giác về trường hợp này."
 
-#: Mailman/Cgi/confirm.py:392
+#: Mailman/Cgi/confirm.py:393
 msgid "Subscription request confirmed"
 msgstr "Yêu cầu đăng ký đã được xác nhận."
 
-#: Mailman/Cgi/confirm.py:396
+#: Mailman/Cgi/confirm.py:397
 msgid ""
 "            You have successfully confirmed your subscription request for\n"
 "            \"%(addr)s\" to the %(listname)s mailing list.  A separate\n"
@@ -1584,15 +1585,15 @@ msgstr ""
 "\tMột lá thư xác nhận riêng sẽ được gởi cho địa chỉ thư điện tử của bạn,\n"
 "\tcùng với mật khẩu của bạn, và thông tin và liên kết có ích."
 
-#: Mailman/Cgi/confirm.py:414
+#: Mailman/Cgi/confirm.py:415
 msgid "You have canceled your unsubscription request."
 msgstr "Bạn đã thôi yêu cầu đăng ký mình."
 
-#: Mailman/Cgi/confirm.py:442
+#: Mailman/Cgi/confirm.py:443
 msgid "Unsubscription request confirmed"
 msgstr "Yêu cầu bỏ đăng ký đã được xác nhận."
 
-#: Mailman/Cgi/confirm.py:446
+#: Mailman/Cgi/confirm.py:447
 msgid ""
 "            You have successfully unsubscribed from the %(listname)s "
 "mailing\n"
@@ -1605,15 +1606,15 @@ msgstr ""
 "chính</a>\n"
 "\tcủa hộp thư này.."
 
-#: Mailman/Cgi/confirm.py:457
+#: Mailman/Cgi/confirm.py:458
 msgid "Confirm unsubscription request"
 msgstr "Xác nhận yêu cầu bỏ đăng ký"
 
-#: Mailman/Cgi/confirm.py:472 Mailman/Cgi/confirm.py:574
+#: Mailman/Cgi/confirm.py:473 Mailman/Cgi/confirm.py:575
 msgid "<em>Not available</em>"
 msgstr "<em>Không có sẵn</em>"
 
-#: Mailman/Cgi/confirm.py:475
+#: Mailman/Cgi/confirm.py:476
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    unsubscription request from the mailing list <em>%(listname)s</em>.  "
@@ -1642,20 +1643,20 @@ msgstr ""
 "\n"
 "Hoặc bấm <em>Thôi và hủy</em> để thôi yêu cầu bỏ đăng ký này."
 
-#: Mailman/Cgi/confirm.py:491 Mailman/Cgi/options.py:767
+#: Mailman/Cgi/confirm.py:492 Mailman/Cgi/options.py:767
 #: Mailman/Cgi/options.py:911 Mailman/Cgi/options.py:921
 msgid "Unsubscribe"
 msgstr "Bỏ đăng ký"
 
-#: Mailman/Cgi/confirm.py:492 Mailman/Cgi/confirm.py:603
+#: Mailman/Cgi/confirm.py:493 Mailman/Cgi/confirm.py:604
 msgid "Cancel and discard"
 msgstr "Thôi và hủy"
 
-#: Mailman/Cgi/confirm.py:502
+#: Mailman/Cgi/confirm.py:503
 msgid "You have canceled your change of address request."
 msgstr "Bạn mới thì yêu cầu thay đổi địa chỉ mình."
 
-#: Mailman/Cgi/confirm.py:531
+#: Mailman/Cgi/confirm.py:532
 msgid ""
 "%(newaddr)s is banned from subscribing to the\n"
 "            %(realname)s list.  If you think this restriction is erroneous,\n"
@@ -1665,7 +1666,7 @@ msgstr ""
 "\tNếu bạn xem là hạn chế này không đúng,\n"
 "\tvui lòng liên lạc với quản trị hộp thư tại %(owneraddr)s."
 
-#: Mailman/Cgi/confirm.py:536
+#: Mailman/Cgi/confirm.py:537
 #, fuzzy
 msgid ""
 "%(newaddr)s is already a member of\n"
@@ -1676,11 +1677,11 @@ msgstr ""
 "Chuỗi xác nhận không hợp lệ. Có lẽ bạn đang cố xác nhận\n"
 "\tyêu cầu cho mỗi địa chỉ đã được bỏ đăng ký."
 
-#: Mailman/Cgi/confirm.py:543
+#: Mailman/Cgi/confirm.py:544
 msgid "Change of address request confirmed"
 msgstr "Yêu cầu thay đổi địa chỉ đã được xác nhận."
 
-#: Mailman/Cgi/confirm.py:547
+#: Mailman/Cgi/confirm.py:548
 msgid ""
 "            You have successfully changed your address on the %(listname)s\n"
 "            mailing list from <b>%(oldaddr)s</b> to <b>%(newaddr)s</b>.  "
@@ -1693,15 +1694,15 @@ msgstr ""
 "Lúc bây giờ bạn có thể <a href=\"%(optionsurl)s\">tới trang đăng nhập của "
 "thành viên</a>."
 
-#: Mailman/Cgi/confirm.py:559
+#: Mailman/Cgi/confirm.py:560
 msgid "Confirm change of address request"
 msgstr "Xác nhận yêu cầu thay đổi địa chỉ"
 
-#: Mailman/Cgi/confirm.py:578
+#: Mailman/Cgi/confirm.py:579
 msgid "globally"
 msgstr "toàn cục"
 
-#: Mailman/Cgi/confirm.py:581
+#: Mailman/Cgi/confirm.py:582
 msgid ""
 "Your confirmation is required in order to complete the\n"
 "    change of address request for the mailing list <em>%(listname)s</em>.  "
@@ -1741,15 +1742,15 @@ msgstr ""
 "\n"
 "Hoặc bấm <em>Thôi và hủy</em> để thôi yêu cầu thay đổi địa chỉ này."
 
-#: Mailman/Cgi/confirm.py:602
+#: Mailman/Cgi/confirm.py:603
 msgid "Change address"
 msgstr "Đổi địa chỉ"
 
-#: Mailman/Cgi/confirm.py:611 Mailman/Cgi/confirm.py:727
+#: Mailman/Cgi/confirm.py:612 Mailman/Cgi/confirm.py:728
 msgid "Continue awaiting approval"
 msgstr "Tiếp tục đợi tán thành"
 
-#: Mailman/Cgi/confirm.py:619
+#: Mailman/Cgi/confirm.py:620
 msgid ""
 "Okay, the list moderator will still have the\n"
 "    opportunity to approve or reject this message."
@@ -1757,11 +1758,11 @@ msgstr ""
 "Điều tiết viênị hộp thư vẫn còn sẽ có dịp\n"
 "\tchấp nhận hoặc từ chối thư này."
 
-#: Mailman/Cgi/confirm.py:647
+#: Mailman/Cgi/confirm.py:648
 msgid "Sender discarded message via web."
 msgstr "Người gởi đã hủy thư qua Web."
 
-#: Mailman/Cgi/confirm.py:649
+#: Mailman/Cgi/confirm.py:650
 msgid ""
 "The held message with the Subject:\n"
 "            header <em>%(subject)s</em> could not be found.  The most "
@@ -1776,11 +1777,11 @@ msgstr ""
 "\tRất có thể vì điều tiết viên hộp thư đã chấp nhận hoặc từ chối thư này.\n"
 "\tHết hạn khả năng thôi nó."
 
-#: Mailman/Cgi/confirm.py:657
+#: Mailman/Cgi/confirm.py:658
 msgid "Posted message canceled"
 msgstr "Thư đã gởi bị thôi"
 
-#: Mailman/Cgi/confirm.py:660
+#: Mailman/Cgi/confirm.py:661
 msgid ""
 "            You have successfully canceled the posting of your message with\n"
 "            the Subject: header <em>%(subject)s</em> to the mailing list\n"
@@ -1790,11 +1791,11 @@ msgstr ""
 "\t<em>%(subject)s</em>\n"
 "\tcho hộp thư chung %(listname)s."
 
-#: Mailman/Cgi/confirm.py:671
+#: Mailman/Cgi/confirm.py:672
 msgid "Cancel held message posting"
 msgstr "Thôi gởi thư đã giữ lại"
 
-#: Mailman/Cgi/confirm.py:696
+#: Mailman/Cgi/confirm.py:697
 msgid ""
 "The held message you were referred to has\n"
 "        already been handled by the list administrator."
@@ -1802,7 +1803,7 @@ msgstr ""
 "Bạn đã tham chiếu đến một thư đã giữ lại\n"
 "\tmà đã được xử lý bởi quản trị hộp thư."
 
-#: Mailman/Cgi/confirm.py:710
+#: Mailman/Cgi/confirm.py:711
 msgid ""
 "Your confirmation is required in order to cancel the\n"
 "    posting of your message to the mailing list <em>%(listname)s</em>:\n"
@@ -1830,11 +1831,11 @@ msgstr ""
 "Hoặc bấm nút <em>Tiếp tục đợi tán thành</em> để tiếp tục đợi\n"
 "\tđiều tiết hộp thư chấp nhận hoặc từ chối thư này."
 
-#: Mailman/Cgi/confirm.py:726
+#: Mailman/Cgi/confirm.py:727
 msgid "Cancel posting"
 msgstr "Thôi gởi"
 
-#: Mailman/Cgi/confirm.py:738
+#: Mailman/Cgi/confirm.py:739
 msgid ""
 "You have canceled the re-enabling of your membership.  If\n"
 "    we continue to receive bounces from your address, it could be deleted "
@@ -1845,11 +1846,11 @@ msgstr ""
 "\tNếu chúng tôi tiếp tục nhận thư đã nảy về từ địa chỉ của bạn,\n"
 "\tcó lẽ nó bị xoá bỏ ra hộp thư chung này."
 
-#: Mailman/Cgi/confirm.py:768
+#: Mailman/Cgi/confirm.py:769
 msgid "Membership re-enabled."
 msgstr "Tính trạng thành viên đã được bật lại."
 
-#: Mailman/Cgi/confirm.py:772
+#: Mailman/Cgi/confirm.py:773
 msgid ""
 "            You have successfully re-enabled your membership in the\n"
 "            %(listname)s mailing list.  You can now <a\n"
@@ -1861,11 +1862,11 @@ msgstr ""
 "nhân thành viên</a>.\n"
 "           "
 
-#: Mailman/Cgi/confirm.py:784
+#: Mailman/Cgi/confirm.py:785
 msgid "Re-enable mailing list membership"
 msgstr "Bật lại tư cách thành viên hộp thư"
 
-#: Mailman/Cgi/confirm.py:801
+#: Mailman/Cgi/confirm.py:802
 msgid ""
 "We're sorry, but you have already been unsubscribed\n"
 "        from this mailing list.  To re-subscribe, please visit the\n"
@@ -1875,11 +1876,11 @@ msgstr ""
 "\tĐể đăng ký lại, vui lòng thăm <a href=\"%(listinfourl)s\">trang thông tin "
 "về hộp thư</a>."
 
-#: Mailman/Cgi/confirm.py:816
+#: Mailman/Cgi/confirm.py:817
 msgid "<em>not available</em>"
 msgstr "<em>hiện không có</em>"
 
-#: Mailman/Cgi/confirm.py:820
+#: Mailman/Cgi/confirm.py:821
 msgid ""
 "Your membership in the %(realname)s mailing list is\n"
 "    currently disabled due to excessive bounces.  Your confirmation is\n"
@@ -1917,11 +1918,11 @@ msgstr ""
 "mình.\n"
 "       "
 
-#: Mailman/Cgi/confirm.py:840
+#: Mailman/Cgi/confirm.py:841
 msgid "Re-enable membership"
 msgstr "Bật lại tư cách thành viên"
 
-#: Mailman/Cgi/confirm.py:841
+#: Mailman/Cgi/confirm.py:842
 msgid "Cancel"
 msgstr "Thôi"
 
@@ -3765,161 +3766,161 @@ msgstr "Thành viên nhận mỗi thư :"
 msgid "Digest members:"
 msgstr "Thành viên nhận bó thư :"
 
-#: Mailman/Defaults.py:1536
+#: Mailman/Defaults.py:1569
 msgid "Arabic"
 msgstr "A Rập"
 
-#: Mailman/Defaults.py:1537
+#: Mailman/Defaults.py:1570
 #, fuzzy
 msgid "Asturian"
 msgstr "Et-tô-ni-a"
 
-#: Mailman/Defaults.py:1538
+#: Mailman/Defaults.py:1571
 msgid "Catalan"
 msgstr "Ca-ta-lan"
 
-#: Mailman/Defaults.py:1539
+#: Mailman/Defaults.py:1572
 msgid "Czech"
 msgstr "Séc"
 
-#: Mailman/Defaults.py:1540
+#: Mailman/Defaults.py:1573
 msgid "Danish"
 msgstr "Đan-mạch"
 
-#: Mailman/Defaults.py:1541
+#: Mailman/Defaults.py:1574
 msgid "German"
 msgstr "Đức"
 
-#: Mailman/Defaults.py:1542
+#: Mailman/Defaults.py:1575
 msgid "English (USA)"
 msgstr "Anh (Mỹ)"
 
-#: Mailman/Defaults.py:1543
+#: Mailman/Defaults.py:1576
 msgid "Spanish (Spain)"
 msgstr "Tây-ban-nha (Tây-ban-nha)"
 
-#: Mailman/Defaults.py:1544
+#: Mailman/Defaults.py:1577
 msgid "Estonian"
 msgstr "Et-tô-ni-a"
 
-#: Mailman/Defaults.py:1545
+#: Mailman/Defaults.py:1578
 msgid "Euskara"
 msgstr "Yêu-x-ca-ra"
 
-#: Mailman/Defaults.py:1546
+#: Mailman/Defaults.py:1579
 msgid "Persian"
 msgstr ""
 
-#: Mailman/Defaults.py:1547
+#: Mailman/Defaults.py:1580
 msgid "Finnish"
 msgstr "Phần-lan"
 
-#: Mailman/Defaults.py:1548
+#: Mailman/Defaults.py:1581
 msgid "French"
 msgstr "Pháp"
 
-#: Mailman/Defaults.py:1549
+#: Mailman/Defaults.py:1582
 #, fuzzy
 msgid "Galician"
 msgstr "Ý"
 
-#: Mailman/Defaults.py:1550
+#: Mailman/Defaults.py:1583
 msgid "Greek"
 msgstr ""
 
-#: Mailman/Defaults.py:1551
+#: Mailman/Defaults.py:1584
 msgid "Hebrew"
 msgstr "Do Thái"
 
-#: Mailman/Defaults.py:1552
+#: Mailman/Defaults.py:1585
 msgid "Croatian"
 msgstr "Cợ-rô-a-ti-a"
 
-#: Mailman/Defaults.py:1553
+#: Mailman/Defaults.py:1586
 msgid "Hungarian"
 msgstr "Hung-gia-lợi"
 
-#: Mailman/Defaults.py:1554
+#: Mailman/Defaults.py:1587
 msgid "Interlingua"
 msgstr "In-ter-lin-gu-a"
 
-#: Mailman/Defaults.py:1555
+#: Mailman/Defaults.py:1588
 msgid "Italian"
 msgstr "Ý"
 
-#: Mailman/Defaults.py:1556
+#: Mailman/Defaults.py:1589
 msgid "Japanese"
 msgstr "Nhật"
 
-#: Mailman/Defaults.py:1557
+#: Mailman/Defaults.py:1590
 msgid "Korean"
 msgstr "Triều-tiên"
 
-#: Mailman/Defaults.py:1558
+#: Mailman/Defaults.py:1591
 msgid "Lithuanian"
 msgstr "Li-tu-a-ni"
 
-#: Mailman/Defaults.py:1559
+#: Mailman/Defaults.py:1592
 msgid "Dutch"
 msgstr "Hoà-lan"
 
-#: Mailman/Defaults.py:1560
+#: Mailman/Defaults.py:1593
 msgid "Norwegian"
 msgstr "Na-uy"
 
-#: Mailman/Defaults.py:1561
+#: Mailman/Defaults.py:1594
 msgid "Polish"
 msgstr "Ba-lan"
 
-#: Mailman/Defaults.py:1562
+#: Mailman/Defaults.py:1595
 msgid "Portuguese"
 msgstr "Bồ-đào-nha"
 
-#: Mailman/Defaults.py:1563
+#: Mailman/Defaults.py:1596
 msgid "Portuguese (Brazil)"
 msgstr "Bồ-đào-nha (Bra-xin)"
 
-#: Mailman/Defaults.py:1564
+#: Mailman/Defaults.py:1597
 msgid "Romanian"
 msgstr "Lỗ-má-ni"
 
-#: Mailman/Defaults.py:1565
+#: Mailman/Defaults.py:1598
 msgid "Russian"
 msgstr "Nga"
 
-#: Mailman/Defaults.py:1566
+#: Mailman/Defaults.py:1599
 msgid "Slovak"
 msgstr "Xlô-vác"
 
-#: Mailman/Defaults.py:1567
+#: Mailman/Defaults.py:1600
 msgid "Slovenian"
 msgstr "Xlô-ven"
 
-#: Mailman/Defaults.py:1568
+#: Mailman/Defaults.py:1601
 msgid "Serbian"
 msgstr "Xéc-bi"
 
-#: Mailman/Defaults.py:1569
+#: Mailman/Defaults.py:1602
 msgid "Swedish"
 msgstr "Thuỵ-điển"
 
-#: Mailman/Defaults.py:1570
+#: Mailman/Defaults.py:1603
 msgid "Turkish"
 msgstr "Thổ-nhĩ-kỳ"
 
-#: Mailman/Defaults.py:1571
+#: Mailman/Defaults.py:1604
 msgid "Ukrainian"
 msgstr "U-cợ-rainh"
 
-#: Mailman/Defaults.py:1572
+#: Mailman/Defaults.py:1605
 msgid "Vietnamese"
 msgstr "Việt"
 
-#: Mailman/Defaults.py:1573
+#: Mailman/Defaults.py:1606
 msgid "Chinese (China)"
 msgstr "Trung-quốc (quốc)"
 
-#: Mailman/Defaults.py:1574
+#: Mailman/Defaults.py:1607
 msgid "Chinese (Taiwan)"
 msgstr "Trung-hoa (Đài-loan)"
 
@@ -4343,7 +4344,7 @@ msgstr ""
 "Số ngày giữa hai lần gởi cảnh báo <em>Tư cách đăng ký của bạn bị tắt</em>.\n"
 "Giá trị này phải có dạng số nguyên."
 
-#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:284
+#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:286
 msgid "Notifications"
 msgstr "Thông báo"
 
@@ -5103,36 +5104,53 @@ msgstr ""
 "                            (listname %%05d) &rarr; (listname 00123)\n"
 "       "
 
-#: Mailman/Gui/General.py:161
-msgid "Mung From"
+#: Mailman/Gui/General.py:158 Mailman/Gui/Privacy.py:244
+msgid "Munge From"
 msgstr ""
 
-#: Mailman/Gui/General.py:161
+#: Mailman/Gui/General.py:158 Mailman/Gui/Privacy.py:244
 #, fuzzy
 msgid "Wrap Message"
 msgstr "Thư gốc"
 
-#: Mailman/Gui/General.py:162
+#: Mailman/Gui/General.py:159
 msgid ""
 "Replace the sender with the list address to conform with\n"
-"                 policies like ADSP and DMARC.  It replaces the poster's\n"
-"                 address in the From: header with the list address and adds "
-"the\n"
-"                 poster to the Reply-To: header, but the anonymous_list and\n"
-"                 Reply-To: header munging settings below take priority.  If\n"
-"                 setting this to Yes, it is advised to set the MTA to DKIM "
-"sign\n"
-"                 all emails."
+"             policies like DMARC."
 msgstr ""
 
-#: Mailman/Gui/General.py:169
+#: Mailman/Gui/General.py:161
 msgid ""
-"<br>If this is set to Wrap Message, just wrap the message\n"
-"                 in an outer message From: the list with Content-Type:\n"
-"                 message/rfc822."
+"Replace the sender with the list address to conform with\n"
+"             policies like ADSP and DMARC.  It replaces the poster's\n"
+"             address in the From: header with the list address and adds the\n"
+"             poster to the Reply-To: header, but the anonymous_list and\n"
+"             Reply-To: header munging settings below take priority.  If\n"
+"             setting this to Yes, it is advised to set the MTA to DKIM sign\n"
+"             all emails."
 msgstr ""
 
-#: Mailman/Gui/General.py:176
+#: Mailman/Gui/General.py:168
+msgid ""
+"<p>If this is set to Wrap Message, just wrap the message\n"
+"             in an outer message From: the list with Content-Type:\n"
+"             message/rfc822."
+msgstr ""
+
+#: Mailman/Gui/General.py:171
+#, fuzzy
+msgid ""
+"<p>If <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+"             dmarc_moderation_action</a> applies to this message with an\n"
+"             action other than Accept, that action rather than this is\n"
+"             applied"
+msgstr ""
+"Đoạn cần gồm trong <a href=\"?VARHELP/privacy/sender/member_moderation_action"
+"\">thông báo từ chối</a> nào được gởi cho\n"
+"thành viên đã điều tiết mà gởi thư cho hộp thư này."
+
+#: Mailman/Gui/General.py:178
 msgid ""
 "Hide the sender of a message, replacing it with the list\n"
 "             address (Removes From, Sender and Reply-To fields)"
@@ -5141,11 +5159,11 @@ msgstr ""
 "(gỡ bõ các trường From [Từ], Sender [Người gởi]\n"
 "và Reply-To [Trả lời cho])."
 
-#: Mailman/Gui/General.py:179
+#: Mailman/Gui/General.py:181
 msgid "<tt>Reply-To:</tt> header munging"
 msgstr "Cách làm lộn xộn dòng đầu <tt>Reply-To</tt>"
 
-#: Mailman/Gui/General.py:182
+#: Mailman/Gui/General.py:184
 msgid ""
 "Should any existing <tt>Reply-To:</tt> header found in the\n"
 "             original message be stripped?  If so, this will be done\n"
@@ -5157,19 +5175,19 @@ msgstr ""
 "bất chấp có dòng đầu <tt>Reply-To</tt> dứt khoát\n"
 "do trình Mailman thêm hay không."
 
-#: Mailman/Gui/General.py:188
+#: Mailman/Gui/General.py:190
 msgid "Explicit address"
 msgstr "Địa chỉ dứt khoát"
 
-#: Mailman/Gui/General.py:188
+#: Mailman/Gui/General.py:190
 msgid "Poster"
 msgstr "Người gởi thư"
 
-#: Mailman/Gui/General.py:188
+#: Mailman/Gui/General.py:190
 msgid "This list"
 msgstr "Hộp thư này"
 
-#: Mailman/Gui/General.py:189
+#: Mailman/Gui/General.py:191
 msgid ""
 "Where are replies to list messages directed?\n"
 "             <tt>Poster</tt> is <em>strongly</em> recommended for most "
@@ -5179,7 +5197,7 @@ msgstr ""
 "Các trả lời cho thư của hộp thư này nên được gởi cho ai?\n"
 "<em>Rất</em> khuyên chọn <tt>Người gởi thư</tt> cho hậu hết hộp thư chung."
 
-#: Mailman/Gui/General.py:194
+#: Mailman/Gui/General.py:196
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5253,11 +5271,11 @@ msgstr ""
 "hãy chọn <tt>Địa chỉ dứt khoát</tt> và đặt địa chỉ<tt>Reply-To:</tt>\n"
 "bên dưới để chỉ tới hộp thư song song."
 
-#: Mailman/Gui/General.py:226
+#: Mailman/Gui/General.py:228
 msgid "Explicit <tt>Reply-To:</tt> header."
 msgstr "Dòng đầu <tt>Reply-To:</tt> dứt khoát."
 
-#: Mailman/Gui/General.py:228
+#: Mailman/Gui/General.py:230
 msgid ""
 "This is the address set in the <tt>Reply-To:</tt> header\n"
 "             when the <a\n"
@@ -5325,11 +5343,11 @@ msgstr ""
 "<p>Ghi chú rằng dòng đầu <tt>Reply-To</tt> trong thư gốc sẽ không bị thay "
 "đổi, nếu có."
 
-#: Mailman/Gui/General.py:257
+#: Mailman/Gui/General.py:259
 msgid "Umbrella list settings"
 msgstr "Thiết lập cho toàn hộp thư"
 
-#: Mailman/Gui/General.py:260
+#: Mailman/Gui/General.py:262
 msgid ""
 "Send password reminders to, eg, \"-owner\" address instead of\n"
 "             directly to user."
@@ -5337,7 +5355,7 @@ msgstr ""
 "Gởi lời nhắc nhở mật khẩu cho, v.d. địa chỉ « -owner »\n"
 "thay vào trực tiếp cho người dùng."
 
-#: Mailman/Gui/General.py:263
+#: Mailman/Gui/General.py:265
 msgid ""
 "Set this to yes when this list is intended to cascade only\n"
 "             to other mailing lists.  When set, meta notices like\n"
@@ -5353,7 +5371,7 @@ msgstr ""
 "»\n"
 "được phụ thêm vào tên tài khoản thành viên."
 
-#: Mailman/Gui/General.py:271
+#: Mailman/Gui/General.py:273
 msgid ""
 "Suffix for use when this list is an umbrella for other\n"
 "             lists, according to setting of previous \"umbrella_list\"\n"
@@ -5362,7 +5380,7 @@ msgstr ""
 "Hậu tố cần dùng khi hộp thư này là cái dù cho các hộp thư khác,\n"
 "tùy theo thiết lập « umbrella_list » trước."
 
-#: Mailman/Gui/General.py:275
+#: Mailman/Gui/General.py:277
 msgid ""
 "When \"umbrella_list\" is set to indicate that this list has\n"
 "             other mailing lists as members, then administrative notices "
@@ -5385,11 +5403,11 @@ msgstr ""
 "cho thông báo như vậy. « -owner » là sự chọn thường.\n"
 "Thiết lập không có tác động khi giá trị « umbrella_list » là Không (No)."
 
-#: Mailman/Gui/General.py:287
+#: Mailman/Gui/General.py:289
 msgid "Send monthly password reminders?"
 msgstr "Gởi lời nhắc nhở mật khẩu hàng tháng không?"
 
-#: Mailman/Gui/General.py:289
+#: Mailman/Gui/General.py:291
 msgid ""
 "Turn this on if you want password reminders to be sent once\n"
 "             per month to your members.  Note that members may disable "
@@ -5400,7 +5418,7 @@ msgstr ""
 "được gởi một lần trong mỗi tháng cho các thành viên.\n"
 "Ghi chú rằng thành viên có thể tắt riêng lời nhắc nhở mật khẩu mình."
 
-#: Mailman/Gui/General.py:294
+#: Mailman/Gui/General.py:296
 msgid ""
 "List-specific text prepended to new-subscriber welcome\n"
 "             message"
@@ -5408,7 +5426,7 @@ msgstr ""
 "Đoạn đặc trưng cho hộp thư được phụ thêm vào\n"
 "thư chào đón người mới đăng ký."
 
-#: Mailman/Gui/General.py:297
+#: Mailman/Gui/General.py:299
 msgid ""
 "This value, if any, will be added to the front of the\n"
 "             new-subscriber welcome message.  The rest of the welcome "
@@ -5445,11 +5463,11 @@ msgstr ""
 "<li>Hai đoạn văn định giới bằng một dòng trắng.\n"
 "</ul>"
 
-#: Mailman/Gui/General.py:314
+#: Mailman/Gui/General.py:316
 msgid "Send welcome message to newly subscribed members?"
 msgstr "Gởi thư chào đón cho các người mới đăng ký phải không?"
 
-#: Mailman/Gui/General.py:315
+#: Mailman/Gui/General.py:317
 msgid ""
 "Turn this off only if you plan on subscribing people manually\n"
 "             and don't want them to know that you did so.  This option is "
@@ -5463,7 +5481,7 @@ msgstr ""
 "có ích nhiều nhất để nâng cấp trong suốt hộp thư chung\n"
 "từ phần mềm quản lý hộp thư chung khác lên Mailman."
 
-#: Mailman/Gui/General.py:321
+#: Mailman/Gui/General.py:323
 msgid ""
 "Text sent to people leaving the list.  If empty, no special\n"
 "             text will be added to the unsubscribe message."
@@ -5472,11 +5490,11 @@ msgstr ""
 "Nếu bỏ trống, không có đoạn đặc biệt nào sẽ được thêm\n"
 "vào thư bỏ đăng ký."
 
-#: Mailman/Gui/General.py:325
+#: Mailman/Gui/General.py:327
 msgid "Send goodbye message to members when they are unsubscribed?"
 msgstr "Gởi thư tạm biệt cho các thành viên mới bỏ đăng ký phải không?"
 
-#: Mailman/Gui/General.py:328
+#: Mailman/Gui/General.py:330
 msgid ""
 "Should the list moderators get immediate notice of new\n"
 "             requests, as well as daily notices about collected ones?"
@@ -5485,7 +5503,7 @@ msgstr ""
 "về yêu cầu mới nào, cũng như thông báo hàng ngày\n"
 "về các yêu cầu đã tập hợp không?"
 
-#: Mailman/Gui/General.py:331
+#: Mailman/Gui/General.py:333
 msgid ""
 "List moderators (and list administrators) are sent daily\n"
 "             reminders of requests pending approval, like subscriptions to "
@@ -5501,7 +5519,7 @@ msgstr ""
 "hoặc thư đã gởi mà được giữ lại vì lý do nào. Việc đặt tùy chọn này\n"
 "cũng gây ra thông báo được gởi ngay khi nhận yêu cầu mới."
 
-#: Mailman/Gui/General.py:338
+#: Mailman/Gui/General.py:340
 msgid ""
 "Should administrator get notices of subscribes and\n"
 "             unsubscribes?"
@@ -5509,19 +5527,19 @@ msgstr ""
 "Quản trị nên nhận thông báo về các việc\n"
 "đăng ký và bỏ đăng ký không?"
 
-#: Mailman/Gui/General.py:343
+#: Mailman/Gui/General.py:345
 msgid "Send mail to poster when their posting is held for approval?"
 msgstr "Gởi thư cho người đã gởi thư mà được giữ lại để tán thành phải không?"
 
-#: Mailman/Gui/General.py:346
+#: Mailman/Gui/General.py:348
 msgid "Additional settings"
 msgstr "Tùy chọn thêm"
 
-#: Mailman/Gui/General.py:349
+#: Mailman/Gui/General.py:351
 msgid "Emergency moderation of all list traffic."
 msgstr "Điều tiết khẩn cấp tắt cả các giao thông hộp thư."
 
-#: Mailman/Gui/General.py:350
+#: Mailman/Gui/General.py:352
 msgid ""
 "When this option is enabled, all list traffic is emergency\n"
 "             moderated, i.e. held for moderation.  Turn this option on when\n"
@@ -5534,7 +5552,7 @@ msgstr ""
 "Hãy bật tùy chọn này khi hộp thư của bạn gặp trường hợp\n"
 "không thân thiện nên bạn muốn tạo một thời gian bình tĩnh lại."
 
-#: Mailman/Gui/General.py:362
+#: Mailman/Gui/General.py:364
 msgid ""
 "Default options for new members joining this list.<input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
@@ -5542,7 +5560,7 @@ msgstr ""
 "Các tùy chọn mặc định cho thành viên mới đăng ký với hộp thư này.<input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
 
-#: Mailman/Gui/General.py:365
+#: Mailman/Gui/General.py:367
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
 "             set of options is taken from this variable's setting."
@@ -5550,7 +5568,7 @@ msgstr ""
 "Khi thành viên mới đăng ký với hộp thư này, bộ tùy chọn\n"
 "đầu tiên của họ bắt nguồn từ giá trị của biến này."
 
-#: Mailman/Gui/General.py:369
+#: Mailman/Gui/General.py:371
 msgid ""
 "(Administrivia filter) Check postings and intercept ones\n"
 "             that seem to be administrative requests?"
@@ -5558,7 +5576,7 @@ msgstr ""
 "(Bộ lọc linh tinh quản lý) Kiểm tra các thư đã gởi\n"
 "và chắn thư nào có vẻ là yêu cầu quản lý không?"
 
-#: Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:374
 msgid ""
 "Administrivia tests will check postings to see whether it's\n"
 "             really meant as an administrative request (like subscribe,\n"
@@ -5572,13 +5590,13 @@ msgstr ""
 "bỏ đăng ký), nên sẽ thêm nó vào hàng đợi yêu cầu quản lý,\n"
 "cũng thông báo quản trị về yêu cầu mới này. "
 
-#: Mailman/Gui/General.py:379
+#: Mailman/Gui/General.py:381
 msgid ""
 "Maximum length in kilobytes (KB) of a message body.  Use 0\n"
 "             for no limit."
 msgstr "Độ dài thân thư tối đa theo kilô-byte (KB). Giá trị 0 là vô hạn."
 
-#: Mailman/Gui/General.py:383
+#: Mailman/Gui/General.py:385
 msgid ""
 "Maximum number of members to show on one page of the\n"
 "             Membership List."
@@ -5586,11 +5604,11 @@ msgstr ""
 "Số tối đa các thành viên cần hiển thị trên mỗi trang\n"
 "\tcủa Danh sách Thành viên."
 
-#: Mailman/Gui/General.py:387
+#: Mailman/Gui/General.py:389
 msgid "Host name this list prefers for email."
 msgstr "Tên máy do hộp thư này ưu tiên cho thư."
 
-#: Mailman/Gui/General.py:389
+#: Mailman/Gui/General.py:391
 msgid ""
 "The \"host_name\" is the preferred name for email to\n"
 "             mailman-related addresses on this host, and generally should "
@@ -5607,7 +5625,7 @@ msgstr ""
 "Thiết lập này có thể hữu ích khi chọn trong nhiều tên xen kẽ\n"
 "của máy có nhiều địa chỉ."
 
-#: Mailman/Gui/General.py:401
+#: Mailman/Gui/General.py:403
 msgid ""
 "Should messages from this mailing list include the\n"
 "                 <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</"
@@ -5620,7 +5638,7 @@ msgstr ""
 "<tt>List-*</tt>) phải không?\n"
 "Rất khuyên bạn chọn <em>Có</em>."
 
-#: Mailman/Gui/General.py:406
+#: Mailman/Gui/General.py:408
 msgid ""
 "RFC 2369 defines a set of List-* headers that are\n"
 "                 normally added to every message sent to the list "
@@ -5658,11 +5676,11 @@ msgstr ""
 "nhưng mà không khuyên bạn làm như thế, và khả năng tắt chúng\n"
 "sẽ rất có thể biến mất cuối cùng."
 
-#: Mailman/Gui/General.py:424
+#: Mailman/Gui/General.py:426
 msgid "Should postings include the <tt>List-Post:</tt> header?"
 msgstr "Các thư đã gởi nên gồm dòng đầu <tt>List-Post:</tt> phải không?"
 
-#: Mailman/Gui/General.py:425
+#: Mailman/Gui/General.py:427
 msgid ""
 "The <tt>List-Post:</tt> header is one of the headers\n"
 "             recommended by\n"
@@ -5688,7 +5706,7 @@ msgstr ""
 "Hãy chọn <em>Không</em> để tắt gồm dòng đầu này. (Việc này\n"
 "không có tác động việc gồm những dòng đầu <tt>List-*:</tt> khác.)"
 
-#: Mailman/Gui/General.py:441
+#: Mailman/Gui/General.py:443
 #, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
@@ -5699,7 +5717,7 @@ msgstr ""
 "thư nảy về nào mà bộ xử lý thư nảy về không phát hiện được không?\n"
 "Khuyên bạn chọn <em>Có</em (Yes)."
 
-#: Mailman/Gui/General.py:445
+#: Mailman/Gui/General.py:447
 msgid ""
 "<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
 "                 2822</a> defines the <tt>Sender</tt> header and defines it\n"
@@ -5721,7 +5739,7 @@ msgid ""
 "                 here."
 msgstr ""
 
-#: Mailman/Gui/General.py:463
+#: Mailman/Gui/General.py:465
 msgid ""
 "Discard held messages older than this number of days.\n"
 "            Use 0 for no automatic discarding."
@@ -5729,7 +5747,7 @@ msgstr ""
 "Hủy các thư đã giữ lại lâu hơn số ngày này.\n"
 "0 có nghĩa là không tự động hủy gì."
 
-#: Mailman/Gui/General.py:473
+#: Mailman/Gui/General.py:475
 msgid ""
 "<b>real_name</b> attribute not\n"
 "            changed!  It must differ from the list's name by case\n"
@@ -5738,7 +5756,7 @@ msgstr ""
 "Chưa thay đổi thuộc tính <b>real_name</b> (tên thật).\n"
 "Cho phép nó khác với tên hộp thư chỉ bằng chữ hoa/thường."
 
-#: Mailman/Gui/General.py:501
+#: Mailman/Gui/General.py:503
 msgid ""
 "The <b>info</b> attribute you saved\n"
 "contains suspicious HTML that could potentially expose your users to cross-"
@@ -5760,7 +5778,7 @@ msgstr ""
 "Thay đổi này có thể làm với « bin/withlist » hay « bin/config_list »\n"
 "bằng cách đặt « mlist.info »."
 
-#: Mailman/Gui/General.py:512
+#: Mailman/Gui/General.py:514
 msgid ""
 "<b>admin_member_chunksize</b> attribute not\n"
 "            changed!  It must be an integer > 0."
@@ -5768,7 +5786,7 @@ msgstr ""
 "Thuộc tính <b>admin_member_chunksize</b>\n"
 "\tchưa thay đổi ! Nó phải là số nguyên > 0."
 
-#: Mailman/Gui/General.py:522
+#: Mailman/Gui/General.py:524
 msgid ""
 "You cannot add a Reply-To: to an explicit\n"
 "            address if that address is blank.  Resetting these values."
@@ -6439,7 +6457,12 @@ msgstr ""
 "không cho phép nhận diện dễ dàng. Tùy chọn này cố gắng tránh\n"
 "chương trình quét Web của người gởi thư rác ăn cấp địa chỉ thư."
 
-#: Mailman/Gui/Privacy.py:162
+#: Mailman/Gui/Privacy.py:163
+#, fuzzy
+msgid "/Quarantine"
+msgstr "Mỗi ba tháng"
+
+#: Mailman/Gui/Privacy.py:167
 msgid ""
 "When a message is posted to the list, a series of\n"
 "            moderation steps are taken to decide whether a moderator must\n"
@@ -6511,17 +6534,17 @@ msgstr ""
 "            <p>Ghi chú rằng trình Mailman luôn luôn khớp trước tiên\n"
 "các chuỗi không phải là biểu thức chính quy."
 
-#: Mailman/Gui/Privacy.py:195
+#: Mailman/Gui/Privacy.py:200
 msgid "Member filters"
 msgstr "Bộ lọc thành viên"
 
-#: Mailman/Gui/Privacy.py:198
+#: Mailman/Gui/Privacy.py:203
 msgid "By default, should new list member postings be moderated?"
 msgstr ""
 "Theo mặc định, thư nào được gởi bởi người mới đăng ký nên được điều tiết "
 "không?"
 
-#: Mailman/Gui/Privacy.py:200
+#: Mailman/Gui/Privacy.py:205
 msgid ""
 "Each list member has a <em>moderation flag</em> which says\n"
 "             whether messages from the list member can be posted directly "
@@ -6559,7 +6582,7 @@ msgstr ""
 "tự đặt cờ điều tiêt riêng của thành viên nào, bằng cách sử dụng\n"
 "<a href=\"%(adminurl)s/members\">những màn hình quản lý thành viên</a>."
 
-#: Mailman/Gui/Privacy.py:217
+#: Mailman/Gui/Privacy.py:222
 msgid ""
 "Action to take when a moderated member posts to the\n"
 "             list."
@@ -6567,7 +6590,7 @@ msgstr ""
 "Hành động cần làm khi thanh viên đã điều tiết\n"
 "có gởi thư cho hộp thư."
 
-#: Mailman/Gui/Privacy.py:219
+#: Mailman/Gui/Privacy.py:224
 msgid ""
 "<ul><li><b>Hold</b> -- this holds the message for approval\n"
 "             by the list moderators.\n"
@@ -6596,7 +6619,7 @@ msgstr ""
 "không có thông báo người đã gởi nó.\n"
 "             </ul>"
 
-#: Mailman/Gui/Privacy.py:233
+#: Mailman/Gui/Privacy.py:238
 msgid ""
 "Text to include in any\n"
 "             <a href=\"?VARHELP/privacy/sender/member_moderation_action\"\n"
@@ -6607,11 +6630,75 @@ msgstr ""
 "\">thông báo từ chối</a> nào được gởi cho\n"
 "thành viên đã điều tiết mà gởi thư cho hộp thư này."
 
-#: Mailman/Gui/Privacy.py:238
+#: Mailman/Gui/Privacy.py:246
+#, fuzzy
+msgid ""
+"Action to take when anyone posts to the\n"
+"             list from a domain with a DMARC Reject%(quarantine)s Policy."
+msgstr ""
+"Hành động cần làm khi thanh viên đã điều tiết\n"
+"có gởi thư cho hộp thư."
+
+#: Mailman/Gui/Privacy.py:249
+#, fuzzy
+msgid ""
+"<ul><li><b>Wrap Message</b> -- applies the <a\n"
+"             href=\"?VARHELP=general/from_is_list\">from_is_list Wrap\n"
+"             Message</a> transformation to these messages.\n"
+"\n"
+"             <p><li><b>Munge From</b> -- applies the <a\n"
+"             href=\"?VARHELP=general/from_is_list\">from_is_list Munge From</"
+"a>\n"
+"             transformation to these messages.\n"
+"\n"
+"             <p><li><b>Reject</b> -- this automatically rejects the message "
+"by\n"
+"             sending a bounce notice to the post's author.  The text of the\n"
+"             bounce notice can be <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_notice\"\n"
+"             >configured by you</a>.\n"
+"\n"
+"             <p><li><b>Discard</b> -- this simply discards the message, "
+"with\n"
+"             no notice sent to the post's author.\n"
+"             </ul>\n"
+"\n"
+"             <p>This setting takes precedence over the <a\n"
+"             href=\"?VARHELP=general/from_is_list\"> from_is_list</a> "
+"setting\n"
+"             if the message is From: an affected domain and the setting is\n"
+"             other than Accept."
+msgstr ""
+"<ul><li><b>Giữ lại</b> &mdash; tùy chọn này giữ lại thư\n"
+"cho điều tiết viên tác thành.\n"
+"\n"
+"             <p><li><b>Từ chối</b> &mdash; tùy chọn này tự động từ chối thư\n"
+"bằng cách gởi thông báo nảy về cho người đã gởi thư đó.\n"
+"Bạn có thể <a href=\"?VARHELP=privacy/sender/member_moderation_notice\">cấu "
+"hình</a> thân của thư thông báo nảy về.\n"
+"\n"
+"             <p><li><b>Hủy</b> &mdash; tùy chọn này đơn giản hủy thư,\n"
+"không có thông báo người đã gởi nó.\n"
+"             </ul>"
+
+#: Mailman/Gui/Privacy.py:273
+#, fuzzy
+msgid ""
+"Text to include in any\n"
+"             <a href=\"?VARHELP=privacy/sender/dmarc_moderation_action\"\n"
+"             >rejection notice</a> to\n"
+"             be sent to anyone who posts to this list from a domain\n"
+"             with DMARC Reject/Quarantine Policy."
+msgstr ""
+"Đoạn cần gồm trong <a href=\"?VARHELP/privacy/sender/member_moderation_action"
+"\">thông báo từ chối</a> nào được gởi cho\n"
+"thành viên đã điều tiết mà gởi thư cho hộp thư này."
+
+#: Mailman/Gui/Privacy.py:279
 msgid "Non-member filters"
 msgstr "Bộ lọc người không thành viên"
 
-#: Mailman/Gui/Privacy.py:241
+#: Mailman/Gui/Privacy.py:282
 msgid ""
 "List of non-member addresses whose postings should be\n"
 "             automatically accepted."
@@ -6619,7 +6706,7 @@ msgstr ""
 "Danh sách địa chỉ thư của các người không thành viên\n"
 "gởi thư sẻ được chấp nhận tự động bởi hộp thư này."
 
-#: Mailman/Gui/Privacy.py:248
+#: Mailman/Gui/Privacy.py:289
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             accepted with no further moderation applied.  Add member\n"
@@ -6639,7 +6726,7 @@ msgstr ""
 "\ttrong cùng bản cài đặt, mọi thành viên của nó\n"
 "\tsẽ được chấp nhận vào hộp thư chung này."
 
-#: Mailman/Gui/Privacy.py:257
+#: Mailman/Gui/Privacy.py:298
 msgid ""
 "List of non-member addresses whose postings will be\n"
 "             immediately held for moderation."
@@ -6647,7 +6734,7 @@ msgstr ""
 "Danh sách địa chỉ của các người không thành viên\n"
 "gởi thư sẽ được giữ lại ngay để điều tiết."
 
-#: Mailman/Gui/Privacy.py:260
+#: Mailman/Gui/Privacy.py:301
 msgid ""
 "Postings from any of these non-members will be immediately\n"
 "             and automatically held for moderation by the list moderators.\n"
@@ -6666,7 +6753,7 @@ msgstr ""
 "bắt đầu dòng với dấu mũ ^ để ngụ ý cần thiết\n"
 "khớp vơi biểu thức chính quy."
 
-#: Mailman/Gui/Privacy.py:268
+#: Mailman/Gui/Privacy.py:309
 msgid ""
 "List of non-member addresses whose postings will be\n"
 "             automatically rejected."
@@ -6674,7 +6761,7 @@ msgstr ""
 "Danh sách địa chỉ thư của các người không thành viên\n"
 "gởi thư sẽ bị từ chối tự động."
 
-#: Mailman/Gui/Privacy.py:271
+#: Mailman/Gui/Privacy.py:312
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             rejected.  In other words, their messages will be bounced back "
@@ -6700,7 +6787,7 @@ msgstr ""
 "Hãy thêm một địa chỉ thư trên mỗi dòng; bắt đầu dòng\n"
 "với dấu mũ ^ để ngụ ý cần thiết khớp vơi biểu thức chính quy."
 
-#: Mailman/Gui/Privacy.py:283
+#: Mailman/Gui/Privacy.py:324
 msgid ""
 "List of non-member addresses whose postings will be\n"
 "             automatically discarded."
@@ -6708,7 +6795,7 @@ msgstr ""
 "Danh sách địa chỉ thư của các người không thành viên\n"
 "gởi thư sẽ bị hủy tự động."
 
-#: Mailman/Gui/Privacy.py:286
+#: Mailman/Gui/Privacy.py:327
 msgid ""
 "Postings from any of these non-members will be automatically\n"
 "             discarded.  That is, the message will be thrown away with no\n"
@@ -6734,7 +6821,7 @@ msgstr ""
 "bắt đầu dòng với dấu mũ ^ để ngụ ý cần thiết khớp\n"
 "vơi biểu thức chính quy."
 
-#: Mailman/Gui/Privacy.py:298
+#: Mailman/Gui/Privacy.py:339
 msgid ""
 "Action to take for postings from non-members for which no\n"
 "             explicit action is defined."
@@ -6742,7 +6829,7 @@ msgstr ""
 "Hành động cần làm với thư đã gởi bởi người không thành viên\n"
 "cho mà hành động dứt khoát chưa được định nghĩa."
 
-#: Mailman/Gui/Privacy.py:301
+#: Mailman/Gui/Privacy.py:342
 msgid ""
 "When a post from a non-member is received, the message's\n"
 "             sender is matched against the list of explicitly\n"
@@ -6767,7 +6854,7 @@ msgstr ""
 "\">bị hủy</a> một cách dứt khoát.\n"
 "Nếu không tìm thấy điều khớp, hành động này được làm."
 
-#: Mailman/Gui/Privacy.py:313
+#: Mailman/Gui/Privacy.py:354
 msgid ""
 "Should messages from non-members, which are automatically\n"
 "             discarded, be forwarded to the list moderator?"
@@ -6775,7 +6862,7 @@ msgstr ""
 "Thư nào từ người không thành viên, mà đã bị hủy tự động,\n"
 "nên được chuyển tiếp tới điều tiết hộp thư không?"
 
-#: Mailman/Gui/Privacy.py:317
+#: Mailman/Gui/Privacy.py:358
 msgid ""
 "Text to include in any rejection notice to be sent to\n"
 "             non-members who post to this list. This notice can include\n"
@@ -6787,7 +6874,7 @@ msgstr ""
 "Thông báo này có thể gồm địa chỉ thư của người sở hữu hộp thư,\n"
 "dùng %%(listowner)s, và thay thế thông điệp đã tạo nội bộ."
 
-#: Mailman/Gui/Privacy.py:325
+#: Mailman/Gui/Privacy.py:366
 msgid ""
 "This section allows you to configure various filters based on\n"
 "            the recipient of the message."
@@ -6795,11 +6882,11 @@ msgstr ""
 "Phần này cho bạn khả năng cấu hình vài bộ lọc khác nhau\n"
 "đựa vào người nhận thư."
 
-#: Mailman/Gui/Privacy.py:328
+#: Mailman/Gui/Privacy.py:369
 msgid "Recipient filters"
 msgstr "Bộ lọc người nhận"
 
-#: Mailman/Gui/Privacy.py:332
+#: Mailman/Gui/Privacy.py:373
 msgid ""
 "Must posts have list named in destination (to, cc) field\n"
 "             (or be among the acceptable alias names, specified below)?"
@@ -6808,7 +6895,7 @@ msgstr ""
 "(To: [Cho :], Cc [Chép cho]), hoặc gồm nó trong những tên\n"
 "bí danh đã chấp nhận, được ghi rõ bên dưới không?"
 
-#: Mailman/Gui/Privacy.py:335
+#: Mailman/Gui/Privacy.py:376
 msgid ""
 "Many (in fact, most) spams do not explicitly name their\n"
 "             myriad destinations in the explicit destination addresses - in\n"
@@ -6844,7 +6931,7 @@ msgstr ""
 "\n"
 "</ol>"
 
-#: Mailman/Gui/Privacy.py:353
+#: Mailman/Gui/Privacy.py:394
 msgid ""
 "Alias names (regexps) which qualify as explicit to or cc\n"
 "             destination names for this list."
@@ -6852,7 +6939,7 @@ msgstr ""
 "Tên bí danh (biểu thức chính quy) mà có khả năng\n"
 "tên đích To: hay Cc: dứt khoát cho hộp thư này."
 
-#: Mailman/Gui/Privacy.py:356
+#: Mailman/Gui/Privacy.py:397
 msgid ""
 "Alternate addresses that are acceptable when\n"
 "             `require_explicit_destination' is enabled.  This option takes "
@@ -6892,11 +6979,11 @@ msgstr ""
 "<p>Việc khớp với phần cục bộ bị phản đối, trong một phiên bản tương lai,\n"
 "mẫu sẽ luôn luôn được khớp với toàn bộ địa chỉ thư của người nhận."
 
-#: Mailman/Gui/Privacy.py:374
+#: Mailman/Gui/Privacy.py:415
 msgid "Ceiling on acceptable number of recipients for a posting."
 msgstr "Giới hạn số người nhận tối đa khả thủ khi gởi thư."
 
-#: Mailman/Gui/Privacy.py:376
+#: Mailman/Gui/Privacy.py:417
 msgid ""
 "If a posting has this number, or more, of recipients, it is\n"
 "             held for admin approval.  Use 0 for no ceiling."
@@ -6905,7 +6992,7 @@ msgstr ""
 "hoặc nhiều hơn, nó được giữ lại cho quản trị tán thành.\n"
 "0 có nghĩa là vô hạn."
 
-#: Mailman/Gui/Privacy.py:381
+#: Mailman/Gui/Privacy.py:422
 msgid ""
 "This section allows you to configure various anti-spam\n"
 "            filters posting filters, which can help reduce the amount of "
@@ -6917,15 +7004,15 @@ msgstr ""
 "chống thư rác, mà có thể giúp đỡ giảm số thư rác được nhận\n"
 "cuối cùng bởi những thành viên của hộp thư này."
 
-#: Mailman/Gui/Privacy.py:386
+#: Mailman/Gui/Privacy.py:427
 msgid "Header filters"
 msgstr "Bộ lọc dòng đầu"
 
-#: Mailman/Gui/Privacy.py:389
+#: Mailman/Gui/Privacy.py:430
 msgid "Filter rules to match against the headers of a message."
 msgstr "Các quy tắc lọc để khớp với những dòng đầu của thư."
 
-#: Mailman/Gui/Privacy.py:391
+#: Mailman/Gui/Privacy.py:432
 msgid ""
 "Each header filter rule has two parts, a list of regular\n"
 "             expressions, one per line, and an action to take.  Mailman\n"
@@ -6965,17 +7052,17 @@ msgstr ""
 "bạn có thể lọc ra hữu hiệu các thư chứa kiểu tập tin hoặc\n"
 "phần mở rộng tập tin nguy hiểm."
 
-#: Mailman/Gui/Privacy.py:408
+#: Mailman/Gui/Privacy.py:449
 msgid "Legacy anti-spam filters"
 msgstr "Bộ lọc cũ chống thư rác"
 
-#: Mailman/Gui/Privacy.py:411
+#: Mailman/Gui/Privacy.py:452
 msgid "Hold posts with header value matching a specified regexp."
 msgstr ""
 "Giữ các thư có giá trị dòng đầu khớp một biểu thức chính quy\n"
 "đã ghi rõ."
 
-#: Mailman/Gui/Privacy.py:412
+#: Mailman/Gui/Privacy.py:453
 msgid ""
 "Use this option to prohibit posts according to specific\n"
 "             header values.  The target value is a regular-expression for\n"
@@ -7007,7 +7094,13 @@ msgstr ""
 "Có thể tránh trường hợp này bằng một số cách khác nhau,\n"
 "v.d. bằng cách thoát dấu cách, hoặc đặt nó giữa hai dấu ngoặc."
 
-#: Mailman/Gui/Privacy.py:492
+#: Mailman/Gui/Privacy.py:488
+msgid ""
+"dmarc_moderation_action must be >= the configured\n"
+"                           default value."
+msgstr ""
+
+#: Mailman/Gui/Privacy.py:538
 msgid ""
 "Header filter rules require a pattern.\n"
 "                Incomplete filter rules will be ignored."
@@ -7015,7 +7108,7 @@ msgstr ""
 "Quy tắc lọc dòng đầu cần thiết một mẫu.\n"
 "Quy tắc lọc không hoàn tất sẽ bị bỏ qua."
 
-#: Mailman/Gui/Privacy.py:500
+#: Mailman/Gui/Privacy.py:546
 msgid ""
 "The header filter rule pattern\n"
 "                '%(safepattern)s' is not a legal regular expression.  This\n"
@@ -7846,7 +7939,21 @@ msgstr ""
 msgid "Content filtered message notification"
 msgstr "Thông báo thư đã lọc nội dung"
 
-#: Mailman/Handlers/Moderate.py:163
+#: Mailman/Handlers/Moderate.py:70
+#, fuzzy
+msgid ""
+"You are not allowed to post to this mailing list From: a domain which\n"
+"publishes a DMARC policy of reject or quarantine, and your message has been\n"
+"automatically rejected.  If you think that your messages are being rejected "
+"in\n"
+"error, contact the mailing list owner at %(listowner)s."
+msgstr ""
+"Không cho phép ông/cô gởi thư cho hộp thư chung này\n"
+"nên thư do ông/cô gởi đã bị từ chối tự động. Nếu ông/cô xem là\n"
+"hạn chế này không đúng, vui lòng liên lạc với người sở hữu\n"
+"hộp thư tại %(listowner)s."
+
+#: Mailman/Handlers/Moderate.py:189
 msgid ""
 "You are not allowed to post to this mailing list, and your message has been\n"
 "automatically rejected.  If you think that your messages are being rejected "
@@ -7858,11 +7965,11 @@ msgstr ""
 "hạn chế này không đúng, vui lòng liên lạc với người sở hữu\n"
 "hộp thư tại %(listowner)s."
 
-#: Mailman/Handlers/Moderate.py:179
+#: Mailman/Handlers/Moderate.py:205
 msgid "Auto-discard notification"
 msgstr "Thông báo hủy tự động"
 
-#: Mailman/Handlers/Moderate.py:182
+#: Mailman/Handlers/Moderate.py:208
 msgid "The attached message has been automatically discarded."
 msgstr "Thư đính kèm đã bị hủy tự động."
 
@@ -7948,11 +8055,11 @@ msgstr "Đã bỏ qua nội dụng kiểu %(partctype)s\n"
 msgid "-------------- next part --------------\n"
 msgstr "━━━━━━phần kế tiếp━━━━━━\n"
 
-#: Mailman/Handlers/SpamDetect.py:55
+#: Mailman/Handlers/SpamDetect.py:56
 msgid "The message headers matched a filter rule"
 msgstr "Những dòng đầu của thư này đã khớp một quy tắc lọc"
 
-#: Mailman/Handlers/SpamDetect.py:119
+#: Mailman/Handlers/SpamDetect.py:123
 msgid "Message rejected by filter rule match"
 msgstr "Thư bị từ chối vì khớp với quy tắc lọc"
 
@@ -7992,39 +8099,39 @@ msgstr "Dòng chân bó thư"
 msgid "End of "
 msgstr "Kết thúc của "
 
-#: Mailman/ListAdmin.py:299
+#: Mailman/ListAdmin.py:307
 msgid "Posting of your message titled \"%(subject)s\""
 msgstr "Việc gởi thư của bạn có chủ đề « %(subject)s »"
 
-#: Mailman/ListAdmin.py:300 Mailman/ListAdmin.py:422
+#: Mailman/ListAdmin.py:308 Mailman/ListAdmin.py:430
 msgid "[No reason given]"
 msgstr "[Chưa ghi lý do]"
 
-#: Mailman/ListAdmin.py:338
+#: Mailman/ListAdmin.py:346
 msgid "Forward of moderated message"
 msgstr "Việc chuyển tiếp thư đã điều tiết"
 
-#: Mailman/ListAdmin.py:395
+#: Mailman/ListAdmin.py:403
 msgid "New subscription request to list %(realname)s from %(addr)s"
 msgstr "Yêu cầu đăng ký mới với hộp thư %(realname)s từ %(addr)s"
 
-#: Mailman/ListAdmin.py:421
+#: Mailman/ListAdmin.py:429
 msgid "Subscription request"
 msgstr "Yêu cầu đang ký"
 
-#: Mailman/ListAdmin.py:452
+#: Mailman/ListAdmin.py:460
 msgid "New unsubscription request from %(realname)s by %(addr)s"
 msgstr "Yêu cầu bỏ đăng ký mới với hộp thư %(realname)s từ %(addr)s"
 
-#: Mailman/ListAdmin.py:476
+#: Mailman/ListAdmin.py:484
 msgid "Unsubscription request"
 msgstr "Yêu cầu bỏ đang ký"
 
-#: Mailman/ListAdmin.py:509
+#: Mailman/ListAdmin.py:517
 msgid "Original Message"
 msgstr "Thư gốc"
 
-#: Mailman/ListAdmin.py:512
+#: Mailman/ListAdmin.py:520
 msgid "Request to mailing list %(realname)s rejected"
 msgstr "Yêu cầu cho hộp thư chung %(realname)s bị từ chối"
 
@@ -8099,16 +8206,16 @@ msgstr ""
 msgid "Mailing list removal request for list %(listname)s"
 msgstr "Yêu cầu gỡ bỏ hộp thư chung cho hộp thư %(listname)s"
 
-#: Mailman/MTA/Postfix.py:320
+#: Mailman/MTA/Postfix.py:324
 msgid "checking permissions on %(file)s"
 msgstr "đang kiểm tra quyền truy cập tập tin %(file)s"
 
-#: Mailman/MTA/Postfix.py:330
+#: Mailman/MTA/Postfix.py:334
 msgid "%(file)s permissions must be 066x (got %(octmode)s)"
 msgstr "quyền truy cập tập tin %(file)s phải là « 066x » (còn gặp %(octmode)s)"
 
-#: Mailman/MTA/Postfix.py:332 Mailman/MTA/Postfix.py:359
-#: Mailman/MTA/Postfix.py:370 bin/check_perms:125 bin/check_perms:153
+#: Mailman/MTA/Postfix.py:336 Mailman/MTA/Postfix.py:363
+#: Mailman/MTA/Postfix.py:374 bin/check_perms:125 bin/check_perms:153
 #: bin/check_perms:163 bin/check_perms:174 bin/check_perms:199
 #: bin/check_perms:216 bin/check_perms:242 bin/check_perms:265
 #: bin/check_perms:284 bin/check_perms:298 bin/check_perms:318
@@ -8116,15 +8223,15 @@ msgstr "quyền truy cập tập tin %(file)s phải là « 066x » (còn gặp 
 msgid "(fixing)"
 msgstr "(đang sửa)"
 
-#: Mailman/MTA/Postfix.py:348
+#: Mailman/MTA/Postfix.py:352
 msgid "checking ownership of %(dbfile)s"
 msgstr "đang kiểm tra quyền sở hữu tập tin %(dbfile)s"
 
-#: Mailman/MTA/Postfix.py:356
+#: Mailman/MTA/Postfix.py:360
 msgid "%(dbfile)s owned by %(owner)s (must be owned by %(user)s"
 msgstr "Tập tin %(dbfile)s do %(owner)s sở hữu (phải do %(user)s sở hữu)"
 
-#: Mailman/MTA/Postfix.py:368
+#: Mailman/MTA/Postfix.py:372
 msgid "%(dbfile)s permissions must be 066x (got %(octmode)s)"
 msgstr ""
 "quyền truy cập tập tin %(dbfile)s phải là « 066x » (còn gặp %(octmode)s)"
@@ -8137,35 +8244,35 @@ msgstr "Cần thiết bạn xác nhận để tham gia hộp thư chung %(listna
 msgid "Your confirmation is required to leave the %(listname)s mailing list"
 msgstr "Cần thiết bạn xác nhận để rời đi ra hộp thư chung %(listname)s"
 
-#: Mailman/MailList.py:904 Mailman/MailList.py:1334
+#: Mailman/MailList.py:906 Mailman/MailList.py:1336
 msgid " from %(remote)s"
 msgstr " từ %(remote)s"
 
-#: Mailman/MailList.py:945
+#: Mailman/MailList.py:947
 msgid "subscriptions to %(realname)s require moderator approval"
 msgstr ""
 "các việc đăng ký với hộp thư chung %(realname)s cần thiết điều tiết viên tán "
 "thành"
 
-#: Mailman/MailList.py:1014 bin/add_members:252
+#: Mailman/MailList.py:1016 bin/add_members:252
 msgid "%(realname)s subscription notification"
 msgstr "thông báo đăng ký với hộp thư chung %(realname)s"
 
-#: Mailman/MailList.py:1033
+#: Mailman/MailList.py:1035
 msgid "unsubscriptions require moderator approval"
 msgstr "các việc bỏ đăng ký cần thiết điều tiết viên tán thành"
 
-#: Mailman/MailList.py:1053
+#: Mailman/MailList.py:1055
 msgid "%(realname)s unsubscribe notification"
 msgstr "thông báo bỏ đăng ký với hộp thư chung %(realname)s"
 
-#: Mailman/MailList.py:1243
+#: Mailman/MailList.py:1245
 msgid "subscriptions to %(name)s require administrator approval"
 msgstr ""
 "các việc đăng ký với hộp thư chung %(name)s cần thiết điều tiết viên tán "
 "thành"
 
-#: Mailman/MailList.py:1508
+#: Mailman/MailList.py:1510
 msgid "Last autoresponse notification for today"
 msgstr "Thông báo đáp ứng tự động cuối cùng của hôm nay"
 
@@ -11364,11 +11471,11 @@ msgstr "Không hợp lệ :  %(addr)30s"
 msgid "You must fix the preceding invalid addresses first."
 msgstr "Đầu tiên bạn phải sửa những địa chỉ không hợp lệ đi trước."
 
-#: bin/sync_members:260
+#: bin/sync_members:264
 msgid "Added  : %(s)s"
 msgstr "Đã thêm : %(s)s"
 
-#: bin/sync_members:280
+#: bin/sync_members:288
 msgid "Removed: %(s)s"
 msgstr "Đã gỡ bỏ : %(s)s"
 
