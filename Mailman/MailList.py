@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -389,6 +389,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # 2==Discard
         self.member_moderation_action = 0
         self.member_moderation_notice = ''
+        self.dmarc_moderation_action = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
+        self.dmarc_moderation_notice = ''
         self.accept_these_nonmembers = []
         self.hold_these_nonmembers = []
         self.reject_these_nonmembers = []

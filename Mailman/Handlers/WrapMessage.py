@@ -1,4 +1,4 @@
-# Copyright (C) 2013 by the Free Software Foundation, Inc.
+# Copyright (C) 2013-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -35,7 +35,8 @@ KEEPERS = ('to',
 
 
 def process(mlist, msg, msgdata):
-    if not mm_cfg.ALLOW_FROM_IS_LIST or mlist.from_is_list != 2:
+    if not (msgdata.get('from_is_list') == 2 or
+            (mlist.from_is_list == 2 and msgdata.get('from_is_list') == 0)):
         return
 
     # There are various headers in msg that we don't want, so we basically

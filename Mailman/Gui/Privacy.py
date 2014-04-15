@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -158,6 +158,11 @@ class Privacy(GUIBase):
             ]
 
         adminurl = mlist.GetScriptURL('admin', absolute=1)
+    
+        if mm_cfg.DMARC_QUARANTINE_MODERATION_ACTION:
+            quarantine = _('/Quarantine')
+        else:
+            quarantine = ''
         sender_rtn = [
             _("""When a message is posted to the list, a series of
             moderation steps are taken to decide whether a moderator must
@@ -234,6 +239,42 @@ class Privacy(GUIBase):
              <a href="?VARHELP/privacy/sender/member_moderation_action"
              >rejection notice</a> to
              be sent to moderated members who post to this list.""")),
+
+            ('dmarc_moderation_action', mm_cfg.Radio,
+             (_('Accept'), _('Wrap Message'), _('Munge From'), _('Reject'),
+                 _('Discard')), 0,
+             _("""Action to take when anyone posts to the
+             list from a domain with a DMARC Reject%(quarantine)s Policy."""),
+
+             _("""<ul><li><b>Wrap Message</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is _list Wrap
+             Message</a> transformation to these messages.
+
+             <p><li><b>Munge From</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is _list Munge From</a>
+             transformation to these messages.
+
+             <p><li><b>Reject</b> -- this automatically rejects the message by
+             sending a bounce notice to the post's author.  The text of the
+             bounce notice can be <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_notice"
+             >configured by you</a>.
+
+             <p><li><b>Discard</b> -- this simply discards the message, with
+             no notice sent to the post's author.
+             </ul>
+
+             <p>This setting takes precedence over the <a
+             href="?VARHELP=general/from_is_list"> from_is_list</a> setting
+             if the message is From: an affected domain and the setting is
+             other than Accept.""")),
+
+            ('dmarc_moderation_notice', mm_cfg.Text, (10, WIDTH), 1,
+             _("""Text to include in any
+             <a href="?VARHELP=privacy/sender/dmarc_moderation_action"
+             >rejection notice</a> to
+             be sent to anyone who posts to this list from a domain
+             with DMARC Reject/Quarantine Policy.""")),
 
             _('Non-member filters'),
 
@@ -442,6 +483,11 @@ class Privacy(GUIBase):
         # an option.
         if property == 'subscribe_policy' and not mm_cfg.ALLOW_OPEN_SUBSCRIBE:
             val += 1
+        if (property == 'dmarc_moderation_action' and
+                val < mm_cfg.DEFAULT_DMARC_MODERATION_ACTION):
+            doc.addError(_("""dmarc_moderation_action must be >= the configured
+                           default value."""))
+            val = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
         setattr(mlist, property, val)
 
     # We need to handle the header_filter_rules widgets specially, but

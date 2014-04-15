@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -388,6 +388,9 @@ def NewVars(l):
     # the current GUI description model.  So, 0==Hold, 1==Reject, 2==Discard
     add_only_if_missing('member_moderation_action', 0)
     add_only_if_missing('member_moderation_notice', '')
+    add_only_if_missing('dmarc_moderation_action', 
+                        mm_cfg.DEFAULT_DMARC_MODERATION_ACTION)
+    add_only_if_missing('dmarc_moderation_notice', '')
     add_only_if_missing('new_member_options',
                         mm_cfg.DEFAULT_NEW_MEMBER_OPTIONS)
     # Emergency moderation flag

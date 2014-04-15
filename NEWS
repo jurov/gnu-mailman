@@ -7,6 +7,35 @@ Here is a history of user visible changes to Mailman.
 
 2.1.18 (xx-xxx-xxxx)
 
+  Dependencies
+
+    - There is a new dependency associated with the new Privacy options ->
+      Sender filters -> dmarc_moderation_action feature discussed below.
+      This requires that the dnspython <http://www.dnspython.org/> package
+      be available in Python.
+
+  New Features
+
+    - The from_is_list feature introduced in 2.1.16 is now unconditionally
+      available to list owners.  There is also, a new Privacy options ->
+      Sender filters -> dmarc_moderation_action feature which applies to list
+      messages where the From: address is in a domain which publishes a DMARC
+      policy of reject or possibly quarantine.  This is a list setting with
+      values of Accept, Wrap Message, Munge From, Reject or Discard. There is
+      a new DEFAULT_DMARC_MODERATION_ACTION configuration setting to set the
+      default for this, and the list admin UI is not able to set an action
+      which is 'less' than the default.  The prior ALLOW_FROM_IS_LIST setting
+      has been removed and is effectively always Yes. There is a new
+      DMARC_QUARANTINE_MODERATION_ACTION configuration setting which defaults
+      to Yes but can be set to No to exclude domains with DMARC policy of
+      quarantine from dmarc_moderation_action.
+
+      dmarc_moderation_action and from_is_list interact in the following way.
+      If the message is From: a domain to which dmarc_moderation_action applies
+      and if dmarc_moderation_action is other than Accept,
+      dmarc_moderation_action applies to that message.  Otherwise the
+      from_is_list action applies.
+
   i18n
 
     - Added missing <mm-digest-question-start> tag to French listinfo template.

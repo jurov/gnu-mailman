@@ -108,10 +108,6 @@ ALLOW_SITE_ADMIN_COOKIES = No
 # expire that many seconds following their last use.
 AUTHENTICATION_COOKIE_LIFETIME = 0
 
-# The following must be set to Yes to enable the 'from is list' feature.
-# See DEFAULT_FROM_IS_LIST below.
-ALLOW_FROM_IS_LIST = No
-
 # Form lifetime is set against Cross Site Request Forgery.
 FORM_LIFETIME = hours(1)
 
@@ -1064,6 +1060,20 @@ DEFAULT_DEFAULT_MEMBER_MODERATION = No
 # moderators?
 DEFAULT_FORWARD_AUTO_DISCARDS = Yes
 
+# Shall dmarc_moderation_action be applied to messages From: domains with
+# a DMARC policy of quarantine as well as reject?
+DMARC_QUARANTINE_MODERATION_ACTION = Yes
+
+# Default action for posts whose From: address domain has a DMARC policy of
+# reject or quarantine.  See DEFAULT_FROM_IS_LIST below.  Whatever is set as
+# the default here precludes the list owner from setting a lower value.
+# 0 = Accept
+# 1 = Munge From
+# 2 = Wrap Message
+# 3 = Reject
+# 4 = Discard
+DEFAULT_DMARC_MODERATION_ACTION = 0
+
 # What shold happen to non-member posts which are do not match explicit
 # non-member actions?
 # 0 = Accept
@@ -1101,7 +1111,9 @@ DEFAULT_SEND_WELCOME_MSG = Yes
 # Send goodbye messages to unsubscribed members?
 DEFAULT_SEND_GOODBYE_MSG = Yes
 
-# The following is a three way setting.
+# The following is a three way setting.  It sets the default for the list's
+# from_is_list policy which is applied to all posts except those for which a
+# dmarc_moderation_action other than accept applies.
 # 0 -> Do not rewrite the From: or wrap the message.
 # 1 -> Rewrite the From: header of posts replacing the posters address with
 #      that of the list.  Also see REMOVE_DKIM_HEADERS above.

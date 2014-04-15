@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -35,6 +35,7 @@ import errno
 import base64
 import random
 import urlparse
+import collections
 import htmlentitydefs
 import email.Header
 import email.Iterators
@@ -70,6 +71,13 @@ try:
 except NameError:
     True = 1
     False = 0
+
+try:
+    import dns.resolver
+    from dns.exception import DNSException
+    dns_resolver = True
+except ImportError:
+    dns_resolver = False
 
 EMPTYSTRING = ''
 UEMPTYSTRING = u''
@@ -1057,4 +1065,91 @@ def suspiciousHTML(html):
         return True
     else:
         return False
+
+
+# This takes an email address, and returns True if DMARC policy is p=reject
+# or possibly quarantine.
+def IsDMARCProhibited(email):
+    if not dns_resolver:
+         return False
+
+    email = email.lower()
+    at_sign = email.find('@')
+    if at_sign < 1:
+        return False
+    dmarc_domain = '_dmarc.' + email[at_sign+1:]
+
+    try:
+        resolver = dns.resolver.Resolver()
+        resolver.timeout = 3
+        resolver.lifetime = 5
+        txt_recs = resolver.query(dmarc_domain, dns.rdatatype.TXT)
+    except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
+        return False
+    except DNSException, e:
+        syslog('error',
+               'DNSException: Unable to query DMARC policy for %s (%s). %s',
+              email, dmarc_domain, e.__class__)
+        return False
+    else:
+# people are already being dumb, don't trust them to provide honest DNS
+# where the answer section only contains what was asked for, nor to include
+# CNAMEs before the values they point to.
+        full_record = ""
+        results_by_name = collections.defaultdict(list)
+        cnames = {}
+        want_names = set([dmarc_domain + '.'])
+        for txt_rec in txt_recs.response.answer:
+            if txt_rec.rdtype == dns.rdatatype.CNAME:
+                cnames[txt_rec.name.to_text()] = (
+                    txt_rec.items[0].target.to_text())
+            if txt_rec.rdtype != dns.rdatatype.TXT:
+                continue
+            results_by_name[txt_rec.name.to_text()].append(
+                "".join(txt_rec.items[0].strings))
+        expands = list(want_names)
+        seen = set(expands)
+        while expands:
+            item = expands.pop(0)
+            if item in cnames:
+                if cnames[item] in seen:
+                    continue # cname loop
+                expands.append(cnames[item])
+                seen.add(cnames[item])
+                want_names.add(cnames[item])
+                want_names.discard(item)
+
+        if len(want_names) != 1:
+            syslog('error',
+                   """multiple DMARC entries in results for %s,
+                   processing each to be strict""",
+                   dmarc_domain)
+        for name in want_names:
+            if name not in results_by_name:
+                continue
+            dmarcs = filter(lambda n: n.startswith('v=DMARC1;'),
+                            results_by_name[name])
+            if len(dmarcs) == 0:
+                return False
+            if len(dmarcs) > 1:
+                syslog('error',
+                       """RRset of TXT records for %s has %d v=DMARC1 entries;
+                       testing them all""",
+                        dmarc_domain, len(dmarc))
+            for entry in dmarcs:
+                if re.search(r'\bp=reject\b', entry, re.IGNORECASE):
+#                   syslog('info',
+#                       'DMARC lookup for %s (%s) found p=reject in %s = %s',
+#                       email, dmarc_domain, name, entry)
+                    return True
+
+                if (mm_cfg.DMARC_QUARANTINE_MODERATION_ACTION and
+                    re.search(r'\bp=quarantine\b', entry, re.IGNORECASE)):
+#                   syslog('info',
+#                     'DMARC lookup for %s (%s) found p=quarantine in %s = %s',
+#                           email, dmarc_domain, name, entry)
+                    return True
+
+    return False
+
 

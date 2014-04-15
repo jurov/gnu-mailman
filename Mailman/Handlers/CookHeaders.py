@@ -65,8 +65,8 @@ def uheader(mlist, s, header_name=None, continuation_ws='\t', maxlinelen=None):
     return Header(s, charset, maxlinelen, header_name, continuation_ws)
 
 def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
-    if (mm_cfg.ALLOW_FROM_IS_LIST and
-        mlist.from_is_list == 2 and
+    if ((msgdata.get('from_is_list') == 2 or
+        (msgdata.get('from_is_list') == 0 and mlist.from_is_list == 2)) and 
         not msgdata.get('_fasttrack')
        ):
         msgdata.setdefault('add_header', {})[name] = value
@@ -119,7 +119,7 @@ def process(mlist, msg, msgdata):
     change_header('Precedence', 'list',
                   mlist, msg, msgdata, repl=False)
     # Do we change the from so the list takes ownership of the email
-    if mm_cfg.ALLOW_FROM_IS_LIST and mlist.from_is_list and not fasttrack:
+    if (msgdata.get('from_is_list') or mlist.from_is_list) and not fasttrack:
         realname, email = parseaddr(msg['from'])
         if not realname:
             if mlist.isMember(email):
@@ -200,8 +200,8 @@ def process(mlist, msg, msgdata):
         # is already in From and Reply-To in this case and similarly for
         # a 'from is list' list.
         if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list and not (mlist.from_is_list and
-                                                 mm_cfg.ALLOW_FROM_IS_LIST):
+           and not mlist.anonymous_list and not (mlist.from_is_list or
+                                                 msgdata.get('from_is_list')):
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
