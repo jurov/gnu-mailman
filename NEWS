@@ -43,6 +43,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed the admin Membership List so a search string if any is not lost
+      when visiting subsequent fragments of a chunked list.  (LP: #1307454)
+
     - For from_is_list feature, use email address from original From: if
       original From: has no display name and strip domain part from resultant
       names that look like email addresses.  (LP: #1304511)
