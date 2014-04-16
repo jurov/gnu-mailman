@@ -1049,7 +1049,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # And send an acknowledgement to the user...
         if userack:
             self.SendUnsubscribeAck(emailaddr, userlang)
-        # ...and to the administrator
+        # ...and to the administrator in the correct language.  (LP: #1308655)
+        i18n.set_language(self.preferred_language)
         if admin_notif:
             realname = self.real_name
             subject = _('%(realname)s unsubscribe notification')

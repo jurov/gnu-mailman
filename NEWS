@@ -43,6 +43,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Fixed a long standing issue in which a notice sent to a user whose
+      language is other than that of the list can cause subsequent things
+      which should be in the list's language to be in the user's language
+      instead.  (LP: #1308655)
+
     - Fixed the admin Membership List so a search string if any is not lost
       when visiting subsequent fragments of a chunked list.  (LP: #1307454)
 
