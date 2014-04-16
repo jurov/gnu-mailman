@@ -246,11 +246,11 @@ class Privacy(GUIBase):
              _("""Action to take when anyone posts to the
              list from a domain with a DMARC Reject%(quarantine)s Policy."""),
 
-             <p><li><b>Munge From</b> -- applies the <a
+             _("""<ul><li><b>Munge From</b> -- applies the <a
              href="?VARHELP=general/from_is_list">from_is_list Munge From</a>
              transformation to these messages.
 
-             _("""<ul><li><b>Wrap Message</b> -- applies the <a
+             <p><li><b>Wrap Message</b> -- applies the <a
              href="?VARHELP=general/from_is_list">from_is_list Wrap
              Message</a> transformation to these messages.
 
