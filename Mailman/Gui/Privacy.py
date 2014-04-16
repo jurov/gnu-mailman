@@ -241,18 +241,18 @@ class Privacy(GUIBase):
              be sent to moderated members who post to this list.""")),
 
             ('dmarc_moderation_action', mm_cfg.Radio,
-             (_('Accept'), _('Wrap Message'), _('Munge From'), _('Reject'),
+             (_('Accept'), _('Munge From'), _('Wrap Message'), _('Reject'),
                  _('Discard')), 0,
              _("""Action to take when anyone posts to the
              list from a domain with a DMARC Reject%(quarantine)s Policy."""),
 
-             _("""<ul><li><b>Wrap Message</b> -- applies the <a
-             href="?VARHELP=general/from_is_list">from_is_list Wrap
-             Message</a> transformation to these messages.
-
              <p><li><b>Munge From</b> -- applies the <a
              href="?VARHELP=general/from_is_list">from_is_list Munge From</a>
              transformation to these messages.
+
+             _("""<ul><li><b>Wrap Message</b> -- applies the <a
+             href="?VARHELP=general/from_is_list">from_is_list Wrap
+             Message</a> transformation to these messages.
 
              <p><li><b>Reject</b> -- this automatically rejects the message by
              sending a bounce notice to the post's author.  The text of the

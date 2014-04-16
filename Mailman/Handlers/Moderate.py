@@ -56,11 +56,11 @@ def process(mlist, msg, msgdata):
     if addr:
         if Utils.IsDMARCProhibited(addr):
             # Note that for dmarc_moderation_action, 0 = Accept, 
-            #    1 = Wrap, 2 = Munge, 3 = Reject, 4 = Discard
+            #    1 = Munge, 2 = Wrap, 3 = Reject, 4 = Discard
             if mlist.dmarc_moderation_action == 1:
-                msgdata['from_is_list'] = 2
-            elif mlist.dmarc_moderation_action == 2:
                 msgdata['from_is_list'] = 1
+            elif mlist.dmarc_moderation_action == 2:
+                msgdata['from_is_list'] = 2
             elif mlist.dmarc_moderation_action == 3:
                 # Reject
                 text = mlist.dmarc_moderation_notice
