@@ -35,7 +35,6 @@ import errno
 import base64
 import random
 import urlparse
-import collections
 import htmlentitydefs
 import email.Header
 import email.Iterators
@@ -1096,7 +1095,7 @@ def IsDMARCProhibited(email):
 # where the answer section only contains what was asked for, nor to include
 # CNAMEs before the values they point to.
         full_record = ""
-        results_by_name = collections.defaultdict(list)
+        results_by_name = {}
         cnames = {}
         want_names = set([dmarc_domain + '.'])
         for txt_rec in txt_recs.response.answer:
@@ -1105,7 +1104,7 @@ def IsDMARCProhibited(email):
                     txt_rec.items[0].target.to_text())
             if txt_rec.rdtype != dns.rdatatype.TXT:
                 continue
-            results_by_name[txt_rec.name.to_text()].append(
+            results_by_name.setdefault(txt_rec.name.to_text(), []).append(
                 "".join(txt_rec.items[0].strings))
         expands = list(want_names)
         seen = set(expands)
