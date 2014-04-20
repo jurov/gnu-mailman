@@ -5,6 +5,10 @@ Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.18rc2 (19-Apr-2014)
+    - The new Utils.IsDMARCProhibited() used collections.defaultdict which
+      requires Python 2.5.  Changed to use a dict and setdefault.
+
 2.1.18rc1 (18-Apr-2014)
 
   Dependencies
