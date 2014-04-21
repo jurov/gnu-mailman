@@ -274,7 +274,7 @@ class Privacy(GUIBase):
              <a href="?VARHELP=privacy/sender/dmarc_moderation_action"
              >rejection notice</a> to
              be sent to anyone who posts to this list from a domain
-             with DMARC Reject/Quarantine Policy.""")),
+             with a DMARC Reject%(quarantine)s Policy.""")),
 
             _('Non-member filters'),
 
