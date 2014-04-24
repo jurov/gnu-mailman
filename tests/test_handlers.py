@@ -76,6 +76,7 @@ class TestAcknowledge(TestBase):
         # Add a member
         self._mlist.addNewMember('aperson@dom.ain')
         self._mlist.personalize = False
+        self._mlist.dmarc_moderation_action = 0
 
     def tearDown(self):
         for f in os.listdir(mm_cfg.VIRGINQUEUE_DIR):
@@ -591,82 +592,197 @@ Subject: Re: [XTEST] About Mailman...
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 1
+        mlist.from_is_list = 0
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], '_xtest@dom.ain')
-        eq(msg.get_all('reply-to'), ['_xtest@dom.ain'])
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], '_xtest@dom.ain')
+        eq(msg.get_all('reply-to'), None)
+
+    def test_reply_to_list_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 1
+        mlist.from_is_list = 1
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'aperson@dom.ain, _xtest@dom.ain')
+        eq(msg.get_all('reply-to'), None)
 
     def test_reply_to_list_with_strip(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 1
         mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 0
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], '_xtest@dom.ain')
-        eq(msg.get_all('reply-to'), ['_xtest@dom.ain'])
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], '_xtest@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+
+    def test_reply_to_list_with_strip_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 1
+        mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 1
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], '_xtest@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
 
     def test_reply_to_explicit(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 2
+        mlist.from_is_list = 0
         mlist.reply_to_address = 'mlist@dom.ain'
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], 'mlist@dom.ain')
-        eq(msg.get_all('reply-to'), ['mlist@dom.ain'])
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], 'mlist@dom.ain')
+        eq(msg.get_all('reply-to'), None)
+
+    def test_reply_to_explicit_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 2
+        mlist.from_is_list = 1
+        mlist.reply_to_address = 'mlist@dom.ain'
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain, aperson@dom.ain')
+        eq(msg.get_all('reply-to'), None)
 
     def test_reply_to_explicit_with_strip(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 2
         mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 0
         mlist.reply_to_address = 'mlist@dom.ain'
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(self._mlist, msg, {})
-        eq(msg['reply-to'], 'mlist@dom.ain')
-        eq(msg.get_all('reply-to'), ['mlist@dom.ain'])
+        msgdata = {}
+
+        CookHeaders.process(self._mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], 'mlist@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+
+    def test_reply_to_explicit_with_strip_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 2
+        mlist.first_strip_reply_to = 1
+        mlist.from_is_list = 1
+        mlist.reply_to_address = 'mlist@dom.ain'
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+
+        CookHeaders.process(self._mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'], 'mlist@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
 
     def test_reply_to_extends_to_list(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 1
         mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 0
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], 'bperson@dom.ain, _xtest@dom.ain')
+        msgdata = {}
+
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'bperson@dom.ain, _xtest@dom.ain')
+
+    def test_reply_to_extends_to_list_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 1
+        mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 1
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'aperson@dom.ain, bperson@dom.ain, _xtest@dom.ain')
 
     def test_reply_to_extends_to_explicit(self):
         eq = self.assertEqual
         mlist = self._mlist
         mlist.reply_goes_to_list = 2
         mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 0
         mlist.reply_to_address = 'mlist@dom.ain'
         msg = email.message_from_string("""\
 From: aperson@dom.ain
 Reply-To: bperson@dom.ain
 
 """, Message.Message)
-        CookHeaders.process(mlist, msg, {})
-        eq(msg['reply-to'], 'mlist@dom.ain, bperson@dom.ain')
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain, bperson@dom.ain')
+
+    def test_reply_to_extends_to_explicit_fil(self):
+        eq = self.assertEqual
+        mlist = self._mlist
+        mlist.reply_goes_to_list = 2
+        mlist.first_strip_reply_to = 0
+        mlist.from_is_list = 1
+        mlist.reply_to_address = 'mlist@dom.ain'
+        msg = email.message_from_string("""\
+From: aperson@dom.ain
+Reply-To: bperson@dom.ain
+
+""", Message.Message)
+        msgdata = {}
+        CookHeaders.process(mlist, msg, msgdata)
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain, aperson@dom.ain, bperson@dom.ain')
 
     def test_list_headers_nolist(self):
         eq = self.assertEqual
