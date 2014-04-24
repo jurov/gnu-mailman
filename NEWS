@@ -5,7 +5,18 @@ Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.18 (xx-xxx-xxxx)
+
+  Bug fixes and other patches
+
+    - Fixed the Munge From action to only Munge the From: and/or Reply-To: in
+      the outgoing message and not in archives, digests and messages sent via
+      the usenet gateway.  (LP: #1311431)
+
 2.1.18rc2 (19-Apr-2014)
+
+  Bug fixes and other patches
+
     - The new Utils.IsDMARCProhibited() used collections.defaultdict which
       requires Python 2.5.  Changed to use a dict and setdefault.
 

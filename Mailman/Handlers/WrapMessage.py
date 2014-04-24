@@ -17,6 +17,9 @@
 
 """Wrap the message in an outer message/rfc822 part and transfer/add
 some headers from the original.
+
+Also, in the case of Munge From, replace the From: and Reply-To: in the
+original message.
 """
 
 import copy
@@ -35,8 +38,22 @@ KEEPERS = ('to',
 
 
 def process(mlist, msg, msgdata):
+    # This is the negation of we're wrapping because dmarc_moderation_action
+    # is wrap this message or from_is_list applies and is wrap.
     if not (msgdata.get('from_is_list') == 2 or
             (mlist.from_is_list == 2 and msgdata.get('from_is_list') == 0)):
+        # Now see if we're munging.
+        if msgdata.get('from_is_list') == 1 or (mlist.from_is_list == 1 and
+                msgdata.get('from_is_list') == 0):
+            # Yes.
+            a_h = msgdata.get('add_header')
+            if a_h:
+                if a_h.get('From'):
+                    del msg['from']
+                    msg['From'] = a_h.get('From')
+                if a_h.get('Reply-To'):
+                    del msg['reply-to']
+                    msg['Reply-To'] = a_h.get('Reply-To')
         return
 
     # There are various headers in msg that we don't want, so we basically

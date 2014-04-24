@@ -68,7 +68,7 @@ def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
     if ((msgdata.get('from_is_list') == 2 or
         (msgdata.get('from_is_list') == 0 and mlist.from_is_list == 2)) and 
         not msgdata.get('_fasttrack')
-       ):
+       ) or name.lower() in ('from', 'reply-to'):
         msgdata.setdefault('add_header', {})[name] = value
     elif repl or not msg.has_key(name):
         if delete:
@@ -128,16 +128,8 @@ def process(mlist, msg, msgdata):
                 realname = email
         # Remove domain from realname if it looks like an email address
         realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
-        replies = getaddresses(msg.get('reply-to', ''))
-        reply_addrs = [x[1].lower() for x in replies]
-        if reply_addrs:
-            if email.lower() not in reply_addrs:
-                rt = msg['reply-to'] + ', ' + msg['from']
-            else:
-                rt = msg['reply-to']
-        else:
-            rt = msg['from']
-        change_header('Reply-To', rt, mlist, msg, msgdata)
+        # Remember the original From: here for adding to Reply-To: below.
+        o_from = parseaddr(msg['from'])
         change_header('From',
                       formataddr(('%s via %s' % (realname, mlist.real_name),
                                  mlist.GetListEmail())),
@@ -145,6 +137,9 @@ def process(mlist, msg, msgdata):
         if mlist.from_is_list != 2:
             del msg['sender']
         #MAS ?? mlist.include_sender_header = 0
+    else:
+        # Use this as a flag
+        o_from = None
     # Reply-To: munging.  Do not do this if the message is "fast tracked",
     # meaning it is internally crafted and delivered to a specific user.  BAW:
     # Yuck, I really hate this feature but I've caved under the sheer pressure
@@ -171,9 +166,18 @@ def process(mlist, msg, msgdata):
         # cases we'll zap the existing field because RFC 2822 says max one is
         # allowed.
         if not mlist.first_strip_reply_to:
+            # If we Munged the From:, add it to Reply-To: if we're not
+            # stripping it.
+            #MAS ? Should we add it anyway?
+            if o_from:
+                add(o_from)
             orig = msg.get_all('reply-to', [])
             for pair in getaddresses(orig):
                 add(pair)
+        # We also need to put the old From: in Reply-To: if reply_goes_to_list
+        # is to the poster even if we're stripping Reply-To:
+        if mlist.reply_goes_to_list == 0 and o_from:
+            add(o_from)
         # Set Reply-To: header to point back to this list.  Add this last
         # because some folks think that some MUAs make it easier to delete
         # addresses from the right than from the left.
