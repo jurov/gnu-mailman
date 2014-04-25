@@ -82,6 +82,34 @@ then
 fi
 AC_MSG_RESULT($version)
 
+# See if dnspython is installed.
+AC_MSG_CHECKING(dnspython)
+changequote(,)
+cat > conftest.py <<EOF
+try:
+    import dns.resolver
+    res = 'ok'
+except ImportError:
+    res = 'no'
+fp = open("conftest.out", "w")
+fp.write("%s\n" % res)
+fp.close()
+EOF
+changequote([, ])
+$PYTHON conftest.py
+havednspython=`cat conftest.out`
+rm -f conftest.out conftest.py
+if test "$havednspython" = "no"
+then
+    AC_MSG_ERROR([
+ 
+***** dnspython not found. It is required for the new
+***** dmarc_moderation_action featurer. Get it from
+***** <http://www.dnspython.org/> or
+***** <https://pypi.python.org/pypi/dnspython/>])
+fi
+AC_MSG_RESULT($havednspython)
+ 
 # Check the email package version.
 AC_MSG_CHECKING(Python's email package)
 changequote(,)
