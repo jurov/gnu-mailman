@@ -42,18 +42,15 @@ def process(mlist, msg, msgdata):
     # is wrap this message or from_is_list applies and is wrap.
     if not (msgdata.get('from_is_list') == 2 or
             (mlist.from_is_list == 2 and msgdata.get('from_is_list') == 0)):
-        # Now see if we're munging.
-        if msgdata.get('from_is_list') == 1 or (mlist.from_is_list == 1 and
-                msgdata.get('from_is_list') == 0):
-            # Yes.
-            a_h = msgdata.get('add_header')
-            if a_h:
-                if a_h.get('From'):
-                    del msg['from']
-                    msg['From'] = a_h.get('From')
-                if a_h.get('Reply-To'):
-                    del msg['reply-to']
-                    msg['Reply-To'] = a_h.get('Reply-To')
+        # Now see if we need to add a From: and/or Reply-To: without wrapping.
+        a_h = msgdata.get('add_header')
+        if a_h:
+            if a_h.get('From'):
+                del msg['from']
+                msg['From'] = a_h.get('From')
+            if a_h.get('Reply-To'):
+                del msg['reply-to']
+                msg['Reply-To'] = a_h.get('Reply-To')
         return
 
     # There are various headers in msg that we don't want, so we basically

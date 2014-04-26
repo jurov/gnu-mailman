@@ -9,6 +9,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug fixes and other patches
 
+    - The Reply-To: munging options weren't honored if there was no
+      from_is_list action.  (LP: #1313010)
+
     - Changed from_is_list actions to insert the list address in Cc: if the
       list is fully personalized.  Otherwise, the list address is only in
       From: and Reply-To: overrides it.  (LP: #1312970)
