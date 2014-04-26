@@ -5,9 +5,13 @@ Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.18 (xx-xxx-xxxx)
+2.1.18rc3 (25-Apr-2014)
 
   Bug fixes and other patches
+
+    - Changed from_is_list actions to insert the list address in Cc: if the
+      list is fully personalized.  Otherwise, the list address is only in
+      From: and Reply-To: overrides it.  (LP: #1312970)
 
     - Fixed the Munge From action to only Munge the From: and/or Reply-To: in
       the outgoing message and not in archives, digests and messages sent via
@@ -28,7 +32,7 @@ Here is a history of user visible changes to Mailman.
       Sender filters -> dmarc_moderation_action feature discussed below.
       This requires that the dnspython <http://www.dnspython.org/> package
       be available in Python.  This package can be downloaded from the above
-      site or from the Cheese Shop <https://pypi.python.org/pypi/dnspython/>
+      site or from the CheeseShop <https://pypi.python.org/pypi/dnspython/>
       or installed with pip.
 
   New Features
