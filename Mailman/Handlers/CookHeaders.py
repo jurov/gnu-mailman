@@ -201,24 +201,32 @@ def process(mlist, msg, msgdata):
         # Cc header.  BAW: should we force it into a Reply-To header in the
         # above code?
         # Also skip Cc if this is an anonymous list as list posting address
-        # is already in From and Reply-To in this case and similarly for
-        # a 'from is list' list.
-        if mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 \
-           and not mlist.anonymous_list and not (mlist.from_is_list or
-                                                 msgdata.get('from_is_list')):
+        # is already in From and Reply-To in this case.
+        # We do add the Cc in cases where From: header munging is being done
+        # because even though the list address is in From:, the Reply-To:
+        # poster will override it. Brain dead MUAs may then address the list
+        # twice on a 'reply all', but reasonable MUAs should do the right
+        # thing.
+        if (mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 and
+            not mlist.anonymous_list):
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
             d = {}
-            for pair in getaddresses(msg.get_all('cc', [])):
-                add(pair)
+            # AvoidDuplicates may have set a new Cc: in msgdata.add_header,
+            # so check that.
+            if (msgdata.has_key('add_header') and
+                    msgdata['add_header'].has_key('Cc')):
+                for pair in getaddresses([msgdata['add_header']['Cc']]):
+                    add(pair)
+            else:
+                for pair in getaddresses(msg.get_all('cc', [])):
+                    add(pair)
             i18ndesc = uheader(mlist, mlist.description, 'Cc')
             add((str(i18ndesc), mlist.GetListEmail()))
-            # We don't worry about what AvoidDuplicates may have done with a
-            # Cc: header or using change_header here since we never get here
-            # if from_is_list is allowed and True.
-            del msg['Cc']
-            msg['Cc'] = COMMASPACE.join([formataddr(pair) for pair in new])
+            change_header('Cc',
+                          COMMASPACE.join([formataddr(pair) for pair in new]),
+                          mlist, msg, msgdata)
     # Add list-specific headers as defined in RFC 2369 and RFC 2919, but only
     # if the message is being crafted for a specific list (e.g. not for the
     # password reminders).
