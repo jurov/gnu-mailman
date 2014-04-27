@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -284,8 +284,13 @@ class UserNotification(Message):
         # UserNotifications are typically for admin messages, and for messages
         # other than list explosions.  Send these out as Precedence: bulk, but
         # don't override an existing Precedence: header.
+        # Also, if the message is To: the list-owner address, set Precedence:
+        # list.  See note below in OwnerNotification.
         if not (self.has_key('precedence') or noprecedence):
-            self['Precedence'] = 'bulk'
+            if self.get('to') == mlist.GetOwnerEmail():
+                self['Precedence'] = 'list'
+            else:
+                self['Precedence'] = 'bulk'
         self._enqueue(mlist, **_kws)
 
     def _enqueue(self, mlist, **_kws):
@@ -318,6 +323,12 @@ class OwnerNotification(UserNotification):
         del self['to']
         self['To'] = mlist.GetOwnerEmail()
         self._sender = sender
+        # User notifications are normally sent with Precedence: bulk.  This
+        # is appropriate as they can be backscatter of rejected spam.
+        # Owner notifications are not backscatter and are perhaps more
+        # important than 'bulk' so give them Precedence: list by default.
+        # (LP: #1313146)
+        self['Precedence'] = 'list'
 
     def _enqueue(self, mlist, **_kws):
         # Not imported at module scope to avoid import loop
