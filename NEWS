@@ -1,40 +1,11 @@
 -*- coding: iso-8859-1 -*-
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
 
 2.1.18 (xx-xxx-xxxx)
-
-  Bug fixes and other patches
-
-    - Most Mailman generated notices to list owners and moderators are now
-      sent as Precedence: list instead of bulk.  (LP: #1313146)
-
-2.1.18rc3 (25-Apr-2014)
-
-  Bug fixes and other patches
-
-    - The Reply-To: munging options weren't honored if there was no
-      from_is_list action.  (LP: #1313010)
-
-    - Changed from_is_list actions to insert the list address in Cc: if the
-      list is fully personalized.  Otherwise, the list address is only in
-      From: and Reply-To: overrides it.  (LP: #1312970)
-
-    - Fixed the Munge From action to only Munge the From: and/or Reply-To: in
-      the outgoing message and not in archives, digests and messages sent via
-      the usenet gateway.  (LP: #1311431)
-
-2.1.18rc2 (19-Apr-2014)
-
-  Bug fixes and other patches
-
-    - The new Utils.IsDMARCProhibited() used collections.defaultdict which
-      requires Python 2.5.  Changed to use a dict and setdefault.
-
-2.1.18rc1 (18-Apr-2014)
 
   Dependencies
 
@@ -73,6 +44,20 @@ Here is a history of user visible changes to Mailman.
       (LP: #1275964)
 
   Bug Fixes and other patches
+
+    - Most Mailman generated notices to list owners and moderators are now
+      sent as Precedence: list instead of bulk.  (LP: #1313146)
+
+    - The Reply-To: munging options weren't honored if there was no
+      from_is_list action.  (LP: #1313010)
+
+    - Changed from_is_list actions to insert the list address in Cc: if the
+      list is fully personalized.  Otherwise, the list address is only in
+      From: and Reply-To: overrides it.  (LP: #1312970)
+
+    - Fixed the Munge From action to only Munge the From: and/or Reply-To: in
+      the outgoing message and not in archives, digests and messages sent via
+      the usenet gateway.  (LP: #1311431)
 
     - Fixed a long standing issue in which a notice sent to a user whose
       language is other than that of the list can cause subsequent things
