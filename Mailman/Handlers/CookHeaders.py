@@ -166,17 +166,11 @@ def process(mlist, msg, msgdata):
         # cases we'll zap the existing field because RFC 2822 says max one is
         # allowed.
         if not mlist.first_strip_reply_to:
-            # If we Munged the From:, add it to Reply-To: if we're not
-            # stripping it.
-            #MAS ? Should we add it anyway?
-            if o_from:
-                add(o_from)
             orig = msg.get_all('reply-to', [])
             for pair in getaddresses(orig):
                 add(pair)
-        # We also need to put the old From: in Reply-To: if reply_goes_to_list
-        # is to the poster even if we're stripping Reply-To:
-        if mlist.reply_goes_to_list == 0 and o_from:
+        # We also need to put the old From: in Reply-To: in all cases.
+        if o_from:
             add(o_from)
         # Set Reply-To: header to point back to this list.  Add this last
         # because some folks think that some MUAs make it easier to delete

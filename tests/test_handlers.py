@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -646,7 +646,8 @@ Reply-To: bperson@dom.ain
 """, Message.Message)
         msgdata = {}
         CookHeaders.process(mlist, msg, msgdata)
-        eq(msgdata['add_header']['Reply-To'], '_xtest@dom.ain')
+        eq(msgdata['add_header']['Reply-To'],
+            'aperson@dom.ain, _xtest@dom.ain')
         eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
 
     def test_reply_to_explicit(self):
@@ -713,7 +714,8 @@ Reply-To: bperson@dom.ain
         msgdata = {}
 
         CookHeaders.process(self._mlist, msg, msgdata)
-        eq(msgdata['add_header']['Reply-To'], 'mlist@dom.ain')
+        eq(msgdata['add_header']['Reply-To'],
+            'mlist@dom.ain, aperson@dom.ain')
         eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
 
     def test_reply_to_extends_to_list(self):
@@ -748,7 +750,7 @@ Reply-To: bperson@dom.ain
 
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'aperson@dom.ain, bperson@dom.ain, _xtest@dom.ain')
+            'bperson@dom.ain, aperson@dom.ain, _xtest@dom.ain')
 
     def test_reply_to_extends_to_explicit(self):
         eq = self.assertEqual
@@ -782,7 +784,7 @@ Reply-To: bperson@dom.ain
         msgdata = {}
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'mlist@dom.ain, aperson@dom.ain, bperson@dom.ain')
+            'mlist@dom.ain, bperson@dom.ain, aperson@dom.ain')
 
     def test_list_headers_nolist(self):
         eq = self.assertEqual
