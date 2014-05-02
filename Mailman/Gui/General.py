@@ -156,19 +156,65 @@ class General(GUIBase):
 
             ('from_is_list', mm_cfg.Radio,
              (_('No'), _('Munge From'), _('Wrap Message')), 0,
-             _("""Replace the sender with the list address to conform with
-             policies like DMARC."""),
-             _("""Replace the sender with the list address to conform with
-             policies like ADSP and DMARC.  It replaces the poster's
-             address in the From: header with the list address and adds the
-             poster to the Reply-To: header, but the anonymous_list and
-             Reply-To: header munging settings below take priority.  If
-             setting this to Yes, it is advised to set the MTA to DKIM sign
-             all emails.""") +
-             _("""<p>If this is set to Wrap Message, just wrap the message
-             in an outer message From: the list with Content-Type:
-             message/rfc822.""") +
-             _("""<p>If <a
+             _("""Replace the From: header address with the list's posting
+             address to mitigate issues stemming from the original From:
+             domain's DMARC or similar policies."""),
+             _("""Several protocols now in wide use attempt to ensure that use
+             of the domain in the author's address (ie, in the From: header
+             field) is authorized by that domain.  These protocols may be
+             incompatible with common list features such as footers, causing
+             participating email services to bounce list traffic merely
+             because of the address in the From: field.  <b>This has resulted
+             in members being unsubscribed despite being perfectly able to
+             receive mail.</b>
+             <p>
+             The following actions are applied to all list messages when
+             selected here.  To apply these actions only to messages where the
+             domain in the From: header is determined to use such a protocol,
+             see the <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_action">
+             dmarc_moderation_action</a> settings under Privacy options...
+             -&gt; Sender filters.
+             <p>Settings:<p>
+             <dl>
+             <dt>No</dt>
+             <dd>Do nothing special.  This is appropriate for anonymous lists.
+             It is appropriate for dedicated announcement lists, unless the
+             From: address of authorized posters might be in a domain with a
+             DMARC or similar policy. It is also appropriate if you choose to
+             use dmarc_moderation_action other than Accept for this list.</dd>
+             <dt>Munge From</dt>
+             <dd>This action replaces the poster's address in the From: header
+             with the list's posting address and adds the poster's address to
+             the addresses in the original Reply-To: header.</dd>
+             <dt>Wrap Message</dt>
+             <dd>Just wrap the message in an outer message with the From:
+             header containing the list's posting address and with the original
+             From: address added to the addresses in the original Reply-To:
+             header and with Content-Type: message/rfc822.  This is effectively
+             a one message MIME format digest.</dd>
+             </dl>
+             <p>The transformations for anonymous_list are applied before
+             any of these actions. It is not useful to apply actions other
+             than No to an anonymous list, and if you do so, the result may
+             be surprising.
+             <p>The Reply-To: header munging actions below interact with these
+             actions as follows:
+             <p> first_strip_reply_to = Yes will remove all the incoming
+             Reply-To: addresses but will still add the poster's address to
+             Reply-To: for all three settings of reply_goes_to_list which
+             respectively will result in just the poster's address, the
+             poster's address and the list posting address or the poster's
+             address and the explicit reply_to_address in the outgoing
+             Reply-To: header. If first_strip_reply_to = No the poster's
+             address in the original From: header, if not already included in
+             the Reply-To:, will be added to any existing Reply-To:
+             address(es).
+             <p>These actions, whether selected here or via <a
+             href="?VARHELP=privacy/sender/dmarc_moderation_action">
+             dmarc_moderation_action</a>, do not apply to messages in digests
+             or archives or sent to usenet via the Mail&lt;-&gt;News gateways.
+             <p>If <a
              href="?VARHELP=privacy/sender/dmarc_moderation_action">
              dmarc_moderation_action</a> applies to this message with an
              action other than Accept, that action rather than this is
