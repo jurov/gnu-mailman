@@ -1080,8 +1080,8 @@ def IsDMARCProhibited(email):
 
     try:
         resolver = dns.resolver.Resolver()
-        resolver.timeout = 3
-        resolver.lifetime = 5
+        resolver.timeout = float(mm_cfg.DMARC_RESOLVER_TIMEOUT)
+        resolver.lifetime = float(mm_cfg.DMARC_RESOLVER_LIFETIME)
         txt_recs = resolver.query(dmarc_domain, dns.rdatatype.TXT)
     except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
         return False
@@ -1137,16 +1137,16 @@ def IsDMARCProhibited(email):
                         dmarc_domain, len(dmarc))
             for entry in dmarcs:
                 if re.search(r'\bp=reject\b', entry, re.IGNORECASE):
-#                   syslog('info',
-#                       'DMARC lookup for %s (%s) found p=reject in %s = %s',
-#                       email, dmarc_domain, name, entry)
+                    syslog('vette',
+                        'DMARC lookup for %s (%s) found p=reject in %s = %s',
+                        email, dmarc_domain, name, entry)
                     return True
 
                 if (mm_cfg.DMARC_QUARANTINE_MODERATION_ACTION and
                     re.search(r'\bp=quarantine\b', entry, re.IGNORECASE)):
-#                   syslog('info',
-#                     'DMARC lookup for %s (%s) found p=quarantine in %s = %s',
-#                           email, dmarc_domain, name, entry)
+                    syslog('vette',
+                      'DMARC lookup for %s (%s) found p=quarantine in %s = %s',
+                            email, dmarc_domain, name, entry)
                     return True
 
     return False

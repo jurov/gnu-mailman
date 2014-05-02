@@ -1074,6 +1074,14 @@ DMARC_QUARANTINE_MODERATION_ACTION = Yes
 # 4 = Discard
 DEFAULT_DMARC_MODERATION_ACTION = 0
 
+# Parameters for DMARC DNS lookups. If you are seeing 'DNSException:
+# Unable to query DMARC policy ...' entries in your error log, you may need
+# to adjust these.
+# The time to wait for a response from a name server before timeout.
+DMARC_RESOLVER_TIMEOUT = seconds(3)
+# The total time to spend trying to get an answer to the question.
+DMARC_RESOLVER_LIFETIME = seconds(5)
+
 # What shold happen to non-member posts which are do not match explicit
 # non-member actions?
 # 0 = Accept

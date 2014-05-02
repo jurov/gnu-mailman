@@ -38,6 +38,11 @@ Here is a history of user visible changes to Mailman.
       dmarc_moderation_action applies to that message.  Otherwise the
       from_is_list action applies.
 
+      Also associated with dmarc_moderation_action are configuration settings
+      DMARC_RESOLVER_TIMEOUT and DMARC_RESOLVER_LIFETIME. These are described
+      in more detail in Defaults.py.  There are also new vette log entries
+      written when dmarc_moderation_action is found to apply to a post.
+
   i18n
 
     - Added missing <mm-digest-question-start> tag to French listinfo template.
