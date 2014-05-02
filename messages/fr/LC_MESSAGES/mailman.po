@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mailman 2.1b6\n"
-"POT-Creation-Date: Mon Apr 21 12:58:55 2014\n"
+"POT-Creation-Date: Fri May  2 10:12:14 2014\n"
 "PO-Revision-Date: 2003-01-22 12:50-0500\n"
 "Last-Translator: Pascal George <george@lyon.inserm.fr>\n"
 "Language-Team: fr <traduc@traduc.org>\n"
@@ -220,7 +220,7 @@ msgid " The last bounce received from you was dated %(date)s"
 msgstr " Le dernier rejet en provenance de votre adresse date du %(date)s"
 
 #: Mailman/Bouncer.py:322 Mailman/Deliverer.py:144
-#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:327
+#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:339
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:240
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
@@ -850,13 +850,13 @@ msgstr "Envoyer un message de bienvenue aux nouveaux abonnés ?"
 #: Mailman/Gui/ContentFilter.py:116 Mailman/Gui/ContentFilter.py:120
 #: Mailman/Gui/Digest.py:46 Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84
 #: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:158
-#: Mailman/Gui/General.py:177 Mailman/Gui/General.py:183
-#: Mailman/Gui/General.py:261 Mailman/Gui/General.py:288
-#: Mailman/Gui/General.py:315 Mailman/Gui/General.py:326
-#: Mailman/Gui/General.py:329 Mailman/Gui/General.py:339
-#: Mailman/Gui/General.py:344 Mailman/Gui/General.py:350
-#: Mailman/Gui/General.py:370 Mailman/Gui/General.py:402
-#: Mailman/Gui/General.py:425 Mailman/Gui/General.py:442
+#: Mailman/Gui/General.py:223 Mailman/Gui/General.py:229
+#: Mailman/Gui/General.py:307 Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:361 Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:375 Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:390 Mailman/Gui/General.py:396
+#: Mailman/Gui/General.py:416 Mailman/Gui/General.py:448
+#: Mailman/Gui/General.py:471 Mailman/Gui/General.py:488
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
@@ -878,13 +878,13 @@ msgstr "Non"
 #: Mailman/Gui/ContentFilter.py:74 Mailman/Gui/ContentFilter.py:116
 #: Mailman/Gui/ContentFilter.py:120 Mailman/Gui/Digest.py:46
 #: Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84 Mailman/Gui/Digest.py:89
-#: Mailman/Gui/General.py:177 Mailman/Gui/General.py:183
-#: Mailman/Gui/General.py:261 Mailman/Gui/General.py:288
-#: Mailman/Gui/General.py:315 Mailman/Gui/General.py:326
-#: Mailman/Gui/General.py:329 Mailman/Gui/General.py:339
-#: Mailman/Gui/General.py:344 Mailman/Gui/General.py:350
-#: Mailman/Gui/General.py:370 Mailman/Gui/General.py:402
-#: Mailman/Gui/General.py:425 Mailman/Gui/General.py:442
+#: Mailman/Gui/General.py:223 Mailman/Gui/General.py:229
+#: Mailman/Gui/General.py:307 Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:361 Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:375 Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:390 Mailman/Gui/General.py:396
+#: Mailman/Gui/General.py:416 Mailman/Gui/General.py:448
+#: Mailman/Gui/General.py:471 Mailman/Gui/General.py:488
 #: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
 #: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
 #: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
@@ -4395,7 +4395,7 @@ msgstr ""
 "Le nombre de jours entre les messages de type <em>Votre abonnement est\n"
 "             désactivé</em>. Cette valeur doit être un entier."
 
-#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:286
+#: Mailman/Gui/Bounce.py:117 Mailman/Gui/General.py:332
 msgid "Notifications"
 msgstr "Avis"
 
@@ -5243,53 +5243,92 @@ msgstr "Message d'origine"
 
 #: Mailman/Gui/General.py:159
 msgid ""
-"Replace the sender with the list address to conform with\n"
-"             policies like DMARC."
+"Replace the From: header address with the list's posting\n"
+"             address to mitigate issues stemming from the original From:\n"
+"             domain's DMARC or similar policies."
 msgstr ""
 
-#: Mailman/Gui/General.py:161
-#, fuzzy
+#: Mailman/Gui/General.py:162
 msgid ""
-"Replace the sender with the list address to conform with\n"
-"             policies like ADSP and DMARC.  It replaces the poster's\n"
-"             address in the From: header with the list address and adds the\n"
-"             poster to the Reply-To: header, but the anonymous_list and\n"
-"             Reply-To: header munging settings below take priority.  If\n"
-"             setting this to Yes, it is advised to set the MTA to DKIM sign\n"
-"             all emails."
-msgstr ""
-"Remplacer l'expéditeur par l'adresse de la liste pour être conforme "
-"auxpolitiques telles que ADSP et DMARC. L'adresse de l'expéditeur "
-"dansl'entête From: est remplacée par l'adresse de la liste et l'expéditeur "
-"estajouté à l'entête Reply-To, mais les paramètres de maquillage ci-"
-"dessouspour les entêtes anonymous_list et Reply-To ont la priorité. Si "
-"cettefonctionnalité est activée, faire signer tous les emails par le MTA "
-"enutilsant DKIM est conseillé."
-
-#: Mailman/Gui/General.py:168
-msgid ""
-"<p>If this is set to Wrap Message, just wrap the message\n"
-"             in an outer message From: the list with Content-Type:\n"
-"             message/rfc822."
-msgstr ""
-
-#: Mailman/Gui/General.py:171
-#, fuzzy
-msgid ""
-"<p>If <a\n"
+"Several protocols now in wide use attempt to ensure that use\n"
+"             of the domain in the author's address (ie, in the From: header\n"
+"             field) is authorized by that domain.  These protocols may be\n"
+"             incompatible with common list features such as footers, "
+"causing\n"
+"             participating email services to bounce list traffic merely\n"
+"             because of the address in the From: field.  <b>This has "
+"resulted\n"
+"             in members being unsubscribed despite being perfectly able to\n"
+"             receive mail.</b>\n"
+"             <p>\n"
+"             The following actions are applied to all list messages when\n"
+"             selected here.  To apply these actions only to messages where "
+"the\n"
+"             domain in the From: header is determined to use such a "
+"protocol,\n"
+"             see the <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+"             dmarc_moderation_action</a> settings under Privacy options...\n"
+"             -&gt; Sender filters.\n"
+"             <p>Settings:<p>\n"
+"             <dl>\n"
+"             <dt>No</dt>\n"
+"             <dd>Do nothing special.  This is appropriate for anonymous "
+"lists.\n"
+"             It is appropriate for dedicated announcement lists, unless the\n"
+"             From: address of authorized posters might be in a domain with "
+"a\n"
+"             DMARC or similar policy. It is also appropriate if you choose "
+"to\n"
+"             use dmarc_moderation_action other than Accept for this list.</"
+"dd>\n"
+"             <dt>Munge From</dt>\n"
+"             <dd>This action replaces the poster's address in the From: "
+"header\n"
+"             with the list's posting address and adds the poster's address "
+"to\n"
+"             the addresses in the original Reply-To: header.</dd>\n"
+"             <dt>Wrap Message</dt>\n"
+"             <dd>Just wrap the message in an outer message with the From:\n"
+"             header containing the list's posting address and with the "
+"original\n"
+"             From: address added to the addresses in the original Reply-To:\n"
+"             header and with Content-Type: message/rfc822.  This is "
+"effectively\n"
+"             a one message MIME format digest.</dd>\n"
+"             </dl>\n"
+"             <p>The transformations for anonymous_list are applied before\n"
+"             any of these actions. It is not useful to apply actions other\n"
+"             than No to an anonymous list, and if you do so, the result may\n"
+"             be surprising.\n"
+"             <p>The Reply-To: header munging actions below interact with "
+"these\n"
+"             actions as follows:\n"
+"             <p> first_strip_reply_to = Yes will remove all the incoming\n"
+"             Reply-To: addresses but will still add the poster's address to\n"
+"             Reply-To: for all three settings of reply_goes_to_list which\n"
+"             respectively will result in just the poster's address, the\n"
+"             poster's address and the list posting address or the poster's\n"
+"             address and the explicit reply_to_address in the outgoing\n"
+"             Reply-To: header. If first_strip_reply_to = No the poster's\n"
+"             address in the original From: header, if not already included "
+"in\n"
+"             the Reply-To:, will be added to any existing Reply-To:\n"
+"             address(es).\n"
+"             <p>These actions, whether selected here or via <a\n"
+"             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+"             dmarc_moderation_action</a>, do not apply to messages in "
+"digests\n"
+"             or archives or sent to usenet via the Mail&lt;-&gt;News "
+"gateways.\n"
+"             <p>If <a\n"
 "             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
 "             dmarc_moderation_action</a> applies to this message with an\n"
 "             action other than Accept, that action rather than this is\n"
 "             applied"
 msgstr ""
-"Texte à inclure dans les <a\n"
-"             href=\"?VARHELP/privacy/sender/member_moderation_action\">avis "
-"de\n"
-"             rejet</a> à envoyer aux abonnés sous modération ayant soumis "
-"un\n"
-"             message à la liste."
 
-#: Mailman/Gui/General.py:178
+#: Mailman/Gui/General.py:224
 msgid ""
 "Hide the sender of a message, replacing it with the list\n"
 "             address (Removes From, Sender and Reply-To fields)"
@@ -5297,11 +5336,11 @@ msgstr ""
 "Cacher l'expéditeur du message, en le remplaçant par l'adresse de la liste\n"
 "\t(supprimer les champs From, Sender et Reply-To)"
 
-#: Mailman/Gui/General.py:181
+#: Mailman/Gui/General.py:227
 msgid "<tt>Reply-To:</tt> header munging"
 msgstr "Altération d'en-tête <tt>Répondre-à:</tt>"
 
-#: Mailman/Gui/General.py:184
+#: Mailman/Gui/General.py:230
 msgid ""
 "Should any existing <tt>Reply-To:</tt> header found in the\n"
 "             original message be stripped?  If so, this will be done\n"
@@ -5313,19 +5352,19 @@ msgstr ""
 "têtes\n"
 "             <tt>Reply-To:</tt> ajoutés par Mailman."
 
-#: Mailman/Gui/General.py:190
+#: Mailman/Gui/General.py:236
 msgid "Explicit address"
 msgstr "Adresse explicite"
 
-#: Mailman/Gui/General.py:190
+#: Mailman/Gui/General.py:236
 msgid "Poster"
 msgstr "Expéditeur"
 
-#: Mailman/Gui/General.py:190
+#: Mailman/Gui/General.py:236
 msgid "This list"
 msgstr "Cette liste"
 
-#: Mailman/Gui/General.py:191
+#: Mailman/Gui/General.py:237
 msgid ""
 "Where are replies to list messages directed?\n"
 "             <tt>Poster</tt> is <em>strongly</em> recommended for most "
@@ -5337,7 +5376,7 @@ msgstr ""
 "pour la\n"
 "             plupart des listes de diffusion."
 
-#: Mailman/Gui/General.py:196
+#: Mailman/Gui/General.py:242
 msgid ""
 "This option controls what Mailman does to the\n"
 "             <tt>Reply-To:</tt> header in messages flowing through this\n"
@@ -5417,11 +5456,11 @@ msgstr ""
 "<tt>adresse explicite</tt> et mettre\n"
 "\t\tla valeur de l'adresse <tt>Reply-To:</tt> à celle de la liste parallèle."
 
-#: Mailman/Gui/General.py:228
+#: Mailman/Gui/General.py:274
 msgid "Explicit <tt>Reply-To:</tt> header."
 msgstr "En-tête <tt>Répondre-à:</tt> explicite."
 
-#: Mailman/Gui/General.py:230
+#: Mailman/Gui/General.py:276
 msgid ""
 "This is the address set in the <tt>Reply-To:</tt> header\n"
 "             when the <a\n"
@@ -5503,11 +5542,11 @@ msgstr ""
 "\t<p>Notez que si le message original contient un en-tête <tt>Reply-To:</"
 "tt>, il ne sera pas modifé."
 
-#: Mailman/Gui/General.py:259
+#: Mailman/Gui/General.py:305
 msgid "Umbrella list settings"
 msgstr "Paramètres de listes cascadées"
 
-#: Mailman/Gui/General.py:262
+#: Mailman/Gui/General.py:308
 msgid ""
 "Send password reminders to, eg, \"-owner\" address instead of\n"
 "             directly to user."
@@ -5515,7 +5554,7 @@ msgstr ""
 "Envoyer un rappel des mots de passe, e.g. à l'adresse \"-owner\" au lieu\n"
 "\t\tde l'envoyer directement à l'utilisateur."
 
-#: Mailman/Gui/General.py:265
+#: Mailman/Gui/General.py:311
 msgid ""
 "Set this to yes when this list is intended to cascade only\n"
 "             to other mailing lists.  When set, meta notices like\n"
@@ -5533,7 +5572,7 @@ msgstr ""
 "valeur de\n"
 "             \"umbrella_member_suffix\" ajoutée au nom de l'abonné."
 
-#: Mailman/Gui/General.py:273
+#: Mailman/Gui/General.py:319
 msgid ""
 "Suffix for use when this list is an umbrella for other\n"
 "             lists, according to setting of previous \"umbrella_list\"\n"
@@ -5542,7 +5581,7 @@ msgstr ""
 "Suffixe utilisé lorsque cette liste est une enveloppe pour d'autres "
 "listes,              selon le paramètrage de \"umbrella_list\" ci-dessus."
 
-#: Mailman/Gui/General.py:277
+#: Mailman/Gui/General.py:323
 msgid ""
 "When \"umbrella_list\" is set to indicate that this list has\n"
 "             other mailing lists as members, then administrative notices "
@@ -5565,11 +5604,11 @@ msgstr ""
 "\t'-owner' est le choix typique. Le paramètrage est sans effet lorsque\n"
 "\t\"umbrella_list\" a la valeur \"No\"."
 
-#: Mailman/Gui/General.py:289
+#: Mailman/Gui/General.py:335
 msgid "Send monthly password reminders?"
 msgstr "Envoyer les rappels mensuels de mot de passe ?"
 
-#: Mailman/Gui/General.py:291
+#: Mailman/Gui/General.py:337
 msgid ""
 "Turn this on if you want password reminders to be sent once\n"
 "             per month to your members.  Note that members may disable "
@@ -5581,7 +5620,7 @@ msgstr ""
 "abonnés\n"
 "             désactivent cette option de leur propre chef."
 
-#: Mailman/Gui/General.py:296
+#: Mailman/Gui/General.py:342
 msgid ""
 "List-specific text prepended to new-subscriber welcome\n"
 "             message"
@@ -5589,7 +5628,7 @@ msgstr ""
 "Texte spécifique à une liste, ajouté au début du message de bienvenue\n"
 "             adressé aux nouveaux abonnés"
 
-#: Mailman/Gui/General.py:299
+#: Mailman/Gui/General.py:345
 msgid ""
 "This value, if any, will be added to the front of the\n"
 "             new-subscriber welcome message.  The rest of the welcome "
@@ -5630,11 +5669,11 @@ msgstr ""
 "                 <li>Les paragraphes sont séparés par une ligne vide.\n"
 "             </ul>"
 
-#: Mailman/Gui/General.py:316
+#: Mailman/Gui/General.py:362
 msgid "Send welcome message to newly subscribed members?"
 msgstr "Envoyer un message de bienvenue aux nouveaux abonnés ?"
 
-#: Mailman/Gui/General.py:317
+#: Mailman/Gui/General.py:363
 msgid ""
 "Turn this off only if you plan on subscribing people manually\n"
 "             and don't want them to know that you did so.  This option is "
@@ -5648,7 +5687,7 @@ msgstr ""
 "\tmigration transparente vers Mailman à partir d'autres gestionnaires\n"
 "\tde liste."
 
-#: Mailman/Gui/General.py:323
+#: Mailman/Gui/General.py:369
 msgid ""
 "Text sent to people leaving the list.  If empty, no special\n"
 "             text will be added to the unsubscribe message."
@@ -5656,12 +5695,12 @@ msgstr ""
 "Le texte envoyé aux personnes quittant la liste. Si ce texte est vide,\n"
 "             aucun message spécial ne sera ajouté au texte de résiliation."
 
-#: Mailman/Gui/General.py:327
+#: Mailman/Gui/General.py:373
 msgid "Send goodbye message to members when they are unsubscribed?"
 msgstr ""
 "Envoyer un message d'adieu lorsque les membres résilient leur abonnement ?"
 
-#: Mailman/Gui/General.py:330
+#: Mailman/Gui/General.py:376
 msgid ""
 "Should the list moderators get immediate notice of new\n"
 "             requests, as well as daily notices about collected ones?"
@@ -5670,7 +5709,7 @@ msgstr ""
 "             immédiatement après chaque nouvelle requête ainsi qu'un\n"
 "             avis quotidien des requêtes collectées ?"
 
-#: Mailman/Gui/General.py:333
+#: Mailman/Gui/General.py:379
 msgid ""
 "List moderators (and list administrators) are sent daily\n"
 "             reminders of requests pending approval, like subscriptions to "
@@ -5689,7 +5728,7 @@ msgstr ""
 "nouvelle\n"
 "             requête entre dans la file d'attente."
 
-#: Mailman/Gui/General.py:340
+#: Mailman/Gui/General.py:386
 msgid ""
 "Should administrator get notices of subscribes and\n"
 "             unsubscribes?"
@@ -5697,21 +5736,21 @@ msgstr ""
 "L'administrateur doit être informé des abonnements et des\n"
 "             résiliations ?"
 
-#: Mailman/Gui/General.py:345
+#: Mailman/Gui/General.py:391
 msgid "Send mail to poster when their posting is held for approval?"
 msgstr ""
 "Envoyer un courriel aux expéditeurs lorsque leurs messages sont\n"
 "mis en attente pour approbation ?"
 
-#: Mailman/Gui/General.py:348
+#: Mailman/Gui/General.py:394
 msgid "Additional settings"
 msgstr "Paramètres supplémentaires"
 
-#: Mailman/Gui/General.py:351
+#: Mailman/Gui/General.py:397
 msgid "Emergency moderation of all list traffic."
 msgstr "Modération d'urgence sur tout le trafic."
 
-#: Mailman/Gui/General.py:352
+#: Mailman/Gui/General.py:398
 msgid ""
 "When this option is enabled, all list traffic is emergency\n"
 "             moderated, i.e. held for moderation.  Turn this option on when\n"
@@ -5724,7 +5763,7 @@ msgstr ""
 "utiliser\n"
 "             lorsque les débats sur votre liste s'enflamment !"
 
-#: Mailman/Gui/General.py:364
+#: Mailman/Gui/General.py:410
 msgid ""
 "Default options for new members joining this list.<input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
@@ -5732,7 +5771,7 @@ msgstr ""
 "Options par défaut des nouveaux abonnés à la liste. <input\n"
 "             type=\"hidden\" name=\"new_member_options\" value=\"ignore\">"
 
-#: Mailman/Gui/General.py:367
+#: Mailman/Gui/General.py:413
 msgid ""
 "When a new member is subscribed to this list, their initial\n"
 "             set of options is taken from this variable's setting."
@@ -5740,7 +5779,7 @@ msgstr ""
 "Lorsque cette liste accueille un nouvel abonné, ses paramètres initiaux\n"
 "             seront extraits de la valeur de cette variable."
 
-#: Mailman/Gui/General.py:371
+#: Mailman/Gui/General.py:417
 msgid ""
 "(Administrivia filter) Check postings and intercept ones\n"
 "             that seem to be administrative requests?"
@@ -5748,7 +5787,7 @@ msgstr ""
 "(Filtre administratif) Vérifie les envois et intercepte ceux\n"
 "             qui ressemblent à des requêtes administratives ?"
 
-#: Mailman/Gui/General.py:374
+#: Mailman/Gui/General.py:420
 msgid ""
 "Administrivia tests will check postings to see whether it's\n"
 "             really meant as an administrative request (like subscribe,\n"
@@ -5764,7 +5803,7 @@ msgstr ""
 "aviser\n"
 "             l'administrateur de l'arrivée de nouvelles requêtes à traiter."
 
-#: Mailman/Gui/General.py:381
+#: Mailman/Gui/General.py:427
 msgid ""
 "Maximum length in kilobytes (KB) of a message body.  Use 0\n"
 "             for no limit."
@@ -5772,17 +5811,17 @@ msgstr ""
 "Taille maximale en kilo-octets (ko) du corps d'un message. Spécifiez 0\n"
 "             pour illimitée."
 
-#: Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:431
 msgid ""
 "Maximum number of members to show on one page of the\n"
 "             Membership List."
 msgstr ""
 
-#: Mailman/Gui/General.py:389
+#: Mailman/Gui/General.py:435
 msgid "Host name this list prefers for email."
 msgstr "Le nom d'hôte préféré par cette liste de diffusion pour le courriel."
 
-#: Mailman/Gui/General.py:391
+#: Mailman/Gui/General.py:437
 msgid ""
 "The \"host_name\" is the preferred name for email to\n"
 "             mailman-related addresses on this host, and generally should "
@@ -5800,7 +5839,7 @@ msgstr ""
 "             utilisé pour choisir l'un des noms d'un hôte disposant de "
 "plusieurs adresses."
 
-#: Mailman/Gui/General.py:403
+#: Mailman/Gui/General.py:449
 msgid ""
 "Should messages from this mailing list include the\n"
 "                 <a href=\"http://www.faqs.org/rfcs/rfc2369.html\">RFC 2369</"
@@ -5815,7 +5854,7 @@ msgstr ""
 "fortement\n"
 "                 recommandé."
 
-#: Mailman/Gui/General.py:408
+#: Mailman/Gui/General.py:454
 msgid ""
 "RFC 2369 defines a set of List-* headers that are\n"
 "                 normally added to every message sent to the list "
@@ -5865,11 +5904,11 @@ msgstr ""
 "pourrait vous être ôtée\n"
 "                 un jour ou l'autre)."
 
-#: Mailman/Gui/General.py:426
+#: Mailman/Gui/General.py:472
 msgid "Should postings include the <tt>List-Post:</tt> header?"
 msgstr "Les envois doivent contenir les en-têtes <tt>List-Post:</tt> ?"
 
-#: Mailman/Gui/General.py:427
+#: Mailman/Gui/General.py:473
 msgid ""
 "The <tt>List-Post:</tt> header is one of the headers\n"
 "             recommended by\n"
@@ -5903,7 +5942,7 @@ msgstr ""
 "             en-tête. (Cela n'affectera pas l'inclusion des autres en-têtes\n"
 "             <tt>List-*:</tt>.)"
 
-#: Mailman/Gui/General.py:443
+#: Mailman/Gui/General.py:489
 #, fuzzy
 msgid ""
 "Should the <tt>Sender</tt> header be rewritten for this\n"
@@ -5915,7 +5954,7 @@ msgstr ""
 "pu\n"
 "             détecter ? <em>Oui</em> recommandé."
 
-#: Mailman/Gui/General.py:447
+#: Mailman/Gui/General.py:493
 msgid ""
 "<a href=\"http://www.faqs.org/rfcs/rfc2822.html\">RFC\n"
 "                 2822</a> defines the <tt>Sender</tt> header and defines it\n"
@@ -5937,13 +5976,13 @@ msgid ""
 "                 here."
 msgstr ""
 
-#: Mailman/Gui/General.py:465
+#: Mailman/Gui/General.py:511
 msgid ""
 "Discard held messages older than this number of days.\n"
 "            Use 0 for no automatic discarding."
 msgstr ""
 
-#: Mailman/Gui/General.py:475
+#: Mailman/Gui/General.py:521
 msgid ""
 "<b>real_name</b> attribute not\n"
 "            changed!  It must differ from the list's name by case\n"
@@ -5952,7 +5991,7 @@ msgstr ""
 "<b>nom_réel</b> attribut non modifé !\n"
 "\tIl ne peut être différent du nom de la liste que par la casse."
 
-#: Mailman/Gui/General.py:503
+#: Mailman/Gui/General.py:549
 msgid ""
 "The <b>info</b> attribute you saved\n"
 "contains suspicious HTML that could potentially expose your users to cross-"
@@ -5966,7 +6005,7 @@ msgid ""
 "                        "
 msgstr ""
 
-#: Mailman/Gui/General.py:514
+#: Mailman/Gui/General.py:560
 msgid ""
 "<b>admin_member_chunksize</b> attribute not\n"
 "            changed!  It must be an integer > 0."
@@ -5974,7 +6013,7 @@ msgstr ""
 "<b>admin_member_chunksize</b> attribut non modifé !\n"
 "\tDoit être un entier > 0."
 
-#: Mailman/Gui/General.py:524
+#: Mailman/Gui/General.py:570
 msgid ""
 "You cannot add a Reply-To: to an explicit\n"
 "            address if that address is blank.  Resetting these values."
@@ -12962,6 +13001,41 @@ msgstr ""
 "    --listname=nomdeliste\n"
 "\t Envoi le résumé à la liste spécifiée, sinon les résumés pour toutes\n"
 "\t les listes sont envoyés.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Replace the sender with the list address to conform with\n"
+#~ "             policies like ADSP and DMARC.  It replaces the poster's\n"
+#~ "             address in the From: header with the list address and adds "
+#~ "the\n"
+#~ "             poster to the Reply-To: header, but the anonymous_list and\n"
+#~ "             Reply-To: header munging settings below take priority.  If\n"
+#~ "             setting this to Yes, it is advised to set the MTA to DKIM "
+#~ "sign\n"
+#~ "             all emails."
+#~ msgstr ""
+#~ "Remplacer l'expéditeur par l'adresse de la liste pour être conforme "
+#~ "auxpolitiques telles que ADSP et DMARC. L'adresse de l'expéditeur "
+#~ "dansl'entête From: est remplacée par l'adresse de la liste et "
+#~ "l'expéditeur estajouté à l'entête Reply-To, mais les paramètres de "
+#~ "maquillage ci-dessouspour les entêtes anonymous_list et Reply-To ont la "
+#~ "priorité. Si cettefonctionnalité est activée, faire signer tous les "
+#~ "emails par le MTA enutilsant DKIM est conseillé."
+
+#, fuzzy
+#~ msgid ""
+#~ "<p>If <a\n"
+#~ "             href=\"?VARHELP=privacy/sender/dmarc_moderation_action\">\n"
+#~ "             dmarc_moderation_action</a> applies to this message with an\n"
+#~ "             action other than Accept, that action rather than this is\n"
+#~ "             applied"
+#~ msgstr ""
+#~ "Texte à inclure dans les <a\n"
+#~ "             href=\"?VARHELP/privacy/sender/member_moderation_action"
+#~ "\">avis de\n"
+#~ "             rejet</a> à envoyer aux abonnés sous modération ayant soumis "
+#~ "un\n"
+#~ "             message à la liste."
 
 #~ msgid ""
 #~ "    looks like you have a really recent CVS installation...\n"
