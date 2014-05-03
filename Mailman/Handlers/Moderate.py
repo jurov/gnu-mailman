@@ -54,7 +54,7 @@ def process(mlist, msg, msgdata):
     msgdata['from_is_list'] = 0
     dn, addr = parseaddr(msg.get('from'))
     if addr and mlist.dmarc_moderation_action > 0:
-        if Utils.IsDMARCProhibited(addr):
+        if Utils.IsDMARCProhibited(mlist, addr):
             # Note that for dmarc_moderation_action, 0 = Accept, 
             #    1 = Munge, 2 = Wrap, 3 = Reject, 4 = Discard
             if mlist.dmarc_moderation_action == 1:

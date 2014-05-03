@@ -390,6 +390,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.member_moderation_action = 0
         self.member_moderation_notice = ''
         self.dmarc_moderation_action = mm_cfg.DEFAULT_DMARC_MODERATION_ACTION
+        self.dmarc_quarantine_moderation_action = (
+            mm_cfg.DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION)
         self.dmarc_moderation_notice = ''
         self.accept_these_nonmembers = []
         self.hold_these_nonmembers = []

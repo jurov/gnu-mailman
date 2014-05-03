@@ -28,9 +28,11 @@ Here is a history of user visible changes to Mailman.
       default for this, and the list admin UI is not able to set an action
       which is 'less' than the default.  The prior ALLOW_FROM_IS_LIST setting
       has been removed and is effectively always Yes. There is a new
-      DMARC_QUARANTINE_MODERATION_ACTION configuration setting which defaults
-      to Yes but can be set to No to exclude domains with DMARC policy of
-      quarantine from dmarc_moderation_action.
+      dmarc_quarantine_moderation_action list setting with default set by a
+      new DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION configuration setting
+      which in turn defaults to Yes.  The list setting can be set to No to
+      exclude domains with DMARC policy of quarantine from
+      dmarc_moderation_action.
 
       dmarc_moderation_action and from_is_list interact in the following way.
       If the message is From: a domain to which dmarc_moderation_action applies

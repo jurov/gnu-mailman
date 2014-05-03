@@ -1061,8 +1061,9 @@ DEFAULT_DEFAULT_MEMBER_MODERATION = No
 DEFAULT_FORWARD_AUTO_DISCARDS = Yes
 
 # Shall dmarc_moderation_action be applied to messages From: domains with
-# a DMARC policy of quarantine as well as reject?
-DMARC_QUARANTINE_MODERATION_ACTION = Yes
+# a DMARC policy of quarantine as well as reject?  This sets the default for
+# the list setting that controls it.
+DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION = Yes
 
 # Default action for posts whose From: address domain has a DMARC policy of
 # reject or quarantine.  See DEFAULT_FROM_IS_LIST below.  Whatever is set as

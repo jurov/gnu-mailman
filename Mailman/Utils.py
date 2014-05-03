@@ -1068,7 +1068,7 @@ def suspiciousHTML(html):
 
 # This takes an email address, and returns True if DMARC policy is p=reject
 # or possibly quarantine.
-def IsDMARCProhibited(email):
+def IsDMARCProhibited(mlist, email):
     if not dns_resolver:
          return False
 
@@ -1142,7 +1142,7 @@ def IsDMARCProhibited(email):
                         email, dmarc_domain, name, entry)
                     return True
 
-                if (mm_cfg.DMARC_QUARANTINE_MODERATION_ACTION and
+                if (mlist.dmarc_quarantine_moderation_action and
                     re.search(r'\bp=quarantine\b', entry, re.IGNORECASE)):
                     syslog('vette',
                       'DMARC lookup for %s (%s) found p=quarantine in %s = %s',
@@ -1150,5 +1150,4 @@ def IsDMARCProhibited(email):
                     return True
 
     return False
-
 
