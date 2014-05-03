@@ -62,7 +62,7 @@ def main():
         # Avoid cross-site scripting attacks
         safelistname = Utils.websafe(listname)
         title = _('No such list <em>%(safelistname)s</em>')
-        doc.SetTitle(title)
+        doc.SetTitle(_('No such list %(safelistname)s'))
         doc.AddItem(
             Header(3,
                    Bold(FontAttr(title, color='#ff0000', size='+2'))))
@@ -188,7 +188,7 @@ def process_request(doc, cgidata, mlist):
 def request_deletion(doc, mlist, errmsg=None):
     realname = mlist.real_name
     title = _('Permanently remove mailing list <em>%(realname)s</em>')
-    doc.SetTitle(title)
+    doc.SetTitle(_('Permanently remove mailing list %(realname)s'))
 
     table = Table(border=0, width='100%')
     table.AddRow([Center(Bold(FontAttr(title, size='+1')))])

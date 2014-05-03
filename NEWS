@@ -52,6 +52,9 @@ Here is a history of user visible changes to Mailman.
 
   Bug Fixes and other patches
 
+    - Removed HTML tags from the title of a couple of rmlist.py pages because
+      browsers don't render tags in the title.  (LP: #265848)
+
     - Most Mailman generated notices to list owners and moderators are now
       sent as Precedence: list instead of bulk.  (LP: #1313146)
 
