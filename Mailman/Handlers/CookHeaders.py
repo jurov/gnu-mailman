@@ -134,9 +134,6 @@ def process(mlist, msg, msgdata):
                       formataddr(('%s via %s' % (realname, mlist.real_name),
                                  mlist.GetListEmail())),
                       mlist, msg, msgdata)
-        if mlist.from_is_list != 2:
-            del msg['sender']
-        #MAS ?? mlist.include_sender_header = 0
     else:
         # Use this as a flag
         o_from = None

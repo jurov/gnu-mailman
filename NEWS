@@ -5,7 +5,22 @@ Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
+2.1.19 (xx-xxx-xxxx)
+
+  Bug fixes and other patches
+
+    - Sender: headers are no longer removed in from_is_list Munge From
+      actions.  (LP: #1315970)
+
 2.1.18 (03-May-2014)
+
+  Acknowledgements
+
+    - Thanks to Jim Popovitch and Phil Pennock for the branch that formed the
+      basis of the dmarc_moderation_action feature.
+
+    - Thanks to Franck Martin et al for the branch that formed the basis of
+      the from_is_list feature.
 
   Dependencies
 
@@ -120,7 +135,7 @@ Here is a history of user visible changes to Mailman.
 
     - Fixed a bug which caused some authentication cookies to expire too soon
       if AUTHENTICATION_COOKIE_LIFETIME is non-zero.  (LP: #1257112)
- 
+
     - Fixed a possible TypeError in bin/sync_members introduced in 2.1.17.
       (LP: #1243343)
 
@@ -181,10 +196,10 @@ Here is a history of user visible changes to Mailman.
       DEFAULT_FROM_IS_LIST to control the default for new lists, and the
       existing REMOVE_DKIM_HEADERS setting has been extended to allow removing
       those headers only for certain from_is_list lists.  This feature must
-      be enabled by setting ALLOW_FROM_IS_LIST to Yes in mm_cfg.py.  See the 
+      be enabled by setting ALLOW_FROM_IS_LIST to Yes in mm_cfg.py.  See the
       description of these settings in Defaults.py for more detail.  This
       feature is experimental in 2.1.16, and it is subject to change or to
-      become just one of the two methods in a subsequent release. People 
+      become just one of the two methods in a subsequent release. People
       interested in this feature are encouraged to try it and report their
       experiences to the mailman-users@python.org list.
 
