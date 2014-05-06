@@ -5,9 +5,13 @@ Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 
 Here is a history of user visible changes to Mailman.
 
-2.1.19 (xx-xxx-xxxx)
+2.1.18-1 (06-May-2014)
 
   Bug fixes and other patches
+
+    - A critical incompatibility between the DMARC Wrap Message action and
+      Python versions older than 2.6.x for some x <= 5 existed and caused
+      Wrapped message to be shunted.  This is fixed.  (LP: #1316682)
 
     - Sender: headers are no longer removed in from_is_list Munge From
       actions.  (LP: #1315970)
