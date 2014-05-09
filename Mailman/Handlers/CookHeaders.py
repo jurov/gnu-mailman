@@ -120,7 +120,16 @@ def process(mlist, msg, msgdata):
                   mlist, msg, msgdata, repl=False)
     # Do we change the from so the list takes ownership of the email
     if (msgdata.get('from_is_list') or mlist.from_is_list) and not fasttrack:
-        realname, email = parseaddr(msg['from'])
+        # Be as robust as possible here.
+        faddrs = getaddresses(msg.get_all('from', []))
+        if len(faddrs) == 1:
+            realname, email = o_from = faddrs[0]
+        else:
+            # No From: or multiple addresses.  Just punt and take
+            # the get_sender result.
+            realname = ''
+            email = msgdata['original_sender']
+            o_from = (realname, email)
         if not realname:
             if mlist.isMember(email):
                 realname = mlist.getMemberName(email) or email
@@ -128,8 +137,6 @@ def process(mlist, msg, msgdata):
                 realname = email
         # Remove domain from realname if it looks like an email address
         realname = re.sub(r'@([^ .]+\.)+[^ .]+$', '---', realname)
-        # Remember the original From: here for adding to Reply-To: below.
-        o_from = parseaddr(msg['from'])
         change_header('From',
                       formataddr(('%s via %s' % (realname, mlist.real_name),
                                  mlist.GetListEmail())),
