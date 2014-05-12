@@ -122,6 +122,8 @@ def process(mlist, msg, msgdata):
     if (msgdata.get('from_is_list') or mlist.from_is_list) and not fasttrack:
         # Be as robust as possible here.
         faddrs = getaddresses(msg.get_all('from', []))
+        # Strip the nulls and bad emails.
+        faddrs = [x for x in faddrs if x[1].find('@') > 0]
         if len(faddrs) == 1:
             realname, email = o_from = faddrs[0]
         else:
