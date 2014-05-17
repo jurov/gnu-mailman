@@ -67,6 +67,6 @@ def process(mlist, msg, msgdata):
     # Add the headers from CookHeaders.
     for k, v in msgdata['add_header'].items():
         msg[k] = v
-    # And set the payload.
-    msg.set_payload(omsg.as_string())
+    # And set the payload the way email parses it.
+    msg.set_payload([omsg])
 
