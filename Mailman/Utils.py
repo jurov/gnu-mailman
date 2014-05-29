@@ -1070,7 +1070,11 @@ def suspiciousHTML(html):
 # or possibly quarantine.
 def IsDMARCProhibited(mlist, email):
     if not dns_resolver:
-         return False
+        # This is a problem; log it.
+        syslog('error',
+            'DNS lookup for dmarc_moderation_action for list %s not available',
+            mlist.real_name)
+        return False
 
     email = email.lower()
     at_sign = email.find('@')
