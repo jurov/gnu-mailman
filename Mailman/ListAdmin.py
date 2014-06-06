@@ -101,7 +101,7 @@ class ListAdmin:
             # should we be as paranoid as for the config.pck file?  Should we
             # use pickle?
             tmpfile = self.__filename + '.tmp'
-            omask = os.umask(002)
+            omask = os.umask(007)
             try:
                 fp = open(tmpfile, 'w')
                 try:
@@ -194,7 +194,7 @@ class ListAdmin:
         else:
             ext = 'txt'
         filename = 'heldmsg-%s-%d.%s' % (self.internal_name(), id, ext)
-        omask = os.umask(002)
+        omask = os.umask(007)
         try:
             fp = open(os.path.join(mm_cfg.DATA_DIR, filename), 'w')
             try:

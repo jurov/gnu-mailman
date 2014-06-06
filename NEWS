@@ -7,11 +7,20 @@ Here is a history of user visible changes to Mailman.
 
 2.1.19 (xx-xxx-xxxx)
 
+  Changed behavior
+
+    - Mailman's log files, request.pck files and heldmsg-* files are no
+      longer created world readable to protect against access by untrusted
+      local users.  Note that permissions on existing log files won't be
+      changed so if you are concerned about this and don't rotate logs or
+      have a logrotate process that creates new log files instead of letting
+      Mailman create them, you will need to address that.  (LP: #1327404)
+
+  Bug fixes and other patches
+
     - If checking DNS for dmarc_moderation_action and DNS lookup is not
       available, log it.  (LP: #1324541)
  
-  Bug fixes and other patches
-
     - Handle missing From: header addresses for DMARC mitigation actions.
       (LP: #1318025)
 

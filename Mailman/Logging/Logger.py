@@ -60,7 +60,7 @@ class Logger:
             return self.__fp
         else:
             try:
-                ou = os.umask(002)
+                ou = os.umask(007)
                 try:
                     try:
                         f = codecs.open(
