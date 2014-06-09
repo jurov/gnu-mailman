@@ -540,7 +540,9 @@ class WidgetArray:
                                   self.button_names,
                                   self.values):
             ischecked = (self.ischecked(i))
-            item = self.Widget(self.name, value, ischecked).Format() + name
+            item = ('<label>' +
+                    self.Widget(self.name, value, ischecked).Format() +
+                    name + '</label>')
             items.append(item)
             if not self.horizontal:
                 t.AddRow(items)
