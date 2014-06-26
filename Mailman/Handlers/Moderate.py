@@ -50,32 +50,7 @@ class ModeratedMemberPost(Hold.ModeratedPost):
 def process(mlist, msg, msgdata):
     if msgdata.get('approved'):
         return
-    # Before anything else, check DMARC if necessary.
-    msgdata['from_is_list'] = 0
-    dn, addr = parseaddr(msg.get('from'))
-    if addr and mlist.dmarc_moderation_action > 0:
-        if Utils.IsDMARCProhibited(mlist, addr):
-            # Note that for dmarc_moderation_action, 0 = Accept, 
-            #    1 = Munge, 2 = Wrap, 3 = Reject, 4 = Discard
-            if mlist.dmarc_moderation_action == 1:
-                msgdata['from_is_list'] = 1
-            elif mlist.dmarc_moderation_action == 2:
-                msgdata['from_is_list'] = 2
-            elif mlist.dmarc_moderation_action == 3:
-                # Reject
-                text = mlist.dmarc_moderation_notice
-                if text:
-                    text = Utils.wrap(text)
-                else:
-                    text = Utils.wrap(_(
-"""You are not allowed to post to this mailing list From: a domain which
-publishes a DMARC policy of reject or quarantine, and your message has been
-automatically rejected.  If you think that your messages are being rejected in
-error, contact the mailing list owner at %(listowner)s."""))
-                raise Errors.RejectMessage, text
-            elif mlist.dmarc_moderation_action == 4:
-                raise Errors.DiscardMessage
-    # Then, is the poster a member or not?
+    # Is the poster a member or not?
     for sender in msg.get_senders():
         if mlist.isMember(sender):
             break

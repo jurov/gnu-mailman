@@ -23,6 +23,12 @@ Here is a history of user visible changes to Mailman.
 
   Bug fixes and other patches
 
+    - Moved the dmarc_moderation_action checks from the Moderate handler to
+      the SpamDetect handler so that the Reject and Discard actions will be
+      done before the message might be held by header_filter_rules, and the
+      Wrap Message and Munge From actions will be done on messages held by
+      header_filter_rules if the message is approved.  (LP: #1334450)
+
     - <label> tags have been added around most check boxes and radio buttons
       and their text labels in the admin and admindb web GUI so they can be
       (de)selected by clicking the text.  (LP: #266391)
