@@ -24,9 +24,7 @@ original message.
 
 import copy
 
-from Mailman import mm_cfg
-from Mailman.Utils import unique_message_id
-from Mailman.Message import Message
+from Mailman import Utils
 
 # Headers from the original that we want to keep in the wrapper.
 KEEPERS = ('to',
@@ -63,7 +61,7 @@ def process(mlist, msg, msgdata):
     msg['MIME-Version'] = '1.0'
     msg['Content-Type'] = 'message/rfc822'
     msg['Content-Disposition'] = 'inline'
-    msg['Message-ID'] = unique_message_id(mlist)
+    msg['Message-ID'] = Utils.unique_message_id(mlist)
     # Add the headers from CookHeaders.
     for k, v in msgdata['add_header'].items():
         msg[k] = v
