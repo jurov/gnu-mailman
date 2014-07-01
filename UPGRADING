@@ -1,5 +1,5 @@
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2004 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 
@@ -27,6 +27,18 @@ UPGRADING FROM PREVIOUS VERSIONS
       turning off your web server temporarily, or by setting up a temporary
       redirect to a "service unavailable" page for the Mailman URLs.  Refer to
       your web server documentation for details.
+
+
+UPGRADING PYTHON
+
+    If you are replacing Python with a newer version in the same location,
+    you don't need to do anything special for Mailman.
+
+    If you are installing a Python upgrade to be used by Mailman along side
+    an existing Python, you will need to configure Mailman with the
+    --with-python option to point to your new Python and you will need to
+    check Mailman's crontab and any /etc/init.d/ script and manually fix any
+    python commands as needed.
 
 
 UPGRADING FROM 2.1.4 to 2.1.5
