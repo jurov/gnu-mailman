@@ -23,6 +23,11 @@ Here is a history of user visible changes to Mailman.
 
   Bug fixes and other patches
 
+    - Fixed a bug which caused a setting of 2 for REMOVE_DKIM_HEADERS to be
+      ignored.  (LP: #1363278)
+
+    - Renamed messages/sr/readme.sr to README.sr.  (LP: #1360616)
+
     - Moved the dmarc_moderation_action checks from the Moderate handler to
       the SpamDetect handler so that the Reject and Discard actions will be
       done before the message might be held by header_filter_rules, and the
