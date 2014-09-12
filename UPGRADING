@@ -41,6 +41,16 @@ UPGRADING PYTHON
     python commands as needed.
 
 
+UPGRADING FROM 2.1.5+ to 2.1.18+
+
+    Mailman 2.1.18 introduced a new Python dependency to support the
+    dmarc_moderation_action feature. This requires that the dnspython package
+    be available in the configured Python.  ./configure will quit with an
+    error message if it doesn't find dnspython.  The package can be downloaded
+    from <http://www.dnspython.org/> or from the CheeseShop
+    <https://pypi.python.org/pypi/dnspython/> or installed with pip.
+
+
 UPGRADING FROM 2.1.4 to 2.1.5
 
     In Mailman 2.1.5, some significant changes have been made to the file
