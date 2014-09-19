@@ -63,7 +63,8 @@ def process(mlist, msg, msgdata):
     missing = []
     password = msg.get('urgent', missing)
     if password is not missing:
-        if mlist.Authenticate((mm_cfg.AuthListModerator,
+        if mlist.Authenticate((mm_cfg.AuthListPoster,
+                               mm_cfg.AuthListModerator,
                                mm_cfg.AuthListAdmin),
                               password):
             recips = mlist.getMemberCPAddresses(mlist.getRegularMemberKeys() +
