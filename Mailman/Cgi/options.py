@@ -52,6 +52,18 @@ def main():
     doc = Document()
     doc.set_language(mm_cfg.DEFAULT_SERVER_LANGUAGE)
 
+    method = Utils.GetRequestMethod()
+    if method.lower() not in ('get', 'post'):
+        title = _('CGI script error')
+        doc.SetTitle(title)
+        doc.AddItem(Header(2, title))
+        doc.addError(_('Invalid request method: %(method)s'))
+        doc.AddItem('<hr>')
+        doc.AddItem(MailmanLogo())
+        print 'Status: 405 Method Not Allowed'
+        print doc.Format()
+        return
+
     parts = Utils.GetPathPieces()
     lenparts = parts and len(parts)
     if not parts or lenparts < 1:

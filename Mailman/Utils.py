@@ -261,6 +261,11 @@ def GetPathPieces(envar='PATH_INFO'):
 
 
 
+def GetRequestMethod():
+    return os.environ.get('REQUEST_METHOD')
+
+
+
 def ScriptURL(target, web_page_url=None, absolute=False):
     """target - scriptname only, nothing extra
     web_page_url - the list's configvar of the same name
