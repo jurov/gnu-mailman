@@ -1344,6 +1344,10 @@ DEFAULT_BOUNCE_YOU_ARE_DISABLED_WARNINGS_INTERVAL = days(7)
 # failed to match by the bounce detector?
 DEFAULT_BOUNCE_UNRECOGNIZED_GOES_TO_LIST_OWNER = Yes
 
+# Does the list owner get a copy of every recognized bounce that increments
+# the score for a list member but doesn't result in a disable or probe?
+DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT = No
+
 # Notifications on bounce actions.  The first specifies whether the list owner
 # should get a notification when a member is disabled due to bouncing, while
 # the second specifies whether the owner should get one when the member is

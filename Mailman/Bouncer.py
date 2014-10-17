@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2012 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -89,6 +89,8 @@ class Bouncer:
             mm_cfg.DEFAULT_BOUNCE_YOU_ARE_DISABLED_WARNINGS_INTERVAL
         self.bounce_unrecognized_goes_to_list_owner = \
             mm_cfg.DEFAULT_BOUNCE_UNRECOGNIZED_GOES_TO_LIST_OWNER
+        self.bounce_notify_owner_on_bounce_increment = \
+            mm_cfg.DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT
         self.bounce_notify_owner_on_disable = \
             mm_cfg.DEFAULT_BOUNCE_NOTIFY_OWNER_ON_DISABLE
         self.bounce_notify_owner_on_removal = \
@@ -135,6 +137,7 @@ class Bouncer:
                         siblist.Unlock()
             return
         info = self.getBounceInfo(member)
+        first_today = True
         if day is None:
             # Use today's date
             day = time.localtime()[:3]
@@ -155,6 +158,7 @@ class Bouncer:
             return
         elif info.date == day:
             # We've already scored any bounces for this day, so ignore it.
+            first_today = False
             syslog('bounce', '%s: %s already scored a bounce for date %s',
                    self.internal_name(), member,
                    time.strftime('%d-%b-%Y', day + (0,0,0,0,1,0)))
@@ -189,6 +193,9 @@ class Bouncer:
                 info.reset(0, info.date, info.noticesleft)
             else:
                 self.disableBouncingMember(member, info, msg)
+        elif self.bounce_notify_owner_on_bounce_increment and first_today:
+            self.__sendAdminBounceNotice(member, msg,
+                                         did=_('bounce score incremented'))
         # We've set/changed bounce info above.  We now need to tell the
         # MemberAdaptor to set/update it.  We do it here in case the
         # MemberAdaptor stores bounce info externally to the list object to
@@ -218,7 +225,7 @@ class Bouncer:
         if self.bounce_notify_owner_on_disable:
             self.__sendAdminBounceNotice(member, msg)
 
-    def __sendAdminBounceNotice(self, member, msg):
+    def __sendAdminBounceNotice(self, member, msg, did=_('disabled')):
         # BAW: This is a bit kludgey, but we're not providing as much
         # information in the new admin bounce notices as we used to (some of
         # it was of dubious value).  However, we'll provide empty, strange, or
@@ -230,7 +237,7 @@ class Bouncer:
             {'listname' : self.real_name,
              'addr'     : member,
              'negative' : '',
-             'did'      : _('disabled'),
+             'did'      : did,
              'but'      : '',
              'reenable' : '',
              'owneraddr': siteowner,

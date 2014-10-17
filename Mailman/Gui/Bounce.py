@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2004 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -141,6 +141,15 @@ class Bounce(GUIBase):
              to set up an
              <a href="?VARHELP=autoreply/autoresponse_admin_text">autoresponse
              message</a> for email to the -owner and -admin address.""")),
+
+            ('bounce_notify_owner_on_bounce_increment', mm_cfg.Toggle,
+             (_('No'), _('Yes')), 0,
+             _("""Should Mailman notify you, the list owner, when bounces
+             cause a member's bounce score to be incremented?"""),
+             _("""Setting this value to <em>Yes</em> will cause Mailman to
+             send a notice including a copy of the bounce message to the list
+             owners whenever a bounce increments a member's bounce score but
+             doesn't cause a disable or a probe to be sent.""")),
 
             ('bounce_notify_owner_on_disable', mm_cfg.Toggle,
              (_('No'), _('Yes')), 0,

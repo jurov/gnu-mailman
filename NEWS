@@ -7,6 +7,16 @@ Here is a history of user visible changes to Mailman.
 
 2.1.19 (xx-xxx-xxxx)
 
+  New Features
+
+    - There is a new list attribute in the Bounce processing section.
+      bounce_notify_owner_on_bounce_increment if set to Yes will cause
+      Mailman to notify the list owner on every bounce that increments a
+      list member's score but doesn't result in a probe or disable.  There
+      is a new configuration setting setting
+      DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT to set the default
+      for new lists.  This in turn defaults to No.  (LP: #1382150)
+
   Changed behavior
 
     - Mailman's log files, request.pck files and heldmsg-* files are no

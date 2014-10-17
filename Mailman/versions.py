@@ -371,6 +371,9 @@ def NewVars(l):
         'bounce_unrecognized_goes_to_list_owner',
         mm_cfg.DEFAULT_BOUNCE_UNRECOGNIZED_GOES_TO_LIST_OWNER)
     add_only_if_missing(
+        'bounce_notify_owner_on_bounce_increment',
+        mm_cfg.DEFAULT_BOUNCE_NOTIFY_OWNER_ON_BOUNCE_INCREMENT)
+    add_only_if_missing(
         'bounce_notify_owner_on_disable',
         mm_cfg.DEFAULT_BOUNCE_NOTIFY_OWNER_ON_DISABLE)
     add_only_if_missing(
