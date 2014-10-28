@@ -311,7 +311,7 @@ def process(mlist, msg, msgdata):
              # iD8DBQFCPtWXW5ql+IAeqTIRAirPAK....
              # -----END PGP SIGNATURE-----
              signatures = [None]
-             payload = msg.get_payload()
+             payload = msg.get_payload(decode=True)
 
         for signature in signatures:
              syslog('gpg', "gonna verify payload with signature '%s'", signature)

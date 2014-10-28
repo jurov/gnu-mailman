@@ -324,6 +324,7 @@ class GPGHelper:
     def verifyMessage(self,msg,signature):
         gpg = self.getGPGObject()
 
+        sigfilename = None
         if signature:
            # signature is not None but a non-empty string: we are dealing with
            # a detached signature
