@@ -18,11 +18,15 @@
 """MailList mixin class managing the privacy options."""
 
 import re
+import os
 
 from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman.i18n import _
 from Mailman.Gui.GUIBase import GUIBase
+from Mailman.Logging.Syslog import syslog
+from Mailman import GPGUtils
+from Mailman import SMIMEUtils
 
 try:
     True, False
@@ -42,6 +46,7 @@ class Privacy(GUIBase):
                     ('sender',      _('Sender&nbsp;filters')),
                     ('recipient',   _('Recipient&nbsp;filters')),
                     ('spam',        _('Spam&nbsp;filters')),
+                    ('pgpsmime',    _('PGP-S/MIME options')),
                     ]
         return None
 
@@ -481,6 +486,62 @@ class Privacy(GUIBase):
              can be circumvented in a number of ways, e.g. by escaping or
              bracketing it.""")),
           ]
+        
+	pgpsmime_rtn = [
+            _("""This section allows you to configure the PGP and S/MIME
+              policies for this list."""),
+
+            ('sign_policy', mm_cfg.Radio,
+             (_('None'), _('Voluntary'), _('Mandatory')), 0,
+             _("""Signing policy"""),
+             _("""When set to none, the list does not check or add
+               signatures. When set to voluntary, signatures are
+               checked, and if an incoming message is signed, the outgoing
+               message will be signed as well, otherwise it will not be
+               signed. When set to mandatory, both incoming messages must
+               and outgoing messages will be signed.""")),
+            
+            ('encrypt_policy', mm_cfg.Radio,
+             (_('None'), _('Voluntary'), _('Mandatory')), 0,
+             _("""Encryption policy"""),
+             _("""When set to none, the list does not try to decrypt or
+               encrypt messages. When set to voluntary, encrypted messages
+               are decrypted, and if an incoming message was encrypted,
+               the outgoing message will be encrypted as well, otherwise
+               it will not be encrypted. When set to mandatory, both
+               incoming messages must and outgoing messages will be
+               encrypted.""")),
+            
+            ('gpg_public_key', mm_cfg.Text,
+             (10, WIDTH), 0,
+             _("""Public key for mailing list"""),
+
+             _("""Please export your list public key in ASCII-armored
+             format and paste it here. This can be done using the following
+             command:<br/>
+             <code>gpg --homedir <em>your_tmpdir</em> -a --export</code><br/>
+             It is recomended that you publish the list public key in the
+             list info, too.""")),
+
+            ('gpg_secret_key', mm_cfg.Text,
+             (10, WIDTH), 0,
+             _("""Secret key for mailing list"""),
+
+             _("""Please export your list secret key in ASCII-armored
+             format and paste it here. This can be done using the following
+             command:<br/>
+             <code>gpg --homedir <em>your_tmpdir</em>
+             -a --export-secret-key</code>""")),
+
+            ('gpg_passphrase', mm_cfg.String,
+             WIDTH, 0,
+             _("""Enter the passphrase for the secret key"""),
+
+             _("""Please enter the passphrase for the secret key.
+             Note that the passphrase will be stored in plain in the
+             server configuration, so don't use a passphrase which you
+             use for other, important keys.""")),
+          ]
 
         if subcat == 'sender':
             return sender_rtn
@@ -488,6 +549,8 @@ class Privacy(GUIBase):
             return recip_rtn
         elif subcat == 'spam':
             return spam_rtn
+        elif subcat == 'pgpsmime':
+            return pgpsmime_rtn
         else:
             return subscribing_rtn
 
@@ -602,3 +665,26 @@ class Privacy(GUIBase):
             self._handleForm(mlist, category, subcat, cgidata, doc)
         # Everything else is dealt with by the base handler
         GUIBase.handleForm(self, mlist, category, subcat, cgidata, doc)
+        # GPG keys..
+        if subcat == 'pgpsmime':
+            syslog('gpg','New list keys uploaded')
+            gh = GPGUtils.GPGHelper(mlist)
+            gh.cleanListKeyring()
+            if mlist.gpg_secret_key!=None and len(mlist.gpg_secret_key)==0:
+                mlist.gpg_secret_key = None
+            if mlist.gpg_secret_key:
+                syslog('gpg','  Importing secret key...')
+                keyids = gh.importKey(mlist.gpg_secret_key)
+                if not keyids:
+                    mlist.gpg_secret_key = None
+            if mlist.gpg_public_key!=None and len(mlist.gpg_public_key)==0:
+                mlist.gpg_public_key = None
+            if mlist.gpg_public_key:
+                syslog('gpg','  Importing public key...')
+                keyids = gh.importKey(mlist.gpg_public_key)
+                if not keyids:
+                    mlist.gpg_public_key = None
+            syslog('gpg','  Importing subscriber public keys...')
+            keyids=gh.importAllSubscriberKeys()
+
+

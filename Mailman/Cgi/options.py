@@ -32,6 +32,8 @@ from Mailman import MemberAdaptor
 from Mailman import i18n
 from Mailman.htmlformat import *
 from Mailman.Logging.Syslog import syslog
+from Mailman import GPGUtils
+from Mailman import SMIMEUtils
 
 SLASH = '/'
 SETLANGUAGE = -1
@@ -490,6 +492,51 @@ address.  Upon confirmation, any other mailing list containing the address
         print doc.Format()
         return
 
+    if cgidata.has_key('submitgpgkey'):
+        gpgkey = cgidata.getvalue('gpgkey')
+
+        # Check wether user tries to replace old key
+        # (One has to unsubscribe and subscribe, so that listmaster gets
+        # notification)
+        oldkeyids = mlist.getGPGKeyIDs(user)
+        if oldkeyids:
+            syslog('gpg','Disallowing replacing public key of user %s, list %s', user, mlist.real_name)
+            # display error, exit
+            doc.addError(_("""For security reasons, it is not allowed to change an
+            already set public key.  Either contact the list administrator or
+            unsubscribe and subscribe again."""))
+            print doc.Format()
+            return
+
+        # See if the user wants to change their gpg keys globally
+        mlists = [mlist]
+        if cgidata.getvalue('gpgkey-globally'):
+            mlists.extend(lists_of_member(mlist, user))
+        for gmlist in mlists:
+            set_gpgkey(gmlist, user, gpgkey)
+
+    if cgidata.has_key('submitsmimekey'):
+        smimekey = cgidata.getvalue('smimekey')
+
+        # check wether user tries to replace old key
+        sm = SMIMEUtils.SMIMEHelper(mlist)
+        keyfile = sm.getSMIMEMemberCertFile(user)
+        if keyfile <> None:
+            syslog('gpg','Disallowing replacing public key of user %s, list %s', user, mlist.real_name)
+            # display error, exit
+            doc.addError(_("""For security reasons, it is not allowed to change an
+            already set public key.  Either contact the list administrator or
+            unsubscribe and subscribe again."""))
+            print doc.Format()
+            return
+
+        # See if the user wants to change their keys globally
+        mlists = [mlist]
+        if cgidata.getvalue('smimekey-globally'):
+            mlists.extend(lists_of_member(mlist, user))
+        for gmlist in mlists:
+            set_smimekey(gmlist, user, smimekey)
+
     if cgidata.has_key('unsub'):
         # Was the confirming check box turned on?
         if not cgidata.getvalue('unsubconfirm'):
@@ -824,6 +871,26 @@ def options_page(mlist, doc, user, cpuser, userlang, message=''):
     replacements['<mm-fullname-box>'] = mlist.FormatBox(
         'fullname', value=fullname)
 
+    gpgkey = mlist.getGPGKey(user)
+    if gpgkey==None:
+        gpgkey=""
+    replacements['<mm-gpgkey-box>'] = (
+        '<textarea name="gpgkey" rows=10 cols=80>%s</textarea>' % gpgkey)
+    replacements['<mm-global-gpgkey-changes-button>'] = (
+        CheckBox('gpgkey-globally', 1, checked=0).Format())
+    replacements['<mm-change-gpgkey-button>'] = (
+       mlist.FormatButton('submitgpgkey', _('Submit GPG key')))
+
+    smimekey = mlist.getSMIMEKey(user)
+    if not smimekey:
+        smimekey=""
+    replacements['<mm-smimekey-box>'] = (
+        '<textarea name="smimekey" rows=10 cols=80>%s</textarea>' % smimekey)
+    replacements['<mm-global-smimekey-changes-button>'] = (
+        CheckBox('smimekey-globally', 1, checked=0).Format())
+    replacements['<mm-change-smimekey-button>'] = (
+       mlist.FormatButton('submitsmimekey', _('Submit S/MIME key')))
+
     # Create the topics radios.  BAW: what if the list admin deletes a topic,
     # but the user still wants to get that topic message?
     usertopics = mlist.getMemberTopics(user)
@@ -989,6 +1056,95 @@ def change_password(mlist, user, newpw, confirmpw):
     finally:
         mlist.Unlock()
 
+
+
+def set_gpgkey(mlist, user, key):
+    # This operation requires the list lock, so let's set up the signal
+    # handling so the list lock will get released when the user hits the
+    # browser stop button.
+    def sigterm_handler(signum, frame, mlist=mlist):
+        # Make sure the list gets unlocked...
+        mlist.Unlock()
+        # ...and ensure we exit, otherwise race conditions could cause us to
+        # enter MailList.Save() while we're in the unlocked state, and that
+        # could be bad!
+        sys.exit(0)
+
+    # Must own the list lock!
+    mlist.Lock()
+    try:
+        # Install the emergency shutdown signal handler
+        signal.signal(signal.SIGTERM, sigterm_handler)
+        # change the user's key.
+        gh = GPGUtils.GPGHelper(mlist)
+        if len(key)==0:
+            key=None
+        if key!=None:
+            # adjust the keyring on the filesystem
+            keyids=gh.importKey(key)
+            if keyids:
+                syslog('gpg','Key %s for user %s imported.',
+                    ",".join(keyids),user)
+            else:
+                syslog('gpg','Import of key for user %s failed',user)
+        else:
+            keyids=['nonexistent']
+            syslog('gpg','Removing keys from user %s',user)
+        if keyids:
+            oldkeyids = mlist.getGPGKeyIDs(user)
+            # adjust the in-memory copy of the list
+            mlist.setGPGKey(user, key, keyids)
+            # Remove old keys; check if oldkeyids and keyids overlap
+            if oldkeyids:
+                for i in keyids:
+                    try:
+                        oldkeyids.remove(i)
+                    except ValueError:
+                        pass
+                if len(oldkeyids)>0:
+                    syslog('gpg','Removing keys %s',",".join(oldkeyids))
+                    gh.removeKeys(oldkeyids)
+        mlist.Save()
+    finally:
+        mlist.Unlock()
+
+def set_smimekey(mlist, user, key):
+    # Like set_gpgkey, this operation requires the list lock, so let's set
+    # up the signal
+    # handling so the list lock will get released when the user hits the
+    # browser stop button.
+    def sigterm_handler(signum, frame, mlist=mlist):
+        # Make sure the list gets unlocked...
+        mlist.Unlock()
+        # ...and ensure we exit, otherwise race conditions could cause us to
+        # enter MailList.Save() while we're in the unlocked state, and that
+        # could be bad!
+        sys.exit(0)
+
+    # Must own the list lock!
+    mlist.Lock()
+    try:
+        # Install the emergency shutdown signal handler
+        signal.signal(signal.SIGTERM, sigterm_handler)
+        # change the user's key.
+        sm = SMIMEUtils.SMIMEHelper(mlist)
+        if len(key)==0:
+            key=None
+        if key!=None:
+            if sm.importKey(user, key):
+                syslog('gpg','Key %s for user %s imported', key, user)
+            else:
+                syslog('gpg','Import of key for user %s failed',user)
+        else:
+            # FIXME : should support removing a key here
+            pass
+
+        # Unlike the GPG case, we support just one S/MIME key per
+        # subscriber.  We don't have
+        # an in-memory view of the keys per list.  So we're done now.
+        mlist.Save()
+    finally:
+        mlist.Unlock()
 
 
 def global_options(mlist, user, globalopts):

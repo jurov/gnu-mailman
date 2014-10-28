@@ -1,4 +1,9 @@
+# This file is a moderately patched version of SMTPDirect.py which has:
+#
 # Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+#
+# GPG modifications:
+# Copyright (C) 2005 by Stefan Schlott
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -15,7 +20,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-"""Local SMTP direct drop-off.
+"""Local SMTP direct drop-off - after GPG encryption.
 
 This module delivers messages via SMTP to a locally specified daemon.  This
 should be compatible with any modern SMTP server.  It is expected that the MTA
@@ -38,10 +43,14 @@ from Mailman import Errors
 from Mailman.Handlers import Decorate
 from Mailman.Logging.Syslog import syslog
 from Mailman.SafeDict import MsgSafeDict
+from Mailman import GPGUtils
+from Mailman import SMIMEUtils
 
 import email
 from email.Utils import formataddr
 from email.Header import Header
+from email.Parser import HeaderParser
+from email.Message import Message
 from email.Charset import Charset
 
 DOT = '.'
@@ -95,6 +104,7 @@ class Connection:
 
 
 def process(mlist, msg, msgdata):
+    syslog('gpg','GPG SMTP module called')
     recips = msgdata.get('recips')
     if not recips:
         # Nobody to deliver to!
@@ -106,22 +116,10 @@ def process(mlist, msg, msgdata):
             envsender = mlist.GetBouncesEmail()
         else:
             envsender = Utils.get_site_email(extra='bounces')
-    # Time to split up the recipient list.  If we're personalizing or VERPing
-    # then each chunk will have exactly one recipient.  We'll then hand craft
-    # an envelope sender and stitch a message together in memory for each one
-    # separately.  If we're not VERPing, then we'll chunkify based on
-    # SMTP_MAX_RCPTS.  Note that most MTAs have a limit on the number of
-    # recipients they'll swallow in a single transaction.
-    deliveryfunc = None
-    if (not msgdata.has_key('personalize') or msgdata['personalize']) and (
-           msgdata.get('verp') or mlist.personalize):
-        chunks = [[recip] for recip in recips]
-        msgdata['personalize'] = 1
-        deliveryfunc = verpdeliver
-    elif mm_cfg.SMTP_MAX_RCPTS <= 0:
-        chunks = [recips]
-    else:
-        chunks = chunkify(recips, mm_cfg.SMTP_MAX_RCPTS)
+    # Encryption has to be done on per-mail basis. Chunking is not possible.
+    chunks = [[recip] for recip in recips]
+    msgdata['personalize'] = 1
+    deliveryfunc = verpdeliver
     # See if this is an unshunted message for which some were undelivered
     if msgdata.has_key('undelivered'):
         chunks = msgdata['undelivered']
@@ -276,6 +274,13 @@ def chunkify(recips, chunksize):
 
 
 
+def enforceEncryptPolicy(mlist, msg, msgdata):
+    if msgdata.get('tolist'):
+        return True
+    return False
+
+
+
 def verpdeliver(mlist, msg, msgdata, envsender, failures, conn):
     for recip in msgdata['recips']:
         # We now need to stitch together the message with its header and
@@ -340,6 +345,140 @@ def verpdeliver(mlist, msg, msgdata, envsender, failures, conn):
         del msgcopy['x-mailman-copy']
         if msgdata.get('add-dup-header', {}).has_key(recip):
             msgcopy['X-Mailman-Copy'] = 'yes'
+        # GPG encryption
+        if 'encrypted_gpg' in msgdata and msgdata['encrypted_gpg'] and mlist.encrypt_policy!=0:
+            # Encryption is not forbidden in config
+            try:
+                keyids=mlist.getGPGKeyIDs(recip)
+            except:
+                keyids=None
+            if enforceEncryptPolicy(mlist,msg,msgdata) and keyids==None:
+                syslog('gpg','Encryption mandatory, but no keys found for %s: '\
+                        'Discarding message',recip)
+                failures[recip]=(550,'Encryption mandatory, but no keys found')
+                return
+            gh = GPGUtils.GPGHelper(mlist)
+            # Extract / generate plaintext
+            gpg_use_inlineformat = False # TODO: Create config setting
+            if not msgcopy.is_multipart() and gpg_use_inlineformat:
+                plaintext=msgcopy.get_payload()
+            else:
+                if not msgcopy.is_multipart():
+                    plaintext = 'Content-Type: %s\n' \
+                        'Content-Disposition: inline\n' \
+                        % msgcopy.get('Content-Type')
+                    if not msgcopy.get('Content-Transfer-Encoding') is None:
+                        plaintext += 'Content-Transfer-Encoding: %s\n' \
+                                % msgcopy.get('Content-Transfer-Encoding')
+                    plaintext += '\n%s' % msgcopy.get_payload()
+                else:
+                    hp = HeaderParser()
+                    tmp = msgcopy.as_string()
+                    tmpmsg = hp.parsestr(tmp)
+                    plaintext = 'Content-Type: %s\n' \
+                        'Content-Disposition: inline\n\n%s' \
+                        % (msgcopy.get('Content-Type'),tmpmsg.get_payload())
+            # Do encryption, report errors
+            ciphertext = None
+            if not keyids is None:
+                # Can encrypt.
+                # No signing policy, or voluntary and original wasn't signed: just encrypt
+                if mlist.sign_policy == 0 or \
+                    (mlist.sign_policy==1 and not msgdata['signed_gpg']):
+                    ciphertext = gh.encryptMessage(plaintext,keyids)
+                else:
+                    ciphertext = gh.encryptSignMessage(plaintext,keyids)
+                if ciphertext==None:
+                    # Must always encrypt, since if we arrived here encrypt_policy
+                    # is either Mantatory or (Voluntary and incoming msg was encrypted).
+                    syslog('gpg',"Can't encrypt message to %s: " \
+                            "Discarding message",keyids)
+                    failures[recip]=(550,'Unable to encrypt message')
+                    return
+            # Compile encrypted message
+            if not ciphertext is None:
+                if msgcopy.has_key('Content-Transfer-Encoding'):
+                    msgcopy.replace_header('Content-Transfer-Encoding','7bit')
+                else:
+                    msgcopy.add_header('Content-Transfer-Encoding','7bit')
+                if not msgcopy.is_multipart() and gpg_use_inlineformat:
+                    msgcopy.set_payload(ciphertext)
+                    msgcopy.set_param('x-action','pgp-encrypted')
+                else:
+                    msgcopy.replace_header('Content-Type','multipart/encrypted')
+                    msgcopy.set_param('protocol','application/pgp-encrypted')
+                    msgcopy.set_payload(None)
+                    submsg = Message()
+                    submsg.add_header('Content-Type','application/pgp-encrypted')
+                    submsg.set_payload('Version: 1\n')
+                    msgcopy.attach(submsg)
+                    submsg = Message()
+                    submsg.add_header('Content-Type','application/octet-stream; name="encrypted.asc"')
+                    submsg.add_header('Content-Disposition','inline; filename="encrypted.asc"')
+                    submsg.set_payload(ciphertext)
+                    msgcopy.attach(submsg)
+                syslog('gpg','Sending encrypted message to %s',recip)
+            else:
+                syslog('gpg','Sending unencrypted message to %s',recip)
+
+        if 'encrypted_smime' in msgdata and msgdata['encrypted_smime'] and mlist.encrypt_policy != 0:
+            # FIXME: this is as crude as can be
+            sm = SMIMEUtils.SMIMEHelper(mlist)
+            recipfile = sm.getSMIMEMemberCertFile(recip)
+
+            if not recipfile:
+                failures[recip]=(550,'No S/MIME key found')
+                return
+            else:
+                plaintext=msgcopy.get_payload()
+                if not msgcopy.is_multipart():
+                    plaintext = msgcopy.get_payload()
+                    syslog('gpg', "About to S/MIME encrypt plaintext from singlepart")
+                else:
+                    # message contains e.g. signature?
+                    # FIXME we fetch only the first attachment.  We search for
+                    # attachments only 2 levels deep.  That's suboptimal...
+                    # perhaps the PGP way (invoking
+                    # hp = HeaderParser()
+                    # ) is better.
+                    submsgs = msgcopy.get_payload()
+                    submsg = submsgs[0]
+                    if not submsg.is_multipart():
+                        plaintext = submsg.get_payload()
+                    else:
+                        subsubmsgs = submsg.get_payload()
+                        subsubmsg = subsubmsgs[0]
+                        plaintext = subsubmsg.get_payload()
+
+                    syslog('gpg', "About to S/MIME encrypt plaintext from multipart")
+
+                if mlist.sign_policy == 0 or \
+                    (mlist.sign_policy==1 and not msgdata['signed_smime']):
+                    ciphertext = sm.encryptMessage(plaintext,recipfile)
+                else:
+                    ciphertext = sm.encryptSignMessage(plaintext,recipfile)
+
+                # deal with both header and body-part of ciphertext
+                (header, body) = ciphertext.split("\n\n", 1)
+                for l in header.split("\n"):
+                    (k, v) = l.split(": ", 1)
+
+                    # behave sane with borken openssl like 0.9.7e (e.g. Debian's 0.9.7e-3sarge1)
+                    # openssl 0.9.8a-4a0.sarge.1 is known to work OK.
+                    # A borken openssl (and therefore sm.encryptMessage) returns
+                    #  Content-Type: application/x-pkcs7-mime; name="smime.p7m"
+                    # while we need a
+                    #  Content-Type: application/x-pkcs7-mime; smime-type=enveloped-data; name="smime.p7m"
+                    if v == 'application/x-pkcs7-mime; name="smime.p7m"':
+                        v = 'application/x-pkcs7-mime; smime-type=enveloped-data; name="smime.p7m"'
+
+                    try:
+                        msgcopy.replace_header(k, v)
+                    except KeyError:
+                        msgcopy.add_header(k, v)
+
+                msgcopy.set_payload(body)
+
         # For the final delivery stage, we can just bulk deliver to a party of
         # one. ;)
         bulkdeliver(mlist, msgcopy, msgdata, envsender, failures, conn)

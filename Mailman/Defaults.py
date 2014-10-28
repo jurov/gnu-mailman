@@ -83,8 +83,8 @@ MAILMAN_URL = 'http://www.gnu.org/software/mailman/index.html'
 #     add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 #
 # because otherwise the default mappings won't be correct.
-DEFAULT_EMAIL_HOST = '@MAILHOST@'
-DEFAULT_URL_HOST = '@URLHOST@'
+DEFAULT_EMAIL_HOST = 'bluesky.simpleshell.net'
+DEFAULT_URL_HOST = 'bluesky.simpleshell.net'
 DEFAULT_URL_PATTERN = 'http://%s/mailman/'
 
 # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
@@ -1428,21 +1428,21 @@ PENDINGDB_LOCK_DEBUGGING = Off
 # These directories are used to find various important files in the Mailman
 # installation.  PREFIX and EXEC_PREFIX are set by configure and should point
 # to the installation directory of the Mailman package.
-PYTHON          = '@PYTHON@'
-PREFIX          = '@prefix@'
-EXEC_PREFIX     = '@exec_prefix@'
-VAR_PREFIX      = '@VAR_PREFIX@'
+PYTHON          = '/usr/bin/python'
+PREFIX          = '/usr/local/mailman'
+EXEC_PREFIX     = '${prefix}'
+VAR_PREFIX      = '/usr/local/mailman'
 
 # Work around a bogus autoconf 2.12 bug
 if EXEC_PREFIX == '${prefix}':
     EXEC_PREFIX = PREFIX
 
 # CGI extension, change using configure script
-CGIEXT = '@CGIEXT@'
+CGIEXT = ''
 
 # Group id that group-owns the Mailman installation
-MAILMAN_USER = '@MAILMAN_USER@'
-MAILMAN_GROUP = '@MAILMAN_GROUP@'
+MAILMAN_USER = 'mailman'
+MAILMAN_GROUP = 'mailman'
 
 # Enumeration for Mailman cgi widget types
 Toggle      = 1

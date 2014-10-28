@@ -1,0 +1,130 @@
+% $Id: report-2009-03.tex 4103 2009-03-18 11:58:46Z joostvb $
+% $URL: svn+ssh://nagy/data/vc/svn/trunk/doc/nlnet-mailman-pgp-smime/report-2009-03.tex $
+%
+% Copyright © 2008, 2009 Joost van Baal <info@ad1810.com>
+%
+
+\documentclass[a4]{article}
+\usepackage{a4wide}
+\usepackage{url}
+
+% \title{First Secure List Server bi-monthly project report\\September 1, 2008}
+\title{Fourth Secure List Server bi-monthly project report}
+% Jan 1, 2009
+
+\author{Joost van Baal \url{<joostvb@ad1810.com>}}
+
+\begin{document}
+
+\maketitle
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex}
+
+\section*{Introduction}
+
+As agreed upon in the June 13, 2008 document ``Memorandum of Understanding
+Secure List Server Project'', this report documents work done by the author for
+the Secure List Server project
+(\url{http://non-gnu.uvt.nl/mailman-pgp-smime/}), as funded by the NLnet
+Foundation.  It also lists the current plans for the project.
+
+This document is a follow-up to the Third Secure List Server bi-monthly
+project report, as sent to Valer Mischenko on January 26, 2009.
+
+%downloads, list traffic, commits
+
+\section{Completed tasks}
+
+Here's a condensed overview of the progress made thus far.
+
+\begin{tabular}{lll}
+ Task                            & Planned  & Delivered   \\ \cline{1-3}
+ (Start project)                 & 08-07-01 & 08-06-24    \\
+ (Milestone 1)                   & 08-08-15 & 08-08-09    \\
+ (Milestone 2)                   & 08-12-15 & 09-01-06    \\
+ Publish third project report    & 09-01-01 & 09-01-26    \\
+ Write and publish documentation & 09-01-15 & 09-01-12    \\
+ Create a package of SLS         & 09-03-01 & in progress \\
+ Publish fourth project report   & 09-03-01 & 09-03-18    \\
+ Disseminate results             & 09-03-01 & 09-02-08    \\
+ (Milestone 3)                   & 09-03-01 & in progress \\
+\end{tabular}
+
+See the previous reports for details on the tasks completed for
+Milestones 1 and 2.
+
+Some documentation has been written and published.  The article ``Secure List
+Server: Mailman, PGP and S/MIME - Support for encryption and authentication for
+the GNU mailing list software'' from january 2009 is maintained using the SLS
+version control system, and available from
+\url{http://non-gnu.uvt.nl/mailman-pgp-smime/pgp-smime/talk/mailman-pgp-smime-talk.txt}.
+This article was printed on paper and handed out at the 2 presentations in Ulm
+and Brussels.  This documentation still needs to get integrated with the
+documentation which comes with Mailman itself.  The current documentation
+focusses on list and site admins; user oriented documentation still needs to be
+written.
+
+A lightning talk request for fosdem has been submitted on 08-11-06 and got
+accepted, see \url{http://fosdem.org/2009/schedule/events/secure_list_server}.
+The fosdem conference (see \url{http://fosdem.org/}) took place February 2009
+at ULB Campus Solbosch in Brussels.  The talk (
+http://fosdem.org/2009/node/164) took place on sunday February 8th, 10:20, and
+lasted for 15 minutes.  The talk has been recorded on video; see
+\url{http://ftp.heanet.ie/mirrors/fosdem-video/2009/lightningtalks/}.  (At
+fosdem, the author also organised the PGP KeySigning Party, see
+\url{http://fosdem.org/2009/keysigning}.)
+
+Futhermore, a talk request for the Chaosseminar in Ulm has been submitted
+08-11-24.  The talk took place at 09-01-12, see
+\url{http://ulm.ccc.de/ChaosSeminar/2009/01_Mailman_PGP_SMIME}.  The talk has
+been recorded on video; see
+\url{http://ftp.ccc.de/regional/ulm/chaosseminar/200901-mailman/}.  About 17
+Free Software developers (featuring Stefan Schlott, the original SLS-patch
+author) attended the talk, which started at 20:00.  A lively discussion went on
+till 21:30.  More information about this talk is in the Third Secure List
+Server report.
+
+All talk recordings are available from
+\url{http://non-gnu.uvt.nl/mailman-pgp-smime/pgp-smime/talk/} also.
+
+Some extra time was spent on keeping our code in sync with upstream by merging
+it.  Feedback has been given to users on the GPG/SMIME Mailman development
+list.
+
+(Also, a Debian package for the Small Sister client was build; available from
+\url{http://mdcc.cx/tmp/SmallMailClient/}.)
+
+
+\section{Planned tasks}
+
+Current plans are:
+
+\begin{tabular}{lll}
+ Task                            & Planned  \\ \cline{1-2}
+ Create a package of SLS         & 09-03-01 \\
+ (Milestone 3)                   & 09-03-01 \\
+ Act upon auditors final report  & 09-04-01 \\
+ Try get SLS shipped w/ distros  & 09-04-15 \\
+ Fifth and final project report  & 09-04-15 \\
+ (Milestone 4)                   & 09-04-15 \\
+\end{tabular}
+
+I'll also contact Mailman developer Barry Warsaw and ask him to perform his
+review he has offered via the Mailman Developers list.
+
+Both a Debian and an RPM package for SLS will get build and published.
+
+Currently, Guus Sliepen is working on his final security audit report.
+
+In order to get SLS shipped with Free Software operating system distibutions,
+maintainers of Mailman packages for e.g. GNU/Linux distributions (and the
+Sabayon and Smallsister projects) will get asked (and offered help) to include
+the patch.  The author will work with the Debian Mailman package maintainer to
+try to get the patched Mailman shipped with Debian and Ubuntu, as discussed in
+a private conversation with the maintainer, Tilburg, 2008-06-06.  The decision
+on wether or not to include this patch is under control of the package
+maintainer (not the patch author).
+
+\end{document}
+

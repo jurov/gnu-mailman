@@ -1,0 +1,699 @@
+%Copyright (C) 2009 Guus Sliepen <guus@sliepen.org>
+%This document is released under the GPLv2 or later.
+
+\documentclass[a4]{article}
+\usepackage{a4wide}
+\usepackage[colorlinks]{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{verbatim}
+
+\newcommand{\iquote}[1]{``\textit{#1}''}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\var}[1]{\texttt{#1}}
+\newcommand{\val}[1]{\texttt{#1}}
+\newcommand{\tag}[1]{\texttt{#1}}
+\newcommand{\func}[1]{\texttt{#1()}}
+\newcommand{\hdr}[1]{\texttt{#1}}
+\newcommand{\cmd}[1]{\texttt{#1}}
+\newcommand{\handler}[1]{\texttt{#1}}
+\newcommand{\mime}[1]{\texttt{#1}}
+\newcommand{\page}[1]{\nolinkurl{#1}}
+\newcommand{\env}[1]{\texttt{\$#1}}
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{<#1>}}}
+
+\title{Security Audit of the Secure List Server\\
+Part II}
+
+\author{Guus Sliepen \email{guus@sliepen.org}}
+
+\makeindex
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The subject of this audit is Mailman 2.1.12 patched with the pgp-smime patch of 2009-04-02,
+and follows the progress since the previous audit.
+The changes in the list of known, open issues are reviewed.
+A test setup was created and the code and its behaviour were reviewed.
+A number of new issues were found in the Secure List Server (SLS).
+Most importantly, although the default settings are reasonably safe,
+if the administrator enables more list options
+there are many possibilities for decrypted messages to be bounced, forward or stored without being re-encrypted.
+The developers should reduce the number of options available to list administrators,
+and continue to work on strict integrity and confidentiality enforcement.
+\end{abstract}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex}
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{Subject of the security audit}\label{sec:subject}
+
+The subject of this security audit is the Secure List Server (SLS),
+which consists of the Mailman mailing list server
+augmented with the pgp+smime patch which allows Mailman to handle emails
+which are signed and/or encrypted with OpenPGP or S/MIME in a meaningful way.
+
+Part I of the audit covered a coarse code audit, and was focused more on usage aspects of SLS.
+After reviewing the TODO list and NEWS in section \ref{sec:todolist},
+the flow of mail through the SLS codebase and the issues found therein will be looked at in detail in section \ref{sec:audit}.
+In section \ref{sec:sha1} I will remark on the impliciations of the recent vulnerabilities found in the SHA-1 algorithm for SLS.
+In section \ref{sec:recommendations} I will give recommendations for future work on SLS.
+
+\subsection{Test setup}\label{sec:setup}
+
+To test the functionality and behaviour of SLS, the following test setup was created:
+\begin{itemize}
+\item Asus EeePC 901 with 2 GB RAM and 20 GB storage
+\item Debian unstable (last update on 2009-03-25)
+\item Mailman 2.1.12 patched with \file{mailman-2.1.12-pgp-smime\_2009-04-02.patch}
+\item Postfix 2.5.5-1.1 mail server
+\item Mutt 1.5.18-6 mail client
+\item Lighttpd 1.4.19-4 light-weight web server
+\item GnuPG 1.4.19-5
+\item OpenSSL 0.9.8g-15
+\item Python-GnuPGinterface 0.3.2-9
+\end{itemize}
+
+\section{Review of TODO list and NEWS since 2008-07-03}\label{sec:todolist}
+
+According to the \file{NEWS.PGP-SMIME} file, the following items have changed since the patch from 2008-07-03, which was reviewed in part I of the audit:
+
+\begin{itemize}
+\item A test suite has been added.
+
+At this moment, the test suite consists of a shell script that creates two sets of three mailing lists:
+one set for PGP and one for S/MIME, each set containing three lists with different security levels.
+It subscribes one member to each list, and can send a number of prepared messages to each list.
+
+There are no prepared messages included in SLS however, so one has to create them oneself.
+The test suite also does not check the result of sending the messages to the list.
+The test suite is still far from an automated tool for checking regressions.
+
+\item Names and description of security settings have been changed.
+
+Some previously confusing options for allowing or requiring encryption and/or signatures have been renamed
+to be more consistent, and the descriptions of those options in the web GUI have been clarified.
+This will reduce the chance of an administrator misconfiguring secure lists.
+
+The problem that there are two sets of options, one for PGP and one for S/MIME,
+remains.  Again, it would be better to have one set of options for encryption
+and signing that is independent of the protocols used for them.
+
+\item Members cannot change their public key once set.
+
+This prevents an attacker who can get the password, which is assumed to be much easier than getting the private key,
+to replace a subscriber's public key with its own.
+
+\item Bounces, moderator notifications and logs of encrypted emails no longer contain the decrypted bodies.
+
+Previously, a decrypted copy of an encrypted email was sent without re-encryption to moderators, or sent to the syslog,
+which could result in unintended information disclosure.
+SLS now only sends the headers of the original encrypted email in those cases.
+
+\item From address must now match one of the signature's uids.
+
+Since SLS strips the original signature from emails and adds its own,
+the other recipients can only determine the original sender by looking at the \hdr{From} header.
+SLS now rejects incoming emails whose From-address does not match an uid of the PGP key which signed the post.
+\end{itemize}
+
+The file \file{TODO.PGP-SMIME} has been updated, the following items have changed:
+
+\begin{enumerate}
+\item[0024]\iquote{If a post is properly signed, accept it, no matter whether the From-address is subscribed and no matter the sender moderation policy. However:
+Although that is possible and perhaps desirable,
+one should remember that only the body of an email is signed and/or encrypted, but not the headers.
+If a subscriber is allowed to change the From header at will,
+he can try to impersonate another person when sending an email to the list.
+It is best to restrict the contents of the From header to the email address(es) listed in the subscriber's public key.}
+
+SLS now indeed restricts the contents of the \hdr{From} header, so this item can be removed from the TODO list.
+
+\item[0050]\iquote{Make sure posts get encrypted and signed if needed.
+Perhaps it is best determine whether an incoming email as signed or encrypted,
+and mark this somewhere in its headers, such that the marking does not get
+removed while the email is being processed by SLS.  When sending outgoing
+emails, preferably right before the email is sent to the SMTP server, it should
+be verified that if the message is marked signed, the outgoing email is indeed
+signed. The same goes for encryption (and PGP).}
+
+SLS now adds a \hdr{X-Mailman-SLS-decrypted} header to emails that have been decrypted.
+It is however only used to strip the body from emails that are being bounced in plaintext to the list administrator.
+
+\item[0059]\iquote{Don't use openssl and GnuPGInterface, but pyme.
+KMail is said to use GPGME for S/MIME. Study its source.
+SMScrypto.py from \url{http://smallsister.org/git/SmallMail.git} implements
+crypto in python using pyme. Study its source.}
+
+Indeed, if there is an external library that can encrypt, decrypt, sign and verify emails,
+and it provides all the functionality that SLS needs,
+it is better to use that instead of keeping a (different) private implementation.
+
+Using pyme would remove the need for SLS to use temporary files and to manually start external programs such as \cmd{gpg} and \cmd{openssl}. This removes potential security problems from the SLS code.
+
+\end{enumerate}
+
+\section{Code audit, part II}\label{sec:audit}
+
+In this second part of the code audit, I have followed
+the lifetime of an email, as it is processed by SLS.
+I have done a line-by-line review of the points in the code where emails are decrypted and re-encrypted.
+First I will give an overview of the various subsystems of mailman and how email flows through them.
+Then I will look at the possible issues with the handling of decrypted, but not yet re-encrypted, emails by SLS.
+Finally I will describe my findings of the code dealing with decryption and encryption.
+
+\subsection{Mail flow}\label{sec:mailflow}
+
+When a mailing list is created with SLS,
+a list of email aliases is updated.
+This list of aliases can be read by the mail transfer agent (MTA),
+and tells the MTA what to do with emails for all the relevant mailing list addresses.
+The email aliases generated by SLS for the Postfix MTA look like this:
+
+\begin{verbatim}
+listname:             "|/var/lib/mailman/mail/mailman post listname"
+listname-admin:       "|/var/lib/mailman/mail/mailman admin listname"
+listname-bounces:     "|/var/lib/mailman/mail/mailman bounces listname"
+listname-confirm:     "|/var/lib/mailman/mail/mailman confirm listname"
+listname-join:        "|/var/lib/mailman/mail/mailman join listname"
+listname-leave:       "|/var/lib/mailman/mail/mailman leave listname"
+listname-owner:       "|/var/lib/mailman/mail/mailman owner listname"
+listname-request:     "|/var/lib/mailman/mail/mailman request listname"
+listname-subscribe:   "|/var/lib/mailman/mail/mailman subscribe listname"
+listname-unsubscribe: "|/var/lib/mailman/mail/mailman unsubscribe listname"
+\end{verbatim}
+
+Where \verb|listname| is replaced with the name of the mailing list.
+These aliases instruct the MTA to pipe the emails it through the \file{/var/lib/mailman/mail/mailman} command.
+That command in turn is a simple wrapper that runs a Python script from \file{/var/lib/mailman/scripts/} with the same name as the first argument.
+So in effect, posts to the mailing list address without any suffix will be piped through \cmd{/var/lib/mailman/scripts/post listname}.
+
+In turn, these Python scripts themselves only put the messages in so-called switchboard queues.
+Messages posted to the mailing list address without a suffix will be put in the Incoming queue,
+which normally resides in \file{/var/lib/mailman/qfiles/in}.
+
+For each switchboard a \file{/var/lib/mailman/bin/qrunner} process is running.
+These processes are normally started at boot time by the \file{/etc/init.d/mailman} script.
+Each \cmd{qrunner} has a loop in which it dequeues messages from its switchboard.
+Each dequeued message is handled by the \func{\_dispose} function.
+For the Incoming queue, it is \func{IncomingRunner.\_dispose}.
+This function in turn puts the message in a message processing pipeline.
+
+The pipeline consists of a number of handler objects, each of which have a \func{process} function which deals with the email.
+Each handler can change the message before it is passed on to the next handler.
+A handler can also raise an exception, in which case the rest of the pipeline will be skipped and the message will
+be either discarded, rejected, or held.
+By default, the pipeline consists of the following handlers, in order of execution:
+
+\handler{SpamDetect},
+\handler{Approve},
+\handler{Replybot},
+\handler{Moderate},
+\handler{Hold},
+\handler{MimeDel},
+\handler{Scrubber},
+\handler{Emergency},
+\handler{Tagger},
+\handler{CalcRecips},
+\handler{AvoidDuplicates},
+\handler{Cleanse},
+\handler{CleanseDKIM},
+\handler{CookHeaders},
+\handler{ToDigest},
+\handler{ToArchive},
+\handler{ToUsenet},
+\handler{AfterDelivery},
+\handler{Acknowledge},
+\handler{ToOutgoing}.
+
+The pipeline will be described in more detail later.
+If no exception is raised by any of the handlers,
+then the last handler, \handler{ToOutgoing}, will enqueue the message in the Outgoing switchboard.
+The Outgoing queue is handled by \func{OutgoingRunner.\_dispose}.
+By default, it processes the message with just the \handler{SMTPDirect} handler.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth]{mailflow}
+\end{center}
+\caption{\small Representation of the Incoming and Outgoing queues.
+Encryption and decryption happens in the orange boxes,
+red boxes process decrypted messages,
+red arrows signify decrypted messages being sent in plaintext.
+Several handlers in the Incoming queue leak plaintext to local storage or to the Internet.
+}
+\label{fig:mailflow}
+\end{figure}
+Decryption and encryption is taking place in the \handler{Moderate} and \handler{SMTPDirect} handlers respectively.
+This means that decrypted content is handled by all the handlers in-between,
+and SLS must take special care that decrypted content is not inadvertently leaked in these handlers.
+Even so, due to the flexibility of the pipeline architecture, an administrator or an add-on package can easily change existing handlers or insert new handlers.
+
+\subsubsection{Incoming message pipeline}\label{sec:incomingpipeline}
+
+\begin{description}
+\item[\tt SpamDetect]
+This handler uses regular expressions on the message header to classify a message as spam or not.
+It can either discard, reject or hold spam. It is configured using the \page{privacy/spam} page on the list admin site.
+
+\item[\tt Approve]
+This handler checks if the message is pre-approved or if the list admin has added an approval header.
+If so, the message tag `approved' is set.
+The message is otherwise unaltered and will always pass to the next handler.
+
+\item[\tt Replybot]
+This handler will send an automated reply in response to an incoming message.
+It is configured using the \page{autoreply} admin page.
+The incoming message itself is unaltered and will always pass to the next handler.
+
+\item[\tt Moderate]
+This handler originally only discarded, rejected, held, or allowed a message based on whether the sender was a list member or not,
+or if Mailman was explicitly configured to discard, reject, hold or allow messages from that sender.
+It was configured using the \page{privacy/sender} admin page.
+In SLS, message decryption and signature verification has been spliced into this handler.
+Decryption and verification is done first,
+then messages are rejected, held or approved depending on the state of the encryption and signature,
+as configured using the \page{privacy/gpg} and \page{privacy/smime} admin pages.
+After that the original moderation rules are applied.
+Note that if messages are held in this and later handlers, they have already been decrypted.
+
+A detailed description of the decryption and signature verification code is given in section \ref{sec:crypto}.
+
+\item[\tt Hold]
+Unless the message has already been tagged as `approved',
+this handler holds messages if they contain administrativia that were erroneously sent to the mailing list address,
+if it has too many recipients, if it contains suspicious headers or if it is too large,
+as configured using some of the options on the \page{general} admin page.
+
+\item[\tt MimeDel]
+This handler can remove MIME parts as configured on the \page{contentfilter} admin page,
+or can discard, reject or forward messages to the list owner if it contains forbidden parts.
+
+\item[\tt Scrubber]
+If configured so on the \page{nondigest} admin page,
+this handler ``scrubs'' attachments from messages and stores them in a web-accessible archive.
+The attachment is then replaced with a URL to the archived copy.
+
+\item[\tt Emergency]
+If the ``Emergency moderation of all list traffic'' option on the \page{general} admin page is set,
+this handler will hold all messages unless they have been approved.
+
+\item[\tt Tagger]
+This handler uses regular expressions to categorise messages into ``topic buckets'', as configured on the \page{topics} admin page.
+Messages are always passed unaltered, except for the possible addition of an \hdr{X-Topics} header if it matches any topics.
+
+\item[\tt CalcRecips]
+This handler determines which list members to forward this message to,
+based on their individual settings for delivery.
+
+\item[\tt AvoidDuplicates]
+This handler culls duplicates from the list determined in the \handler{CalcRecips} handler,
+if these recipients have configured duplicate message removal.
+
+\item[\tt Cleanse]
+This handler removes certain headers that should not occur in outgoing messages,
+such as approval passwords.
+If the list has been configured as anonymous on the \page{general} admin page,
+it will also remove the original \hdr{From}, \hdr{Reply-To}, \hdr{Sender} and \hdr{X-Originating-Mail} headers,
+and replace the first two with the mailing list address.
+
+\item[\tt CleanseDKIM]
+This handler removes DomainKeys headers.
+
+\item[\tt CookHeaders]
+This handler adds \hdr{X-BeenThere}, \hdr{X-Mailman-Version}, \hdr{Precedence}, \hdr{Reply-To}, \hdr{List-Id}
+and some other mailing list related headers to the message,
+and possibly changes the \hdr{Subject} header to add a list prefix.
+
+\item[\tt ToDigest]
+If the mailing list is configured to be digestible on the \page{digest} admin page,
+this appends the message to the list's \file{digest.mbox} file.
+If the digest file exceeds the size threshold, it creates a digest email and puts it in the Virgin queue,
+which in turn pipes it through the \handler{CookHeaders} and \handler{ToOutgoing} handlers.
+
+\item[\tt ToArchive]
+If the message is not a digest, does not contain a \hdr{X-No-Archive} or \hdr{X-Archive: no} header,
+and the mailing list is configured on the \page{archive} admin page to archive messages,
+this handler will put a copy of the message in the Archive queue,
+which in turn passes it to the archiver.
+
+\item[\tt ToUsenet]
+If the list had been configured on the \page{gateway} admin page to send copies to a Usenet group,
+this handler will put a copy of the message in the News queue,
+which in turn will forward the message via NNTP.
+
+\item[\tt AfterDelivery]
+This handler updates the statistics about the last post time and number of posts received on the list.
+
+\item[\tt Acknowledge]
+This handler sends an acknowledgement to the sender if he has configured so.
+
+\item[\tt ToOutgoing]
+This handler puts the message in the Outgoing queue.
+\end{description}
+
+There are many handlers which can, if the mailing list is configured to do so,
+hold, reject, forward or otherwise store decrypted messages without re-encrypting them first.
+Unless measures are taken to keep the confidentiality of previously encrypted messages,
+SLS must either drop the message in those situations, send back a rejection notification with just the original headers,
+or just permanently disable features that interfere with the confidentiality of messages.
+This is a list of issues in the Incoming pipeline that should be addressed:
+
+\begin{itemize}
+\item Decrypted messages being held in the \handler{Hold} handler.
+\item Rejected, held and forwarded messages in the \handler{MimeDel} handler.
+\item Decrypted, scrubbed attachments being made web-accessible in the \handler{Scrubber} handler.
+\item Messages being stored unencrypted for extensive periods and re-sent time-delayed in the \handler{ToDigest} handler.
+\item Messages being archived unencrypted in the \handler{ToArchive} handler.
+\item Messages being forwarded unencrypted to Usenet groups in the \handler{ToUsenet} handler.
+\end{itemize}
+
+As a safeguard, the functions \func{BounceMessage} and \func{HoldMessage}
+should check for the presence of the \hdr{X-Mailman-SLS-decrypted} header and
+prevent decrypted message bodies from being stored or sent.
+
+\subsubsection{Outgoing message pipeline}\label{sec:outgoingpipeline}
+
+\begin{description}
+\item[SMTPDirect]
+This handler sends a copy of the message to each of the recipients,
+possibly signed and/or encrypted
+as configured using the \page{privacy/gpg} and \page{privacy/smime} admin pages.
+
+A detailed description of the signature generation and encryption code is given in section \ref{sec:crypto}.
+\end{description}
+
+\subsection{Decryption and encryption}\label{sec:crypto}
+
+I will now describe the code dealing with the decryption, encryption and signature verification and generation in detail,
+pointing out issues where I found them.
+
+\subsubsection{\func{Moderate.process}}\label{sec:moderate}
+
+Incoming posts to lists are handled by \func{process} in \file{Moderate.py}.
+The variable \var{msg} contains the incoming message, and is modified in a number of places.
+First decryption of messages is tried:
+
+\begin{itemize}
+\item If the \var{gpg\_post\_encrypt} option is set, \func{decryptGpg} is called.
+  \begin{itemize}
+  \item If \var{gpg\_post\_encrypt} is set to \val{2},
+        and the message was not encrypted or if decryption failed,
+        the message is rejected.
+  \end{itemize}
+  Afterwards \var{msg} contains the decrypted message.
+
+\item If the \var{smime\_post\_encrypt} option is set, \func{decryptSmime} is called.
+  \begin{itemize}
+  \item If \var{smime\_post\_encrypt} is set to \val{2},
+        and the message was not encrypted or if decryption failed,
+        the message is rejected.
+  \end{itemize}
+  Afterwards \var{msg} contains the decrypted message.
+\end{itemize}
+
+The fact that there are different settings for PGP and S/MIME can lead to strange, inconsistent behaviour:
+\begin{itemize}
+\item \var{gpg\_post\_encrypt} = \var{smime\_post\_encrypt} = \val{1}:
+      Accepts mail that is S/MIME encrypted first and then PGP encrypted,
+      or mail that is either S/MIME or PGP encrypted,
+      but not mail that is first PGP encrypted and then S/MIME encrypted.
+\item \var{gpg\_post\_encrypt} = \var{smime\_post\_encrypt} = \val{2}:
+      Accepts mail that is S/MIME encrypted first and then PGP encrypted,
+      but rejects the reverse order and rejects mail that is either S/MIME or PGP encrypted.
+\end{itemize}
+There are only a few combinations of \var{gpg\_post\_encrypt} and \var{smime\_post\_encrypt} that make sense.
+As mentioned in part I of the audit, it would be better to have one option, \var{post\_encrypt},
+and allow PGP and/or S/MIME encrypted emails based on whether PGP and/or S/MIME keys have been set for the list.
+
+The decryption functions also check signatures if present, but only for encrypted+signed messages.
+The next part in the code handles messages that are only signed:
+
+\begin{itemize}
+\item If \var{gpg\_post\_sign} is set, but the variable \var{signed} is not set:
+  \begin{itemize}
+  \item If the message is of type \mime{multipart/signed},
+        the last MIME part with type \mime{application/pgp-signature}
+        is used as the signature, and the last MIME part with any other type is used as the payload.
+  \item Else, if the message is of type \mime{text/plain} and not multipart,
+        it is assumed that the message is inline PGP, and the entire message is used as the payload.
+  \item The \func{gh.verifyMessage} function is called.
+  \end{itemize}
+
+\item If \var{smime\_post\_sign} is set, but the variable \var{signedByMember} is not set:
+  \begin{itemize}
+  \item The \func{sm.verifyMessage} function is called.
+  \end{itemize}
+
+\item If \var{gpg\_post\_sign} is set:
+  \begin{itemize}
+  \item If the variable \var{key\_ids} is empty, hold or discard the message.
+  \item Else, check if any sender matches any uid of the key.
+     \begin{itemize}
+     \item If not, hold or discard the message.
+     \item Else, if the signature belongs to any of the keyids of any list member, set \var{signedByMember}.
+     \end{itemize}
+  \end{itemize}
+
+\item If \var{smime\_post\_sign} is set, but the variable \var{signedByMember} is still not set:
+  \begin{itemize}
+  \item Hold or discard the message.
+  \end{itemize}
+\end{itemize}
+
+Here also there are some issues:
+\begin{itemize}
+\item Just as with the \var{gpg\_post\_encrypt} and \var{smime\_post\_encrypt} options,
+there are many nonsensical combinations of \var{gpg\_post\_sign} and \var{smime\_post\_sign} possible.
+\item Although SLS now checks the sender against PGP key's uids,
+it only checks if \emph{any} of the senders match any uid.
+This allows a list member to send a signed email with himself plus other addresses in the \hdr{From} header.
+Since the original signature is stripped, other mailing list members cannot know which of the senders signed and sent the email.
+\item For S/MIME, there are still no checks if the sender is the same as the signer.
+For X.509 certificates, the \hdr{emailAddress} field in the subject DN could be used in the same way as the uid of a PGP key.
+Another option would be to check only the key(s) of the sender instead of checking the signature against all members' certificates in \func{sm.verifyMessage}.
+\item For \mime{multipart/signed} messages, it is assumed by SLS that the body consists of exactly two parts,
+but this assumption is not \emph{asserted}.
+\end{itemize}
+
+\begin{figure}
+\begin{center}
+\verbatiminput{fourpartmime.txt}
+\end{center}
+\caption{\small Layout of \mime{multipart/signed} message with four parts.
+In SLS, only the last two parts are verified.
+In Mutt, the first part and a ``Good signature'' message is shown.
+}
+\label{fig:fourpartmime}
+\end{figure}
+The last issue allows an attacker to reuse another member's post to send any message he wants.
+The variable \var{payload} is set to the last part that is not of type \mime{application/pgp-signature},
+and \var{signature} is set to the last part that is of that type.
+The function \func{gh.verifyMessage} is then called with these variables.
+This means that an attacker can construct a \mime{multipart/signed} message with four parts (see figure \ref{fig:fourpartmime}):
+the first two with his own message and signature, which can be made with any key.
+The last two parts are copied from a valid message previously sent to the list.
+SLS accepts such a message if the \hdr{From} header matches any uid of the key of the copied message's signature.
+
+Mutt, a widely used Mail User Agent (MUA),
+handlers \mime{multipart/signed} messages with more than two parts in a different way.
+It expects the first part to be the message body, and the other parts to be signatures.
+It will honour the \hdr{Content-Length} header though, and will only read that amount of bytes from the message,
+so it is possible to make it read only the first two parts.
+
+When given the attacker's four-part message,
+it will display the first part in-line, and will print a ``Good signature from'' message above it.
+If the other parts are not ignored due to the \hdr{Content-Length} header,
+it will display an additional ``Bad signature'' message for the second \hdr{application/pgp-signature} part.
+
+SLS must either discard those parts it does not check, or reject the whole message.
+
+\subsubsection{\func{Moderate.decryptGpg}}\label{sec:decryptgpg}
+
+The \func{decryptGpg} function tries to find the ciphertext to pass to the \func{gh.decryptMessage} function.
+If the message is of type \mime{multipart/encrypted},
+it assumes there is one part of type \mime{application/octet-stream} that contains the ciphertext.
+If there are more parts, it only uses the last of that specific type as the ciphertext,
+and will discard the other parts.
+
+Although there is no information leak here, it would be better to assert that the message only contains one part,
+and otherwise treat it as unencrypted at all, to prevent silent removal of MIME parts.
+
+\subsubsection{\func{SMTPDirect.verpdeliver}}\label{sec:smtpdirect}
+
+Outgoing messages are ultimately handled by \func{verpdeliver} in \file{SMTPDirect.py}.
+The following happens:
+
+\begin{itemize}
+\item If the \var{gpg\_distrib\_encrypt} option is set, try to encrypt the message for each recipient.
+  \begin{itemize}
+  \item Also sign the message if \var{gpg\_distrib\_sign} is set.
+  \item If no key is known for the recipient or encryption fails, and \var{gpg\_distrib\_encrypt} = \val{1}, send plaintext.
+  \item Else, discard the message.
+  \end{itemize}
+
+\item If the \var{smime\_distrib\_encrypt} option is set, try to encrypt the message for each recipient.
+  \begin{itemize}
+  \item Also sign the message if \var{smime\_distrib\_sign} is set.
+  \item If no key is known for the recipient or encryption fails, and \var{smime\_distrib\_encrypt} = \val{1}, send plaintext.
+  \item Else, discard the message.
+  \end{itemize}
+\end{itemize}
+
+The issues found here are:
+\begin{itemize}
+\item Again, there are possible but nonsensical combinations of \var{gpg\_distrib\_*} and \var{smime\_distrib\_*} options.
+\item The extraction of plaintext before it is passed to the encryption functions is different between the PGP and S/MIME cases.
+This should be unified.
+\item If \var{*\_distrib\_encrypt} = \val{1},
+SLS's behaviour allows one to send an unencrypted message to the list and have it distributed encrypted,
+or allows an encrypted message send to the list be distributed unencrypted,
+depending one whether subscribers have uploaded their public keys or not.
+It would be better to always distribute messages encrypted if they were posted encrypted,
+and unencrypted if they were posted unencrypted.
+To handle the case of a
+dissident\footnote{See \url{http://en.wikipedia.org/wiki/Debian_Free_Software_Guidelines\#debian-legal_tests_for_DFSG_compliance}
+for a description applied to software,
+but which equally applies to any kind of information a person would want to spread.}
+ who wants to ensure emails are always sent to him encrypted,
+a per-subscriber option, like \var{always\_encrypt}, could be added.
+\end{itemize}
+
+\subsubsection{\file{GPGUtils.py}}\label{sec:gpgutils}
+
+The following issues were found in \file{GPGUtils.py}:
+
+\begin{itemize}
+\item The function \func{checkPerms} is called three times,
+but the return value is never checked.
+\item In \func{getMailaddrs}, the regular expression used to extract the email address part from the uids is flawed.
+It matches the first string between angular brackets, however this means an uid like
+``\texttt{Mallory (<alice@example.org>) <mallory@example.com>}'' would yield the wrong address,
+allowing Mallory to use ``\texttt{Alice <alice@example.org>}'' in the \hdr{From} header.
+Of course, the list administrator should check all uids carefully anyway,
+since one can add any uid he wants to his key.
+\item In \func{decryptMessage}, the short key id from the \verb|GOODSIG| response is used.
+However, it would be better to use the long key id from the \verb|VALIDSIG| response,
+to reduce the chance of a hash collision which would allow an attacker to fake the signature of a list member.
+\item In \func{decryptMessage}, the \verb|SIG_ID| response should be checked:
+the date should not be too far in the past or future,
+and it should not match any previously found \verb|SIG_ID|.
+This would prevent replay attacks and time delay attacks.
+\item In \func{decryptMessage}, properly encrypted messages but which contain bad signatures are still accepted,
+even though \var{key\_ids} is left empty. It would be better to outright reject such questionable messages.
+\item There is a lot of code duplication between \func{encryptMessage} and \func{encryptSignMessage}.
+\item In \func{verifyMessage}, \verb|VALIDSIG| and \verb|SIG_ID| should be used as mentioned above.
+\end{itemize}
+
+\subsubsection{\file{SMIMEUtils.py}}\label{sec:smimeutils}
+
+The following issues were found in \file{SMIMEUtils.py}:
+
+\begin{itemize}
+\item In all cases, \file{openssl} is called without an absolute pathname.
+This allows an attacker who can create an arbitrary file in the \env{PATH} of the SLS process to insert a fake OpenSSL binary.
+\item In \func{decryptMessage},
+a encrypted+signed message that is decrypted properly but whose signature verification failed is accepted anyway,
+just as in the GPGUtils case. It would be better to reject such messages.
+\item In \func{decryptMessage}, if decryption failed an empty message is returned instead of \val{None}.
+\item Message signatures are checked against the list of all known certificates,
+but there is no information about which certificate signed the message.
+This makes it difficult to check signatures against \hdr{From} headers.
+\item In \func{encryptMessage}, both plaintext and ciphertext are stored in temporary files created with \func{mkstemp}.
+This allows an attacker who can read files from \file{/tmp} owned by the SLS process
+to acquire the plaintext of encrypted messages.
+It also allows plaintext to stay indefinitely on disk.
+Furthermore, according to the Python documentation,
+\iquote{there is thus no guarantee that the generated filename will have any nice properties,
+such as not requiring quoting when passed to external commands via \func{os.popen}}.
+It is better to use the \var{c\_in} handle to pipe the plaintext into \cmd{openssl},
+having the ciphertext on disk is not a risk.
+\item In \func{encryptSignMessage}, temporary files are used as in \func{encryptMessage}.
+It would be better to use the \var{c\_in} and \var{c\_out} handles to pipe plaintext into and out of \cmd{openssl},
+but if this does not work due to blocking of the pipes,
+then the \func{AsyncRead} and \func{AsyncWrite} functions from \file{GPGUtils.py} should be used.
+\item In \func{decryptMessage}, the \var{cmd} variable is a tuple of strings, in \func{encryptMessage} it is just a string.
+If there are spaces in any paths or in \var{recipfile},
+these will be interpreted as argument separators in \func{encryptMessage}.
+The tuple form should be used here as well.
+\item Nowhere is the \var{status} variable checked to see if the \cmd{openssl} command succeeded.
+\item There is code duplication between \func{decryptMessage} and \func{verifyMessage}.
+\end{itemize}
+
+\section{Weaknesses in SHA-1 and its impact on SLS}\label{sec:sha1}
+
+Recent advances in cryptography have led to the discovery of attacks against the SHA-1
+algorithm\footnote{\url{http://eprint.iacr.org/2009/259.pdf}}.
+The SHA-1 algorithm is used to derive fingerprints (and hence, keyids) from PGP keys,
+and is used to generate signatures made with those keys.
+Many X.509 certificates also specify the SHA-1 algorithm for creating signatures.
+The recently discovered attack reduces the complexity of breaking SHA-1 from $2^{79}$ to $2^{52}$ operations,
+and many believe that further research will result in even better attacks which will further reduce the complexity.
+Therefore, many cryptographers recommend moving away from SHA-1 to the SHA-2 suite of hash algorithms,
+and to SHA-3 in the future.
+At the moment, the free software community is still evaluating how to deal with the
+situation\footnote{\url{http://lwn.net/Articles/337091/}}.
+SLS is calling external programs to deal with keys and signatures,
+so there is little that will need to change.
+However, once migration to new keys and certificates which use stronger hash algorithms is common,
+SLS should disallow members to upload keys and certificates which specify the use deprecated algorithms,
+and should disallow emails with signatures that were created using deprecated algorithms.
+
+\section{Recommendations}\label{sec:recommendations}
+
+The lax checking of \mime{multipart/signed} messages should be fixed first,
+since it allows an attacker to pass his own message to the list if he can obtain a signed message from a list member.
+
+After reviewing the code, I believe that afterwards, the most important task for the developers is to
+seriously reduce the number of configuration options available to the list administrator.
+Options that inherently compromise security, such as attachment scrubbing, archiving and support for Usenet,
+should be permanently disabled and removed from the list administrator pages.
+The duplicate sets of options for PGP and S/MIME, and the code duplication behind it,
+should be unified into two options:
+\begin{description}
+\item[sign\_policy] None, voluntary, mandatory.
+
+When set to none, the list should not check or add signatures.
+When set to voluntary, signatures should be checked,
+and if an incoming message is signed, the outgoing message must be signed as well,
+otherwise it should not be signed.
+When set to mandatory, both incoming and outgoing messages must be signed.
+
+\item[encrypt\_policy] None, voluntary, mandatory.
+
+When set to none, the list should not try to decrypt or encrypt messages.
+When set to voluntary, encrypted messages should be decrypted,
+and if an incoming message was encrypted, the outgoing message must be encrypted as well,
+otherwise it should not be encrypted.
+When set to mandatory, both incoming and outgoing messages must be encrypted.
+\end{description}
+The reduction in options will make it easier for list administrators to make the right choice,
+and will simplify code and remove many possibly dangerous code paths.
+For list members, the semantics of these options follow the principle of least
+surprise\footnote{\url{http://en.wikipedia.org/wiki/Principle_of_least_surprise}};
+signed messages in are signed messages out, encrypted messages in are encrypted messages out.
+
+The next most important task is to continue developing the test suite as mentioned in part I of the audit.
+
+Then I would recommend fixing the processing of status and return codes from external \file{gpg} and \file{openssl} processes.
+An attacker might craft malformed PGP and S/MIME messages which could trigger unexpected behaviour if left unchecked.
+
+Also important, but for now I believe of lesser importance than the above,
+are the issues found with plaintext being stored on the host running SLS
+and possible attacks by local users on that host.
+
+\section{Conclusion}\label{sec:conclusion}
+
+The security of SLS has improved since the previous audit.
+However, a large number of options available to list administrators
+allow unsafe behaviour to be enabled.
+The developers should remove those options,
+and continue work on providing strict integrity and confidentiality enforcement.
+
+\end{document}
+

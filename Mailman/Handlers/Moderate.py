@@ -1,4 +1,6 @@
 # Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2005 by Stefan Schlott <stefan.schlott informatik.uni-ulm.de>
+# Copyright (C) 2005 by Tilburg University, http://www.uvt.nl/.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -15,15 +17,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-"""Posting moderation filter.
+"""Posting moderation filter, if appropriate takes care of decrypting using list key
 """
 
 import re
+from email.Parser import Parser
 from email.MIMEMessage import MIMEMessage
 from email.MIMEText import MIMEText
 from email.Utils import parseaddr
 
 from Mailman import mm_cfg
+from Mailman import GPGUtils
+from Mailman import SMIMEUtils
 from Mailman import Utils
 from Mailman import Message
 from Mailman import Errors
@@ -32,6 +37,157 @@ from Mailman.Handlers import Hold
 from Mailman.Logging.Syslog import syslog
 from Mailman.MailList import MailList
 
+
+
+def enforceEncryptPolicy(mlist, msg, msgdata):
+    result = True
+    if msgdata.get('toowner') or msgdata.get('toleave') \
+            or msgdata.get('tojoin') or msgdata.get('toconfirm'):
+        result = False
+    if msgdata.get('torequest'):
+        # This could be more sophisticated:
+        # Parse message, enforce if commands containing passwords are used
+        # These would be: password, subscribe, unsubscribe, who
+        result = False
+    return result
+
+
+
+def decryptGpg(mlist, msg, msgdata):
+
+    """Returns (encrypted (bool), signed (bool), key_ids), msg is replaced with
+       decrypted msg"""
+
+    encrypted = False
+    signed = False
+    key_ids = []
+    plaintext = None
+    ciphertext = None
+    is_pgpmime = False
+
+    # Check: Is inline pgp?
+    if msg.get_content_type()=='application/pgp' or msg.get_param('x-action')=='pgp-encrypted':
+        ciphertext = msg.get_payload()
+        is_pgpmime = False
+    # Check: Is pgp/mime?
+    if msg.get_content_type()=='multipart/encrypted' and msg.get_param('protocol')=='application/pgp-encrypted':
+        if msg.is_multipart():
+            for submsg in msg.get_payload():
+                if submsg.get_content_type()=='application/octet-stream':
+                    is_pgpmime = True
+                    ciphertext = submsg.get_payload()
+        else:
+            ciphertext = msg.get_payload()
+    # Some clients send text/plain messages containing PGP-encrypted data :-(
+    if not msg.is_multipart() and (ciphertext==None) and \
+            (len(msg.get_payload())>10):
+        firstline = msg.get_payload().splitlines()[0]
+        if firstline=='-----BEGIN PGP MESSAGE-----':
+            syslog('gpg','Encrypted message detected, although MIME type is %s',msg.get_content_type())
+            is_pgpmime = False
+            ciphertext = msg.get_payload()
+    # Ciphertext present? Decode
+    if ciphertext:
+        gh = GPGUtils.GPGHelper(mlist)
+        (plaintext,key_ids) = gh.decryptMessage(ciphertext)
+        if plaintext is None:
+            syslog('gpg','Unable to decrypt GPG data')
+            raise Errors.RejectMessage, "Unable to decrypt mail!"
+        else:
+            encrypted = True
+
+    if key_ids:
+        signed = True
+
+    if not encrypted:
+        return (encrypted, signed, key_ids)
+
+    # Check decryption result
+
+    # Check transfer type
+    parser = Parser()
+    tmpmsg = parser.parsestr(plaintext)
+    if msg.get_content_type()=='application/pgp':
+        msg.set_type("text/plain")
+    msg.del_param("x-action")
+    for i in ('Content-Type','Content-Disposition','Content-Transfer-Encoding'):
+        if tmpmsg.has_key(i):
+            if msg.has_key(i):
+                msg.replace_header(i,tmpmsg.get(i))
+            else:
+                msg.add_header(i,tmpmsg.get(i))
+    if tmpmsg.is_multipart():
+        msg.set_payload(None)
+        for i in tmpmsg.get_payload():
+            msg.attach(i)
+    else:
+        tmppayload = tmpmsg.get_payload()
+        msg.set_payload(tmppayload)
+
+    if not is_pgpmime:
+        mailclient = ''
+        if msg.has_key('User-Agent'):
+            mailclient = msg.get('User-Agent').lower()
+        # Content-Transfer-Encoding and charset are not standardized...
+        if mailclient.startswith('mutt'):
+            msg.set_param('charset','utf-8')
+            if msg.has_key('Content-Transfer-Encoding'):
+                msg.replace_header('Content-Transfer-Encoding','utf-8')
+            else:
+                msg.add_header('Content-Transfer-Encoding','utf-8')
+        else:
+            # Just a wild guess...
+            msg.set_param('charset','iso-8859-1')
+            if msg.has_key('Content-Transfer-Encoding'):
+                msg.replace_header('Content-Transfer-Encoding','8bit')
+            else:
+                msg.add_header('Content-Transfer-Encoding','8bit')
+
+    if encrypted:
+        msg.add_header('X-Mailman-SLS-decrypted', 'Yes')
+
+    return (encrypted, signed, key_ids)
+
+
+def decryptSmime(mlist, msg, msgdata):
+    """Returns (encrypted (bool), signed (bool)), msg is replaced with
+       decrypted msg"""
+
+    # FIXME this implementation is _very_ crude.
+    # merge some stuff with decryptGpg
+
+    encrypted = False
+    signed = False
+    plaintext = None
+    ciphertext = None
+
+    if msg.get_content_type()=="application/x-pkcs7-mime":
+        sm = SMIMEUtils.SMIMEHelper(mlist)
+        ciphertext = msg.as_string()
+        (plaintext, signed) = sm.decryptMessage(ciphertext)
+    else:
+        # don't touch the message if it's no S/MIME
+        return (encrypted, signed)
+
+    parser = Parser()
+    tmpmsg = parser.parsestr(plaintext)
+
+    msg.del_param("x-action")
+
+    for i in ('Content-Type','Content-Disposition','Content-Transfer-Encoding'):
+        if tmpmsg.has_key(i):
+            if msg.has_key(i):
+                msg.replace_header(i,tmpmsg.get(i))
+            else:
+                msg.add_header(i,tmpmsg.get(i))
+
+    tmppayload = tmpmsg.get_payload()
+    msg.set_payload(tmppayload)
+
+    if encrypted:
+        msg.add_header('X-Mailman-SLS-decrypted', 'Yes')
+
+    return (encrypted, signed)
 
 
 class ModeratedMemberPost(Hold.ModeratedPost):
@@ -50,6 +206,170 @@ class ModeratedMemberPost(Hold.ModeratedPost):
 def process(mlist, msg, msgdata):
     if msgdata.get('approved'):
         return
+    # Deal with encrypted messages
+
+    encrypted_gpg = False
+    encrypted_smime = False
+    signed = False
+    key_ids = []
+    signedByMember = False
+    # To record with which properties we received this message.
+    # This will be important later when distributing it: we want
+    # to be able to support policies like "was incoming signed?
+    # then distribute signed."
+    msgdata['encrypted_gpg'] = False
+    msgdata['encrypted_smime'] = False
+    msgdata['signed_gpg'] = False
+    msgdata['signed_smime'] = False
+
+    # legal values are:
+    #    0 = "No"
+    #    1 = "Voluntary"
+    #    2 = "Mandatory"
+    if mlist.encrypt_policy!=0:
+        # if msg is encrypted, we should decrypt. Try both supported types.
+        (encrypted_gpg, signed, key_ids) = decryptGpg(mlist, msg, msgdata)
+        (encrypted_smime, signedByMember) = decryptSmime(mlist, msg, msgdata)
+        if encrypted_gpg:
+            msgdata['encrypted_gpg'] = True
+        if encrypted_smime:
+            msgdata['encrypted_smime'] = True
+
+        if mlist.encrypt_policy==2 and not encrypted_gpg and not encrypted_smime:
+            syslog('gpg','Throwing RejectMessage exception: Message has to be GPG encrypted')
+            raise Errors.RejectMessage, "Message has to be encrypted!"
+
+    if mlist.sign_policy!=0 and not signed:
+        # PGP signature matters, we have not checked while decrypting
+        gh = GPGUtils.GPGHelper(mlist)
+        payload = ''
+        signatures = []
+        if msg.get_content_type()=='multipart/signed' and msg.get_param('protocol')=='application/pgp-signature' and msg.is_multipart():
+            # handle detached signatures, these look like:
+            #
+            # Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="x0ZPnva+gsdVsg/k"
+            # Content-Disposition: inline
+            #
+            #
+            # --x0ZPnva+gsdVsg/k
+            # Content-Type: text/plain; charset=us-ascii
+            # Content-Disposition: inline
+            #
+            # hello
+            #
+            # --x0ZPnva+gsdVsg/k
+            # Content-Type: application/pgp-signature; name="signature.asc"
+            # Content-Description: Digital signature
+            # Content-Disposition: inline
+            #
+            # -----BEGIN PGP SIGNATURE-----
+            # Version: GnuPG v1.2.5 (GNU/Linux)
+            #
+            # iD8DBQFCQDTGPSnqOAwU/4wRAsoZAKDtN6Pn1dXjC/DAQhqOLHNI6VfNigCfaDPs
+            # FRJlhlGvyhkpx4soGR+CLxE=
+            # =AmS5
+            # -----END PGP SIGNATURE-----
+            #
+            # --x0ZPnva+gsdVsg/k--
+            #
+            # for verification, use payload INCLUDING MIME header:
+            #
+            # 'Content-Type: text/plain; charset=us-ascii
+            #  Content-Disposition: inline
+            #
+            #  hello
+            # '
+            # Thanks Wessel Dankers for hint.
+
+            for submsg in msg.get_payload():
+                if submsg.get_content_type()=='application/pgp-signature':
+                    signatures.append(submsg.get_payload())
+                else:
+                    if not payload:
+                        # yes, including headers
+                        payload = submsg.as_string()
+                    else:
+                        # we only deal with exactly one payload part and one or more signatures parts
+                        syslog('gpg','multipart/signed message with more than one body')
+                        do_discard(mlist, msg)
+        elif msg.get_content_type()=='text/plain' and not msg.is_multipart():
+             # handle inline signature; message looks like e.g.
+             #
+             # Content-Type: text/plain; charset=iso-8859-1
+             # Content-Disposition: inline
+             # Content-Transfer-Encoding: 8bit
+             # MIME-Version: 1.0
+             #
+             # -----BEGIN PGP SIGNED MESSAGE-----
+             # Hash: SHA1
+             #
+             # blah blah
+             #
+             # -----BEGIN PGP SIGNATURE-----
+             # Version: GnuPG v1.4.0 (GNU/Linux)
+             #
+             # iD8DBQFCPtWXW5ql+IAeqTIRAirPAK....
+             # -----END PGP SIGNATURE-----
+             signatures = [None]
+             payload = msg.get_payload()
+
+        for signature in signatures:
+             syslog('gpg', "gonna verify payload with signature '%s'", signature)
+             key_ids.extend(gh.verifyMessage(payload, signature))
+
+
+    if mlist.sign_policy!=0 and not signedByMember:
+        # S/MIME signature matters, we have not checked while decrypting
+        sm = SMIMEUtils.SMIMEHelper(mlist)
+        payload = ''
+        signature = ''
+
+        syslog('gpg', "gonna verify SMIME message")
+        signedByMember = sm.verifyMessage(msg)
+        # raise Errors.NotYetImplemented, "SMIMEUtils doesn't yet do verifyMessage"
+
+    # By now we know whether we have any valid signatures on the message.
+    if signedByMember:
+        msgdata['signed_smime'] = True
+    if key_ids:
+        msgdata['signed_gpg'] = True
+
+    if mlist.sign_policy!=0:
+        if not key_ids and not signedByMember and mlist.sign_policy==2:
+            syslog('gpg','No valid signatures on message')
+            do_discard(mlist, msg)
+
+        if key_ids:
+            gh = GPGUtils.GPGHelper(mlist)
+            senderMatchesKey = False
+            for key_id in key_ids:
+                key_addrs = gh.getMailaddrs(key_id)
+                for sender in msg.get_senders():
+                    for key_addr in key_addrs:
+                        if sender==key_addr:
+                            senderMatchesKey = True
+                            break
+            if not senderMatchesKey:
+                syslog('gpg','Message signed by key which does not match message sender address')
+                do_discard(mlist, msg)
+
+        for user in mlist.getMembers():
+            syslog('gpg','Checking signature: listmember %s',user)
+            for key_id in key_ids:
+                syslog('gpg','Checking signature: key_id %s',key_id)
+                try:
+                    ks=mlist.getGPGKeyIDs(user)
+                except:
+                    ks=None
+                if ks:
+                    for k in mlist.getGPGKeyIDs(user):
+                        syslog('gpg','Checking signature: keyid of listmember is %s',k)
+                        if k==key_id:
+                            signedByMember = True
+                            break
+
+    # done dealing with most of gpg stuff
+
     # Is the poster a member or not?
     for sender in msg.get_senders():
         if mlist.isMember(sender):
@@ -57,6 +377,14 @@ def process(mlist, msg, msgdata):
     else:
         sender = None
     if sender:
+        # If posts need to be PGP signed, process signature.
+        if mlist.sign_policy==2:
+            if signedByMember==True:
+                syslog('gpg','Message properly signed: distribute')
+                return
+            else:
+                do_discard(mlist, msg)
+
         # If the member's moderation flag is on, then perform the moderation
         # action.
         if mlist.getMemberOption(sender, mm_cfg.Moderate):
@@ -184,7 +512,18 @@ def do_discard(mlist, msg):
             'The attached message has been automatically discarded.')),
                         _charset=Utils.GetCharSet(lang))
         nmsg.attach(text)
-        nmsg.attach(MIMEMessage(msg))
+
+        decrypted = msg.get('X-Mailman-SLS-decrypted', '').lower()
+        if decrypted == 'yes':
+            syslog('gpg',
+ 'forwarding only headers of message from %s to listmaster to notify discard since message was decrypted',
+ sender)
+            msgtext = msg.as_string()
+            (header, body) = msgtext.split("\n\n", 1)
+            nmsg.attach(MIMEText(header))
+        else:
+            nmsg.attach(MIMEMessage(msg))
+
         nmsg.send(mlist)
     # Discard this sucker
     raise Errors.DiscardMessage

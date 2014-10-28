@@ -1,0 +1,449 @@
+ChangeLog for the Mailman Secure List Server Patch
+--------------------------------------------------
+
+2010-09-08 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * pgp-smime/report-2010-03.tex: added Sixth  Secure List Server project
+     report.
+   * Mailman/Defaults.py.in, Mailman/MailList.py, Mailman/versions.py,
+     Mailman/Gui/Privacy.py, Mailman/Handlers/GpgDecrypt.py,
+     Mailman/Handlers/Moderate.py, Mailman/Handlers/SMTPDirect.py, bin/update:
+     Apply patch contributed by Thijs Kinkhorst in Message-Id:
+     <201008160723.51729.thijs@kinkhorst.com>, Mon, 16 Aug 2010 07:23:47 +0200:
+     Unify gpg and smime sign and encrypt options into two.  There were two
+     sets of options, one for PGP and one for S/MIME.  Now there's one set of
+     options for encryption and signing that is independent of the protocols
+     used for them, as suggested by Guus Sliepen in his 2009 "Security Audit
+     of the Secure List Server, Part II".  Relevant quote: "
+
+       After reviewing the code, I believe that afterwards, the most important
+       task for the developers is to seriously reduce the number of
+       configuration options available to the list administrator. Options that
+       inherently compromise security, such as attachment scrubbing, archiving
+       and support for Usenet, should be permanently disabled and removed from
+       the list administrator pages.  The duplicate sets of options for PGP and
+       S/MIME, and the code duplication behind it, should be unified into two
+       options:
+
+        sign policy None, voluntary, mandatory.
+
+            When set to none, the list should not check or add signatures. When
+        set to voluntary, signatures should be checked, and if an incoming
+        message is signed, the outgoing message must be signed as well,
+        otherwise it should not be signed. When set to mandatory, both
+        incoming and outgoing messages must be signed.
+
+        encrypt policy None, voluntary, mandatory.
+
+            When set to none, the list should not try to decrypt or encrypt
+        messages.  When set to voluntary, encrypted messages should be
+        decrypted, and if an incoming message was encrypted, the outgoing
+        message must be encrypted as well, otherwise it should not be
+        encrypted. When set to mandatory, both incoming and outgoing messages
+        must be encrypted.
+
+       The reduction in options will make it easier for list administrators to
+       make the right choice, and will simplify code and remove many possibly
+       dangerous code paths. For list members, the semantics of these options
+       follow the principle of least surprise; signed messages in are signed
+       messages out, encrypted messages in are encrypted messages out. "
+
+2010-03-01 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * pgp-smime/report-2010-02.txt: added Fifth Secure List Server project
+     report.
+   * TODO.PGP-SMIME: updated
+   * doc/mailman-install/site-list.html, Mailman/Archiver/HyperArch.py,
+     Mailman/Archiver/HyperDatabase.py, Mailman/Archiver/pipermail.py,
+     Mailman/Cgi/Auth.py, Mailman/Cgi/admindb.py, Mailman/Cgi/confirm.py,
+     Mailman/Cgi/create.py, Mailman/Cgi/options.py, Mailman/Cgi/private.py,
+     Mailman/Defaults.py.in, Mailman/Handlers/Approve.py,
+     Mailman/Handlers/Replybot.py, Mailman/Handlers/Scrubber.py,
+     Mailman/ListAdmin.py, Mailman/MailList.py, Mailman/Version.py, NEWS,
+     bin/check_perms, bin/mailmanctl, bin/newlist, configure, configure.in,
+     contrib/mmdsr, doc/mailman-admin*, doc/mailman-install*,
+     doc/mailman-member*, messages/, misc/Makefile.in, templates/:
+     merged with upstream (for upcoming release 2.1.14) up until 2010-03-01 by
+     Mark Sapiro; see NEWS for details.  (We missed upstream release 2.1.13,
+     2009-12-22)
+
+2009-09-05 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * BUGS, NEWS, Mailman/Defaults.py.in, Mailman/ListAdmin.py,
+     Mailman/Mailbox.py, Mailman/Message.py, Mailman/Pending.py,
+     Mailman/SecurityManager.py, Mailman/Utils.py, Mailman/mm_cfg.py.dist.in,
+     Mailman/Archiver/pipermail.py, Mailman/Bouncers/AOL.py,
+     Mailman/Bouncers/BouncerAPI.py, Mailman/Bouncers/SimpleMatch.py,
+     Mailman/Cgi/admin.py, Mailman/Cgi/listinfo.py,
+     Mailman/Handlers/Cleanse.py, Mailman/Handlers/MimeDel.py,
+     Mailman/Handlers/SMTPDirect.py, Mailman/Handlers/Scrubber.py,
+     Mailman/Queue/CommandRunner.py, bin/newlist, bin/update,
+     contrib/check_perms_grsecurity.py, contrib/mmdsr, misc/Makefile.in,
+     templates/es/admlogin.html, tests/test_bounces.py,
+     tests/bounces/aol_01.txt, tests/bounces/simple_37.txt: merged with
+     upstream (for upcoming release 2.1.13) up until 2009-09-05 by
+     Mark Sapiro; see NEWS for details.
+
+2009-07-18 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * Mailman/Handlers/Moderate.py, Mailman/GPGUtils.py: patch supplied by Guus
+     Sliepen in private communication, Mon, 22 Jun 2009 22:50:26 +0200,
+     Message-ID: <20090622205026.GS6540@sliepen.org>. Deal sane with pgp signed
+     messages with more than 2 parts: regard one part as body and rest as
+     signatures.  If more than one body present, discard the message as
+     gibberish.
+   * pgp-smime/audit2/{audit2.tex,fourpartmime.txt,mailflow.dia}{,.asc}: Added
+     Security Audit of the Secure List Server Part II by Guus Sliepen
+
+2009-04-02 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * README.PGP-SMIME.html, Mailman/Gui/Privacy.py
+     improve description of {gpg,smime}_distrib_sign and
+     {gpg,smime}_{post,distrib}_encrypt
+   * pgp-smime/report-2009-01.tex,report-2009-03.tex: added Third and Fourth
+     Secure List Server bi-monthly project reports.
+   * Mailman/Archiver/HyperArch.py, Mailman/Bouncer.py,
+     Mailman/Bouncers/Qmail.py, Mailman/Bouncers/SimpleMatch.py,
+     Mailman/Cgi/admin.py, Mailman/Cgi/admindb.py, Mailman/Cgi/subscribe.py,
+     Mailman/Errors.py, Mailman/Gui/Privacy.py, Mailman/Gui/Topics.py,
+     Mailman/Handlers/Scrubber.py, Mailman/Utils.py, Mailman/Version.py,
+     doc/mailman-admin*, doc/mailman-install*, doc/mailman-member-es*,
+     doc/mailman-member*,
+     messages/*/LC_MESSAGES/mailman.po, messages/ja/doc/mailman-member.tex,
+     messages/mailman.pot, templates/*/headfoot.html,
+     bin/find_member, misc/sitelist.cfg, scripts/driver, tests/test_bounces.py;
+     New Files: contrib/README.courier_to_mailman,
+     contrib/README.redhat_fhs.patch, contrib/courier-to-mailman.py,
+     contrib/redhat_fhs.patch, tests/bounces/qmail_06.txt,
+     tests/bounces/simple_34.txt:
+     merged with upstream (for release >= 2.1.12) up until 2009-04-02 by
+     Mark Sapiro; see NEWS for details.
+   * 2.1.12 was released 2009-02-23.
+
+2009-01-02 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * Enforce confidentiality:
+     - Mailman/GPGUtils.py, Mailman/Handlers/Moderate.py: Emails with a valid
+       signature of a known subscriber are now accepted only if the address in
+       the From header matches one of the email addresses associated with the
+       key.  Since the original signature is removed before the mail is sent to
+       the other subscribers, this did allow one subscriber to impersonate
+       another subscriber or even an outsider.
+   * pgp-smime/mailman-pgp-smime-talk.tex: talk added (still empty).
+   * Mailman/Archiver/HyperArch.py, Mailman/Gui/Privacy.py,
+     Mailman/Defaults.py.in, NEWS, messages/*/LC_MESSAGES/mailman.po,
+     messages/mailman.pot: merged with upstream (for release > 2.1.11) up
+     until 2008-12-29 by Mark Sapiro.
+     - Corrected a typo in Mailman/Gui/Privacy.py. Bug #309757.
+     - Fixed an issue where in some circumstances HyperArch.py would translate
+       ' at ' into the wrong language ultimately throwing a UnicodeDecodeError
+       when the translation was decoded with a different character set.
+       Bug #308152.
+     - Lots of other changes, see NEWS.
+
+2008-12-14 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * Enforce confidentiality:
+     - Mailman/Handlers/{Hold.py,Moderate.py}: in case message was decrypted
+       and should be held or discarded, forward only headers to listmaster, not
+       decrypted content
+     - Mailman/GPGUtils.py, Mailman/Handlers/{Moderate.py,SMTPDirect.py}: make
+       sure we never write unencrypted payload of message to syslog.
+   * Better user interface:
+     - Mailman/Gui/Privacy.py: add more descriptions of various SLS options.
+       Setting {gpg,smime}_distrib_sign to Force has the same effect as
+       setting it to Yes.  Drop support for this bogus (and confusing) option
+       value.
+     - Mailman/Handlers/SMTPDirect.py: bugfix: do not inspect
+       {gpg,smime}_distrib_sign but {gpg,smime}_distrib_encrypt when deciding
+       to discard message which can't be encrypted before distributing.
+     - Mailman/Cgi/options.py: improve security: no longer allow a member to
+       change an already set public key using the password authenticated web UI.
+   * pgp-smime/report-2008-11.tex: added Second Secure List Server bi-monthly
+     project report.
+   * FAQ, NEWS, configure, configure.in, Mailman/Errors.py, Mailman/LockFile.py,
+     Mailman/MailList.py, Mailman/Pending.py, Mailman/SecurityManager.py,
+     Mailman/Utils.py, Mailman/Bouncers/Caiwireless.py,
+     Mailman/Bouncers/GroupWise.py, Mailman/Bouncers/Microsoft.py,
+     Mailman/Bouncers/Netscape.py, Mailman/Bouncers/Postfix.py,
+     Mailman/Cgi/admin.py, Mailman/Cgi/create.py, Mailman/Cgi/edithtml.py,
+     Mailman/Cgi/roster.py, Mailman/Handlers/Decorate.py,
+     Mailman/Handlers/Scrubber.py, Mailman/Handlers/Tagger.py,
+     Mailman/Queue/Switchboard.py, bin/change_pw, bin/export.py, bin/newlist,
+     bin/update, contrib/mmdsr, cron/gate_news, misc/Makefile.in,
+     misc/paths.py.in, tests/test_handlers.py, tests/test_message.py,
+     tests/test_security_mgr.py:
+     merged with upstream (for release > 2.1.11) up until Mon, 08 Dec 2008
+     12:11:40 +0100:
+     - Now Python >= 2.4 is required, and Python 2.6 is supported.
+     - Lot of other changes by Mark Sapiro e.a.
+     So, next to pgp-smime stuff, this patch includes work by
+     upstream for upcoming official Mailman release (2.1.12, likely).
+
+2008-11-16 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * Mailman/{Defaults.py.in,MailList.py,versions.py}, Mailman/Gui/Privacy.py,
+     Mailman/Handlers/{SMTPDirect.py,GpgDecrypt.py,Moderate.py},
+     README.PGP-SMIME.html, TODO.PGP-SMIME, bin/update,
+     pgp-smime/pgp-smime-testsuite.sh: WARNING! Incompatible change!  Names
+     of configuration variables have changed.
+
+      old name                     new name
+      --------                     --------
+      gpg_postings_allowed         gpg_post_encrypt
+      gpg_msg_distribution         gpg_distrib_encrypt
+      gpg_msg_sign                 gpg_distrib_sign
+
+      DEFAULT_GPG_POSTINGS_ALLOWED DEFAULT_GPG_POST_ENCRYPT
+      DEFAULT_GPG_MSG_DISTRIBUTION DEFAULT_GPG_DISTRIB_ENCRYPT
+      DEFAULT_GPG_MSG_SIGN         DEFAULT_GPG_DISTRIB_SIGN
+
+     (The name of gpg_post_sign and DEFAULT_GPG_POST_SIGN is not changed.)
+     This is done for consistency reasons: naming is now similar to the
+     smime_ variables.  If you're upgrading from a previous mailman-pgp-smime
+     version, you'll have to reconfigure all your lists.  The bin/update
+     script might help.  (If you're upgrading from non-pgp-smime Mailman, this
+     change has no impact on your system.)
+   * pgp-smime/{changeoption.py,pgp-smime-testsuite.sh}: implement test suite
+     as a shell script.  (changeoption.py is a yet unfinished attempt at
+     another implementation)
+   * Mailman/SMIMEUtils.py: fix bug: NameError: global name strerror is not
+     defined, found when uploading S/MIME member key using webui.
+   * README.PGP-SMIME.html: add link to directory pgp-smime/, holding reports;
+     updates to list of alternative secure list implementations, thanks to Lars
+     Kruse.
+   * TODO.PGP-SMIME: add detailed timeschedule, as published in project report.
+   * NEWS, Mailman/Handlers/AvoidDuplicates.py, bin/arch, bin/check_perms,
+     templates/ru/userpass.txt, Mailman/Handlers/Decorate.py: merged with
+     upstream (for release > 2.1.11) up until Sun, 16 Nov 2008 10:11:17 +0100:
+     Fixes for Launchpad bugs #280418, #284802 and #297795 and other changes by
+     Mark Sapiro.  So, next to pgp-smime stuff, this patch includes work by
+     upstream for upcoming official Mailman release (2.1.12, likely).
+
+2008-09-25 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * TODO.PGP-SMIME: added description of test suite.
+   * pgp-smime/pgp-smime-testsuite.sh: added (not yet completed) test suite
+     script.
+   * pgp-smime/audit.tex: added Security Audit of the Secure List Server part I
+     by Guus Sliepen.
+   * pgp-smime/report-2008-09.tex: added First Secure List Server bi-monthly
+     project report.
+   * merged with upstream (for release > 2.1.11) up until Sun 2008-09-21
+     12:12:52 -0700: noteworthy changes in Mailman/ListAdmin.py,
+     Mailman/Cgi/admin.py, Mailman/MTA/Postfix.py, cron/gate_news.  See NEWS.
+     So, next to pgp-smime stuff, this patch includes work by Mark Sapiro e.a.
+     for upcoming official Mailman release (2.1.12, likely).
+
+2008-07-26 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * The patch for Mailman/Handlers/SMTPDirect.py was missing from
+     some previous releases.  This made the patch totally unusable.
+     Restored it, using the copy from
+     mailman-2.1.9-ssls_2008-01-10.patch.gz.
+
+2008-07-03 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * 2.1.11 was released 2008-06-30.
+
+2008-06-28 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * Mailman/GPGUtils.py: Apply patch contributed by Tonnerre Lombard in
+
+      Date: Sat, 14 Jun 2008 23:32:40 +0200
+      To: ssls-dev /a/ ulm.ccc.de
+      Message-ID: <20080614233240.444cb283@silence.pas-un-geek-en-tant-que-tel.ch>
+      Subject: [Ssls-dev] Subkey support for ssls
+
+     "I modified the SSLS patch somewhat to add support for PGP subkeys. It
+     appears to work so far."
+
+     This might have fixed Bug #0069.
+
+2008-06-25 Joost van Baal <joostvb-mailman-pgp-smime.mdcc.cx>
+
+   * Renamed and updated:
+      NEWS.SSLS => NEWS.PGP-SMIME
+      README.SSLS.html => README.PGP-SMIME.html
+      TODO.SSLS => TODO.PGP-SMIME
+     - This code is no longer maintained using darcs at non-gnu.uvt.nl, but
+       using bzr at Launchpad.
+     - The project and code is renamed from SURFnet Secure List Server
+       (mailman-ssls) to Mailman Secure List Server (mailman-pgp-smime).
+     - The project now is sponsored by the NLnet foundation
+       (http://www.nlnet.nl/).
+   * TODO.PGP-SMIME: record current roadmap.
+
+2008-01-10 Mike Gerber
+
+   * The patch for 2.1.7 applies fine on 2.1.9.  Just a little repacked for
+     2.1.9.  The package works fine for me.  See
+
+      Date: Wed, 16 Jan 2008 00:39:40 +0100
+      From: Mike Gerber
+      To: ssls-dev /a/ ulm.ccc.de
+      Message-ID: <20080115233940.GA13244@nin.lan.rwsr-xr-x.de>
+      Subject: [Ssls-dev] ssls for mailman 2.1.9
+
+2006-01-30 Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/Cgi/options.py, Mailman/{Defaults.py.in,MailList.py},
+     Mailman/Gui/Privacy.py, Mailman/Handlers/{Hold.py,SMTPDirect.py},
+     bin/update: Updated to apply to upstream 2.1.7: merged 2.1.6 -> 2.1.7
+     changes.
+   * Mailman/Gui/Privacy.py: more hints on how to import PGP key using webgui.
+   * Mailman/Handlers/SMTPDirect.py: fix Content-Transfer-Encodings: be nice to
+     those who don't use us-ascii.  Thanks to Michael Feiri for this patch.
+   * TODO.SSLSL: bugs #0067, #0068, #0069 added.
+
+2006-01-09 Joost van Baal <joostvb.uvt.nl>
+
+   * Split TODO.SSLS and NEWS.SSLS off README.GPG; convert README.GPG to
+     README.SSLS.html.
+   * README.SSLS.html: This project has a new homepage; added more notes on how
+     to contribute patches.
+   * TODO.SSLS: Roadmap and long-term wishes added.
+   * Mailman/Handlers/GpgSMTPDirect.py: removed.  This stuff is now maintained
+     as a patch on SMTPDirect.py.
+   * Mailman/Defaults.py.in: no longer calls GpgSMTPDirect.py as
+     DELIVERY_MODULE, but uses patched SMTPDirect.py.
+   * Mailman/Handlers/GpgSMTPDirect.py: bugfixes; sanitize encrypted message's
+     MIME structure before distributing.  Don't sent out S/MIME mails with
+     bogus MIME structure.
+   * Mailman/Cgi/options.py: fix bug in uploading S/MIME key via webinterface.
+   * Mailman/SMIMEUtils: make verifyMessage more robust: no more broken pipe;
+     implemented encryptSignMessage
+   * Mailman/SMIMEUtils, Mailman/Handlers/GpgSMTPDirect.py: document issue with
+     openssl 0.9.7e (we have implemented a workaround for this issue).
+   * Mailman/SMIMEUtils: encryptSignMessage no longer strips off first bodyline.
+
+2005-11-21 Joost van Baal <joostvb.uvt.nl>
+
+   * Another extremely unstable bleeding edge known-broken release.
+   * Mailman/Gui/Privacy.py: add notes on new list properties, so that
+     config_list gets aware of these.
+   * Mailman/SMIMEUtils.py: now implements verifyMessage; honors per-list
+     ca.pem.  Work around I/O deadlocks while encrypting by using tempfile
+     module.  Thanks to Wessel Dankers for hint.  Of course, this should
+     get reimplemented using threads.
+   * Mailman/Handlers/Hold.py: added classes NonSMIMESignedPost and
+     WrongSMIMESignedPost.
+   * Mailman/Handlers/Moderate.py: deal with unsigned S/MIME posts which
+     should be have been signed, deal with signed+encrypted posts.
+   * Mailman/Cgi/options.py, Mailman/Gui/Privacy.py,
+     Mailman/{OldStyleMemberships.py,SMIMEUtils.py},
+     templates/en/options.html: added webgui for uploading subscriber
+     S/MIME keys; new routines SMIMEUtils.importKey() and
+     mlist.getSMIMEKey() added.
+   * Mailman/Handlers/GpgSMTPDirect.py: now creates sane S/MIME-encrypted
+     messages (no longer produces corrupt MIME)
+   * Added bunch of S/MIME-related things left to do to TODO-list in this
+     file.
+
+2005-10-28 Joost van Baal <joostvb.uvt.nl>
+
+   * Extremely unstable bleeding edge known-broken release.
+   * S/MIME stuff added:
+     - Mailman/MailList.py, Mailman/Defaults.py.in, bin/update: new list
+       properties:
+        self.smime_post_encrypt = mm_cfg.DEFAULT_SMIME_POST_ENCRYPT
+        self.smime_post_sign = mm_cfg.DEFAULT_SMIME_POST_SIGN
+        self.smime_distrib_encrypt = mm_cfg.DEFAULT_SMIME_DISTRIB_ENCRYPT
+        self.smime_distrib_sign = mm_cft.DEFAULT_SMIME_DISTRIB_SIGN
+     - Mailman/SMIMEUtils.py: added
+   * Fixed FSF snail mail address.
+   * Updated TODO-list, added note on copyright in this file.
+   * Numbered outstanding bugs in TODO-list.
+   * Advertised ssls-devel list in this file.
+   * Advertise version control access in this file.  Thanks Laurent Fousse and
+     Wessel Dankers for help in setting this up.
+
+2005-07-01  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/Defaults.py.in, Mailman/Gui/Privacy.py, Mailman/Handlers/Hold.py,
+     Mailman/Handlers/Moderate.py, Mailman/MailList.py,
+     templates/en/options.html:
+     Updated to apply to upstream 2.1.6: merged 2.1.5 -> 2.1.6 changes.
+   * REAME.GPG: lots of (wishlist) bugs added, assigned priorities.  No longer
+     present this as a patch on Stefan Schlott's patch: adapted intro text.
+   * Mailman/GPGUtils.py: fix fatal bug: global name 'result' is not defined.
+     Triggered under some circumstances when decrypting fails.
+   * Mailman/GPGUtils.py, Mailman/Handlers/GpgSMTPDirect.py: fixed copyright
+     statements (taken from Stefan's mailman-2.1.5-gpg_2005-05-03.diff.gz)
+
+2005-04-21  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/Handlers/Moderate.py: Force settings of
+     gpg_postings_allowed/gpg_post_sign were mixed: bugfix.
+   * Mailman/Defaults.py.in:  More strict defaults: No web archive:
+     (DEFAULT_ARCHIVE), if archive defined, not public
+     (DEFAULT_ARCHIVE_PRIVATE), don't archive in mbox format (ARCHIVE_TO_MBOX),
+     show list of subscribers to admin only (DEFAULT_PRIVATE_ROSTER).
+   * README.GPG: Stefan's todo list merged.
+
+2005-04-18  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/MailList.py, Mailman/versions.py, bin/update: gpg_secret_key and
+     gpg_public_key are of type string, even if unset.  Otherwise, config_list
+     might choke: it tries to invoke splitlines() on these settings.
+   * Mailman/Handlers/Moderate.py: behave more sane on strange messages: code
+     robustness fix.
+   * Mailman/Handlers/GpgDecrypt.py, Mailman/Handlers/Moderate.py: GpgDecrypt
+     is merged with Moderate: we need to share data about valid signatures
+     among these things; adapting the Message type for passing this data is too
+     intrusive.
+   * Mailman/Handlers/Moderate.py: no longer adds valid-signature info to body.
+   * Mailman/mm_cfg.py.in: this file is no longer patched, all config patching
+     (i.e.  DELIVERY_MODULE = 'GpgSMTPDirect') is done in Defaults.py
+   * Mailman/GPGUtils.py: decryptMessage now uses more stable status fd
+     interface from gnupg.  Now returns _all_ key_ids of signers.
+
+2005-03-24  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/GPGUtils.py, Mailman/Handlers/Moderate.py: more fixes in copyright
+     blurbs.
+   * README.GPG: warnings on gotcha's added.
+   * Mailman/Handlers/Moderate.py: fixed bug in code (TypeError) which would
+     show up if some members didn't supply their public key.
+
+2005-03-22  Joost van Baal <joostvb.uvt.nl>
+
+   * Updated this README.GPG file: more pointers.
+   * Mailman/GPGUtils.py: fixed verifyMessage (it was unusable.)
+   * Mailman/Handlers/Moderate.py: new verifyMessage interface: we now deal
+     with both inline signatures and detached signatures.
+
+2005-03-21  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/Handlers/Moderate.py: fix bug in handling of gpg_post_sign (it
+     was unusable.)
+   * bin/update: add gpg_post_sign.
+   * Mailman/Handlers/GpgDecrypt.py: Fixed copyright blurb, after consulting
+     Stefan. (Mailman/GPGUtils.py will get fixed eventually.)
+
+2005-03-15  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/Handlers/Moderate.py: fix syntax error and missing import. Oops.
+   * Mailman/GPGUtils.py: make sure verifyMessage returns a sequence, make
+     sure it's not waiting on stdin.   Add --no-permission-warning to gpg
+     options: typically, we have a group-writable GnuPG homedirectory since
+     both the webserver and the Mailman user interface with us.
+   * Mailman/versions.py: add gpg_post_sign to list attributes, in order to fix
+     AttributeError
+
+2005-03-14 17:01:10 +0100  Joost van Baal <joostvb.uvt.nl>
+
+   * Mailman/Defaults.py.in, Mailman/GPGUtils.py, Mailman/Gui/Privacy.py,
+     Mailman/Handlers/Hold.py, Mailman/Handlers/Moderate.py,
+     Mailman/MailList.py: first shot at adding signature-verification
+     support as a moderation criterium.
+
+2005-02-11  Stefan Schlott (mailman-2.1.5-gpg_2005-02-22.diff.gz)
+
+  - hide the key ID in the "good signature" info of the list server in
+    the case of "anonymous lists"
+  - change "Message had a good signature" into something more useful (if
+    detached signatures aren't possible) that's not so easy to spoof
+    (Thanks, Nicolas!)
+  - typo in the section about mailclients (Thanks, Sebastian!)
+

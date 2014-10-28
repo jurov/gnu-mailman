@@ -1,0 +1,25 @@
+About 17 people attended, including Stefan Schlott and Michael Feiri.
+Talk + discussion from 20:00 till about 21:30.
+
+Feedback given by CCC-Ulm audience:
+
+Since signed S/MIME messages generally contain complete public key of
+sender, use first post of sender to a list to collect key of sender.
+No need for webui upload.  Generally, S/MIME users don't even know how
+to save their public key in a file.
+
+Generate list keypair on server; don't upload keypair of list via
+webui.  Get rid of passphrase box in webui: don't use a passphrase (or
+pinentry-stuff with gpg-agent, admin should give passphrase when
+mailserver software starts up.) Passphrase-box was added since some pgp
+libraries refuse to work with a passphrase-less key, in 2005.
+
+S/MIME signed and encrypted messages are encrypted first, signature is
+added to the encrypted stuff.  PGP messages are signed first, the
+signed sttuff is encrypted.  So, SLS could keep the signature on
+encrypted messages in the PGP-case.  This would make communication more
+like end-to-end secure communication; one would make the system less
+dependent on a trusted listserver.
+
+Video of lecture like will get uploaded at about early february.
+

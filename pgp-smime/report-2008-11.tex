@@ -1,0 +1,123 @@
+% $Id: report-2008-11.tex 3767 2008-11-01 18:05:18Z joostvb $
+% $URL: svn+ssh://nagy/data/vc/svn/trunk/doc/nlnet-mailman-pgp-smime/report-2008-11.tex $
+%
+% Copyright © 2008 Joost van Baal <info.ad1810.com>
+%
+
+\documentclass[a4]{article}
+\usepackage{a4wide}
+\usepackage{url}
+
+% \title{First Secure List Server bi-monthly project report\\September 1, 2008}
+\title{Second Secure List Server bi-monthly project report}
+% November 1, 2008
+
+\author{Joost van Baal \url{<joostvb@ad1810.com>}}
+
+\begin{document}
+
+\maketitle
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex}
+
+\section*{Introduction}
+
+As agreed upon in the June 13, 2008 document ``Memorandum of Understanding
+Secure List Server Project'', this report documents work done by the author for
+the Secure List Server project
+(\url{http://non-gnu.uvt.nl/mailman-pgp-smime/}), as funded by the NLnet
+Foundation.  It also lists the current plans for the project.
+
+This document is a follow-up to the First Secure List Server bi-monthly project
+report, as sent to Valer Mischenko on Aug 31, 2008.
+
+\section{Completed tasks}
+
+Here's a condensed overview of the progress made thus far.
+
+\begin{tabular}{lll}
+ Task                            & Planned  & Delivered   \\ \cline{1-3}
+ (Start project)                 & 08-07-01 & 08-06-24    \\
+ (Milestone 1)                   & 08-08-15 & 08-08-09    \\
+ Publish first project report    & 08-09-01 & 08-08-31    \\
+ Bug: Implement test suite       & 08-10-15 & 08-10-30    \\
+ Publish second project report   & 08-11-01 & 08-11-01    \\
+\end{tabular}
+
+See the first report for details on the tasks completed for Milestone 1.
+
+The test suite consists of two parts: first a simple script
+pgp-smime/pgp-smime-testsuite.sh, which was finished with bzr commit revno: 460
+on branch nick 2.1-pgp-smime.  See the Mailman pgp-smime bzr branch in
+Launchpad at \url{https://code.launchpad.net/~joostvb/mailman/2.1-pgp-smime}.
+The second part of the suite is a running SLS installation on the author's
+workstation, hosting several test lists with additional PGP and S/MIME key
+pairs.  Work on documenting the setup of such a system is currently in progress
+(to be completed with other documentation on 09-01-15).
+
+Some extra time was spent on releasing version 2008-09-25 of the patch,
+available from
+\url{http://non-gnu.uvt.nl/pub/mailman/mailman-2.1.11-pgp-smime_2008-09-25.patch.gz},
+announced in \url{Message-ID: <20080925084757.GK14261@bruhat.mdcc.cx>} on the
+GPG/SMIME mailman devel list at Thu, 25 Sep 2008.  Work on shipping a new
+release is currently in progress, it'll likely get shipped this month.
+
+Contacting Sabayon's Fabio Erculiani took some time (15 Oct 2008).  There has
+also been contact with Brenno de Winter (the Smallsister project, 13 Oct 2008).
+
+A minor status update on SLS has been posted to the Mailman Developers (28 Sep
+2008, \url{Message-ID: <20080928110912.GT11325@bruhat.mdcc.cx>}, archived at
+\url{http://www.mail-archive.com/mailman-developers%40python.org/msg11143.html}.
+
+Finally, I've acted upon helpful feedback from Lars Kruse about the SLS
+website.
+
+\section{Planned tasks}
+
+\begin{tabular}{lll}
+ Task                            & Planned  \\ \cline{1-2}
+ Bug: Enforce confidentiality    & 08-11-15 \\
+ Bug: Better user interface      & 08-12-15 \\
+ (Milestone 2)                   & 08-12-15 \\
+ Publish third project report    & 09-01-01 \\
+ Write and publish documentation & 09-01-15 \\
+ Create a package of SLS         & 09-03-01 \\
+ Publish fourth project report   & 09-03-01 \\
+ Disseminate results             & 09-03-01 \\
+ Try get SLS shipped w/ distros  & 09-03-01 \\
+ (Milestone 3)                   & 09-03-01 \\
+ Act upon auditors final report  & 09-04-01 \\
+ (Milestone 4)                   & 09-04-01 \\
+ Fifth and final project report  & 09-04-01 \\
+\end{tabular}
+
+The 2 open Bug-tasks are critical open bugs as found by Security Auditor
+Guus Sliepen and published in ``Security Audit of the Secure List Server, Part
+I'', August 1, 2008.  While fixing these bugs, the patch will be kept as
+non-intrusive and minimal as possible.
+
+Once these bugs are fixed, I'll contact Mailman developer Barry Warsaw and ask
+him to perform his review he has offered via the Mailman Developers list.
+
+The documentation will be written for users, for list admins, for site admins,
+as well as for developers.
+
+Both a Debian and an RPM package for SLS will get build and published.
+
+The dissemination of results will be done by announcing the achievements on
+relevant mailing lists, and by giving a presentation at e.g. the FOSDEM
+conference (will probably happen february 2009 in Brussels), and/or
+a meeting of CCC Ulm, and/or Chemnitz Linuxtage.
+
+In order to get SLS shipped with Free Software operating system distibutions,
+maintainers of Mailman packages for e.g. GNU/Linux distributions (and the
+Sabayon and Smallsister projects) will get asked (and offered help) to include
+the patch.  The author will work with the Debian Mailman package maintainer to
+try to get the patched Mailman shipped with Debian and Ubuntu, as discussed in
+a private conversation with the maintainer, Tilburg, 2008-06-06.  The decision
+on wether or not to include this patch is under control of the package
+maintainer (not the patch author).
+
+\end{document}
+

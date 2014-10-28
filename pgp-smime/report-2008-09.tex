@@ -1,0 +1,111 @@
+% $Id: report-2008-09.tex 3642 2008-09-25 07:55:43Z joostvb $
+% $URL: svn+ssh://nagy/data/vc/svn/trunk/doc/nlnet-mailman-pgp-smime/report-2008-09.tex $
+%
+% Copyright © 2008 Joost van Baal <info.ad1810.com>
+%
+
+\documentclass[a4]{article}
+\usepackage{a4wide}
+\usepackage{url}
+
+\title{First Secure List Server bi-monthly project report}
+
+\author{Joost van Baal \url{<joostvb.ad1810.com>}}
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+%foo
+%\end{abstract}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex}
+
+\section*{Introduction}
+
+As agreed upon in the June 13, 2008 document ``Memorandum of Understanding
+Secure List Server Project'', this report documents work done by the author for
+the Secure List Server project
+(\url{http://non-gnu.uvt.nl/mailman-pgp-smime/}), as funded by the NLnet
+Foundation.  It also lists the current plans for the project.
+
+\section{Completed tasks}
+
+Work on the project was started on 2008-06-24.  This was ahead of schedule:
+the start was planned for 2008-07-01.
+
+Here's a condensed overview of the progress made thus far.
+
+\begin{tabular}{lll}
+ Task                            & Planned  & Delivered   \\ \cline{1-3}
+ Announce the project            & 08-07-15 & 08-07-03    \\
+ Create a bzr repository         & 08-07-15 & 08-06-25    \\
+ Merge the latest patch update   & 08-08-01 & 08-06-25    \\
+ Port patch to latest release    & 08-08-01 & 08-07-26    \\
+ Discuss Auditor's report        & 08-08-15 & 08-08-09    \\
+ Publish first project report    & 08-09-01 & 08-08-31    \\
+\end{tabular}
+
+The project was announced in \url{Message-ID:
+<20080703145455.GQ12960@bruhat.mdcc.cx>}, posted Thu, 3 Jul 2008 on the Mailman
+Developers list
+(\url{http://www.mail-archive.com/mailman-developers%40python.org/msg11056.html})
+as well as on the PGP/SMIME Mailman devel list
+(\url{http://ulm.ccc.de/pipermail/ssls-dev/2008-July/000019.html}).
+
+The public Bazaar Revision Control repository is available from
+\url{https://code.launchpad.net/~joostvb/mailman/2.1-pgp-smime}.
+
+A patch for the latest Mailman release is available from
+\url{http://non-gnu.uvt.nl/pub/mailman/mailman-2.1.11-pgp-smime_2008-07-26.patch.gz}.
+
+Some extra time was spent on giving user support (using the PGP/SMIME Mailman
+devel list) and setting up a test system.
+
+\section{Planned tasks}
+
+\begin{tabular}{lll}
+ Task                            & Planned  \\ \cline{1-2}
+ Bug: Implement test suite       & 08-12-15 \\
+ Publish second project report   & 08-11-01 \\
+ Bug: Enforce confidentiality    & 08-12-15 \\
+ Bug: Better user interface      & 08-12-15 \\
+ Publish third project report    & 09-01-01 \\
+ Write and publish documentation & 09-01-15 \\
+ Create a package of SLS         & 09-03-01 \\
+ Publish fourth project report   & 09-03-01 \\
+ Disseminate results             & 09-03-01 \\
+ Try get SLS shipped w/ distros  & 09-03-01 \\
+ Act upon auditors final report  & 09-04-01 \\
+ Fifth and final project report  & 09-04-01 \\
+
+\end{tabular}
+
+The 3 Bug-tasks are the critical open bugs as found by Security Auditor Guus
+Sliepen and published in ``Security Audit of the Secure List Server, Part I'',
+August 1, 2008.  While fixing these bugs, the patch will be kept as
+non-intrusive and minimal as possible.
+
+The implementation of a test suite currently is in progress.
+
+The documentation will be written for users, for list admins, for site admins,
+as well as for developers.
+
+Both a Debian and an RPM package for SLS will get build and published.
+
+The dissemination of results will be done by announcing the achievements on
+relevant mailing lists, and by giving a presentation at e.g. the FOSDEM
+conference (will probably happen february 2009 in Brussels).
+
+In order to get SLS shipped with Free Software operating system distibutions,
+maintainers of Mailman packages for e.g. GNU/Linux distributions will get asked
+(and offered help) to include the patch.  The author will work with the Debian
+Mailman package maintainer to try to get the patched Mailman shipped with
+Debian and Ubuntu, as discussed in a private conversation with the maintainer,
+Tilburg, 2008-06-06.  The decision on wether or not to include this patch is
+under control of the package maintainer (not the patch author).
+
+\end{document}
+

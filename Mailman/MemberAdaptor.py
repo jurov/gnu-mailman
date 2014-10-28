@@ -219,6 +219,25 @@ class MemberAdaptor:
         """
         raise NotImplementedError
 
+    def getGPGKey(self, member):
+        """Return the member's GPG key.
+
+        The key will be ASCII-armored (as it was uploaded).
+
+        If no key was uploaded, None is returned.
+        If a member is not a member of the list, raise NotAMemberError.
+        """
+        raise NotImplementedError
+
+    def getGPGKeyIDs(self, member):
+        """Return the member's GPG key ID(s).
+
+        The return value will contain an array of Strings.
+        If no key was uploaded, None is returned.
+        If a member is not a member of the list, raise NotAMemberError.
+        """
+        raise NotImplementedError
+
 
     #
     # The writeable interface
@@ -347,3 +366,14 @@ class MemberAdaptor:
         and returned by getBounceInfo() without modification.
         """
         raise NotImplementedError
+
+    def setGPGKey(self, member, key, keyids):
+        """Set the member's GPG key.
+
+        The key should be ASCII-armored (as it was uploaded).
+
+        To erase a key, set key to None.
+        If a member is not a member of the list, raise NotAMemberError.
+        """
+        raise NotImplementedError
+

@@ -1,0 +1,146 @@
+% $Id: report-2009-03.tex 4103 2009-03-18 11:58:46Z joostvb $
+% $URL: svn+ssh://nagy/data/vc/svn/trunk/doc/nlnet-mailman-pgp-smime/report-2009-03.tex $
+%
+% Copyright © 2009, 2010 Joost van Baal <info@ad1810.com>
+%
+
+\documentclass[a4]{article}
+\usepackage{a4wide}
+\usepackage{url}
+
+% \title{First Secure List Server bi-monthly project report\\September 1, 2008}
+\title{Sixth Secure List Server project report}
+% Jan 1, 2009
+
+\author{Joost van Baal \url{<joostvb@ad1810.com>}}
+
+\begin{document}
+
+\maketitle
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5ex}
+
+\section*{Introduction}
+
+As agreed upon in the June 13, 2008 document ``Memorandum of Understanding
+Secure List Server Project'', this report documents work done by the author for
+the Secure List Server project
+(\url{http://non-gnu.uvt.nl/mailman-pgp-smime/}), as funded by the NLnet
+Foundation.  It also lists the current plans for the project.
+
+This document is a follow-up to the Fifth Secure List Server
+project report, as sent to Valer Mischenko on 24 February 2010.
+
+%downloads, list traffic, commits
+
+\section{Completed tasks}
+
+Here's a condensed overview of the progress made thus far.
+
+\begin{tabular}{lll}
+
+
+ Task                                Planned   Delivered
+ (Start project)                     08-07-01  08-06-24
+ (Milestone 1)                       08-08-15  08-08-09
+ (Milestone 2)                       08-12-15  09-01-06
+ (Milestone 3)                       09-03-01  09-09-09
+
+
+ Task                            & Planned  & Delivered   \\ \cline{1-3}
+ (Start project)                 & 08-07-01 & 08-06-24    \\
+ (Milestone 1)                   & 08-08-15 & 08-08-09    \\
+ (Milestone 2)                   & 08-12-15 & 09-01-06    \\
+ Publish third project report    & 09-01-01 & 09-01-26    \\
+ Write and publish documentation & 09-01-15 & 09-01-12    \\
+ Create a package of SLS         & 09-03-01 & in progress \\
+ Publish fourth project report   & 09-03-01 & 09-03-18    \\
+ Disseminate results             & 09-03-01 & 09-02-08    \\
+ (Milestone 3)                   & 09-03-01 & in progress \\
+\end{tabular}
+
+See the previous reports for details on the tasks completed for
+Milestones 1, 2 and 3.
+
+
+
+Some extra time was spent on keeping our code in sync with upstream by merging
+it.  Feedback has been given to users on the GPG/SMIME Mailman development
+list.
+
+
+\section{Planned tasks}
+
+Current plans are:
+
+merge datenritter patches!
+
+Date: Tue, 06 Oct 2009 13:34:37 +0200
+From: datenritter <lists datenritter.de>
+To: joostvb-mailman-developers
+Subject: Re: [Ssls-dev] missed a patch in last release
+Message-ID: <4ACB2B4D.5090604@datenritter.de>
+
+
+
+                                     Planned
+ Act upon auditors final report      10-03-18
+ Try get SLS shipped w/ distros      10-03-29
+ Fifth and final project report      10-03-29
+ (Milestone 4)                       10-03-29
+
+
+
+\begin{tabular}{lll}
+ Task                            & Planned  \\ \cline{1-2}
+ Create a package of SLS         & 09-03-01 \\
+ (Milestone 3)                   & 09-03-01 \\
+\end{tabular}
+
+The final audit report mentioned the lax checking of multipart/signed messages.
+This has been fixed.  Furthermore, it suggested to reduce the number of
+configuration options available to the list administrator.  I'll work on this.
+
+The current plan is:
+                                     Planned
+ Act upon auditors final report      10-03-18
+ Try get SLS shipped w/ distros      10-03-29
+ Fifth and final project report      10-03-29
+ (Milestone 4)                       10-03-29
+
+Originally, completion of Milestone 4 was planned for April 15, 2009.
+
+Next to the listed tasks, I'll port the patch to upstream mailman 2.1.13
+(released 09-12-22).  Furthermore, I'll update the RPM and .deb packages to
+this new upstream release.
+
+I'll contact Mailman developer Barry Warsaw and ask him to perform his review
+he has offered via the Mailman Developers list.
+
+--------------
+
+Message-ID: <PC1952010030220411002187fb4e6a4@msapiro>
+Date: Tue, 2 Mar 2010 20:41:10 -0800
+From: Mark Sapiro
+To: mailman-developers@python.org
+In-Reply-To: <4f6fd0b11003022002u34652a5bnb86decfa0102568b@mail.gmail.com>
+Subject: Re: [Mailman-Developers] Implementing a new feature, first steps
+
+>I am interested in implementing a new feature in Mailman
+
+>Of course, any code I write (and which you find useful) will go right back
+>upstream!
+
+Thank you. However, it won't go in 2.1.x, because that's bug fix only
+and it probably won't be applicable, at least directly, to MM 3.
+
+--------------
+
+I'll contact responsible parties and try to get SLS shipped with Debian, Ubuntu
+and an RPM-based distribution (like Fedora) as well as the Sabayon and
+Smallsister projects.
+
+
+\end{document}
+

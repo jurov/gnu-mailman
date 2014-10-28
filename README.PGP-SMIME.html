@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+   <title>The Secure List Server: an OpenPGP and S/MIME aware Mailman</title>
+        </head><body>
+<h1>The Secure List Server: an OpenPGP and S/MIME aware Mailman</h1>
+<hr/>
+
+<p>This patch is an effort to include OpenPGP and S/MIME support in Mailman, as
+part of the Secure List Server project.  The project is made possible by <a
+href="http://www.nlnet.nl/">NLnet</a>.</p>
+
+<p>The Secure List Server project's home is at <a
+href="http://non-gnu.uvt.nl/mailman-pgp-smime/">
+http://non-gnu.uvt.nl/mailman-pgp-smime/</a>.  Sources are available from <a
+href="http://non-gnu.uvt.nl/pub/mailman/">http://non-gnu.uvt.nl/pub/mailman/</a>.</p>
+
+<p>New versions of this patch will be announced on the <a
+href="http://mail.python.org/mailman/listinfo/mailman-developers">Mailman
+developers list</a></p>
+
+<p>This is Mailman <a
+href="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=1167696&amp;group_id=103&amp;atid=300103">patch
+#1167696</a>.</p>
+
+<p>Beware!  This code is not mature, and not yet suitable for production use.
+Inspect the code to find out if it's good enough for you.</p>
+
+
+<h2>Specs</h2>
+
+<p>This patch handles both RFC 2633 (S/MIME) and RFC 2440 (OpenPGP) email
+messages.</p>
+
+<p>A post will be distributed only if the PGP (or S/MIME) signature on the post
+is from one of the list members.</p>
+
+<p>For sending encrypted email, a list member encrypts to the public key of the
+list.  The post will be decrypted and re-encrypted to the public keys of all
+list members.</p>
+
+<p>In order to achieve this, each list has a public and private key.  (These
+private keys can optionally be protected by passphrases.) Furthermore, new list
+settings are defined:</p>
+
+<ul>
+ <li>gpg_post_encrypt: Are postings which are encrypted with the GPG list key
+  decrypted?  Are subcribers forced to encrypt their posts?</li>
+ <li>gpg_distrib_encrypt: Are posts encrypted to the subscribers GPG public key
+  before being distributed?  Is such encryption (and uploading of a public
+  key) mandatory?</li>
+ <li>gpg_post_sign: Should posts be GPG signed with an acknowledged subscriber
+  key before being distributed?</li>
+ <li>gpg_distrib_sign: Should the server sign messages with the list key
+  before distributing?</li>
+</ul>
+
+<p>Similar settings are defined for S/MIME.</p>
+
+<p>Finally, each subscriber can upload her PGP and S/MIME public key using the
+webinterface.</p>
+
+
+<h2>Installation</h2>
+
+<p>Additional requirements: gpg binary in path of qrunner, GnuPGInterface
+python library from <a
+href="http://py-gnupg.sourceforge.net/">http://py-gnupg.sourceforge.net/</a>
+and (for now) openssl.</p>
+
+
+<h3>upgrading from earlier and/or unpatched versions</h3>
+
+<p>PGP and S/MIME support needs to store additional information for the mailing
+lists, thus new variables were introduced. Have a look at bin/update and search
+for "GPG" and "smime".</p>
+
+<p>The automatic upgrade procedure occuring on a change of the version number
+is implemented yet untested.  You can either modify the version number in
+Version.py to trigger the automatic patch, or run bin/update --force (worked
+for me, but I won't give any guarantees).</p>
+
+<h3>fresh installs</h3>
+
+<p>If you're installing on a Debian(-based) hosts, you can "apt-get install"
+the patched package from</p>
+
+<pre>
+deb http://non-gnu.uvt.nl/debian sarge mailman
+</pre>
+
+<p>If you're on another platform, you can apply <a
+href="http://non-gnu.uvt.nl/pub/mailman/">the patch</a> to a pristine official
+mailman tarball, and install using the official installation instructions.</p>
+
+<h3>setting up lists</h3>
+
+<p>Create a list. Go to the admin menu.  Open "Privacy options", select "GPG
+options" and "S/MIME options". Make the settings appropriate for your list
+(yes, there is some help text!).  Create a keypair for your list.  Make sure
+the list-posting-address is in one of the keys identities.  Publish the public
+key for your list, e.g. on the list info page.  Ask all subscribers to upload
+their public key.  A good idea is to set up the web interface to only run over
+https.</p>
+
+<p>Very likely, you'd prefer "Confirm and approve" as subscribe_policy (Privacy
+Options; Subscribtion Rules).</p>
+
+<p>Very likely, you'd prefer "No" for archive (Archiving Options): no effort
+was made to do something "sane" w.r.t. the archiving of encrypted posts.  Just
+don't archive.</p>
+
+<p>Subscribers who do not upload their public keys will miss posts.  Errors
+show up in <code>/var/log/mailman/smtp-failure</code>:</p>
+
+<pre>Mar 24 15:29:28 2005 (5267) delivery to joe@example.com failed with
+  code 550: Encryption forced, but no keys found</pre>
+
+<p>Tell your subscribers where to upload their keys: list Info Page,
+Subscribers section. Visit "Subscriber List", choose your address, list
+membership configuration, "Your GPG key for postings".</p>
+
+<p>Distribute the list public key to your subscribers, e.g. by posting it to
+the list after they've subscribed, or by pasting it in "[General Options],
+info" in the list admin webinterface.</p>
+
+<h3>l10n</h3>
+
+<p>I only updated the english html template for the user preferences;
+that means that users using a different language setting will be unable
+to upload their public key. Either allow English only, or make the
+patches to other language templates (and send the diff to me).</p>
+
+<h3>lost emails</h3>
+
+<p>Users <em>won't get warnings</em> when mails are not delivered to them due
+to the encryption send policy. Failures to send due to a missing public key
+will be treated like bounces.</p>
+
+
+<h2>Hacking</h2>
+
+<p>If you're interested in helping with the work, you might like to subscribe
+to the developer list for a GPG/SMIME-enhanced mailman <a
+href="https://ulm.ccc.de/cgi-bin/mailman/listinfo/ssls-dev/">ssls-dev /a/
+ulm.ccc.de</a>.  (Thanks a lot to <a href="http://stefan.ploing.de/">Stefan
+Schlott</a> for hosting this list.)  If you'd like to contact the author
+directly, mail Joost van Baal on &lt;joostvb-mailman-pgp-smime /a/ mdcc.cx&gt;.</p>
+
+<p>If you'd like to contribute patches, check out the code using <a
+href="http://bazaar-vcs.org/">Bazaar</a>: See <a
+href="https://code.launchpad.net/~joostvb/mailman/2.1-pgp-smime">https://code.launchpad.net/~joostvb/mailman/2.1-pgp-smime</a>
+for instructions.</p>
+
+<p>A fancy webinterface to this version control system is available at <a
+href="http://bazaar.launchpad.net/~joostvb/mailman/2.1-pgp-smime/files">Launchpad's
+Bazaar page</a>.</p>
+
+<!--
+<p>If you'd like your changes to get imported in
+<code>http://non-gnu.uvt.nl/repos/mailman-ssls</code>, so that your stuff will
+get incorporated in the pgp-smime patch, you have some options:</p>
+
+<ul>
+ <li>Publish your patches using darcs: set up a repository, readable by Joost
+van Baal (the current maintainer of the repository on
+<code>non-gnu.uvt.nl</code>).  Mail the ssls-devel list once you have some
+interesting stuff, ready for importing: Joost will run <code>darcs
+pull</code>;</li>
+ <li>Sent patches by email, using darcs (run <code>darcs record</code> and
+<code>darcs send</code>, so that your patch is ready for
+<code>darcs apply</code>) or using traditional unified diff
+format;</li>
+ <li>Commit to the repository on <code>non-gnu.uvt.nl</code> directly.  You
+can get write access either after asking and getting granted access, or after
+being invited and accepting access.</li>
+</ul>
+
+<p>Please split contributions and patches in small bits: one patch for each
+functional change please.  This helps people who'd like to apply just a subset
+of your patches.</p> -->
+
+
+<h2>History, credits, copyright</h2>
+
+<p>This patch is based upon <a
+href="http://medien.informatik.uni-ulm.de/~stefan/gpg-mailman.html">prior work
+by Stefan Schlott</a> in mailman-2.1.5-gpg_2005-02-22.diff.gz.  Copyright on
+the code is held by Stefan Schlott (stuff from
+mailman-2.1.5-gpg_2005-02-22.diff.gz) and <a href="http://www.uvt.nl/">Tilburg
+University</a> (stuff written by Joost van Baal), see the individual files for
+details.  Some contributions are from <a href="http://www.feiri.de/">Michael
+Feiri</a>.</p>
+
+<p>Biggest lumps of changes by Joost van Baal are in Mailman/GPGUtils.py
+(function verifyMessage added) and in Mailman/Handlers/Moderate.py (code which
+deals with gpg_post_sign added).  These are likely nontrivial so
+copyright-able.  Check with a specialist if you'd like to know for sure.
+Likely, Mailman upstream wants a copyright assignment to FSF before patch gets
+included.</p>
+
+<p>In 2005, this project was known as the SURFnet Secure List Server
+(mailman-ssls).  <a href="http://www.surfnet.nl/">SURFnet</a> and <a
+href="http://www.uvt.nl/">Tilburg University</a> made the project possible.
+Since 2008, the project is made possible by <a
+href="http://www.nlnet.nl/">NLnet</a>.</p>
+
+<h2>See also</h2>
+
+<p>There are some alternative approaches on building a general re-encrypting
+secure list server (e.g. by integrating PGP and/or S/MIME with Mailman):</p>
+
+<ul>
+
+ <li><a href="https://sourceforge.net/projects/mmreencrypt/">mmreencrypt</a>,
+dating from 2000-10.</li>
+
+ <li>mailman.patch.645297.tar.gz, Mailman <a
+href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=645297&amp;group_id=103&amp;atid=300103">patch
+#645297</a> by <a href="http://www.apache-ssl.org/ben.html">Ben Laurie</a>,
+dating from 2002-11.</li>
+
+ <li>secure-list-10-212.patch.gz, the NAH6 secure list patch, <a
+href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=646989&amp;group_id=103&amp;atid=300103">patch
+#646989</a>, dating from 2002-12</li>
+
+ <li><a href="http://www.sympa.org/">Sympa</a> is a mailing list manager with
+support for S/MIME, no PGP.</li>
+
+ <li><a href="http://www.synacklabs.net/projects/crypt-ml/">gpg-ezmlm</a>
+enhances the ezmlm mailing list manager with PGP.  Latest release 2005-04
+(first release 2002-05).  No S/MIME.  Since 2008-10, a webinterface (for both
+ezmlm and gpg-ezmlm) is supplied by Lars Kruse's <a
+href="https://systemausfall.org/toolforge/ezmlm-web">ezmlm-web</a> v3.3.</li>
+
+ <li><a href="http://shibboleth.sourceforge.net/">Shibboleth</a> is a mailing
+list manager optimized for privacy and security.  No significant work after
+2001: project seems abandoned.  Support for PGP, not S/MIME.</li>
+
+ <li><a href="http://freshmeat.net/projects/gpg-aliases/">gpgmailalias</a> is not a
+mailing list system, but a semi-static list of aliases with PGP support.
+Probably no support for S/MIME.  Was active in 2004-09.  The tarball
+seems no longer published.</li>
+
+ <li><a href="http://codecoop.org/projects/firma/">firma</a> is a "gnupg
+mailing list manager", written in bash.  As of 2008-10, the last code update in
+the revision control system happened 2008-01.</li>
+
+ <li><a href="http://freshmeat.net/projects/parlement/">Parlement</a> is a general
+purpose direct democracy framework, with likely some limited support for
+PGP-enabled mailing lists.  Not S/MIME.</li>
+
+ <li><a href="https://sourceforge.net/projects/mmreencrypt/">MMReencrypt</a>,
+another Mailman patch. No longer maintained (reported Mar 2008).</li>
+
+ <li><a href="http://codecoop.org/projects/schleuder/">Schleuder</a>, a
+standalone 'crypto mailinglist'.  Still maintained (according to their
+versioning system), but last release (as of Mar 2008) dates back to 2006.</li>
+
+</ul>
+
+
+<h2>ChangeLog, BUGS, Roadmap and Reports</h2>
+
+<p>See <a href="NEWS.PGP-SMIME">NEWS.PGP-SMIME</a> for user visible (and some
+other) changes.  See <a href="TODO.PGP-SMIME">TODO.PGP-SMIME</a> for known bugs
+and plans for improvement. See the <a href="pgp-smime">pgp-smime directory</a>
+for some extra project documents (Security Audit reports, project reports).</p>
+
+</body></html>

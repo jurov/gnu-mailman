@@ -1,0 +1,422 @@
+TODO file for the Mailman Secure List Server Patch
+==================================================
+
+This file lists a roadmap, bugs and wishes.  A description of a test-suite
+is included.
+
+Goals
+-----
+
+The Secure List Server project has 5 main targets:
+
+ 1) Make sure the patch applies cleanly to latest stable Mailman
+     release
+ 2) Perform a security audit on the mailman-ssls codebase, and fix
+     found issues
+ 3) Make the patch non-intrusive and minimal
+ 4) Write and publish documentation
+ 5) Disseminate results
+
+details:
+
+2) Security Audit
+See also bugs #0009 #0012 #0013 #0030 #0033.  Optional fix critical bugs as
+listed on http://non-gnu.uvt.nl/mailman-pgp-smime/TODO.SSLS
+
+3) Make patch non-intrusive and minimal
+Default Mailman behavious should be the same as unpatched Mailman.
+Use one library for all crypto-operations, e.g. GPGME.
+See also bug #0015.
+
+4) Documentation
+Documentation is needed for:
+ - endusers (list subscribers: html helpfiles in webfrontend)
+ - list admins (html helpfiles in webfrontend)
+ - site admins (TeX documentation in tarball)
+ - developers (python docstrings in code)
+See also: #0011 #0012 #0020 #0034
+
+5) Disseminate
+ - Create a Debian and an RPM package of patched Mailman.
+
+See the project reports in the pgp-smime directory (online at
+http://non-gnu.uvt.nl/mailman-pgp-smime/pgp-smime/) for details.
+
+
+Bugs and Wishes
+---------------
+
+This is a detailed list of known bugs and of current wishes/tasks.
+
+- Do more testing.
+
+work  /severity  work is: easy, normal, difficult.
+                 severity is: wishlist, normal, critical.
+
+#0001 normal/crit   Fatal error:
+ shamir:/var/log/mailman/error
+ Apr 26 13:22:11 2005 (23365) Uncaught runner exception: [Errno 32] Broken pipe
+ Apr 26 13:22:11 2005 (23365) Traceback (most recent call last):
+  File "/usr/lib/mailman/Mailman/Queue/Runner.py", line 111, in _oneloop
+    self._onefile(msg, msgdata)
+  File "/usr/lib/mailman/Mailman/Queue/Runner.py", line 167, in _onefile
+    keepqueued = self._dispose(mlist, msg, msgdata)
+  File "/usr/lib/mailman/Mailman/Queue/OutgoingRunner.py", line 73, in _dispose
+    self._func(mlist, msg, msgdata)
+  File "/usr/lib/mailman/Mailman/Handlers/GpgSMTPDirect.py", line 146, in process
+    deliveryfunc(mlist, msg, msgdata, envsender, refused, conn)
+  File "/usr/lib/mailman/Mailman/Handlers/GpgSMTPDirect.py", line 378, in verpdeliver
+    ciphertext = gh.encryptSignMessage(plaintext,keyids)
+  File "/var/lib/mailman/Mailman/GPGUtils.py", line 281, in encryptSignMessage
+    p.handles['stdin'].close()
+ IOError: [Errno 32] Broken pipe
+ Apr 26 13:22:11 2005 (23365) SHUNTING: 1114514530.3134+8c6726072985dc472532b1f538236a4365743440
+  .
+  Probably occurs when private key for list is missing, and:
+   gpg_postings-allowed: Yes
+   gpg_distrib_encrypt: Yes
+   gpg_post_sign: Yes
+   gpg_distrib_sign: Yes
+#0002 normal/crit   The "change global" toggle in the subscribers
+  upload-your-public-key webgui box is broken:
+   joostvb@shamir:~% gpg --homedir /var/lib/mailman/lists/ssls-private/gpg
+     --fingerprint
+  doesn't show the key.  See also #0066.
+#0003 easy  /normal Prepare translations for the 'upload pgp key' web thingie.
+  Especially Dutch is needed.  Users who have a non-english preferred language
+  won't see this option now.
+#0005 normal/wish   Bounce messages to posters ("Message has to be encrypted!")
+  have same subject as post.  That's better be: "Subject: Message rejected
+  (was: foo)".
+#0006 ?     /?      Using the web roster, any subscriber can view any
+  subscribers' preferences, including public key.  And maybe even change.  Can
+  it?
+#0007 easy  /normal Under some circumstances, uploading a bogus public
+  subscriber key leads to posts being silently discarded (even the admin does
+  not get a notification) if list has gpg_distrib_encrypt Force.
+#0008 easy  /crit   Remove all debug code: currently, it sends way to much
+  stuff to syslog.
+#0009 diffic/?      Harden this thing: re-encrypt immediately after decrypting.
+  This patch (re)encrypts _just_ before sending.
+#0011 normal/normal Merge more of my own docs (doc/secure-list-patch.pod,
+  doc/mutt.txt, doc/smime.pod) with this patch.
+#0012 easy  /crit   Fix documentation: when creating a list, make sure the
+  listadmin password is _not_ sent via plain email: Someone stealing the list
+  admin password has access to the list private key.  Therefore, create the list
+  using the CLI, and transport password manually via secure channel.
+#0013 easy  /normal Perhaps we should suggest an empty passphrase for list
+  keys in our interface: The passphrase is stored in clear-text anyway.
+  Perhaps even just remove the passphare textbox in the webgui. gpg warns when
+  creating such a key: "You need a Passphrase to protect your secret key.
+  [...] You don't want a passphrase - this is probably a *bad* idea!  I will
+  do it anyway.  You can change your passphrase at any time, using this program
+  with the option "--edit-key"."
+#0014 ?     /normal Passphrase as supplied to webinterface cannot contain
+  stuff which needs html-escaping.  Workaround: use [:alphanum:] only.
+#0015 diffic/normal We should refuse to create an html list archive for secure
+  lists.  (Currently, the default for new lists is changed by this patch from
+  do-archive to don't-archive.)
+#0016 normal/wish   Perhaps we should enable fetching public keys from
+  subscribers from OpenPGP keyservers.  Pasting huge public keys can be a pita.
+#0017 ?     /crit   It seems we need a symlink
+    /usr/lib/mailman/Mailman/GnuPGInterface.py ->
+             /usr/lib/site-python/GnuPGInterface.py
+  We might have to hack paths.py to fix this.
+#0018 normal/?      It'd be nice if commandline interfaces and email interfaces
+  could be used for configuring (some of the) gpg stuff too, e.g. for uploading
+  public keys.
+#0019 ?     /crit   Member public keys should be importable from a
+  database; therefore write CLI's.
+#0020 easy  /crit   Add ^L-thingies and other stuff from Mailman coders
+  styleguide to this patch.
+#0021 diffic/?      Add extra configuration toggle: some users might want to
+  post signed, but receive unencrypted posts unencrypted.  Currently, this is
+  not possible.
+#0022 easy  /crit   (Perhaps a problem in the Debian package only: )
+  /var/log/mailman/gpg is not rotated.
+#0023 ?     /wish   If a list has:
+   gpg_post_encrypt Yes           (encrypt post to listkey)
+   gpg_distrib_encrypt Force         (distribute encypted)
+   gpg_post_sign        Force         (should posts be signed)
+   gpg_distrib_sign         Yes           (distribute signed)
+  and someone is subcribed without having uploaded her public key, then
+  this person receives posts mangled: content-type header says us-ascii,
+  while body is quoted-printable.
+#0024 diffic/?      If a post is properly signed, accept it, no matter wether
+  the From-adress is subscribed and no matter the sender moderation policy.
+  However: Although this is possible and perhaps desirable, one should
+  remember that only the body of an email is signed and/or encrypted, but
+  not the headers.  If a subscriber is allowed to change the From header at
+  will, he can try to impersonate another person when sending an email to the
+  list.  It is best to restrict the contents of the From header to the email
+  address(es) listed in the subscriber's public key.
+#0025 ?     /?      Problems with umlauts aka inline-pgp-trouble - seems to be
+  fixed, but requires additional testing
+#0026 ?     /wish   Inline PGP-mail with attachments - undefined results. Some
+  mailers can produce this. :-(
+#0027 ?     /?      Deal with both inline (aka traditional) pgp signed/encrypted
+  posts as well as pgpg/mime; test this.
+#0028 diffic/wish   If the "force" policy is in effect: reject plaintext control
+  e-mails that contain a command with a password - currently all unsigned
+  control e-mails are accepted without question because subscribe requests are
+  handled over this channel as well
+#0029 diffic/wish   If the "force" policy is in effect: "fuzzy checking", that
+  is, if only part of the e-mail is encrypted (with cleartext underneath the PGP
+  block).  Is there a need for this?
+#0030 diffic/crit   Deal with subscribers without public keys: Notification
+  e-mail to those who haven't uploaded a key; and/or: make a (CLI) interface
+  to check for subscibers without keys, to be used by site- or list-admin.
+  Under some circumstances, these subscribers receive all mail in clear-text,
+  even the encrypted ones. (The best way to deal with this issue is not to
+  allow someone to subscribe without providing a public key for lists that
+  require one.  For subscription via email, require that the subscription
+  request is properly signed, and automatically store the public key along
+  with other subscriber's details.  For subscription via the web, require
+  that the subscriber uploads his public key in the same form as the
+  subscription request.  In both cases, require that the subscriber's
+  response to the verification email is also signed.)
+#0031 ?     /normal  When bouncing e-mail because list policy was violated
+  (e.g., someone sent unencrypted e-mail to mailman even though
+  encryption-policy="force"): only bounce the headers, not the complete e-mail
+  message.  By allowing the body of an email to be included in the bounce, an
+  attacker can send emails containing viruses or other unwanted payloads to a
+  list, and can forge the From header so the bounce will be sent to a victim
+  of choosing.
+#0032 diffic/wish   Fix the way mails are sent out over SMTP: do chunking for
+  encrypted e-mail too. see also
+  http://mail.python.org/pipermail/mailman-developers/2005-February/017910.html
+  .
+#0033 ?     /crit   All defaults should be strict: lists not visible on
+  listinfo page,
+  no roster, only listadmin can add members.  Perhaps it's best to add
+  this to install manual: system-admin, you should hack mm_cfg.py!
+#0034 normal/crit   Write proper documentation for listadmins and subscribers.
+  Ideally distribute this in a patch to the official Mailman docs.  We'd possibly
+  need to fix upstream Makefile for this: how is documentation being typesetted
+  before being distributed?  Should we include patches for both .tex and .ps in
+  our patch?  Or hack installation instructions and recommend running "make doc"
+  manually?  See thread:
+   Date: Wed, 4 Jan 2006 16:57:33 +0100
+   From: Joost van Baal
+   To: Maiman Developers
+   Subject: preferred documentation format, sources for documentation in admin/www
+   Message-ID: <20060104155733.GA29152@banach.uvt.nl>
+#0035 diff  /crit   Try to make this patch clean (i.e.: default behaviour for
+  non-ssls lists should be the same; minimize the amount of ssls code executed
+  for such lists), in order to get it into upstream Mailman (or the Mailman
+  Debian package).
+#0036 diff  /wish   When re-encrypting a signed message, the original signature
+  gets lost: this makes it possible for one list member to pose as another list
+  member.  In theory, it should be possible to keep the original signature after
+  decryption.  (Since GnuPG has no option to decrypt a message without removing
+  its signature, SLS currently cannot preserve the original signature, but rather
+  adds its own when forwarding an email.  One should ask (and perhaps sponsor)
+  the GnuPG developers to implement this missing feature.  In the mean time,
+  one should not allow messages to be posted where the From header does not
+  match one of the email addresses associated with the public key used to sign
+  the email (see also item 0024 above).)
+#0037 normal/wish   Merge stuff from Stefan's 2005-05-03 patch in this patch.
+#0038 normal/normal Create a commit list for the darcs repository and announce
+  it.  See the thread following
+   Date: Fri, 12 Aug 2005 11:26:30 +0200
+   From: Joost van Baal <j.e.vanbaal@uvt.nl>
+   To: SURFnet Secure List Server Development List <ssls-devel@securelist.surfnet.nl>
+   Message-ID: <20050812092630.GA16126@banach.uvt.nl>
+   Subject: [Ssls-devel] current status and plans of Mailman SSLS: S/MIME and
+    other stuff
+  .  Possibly we can use the RSS feed from the darcs webinterface for this.
+#0039 easy/normal   Bounce message: "Unsigned post to Secure list" is
+  misleading, and should be rephrased to "Post to Secure List not signed
+  with registered subscriber PGP key".
+
+#0040               Tag work and severity of all bugs listed below.
+
+#0041 (smime) Check if trouble with "broken pipe" problem is really fixed now.
+  use 2 tmpfiles for each popen3-call in SMIMEUtils.py, to be sure no
+  deadlocking will occur.  ideas: use os.system, not popen3.  Clean up code.
+
+#0042 (smime) Check signing and signing-and-encrypting.
+  + sending signed as j.e.vanbaal+20051121@uvt.nl to
+    test-smime@securelist.surfnet.nl: OK (recheck!)
+    sending bare as j.e.vanbaal+20051121@uvt.nl to
+    test-smime@securelist.surfnet.nl: OK (recheck!)
+
+#0043 (smime) In the webgui, add an interface to upload a list-key (or one to
+ create one).
+
+#0044 (smime) Clean up comments in Mailman/SMIMEUtils.py
+
+#0045 Check all FIXME's and TODO's in all files.
+
+#0046 Value tests are crap, for both gpg and smime.  Very often " =='1' " is
+  written where " == 1 " should have been written.  Very often tests for 'Force'
+ ' and 'No' are done.  Just test for int.s.
+
+#0047 Use os.path.join , not "/".
+
+#0048 (smime) Clean up and make more robust: decryptSmime(mlist, msg, msgdata) in
+Mailman/Handlers/Moderate.py
+
+#0049 (smime) In Mailman/SMIMEUtils.py, implement
+encryptSignMessage(self,msg,recipients)
+
+#0050 (smime) make sure posts get encrypted and signed if needed
+  Perhaps it is best determine whether an incoming email as signed or encrypted,
+  and mark this somewhere in its headers, such that the marking does not get
+  removed while the email is being processed by SLS.  When sending outgoing
+  emails, preferably right before the email is sent to the SMTP server, it should
+  be verified that if the message is marked signed, the outgoing email is indeed
+  signed.  The same goes for encryption (and PGP).
+
+#0051 (smime) reimplement specifying recipient for encrypting, check
+Handlers/GpgSMTPDirect.py: having one .pem-file for each member is suboptimal,
+but that's how it's done in sympa-5.1: use email adress in filename!
+
+#0052 for both GPG and S/MIME: the list never sends out a list-key-signed message which
+  is not encrypted, no matter the list-privacy-settings.  It should!
+
+#0053 (smime) Make sure SMIMEUtils.py behaves sane when smime/*pem is lacking.
+
+#0054 (smime) Deal with
+
+ From: Werner Koch
+ To: Joost van Baal
+ Cc: GnuPG Users
+ Subject: Re: handling S/MIME messages with gpgsm
+ Date: Mon, 24 Oct 2005 09:13:51 +0200
+ Message-ID: <8764rnbd5c.fsf@wheatstone.g10code.de>
+
+  Find out how to make
+   gpgsm --verify signed.CMS signed.body
+  succeed: how to create signed.CMS and signed.body for an S/MIME
+  detached-signed message?
+
+#0055 Deal with stuff in thread
+
+   Date: Fri, 12 Aug 2005 11:26:30 +0200
+   From: Joost van Baal
+   To: SURFnet Secure List Server Development List
+   Message-ID: <20050812092630.GA16126@banach.uvt.nl>
+
+#0056 shamir's gpgsm and gnupg-agent is from gnupg2 (1.9.18-0.1); 9.19 is
+  available.  Upgrade shamir from stuff at non-gnu.
+  Install 1.9.19 stuff from http://non-gnu.uvt.nl/debian/scratch/ on shamir.
+
+#0057 Ask Stefan Schlott to acknowledge the added comment with a link to
+  http://non-gnu.uvt.nl/mailman-ssls on
+  http://medien.informatik.uni-ulm.de/~stefan/linux/gpg-mailman .
+
+#0058 The sympa ( http://www.sympa.org/, GPL ) mailing list manager calls the
+  openssl binary from within Perl.  Check out the smime_* functions in
+  sympa-4.1.5/src/tools.pl.  (Or use the 5.1 sources)
+
+#0059 Don't use openssl and GnuPGInterface, but pyme.
+  KMail is said to use GPGME for S/MIME.  Study its source.
+  SMScrypto.py from http://smallsister.org/git/SmallMail.git implements
+  crypto in python using pyme.  Study (steal?) its source.
+
+#0060 emailf00f by Guus Sliepen deals with PGP.  Study its source.
+
+#0061 (smime) study RFC 2630 [CMS] and RFC 2315 [PKCS7]
+
+#0062 (smime) _robustly_ identify incoming S/MIME posts:
+
+   RFC 3851 3.9.  Identifying an S/MIME Message
+
+   MIME type:   application/pkcs7-mime
+   parameters:  any
+   file suffix: any
+
+   MIME type:   multipart/signed
+   parameters:  protocol="application/pkcs7-signature"
+   file suffix: any
+
+   MIME type:   application/octet-stream
+   parameters:  any
+   file suffix: p7m, p7s, p7c, p7z
+
+#0063 (smime) Integrate all other useful private notes in
+  <20050913155839.GQ8055@banach.uvt.nl>.
+
+#0064 (smime) Finish our small test scripts:
+  + Document genkey.py, so that our action is reproducable.
+  + Document decrypt.py, so that our action is reproducable.
+  + Write a script like descrypt.py which performs verification.
+  + Tidy up section "importing a secret key".  Find out wether we can do this
+    without using CA.pl.  Tidy up the description in scratch/simple.py .
+  + adjust documentation of scripts in scratch/ (simple.py) to no longer
+    use precooked keys from gpgme1.0_1.0.3/tests/gpgsm/.
+  + Send our hacked example scripts to pyme upstream.
+  + Merge decrypt.py and simple.py in mailman-smime.py.
+
+#0065 (smime) In GpgSMTPDirect.py we fetch only the first attachment when
+ dealing with S/MIME.  We search for attachments only 2 levels deep.  That's
+ suboptimal...
+
+#0066 It seems to be impossible to remove (or change) a public
+  key for a subscriber.  Even after unsubscribing, the key seems to be kept.
+  Currently, one needs to do something like
+   # GNUPGHOME=/var/lib/mailman/lists/test-secure/gpg gpg --delete-key 88C6EDF6
+  Under some circumstances (member is subscribed, key was purged later),
+  uploading a public key using the webgui fails.  One might have to do:
+   # GNUPGHOME=/var/lib/mailman/lists/test-secure/gpg gpg --import < /tmp/a
+  It seems the list gets confused about the keyid belonging to the subscriber.
+  See also #0002.
+  .
+  When fixing this, be sure to get rid of the gpgkeyids and gpgkeys properties
+  of a MailList object.  Store all this stuff in _one_ dictionary, keyed by
+  member-email-adresses.  Be sure to adjust the unsubscribtion hook: currently,
+  the dictionaries are not cleaned after unsubscription.
+
+#0067 If permissions on pubring.gpg are borked, Mailman gets hit by a Broken
+  pipe, and messages get shunted.
+
+#0068 We are vulnerable for replay attacks.  Likely it's useful to protect against
+  those: likely our subscribers will silently assume we're not vulnerable.
+
+ Fri 13 13:48 < guus> joostvb: heeft SSLS al replay protection?
+ Fri 13 13:58 < joostvb> guus: is OpenPGP kwetsbaar voor replay-attacks?
+ Fri 13 13:58 < Fruit> alleen als je de datum niet controleert
+ Fri 13 13:59 < guus> joostvb: ja, maar S/MIME ook voor zover ik weet.
+ Fri 13 13:59 < guus> Je moet controleren dat niet twee keer hetzelfde mailtje 
+                      verwerkt wordt.
+ Fri 13 13:59 < joostvb> hrm, ik schat zo in dat SSLS niet kwetsbaarderder is 
+                         voor die aanvallen dan OpenPGP en S/MIME
+ Fri 13 13:59 < guus> OpenPGP en S/MIME zijn protocollen, SSLS is een listserver.
+ Fri 13 14:00 < joostvb> guus: hrm, mensen kunnen toch een oude post bouncen 
+                         naar een lijst
+ Fri 13 14:00 < joostvb> guus: ik weet eigenlijk niet wat dan het beste is
+ Fri 13 14:01 < guus> Met OpenPGP is het iig zo dat er een uniek nummertje in 
+                      elke signature zit.
+ Fri 13 14:01 < joostvb> hm hm hm
+ Fri 13 14:01 < guus> Dus je moet die nummertjes onthouden.
+ Fri 13 14:01 < joostvb> misschien dat er inderdaad wel iets in zit ja, en dat 
+                         je zo'n bounce wilt weigeren
+ Fri 13 14:01 < guus> Zeg, een dag ofzo. En als je mailtjes krijgt wiens 
+                      signature ouder is dan een dag, dan moet je die sowieso 
+                      bouncen.
+
+  Thanks Guus Sliepen for bug report.
+
+#0069 We choke on keys with subkeys for signing.  E.g, when uploading a key
+
+ pub   4096R/0B86B067 2005-10-12
+       Key fingerprint = B8FA C2E2 5047 5B8C E940  A919 5793 0DAB 0B86 B067
+ uid                  Joost E. van Baal (Nederland, 1970)
+ uid                  Joost van Baal <J.E.vanBaal/a/uvt.nl>
+ sub   4096R/24525E9E 2005-10-12 [expires: 2008-10-11]
+ sub   4096R/43FF7C14 2005-10-12 [expires: 2008-10-11]
+
+  it is stored as 0x0b86b067.  However, when verifying the signature on a post,
+  0x24525e9e is found.  The test wether the signature is from a member fails on this.
+
+  This might have been fixed in revno: 433, timestamp: Thu 2008-06-26 23:26:02 +0200
+
+
+Test Suite
+----------
+
+Before shipping a new release, test it.  Obviously.
+
+FIXME: finish the script for this: pgp-smime/pgp-smime-testsuite.sh
+

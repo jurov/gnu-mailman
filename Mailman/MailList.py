@@ -311,6 +311,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.language = {}
         self.usernames = {}
         self.passwords = {}
+        self.gpgkeys = {}
+        self.gpgkeyids = {}
         self.new_member_options = mm_cfg.DEFAULT_NEW_MEMBER_OPTIONS
 
         # This stuff is configurable
@@ -349,6 +351,13 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.header_filter_rules = []
         self.from_is_list = mm_cfg.DEFAULT_FROM_IS_LIST
         self.anonymous_list = mm_cfg.DEFAULT_ANONYMOUS_LIST
+
+        self.sign_policy = mm_cfg.DEFAULT_SIGN_POLICY
+        self.encrypt_policy = mm_cfg.DEFAULT_ENCRYPT_POLICY
+        self.gpg_public_key = ''
+        self.gpg_secret_key = ''
+        self.gpg_passphrase = ''
+
         internalname = self.internal_name()
         self.real_name = internalname[0].upper() + internalname[1:]
         self.description = ''

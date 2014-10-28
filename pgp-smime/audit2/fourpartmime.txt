@@ -1,0 +1,42 @@
+From: Alice <alice@example.org>
+To: list@example.org
+Mime-version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+        protocol="application/pgp-signature";
+	boundary="boundary"
+Content-Disposition: inline
+
+
+--boundary
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Mallory's message goes here.
+
+--boundary
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Mallory's signature goes here.
+-----END PGP SIGNATURE-----
+
+--boundary
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Email copied from Alice, a list member, goes here.
+
+--boundary
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Alice's signature goes here.
+-----END PGP SIGNATURE-----
+
+--boundary--

@@ -31,6 +31,7 @@ from Mailman import mm_cfg
 from Mailman import Utils
 from Mailman import Errors
 from Mailman import MemberAdaptor
+from Mailman import SMIMEUtils
 
 ISREGULAR = 1
 ISDIGEST = 2
@@ -165,6 +166,24 @@ class OldStyleMemberships(MemberAdaptor.MemberAdaptor):
     def getBounceInfo(self, member):
         self.__assertIsMember(member)
         return self.__mlist.bounce_info.get(member.lower())
+
+    def getGPGKey(self, member):
+        self.__assertIsMember(member)
+        return self.__mlist.gpgkeys.get(member.lower())
+
+    def getGPGKeyIDs(self, member):
+        self.__assertIsMember(member)
+        return self.__mlist.gpgkeyids.get(member.lower())
+
+    def getSMIMEKey(self, member):
+        self.__assertIsMember(member)
+        sm = SMIMEUtils.SMIMEHelper(self.__mlist)
+        recipfile = sm.getSMIMEMemberCertFile(member)
+        if recipfile:
+            f = file(recipfile)
+            return f.read()
+        else:
+            return None
 
     #
     # Write interface
@@ -368,3 +387,19 @@ class OldStyleMemberships(MemberAdaptor.MemberAdaptor):
                 del self.__mlist.delivery_status[member]
         else:
             self.__mlist.bounce_info[member] = info
+
+    def setGPGKey(self, member, key, keyids):
+        assert self.__mlist.Locked()
+        self.__assertIsMember(member)
+        member = member.lower()
+        if key!=None and len(key)==0:
+            key = None
+        if key is None:
+            if self.__mlist.gpgkeys.has_key(member):
+                del self.__mlist.gpgkeys[member]
+            if self.__mlist.gpgkeyids.has_key(member):
+                del self.__mlist.gpgkeyids[member]
+        else:
+            self.__mlist.gpgkeys[member] = key
+            self.__mlist.gpgkeyids[member] = keyids
+

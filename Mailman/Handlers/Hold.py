@@ -61,6 +61,22 @@ class NonMemberPost(Errors.HoldMessage):
     reason = _('Post by non-member to a members-only list')
     rejection = _('Non-members are not allowed to post messages to this list.')
 
+class NonGPGSignedPost(Errors.HoldMessage):
+    reason = _('Unsigned post to Secure list')
+    rejection = _('Only messages which are PGP signed with an approved key are allowed on this list.')
+
+class WrongGPGSignedPost(Errors.HoldMessage):
+    reason = _('Post to Secure list signed by unapproved key' )
+    rejection = _('Only messages which are PGP signed with an approved key are allowed on this list.  Upload your PGP public key.')
+
+class NonSMIMESignedPost(Errors.HoldMessage):
+    reason = _('Unsigned post to S/MIME Secure list')
+    rejection = _('Only messages which are S/MIME signed with a key, signed with the listkey are allowed on this list.')
+
+class WrongSMIMESignedPost(Errors.HoldMessage):
+    reason = _('Post to S/MIME Secure list signed by unapproved key' )
+    rejection = _('Only messages which are S/MIME signed with an approved key are allowed on this list.  Get your key signed by the listkey.')
+
 class NotExplicitlyAllowed(Errors.HoldMessage):
     reason = _('Posting to a restricted list by sender requires approval')
     rejection = _('This list is restricted; your message was not approved.')
@@ -283,7 +299,18 @@ also appear in the first line of the body of the reply.""")),
             dmsg['Date'] = email.Utils.formatdate(localtime=True)
             dmsg['Message-ID'] = Utils.unique_message_id(mlist)
             nmsg.attach(text)
-            nmsg.attach(MIMEMessage(msg))
+
+            decrypted = msg.get('X-Mailman-SLS-decrypted', '').lower()
+            if decrypted == 'yes':
+                syslog('gpg',
+ 'forwarding only headers of message from %s to listmaster of %s to get approval since message was decrypted',
+ sender, listname)
+                msgtext = msg.as_string()
+                (header, body) = msgtext.split("\n\n", 1)
+                nmsg.attach(MIMEText(header))
+            else:
+                nmsg.attach(MIMEMessage(msg))
+
             nmsg.attach(MIMEMessage(dmsg))
             nmsg.send(mlist, **{'tomoderators': 1})
         finally:

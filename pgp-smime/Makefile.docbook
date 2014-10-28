@@ -1,0 +1,24 @@
+# this Makefile needs caspar-20020313.tar.gz (or higher). caspar 20030716 makes
+# it look even better.  get it from http://mdcc.cx/caspar/ .
+
+# based upon http://non-gnu.uvt.nl/pub/uvt-unix-doc/packaging/Makefile
+
+#
+# usage:
+#  make typeset; make install
+#
+
+# force utf-8 support.  the environment-variable is needed: we've tested
+# that...
+JADE = SP_ENCODING="utf-8" jade -b utf-8
+# ps and pdf work fine with é and stuff
+
+# html typesetting will yield a utf-8-encoded html file.  the html source
+# will _not_ have a header stating so.  therefore, likely your webserver
+# needs to publish in utf-8 by default.
+
+# FIXME
+#  PRINT_DSL = print.dsl
+#  HTML_DSL = html.dsl
+include caspar/mk/docbook.mk
+

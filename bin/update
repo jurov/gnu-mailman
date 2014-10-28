@@ -197,6 +197,25 @@ def dolist(listname):
                                '%(listname)s')
         return 1
 
+    # Check for new GPG options
+    def add_only_if_missing(attr, initval, l=mlist):
+        if not hasattr(l, attr):
+            print _("""Adding attribute %(attr)s to list.""")
+            setattr(l, attr, initval)
+
+    print _("""Checking and adding PGP and S/MIME properties.""")
+    # 1.2.5-gpg
+    add_only_if_missing('gpg_public_key', "")
+    add_only_if_missing('gpg_secret_key', "")
+    add_only_if_missing('gpg_passphrase', "")
+    add_only_if_missing('gpgkeys', {})
+    add_only_if_missing('gpgkeyids', {})
+    add_only_if_missing('sign_policy', mm_cfg.DEFAULT_SIGN_POLICY)
+    add_only_if_missing('encrypt_policy', mm_cfg.DEFAULT_ENCRYPT_POLICY)
+
+    mlist.Save()
+
+
     # Sanity check the invariant that every BYBOUNCE disabled member must have
     # bounce information.  Some earlier betas broke this.  BAW: we're
     # submerging below the MemberAdaptor interface, so skip this if we're not

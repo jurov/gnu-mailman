@@ -324,6 +324,14 @@ def NewVars(l):
     def add_only_if_missing(attr, initval, l=l):
         if not hasattr(l, attr):
             setattr(l, attr, initval)
+    # 1.2.5-gpg
+    add_only_if_missing('sign_policy', mm_cfg.DEFAULT_SIGN_POLICY)
+    add_only_if_missing('gpg_post_encrypt', mm_cfg.DEFAULT_ENCRYPT_POLICY)
+    add_only_if_missing('gpg_public_key', "")
+    add_only_if_missing('gpg_secret_key', "")
+    add_only_if_missing('gpg_passphrase', "")
+    add_only_if_missing('gpgkeys', {})
+    add_only_if_missing('gpgkeyids', {})
     # 1.2 beta 1, baw 18-Feb-2000
     # Autoresponder mixin class attributes
     add_only_if_missing('autorespond_postings', 0)
