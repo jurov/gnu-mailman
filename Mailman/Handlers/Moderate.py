@@ -312,6 +312,27 @@ def process(mlist, msg, msgdata):
              # -----END PGP SIGNATURE-----
              signatures = [None]
              payload = msg.get_payload(decode=True)
+        elif msg.get_content_type()=='multipart/alternative' and msg.is_multipart():
+            #GPG signed plaintext with HTML version
+            for submsg in msg.get_payload():
+                if submsg.get_content_type()=='text/plain':
+                    if not payload:
+                        # text without headers
+                        signatures = [None]
+                        payload = submsg.get_payload(decode=True)
+                    else:
+                        # we only deal with exactly one payload part
+                        syslog('gpg','multipart/alternative message with more than one plaintext')
+                        do_discard(mlist, msg)
+        elif msg.get_content_type()=='multipart/mixed' and msg.is_multipart():
+            #GPG signed plaintext with attachments. Use first plaintext part (more text attachments are perfectly valid here)
+            #TODO submsg may be multipart/alternative itself or whatever structure - is that used in the wild anywhere?
+            for submsg in msg.get_payload():
+                if submsg.get_content_type()=='text/plain':
+                    # text without headers
+                    signatures = [None]
+                    payload = submsg.get_payload(decode=True)
+                    break 
 
         for signature in signatures:
              syslog('gpg', "gonna verify payload with signature '%s'", signature)
