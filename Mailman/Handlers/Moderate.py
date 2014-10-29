@@ -331,14 +331,27 @@ def process(mlist, msg, msgdata):
                 if submsg.get_content_type()=='text/plain':
                     # text without headers
                     payload = submsg.get_payload(decode=True)
-		    if payload.lstrip().startswith('-----BEGIN PGP '):
+                    if payload.lstrip().startswith('-----BEGIN PGP '):
                         signatures = [None]
-                        break 
-		elif submsg.get_content_type()=='application/pgp-encrypted':
-		    signatures = [None]
-		    payload = submsg.get_payload(decode=True)
-		    break
-			
+                        break
+                elif submsg.get_content_type()=='application/pgp-encrypted':
+                    signatures = [None]
+                    payload = submsg.get_payload(decode=True)
+                    break
+                elif submsg.get_content_type()=='multipart/alternative' and submsg.is_multipart():
+                    #GPG signed plaintext with HTML version
+                    for subsubmsg in submsg.get_payload():
+                        if subsubmsg.get_content_type()=='text/plain':
+                            if not payload:
+                                # text without headers
+                                signatures = [None]
+                                payload = subsubmsg.get_payload(decode=True)
+                            else:
+                                # we only deal with exactly one payload part
+                                syslog('gpg','multipart/alternative message with more than one plaintext')
+                                do_discard(mlist, msg)
+                    if payload:
+                        break
 
         for signature in signatures:
              syslog('gpg', "gonna verify payload with signature '%s'", signature)
