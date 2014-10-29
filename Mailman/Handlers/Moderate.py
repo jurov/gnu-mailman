@@ -190,6 +190,37 @@ def decryptSmime(mlist, msg, msgdata):
     return (encrypted, signed)
 
 
+def findSignedPart(mlist, msg):
+    if msg.get_content_type()=='multipart/alternative' and msg.is_multipart():
+        #GPG signed plaintext with HTML version
+        payload = None
+        for submsg in msg.get_payload():
+            if submsg.get_content_type()=='text/plain':
+                if not payload:
+                    # text without headers
+                    signatures = [None]
+                    return submsg.get_payload(decode=True)
+                else:
+                    # we only deal with exactly one payload part
+                    syslog('gpg','multipart/alternative message with more than one plaintext')
+                    do_discard(mlist, msg)
+    if msg.get_content_type()=='multipart/mixed' and msg.is_multipart():
+        #GPG signed plaintext with attachments. Use first plaintext part (more text attachments are perfectly valid here)
+        for submsg in msg.get_payload():
+            if submsg.get_content_type()=='text/plain':
+                # text without headers
+                payload = submsg.get_payload(decode=True)
+                if payload.lstrip().startswith('-----BEGIN PGP '):
+                    return payload
+            elif submsg.get_content_type()=='application/pgp-encrypted':
+                payload = submsg.get_payload(decode=True)
+                return payload
+            elif submsg.is_multipart():
+                return findSignedPart(mlist, msg)
+
+    return None
+
+
 class ModeratedMemberPost(Hold.ModeratedPost):
     # BAW: I wanted to use the reason below to differentiate between this
     # situation and normal ModeratedPost reasons.  Greg Ward and Stonewall
@@ -312,33 +343,10 @@ def process(mlist, msg, msgdata):
              # -----END PGP SIGNATURE-----
              signatures = [None]
              payload = msg.get_payload(decode=True)
-        elif msg.get_content_type()=='multipart/alternative' and msg.is_multipart():
-            #GPG signed plaintext with HTML version
-            for submsg in msg.get_payload():
-                if submsg.get_content_type()=='text/plain':
-                    if not payload:
-                        # text without headers
-                        signatures = [None]
-                        payload = submsg.get_payload(decode=True)
-                    else:
-                        # we only deal with exactly one payload part
-                        syslog('gpg','multipart/alternative message with more than one plaintext')
-                        do_discard(mlist, msg)
-        elif msg.get_content_type()=='multipart/mixed' and msg.is_multipart():
-            #GPG signed plaintext with attachments. Use first plaintext part (more text attachments are perfectly valid here)
-            #TODO submsg may be multipart/alternative itself or whatever structure - is that used in the wild anywhere?
-            for submsg in msg.get_payload():
-                if submsg.get_content_type()=='text/plain':
-                    # text without headers
-                    payload = submsg.get_payload(decode=True)
-                if payload.lstrip().startswith('-----BEGIN PGP '):
-                            signatures = [None]
-                            break
-                elif submsg.get_content_type()=='application/pgp-encrypted':
-                    signatures = [None]
-                    payload = submsg.get_payload(decode=True)
-                    break
-
+        else:
+             payload = findSignedPart(mlist, msg)
+             if payload:
+                 signatures = [None]
 
         for signature in signatures:
              syslog('gpg', "gonna verify payload with signature '%s'", signature)
