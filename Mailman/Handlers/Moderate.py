@@ -330,9 +330,15 @@ def process(mlist, msg, msgdata):
             for submsg in msg.get_payload():
                 if submsg.get_content_type()=='text/plain':
                     # text without headers
-                    signatures = [None]
                     payload = submsg.get_payload(decode=True)
-                    break 
+		    if payload.lstrip().startswith('-----BEGIN PGP '):
+                        signatures = [None]
+                        break 
+		elif submsg.get_content_type()=='application/pgp-encrypted':
+		    signatures = [None]
+		    payload = submsg.get_payload(decode=True)
+		    break
+			
 
         for signature in signatures:
              syslog('gpg', "gonna verify payload with signature '%s'", signature)
