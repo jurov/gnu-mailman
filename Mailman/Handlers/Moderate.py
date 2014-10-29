@@ -377,8 +377,10 @@ def process(mlist, msg, msgdata):
                             senderMatchesKey = True
                             break
             if not senderMatchesKey:
-                syslog('gpg','Message signed by key which does not match message sender address')
-                do_discard(mlist, msg)
+                syslog('gpg','Message signed by key %s which does not match message sender address, passing anyway')
+                #temp fix
+                signedByMember = True
+                #do_discard(mlist, msg)
 
         for user in mlist.getMembers():
             syslog('gpg','Checking signature: listmember %s',user)
