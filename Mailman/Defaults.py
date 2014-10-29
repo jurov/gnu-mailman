@@ -83,8 +83,8 @@ MAILMAN_URL = 'http://www.gnu.org/software/mailman/index.html'
 #     add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 #
 # because otherwise the default mappings won't be correct.
-DEFAULT_EMAIL_HOST = 'bluesky.simpleshell.net'
-DEFAULT_URL_HOST = 'bluesky.simpleshell.net'
+DEFAULT_EMAIL_HOST = 'localhost'
+DEFAULT_URL_HOST = 'localhost'
 DEFAULT_URL_PATTERN = 'http://%s/mailman/'
 
 # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
@@ -1429,9 +1429,9 @@ PENDINGDB_LOCK_DEBUGGING = Off
 # installation.  PREFIX and EXEC_PREFIX are set by configure and should point
 # to the installation directory of the Mailman package.
 PYTHON          = '/usr/bin/python'
-PREFIX          = '/usr/local/mailman'
+PREFIX          = '/opt/mailman'
 EXEC_PREFIX     = '${prefix}'
-VAR_PREFIX      = '/usr/local/mailman'
+VAR_PREFIX      = '/srv/mailman'
 
 # Work around a bogus autoconf 2.12 bug
 if EXEC_PREFIX == '${prefix}':
