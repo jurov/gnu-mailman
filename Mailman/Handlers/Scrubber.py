@@ -290,7 +290,7 @@ URL: %(url)s
             # first boundary and the end boundary.  In email 3.0 you end up
             # with a string in the payload.  I think in this case it's safe to
             # ignore the part.
-            if payload is None:
+            if payload is None or payload.strip() == '':
                 continue
             size = len(payload)
             omask = os.umask(002)
@@ -378,9 +378,11 @@ URL: %(url)s
                     t = t.encode(lcset, 'replace')
             # Separation is useful
             if isinstance(t, StringType):
-                if not t.endswith('\n'):
-                    t += '\n'
-                text.append(t)
+                #omit empty parts
+                if t.strip() != '' :
+                    if not t.endswith('\n'):
+                        t += '\n'
+                    text.append(t)
         # Now join the text and set the payload
         sep = _('-------------- next part --------------\n')
         # The i18n separator is in the list's charset. Coerce it to the
