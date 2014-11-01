@@ -127,18 +127,21 @@ def calculate_attachments_dir(mlist, msg, msgdata):
             month = day = year = 0
         datedir = '%04d%02d%02d' % (year, month, day)
     assert datedir
-    # As for the msgid hash, we'll base this part on the Message-ID: so that
-    # all attachments for the same message end up in the same directory (we'll
-    # uniquify the filenames in that directory as needed).  We use the first 2
-    # and last 2 bytes of the SHA1 hash of the message id as the basis of the
-    # directory name.  Clashes here don't really matter too much, and that
-    # still gives us a 32-bit space to work with.
-    msgid = msg['message-id']
-    if msgid is None:
-        msgid = msg['Message-ID'] = Utils.unique_message_id(mlist)
-    # We assume that the message id actually /is/ unique!
-    digest = sha_new(msgid).hexdigest()
-    return os.path.join('attachments', datedir, digest[:4] + digest[-4:])
+    if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
+        return os.path.join('attachments', datedir)
+    else:
+        # As for the msgid hash, we'll base this part on the Message-ID: so that
+        # all attachments for the same message end up in the same directory (we'll
+        # uniquify the filenames in that directory as needed).  We use the first 2
+        # and last 2 bytes of the SHA1 hash of the message id as the basis of the
+        # directory name.  Clashes here don't really matter too much, and that
+        # still gives us a 32-bit space to work with.
+        msgid = msg['message-id']
+        if msgid is None:
+            msgid = msg['Message-ID'] = Utils.unique_message_id(mlist)
+        # We assume that the message id actually /is/ unique!
+        digest = sha_new(msgid).hexdigest()
+        return os.path.join('attachments', datedir, digest[:4] + digest[-4:])
 
 
 def replace_payload_by_text(msg, text, charset):
@@ -448,6 +451,11 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     # Allow only alphanumerics, dash, underscore, and dot
     ext = sre.sub('', ext)
     path = None
+    extra = ''
+    do_write_file = True
+    if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
+        # compute SHA-1 hash for filename
+        extra = '_' + sha_new(decodedpayload).hexdigest()
     # We need a lock to calculate the next attachment number
     lockfile = os.path.join(fsdir, 'attachments.lock')
     lock = LockFile.LockFile(lockfile)
@@ -475,7 +483,6 @@ def save_attachment(mlist, msg, dir, filter_html=True):
         # system.  If msgdir/filebase.ext isn't unique, we'll add a counter
         # after filebase, e.g. msgdir/filebase-cnt.ext
         counter = 0
-        extra = ''
         while True:
             path = os.path.join(fsdir, filebase + extra + ext)
             # Generally it is not a good idea to test for file existance
@@ -484,47 +491,52 @@ def save_attachment(mlist, msg, dir, filter_html=True):
             # NFS-safe).  Besides, we have an exclusive lock now, so we're
             # guaranteed that no other process will be racing with us.
             if os.path.exists(path):
-                counter += 1
-                extra = '-%04d' % counter
+                if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
+                    do_write_file = False
+                    break
+                else:
+                    counter += 1
+                    extra = '-%04d' % counter
             else:
                 break
     finally:
         lock.unlock()
-    # `path' now contains the unique filename for the attachment.  There's
-    # just one more step we need to do.  If the part is text/html and
-    # ARCHIVE_HTML_SANITIZER is a string (which it must be or we wouldn't be
-    # here), then send the attachment through the filter program for
-    # sanitization
-    if filter_html and ctype == 'text/html':
-        base, ext = os.path.splitext(path)
-        tmppath = base + '-tmp' + ext
-        fp = open(tmppath, 'w')
-        try:
-            fp.write(decodedpayload)
-            fp.close()
-            cmd = mm_cfg.ARCHIVE_HTML_SANITIZER % {'filename' : tmppath}
-            progfp = os.popen(cmd, 'r')
-            decodedpayload = progfp.read()
-            status = progfp.close()
-            if status:
-                syslog('error',
-                       'HTML sanitizer exited with non-zero status: %s',
-                       status)
-        finally:
-            os.unlink(tmppath)
-        # BAW: Since we've now sanitized the document, it should be plain
-        # text.  Blarg, we really want the sanitizer to tell us what the type
-        # if the return data is. :(
-        ext = '.txt'
-        path = base + '.txt'
-    # Is it a message/rfc822 attachment?
-    elif ctype == 'message/rfc822':
-        submsg = msg.get_payload()
-        # BAW: I'm sure we can eventually do better than this. :(
-        decodedpayload = Utils.websafe(str(submsg))
-    fp = open(path, 'w')
-    fp.write(decodedpayload)
-    fp.close()
+    if do_write_file:
+        # `path' now contains the unique filename for the attachment.  There's
+        # just one more step we need to do.  If the part is text/html and
+        # ARCHIVE_HTML_SANITIZER is a string (which it must be or we wouldn't be
+        # here), then send the attachment through the filter program for
+        # sanitization
+        if filter_html and ctype == 'text/html':
+            base, ext = os.path.splitext(path)
+            tmppath = base + '-tmp' + ext
+            fp = open(tmppath, 'w')
+            try:
+                fp.write(decodedpayload)
+                fp.close()
+                cmd = mm_cfg.ARCHIVE_HTML_SANITIZER % {'filename' : tmppath}
+                progfp = os.popen(cmd, 'r')
+                decodedpayload = progfp.read()
+                status = progfp.close()
+                if status:
+                    syslog('error',
+                           'HTML sanitizer exited with non-zero status: %s',
+                           status)
+            finally:
+                os.unlink(tmppath)
+            # BAW: Since we've now sanitized the document, it should be plain
+            # text.  Blarg, we really want the sanitizer to tell us what the type
+            # if the return data is. :(
+            ext = '.txt'
+            path = base + '.txt'
+        # Is it a message/rfc822 attachment?
+        elif ctype == 'message/rfc822':
+            submsg = msg.get_payload()
+            # BAW: I'm sure we can eventually do better than this. :(
+            decodedpayload = Utils.websafe(str(submsg))
+        fp = open(path, 'w')
+        fp.write(decodedpayload)
+        fp.close()
     # Now calculate the url
     baseurl = mlist.GetBaseArchiveURL()
     # Private archives will likely have a trailing slash.  Normalize.
