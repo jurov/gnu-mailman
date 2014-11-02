@@ -619,7 +619,7 @@ def process_signatures(mlist, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_patch(conn, phash, pfile, sigfile, key, newpatches[pfile])
+                        db_add_patch(conn, phash, pfile, key, newpatches[pfile])
                         db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile])
                     break
         conn.commit()
