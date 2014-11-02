@@ -41,6 +41,9 @@ from Mailman.Errors import DiscardMessage
 from Mailman.i18n import _
 from Mailman.Logging.Syslog import syslog
 from Mailman.Utils import sha_new
+from Mailman import GPGUtils
+
+import sqlite3
 
 # Path characters for common platforms
 pre = re.compile(r'[/\\:]')
@@ -167,6 +170,8 @@ def process(mlist, msg, msgdata=None):
         # check if the list owner want to scrub regular delivery
         if not mlist.scrub_nondigest:
             return
+    patches = []
+    sigs = []
     dir = calculate_attachments_dir(mlist, msg, msgdata)
     charset = None
     lcset = Utils.GetCharSet(mlist.preferred_language)
@@ -200,7 +205,7 @@ def process(mlist, msg, msgdata=None):
                not part.get_content_charset():
                 omask = os.umask(002)
                 try:
-                    url = save_attachment(mlist, part, dir)
+                    url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
                 finally:
                     os.umask(omask)
                 filename = part.get_filename(_('not available'))
@@ -228,7 +233,7 @@ URL: %(url)s
                 # lists.
                 omask = os.umask(002)
                 try:
-                    url = save_attachment(mlist, part, dir, filter_html=False)
+                    url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
                 finally:
                     os.umask(omask)
                 replace_payload_by_text(part, _("""\
@@ -253,7 +258,7 @@ URL: %(url)s
                 del part['content-transfer-encoding']
                 omask = os.umask(002)
                 try:
-                    url = save_attachment(mlist, part, dir, filter_html=False)
+                    url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
                 finally:
                     os.umask(omask)
                 replace_payload_by_text(part, _("""\
@@ -298,7 +303,7 @@ URL: %(url)s
             size = len(payload)
             omask = os.umask(002)
             try:
-                url = save_attachment(mlist, part, dir)
+                url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
             finally:
                 os.umask(omask)
             desc = part.get('content-description', _('not available'))
@@ -401,6 +406,7 @@ URL: %(url)s
             msg.set_param('Format', format)
         if delsp:
             msg.set_param('DelSp', delsp)
+    process_signatures(mlist,patches,sigs)
     return msg
 
 
@@ -419,7 +425,7 @@ def makedirs(dir):
 
 
 
-def save_attachment(mlist, msg, dir, filter_html=True):
+def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = None):
     fsdir = os.path.join(mlist.archive_dir(), dir)
     makedirs(fsdir)
     # Figure out the attachment type and get the decoded data
@@ -431,7 +437,16 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     # i18n file name is encoded
     lcset = Utils.GetCharSet(mlist.preferred_language)
     filename = Utils.oneline(msg.get_filename(''), lcset)
-    filename, fnext = os.path.splitext(filename)
+    #filename, fnext = os.path.splitext(filename) #won't work with double extensions like .patch.sig
+    fnext = None
+    try:
+        (filename, fnext) = filename.split('.',1)
+        if filename == '':
+            filename = None
+        if fnext != '':
+            fnext = '.' + fnext
+    except:
+        pass
     # For safety, we should confirm this is valid ext for content-type
     # but we can use fnext if we introduce fnext filtering
     if mm_cfg.SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION:
@@ -501,6 +516,10 @@ def save_attachment(mlist, msg, dir, filter_html=True):
                 break
     finally:
         lock.unlock()
+    if sigs is not None and (ext == '.sig' or ctype == 'application/pgp-signature'):
+        sigs.append(os.path.join(dir , filename + extra + ext))
+    elif patches is not None and ctype != 'text/html' and ctype != 'message/rfc822':
+        patches.append(os.path.join(dir, filename + extra + ext))
     if do_write_file:
         # `path' now contains the unique filename for the attachment.  There's
         # just one more step we need to do.  If the part is text/html and
@@ -548,3 +567,92 @@ def save_attachment(mlist, msg, dir, filter_html=True):
     # Bracket the URL instead.
     url = '<' + baseurl + '%s/%s%s%s>' % (dir, filebase, extra, ext)
     return url
+
+def process_signatures(mlist, newpatches, newsigs):
+    rootdir = mlist.archive_dir()
+
+    conn = db_conn(mlist)
+    with conn:
+        gh = GPGUtils.GPGHelper(mlist)
+        #find newpatches name
+        for sigfile in newsigs:
+            syslog('gpg',"Processing signature attachment %s" % sigfile)
+            sname = os.path.basename(sigfile)
+            sname = sname.split('.')[0]
+            (sname,shash) = sname.rsplit('_',1) #hash of signature itself
+            if db_have_sig(conn,shash):
+                continue #already seen sig
+            phash = None
+            try:
+                phash = sname.rsplit('_',1)[1] #hash of patch, if any
+            except:
+                pass
+            if phash and len(phash) == 40:
+                pfile = db_get_patchfile(conn,phash)
+                if pfile:
+                    syslog('gpg',"Found signature for patch %s" % phash)
+                    keyids = gh.verifyMessage(os.path.join(rootdir,pfile), os.path.join(rootdir,sigfile),
+                                              both_are_filenames = True)
+                    if len(keyids) > 0:
+                        syslog('gpg',"Valid signature from %s" % keyids)
+                        db_add_sig(conn, shash, phash, sigfile, keyids[0]) #TODO multiple sigs
+                    continue #hash in the name was ok but sig is prolly corrupted, ignore it
+            #existing patch not found, check attachments for a new one
+            for pfile in newpatches:
+                pname = os.path.basename(pfile)
+                pname = pname.split('.')[0]
+                (pname,phash) = pname.rsplit('_',1)
+                if sname == pname:
+                    if db_get_patchfile(conn,phash):
+                        break # we saw this patch/signature already
+                    syslog('gpg',"Found patch candidate %s" % pfile)
+                    keyids = gh.verifyMessage(os.path.join(rootdir,pfile), os.path.join(rootdir,sigfile),
+                                              both_are_filenames = True)
+                    if len(keyids) > 0:
+                        syslog('gpg',"Valid signature from %s" % keyids)
+                        db_add_patch(conn, phash, pfile, sigfile, keyids[0])
+                        found = True
+                    break
+        conn.commit()
+
+def db_conn(mlist):
+    conn = sqlite3.connect(os.path.join(mm_cfg.LIST_DATA_DIR,mlist.internal_name(),'turds.sqlite'))
+    cur = conn.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS Patches (phash text primary key, pfilename text, submitter text, msglink text) ")
+    cur.execute("CREATE TABLE IF NOT EXISTS Sigs (shash text primary key, phash text references Patches, sigfilename text, keyid text, msglink text) ")
+    conn.commit()
+    return conn
+
+
+def db_get_patchfile(conn, phash):
+    cur = conn.cursor()
+    cur.execute('select pfilename from Patches where phash = :ph',dict(ph=phash))
+    try:
+        row = cur.fetchone()
+        return row[0]
+    except:
+        return None
+
+def db_have_sig(conn, shash):
+    cur = conn.cursor()
+    cur.execute('select 1 from Sigs where shash = :sh',dict(sh=shash))
+    try:
+        row = cur.fetchone()
+        return (row is not None)
+    except:
+        return False
+
+
+
+def db_add_patch(conn, phash, shash, pfile, sigfile, keyid):
+    cur = conn.cursor()
+    cur.execute('insert into Patches(phash, pfilename, submitter) values (:phash, :pfile, :keyid)',
+                dict(phash=phash, pfile=pfile, keyid=keyid))
+    cur.execute('insert into Sigs (shash, phash, sigfilename, keyid) values (:phash, :sigfile, :keyid)',
+                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid))
+
+
+def db_add_sig(conn, shash, phash, sigfile, keyid):
+    cur = conn.cursor()
+    cur.execute("insert into Sigs (phash, sigfilename, keyid) values (:phash, :sigfile, :keyid)",
+                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid))
