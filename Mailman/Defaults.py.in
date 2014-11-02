@@ -334,6 +334,10 @@ ARCHIVE_SCRUBBER = 'Mailman.Handlers.Scrubber'
 # for safer operation in mailman-2.1.7.
 SCRUBBER_DONT_USE_ATTACHMENT_FILENAME = True
 
+# Create unique filenames by hashing the payload. If file already exists,
+# it's presumed a duplicate and not overwritten.
+SCRUBBER_ADD_PAYLOAD_HASH_FILENAME = False
+
 # Use of attachment filename extension per se is may be dangerous because
 # virus fakes it. You can set this True if you filter the attachment by
 # filename extension

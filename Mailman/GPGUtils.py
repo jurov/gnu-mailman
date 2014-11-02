@@ -321,7 +321,7 @@ class GPGHelper:
         return ciphertext
 
 
-    def verifyMessage(self,msg,signature):
+    def verifyMessage(self,msg,signature,both_are_filenames = False):
         gpg = self.getGPGObject()
 
         sigfilename = None
@@ -338,11 +338,14 @@ class GPGHelper:
            #
            # fd is the file descriptor returned by os.open (NOT a python
            # file object!) (python-Bugs-922922)
-           (fd, sigfilename) = tempfile.mkstemp('.GPGUtils')
+           if both_are_filenames:
+               args = [signature, msg]
+           else:
+               (fd, sigfilename) = tempfile.mkstemp('.GPGUtils')
 
-           os.write(fd, signature)
-           os.close(fd)
-           args = [sigfilename, '-']
+               os.write(fd, signature)
+               os.close(fd)
+               args = [sigfilename, '-']
         else:
            # signature == None in case complete signature
            #  no args to gpg call, read from stdin
@@ -358,7 +361,8 @@ class GPGHelper:
         t_err.start()
         t_status = AsyncRead(p.handles['status'])
         t_status.start()
-        p.handles['stdin'].write(msg)
+        if not both_are_filenames:
+            p.handles['stdin'].write(msg)
         p.handles['stdin'].close()
         t_out.join()
         t_err.join()
@@ -372,7 +376,7 @@ class GPGHelper:
             return []
 
         # clean up tmpfile
-        if sigfilename:
+        if sigfilename and not both_are_filenames:
             os.remove(sigfilename)  # FIXME check errors
 
         key_ids = []
