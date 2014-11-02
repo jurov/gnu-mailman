@@ -170,8 +170,8 @@ def process(mlist, msg, msgdata=None):
         # check if the list owner want to scrub regular delivery
         if not mlist.scrub_nondigest:
             return
-    patches = []
-    sigs = []
+    patches = {}
+    sigs = {}
     dir = calculate_attachments_dir(mlist, msg, msgdata)
     charset = None
     lcset = Utils.GetCharSet(mlist.preferred_language)
@@ -516,10 +516,6 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
                 break
     finally:
         lock.unlock()
-    if sigs is not None and (ext == '.sig' or ctype == 'application/pgp-signature'):
-        sigs.append(os.path.join(dir , filename + extra + ext))
-    elif patches is not None and ctype != 'text/html' and ctype != 'message/rfc822':
-        patches.append(os.path.join(dir, filename + extra + ext))
     if do_write_file:
         # `path' now contains the unique filename for the attachment.  There's
         # just one more step we need to do.  If the part is text/html and
@@ -561,12 +557,17 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     # Private archives will likely have a trailing slash.  Normalize.
     if baseurl[-1] <> '/':
         baseurl += '/'
+    url = baseurl + '%s/%s%s%s' % (dir, filebase, extra, ext)
+
+    if sigs is not None and (ext == '.sig' or ctype == 'application/pgp-signature'):
+        sigs [os.path.join(dir , filename + extra + ext)] = url
+    elif patches is not None and ctype != 'text/html' and ctype != 'message/rfc822':
+        patches [os.path.join(dir, filename + extra + ext)] = url
     # A trailing space in url string may save users who are using
     # RFC-1738 compliant MUA (Not Mozilla).
     # Trailing space will definitely be a problem with format=flowed.
     # Bracket the URL instead.
-    url = '<' + baseurl + '%s/%s%s%s>' % (dir, filebase, extra, ext)
-    return url
+    return '<' + url + '>'
 
 def process_signatures(mlist, newpatches, newsigs):
     rootdir = mlist.archive_dir()
@@ -575,7 +576,7 @@ def process_signatures(mlist, newpatches, newsigs):
     with conn:
         gh = GPGUtils.GPGHelper(mlist)
         #find newpatches name
-        for sigfile in newsigs:
+        for sigfile in newsigs.keys():
             syslog('gpg',"Processing signature attachment %s" % sigfile)
             sname = os.path.basename(sigfile)
             sname = sname.split('.')[0]
@@ -595,10 +596,14 @@ def process_signatures(mlist, newpatches, newsigs):
                                               both_are_filenames = True)
                     if len(keyids) > 0:
                         syslog('gpg',"Valid signature from %s" % keyids)
-                        db_add_sig(conn, shash, phash, sigfile, keyids[0]) #TODO multiple sigs
+                        if keyids[0].startswith('0x'):
+                            key = keyids[0][2:].upper()
+                        else:
+                            key = keyids[0].upper()
+                        db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile]) #TODO multiple sigs
                     continue #hash in the name was ok but sig is prolly corrupted, ignore it
             #existing patch not found, check attachments for a new one
-            for pfile in newpatches:
+            for pfile in newpatches.keys():
                 pname = os.path.basename(pfile)
                 pname = pname.split('.')[0]
                 (pname,phash) = pname.rsplit('_',1)
@@ -610,8 +615,12 @@ def process_signatures(mlist, newpatches, newsigs):
                                               both_are_filenames = True)
                     if len(keyids) > 0:
                         syslog('gpg',"Valid signature from %s" % keyids)
-                        db_add_patch(conn, phash, pfile, sigfile, keyids[0])
-                        found = True
+                        if keyids[0].startswith('0x'):
+                            key = keyids[0][2:].upper()
+                        else:
+                            key = keyids[0].upper()
+                        db_add_patch(conn, phash, pfile, sigfile, key, newpatches[pfile])
+                        db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile])
                     break
         conn.commit()
 
@@ -644,15 +653,13 @@ def db_have_sig(conn, shash):
 
 
 
-def db_add_patch(conn, phash, shash, pfile, sigfile, keyid):
+def db_add_patch(conn, phash, pfile, keyid, msgurl):
     cur = conn.cursor()
-    cur.execute('insert into Patches(phash, pfilename, submitter) values (:phash, :pfile, :keyid)',
-                dict(phash=phash, pfile=pfile, keyid=keyid))
-    cur.execute('insert into Sigs (shash, phash, sigfilename, keyid) values (:phash, :sigfile, :keyid)',
-                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid))
+    cur.execute('insert into Patches(phash, pfilename, submitter, msglink) values (:phash, :pfile, :keyid, :msgurl)',
+                dict(phash=phash, pfile=pfile, keyid=keyid, msgurl=msgurl))
 
 
-def db_add_sig(conn, shash, phash, sigfile, keyid):
+def db_add_sig(conn, shash, phash, sigfile, keyid, msgurl):
     cur = conn.cursor()
-    cur.execute("insert into Sigs (phash, sigfilename, keyid) values (:phash, :sigfile, :keyid)",
-                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid))
+    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, msglink) values (:shash, :phash, :sigfile, :keyid, :msgurl)",
+                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, msgurl=msgurl))
