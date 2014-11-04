@@ -45,7 +45,7 @@ NL = '\n'
 # Format an arbitrary object.
 def HTMLFormatObject(item, indent):
     "Return a presentation of an object, invoking their Format method if any."
-    if type(item) == type(''):
+    if isinstance(item, basestring):
         return item
     elif not hasattr(item, "Format"):
         return `item`
