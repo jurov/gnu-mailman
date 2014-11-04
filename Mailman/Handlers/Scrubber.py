@@ -27,6 +27,7 @@ import binascii
 import tempfile
 from cStringIO import StringIO
 from types import IntType, StringType
+import stat
 
 from email.Utils import parsedate
 from email.Parser import HeaderParser
@@ -38,6 +39,7 @@ from Mailman import Utils
 from Mailman import LockFile
 from Mailman import Message
 from Mailman.Errors import DiscardMessage
+from Mailman.htmlformat import *
 from Mailman.i18n import _
 from Mailman.Logging.Syslog import syslog
 from Mailman.Utils import sha_new
@@ -571,7 +573,7 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
 
 def process_signatures(mlist, newpatches, newsigs):
     rootdir = mlist.archive_dir()
-
+    db_updated = False
     conn = db_conn(mlist)
     with conn:
         gh = GPGUtils.GPGHelper(mlist)
@@ -601,6 +603,7 @@ def process_signatures(mlist, newpatches, newsigs):
                         else:
                             key = keyids[0].upper()
                         db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile]) #TODO multiple sigs
+                        db_updated = True
                     continue #hash in the name was ok but sig is prolly corrupted, ignore it
             #existing patch not found, check attachments for a new one
             for pfile in newpatches.keys():
@@ -619,16 +622,31 @@ def process_signatures(mlist, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_patch(conn, phash, pfile, key, newpatches[pfile])
+                        db_add_patch(conn, phash, pfile, key, pname, newpatches[pfile])
                         db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile])
+                        db_updated = True
                     break
         conn.commit()
+        if db_updated:
+            db_export(conn,rootdir)
 
-def db_conn(mlist):
-    conn = sqlite3.connect(os.path.join(mm_cfg.LIST_DATA_DIR,mlist.internal_name(),'turds.sqlite'))
+def db_conn(mlist, override_db = None):
+    if override_db is None:
+        override_db = os.path.join(mm_cfg.LIST_DATA_DIR,mlist.internal_name(),'turds.sqlite')
+    conn = sqlite3.connect(override_db)
     cur = conn.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS Patches (phash text primary key, pfilename text, submitter text, msglink text) ")
-    cur.execute("CREATE TABLE IF NOT EXISTS Sigs (shash text primary key, phash text references Patches, sigfilename text, keyid text, msglink text) ")
+    cur.execute("PRAGMA user_version;")
+    version = cur.fetchone()[0]
+    if version < 1:
+        cur.execute("CREATE TABLE IF NOT EXISTS Patches (phash text primary key, pfilename text, submitter text, msglink text) ")
+        cur.execute("CREATE TABLE IF NOT EXISTS Sigs (shash text primary key, phash text references Patches, sigfilename text, keyid text, msglink text) ")
+    if version < 2:
+        cur.execute("ALTER TABLE Patches ADD COLUMN name text")
+    if version < 3:
+        cur.execute("ALTER TABLE Patches ADD COLUMN plink text")
+        cur.execute("ALTER TABLE Sigs ADD COLUMN siglink text")
+        cur.execute("PRAGMA user_version = 3;")
+
     conn.commit()
     return conn
 
@@ -653,13 +671,46 @@ def db_have_sig(conn, shash):
 
 
 
-def db_add_patch(conn, phash, pfile, keyid, msgurl):
+def db_add_patch(conn, phash, pfile, keyid, name, atturl):
     cur = conn.cursor()
-    cur.execute('insert into Patches(phash, pfilename, submitter, msglink) values (:phash, :pfile, :keyid, :msgurl)',
-                dict(phash=phash, pfile=pfile, keyid=keyid, msgurl=msgurl))
+    cur.execute('insert into Patches(phash, pfilename, submitter, name, plink) values (:phash, :pfile, :keyid, :name, :atturl)',
+                dict(phash=phash, pfile=pfile, keyid=keyid, name=name, atturl=atturl))
 
 
-def db_add_sig(conn, shash, phash, sigfile, keyid, msgurl):
+def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl):
     cur = conn.cursor()
-    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, msglink) values (:shash, :phash, :sigfile, :keyid, :msgurl)",
-                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, msgurl=msgurl))
+    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, siglink) values (:shash, :phash, :sigfile, :keyid, :sigurl)",
+                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl))
+
+def db_export(conn, archive_dir):
+    cur = conn.cursor()
+    cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink from Patches p join Sigs s order by p.name')
+    #                   0           1       2       3           4           5       6
+    table = Table(width="100%")
+    table.AddRow([Center(Header(4, "Received patches"))])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=4,
+                      bgcolor=mm_cfg.WEB_HEADER_COLOR)
+    table.AddRow(['Patch ID', 'Patch name', 'Submitted by', 'Signed by'])
+    row = cur.fetchone()
+    htmlrow = []
+    while row is not None:
+        if htmlrow == []:
+           htmlrow = [Link(row[2],row[0]) if row[2] else row[0],
+                      row[1],
+                      Link(row[3],row[4]) if row[3] else row[4],[]]
+        if row[4] != row[5]:
+            htmlrow[3].append(Link(row[6],row[5]) if row[6] else row[5])
+        row = cur.fetchone()
+        if row is None or row[0] != htmlrow[0]:
+            htmlrow[3] = UnorderedList(*tuple(htmlrow[3]))
+            table.AddRow(htmlrow)
+            htmlrow = []
+
+    tmpfilename=os.path.join(archive_dir,'.patches.html.tmp')
+    f = open(tmpfilename,'w')
+    with f:
+        f.write('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><body>')
+        f.write(table.Format())
+        f.write('</html></body>')
+    os.chmod(tmpfilename,stat.S_IRUSR | stat.S_IWUSR| stat.S_IRGRP| stat.S_IWGRP| stat.S_IROTH)
+    os.rename(tmpfilename, os.path.join(archive_dir,'patches.html'))
