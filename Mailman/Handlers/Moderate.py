@@ -390,25 +390,24 @@ def process(mlist, msg, msgdata):
                             senderMatchesKey = True
                             break
             if not senderMatchesKey:
-                syslog('gpg','Message signed by key %s which does not match message sender address, passing anyway')
+                syslog('gpg','Message signed by key %s which does not match message sender %s, passing anyway' %(key_ids,msg.get_senders()))
                 #temp fix
-                signedByMember = True
                 #do_discard(mlist, msg)
 
-        for user in mlist.getMembers():
-            syslog('gpg','Checking signature: listmember %s',user)
-            for key_id in key_ids:
-                syslog('gpg','Checking signature: key_id %s',key_id)
-                try:
-                    ks=mlist.getGPGKeyIDs(user)
-                except:
-                    ks=None
-                if ks:
-                    for k in mlist.getGPGKeyIDs(user):
-                        syslog('gpg','Checking signature: keyid of listmember is %s',k)
-                        if k==key_id:
-                            signedByMember = True
-                            break
+#         for user in mlist.getMembers():
+#             syslog('gpg','Checking signature: listmember %s',user)
+#             for key_id in key_ids:
+#                 syslog('gpg','Checking signature: key_id %s',key_id)
+#                 try:
+#                     ks=mlist.getGPGKeyIDs(user)
+#                 except:
+#                     ks=None
+#                 if ks:
+#                     for k in mlist.getGPGKeyIDs(user):
+#                         syslog('gpg','Checking signature: keyid of listmember is %s',k)
+#                         if k==key_id:
+#                             signedByMember = True
+#                             break
 
     # done dealing with most of gpg stuff
 
