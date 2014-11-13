@@ -344,13 +344,16 @@ def process(mlist, msg, msgdata):
                         if subsubmsg.get_content_type()=='text/plain':
                             if not payload:
                                 # text without headers
-                                signatures = [None]
                                 payload = subsubmsg.get_payload(decode=True)
+                                if payload.lstrip().startswith('-----BEGIN PGP '):
+                                    signatures = [None]
                             else:
                                 # we only deal with exactly one payload part
                                 syslog('gpg','multipart/alternative message with more than one plaintext')
                                 do_discard(mlist, msg)
-                    if payload:
+                    if len(signatures) == 0:
+                        payload = None
+                    elif payload:
                         break
 
         for signature in signatures:
@@ -393,7 +396,8 @@ def process(mlist, msg, msgdata):
                 syslog('gpg','Message signed by key %s which does not match message sender %s, passing anyway' %(key_ids,msg.get_senders()))
                 #temp fix
                 #do_discard(mlist, msg)
-
+        #we use gpg keyring in lieu of memberlist
+        signedByMember = True
 #         for user in mlist.getMembers():
 #             syslog('gpg','Checking signature: listmember %s',user)
 #             for key_id in key_ids:
