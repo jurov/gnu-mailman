@@ -561,7 +561,7 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
         baseurl += '/'
     url = baseurl + '%s/%s%s%s' % (dir, filebase, extra, ext)
 
-    if sigs is not None and (ext == '.sig' or ctype == 'application/pgp-signature'):
+    if sigs is not None and (ext.endswith('.sig') or ctype == 'application/pgp-signature'):
         sigs [os.path.join(dir , filename + extra + ext)] = url
     elif patches is not None and ctype != 'text/html' and ctype != 'message/rfc822':
         patches [os.path.join(dir, filename + extra + ext)] = url
