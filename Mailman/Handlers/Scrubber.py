@@ -713,6 +713,6 @@ def db_export(conn, archive_dir):
     with f:
         f.write('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><body>')
         f.write(table.Format())
-        f.write('</html></body>')
+        f.write('</body></html>')
     os.chmod(tmpfilename,stat.S_IRUSR | stat.S_IWUSR| stat.S_IRGRP| stat.S_IWGRP| stat.S_IROTH)
     os.rename(tmpfilename, os.path.join(archive_dir,'patches.html'))
