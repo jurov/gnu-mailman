@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxpaint-2.1pre\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Fri Oct 17 08:53:32 2014\n"
+"POT-Creation-Date: Fri May  2 21:50:40 2014\n"
 "PO-Revision-Date: 2011-09-15 11:53+0800\n"
 "Last-Translator: Limperis Antonis <limperis@cti.gr>\n"
 "Language-Team: Greek <listmaster@sch.gr>\n"
@@ -205,37 +205,33 @@ msgstr "από εσένα"
 msgid "by the list administrator"
 msgstr "από το διαχειριστή της λίστας"
 
-#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:293
+#: Mailman/Bouncer.py:48 Mailman/Bouncer.py:286
 #: Mailman/Commands/cmd_set.py:182
 msgid "for unknown reasons"
 msgstr "για άγνωστους λόγους"
 
-#: Mailman/Bouncer.py:198
-msgid "bounce score incremented"
-msgstr ""
-
-#: Mailman/Bouncer.py:228
+#: Mailman/Bouncer.py:233
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
-#: Mailman/Bouncer.py:245
+#: Mailman/Bouncer.py:238
 msgid "Bounce action notification"
 msgstr "Ειδοποίηση ενέργειας επιστροφής μηνύματος"
 
-#: Mailman/Bouncer.py:300
+#: Mailman/Bouncer.py:293
 msgid " The last bounce received from you was dated %(date)s"
 msgstr ""
-" Το τελευταίο επιστρεφόμενο μήνυμα το οποίο ελήφθη από εσάς ήταν στις "
-"%(date)s"
+" Το τελευταίο επιστρεφόμενο μήνυμα το οποίο ελήφθη από εσάς ήταν στις %(date)"
+"s"
 
-#: Mailman/Bouncer.py:329 Mailman/Deliverer.py:144
-#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:339
+#: Mailman/Bouncer.py:322 Mailman/Deliverer.py:144
+#: Mailman/Handlers/Acknowledge.py:44 Mailman/Handlers/CookHeaders.py:333
 #: Mailman/Handlers/Hold.py:215 Mailman/Handlers/ToDigest.py:240
 #: Mailman/ListAdmin.py:223
 msgid "(no subject)"
 msgstr "(δεν υπάρχει θέμα)"
 
-#: Mailman/Bouncer.py:333
+#: Mailman/Bouncer.py:326
 msgid "[No bounce details are available]"
 msgstr "[Δεν υπάρχουν διαθέσιμες λεπτομέρειες για επιστροφές μηνυμάτων]"
 
@@ -249,7 +245,7 @@ msgstr "Διαχειριστή"
 
 #: Mailman/Cgi/admin.py:79 Mailman/Cgi/admindb.py:116
 #: Mailman/Cgi/confirm.py:62 Mailman/Cgi/edithtml.py:71
-#: Mailman/Cgi/listinfo.py:55 Mailman/Cgi/options.py:90
+#: Mailman/Cgi/listinfo.py:55 Mailman/Cgi/options.py:78
 #: Mailman/Cgi/private.py:108 Mailman/Cgi/rmlist.py:64
 #: Mailman/Cgi/roster.py:59 Mailman/Cgi/subscribe.py:63
 msgid "No such list <em>%(safelistname)s</em>"
@@ -463,7 +459,7 @@ msgid " (requires confirmation)<br>&nbsp;<br>"
 msgstr " (απαιτεί επιβεβαίωση)<br>&nbsp;<br>"
 
 #: Mailman/Cgi/admin.py:462 Mailman/Cgi/admindb.py:218
-#: Mailman/Cgi/admindb.py:299
+#: Mailman/Cgi/admindb.py:295
 msgid "Logout"
 msgstr "Έξοδος"
 
@@ -542,7 +538,7 @@ msgstr "Όνομα Θέματος:"
 msgid "Regexp:"
 msgstr "Regexp:"
 
-#: Mailman/Cgi/admin.py:738 Mailman/Cgi/options.py:1065
+#: Mailman/Cgi/admin.py:738 Mailman/Cgi/options.py:1053
 msgid "Description:"
 msgstr "Περιγραφή:"
 
@@ -566,15 +562,15 @@ msgstr "Κανόνας Φιλτρατίσματος Spam %(i)d"
 msgid "Spam Filter Regexp:"
 msgstr "kανονική έκφραση (Regexp) Spam Φίλτρού :"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:354
-#: Mailman/Cgi/admindb.py:415 Mailman/Cgi/admindb.py:469
-#: Mailman/Cgi/admindb.py:719
+#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:350
+#: Mailman/Cgi/admindb.py:409 Mailman/Cgi/admindb.py:463
+#: Mailman/Cgi/admindb.py:704
 msgid "Defer"
 msgstr "Καμία Ενέργεια"
 
-#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:356
-#: Mailman/Cgi/admindb.py:417 Mailman/Cgi/admindb.py:469
-#: Mailman/Cgi/admindb.py:719 Mailman/Gui/ContentFilter.py:37
+#: Mailman/Cgi/admin.py:794 Mailman/Cgi/admindb.py:352
+#: Mailman/Cgi/admindb.py:411 Mailman/Cgi/admindb.py:463
+#: Mailman/Cgi/admindb.py:704 Mailman/Gui/ContentFilter.py:37
 #: Mailman/Gui/Privacy.py:221 Mailman/Gui/Privacy.py:244
 #: Mailman/Gui/Privacy.py:355
 msgid "Reject"
@@ -585,20 +581,20 @@ msgstr "Απόρριψη"
 msgid "Hold"
 msgstr "Κράτηση"
 
-#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:357
-#: Mailman/Cgi/admindb.py:418 Mailman/Cgi/admindb.py:469
-#: Mailman/Cgi/admindb.py:719 Mailman/Commands/cmd_confirm.py:93
+#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:353
+#: Mailman/Cgi/admindb.py:412 Mailman/Cgi/admindb.py:463
+#: Mailman/Cgi/admindb.py:704 Mailman/Commands/cmd_confirm.py:93
 #: Mailman/Gui/ContentFilter.py:37 Mailman/Gui/Privacy.py:221
 #: Mailman/Gui/Privacy.py:245 Mailman/Gui/Privacy.py:355
 msgid "Discard"
 msgstr "Διαγραφή δίχως ενημέρωση"
 
-#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:469
+#: Mailman/Cgi/admin.py:795 Mailman/Cgi/admindb.py:463
 #: Mailman/Gui/Privacy.py:244 Mailman/Gui/Privacy.py:355
 msgid "Accept"
 msgstr "Αποδοχή"
 
-#: Mailman/Cgi/admin.py:798 Mailman/Cgi/admindb.py:725
+#: Mailman/Cgi/admin.py:798 Mailman/Cgi/admindb.py:710
 msgid "Action:"
 msgstr "Ενέργειες:"
 
@@ -700,7 +696,7 @@ msgstr "όχι διπλά"
 msgid "plain"
 msgstr "απλό κείμενο"
 
-#: Mailman/Cgi/admin.py:997 Mailman/Cgi/options.py:319
+#: Mailman/Cgi/admin.py:997 Mailman/Cgi/options.py:307
 msgid "digest"
 msgstr "σύνοψη"
 
@@ -876,25 +872,24 @@ msgstr "Αποστολή μηνύματος καλωσορίσματος στα νέα μέλη της λίστας;"
 #: Mailman/Gui/Autoresponse.py:54 Mailman/Gui/Autoresponse.py:62
 #: Mailman/Gui/Autoresponse.py:71 Mailman/Gui/Bounce.py:77
 #: Mailman/Gui/Bounce.py:120 Mailman/Gui/Bounce.py:146
-#: Mailman/Gui/Bounce.py:155 Mailman/Gui/Bounce.py:164
-#: Mailman/Gui/ContentFilter.py:74 Mailman/Gui/ContentFilter.py:116
-#: Mailman/Gui/ContentFilter.py:120 Mailman/Gui/Digest.py:46
-#: Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84 Mailman/Gui/Digest.py:89
-#: Mailman/Gui/General.py:158 Mailman/Gui/General.py:223
-#: Mailman/Gui/General.py:229 Mailman/Gui/General.py:307
-#: Mailman/Gui/General.py:334 Mailman/Gui/General.py:361
-#: Mailman/Gui/General.py:372 Mailman/Gui/General.py:375
-#: Mailman/Gui/General.py:385 Mailman/Gui/General.py:390
-#: Mailman/Gui/General.py:396 Mailman/Gui/General.py:416
-#: Mailman/Gui/General.py:448 Mailman/Gui/General.py:471
-#: Mailman/Gui/General.py:488 Mailman/Gui/NonDigest.py:45
-#: Mailman/Gui/NonDigest.py:53 Mailman/Gui/NonDigest.py:140
-#: Mailman/Gui/NonDigest.py:162 Mailman/Gui/Privacy.py:110
-#: Mailman/Gui/Privacy.py:116 Mailman/Gui/Privacy.py:149
-#: Mailman/Gui/Privacy.py:202 Mailman/Gui/Privacy.py:273
-#: Mailman/Gui/Privacy.py:370 Mailman/Gui/Privacy.py:389
-#: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
-#: Mailman/Gui/Usenet.py:105
+#: Mailman/Gui/Bounce.py:155 Mailman/Gui/ContentFilter.py:74
+#: Mailman/Gui/ContentFilter.py:116 Mailman/Gui/ContentFilter.py:120
+#: Mailman/Gui/Digest.py:46 Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84
+#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:158
+#: Mailman/Gui/General.py:223 Mailman/Gui/General.py:229
+#: Mailman/Gui/General.py:307 Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:361 Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:375 Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:390 Mailman/Gui/General.py:396
+#: Mailman/Gui/General.py:416 Mailman/Gui/General.py:448
+#: Mailman/Gui/General.py:471 Mailman/Gui/General.py:488
+#: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
+#: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
+#: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:202
+#: Mailman/Gui/Privacy.py:273 Mailman/Gui/Privacy.py:370
+#: Mailman/Gui/Privacy.py:389 Mailman/Gui/Usenet.py:52
+#: Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93 Mailman/Gui/Usenet.py:105
 msgid "No"
 msgstr "Όχι"
 
@@ -906,24 +901,23 @@ msgstr "Όχι"
 #: Mailman/Gui/Autoresponse.py:54 Mailman/Gui/Autoresponse.py:62
 #: Mailman/Gui/Bounce.py:77 Mailman/Gui/Bounce.py:120
 #: Mailman/Gui/Bounce.py:146 Mailman/Gui/Bounce.py:155
-#: Mailman/Gui/Bounce.py:164 Mailman/Gui/ContentFilter.py:74
-#: Mailman/Gui/ContentFilter.py:116 Mailman/Gui/ContentFilter.py:120
-#: Mailman/Gui/Digest.py:46 Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84
-#: Mailman/Gui/Digest.py:89 Mailman/Gui/General.py:223
-#: Mailman/Gui/General.py:229 Mailman/Gui/General.py:307
-#: Mailman/Gui/General.py:334 Mailman/Gui/General.py:361
-#: Mailman/Gui/General.py:372 Mailman/Gui/General.py:375
-#: Mailman/Gui/General.py:385 Mailman/Gui/General.py:390
-#: Mailman/Gui/General.py:396 Mailman/Gui/General.py:416
-#: Mailman/Gui/General.py:448 Mailman/Gui/General.py:471
-#: Mailman/Gui/General.py:488 Mailman/Gui/NonDigest.py:45
-#: Mailman/Gui/NonDigest.py:53 Mailman/Gui/NonDigest.py:140
-#: Mailman/Gui/NonDigest.py:162 Mailman/Gui/Privacy.py:110
-#: Mailman/Gui/Privacy.py:116 Mailman/Gui/Privacy.py:149
-#: Mailman/Gui/Privacy.py:202 Mailman/Gui/Privacy.py:273
-#: Mailman/Gui/Privacy.py:370 Mailman/Gui/Privacy.py:389
-#: Mailman/Gui/Usenet.py:52 Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93
-#: Mailman/Gui/Usenet.py:105
+#: Mailman/Gui/ContentFilter.py:74 Mailman/Gui/ContentFilter.py:116
+#: Mailman/Gui/ContentFilter.py:120 Mailman/Gui/Digest.py:46
+#: Mailman/Gui/Digest.py:62 Mailman/Gui/Digest.py:84 Mailman/Gui/Digest.py:89
+#: Mailman/Gui/General.py:223 Mailman/Gui/General.py:229
+#: Mailman/Gui/General.py:307 Mailman/Gui/General.py:334
+#: Mailman/Gui/General.py:361 Mailman/Gui/General.py:372
+#: Mailman/Gui/General.py:375 Mailman/Gui/General.py:385
+#: Mailman/Gui/General.py:390 Mailman/Gui/General.py:396
+#: Mailman/Gui/General.py:416 Mailman/Gui/General.py:448
+#: Mailman/Gui/General.py:471 Mailman/Gui/General.py:488
+#: Mailman/Gui/NonDigest.py:45 Mailman/Gui/NonDigest.py:53
+#: Mailman/Gui/NonDigest.py:140 Mailman/Gui/NonDigest.py:162
+#: Mailman/Gui/Privacy.py:110 Mailman/Gui/Privacy.py:116
+#: Mailman/Gui/Privacy.py:149 Mailman/Gui/Privacy.py:202
+#: Mailman/Gui/Privacy.py:273 Mailman/Gui/Privacy.py:370
+#: Mailman/Gui/Privacy.py:389 Mailman/Gui/Usenet.py:52
+#: Mailman/Gui/Usenet.py:56 Mailman/Gui/Usenet.py:93 Mailman/Gui/Usenet.py:105
 msgid "Yes"
 msgstr "Ναι"
 
@@ -1076,7 +1070,7 @@ msgid "&lt;blank line&gt;"
 msgstr "&lt;κενή γραμμή&gt;"
 
 #: Mailman/Cgi/admin.py:1404 Mailman/Cgi/admin.py:1407
-#: Mailman/Cgi/admindb.py:938
+#: Mailman/Cgi/admindb.py:919
 msgid "Bad/Invalid email address"
 msgstr "Κακή/Όχι Έγκυρη διεύθυνση emai"
 
@@ -1157,139 +1151,139 @@ msgstr "Αναλυτικές οδηγίες για τη διαχειριστική βάση"
 msgid "Administrative requests for mailing list:"
 msgstr "Διαχειριστικά αιτήματα για τη λίστα ηλεκτρονικού ταχυδρομείου:"
 
-#: Mailman/Cgi/admindb.py:235 Mailman/Cgi/admindb.py:295
+#: Mailman/Cgi/admindb.py:235 Mailman/Cgi/admindb.py:291
 msgid "Submit All Data"
 msgstr "Αποστολή όλων των δεδομένων"
 
-#: Mailman/Cgi/admindb.py:242 Mailman/Cgi/admindb.py:292
+#: Mailman/Cgi/admindb.py:241 Mailman/Cgi/admindb.py:289
 msgid "Discard all messages marked <em>Defer</em>"
 msgstr ""
 "Διαγραφή χωρίς ενημέρωση όλων των σημειωμένων  μηνυμάτων με  <em>\"Καμία "
 "Ενέργεια\"</em>"
 
-#: Mailman/Cgi/admindb.py:257
+#: Mailman/Cgi/admindb.py:255
 msgid "all of %(esender)s's held messages."
 msgstr "όλα τα μηνύματα του %(esender)s που κρατούνται."
 
-#: Mailman/Cgi/admindb.py:262
+#: Mailman/Cgi/admindb.py:260
 msgid "a single held message."
 msgstr "μόνο ένα μήνυμα κρατείται."
 
-#: Mailman/Cgi/admindb.py:267
+#: Mailman/Cgi/admindb.py:265
 msgid "all held messages."
 msgstr "όλα τα μηνύματα που κρατούνται."
 
-#: Mailman/Cgi/admindb.py:314
+#: Mailman/Cgi/admindb.py:310
 msgid "Mailman Administrative Database Error"
 msgstr "Λάθος στη Διαχειριστική Βάση του Mailman"
 
-#: Mailman/Cgi/admindb.py:319
+#: Mailman/Cgi/admindb.py:315
 msgid "list of available mailing lists."
 msgstr "λίστα με όλες τις διαθέσιμες λίστες ηλεκτρονικού ταχυδρομείου."
 
-#: Mailman/Cgi/admindb.py:320
+#: Mailman/Cgi/admindb.py:316
 msgid "You must specify a list name.  Here is the %(link)s"
 msgstr "Πρέπει να ορίσετε ένα όνομα λίστας. Αυτό είναι το %(link)s"
 
-#: Mailman/Cgi/admindb.py:333
+#: Mailman/Cgi/admindb.py:329
 msgid "Subscription Requests"
 msgstr "Αιτήματα εγγραφής"
 
-#: Mailman/Cgi/admindb.py:335
+#: Mailman/Cgi/admindb.py:331
 msgid "Address/name"
 msgstr "Διεύθυνση/όνομα"
 
-#: Mailman/Cgi/admindb.py:336 Mailman/Cgi/admindb.py:389
+#: Mailman/Cgi/admindb.py:332 Mailman/Cgi/admindb.py:383
 msgid "Your decision"
 msgstr "Η απόφασή σου"
 
-#: Mailman/Cgi/admindb.py:337 Mailman/Cgi/admindb.py:390
+#: Mailman/Cgi/admindb.py:333 Mailman/Cgi/admindb.py:384
 msgid "Reason for refusal"
 msgstr "Λόγος απόρριψης"
 
-#: Mailman/Cgi/admindb.py:355 Mailman/Cgi/admindb.py:416
-#: Mailman/Cgi/admindb.py:719 Mailman/Commands/cmd_confirm.py:90
+#: Mailman/Cgi/admindb.py:351 Mailman/Cgi/admindb.py:410
+#: Mailman/Cgi/admindb.py:704 Mailman/Commands/cmd_confirm.py:90
 msgid "Approve"
 msgstr "Εγκρίνεται"
 
-#: Mailman/Cgi/admindb.py:366
+#: Mailman/Cgi/admindb.py:361
 msgid "Permanently ban from this list"
 msgstr "Μόνιμος αποκλεισμός από τη λίστα"
 
-#: Mailman/Cgi/admindb.py:388
+#: Mailman/Cgi/admindb.py:382
 msgid "User address/name"
 msgstr "Διεύθυνση/όνομα Χρήστη"
 
-#: Mailman/Cgi/admindb.py:428
+#: Mailman/Cgi/admindb.py:422
 msgid "Unsubscription Requests"
 msgstr "Αιτήματα διαγραφής"
 
-#: Mailman/Cgi/admindb.py:440
+#: Mailman/Cgi/admindb.py:434
 msgid "Held Messages"
 msgstr "Μηνύματα που Κρατούνται."
 
-#: Mailman/Cgi/admindb.py:443
+#: Mailman/Cgi/admindb.py:437
 msgid "Show this list grouped/sorted by"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:446
+#: Mailman/Cgi/admindb.py:440
 msgid "sender/sender"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:446
+#: Mailman/Cgi/admindb.py:440
 msgid "sender/time"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:446
+#: Mailman/Cgi/admindb.py:440
 msgid "ungrouped/time"
 msgstr ""
 
-#: Mailman/Cgi/admindb.py:462 Mailman/Cgi/admindb.py:702
+#: Mailman/Cgi/admindb.py:456 Mailman/Cgi/admindb.py:687
 msgid "From:"
 msgstr "Από:"
 
-#: Mailman/Cgi/admindb.py:465
+#: Mailman/Cgi/admindb.py:459
 msgid "Action to take on all these held messages:"
 msgstr "Ενέργεια που θα εφαρμοστεί σε όλα αυτά τα κρατημένα μηνύματα:"
 
-#: Mailman/Cgi/admindb.py:478
+#: Mailman/Cgi/admindb.py:471
 msgid "Preserve messages for the site administrator"
 msgstr "Διατήρηση μηνυμάτων για το διαχειριστή του δικτυακού τόπου"
 
-#: Mailman/Cgi/admindb.py:486
+#: Mailman/Cgi/admindb.py:477
 msgid "Forward messages (individually) to:"
 msgstr "Προώθηση μηνυμάτων (ξεχωριστά) προς:"
 
-#: Mailman/Cgi/admindb.py:506
+#: Mailman/Cgi/admindb.py:495
 msgid "Clear this member's <em>moderate</em> flag"
 msgstr "Καθαρισμός της <em>moderate</em> μεταβλητής αυτού του μέλους"
 
-#: Mailman/Cgi/admindb.py:511
+#: Mailman/Cgi/admindb.py:499
 msgid "<em>The sender is now a member of this list</em>"
 msgstr "<em>Ο αποστολέας είναι τώρα μέλος αυτής της λίστας</em>"
 
-#: Mailman/Cgi/admindb.py:521
+#: Mailman/Cgi/admindb.py:508
 msgid "Add <b>%(esender)s</b> to one of these sender filters:"
 msgstr ""
 "Προσθήκη <b>%(esender)s</b> σε ένα από αυτά τα φίλτρα για τους αποστολείς:"
 
-#: Mailman/Cgi/admindb.py:527
+#: Mailman/Cgi/admindb.py:513
 msgid "Accepts"
 msgstr "Αποδοχές"
 
-#: Mailman/Cgi/admindb.py:527
+#: Mailman/Cgi/admindb.py:513
 msgid "Discards"
 msgstr "Απορρίψεις χωρίς ειδοποιήση"
 
-#: Mailman/Cgi/admindb.py:527
+#: Mailman/Cgi/admindb.py:513
 msgid "Holds"
 msgstr "Κρατήσεις"
 
-#: Mailman/Cgi/admindb.py:527
+#: Mailman/Cgi/admindb.py:513
 msgid "Rejects"
 msgstr "Απορρίψεις"
 
-#: Mailman/Cgi/admindb.py:537
+#: Mailman/Cgi/admindb.py:522
 msgid ""
 "Ban <b>%(esender)s</b> from ever subscribing to this\n"
 "                    mailing list"
@@ -1297,7 +1291,7 @@ msgstr ""
 "Απαγόρευση <b>%(esender)s</b> από την εγγραφή του σε αυτή τη\n"
 "                    λίστα για πάντα"
 
-#: Mailman/Cgi/admindb.py:542
+#: Mailman/Cgi/admindb.py:527
 msgid ""
 "Click on the message number to view the individual\n"
 "            message, or you can "
@@ -1305,85 +1299,85 @@ msgstr ""
 "Κάντε click στον αριθμό του μηνύματος για να δείτε το κάθε\n"
 "            μήνυμα, ή μπορείτε "
 
-#: Mailman/Cgi/admindb.py:544
+#: Mailman/Cgi/admindb.py:529
 msgid "view all messages from %(esender)s"
 msgstr "να δείτε όλα τα μηνύματα από τον %(esender)s"
 
-#: Mailman/Cgi/admindb.py:566 Mailman/Cgi/admindb.py:705
+#: Mailman/Cgi/admindb.py:551 Mailman/Cgi/admindb.py:690
 msgid "Subject:"
 msgstr "Θέμα:"
 
-#: Mailman/Cgi/admindb.py:569
+#: Mailman/Cgi/admindb.py:554
 msgid " bytes"
 msgstr " bytes"
 
-#: Mailman/Cgi/admindb.py:569
+#: Mailman/Cgi/admindb.py:554
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: Mailman/Cgi/admindb.py:573 Mailman/Handlers/Scrubber.py:203
+#: Mailman/Cgi/admindb.py:558 Mailman/Handlers/Scrubber.py:203
 #: Mailman/Handlers/Scrubber.py:301 Mailman/Handlers/Scrubber.py:303
 msgid "not available"
 msgstr "δεν είναι διαθέσιμο"
 
-#: Mailman/Cgi/admindb.py:574 Mailman/Cgi/admindb.py:708
+#: Mailman/Cgi/admindb.py:559 Mailman/Cgi/admindb.py:693
 msgid "Reason:"
 msgstr "Αιτία:"
 
-#: Mailman/Cgi/admindb.py:578 Mailman/Cgi/admindb.py:712
+#: Mailman/Cgi/admindb.py:563 Mailman/Cgi/admindb.py:697
 msgid "Received:"
 msgstr "Παρελήφθη:"
 
-#: Mailman/Cgi/admindb.py:634
+#: Mailman/Cgi/admindb.py:619
 msgid "Posting Held for Approval"
 msgstr "Το μήνυμα Κρατείται προς Έγκριση"
 
-#: Mailman/Cgi/admindb.py:636
+#: Mailman/Cgi/admindb.py:621
 msgid " (%(count)d of %(total)d)"
 msgstr " (%(count)d από %(total)d)"
 
-#: Mailman/Cgi/admindb.py:647
+#: Mailman/Cgi/admindb.py:632
 msgid "<em>Message with id #%(id)d was lost."
 msgstr "<em>Το μήνυμα με το χαρακτηριστικό όνομα #%(id)d χάθηκε."
 
-#: Mailman/Cgi/admindb.py:656
+#: Mailman/Cgi/admindb.py:641
 msgid "<em>Message with id #%(id)d is corrupted."
 msgstr "<em>Το μήνυμα με το χαρακτηριστικό όνομα #%(id)d είναι κατεστραμμένο."
 
-#: Mailman/Cgi/admindb.py:730
+#: Mailman/Cgi/admindb.py:714
 msgid "Preserve message for site administrator"
 msgstr "Διατήρηση μηνύματος για το διαχειριστή του δικτυακού τόπου"
 
-#: Mailman/Cgi/admindb.py:736
+#: Mailman/Cgi/admindb.py:718
 msgid "Additionally, forward this message to: "
 msgstr "Επιπρόσθετα, προώθησε το μήνυμα στο: "
 
-#: Mailman/Cgi/admindb.py:741 Mailman/Cgi/admindb.py:810
-#: Mailman/Cgi/admindb.py:887 Mailman/Cgi/admindb.py:889
+#: Mailman/Cgi/admindb.py:722 Mailman/Cgi/admindb.py:791
+#: Mailman/Cgi/admindb.py:868 Mailman/Cgi/admindb.py:870
 msgid "[No explanation given]"
 msgstr "[Δε δίνεται εξήγηση]"
 
-#: Mailman/Cgi/admindb.py:743
+#: Mailman/Cgi/admindb.py:724
 msgid "If you reject this post,<br>please explain (optional):"
 msgstr "Αν απορρίψετε αυτό το μήνυμα,<br>παρακαλώ εξηγήστε (προαιρετικά):"
 
-#: Mailman/Cgi/admindb.py:749
+#: Mailman/Cgi/admindb.py:730
 msgid "Message Headers:"
 msgstr "Επικεφαλίδες του Μηνύματος"
 
-#: Mailman/Cgi/admindb.py:754
+#: Mailman/Cgi/admindb.py:735
 msgid "Message Excerpt:"
 msgstr "Απόσπασμα Μηνύματος"
 
-#: Mailman/Cgi/admindb.py:926
+#: Mailman/Cgi/admindb.py:907
 msgid "Database Updated..."
 msgstr "Η Βάση Ανανεώθηκε"
 
-#: Mailman/Cgi/admindb.py:930
+#: Mailman/Cgi/admindb.py:911
 msgid " is already a member"
 msgstr " είναι ήδη μέλος"
 
-#: Mailman/Cgi/admindb.py:934
+#: Mailman/Cgi/admindb.py:915
 msgid "%(addr)s is banned (matched: %(patt)s)"
 msgstr "%(addr)s απαγορεύεται (ταιριάζει: %(patt)s)"
 
@@ -1712,8 +1706,8 @@ msgid ""
 "    request."
 msgstr ""
 "Απαιτείται η επιβεβαίωσή σας προκειμένου να ολοκληρωθεί το\n"
-"    αίτημα διαγραφής από τη λίστα ηλεκτρονικού ταχυδρομείου <em>"
-"%(listname)s</em>.\n"
+"    αίτημα διαγραφής από τη λίστα ηλεκτρονικού ταχυδρομείου <em>%(listname)"
+"s</em>.\n"
 "    Αυτή τη στιγμή είστε εγγεγραμμένος με\n"
 "\n"
 "    <ul><li><b>Πραγματικό όνομα:</b> %(fullname)s\n"
@@ -1728,8 +1722,8 @@ msgstr ""
 "ακύρωση του αιτήματος\n"
 "     εγγραφής."
 
-#: Mailman/Cgi/confirm.py:492 Mailman/Cgi/options.py:779
-#: Mailman/Cgi/options.py:923 Mailman/Cgi/options.py:933
+#: Mailman/Cgi/confirm.py:492 Mailman/Cgi/options.py:767
+#: Mailman/Cgi/options.py:911 Mailman/Cgi/options.py:921
 msgid "Unsubscribe"
 msgstr "Διαγραφή"
 
@@ -2148,7 +2142,7 @@ msgid "Create a %(hostname)s Mailing List"
 msgstr "Δημιουργία μιας λίστας στο %(hostname)s"
 
 #: Mailman/Cgi/create.py:303 Mailman/Cgi/rmlist.py:201
-#: Mailman/Gui/Bounce.py:196 Mailman/htmlformat.py:345
+#: Mailman/Gui/Bounce.py:187 Mailman/htmlformat.py:345
 msgid "Error: "
 msgstr "Λάθος: "
 
@@ -2384,8 +2378,8 @@ msgid ""
 "            %(mailmanlink)s mailing lists on %(hostname)s."
 msgstr ""
 "<p>Δεν υπάρχουν αυτή τη στιγμή δημόσια προβαλλόμενες\n"
-"            %(mailmanlink)s λίστες ηλεκτρονικού ταχυδρομείου στο "
-"%(hostname)s."
+"            %(mailmanlink)s λίστες ηλεκτρονικού ταχυδρομείου στο %(hostname)"
+"s."
 
 #: Mailman/Cgi/listinfo.py:115
 msgid ""
@@ -2437,38 +2431,33 @@ msgstr ""
 msgid "Edit Options"
 msgstr "Επιλογές Επεξεργασίας"
 
-#: Mailman/Cgi/listinfo.py:215 Mailman/Cgi/options.py:888
+#: Mailman/Cgi/listinfo.py:215 Mailman/Cgi/options.py:876
 #: Mailman/Cgi/roster.py:118
 msgid "View this page in"
 msgstr "Δείτε αυτή τη σελίδα σε"
 
-#: Mailman/Cgi/options.py:57 Mailman/Cgi/options.py:70
-#: Mailman/Cgi/options.py:87
+#: Mailman/Cgi/options.py:58 Mailman/Cgi/options.py:75
 msgid "CGI script error"
 msgstr "Λάθος στο CGI script"
 
-#: Mailman/Cgi/options.py:60
-msgid "Invalid request method: %(method)s"
-msgstr ""
-
-#: Mailman/Cgi/options.py:73
+#: Mailman/Cgi/options.py:61
 msgid "Invalid options to CGI script."
 msgstr "Μη έγκυρες επιλογές στο CGI script."
 
-#: Mailman/Cgi/options.py:121
+#: Mailman/Cgi/options.py:109
 msgid "No address given"
 msgstr "Δε δίνεται διεύθυνση"
 
-#: Mailman/Cgi/options.py:133
+#: Mailman/Cgi/options.py:121
 msgid "Illegal Email Address: %(safeuser)s"
 msgstr "Μη έγκυρη Email Διεύθυνση: %(safeuser)s"
 
-#: Mailman/Cgi/options.py:140 Mailman/Cgi/options.py:205
-#: Mailman/Cgi/options.py:227 Mailman/Cgi/private.py:154
+#: Mailman/Cgi/options.py:128 Mailman/Cgi/options.py:193
+#: Mailman/Cgi/options.py:215 Mailman/Cgi/private.py:154
 msgid "No such member: %(safeuser)s."
 msgstr "Δεν υπάρχει τέτοιο μέλος: %(safeuser)s."
 
-#: Mailman/Cgi/options.py:190
+#: Mailman/Cgi/options.py:178
 msgid ""
 "Your unsubscription request has been\n"
 "                    forwarded to the list administrator for approval."
@@ -2476,20 +2465,20 @@ msgstr ""
 "Το αίτημα για τη διαγραφή σας έχει\n"
 "                    προωθηθεί για έγκριση στο διαχειριστή της λίστας."
 
-#: Mailman/Cgi/options.py:196 Mailman/Cgi/options.py:210
+#: Mailman/Cgi/options.py:184 Mailman/Cgi/options.py:198
 msgid "The confirmation email has been sent."
 msgstr "Το email για την επιβεβαίωση έχει σταλεί."
 
-#: Mailman/Cgi/options.py:221 Mailman/Cgi/options.py:233
-#: Mailman/Cgi/options.py:290
+#: Mailman/Cgi/options.py:209 Mailman/Cgi/options.py:221
+#: Mailman/Cgi/options.py:278
 msgid "A reminder of your password has been emailed to you."
 msgstr "Σας έχει σταλεί ηλεκτρονικά μια υπενθύμιση του κωδικού."
 
-#: Mailman/Cgi/options.py:262
+#: Mailman/Cgi/options.py:250
 msgid "Authentication failed."
 msgstr "Η πιστοποίηση απέτυχε."
 
-#: Mailman/Cgi/options.py:297
+#: Mailman/Cgi/options.py:285
 msgid ""
 "The list administrator may not view the other\n"
 "            subscriptions for this user."
@@ -2497,16 +2486,16 @@ msgstr ""
 "Ο διαχειριστής της λίστας μπορεί να μην μπορεί να δει τις άλλες\n"
 "            εγγραφές για αυτόν τον χρήστη."
 
-#: Mailman/Cgi/options.py:298 Mailman/Cgi/options.py:347
-#: Mailman/Cgi/options.py:475 Mailman/Cgi/options.py:691
+#: Mailman/Cgi/options.py:286 Mailman/Cgi/options.py:335
+#: Mailman/Cgi/options.py:463 Mailman/Cgi/options.py:679
 msgid "Note: "
 msgstr "Σημείωση:"
 
-#: Mailman/Cgi/options.py:303
+#: Mailman/Cgi/options.py:291
 msgid "List subscriptions for %(safeuser)s on %(hostname)s"
 msgstr "Εγγραφές στη λίστα για %(safeuser)s στο %(hostname)s"
 
-#: Mailman/Cgi/options.py:306
+#: Mailman/Cgi/options.py:294
 msgid ""
 "Click on a link to visit your options page for the\n"
 "        requested mailing list."
@@ -2514,11 +2503,11 @@ msgstr ""
 "Πατήστε σε ένα link για να επισκεφτείτε τη σελίδα των επιλογών σας\n"
 "        για τη συγκεκριμένη λίστα ηλεκτρονικού ταχυδρομείου."
 
-#: Mailman/Cgi/options.py:317
+#: Mailman/Cgi/options.py:305
 msgid "nomail"
 msgstr ""
 
-#: Mailman/Cgi/options.py:344
+#: Mailman/Cgi/options.py:332
 msgid ""
 "The list administrator may not change the names\n"
 "            or addresses for this user's other subscriptions.  However, the\n"
@@ -2528,15 +2517,15 @@ msgstr ""
 "            ή τις διευθύνσεις για άλλες εγγραφές του χρήστη. Επομένως, η\n"
 "            εγγραφή σε αυτήν την λίστα έχει αλλάξει."
 
-#: Mailman/Cgi/options.py:367
+#: Mailman/Cgi/options.py:355
 msgid "Addresses did not match!"
 msgstr "Οι διευθύνσεις δεν ταιριάζουν!"
 
-#: Mailman/Cgi/options.py:372
+#: Mailman/Cgi/options.py:360
 msgid "You are already using that email address"
 msgstr "Χρησιμοποιείτε ήδη αυτή τη διεύθυνση ηλεκτρονικού ταχυδρομείου"
 
-#: Mailman/Cgi/options.py:384
+#: Mailman/Cgi/options.py:372
 msgid ""
 "The new address you requested %(newaddr)s is already a member of the\n"
 "%(listname)s mailing list, however you have also requested a global change "
@@ -2550,31 +2539,31 @@ msgstr ""
 "Μόλις γίνει επιβεβαίωση, κάθε άλλη λίστα η οποία περιέχει τη διεύθυνση\n"
 "%(safeuser)s θα αλλαχτεί. "
 
-#: Mailman/Cgi/options.py:393
+#: Mailman/Cgi/options.py:381
 msgid "The new address is already a member: %(newaddr)s"
 msgstr "Η νέα διεύθυνση είναι ήδη μέλος: %(newaddr)s"
 
-#: Mailman/Cgi/options.py:399
+#: Mailman/Cgi/options.py:387
 msgid "Addresses may not be blank"
 msgstr "Οι διευθύνσεις δε μπορεί να είναι κενές"
 
-#: Mailman/Cgi/options.py:413
+#: Mailman/Cgi/options.py:401
 msgid "A confirmation message has been sent to %(newaddr)s. "
 msgstr "Ένα μήνυμα επιβεβαίωσης έχει σταλεί στο %(newaddr)s. "
 
-#: Mailman/Cgi/options.py:422
+#: Mailman/Cgi/options.py:410
 msgid "Bad email address provided"
 msgstr "Η email διεύθυνση που δόθηκε δεν είναι έγκυρη"
 
-#: Mailman/Cgi/options.py:424
+#: Mailman/Cgi/options.py:412
 msgid "Illegal email address provided"
 msgstr "Δόθηκε μη έγκυρη email διεύθυνση"
 
-#: Mailman/Cgi/options.py:426
+#: Mailman/Cgi/options.py:414
 msgid "%(newaddr)s is already a member of the list."
 msgstr "%(newaddr)s είναι ήδη μέλος της λίστας."
 
-#: Mailman/Cgi/options.py:429
+#: Mailman/Cgi/options.py:417
 msgid ""
 "%(newaddr)s is banned from this list.  If you\n"
 "                      think this restriction is erroneous, please contact\n"
@@ -2584,11 +2573,11 @@ msgstr ""
 "Αν νομίζετε ότι ο περιορισμός είναι λανθασμένος, παρακαλώ επικοινωνήστε\n"
 "με του ιδιοκτήτες της λίστας στο %(owneraddr)s."
 
-#: Mailman/Cgi/options.py:440
+#: Mailman/Cgi/options.py:428
 msgid "Member name successfully changed. "
 msgstr "Το όνομα του μέλους αλλάχθηκε με επιτυχία."
 
-#: Mailman/Cgi/options.py:450
+#: Mailman/Cgi/options.py:438
 msgid ""
 "The list administrator may not change the\n"
 "                    password for a user."
@@ -2596,15 +2585,15 @@ msgstr ""
 "Ο διαχειριστής της λίστας μπορεί να μην μπορεί να \n"
 "            τον κωδικό πρόσβασης για ένα χρήστη."
 
-#: Mailman/Cgi/options.py:459
+#: Mailman/Cgi/options.py:447
 msgid "Passwords may not be blank"
 msgstr "Οι κωδικοί δε μπορούν να είναι κενοί"
 
-#: Mailman/Cgi/options.py:464
+#: Mailman/Cgi/options.py:452
 msgid "Passwords did not match!"
 msgstr "Οι κωδικοί δεν ταιριάζουν!"
 
-#: Mailman/Cgi/options.py:472
+#: Mailman/Cgi/options.py:460
 msgid ""
 "The list administrator may not change the\n"
 "            password for this user's other subscriptions.  However, the\n"
@@ -2614,12 +2603,12 @@ msgstr ""
 "            κωδικό πρόσβασης για άλλες εγγραφές του χρήστη. Επομένως, ο\n"
 "            κωδικός πρόσβασης για αυτήν την λίστα έχει αλλάξει."
 
-#: Mailman/Cgi/options.py:489 Mailman/Commands/cmd_password.py:83
+#: Mailman/Cgi/options.py:477 Mailman/Commands/cmd_password.py:83
 #: Mailman/Commands/cmd_password.py:109
 msgid "Password successfully changed."
 msgstr "Ο κωδικός άλλαξε με επιτυχία."
 
-#: Mailman/Cgi/options.py:498
+#: Mailman/Cgi/options.py:486
 msgid ""
 "You must confirm your unsubscription request by turning\n"
 "                on the checkbox below the <em>Unsubscribe</em> button.  You\n"
@@ -2629,11 +2618,11 @@ msgstr ""
 "                παρακάτω checkbox το κουμπί <em>Διαγραφή</em>.  Δεν\n"
 "                έχετε διαγραφεί!"
 
-#: Mailman/Cgi/options.py:530
+#: Mailman/Cgi/options.py:518
 msgid "Unsubscription results"
 msgstr "Αποτελέσματα διαγραφής"
 
-#: Mailman/Cgi/options.py:534
+#: Mailman/Cgi/options.py:522
 msgid ""
 "Your unsubscription request has been received and\n"
 "            forwarded on to the list moderators for approval.  You will\n"
@@ -2644,7 +2633,7 @@ msgstr ""
 "            προωθηθεί στους διαχειριστές της λίστας για έγκριση.  Θα λάβετε\n"
 "            ειδοποίηση μόλις οι διαχειριστές πάρουν την απόφασή τους."
 
-#: Mailman/Cgi/options.py:539
+#: Mailman/Cgi/options.py:527
 msgid ""
 "You have been successfully unsubscribed from the\n"
 "            mailing list %(fqdn_listname)s.  If you were receiving digest\n"
@@ -2662,7 +2651,7 @@ msgstr ""
 "επικοινωνήστε με τους ιδιοκτήτες\n"
 "            των λιστών στο %(owneraddr)s."
 
-#: Mailman/Cgi/options.py:688
+#: Mailman/Cgi/options.py:676
 msgid ""
 "The list administrator may not change the\n"
 "                options for this user's other subscriptions.  However the\n"
@@ -2673,7 +2662,7 @@ msgstr ""
 "                επιλογές για τις άλλες εγγραφές του χρήστη. Επομένως, οι\n"
 "            επιλογής για αυτήν την λίστα έχει αλλάξει."
 
-#: Mailman/Cgi/options.py:698
+#: Mailman/Cgi/options.py:686
 msgid ""
 "The list administrator has disabled digest delivery for\n"
 "            this list, so your delivery option has not been set.  However "
@@ -2684,7 +2673,7 @@ msgstr ""
 "της λίστας, οπότε αυτή οι επιλογές αράδοσης δεν ορίστηκαν. Ωστόσο\n"
 " οι άλλες επιλογές σας έχουν οριστεί με επιτυχία."
 
-#: Mailman/Cgi/options.py:702
+#: Mailman/Cgi/options.py:690
 msgid ""
 "The list administrator has disabled non-digest delivery\n"
 "            for this list, so your delivery option has not been set.  "
@@ -2697,63 +2686,63 @@ msgstr ""
 "έχει οριστεί.\n"
 "  Ωστόσο οι άλλες επιλογές σας έχουν οριστεί με επιτυχία."
 
-#: Mailman/Cgi/options.py:706
+#: Mailman/Cgi/options.py:694
 msgid "You have successfully set your options."
 msgstr "Οι επιλογές σας ορίστηκαν με επιτυχία."
 
-#: Mailman/Cgi/options.py:709
+#: Mailman/Cgi/options.py:697
 msgid "You may get one last digest."
 msgstr "Μπορεί να λάβετε ακόμα ένα τελευταίο συγκεντρωτικό μήνυμα."
 
-#: Mailman/Cgi/options.py:781
+#: Mailman/Cgi/options.py:769
 msgid "<em>Yes, I really want to unsubscribe</em>"
 msgstr "<em>Ναι, θέλω πράγματι να διαγραφώ</em>"
 
-#: Mailman/Cgi/options.py:785
+#: Mailman/Cgi/options.py:773
 msgid "Change My Password"
 msgstr "Αλλαγή του Κωδικού Πρόσβασης μου"
 
-#: Mailman/Cgi/options.py:788
+#: Mailman/Cgi/options.py:776
 msgid "List my other subscriptions"
 msgstr "Προβολή των υπόλοιπων συμμετοχών μου"
 
-#: Mailman/Cgi/options.py:794
+#: Mailman/Cgi/options.py:782
 msgid "Email My Password To Me"
 msgstr "Αποστολή του Κωδικού Πρόσβασης μου με email σε μένα"
 
-#: Mailman/Cgi/options.py:796
+#: Mailman/Cgi/options.py:784
 msgid "password"
 msgstr "κωδικός πρόσβασης"
 
-#: Mailman/Cgi/options.py:798
+#: Mailman/Cgi/options.py:786
 msgid "Log out"
 msgstr "Αποσύνδεση"
 
-#: Mailman/Cgi/options.py:800
+#: Mailman/Cgi/options.py:788
 msgid "Submit My Changes"
 msgstr "Αποστολή των Αλλαγών μου"
 
-#: Mailman/Cgi/options.py:812
+#: Mailman/Cgi/options.py:800
 msgid "days"
 msgstr "ημέρες"
 
-#: Mailman/Cgi/options.py:814
+#: Mailman/Cgi/options.py:802
 msgid "day"
 msgstr "ημέρα"
 
-#: Mailman/Cgi/options.py:815
+#: Mailman/Cgi/options.py:803
 msgid "%(days)d %(units)s"
 msgstr "%(days)d %(units)s"
 
-#: Mailman/Cgi/options.py:821
+#: Mailman/Cgi/options.py:809
 msgid "Change My Address and Name"
 msgstr "Αλλαγή της Διεύθυνσης και του Ονόματός μου"
 
-#: Mailman/Cgi/options.py:847
+#: Mailman/Cgi/options.py:835
 msgid "<em>No topics defined</em>"
 msgstr "<em>Δεν ορίστηκαν θέματα</em>"
 
-#: Mailman/Cgi/options.py:855
+#: Mailman/Cgi/options.py:843
 msgid ""
 "\n"
 "You are subscribed to this list with the case-preserved address\n"
@@ -2764,19 +2753,19 @@ msgstr ""
 "όπως \n"
 "<em>%(cpuser)s</em>."
 
-#: Mailman/Cgi/options.py:869
+#: Mailman/Cgi/options.py:857
 msgid "%(realname)s list: member options login page"
 msgstr "%(realname)s λίστα: σελίδα σύνδεσης για τις επιλογές των μελών"
 
-#: Mailman/Cgi/options.py:870
+#: Mailman/Cgi/options.py:858
 msgid "email address and "
 msgstr "email διεύθυνση και "
 
-#: Mailman/Cgi/options.py:873
+#: Mailman/Cgi/options.py:861
 msgid "%(realname)s list: member options for user %(safeuser)s"
 msgstr "%(realname)s λίστα: επιλογές μέλους για το χρήστη %(safeuser)s"
 
-#: Mailman/Cgi/options.py:899
+#: Mailman/Cgi/options.py:887
 msgid ""
 "In order to change your membership option, you must\n"
 "    first log in by giving your %(extra)smembership password in the section\n"
@@ -2811,19 +2800,19 @@ msgstr ""
 "    Internet, διαφορετικά καμιά από τις αλλαγές σας δεν θα ενεργοποιηθεί.\n"
 "    "
 
-#: Mailman/Cgi/options.py:913
+#: Mailman/Cgi/options.py:901
 msgid "Email address:"
 msgstr "Email διεύθυνση"
 
-#: Mailman/Cgi/options.py:917
+#: Mailman/Cgi/options.py:905
 msgid "Password:"
 msgstr "Κωδικός πρόσβασης"
 
-#: Mailman/Cgi/options.py:919
+#: Mailman/Cgi/options.py:907
 msgid "Log in"
 msgstr "Σύνδεση"
 
-#: Mailman/Cgi/options.py:927
+#: Mailman/Cgi/options.py:915
 msgid ""
 "By clicking on the <em>Unsubscribe</em> button, a\n"
 "    confirmation message will be emailed to you.  This message will have a\n"
@@ -2838,11 +2827,11 @@ msgstr ""
 "    διαγραφής (μπορεί επίσης να γίνει επιβεβαίωση μέσω email. Δείτε τις "
 "οδηγίες στο μήνυμα επιβεβαίωσης."
 
-#: Mailman/Cgi/options.py:935
+#: Mailman/Cgi/options.py:923
 msgid "Password reminder"
 msgstr "Υπενθύμιση Κωδικού Πρόσβασης"
 
-#: Mailman/Cgi/options.py:939
+#: Mailman/Cgi/options.py:927
 msgid ""
 "By clicking on the <em>Remind</em> button, your\n"
 "    password will be emailed to you."
@@ -2850,27 +2839,27 @@ msgstr ""
 "Πατώντας το κουμπί <em>Υπενθύμιση</em>, θα σας\n"
 "    σταλεί ο κωδικός σας με emailed."
 
-#: Mailman/Cgi/options.py:942
+#: Mailman/Cgi/options.py:930
 msgid "Remind"
 msgstr "Υπενθύμιση"
 
-#: Mailman/Cgi/options.py:1042 Mailman/ListAdmin.py:225
+#: Mailman/Cgi/options.py:1030 Mailman/ListAdmin.py:225
 msgid "<missing>"
 msgstr "<δεν υπάρχει>"
 
-#: Mailman/Cgi/options.py:1053
+#: Mailman/Cgi/options.py:1041
 msgid "Requested topic is not valid: %(topicname)s"
 msgstr "Το ζητούμενο θέμα δεν είναι έγκυρο: %(topicname)s"
 
-#: Mailman/Cgi/options.py:1058
+#: Mailman/Cgi/options.py:1046
 msgid "Topic filter details"
 msgstr "Λεπτομέρειες για το φίλτρο θεμάτων"
 
-#: Mailman/Cgi/options.py:1061
+#: Mailman/Cgi/options.py:1049
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: Mailman/Cgi/options.py:1063
+#: Mailman/Cgi/options.py:1051
 msgid "Pattern (as regexp):"
 msgstr "Μοτίβο (ως regexp):"
 
@@ -2937,8 +2926,8 @@ msgstr ""
 #: Mailman/Cgi/rmlist.py:173
 msgid ""
 "There were some problems deleting the mailing list\n"
-"        <b>%(listname)s</b>.  Contact your site administrator at "
-"%(sitelist)s\n"
+"        <b>%(listname)s</b>.  Contact your site administrator at %(sitelist)"
+"s\n"
 "        for details."
 msgstr ""
 "Υπήρξαν κάποια προβλήματα στη διαγραφή της λίστας\n"
@@ -3974,159 +3963,159 @@ msgstr "Κανονικά (non-digest) μέλη:"
 msgid "Digest members:"
 msgstr "Μέλη τα οποία λαμβάνουν τα μηνύματα της λίστας συγκεντρωτικά:"
 
-#: Mailman/Defaults.py:1582
+#: Mailman/Defaults.py:1578
 msgid "Arabic"
 msgstr "Αραβικά"
 
-#: Mailman/Defaults.py:1583
+#: Mailman/Defaults.py:1579
 msgid "Asturian"
 msgstr "Εσθονικά"
 
-#: Mailman/Defaults.py:1584
+#: Mailman/Defaults.py:1580
 msgid "Catalan"
 msgstr "Καταλανικά"
 
-#: Mailman/Defaults.py:1585
+#: Mailman/Defaults.py:1581
 msgid "Czech"
 msgstr "Τσέχικα"
 
-#: Mailman/Defaults.py:1586
+#: Mailman/Defaults.py:1582
 msgid "Danish"
 msgstr "Δανέζικα"
 
-#: Mailman/Defaults.py:1587
+#: Mailman/Defaults.py:1583
 msgid "German"
 msgstr "Γερμανικά"
 
-#: Mailman/Defaults.py:1588
+#: Mailman/Defaults.py:1584
 msgid "English (USA)"
 msgstr "Αγγλικά (ΗΠΑ)"
 
-#: Mailman/Defaults.py:1589
+#: Mailman/Defaults.py:1585
 msgid "Spanish (Spain)"
 msgstr "Ισπανικά (Ισπανία)"
 
-#: Mailman/Defaults.py:1590
+#: Mailman/Defaults.py:1586
 msgid "Estonian"
 msgstr "Εσθονικά"
 
-#: Mailman/Defaults.py:1591
+#: Mailman/Defaults.py:1587
 msgid "Euskara"
 msgstr "Βάσκικα"
 
-#: Mailman/Defaults.py:1592
+#: Mailman/Defaults.py:1588
 msgid "Persian"
 msgstr ""
 
-#: Mailman/Defaults.py:1593
+#: Mailman/Defaults.py:1589
 msgid "Finnish"
 msgstr "Φιλανδικά"
 
-#: Mailman/Defaults.py:1594
+#: Mailman/Defaults.py:1590
 msgid "French"
 msgstr "Γαλλικά"
 
-#: Mailman/Defaults.py:1595
+#: Mailman/Defaults.py:1591
 msgid "Galician"
 msgstr "Γαλικίας"
 
-#: Mailman/Defaults.py:1596
+#: Mailman/Defaults.py:1592
 msgid "Greek"
 msgstr ""
 
-#: Mailman/Defaults.py:1597
+#: Mailman/Defaults.py:1593
 msgid "Hebrew"
 msgstr "Εβραϊκά"
 
-#: Mailman/Defaults.py:1598
+#: Mailman/Defaults.py:1594
 msgid "Croatian"
 msgstr "Κροατικά"
 
-#: Mailman/Defaults.py:1599
+#: Mailman/Defaults.py:1595
 msgid "Hungarian"
 msgstr "Ουγγαρικά"
 
-#: Mailman/Defaults.py:1600
+#: Mailman/Defaults.py:1596
 msgid "Interlingua"
 msgstr "Διαγλωσσικά"
 
-#: Mailman/Defaults.py:1601
+#: Mailman/Defaults.py:1597
 msgid "Italian"
 msgstr "Ιταλικά"
 
-#: Mailman/Defaults.py:1602
+#: Mailman/Defaults.py:1598
 msgid "Japanese"
 msgstr "Ιαπωνικά"
 
-#: Mailman/Defaults.py:1603
+#: Mailman/Defaults.py:1599
 msgid "Korean"
 msgstr "Κορεάτικα"
 
-#: Mailman/Defaults.py:1604
+#: Mailman/Defaults.py:1600
 msgid "Lithuanian"
 msgstr "Λιθουανικά"
 
-#: Mailman/Defaults.py:1605
+#: Mailman/Defaults.py:1601
 msgid "Dutch"
 msgstr "Ολλανδικά"
 
-#: Mailman/Defaults.py:1606
+#: Mailman/Defaults.py:1602
 msgid "Norwegian"
 msgstr "Νορβηγικά"
 
-#: Mailman/Defaults.py:1607
+#: Mailman/Defaults.py:1603
 msgid "Polish"
 msgstr "Πολωνικά"
 
-#: Mailman/Defaults.py:1608
+#: Mailman/Defaults.py:1604
 msgid "Portuguese"
 msgstr "Πορτογαλικά"
 
-#: Mailman/Defaults.py:1609
+#: Mailman/Defaults.py:1605
 msgid "Portuguese (Brazil)"
 msgstr "Πορτογαλικά (Βραζιλία)"
 
-#: Mailman/Defaults.py:1610
+#: Mailman/Defaults.py:1606
 msgid "Romanian"
 msgstr "Ρουμάνικα"
 
-#: Mailman/Defaults.py:1611
+#: Mailman/Defaults.py:1607
 msgid "Russian"
 msgstr "Ρώσικα"
 
-#: Mailman/Defaults.py:1612
+#: Mailman/Defaults.py:1608
 msgid "Slovak"
 msgstr "Σλοβακικά"
 
-#: Mailman/Defaults.py:1613
+#: Mailman/Defaults.py:1609
 msgid "Slovenian"
 msgstr "Σλοβένικα"
 
-#: Mailman/Defaults.py:1614
+#: Mailman/Defaults.py:1610
 msgid "Serbian"
 msgstr "Σέρβικα"
 
-#: Mailman/Defaults.py:1615
+#: Mailman/Defaults.py:1611
 msgid "Swedish"
 msgstr "Σουηδικά"
 
-#: Mailman/Defaults.py:1616
+#: Mailman/Defaults.py:1612
 msgid "Turkish"
 msgstr "Τουρκικά"
 
-#: Mailman/Defaults.py:1617
+#: Mailman/Defaults.py:1613
 msgid "Ukrainian"
 msgstr "Ουκρανικά"
 
-#: Mailman/Defaults.py:1618
+#: Mailman/Defaults.py:1614
 msgid "Vietnamese"
 msgstr "Βιετναμέζικα"
 
-#: Mailman/Defaults.py:1619
+#: Mailman/Defaults.py:1615
 msgid "Chinese (China)"
 msgstr "Κινέζικα (Κίνα)"
 
-#: Mailman/Defaults.py:1620
+#: Mailman/Defaults.py:1616
 msgid "Chinese (Taiwan)"
 msgstr "Κινέζικα (Ταϊβάν)"
 
@@ -4691,26 +4680,6 @@ msgstr ""
 "και των διαχειριστών."
 
 #: Mailman/Gui/Bounce.py:147
-#, fuzzy
-msgid ""
-"Should Mailman notify you, the list owner, when bounces\n"
-"             cause a member's bounce score to be incremented?"
-msgstr ""
-"Πρέπει να ειδοποιεί ο Mailman εσάς, τον ιδιοκτήτη της λίστας, \n"
-"             όταν κάποιο μέλος απενεργοποιείται επειδή τα μηνύματα της "
-"λίστας δεν παραδίδονται σε αυτόν;"
-
-#: Mailman/Gui/Bounce.py:149
-msgid ""
-"Setting this value to <em>Yes</em> will cause Mailman to\n"
-"             send a notice including a copy of the bounce message to the "
-"list\n"
-"             owners whenever a bounce increments a member's bounce score "
-"but\n"
-"             doesn't cause a disable or a probe to be sent."
-msgstr ""
-
-#: Mailman/Gui/Bounce.py:156
 msgid ""
 "Should Mailman notify you, the list owner, when bounces\n"
 "             cause a member's subscription to be disabled?"
@@ -4719,7 +4688,7 @@ msgstr ""
 "             όταν κάποιο μέλος απενεργοποιείται επειδή τα μηνύματα της "
 "λίστας δεν παραδίδονται σε αυτόν;"
 
-#: Mailman/Gui/Bounce.py:158
+#: Mailman/Gui/Bounce.py:149
 msgid ""
 "By setting this value to <em>No</em>, you turn off\n"
 "             notification messages that are normally sent to the list "
@@ -4734,7 +4703,7 @@ msgstr ""
 "ειδοποιηθεί \n"
 "\t\t\t  το μέλος θα γίνεται πάντα."
 
-#: Mailman/Gui/Bounce.py:165
+#: Mailman/Gui/Bounce.py:156
 msgid ""
 "Should Mailman notify you, the list owner, when bounces\n"
 "             cause a member to be unsubscribed?"
@@ -4743,7 +4712,7 @@ msgstr ""
 "             όταν τα επιστρεφόμενα μηνύματα προκαλούν την απενεργοποίηση "
 "κάποιου μέλους;"
 
-#: Mailman/Gui/Bounce.py:167
+#: Mailman/Gui/Bounce.py:158
 msgid ""
 "By setting this value to <em>No</em>, you turn off\n"
 "             notification messages that are normally sent to the list "
@@ -4759,7 +4728,7 @@ msgstr ""
 "ειδοποιηθεί ο\n"
 "             χρήστης θα γίνεται πάντα."
 
-#: Mailman/Gui/Bounce.py:194
+#: Mailman/Gui/Bounce.py:185
 msgid ""
 "Bad value for <a href=\"?VARHELP=bounce/%(property)s\"\n"
 "                >%(property)s</a>: %(val)s"
@@ -8578,7 +8547,7 @@ msgid ""
 "HTML it can't be safely removed.\n"
 msgstr ""
 
-#: Mailman/Handlers/CalcRecips.py:79
+#: Mailman/Handlers/CalcRecips.py:78
 msgid ""
 "Your urgent message to the %(realname)s mailing list was not authorized for\n"
 "delivery.  The original message as received by Mailman is attached.\n"
@@ -8761,7 +8730,21 @@ msgstr ""
 msgid "Content filtered message notification"
 msgstr "Ειδοποίηση για μήνυμα στο οποίο εφαρμόστηκε φίλτρο περιεχομένο"
 
-#: Mailman/Handlers/Moderate.py:164
+#: Mailman/Handlers/Moderate.py:70
+#, fuzzy
+msgid ""
+"You are not allowed to post to this mailing list From: a domain which\n"
+"publishes a DMARC policy of reject or quarantine, and your message has been\n"
+"automatically rejected.  If you think that your messages are being rejected "
+"in\n"
+"error, contact the mailing list owner at %(listowner)s."
+msgstr ""
+"Δεν επιτρέπετε να στέλνετε μηνύματα σ' αυτή τη λίστα, και το μήνυμα σας\n"
+"έχει αυτόματα απορριφθεί.  Αν πιστεύετε ότι τα μηνύματα σας απορρίπτονται \n"
+"από λάθος, επικοινωνείστε με τον ιδιοκτήτη της λίστας στη διεύθυνση "
+"%(listowner)s."
+
+#: Mailman/Handlers/Moderate.py:189
 msgid ""
 "You are not allowed to post to this mailing list, and your message has been\n"
 "automatically rejected.  If you think that your messages are being rejected "
@@ -8773,11 +8756,11 @@ msgstr ""
 "από λάθος, επικοινωνείστε με τον ιδιοκτήτη της λίστας στη διεύθυνση "
 "%(listowner)s."
 
-#: Mailman/Handlers/Moderate.py:180
+#: Mailman/Handlers/Moderate.py:205
 msgid "Auto-discard notification"
 msgstr "Ειδοποίηση αυτόματης απόρριψης χωρίς ενημέρωση"
 
-#: Mailman/Handlers/Moderate.py:183
+#: Mailman/Handlers/Moderate.py:208
 msgid "The attached message has been automatically discarded."
 msgstr "Το επισυναπτόμενο μήνυμα απορρίφθηκε αυτόματα χωρίς ενημέρωση"
 
@@ -8864,25 +8847,11 @@ msgstr "Παράληψη περιεχομένου με τύπο %(partctype)s\n"
 msgid "-------------- next part --------------\n"
 msgstr "-------------- επόμενο μέρος --------------\n"
 
-#: Mailman/Handlers/SpamDetect.py:57
+#: Mailman/Handlers/SpamDetect.py:56
 msgid "The message headers matched a filter rule"
 msgstr "Οι επικεφαλίδες του μηνύματος ταίριαζαν με ένα κανόνα φίλτρου"
 
-#: Mailman/Handlers/SpamDetect.py:109
-#, fuzzy
-msgid ""
-"You are not allowed to post to this mailing list From: a domain which\n"
-"publishes a DMARC policy of reject or quarantine, and your message has been\n"
-"automatically rejected.  If you think that your messages are being rejected "
-"in\n"
-"error, contact the mailing list owner at %(listowner)s."
-msgstr ""
-"Δεν επιτρέπετε να στέλνετε μηνύματα σ' αυτή τη λίστα, και το μήνυμα σας\n"
-"έχει αυτόματα απορριφθεί.  Αν πιστεύετε ότι τα μηνύματα σας απορρίπτονται \n"
-"από λάθος, επικοινωνείστε με τον ιδιοκτήτη της λίστας στη διεύθυνση "
-"%(listowner)s."
-
-#: Mailman/Handlers/SpamDetect.py:154
+#: Mailman/Handlers/SpamDetect.py:123
 msgid "Message rejected by filter rule match"
 msgstr "Το μήνυμα απορρίφθηκε επειδή ταιριάζει σε έναν κανόνα φιλτραρίσματος "
 
@@ -9194,15 +9163,15 @@ msgstr ""
 msgid "Original message suppressed by Mailman site configuration\n"
 msgstr ""
 
-#: Mailman/htmlformat.py:650
+#: Mailman/htmlformat.py:648
 msgid "Delivered by Mailman<br>version %(version)s"
 msgstr "Παραδόθηκε μέσω του Mailman<br>έκδοση %(version)s"
 
-#: Mailman/htmlformat.py:651
+#: Mailman/htmlformat.py:649
 msgid "Python Powered"
 msgstr "Python Powered"
 
-#: Mailman/htmlformat.py:652
+#: Mailman/htmlformat.py:650
 msgid "Gnu's Not Unix"
 msgstr "Gnu's όχι Unix"
 
@@ -9844,8 +9813,8 @@ msgstr ""
 "λανθασμένα\n"
 "δικαιώματα ή  or ιδιοκτησία ομάδας.  Με το -f (και να εκτελείτε σαν root), "
 "διορθώνει όλα τα\n"
-"προβλήματα με τα δικαιώματα που υπάρχουν.  Με το -v γίνεται "
-"αναλυτικός(verbose).\n"
+"προβλήματα με τα δικαιώματα που υπάρχουν.  Με το -v γίνεται αναλυτικός"
+"(verbose).\n"
 "\n"
 
 #: bin/check_perms:110
@@ -12465,8 +12434,8 @@ msgid ""
 "This is probably not safe.\n"
 "Exiting."
 msgstr ""
-"Εντοπίστηκε υποβάθμιση , από έκδοση %(hexlversion)s σε έκδοση "
-"%(hextversion)s \n"
+"Εντοπίστηκε υποβάθμιση , από έκδοση %(hexlversion)s σε έκδοση %(hextversion)"
+"s \n"
 "Αυτό δεν είναι πιθανώς ασφαλές. \n"
 "Έξοδος."
 
@@ -12526,8 +12495,8 @@ msgid ""
 "after\n"
 "        the fact by typing `m.Lock()'\n"
 "\n"
-"        Note that if you use this option, you should explicitly call m."
-"Save()\n"
+"        Note that if you use this option, you should explicitly call m.Save"
+"()\n"
 "        before exiting, since the interpreter's clean up procedure will not\n"
 "        automatically save changes to the MailList object (but it will "
 "unlock\n"
