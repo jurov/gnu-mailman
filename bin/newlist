@@ -1,6 +1,6 @@
 #! @PYTHON@
 #
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -40,6 +40,13 @@ Options:
         Normally the administrator is notified by email (after a prompt) that
         their list has been created.  This option suppresses the prompt and
         notification.
+
+    -a/--automate
+        This option suppresses the prompt prior to administrator notification
+        but still sends the notification.  It can be used to make newlist
+        totally non-interactive but still send the notification, assuming
+        listname, listadmin-addr and admin-password are all specified on the
+        command line.
 
     -h/--help
         Print this help text and exit.
@@ -84,8 +91,9 @@ where www.mydom.ain is used for `urlhost' but it will also be used for
 '--urlhost' and '--emailhost' have precedence to this notation.
 
 If you spell the list name as just `mylist', then the email hostname will be
-taken from DEFAULT_EMAIL_HOST and the url will be taken from DEFAULT_URL (as
-defined in your Defaults.py file or overridden by settings in mm_cfg.py).
+taken from DEFAULT_EMAIL_HOST and the url will be taken from DEFAULT_URL_HOST
+interpolated into DEFAULT_URL_PATTERN (as defined in your Defaults.py file or
+overridden by settings in mm_cfg.py).
 
 Note that listnames are forced to lowercase.
 """
@@ -123,21 +131,24 @@ def usage(code, msg=''):
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'hql:u:e:',
-                                   ['help', 'quiet', 'language=',
+        opts, args = getopt.getopt(sys.argv[1:], 'hqal:u:e:',
+                                   ['help', 'quiet', 'automate', 'language=',
                                     'urlhost=', 'emailhost='])
     except getopt.error, msg:
         usage(1, msg)
 
     lang = mm_cfg.DEFAULT_SERVER_LANGUAGE
-    quiet = 0
+    quiet = False
+    automate = False
     urlhost = None
     emailhost = None
     for opt, arg in opts:
         if opt in ('-h', '--help'):
             usage(0)
         if opt in ('-q', '--quiet'):
-            quiet = 1
+            quiet = True
+        if opt in ('-a', '--automate'):
+            automate = True
         if opt in ('-l', '--language'):
             lang = arg
         if opt in ('-u', '--urlhost'):
@@ -228,9 +239,10 @@ def main():
         sys.modules[modname].create(mlist)
 
     # And send the notice to the list owner
-    if not quiet:
+    if not quiet and not automate:
         print _('Hit enter to notify %(listname)s owner...'),
         sys.stdin.readline()
+    if not quiet:
         siteowner = Utils.get_site_email(mlist.host_name, 'owner')
         text = Utils.maketext(
             'newlist.txt',

@@ -79,7 +79,6 @@ substituted for <var>$prefix</var>, of course:
 <div class="verbatim"><pre>
     Exec        /mailman/*      $prefix/cgi-bin/*
 </pre></div>
-
 <p>
 or:
 
@@ -87,7 +86,6 @@ or:
 <div class="verbatim"><pre>
     ScriptAlias /mailman/       $prefix/cgi-bin/
 </pre></div>
-
 <p>
 <div class="warning"><b class="label">Warning:</b>
 
@@ -127,7 +125,6 @@ archives.  For example, in Apache:
 <div class="verbatim"><pre>
     Alias   /pipermail/     $varprefix/archives/public/
 </pre></div>
-
 <p>
 where <var>$varprefix</var> is usually <var>$prefix</var> unless you've used the
 <b class="programopt">--with-var-prefix</b> option to <b class="program">configure</b>.  Also be
@@ -147,6 +144,28 @@ Here's an example for Apache, based on the standard installation directories:
         AddDefaultCharset Off
     &lt;/Directory&gt;
 </pre></div>
+
+<p>
+Also, you may need to specifically allow access to Mailman's directories.
+For example, in Apache, the above Directory block may need something like
+
+<p>
+<div class="verbatim"><pre>
+        Require all granted
+</pre></div>
+
+<p>
+or
+
+<p>
+<div class="verbatim"><pre>
+        Order allow,deny
+        Allow from all
+</pre></div>
+
+<p>
+depending on the Apache version and similarly for the <var>$prefix</var>/cgi-bin/
+directory.
 
 <p>
 Now restart your web server.
@@ -185,7 +204,7 @@ Now restart your web server.
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on September 28, 2013.</span>
+<span class="release-info">Release 2.1, documentation updated on March 7, 2015.</span>
 </div>
 <!--End of Navigation Panel-->
 

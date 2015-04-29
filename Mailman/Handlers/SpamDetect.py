@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -77,7 +77,15 @@ def getDecodedHeaders(msg, cset='utf-8'):
         for frag, cs in v:
             if not cs:
                 cs = 'us-ascii'
-            uvalue += unicode(frag, cs, 'replace')
+            try:
+                uvalue += unicode(frag, cs, 'replace')
+            except LookupError:
+                # The encoding charset is unknown.  At this point, frag
+                # has been QP or base64 decoded into a byte string whose
+                # charset we don't know how to handle.  We will try to
+                # unicode it as iso-8859-1 which may result in a garbled
+                # mess, but we have to do something.
+                uvalue += unicode(frag, 'iso-8859-1', 'replace')
         headers += '%s: %s\n' % (h, uvalue.encode(cset, 'replace'))
     return headers
 

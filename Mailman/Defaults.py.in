@@ -1,6 +1,6 @@
 # -*- python -*-
 
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -138,8 +138,12 @@ HTML_TO_PLAIN_TEXT_COMMAND = '/usr/bin/lynx -dump %(filename)s'
 
 # A Python regular expression character class which defines the characters
 # allowed in list names.  Lists cannot be created with names containing any
-# character that doesn't match this class.
+# character that doesn't match this class.  Do not include '/' in this list.
 ACCEPTABLE_LISTNAME_CHARACTERS = '[-+_.=a-z0-9]'
+
+# Shall the user's real names be displayed along with their email addresses
+# in list rosters?  Defaults to No to preserve prior behavior.
+ROSTER_DISPLAY_REALNAME = No
 
 
 
@@ -224,6 +228,20 @@ WEB_VLINK_COLOR = ''                              # If true, forces VLINK=
 WEB_HIGHLIGHT_COLOR = '#dddddd'                   # If true, alternating rows
                                                   # in listinfo & admin display
 
+# If you wish to include extra elements in the <HEAD> section of Mailman's
+# web pages, e.g. style information or a link to a style sheet, you can set
+# the following.  For example, to include a css style sheet reference, you
+# can put in mm_cfg.py
+# WEB_HEAD_ADD = """<LINK REL=stylesheet
+#                TYPE="text/css"
+#                HREF="path or URL"
+#                >"""
+# You can specify anything that is allowed in the <HEAD> section.  The default
+# is to not add anything.  This only applies to internally generated pages.
+# For pages built from templates you can create custom templates containing
+# this information.
+WEB_HEAD_ADD = None
+
 # User entered data is escaped for redisplay in web responses to avoid Cross
 # Site Scripting (XSS) attacks. The normal escaping replaces the characters
 # <, >, & and " with the respective HTML entities &lt;, &gt;, &amp; and
@@ -254,6 +272,10 @@ BROKEN_BROWSER_REPLACEMENTS = {'\x8b': '&#8249;',  # single left angle quote
 # SSENDERTIME -> Default to grouped by sender and sorted by time.
 # STIME -> Default to ungrouped and sorted by time.
 DISPLAY_HELD_SUMMARY_SORT_BUTTONS = No
+#
+# Shall the default for the admin Mass Subscription function be Invite rather
+# than Subscribe?  Set to Yes in mm_cfg.py to make the default be Invite.
+DEFAULT_SUBSCRIBE_OR_INVITE = No
 
 
 
@@ -1087,6 +1109,11 @@ DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION = Yes
 # 4 = Discard
 DEFAULT_DMARC_MODERATION_ACTION = 0
 
+# Default for text to be added to a separate text/plain part preceding the
+# message/rfc822 part containing the original message when
+# dmarc_moderation_action is Wrap Message.
+DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT = ''
+
 # Parameters for DMARC DNS lookups. If you are seeing 'DNSException:
 # Unable to query DMARC policy ...' entries in your error log, you may need
 # to adjust these.
@@ -1095,7 +1122,28 @@ DMARC_RESOLVER_TIMEOUT = seconds(3)
 # The total time to spend trying to get an answer to the question.
 DMARC_RESOLVER_LIFETIME = seconds(5)
 
-# What shold happen to non-member posts which are do not match explicit
+# What domains should be considered equivalent when testing list membership
+# for posting/moderation.
+# If two poster addresses with the same local part but
+# different domains are to be considered equivalents for list
+# membership tests, the domains are put in the list's equivalent_domains.
+# This provides a default value for new lists.
+# The format is one or more groups of equivalent domains.  Within a group,
+# the domains are separated by commas and multiple groups are
+# separated by semicolons. White space is ignored.
+# For example:
+#
+#    'example.com,mail.example.com;mac.com,me.com,icloud.com'
+#
+# In this example, if user@example.com is a list member,
+# a post from user@mail.example.com will be treated as if it is
+# from user@example.com for list membership/moderation purposes,
+# and likewise, if user@me.com is a list member, posts from
+# user@mac.com or user@icloud.com will be treated as if from
+# user@me.com.
+DEFAULT_EQUIVALENT_DOMAINS = ''
+
+# What should happen to non-member posts which are do not match explicit
 # non-member actions?
 # 0 = Accept
 # 1 = Hold
@@ -1181,6 +1229,10 @@ DEFAULT_SUBSCRIBE_POLICY = 1
 
 # Does this site allow completely unchecked subscriptions?
 ALLOW_OPEN_SUBSCRIBE = No
+
+# This is the default list of addresses and regular expressions (beginning
+# with ^) that are exempt from approval if SUBSCRIBE_POLICY is 2 or 3.
+DEFAULT_SUBSCRIBE_AUTO_APPROVAL = []
 
 # The default policy for unsubscriptions.  0 (unmoderated unsubscribes) is
 # highly recommended!
@@ -1619,8 +1671,8 @@ add_language('no',    _('Norwegian'),           'iso-8859-1',  'ltr')
 add_language('pl',    _('Polish'),              'iso-8859-2',  'ltr')
 add_language('pt',    _('Portuguese'),          'iso-8859-1',  'ltr')
 add_language('pt_BR', _('Portuguese (Brazil)'), 'iso-8859-1',  'ltr')
-add_language('ro',    _('Romanian'),            'iso-8859-2',  'ltr')
-add_language('ru',    _('Russian'),             'koi8-r',      'ltr')
+add_language('ro',    _('Romanian'),            'utf-8',       'ltr')
+add_language('ru',    _('Russian'),             'utf-8',       'ltr')
 add_language('sk',    _('Slovak'),              'utf-8',       'ltr')
 add_language('sl',    _('Slovenian'),           'iso-8859-2',  'ltr')
 add_language('sr',    _('Serbian'),             'utf-8',       'ltr')

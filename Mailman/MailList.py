@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -74,6 +74,7 @@ from Mailman.Logging.Syslog import syslog
 _ = i18n._
 
 EMPTYSTRING = ''
+OR = '|'
 
 try:
     True, False
@@ -365,6 +366,7 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.welcome_msg = ''
         self.goodbye_msg = ''
         self.subscribe_policy = mm_cfg.DEFAULT_SUBSCRIBE_POLICY
+        self.subscribe_auto_approval = mm_cfg.DEFAULT_SUBSCRIBE_AUTO_APPROVAL
         self.unsubscribe_policy = mm_cfg.DEFAULT_UNSUBSCRIBE_POLICY
         self.private_roster = mm_cfg.DEFAULT_PRIVATE_ROSTER
         self.obscure_addresses = mm_cfg.DEFAULT_OBSCURE_ADDRESSES
@@ -402,6 +404,10 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         self.dmarc_quarantine_moderation_action = (
             mm_cfg.DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION)
         self.dmarc_moderation_notice = ''
+        self.dmarc_wrapped_message_text = (
+            mm_cfg.DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT)
+        self.equivalent_domains = (
+            mm_cfg.DEFAULT_EQUIVALENT_DOMAINS)
         self.accept_these_nonmembers = []
         self.hold_these_nonmembers = []
         self.reject_these_nonmembers = []
@@ -782,10 +788,11 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         goodtopics = []
         for name, pattern, desc, emptyflag in self.topics:
             try:
-                re.compile(pattern)
+                orpattern = OR.join(pattern.splitlines())
+                re.compile(orpattern)
             except (re.error, TypeError):
                 syslog('error', 'Bad topic pattern "%s" for list: %s',
-                       pattern, self.internal_name())
+                       orpattern, self.internal_name())
             else:
                 goodtopics.append((name, pattern, desc, emptyflag))
         self.topics = goodtopics
@@ -950,6 +957,9 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             syslog('subscribe', '%s: pending %s %s',
                    self.internal_name(), who, by)
             raise Errors.MMSubscribeNeedsConfirmation
+        elif self.HasAutoApprovedSender(email):
+            # no approval necessary:
+            self.ApprovedAddMember(userdesc)
         else:
             # Subscription approval is required.  Add this entry to the admin
             # requests database.  BAW: this should probably take a userdesc
@@ -1173,12 +1183,14 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
         # CP address of a member, then if the old address yields a different
         # CP address, we can simply remove the old address, otherwise we can
         # do nothing.
+        cpoldaddr = self.getMemberCPAddress(oldaddr)
         if self.isMember(newaddr) and (self.getMemberCPAddress(newaddr) ==
                 newaddr):
-            if self.getMemberCPAddress(oldaddr) <> newaddr:
+            if cpoldaddr <> newaddr:
                 self.removeMember(oldaddr)
         else:
             self.changeMemberAddress(oldaddr, newaddr)
+            self.log_and_notify_admin(cpoldaddr, newaddr)
         # If globally is true, then we also include every list for which
         # oldaddr is a member.
         if not globally:
@@ -1198,15 +1210,45 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
             mlist.Lock()
             try:
                 # Same logic as above, re newaddr is already a member
+                cpoldaddr = mlist.getMemberCPAddress(oldaddr)
                 if mlist.isMember(newaddr) and (
                         mlist.getMemberCPAddress(newaddr) == newaddr):
-                    if mlist.getMemberCPAddress(oldaddr) <> newaddr:
+                    if cpoldaddr <> newaddr:
                         mlist.removeMember(oldaddr)
                 else:
                     mlist.changeMemberAddress(oldaddr, newaddr)
+                    mlist.log_and_notify_admin(cpoldaddr, newaddr)
                 mlist.Save()
             finally:
                 mlist.Unlock()
+
+    def log_and_notify_admin(self, oldaddr, newaddr):
+        """Log member address change and notify admin if requested."""
+        syslog('subscribe', '%s: changed member address from %s to %s',
+               self.internal_name(), oldaddr, newaddr)
+        if self.admin_notify_mchanges:
+            lang = self.preferred_language
+            otrans = i18n.get_translation()
+            i18n.set_language(lang)
+            try:
+                realname = self.real_name
+                subject = _('%(realname)s address change notification')
+            finally:
+                i18n.set_translation(otrans)
+            name = self.getMemberName(newaddr)
+            if name is None:
+                name = ''
+            if isinstance(name, UnicodeType):
+                name = name.encode(Utils.GetCharSet(lang), 'replace')
+            text = Utils.maketext(
+                'adminaddrchgack.txt',
+                {'name'    : name,
+                 'oldaddr' : oldaddr,
+                 'newaddr' : newaddr,
+                 'listname': self.real_name,
+                 }, mlist=self)
+            msg = Message.OwnerNotification(self, subject, text)
+            msg.send(self)
 
 
     #
@@ -1251,7 +1293,8 @@ class MailList(HTMLFormatter, Deliverer, ListAdmin,
                     # list administrators.
                     self.SendHostileSubscriptionNotice(invitation, addr)
                     raise Errors.HostileSubscriptionError
-            elif self.subscribe_policy in (2, 3):
+            elif self.subscribe_policy in (2, 3) and \
+                    not self.HasAutoApprovedSender(addr):
                 self.HoldSubscription(addr, fullname, password, digest, lang)
                 name = self.real_name
                 raise Errors.MMNeedApproval, _(
@@ -1530,26 +1573,62 @@ bad regexp in bounce_matching_header line: %s
         """Returns matched entry in ban_list if email matches.
         Otherwise returns None.
         """
-        ban = False
-        for pattern in self.ban_list:
+        return self.GetPattern(email, self.ban_list)
+
+    def HasAutoApprovedSender(self, sender):
+        """Returns True and logs if sender matches address or pattern
+        or is a member of a referenced list in subscribe_auto_approval.
+        Otherwise returns False.
+        """
+        auto_approve = False
+        if self.GetPattern(sender, self.subscribe_auto_approval, at_list=True):
+            auto_approve = True
+            syslog('vette', '%s: auto approved subscribe from %s',
+                   self.internal_name(), sender)
+        return auto_approve
+
+    def GetPattern(self, email, pattern_list, at_list=False):
+        """Returns matched entry in pattern_list if email matches.
+        Otherwise returns None.
+        """
+        matched = None
+        for pattern in pattern_list:
             if pattern.startswith('^'):
                 # This is a regular expression match
                 try:
                     if re.search(pattern, email, re.IGNORECASE):
-                        ban = True
+                        matched = pattern
                         break
                 except re.error:
                     # BAW: we should probably remove this pattern
                     pass
+            elif at_list and pattern.startswith('@'):
+                # XXX Needs to be reviewed for list@domain names.
+                # this refers to the members of another list in this
+                # installation.
+                mname = pattern[1:].lower().strip()
+                if mname == self.internal_name():
+                    # don't reference your own list
+                    syslog('error',
+                        'subscribe_auto_approval in %s references own list',
+                        self.internal_name())
+                    continue
+                try:
+                    mother = MailList(mname, lock = False)
+                except Errors.MMUnknownListError:
+                    syslog('error',
+              'subscribe_auto_approval in %s references non-existent list %s',
+                        self.internal_name(), mname)
+                    continue
+                if mother.isMember(email.lower()):
+                    matched = pattern
+                    break
             else:
                 # Do the comparison case insensitively
                 if pattern.lower() == email.lower():
-                    ban = True
+                    matched = pattern
                     break
-        if ban:
-            return pattern
-        else:
-            return None
+        return matched
 
 
 

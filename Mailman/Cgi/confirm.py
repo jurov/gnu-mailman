@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -99,8 +99,9 @@ def main():
     %(safecookie)s.
 
     <p>Note that confirmation strings expire approximately
-    %(days)s days after the initial subscription request.  If your
-    confirmation has expired, please try to re-submit your subscription.
+    %(days)s days after the initial request.  They also expire if the
+    request has already been handled in some way.  If your confirmation
+    has expired, please try to re-submit your request.
     Otherwise, <a href="%(confirmurl)s">re-enter</a> your confirmation
     string.''')
 

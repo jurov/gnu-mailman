@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,6 +29,8 @@ from Mailman.Handlers.CookHeaders import uheader
 cres = []
 for regexp in mm_cfg.ANONYMOUS_LIST_KEEP_HEADERS:
     try:
+        if regexp.endswith(':'):
+            regexp = regexp[:-1] + '$'
         cres.append(re.compile(regexp, re.IGNORECASE))
     except re.error, e:
         syslog('error',
@@ -65,6 +67,7 @@ def process(mlist, msg, msgdata):
         del msg['from']
         del msg['reply-to']
         del msg['sender']
+        del msg['organization']
         del msg['return-path']
         # Hotmail sets this one
         del msg['x-originating-email']

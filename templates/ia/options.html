@@ -8,7 +8,7 @@
     <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5">
     <TR><TD WIDTH="100%" BGCOLOR="#99CCFF"><B>
         <FONT COLOR="#000000" SIZE=+1>
-        Configuration del abonamento de <MM-Presentable-User> al lista de correspondentia
+        Configuration del abonamento de <MM-Presentable-User> al lista de diffusion
         <MM-List-Name>
         </FONT></B></TD></TR>
     </TABLE>
@@ -16,7 +16,7 @@
 <table width="100%" border="0" cellspacing="5" cellpadding="5">
     <tr><td>
         Stato, contrasigno e optiones del abonamento de <b><MM-Presentable-User></b>
-        al lista de correspondentia <MM-List-Name>.
+        al lista de diffusion <MM-List-Name>.
         </td><td><MM-Form-Start><mm-logout-button><MM-Form-End></td>
     </tr><tr>
         <td colspan="2">
@@ -34,21 +34,21 @@
 <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5">
     <TR><TD WIDTH="100%" BGCOLOR="#FFF0D0" colspan="2">
         <FONT COLOR="#000000">
-        <B>Cambio de tu informationes de abonamento a <MM-List-Name></B>
+        <B>Cambiamento de tu informationes de abonamento a <MM-List-Name></B>
         </FONT></TD></TR>
     <tr><td colspan="2">Tu pote cambiar le adresse con le qual tu es abonate
-        al lista de correspondentia per scriber le nove adresse in le
-        campos infra. Nota que un email de confirmation essera inviate
-        al nove adresse, e le cambio debe esser confirmate ante que illo sia
+        al lista de diffusion per scriber le nove adresse in le
+        campos infra. Nota que un message de confirmation essera inviate
+        al nove adresse, e le cambiamento debe esser confirmate ante que illo es
         processate.
 
-        <p>Le confirmationes expira post approximatemente <mm-pending-days>.
+        <p>Le confirmationes expira post circa <mm-pending-days>.
 
-        <p>Tu tamben pote optionalmente definir o cambiar tu nomine real
-        (i.e. <em>John Smith</em>).
+        <p>Tu anque pote definir o cambiar tu nomine real, si tu vole
+        (p.ex. <em>Johannes Ferrero</em>).
 
-        <p>Si tu vole extender le cambios de abonamento a tote le
-        listas al quales tu es abonate in <mm-host>, marca le quadretto
+        <p>Si tu vole extender le cambiamentos de abonamento a tote le
+        listas al quales tu es abonate in <mm-host>, marca le quadrato
         <em>Cambiar globalmente</em>.
 
         </td></tr>
@@ -57,7 +57,7 @@
         <tr><td bgcolor="#dddddd"><div align="right">Nove adresse:</div></td>
             <td><mm-new-address-box></td>
             </tr>
-        <tr><td bgcolor="#dddddd"><div align="right">De nove pro
+        <tr><td bgcolor="#dddddd"><div align="right">Repete pro
             confirmar:</div></td>
             <td><mm-confirm-address-box></td>
             </tr>
@@ -87,15 +87,15 @@
         </FONT></TD></TR>
 
     <tr><td>
-        Marca le quadretto de confirmation e preme iste button pro
-        disabonar te de iste lista de correspondentia.  <strong>Advertimento:</strong>
-        Iste action essera executate immediatemente!
+        Marca le quadrato de confirmation e preme iste button pro
+        disabonar te de iste lista de diffusion.  <strong>Attention:</strong>
+        Iste action essera exequite immediatemente!
         <p>
         <center><MM-Unsubscribe-Button></center></td>
     <td>
-        Tu pote vider un lista de tote le altere listas de correspondentia in
+        Tu pote vider un lista de tote le altere listas de diffusion in
         <mm-host> al quales tu es abonate. Usa isto si tu vole
-        extender le mesme cambios de abonamento a iste altere
+        extender le mesme cambiamentos de abonamento a iste altere
         abonamentos.
 
         <p>
@@ -152,86 +152,86 @@
 <p>
 <i><strong>Le valores actual es marcate.</strong></i>
 
-<p>Nota que alcun optiones ha un quadretto <em>Definir globalmente</em>.
-Marcar iste campo implicara que le cambios sia extendite a
-cata lista de correspondentia al qual tu es abonate in <mm-host>.  Clicca super
-<em>Lista mi altere abonamentos</em> supra pro vider a qual altere listas
-de correspondentia tu es abonate.
+<p>Nota que alcun optiones ha un quadrato <em>Definir globalmente</em>.
+Si tu activa iste option, le cambiamentos essera facite pro
+cata lista de diffusion al qual tu es abonate in <mm-host>.  Clicca super
+<em>Listar mi altere abonamentos</em> supra pro vider le altere listas
+de diffusion al quales tu es abonate.
 <p>
 <TABLE BORDER="0" CELLSPACING="3" CELLPADDING="4" WIDTH="100%">
     <tr><TD BGCOLOR="#cccccc">
         <a name="disable">
         <strong>Livration de email</strong></a><p>
-        Defini iste option como <em>Habilitate</em> pro reciper messages postate
-        a iste lista de correspondentia.  Defini lo como <em>Dishabilitate</em> si tu vole
-        continuar abonate, mais desira suspender le reception de messages durante alcun
-        tempore (p.ex. tu va partir in un viage de ferias).  Si tu dishabilita le livration
-        de email, non oblida rehabilitar lo quando tu retornara; illo
-        non se rehabilitara automaticamente.
+        Mitte iste option a <em>Active</em> pro reciper messages inviate
+        a iste lista de diffusion.  Mitte lo a <em>Inactive</em> si tu vole
+        restar abonate, ma desira suspender le reception de messages durante un
+        tempore (p.ex. tu va partir in un viage de ferias).  Si tu disactiva le livration
+        de e-mail, non oblida reactivar lo quando tu retornara; illo
+        non se reactivara automaticamente.
         </td><td bgcolor="#cccccc">
-        <mm-delivery-enable-button>Habilitate<br>
-        <mm-delivery-disable-button>Dishabilitate<p>
-        <mm-global-deliver-button><i>Definir globalmente</i>
+        <mm-delivery-enable-button>Active<br>
+        <mm-delivery-disable-button>Inactive<p>
+        <mm-global-deliver-button><i>Cambiar globalmente</i>
         </td></tr>
 
     <tr><TD BGCOLOR="#cccccc">
-        <strong>Definir modo summario</strong><p>
-        Si tu activa le modo summario, tu recipera le messages impacchettate
-        (usualmente un per die mais possibilemente plus in listas de grande activitate), in vice
-        de individualmente quando illos es inviate. Si le modo summario es cambiate de
-        active a inactive, tu pote reciper un ultime summario.
+        <strong>Definir modo digesto</strong><p>
+        Si tu activa le modo digesto, tu recipera le messages combinate in digestos
+        (usualmente un per die, ma possibilemente plus in listas de grande activitate), in vice
+        de cata un a parte quando illo es inviate. Si le modo digesto es cambiate de
+        active a inactive, tu pote reciper un ultime digesto.
         </td><td bgcolor="#cccccc">
         <MM-Undigest-Radio-Button>Inactive<br>
         <MM-Digest-Radio-Button>Active
         </td></tr>
         
     <tr><TD BGCOLOR="#cccccc">
-        <strong>Reciper summarios in formato MIME o texto pur?</strong><p>
-        Tu lector de email pote o non pote supportar summarios MIME.
-        Generalmente summarios MIME es preferite, ma si tu ha problemas
-        in leger los, selectiona summarios in texto pur.
+        <strong>Reciper digestos in formato MIME o texto pur?</strong><p>
+        Tu lector de email pote supportar o non supportar digestos MIME.
+        Generalmente, le digestos MIME es preferite, ma si tu ha problemas
+        in leger los, selige digestos in texto pur.
         </td><td bgcolor="#cccccc">
         <MM-Mime-Digests-Button>MIME<br>
         <MM-Plain-Digests-Button>Texto pur<p>
-        <mm-global-mime-button><i>Definir globalmente</i>
+        <mm-global-mime-button><i>Cambiar globalmente</i>
         </td></tr>
         
     <tr><TD BGCOLOR="#cccccc">
         <strong>Reciper tu proprie messages al lista?</strong><p>
-        Normalmente tu recipe un copia de cata message que tu posta
-        al lista. Si tu non vole reciper iste copia, defini iste
-        option como <em>No</em>.
+        Normalmente tu recipe un copia de cata message que tu invia
+        al lista. Si tu non vole reciper iste copia, mitte iste
+        option a <em>No</em>.
         </td><td bgcolor="#cccccc">
         <mm-dont-receive-own-mail-button>No<br>
         <mm-receive-own-mail-button>Si
         </td></tr>
 
     <tr><TD BGCOLOR="#cccccc">
-        <strong>Recipe un message de confirmation de reception quando
-        tu manda un message al lista?</strong><p>
+        <strong>Reciper un message de confirmation de reception quando
+        tu invia un message al lista?</strong><p>
         </td><td bgcolor="#cccccc">
         <mm-dont-ack-posts-button>No<br>
         <mm-ack-posts-button>Si
         </td></tr>
 
     <tr><td bgcolor="#cccccc">
-        <strong>Recipe un promemoria con tu contrasigno?</strong><p>
-        Un vice cata mense, tu recipera un e-posta continente tu
-        contrasignos pro cata lista de iste servitor del qual tu es
+        <strong>Reciper un rememoration de tu contrasigno?</strong><p>
+        Un vice cata mense, tu recipera un e-mail continente tu
+        contrasignos pro cata lista de iste servitor al qual tu es
         abonate.  Tu pote decider isto differentemente pro cata lista
-        si tu selige <em>No</em> pro iste option. Si tu disabilita
-        le promemorias del contrasignos pro totes le listas del qual
-        es abonate, nulle promemoria te essera inviate.
+        si tu selige <em>No</em> pro iste option. Si tu disactiva
+        le rememorationes del contrasignos pro tote le listas al quales
+        tu es abonate, nulle rememoration te essera inviate.
         </td><td bgcolor="#cccccc">
         <mm-dont-get-password-reminder-button>No<br>
         <mm-get-password-reminder-button>Si<p>
-        <mm-global-remind-button><i>Definir globalmente</i>
+        <mm-global-remind-button><i>Cambiar globalmente</i>
         </td></tr>
 
     <tr><TD BGCOLOR="#cccccc">
-        <strong>Absconde tu nomine del lista del abonatos?</strong><p>
+        <strong>Celar te del lista del abonatos?</strong><p>
         Normalmente quando alicuno vide le lista del abonatos, tu adresse de
-        e-posta es monstrate (in un forma obscur, pro proteger lo del spam).
+        e-mail es monstrate (in un forma obscurate pro frustrar su collection per spammatores).
         Si tu non vole que tu adresse es monstrate, selige <em>Si</em> pro
         iste option.
         </td><td bgcolor="#cccccc">
@@ -240,56 +240,55 @@ de correspondentia tu es abonate.
         </td></tr>
 
     <tr><TD BGCOLOR="#cccccc">
-        <strong>Qual lingua tu prefere?</strong><p>
+        <strong>Qual lingua prefere tu?</strong><p>
         </td><td bgcolor="#cccccc">
         <MM-list-langs>
         </td></tr>
 
     <tr><td bgcolor="#cccccc">
-        <strong>Qual categorias de argumentos te interessa plus?</strong><p>
-                Per selectionar uno o plus categorias, tu pote filtrar
+        <strong>Qual categorias de interesse vole tu sequer?</strong><p>
+                Con le selection de un o plure categorias, tu pote filtrar
                 le traffico del lista e reciper solmente un subcollection
-                del messages. Si un message corresponde a un categoria que
-                tu ha selectionate tu va reciper lo, alteremente non.
+                del messages. Si un message corresponde a un del categorias que
+                tu ha seligite, tu lo recipera, alteremente non.
 
-                <p>Si un message non corresponde a ulle categoria, le
+                <p>Si un message non corresponde a un categoria, le
                 regula de livration depende del option infra. Si tu non
-                selige ulle categorias de interesse, tu recipera tote le
+                selige alcun categoria de interesse, tu recipera tote le
                 messages inviate al lista.
         </td><td bgcolor="#cccccc">
         <mm-topics>
         </td></tr>
 
     <tr><td bgcolor="#cccccc">
-        <strong>Esque tu vole reciper messages que non pertine a ulle
-                categoria?</strong><p>
+        <strong>Esque tu vole reciper messages sin categoria de interesse?</strong><p>
 
-                Iste option es importante solmente si tu ha selectionate
-                alicun categorias. Illo determina le regula de livration
-                pro le messages que non pertine a ulle categoria.
-                Seliger <em>No</em> significa que tu non vole reciper iste
-                messages, durante que <em>Si</em> significa que tu va
-                reciper los.
+                Iste option ha effecto solmente si tu ha seligite
+                al minus un categoria in le quadro precedente.
+                Illo determina le regula de livration
+                pro le messages que non pertine a un categoria.
+                <em>No</em> significa que tu non recipera messages
+                sin categoria, e <em>Si</em> significa que tu los recipera.
 
-                <p>Si nulle categorias esseva selectionate in le option
-                precedente, alora tu va reciper tote messages.
+                <p>Si nulle categoria ha essite seligite in le option
+                precedente, tu recipera tote le messages inviate al lista.
         </td><td bgcolor="#cccccc">
         <mm-suppress-nonmatching-topics>No<br>
         <mm-receive-nonmatching-topics>Si
         </td></tr>
 
     <tr><td bgcolor="#cccccc">
-        <strong>Evita copias duple del messages?</strong><p>
+        <strong>Evitar copias duple de messages?</strong><p>
 
-                Quando tu es presente in le campos <tt>To:</tt> o
+                Quando tu adresse de e-mail figura in le campos <tt>To:</tt> (A:) o
                 <tt>Cc:</tt> de un message inviate al lista, tu pote
-                seliger de non reciper un altere copia del lista.
-                Selige <em>Si</em> pro evitar de reciper duo messages
-                equal; <em>No</em> pro reciper le copias.
+                optar pro non reciper un altere copia ab le lista.
+                Selige <em>Si</em> pro evitar le reception de copias equal
+                ab le lista; <em>No</em> pro reciper tal copias.
 
-                <p>Si le lista ha le abilitation pro messages personalisate
-                e tu selige de reciper copias, omne copia va haber un campo
-                <tt>X-Mailman-Copy: yes</tt> in le testa del message.
+                <p>Si le configuration del lista defini messages personalisate per membro,
+                e tu opta pro reciper copias, omne copia habera un campo
+                <tt>X-Mailman-Copy: yes</tt> in le capite del message.
 
         </td><td bgcolor="#cccccc">
         <mm-receive-duplicates-button>No<br>

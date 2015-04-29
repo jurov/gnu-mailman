@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -15,7 +15,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
-"""Cook a message's Subject header."""
+"""Cook a message's Subject header.
+Also do other manipulations of From:, Reply-To: and Cc: depending on
+list configuration.
+"""
 
 from __future__ import nested_scopes
 import re
@@ -68,7 +71,12 @@ def change_header(name, value, mlist, msg, msgdata, delete=True, repl=True):
     if ((msgdata.get('from_is_list') == 2 or
         (msgdata.get('from_is_list') == 0 and mlist.from_is_list == 2)) and 
         not msgdata.get('_fasttrack')
-       ) or name.lower() in ('from', 'reply-to'):
+       ) or name.lower() in ('from', 'reply-to', 'cc'):
+        # The or name.lower() in ... above is because when we are munging
+        # the From:, we want to defer the resultant changes to From:,
+        # Reply-To:, and/or Cc: until after the message passes through
+        # ToDigest, ToArchive and ToUsenet.  Thus, we put them in
+        # msgdata[add_header] here and apply them in WrapMessage.
         msgdata.setdefault('add_header', {})[name] = value
     elif repl or not msg.has_key(name):
         if delete:
@@ -154,6 +162,23 @@ def process(mlist, msg, msgdata):
     # augment it.  RFC 2822 allows max one Reply-To: header so collapse them
     # if we're adding a value, otherwise don't touch it.  (Should we collapse
     # in all cases?)
+    # MAS: We need to do some things with the original From: if we've munged
+    # it for DMARC mitigation.  We have goals for this process which are
+    # not completely compatible, so we do the best we can.  Our goals are:
+    # 1) as long as the list is not anonymous, the original From: address
+    #    should be obviously exposed, i.e. not just in a header that MUAs
+    #    don't display.
+    # 2) the original From: address should not be in a comment or display
+    #    name in the new From: because it is claimed that multiple domains
+    #    in any fields in From: are indicative of spamminess.  This means
+    #    it should be in Reply-To: or Cc:.
+    # 3) the behavior of an MUA doing a 'reply' or 'reply all' should be
+    #    consistent regardless of whether or not the From: is munged.
+    # Goal 3) implies sometimes the original From: should be in Reply-To:
+    # and sometimes in Cc:, and even so, this goal won't be achieved in
+    # all cases with all MUAs.  In cases of conflict, the above ordering of
+    # goals is priority order.
+
     if not fasttrack:
         # A convenience function, requires nested scopes.  pair is (name, addr)
         new = []
@@ -171,13 +196,29 @@ def process(mlist, msg, msgdata):
         # the original Reply-To:'s to the list we're building up.  In both
         # cases we'll zap the existing field because RFC 2822 says max one is
         # allowed.
+        o_rt = False
         if not mlist.first_strip_reply_to:
             orig = msg.get_all('reply-to', [])
             for pair in getaddresses(orig):
+                # There's an original Reply-To: and we're not removing it.
                 add(pair)
-        # We also need to put the old From: in Reply-To: in all cases.
-        if o_from:
-            add(o_from)
+                o_rt = True
+        # We also need to put the old From: in Reply-To: in all cases where
+        # it is not going in Cc:.  This is when reply_goes_to_list == 0 and
+        # either there was no original Reply-To: or we stripped it.
+        # However, if there was an original Reply-To:, unstripped, and it
+        # contained the original From: address we need to flag that it's
+        # there so we don't add the original From: to Cc:
+        if o_from and mlist.reply_goes_to_list == 0:
+            if o_rt:
+                if d.has_key(o_from[1].lower()):
+                    # Original From: address is in original Reply-To:.
+                    # Pretend we added it.
+                    o_from = None
+            else:
+                add(o_from)
+                # Flag that we added it.
+                o_from = None
         # Set Reply-To: header to point back to this list.  Add this last
         # because some folks think that some MUAs make it easier to delete
         # addresses from the right than from the left.
@@ -206,13 +247,19 @@ def process(mlist, msg, msgdata):
         # because even though the list address is in From:, the Reply-To:
         # poster will override it. Brain dead MUAs may then address the list
         # twice on a 'reply all', but reasonable MUAs should do the right
-        # thing.
-        if (mlist.personalize == 2 and mlist.reply_goes_to_list <> 1 and
-            not mlist.anonymous_list):
+        # thing.  We also add the original From: to Cc: if it wasn't added
+        # to Reply-To:
+        add_list = (mlist.personalize == 2 and
+                    mlist.reply_goes_to_list <> 1 and
+                    not mlist.anonymous_list)
+        if add_list or o_from:
             # Watch out for existing Cc headers, merge, and remove dups.  Note
             # that RFC 2822 says only zero or one Cc header is allowed.
             new = []
             d = {}
+            # If we're adding the original From:, add it first.
+            if o_from:
+                add(o_from)
             # AvoidDuplicates may have set a new Cc: in msgdata.add_header,
             # so check that.
             if (msgdata.has_key('add_header') and
@@ -222,8 +269,9 @@ def process(mlist, msg, msgdata):
             else:
                 for pair in getaddresses(msg.get_all('cc', [])):
                     add(pair)
-            i18ndesc = uheader(mlist, mlist.description, 'Cc')
-            add((str(i18ndesc), mlist.GetListEmail()))
+            if add_list:
+                i18ndesc = uheader(mlist, mlist.description, 'Cc')
+                add((str(i18ndesc), mlist.GetListEmail()))
             change_header('Cc',
                           COMMASPACE.join([formataddr(pair) for pair in new]),
                           mlist, msg, msgdata)

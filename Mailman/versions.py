@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -92,6 +92,81 @@ def UpdateOldVars(l, stored_state):
             delattr(l, oldname)
         if not hasattr(l, newname) and newdefault is not uniqueval:
                 setattr(l, newname, newdefault)
+
+    def recode(mlist, f, t):
+        """If the character set for a list's preferred_language has changed,
+        attempt to recode old string values into the new character set.
+
+        mlist is the list, f is the old charset and t is the new charset.
+        """
+        for x in dir(mlist):
+            if x.startswith('_'):
+                continue
+            nv = doitem(getattr(mlist, x), f, t)
+            if nv:
+                setattr(mlist, x, nv)
+
+    def doitem(v, f, t):
+        """Recursively process lists, tuples and dictionary values and
+        convert strings as needed. Return either the updated item or None
+        if no change."""
+        changed = False
+        if isinstance(v, str):
+            return convert(v, f, t)
+        elif isinstance(v, list):
+            for i in range(len(v)):
+                nv = doitem(v[i], f, t)
+                if nv:
+                    changed = True
+                    v[i] = nv
+            if changed:
+                return v
+            else:
+                return None
+        elif isinstance(v, tuple):
+            nt = ()
+            for i in range(len(v)):
+                nv = doitem(v[i], f, t)
+                if nv:
+                    changed = True
+                    nt += (nv,)
+                else:
+                    nt += (v[i],)
+            if changed:
+                return nt
+            else:
+                return None
+        elif isinstance(v, dict):
+            for k, ov in v.items():
+                nv = doitem(ov, f, t)
+                if nv:
+                    changed = True
+                    v[k] = nv
+            if changed:
+                return v
+            else:
+                return None
+        else:
+            return None 
+
+    def convert(s, f, t):
+        """This does the actual character set conversion of the string s
+        from charset f to charset t."""
+
+        try:
+            u = unicode(s, f)
+            is_f = True
+        except ValueError:
+            is_f = False
+        try:
+            unicode(s, t)
+            is_t = True
+        except ValueError:
+            is_t = False
+        if is_f and not is_t:
+            return u.encode(t, 'replace')
+        else:
+            return None
 
     # Migrate to 2.1b3, baw 17-Aug-2001
     if hasattr(l, 'dont_respond_to_post_requests'):
@@ -313,6 +388,28 @@ def UpdateOldVars(l, stored_state):
             pass
         else:
             l.digest_members[k] = 0
+    #
+    # Convert pre 2.2 topics regexps which were compiled in verbose mode
+    # to a non-verbose equivalent.
+    #
+    if stored_state['data_version'] < 106 and stored_state.has_key('topics'):
+        l.topics = []
+        for name, pattern, description, emptyflag in stored_state['topics']:
+            pattern = Utils.strip_verbose_pattern(pattern)
+            l.topics.append((name, pattern, description, emptyflag))
+    #
+    # Romanian and Russian had their character sets changed in 2.1.19
+    # to utf-8. If there are any strings in the old encoding, try to recode
+    # them.
+    #
+    if stored_state['data_version'] < 108:
+        if l.preferred_language == 'ro':
+            if Utils.GetCharSet('ro') == 'utf-8':
+                recode(l, 'iso-8859-2', 'utf-8')
+        if l.preferred_language == 'ru':
+            if Utils.GetCharSet('ru') == 'utf-8':
+                recode(l, 'koi8-r', 'utf-8')
+    #
     # from_is_list was called author_is_list in 2.1.16rc2 (only).
     PreferStored('author_is_list', 'from_is_list',
                  mm_cfg.DEFAULT_FROM_IS_LIST)
@@ -360,6 +457,8 @@ def NewVars(l):
     add_only_if_missing('personalize', 0)
     add_only_if_missing('first_strip_reply_to',
                         mm_cfg.DEFAULT_FIRST_STRIP_REPLY_TO)
+    add_only_if_missing('subscribe_auto_approval',
+                        mm_cfg.DEFAULT_SUBSCRIBE_AUTO_APPROVAL)
     add_only_if_missing('unsubscribe_policy',
                         mm_cfg.DEFAULT_UNSUBSCRIBE_POLICY)
     add_only_if_missing('send_goodbye_msg', mm_cfg.DEFAULT_SEND_GOODBYE_MSG)
@@ -404,6 +503,10 @@ def NewVars(l):
     add_only_if_missing('dmarc_quarantine_moderation_action',
                        mm_cfg.DEFAULT_DMARC_QUARANTINE_MODERATION_ACTION)
     add_only_if_missing('dmarc_moderation_notice', '')
+    add_only_if_missing('dmarc_wrapped_message_text',
+                       mm_cfg.DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT)
+    add_only_if_missing('equivalent_domains', 
+                       mm_cfg.DEFAULT_EQUIVALENT_DOMAINS)
     add_only_if_missing('new_member_options',
                         mm_cfg.DEFAULT_NEW_MEMBER_OPTIONS)
     # Emergency moderation flag

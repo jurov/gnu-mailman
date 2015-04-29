@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2008 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -80,7 +80,8 @@ class GUIBase:
                         except re.error:
                             bad_addrs.append(addr)
                     elif (wtype == mm_cfg.EmailListEx and addr.startswith('@')
-                            and property.endswith('_these_nonmembers')):
+                            and (property.endswith('_these_nonmembers') or
+                                property == 'subscribe_auto_approval')):
                         # XXX Needs to be reviewed for list@domain names.
                         # don't reference your own list
                         if addr[1:] == mlist.internal_name():

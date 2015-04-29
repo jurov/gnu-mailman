@@ -258,8 +258,8 @@ class General(GUIBase):
              href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
-             href="http://www.metasystema.net/essays/reply-to.mhtml">Reply-To
-             Munging Considered Useful</a> for a dissenting opinion.
+             href="http://marc.merlins.org/netrants/reply-to-useful.html">
+             Reply-To Munging Considered Useful</a> for a dissenting opinion.
 
              <p>Some mailing lists have restricted posting privileges, with a
              parallel list devoted to discussions.  Examples are `patches' or
@@ -286,8 +286,8 @@ class General(GUIBase):
              href="http://www.unicom.com/pw/reply-to-harmful.html">`Reply-To'
              Munging Considered Harmful</a> for a general discussion of this
              issue.  See <a
-             href="http://www.metasystema.net/essays/reply-to.mhtml">Reply-To
-             Munging Considered Useful</a> for a dissenting opinion.
+             href="http://marc.merlins.org/netrants/reply-to-useful.html">
+             Reply-To Munging Considered Useful</a> for a dissenting opinion.
 
              <p>Some mailing lists have restricted posting privileges, with a
              parallel list devoted to discussions.  Examples are `patches' or

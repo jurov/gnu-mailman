@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -614,8 +614,11 @@ From: aperson@dom.ain
         msgdata = {}
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'aperson@dom.ain, _xtest@dom.ain')
+            '_xtest@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
         eq(msg.get_all('reply-to'), None)
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_list_with_strip(self):
         eq = self.assertEqual
@@ -647,8 +650,12 @@ Reply-To: bperson@dom.ain
         msgdata = {}
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'aperson@dom.ain, _xtest@dom.ain')
+            '_xtest@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
         eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
+
 
     def test_reply_to_explicit(self):
         eq = self.assertEqual
@@ -678,8 +685,11 @@ From: aperson@dom.ain
         msgdata = {}
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'mlist@dom.ain, aperson@dom.ain')
+            'mlist@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
         eq(msg.get_all('reply-to'), None)
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_explicit_with_strip(self):
         eq = self.assertEqual
@@ -715,8 +725,11 @@ Reply-To: bperson@dom.ain
 
         CookHeaders.process(self._mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'mlist@dom.ain, aperson@dom.ain')
+            'mlist@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
         eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_extends_to_list(self):
         eq = self.assertEqual
@@ -750,7 +763,11 @@ Reply-To: bperson@dom.ain
 
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'bperson@dom.ain, aperson@dom.ain, _xtest@dom.ain')
+            'bperson@dom.ain, _xtest@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
 
     def test_reply_to_extends_to_explicit(self):
         eq = self.assertEqual
@@ -784,7 +801,11 @@ Reply-To: bperson@dom.ain
         msgdata = {}
         CookHeaders.process(mlist, msg, msgdata)
         eq(msgdata['add_header']['Reply-To'],
-            'mlist@dom.ain, bperson@dom.ain, aperson@dom.ain')
+            'mlist@dom.ain, bperson@dom.ain')
+        eq(msgdata['add_header']['Cc'],
+            'aperson@dom.ain')
+        eq(msg.get_all('reply-to'), ['bperson@dom.ain'])
+        eq(msg.get_all('cc'), None)
 
     def test_list_headers_nolist(self):
         eq = self.assertEqual
@@ -980,7 +1001,8 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 footer
---BOUNDARY--""")
+--BOUNDARY--
+""")
 
     def test_image(self):
         eq = self.assertEqual
@@ -1749,7 +1771,8 @@ class TestReplybot(TestBase):
 class TestSpamDetect(TestBase):
     def test_short_circuit(self):
         msgdata = {'approved': 1}
-        rtn = SpamDetect.process(self._mlist, None, msgdata)
+        msg = email.message_from_string('')
+        rtn = SpamDetect.process(self._mlist, msg, msgdata)
         # Not really a great test, but there's little else to assert
         self.assertEqual(rtn, None)
 

@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -124,23 +124,36 @@ def process_form(mlist, doc, cgidata, lang):
     # Are we checking the hidden data?
     if mm_cfg.SUBSCRIBE_FORM_SECRET:
         now = int(time.time())
+        # Try to accept a range in case of load balancers, etc.  (LP: #1447445)
+        if remote.find('.') >= 0:
+            # ipv4 - drop last octet
+            remote1 = remote.rsplit('.', 1)[0]
+        else:
+            # ipv6 - drop last 16 (could end with :: in which case we just
+            #        drop one : resulting in an invalid format, but it's only
+            #        for our hash so it doesn't matter.
+            remote1 = remote.rsplit(':', 1)[0]
         try:
             ftime, fhash = cgidata.getvalue('sub_form_token', '').split(':')
             then = int(ftime)
         except ValueError:
             ftime = fhash = ''
-            then = now
+            then = 0
         token = Utils.sha_new(mm_cfg.SUBSCRIBE_FORM_SECRET +
                               ftime +
                               mlist.internal_name() +
-                              remote).hexdigest()
-        if now - then > mm_cfg.FORM_LIFETIME:
+                              remote1).hexdigest()
+        if ftime and now - then > mm_cfg.FORM_LIFETIME:
             results.append(_('The form is too old.  Please GET it again.'))
-        if now - then < mm_cfg.SUBSCRIBE_FORM_MIN_TIME:
+        if ftime and now - then < mm_cfg.SUBSCRIBE_FORM_MIN_TIME:
             results.append(
-    _('Please take a few seconds to fill out the form before submitting it.')
-                          )
-        if token != fhash:
+    _('Please take a few seconds to fill out the form before submitting it.'))
+        if ftime and token != fhash:
+            results.append(
+                _("The hidden token didn't match.  Did your IP change?"))
+        if not ftime:
+            results.append(
+    _('There was no hidden token in your submission or it was corrupted.'))
             results.append(_('You must GET the form before submitting it.'))
     # Was an attempt made to subscribe the list to itself?
     if email == mlist.GetListEmail():

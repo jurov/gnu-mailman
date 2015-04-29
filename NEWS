@@ -1,13 +1,148 @@
 -*- coding: iso-8859-1 -*-
 Mailman - The GNU Mailing List Management System
-Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 Here is a history of user visible changes to Mailman.
 
-2.1.19 (xx-xxx-xxxx)
+2.1.21 (xx-xxx-xxxx)
+
+  Bug fixes and other patches
+
+    - If SUBSCRIBE_FORM_SECRET is enabled and a user's network has a load
+      balancer or similar in use the POSTing IP might not exactly match the
+      GETting IP.  This is now accounted for by not requiring the last
+      octet (16 bits for ipV6) to match.  (LP: #1447445)
+
+    - DKIM-Signature:, DomainKey-Signature: and Authentication-Results:
+      headers are now removed by default from posts to anonymous lists.
+      (LP: #1444673)
+
+    - The list admin web UI Mambership List search function often doesn't
+      return correct results for search strings (regexps) that contain
+      non-ascii characters.  This is partially fixed.  (LP: #1442298)
+
+2.1.20 (31-Mar-2015)
+
+  Security
+
+    - A path traversal vulnerability has been discovered and fixed.  This
+      vulnerability is only exploitable by a local user on a Mailman server
+      where the suggested Exim transport, the Postfix postfix_to_mailman.py
+      transport or some other programmatic MTA delivery not using aliases
+      is employed.  CVE-2015-2775  (LP: #1437145)
 
   New Features
+
+    - There is a new Address Change sub-section in the web admin Membership
+      Management section to allow a list admin to change a list member's
+      address in one step rather than adding the new address, copying settings
+      and deleting the old address.  (LP: #266809)
+
+  i18n
+ 
+    - The Russian translation has been updated by Danil Smirnov.
+
+    - The Polish translation has been updated by Stefan Plewako.
+ 
+  Bug fixes and other patches
+
+    - A LookupError in SpamDetect on a message with RFC 2047 encoded headers
+      in an unknown character set is fixed.  (LP: #1427389)
+
+    - Fixed a bug in CommandRunner that could process the second word of a
+      body line as a command word and a case sensitivity in commands in
+      Subject: with an Re: prefix.  (LP: #1426829)
+
+    - Fixed a bug in CommandRunner that threw an uncaught KeyError if
+      the input to the list-request address contained a command word
+      terminated by a period.  (LP: #1426825)
+
+2.2 Branch Backports (released in conjunction with 2.1.19)
+
+  The following New Features and Bug Fixes have been in an "unofficial,
+  never to be released" Mailman 2.2 branch for several years. Until now,
+  they were never implemented on the official 2.1 branch because of their
+  i18n impacts.  Given that there have been a number of i18n impacting
+  changes due to DMARC mitigations in the last few releases, it has been
+  decided to backport these as well.
+
+  All of these changes have been running in production on several lists
+  for years without problems other than untranslated strings, so they should
+  be reasonably "bug free".
+
+  New Features
+
+    - There is a new list attribute 'subscribe_auto_approval' which is a list
+      of email addresses and regular expressions matching email addresses
+      whose subscriptions are exempt from admin approval.  (LP: #266609)
+
+    - Confirmed member change of address is logged in the 'subscribe' log,
+      and if admin_notify_mchanges is true, a notice is sent to the list
+      owner using a new adminaddrchgack.txt template.
+
+    - Added an 'automate' option to bin/newlist to send the notice to the
+      admin without the prompt.
+
+    - The processing of Topics regular expressions has changed. Previously the
+      Topics regexp was compiled in verbose mode but not documented as such
+      which caused some confusion.  Also, the documentation indicated that
+      topic keywords could be entered one per line, but these entries were not
+      handled properly.  Topics regexps are now compiled in non-verbose mode
+      and multi-line entries are 'ored'.  Existing Topics regexps will be
+      converted when the list is updated so they will continue to work.
+
+    - Added real name display to the web roster.  (LP: #266754)
+
+
+  Bug fixes and other patches
+
+    - Changed the response to an invalid confirmation to be more generic.
+      Not all confirmations are subscription requests.
+
+    - Changed the default nonmember_rejection_notice to be more user friendly.
+      (LP: #418728)
+
+    - Added "If you are a list member" qualification to some messages from the
+      options login page.  (LP: #266442)
+
+    - Changed the 'Approve' wording in the admindbdetails.html template to
+      'Accept/Approve' for better agreement with the button labels.
+
+    - Added '(by thread)' to the previous and next message links in the
+      archive to emphasize that even if you got to the message from a
+      subject, date or author index, previous and next are still by thread.
+
+2.1.19 (28-Feb-2015)
+
+  New Features
+
+    - The subscribe_auto_approval feature backported from the 2.2 branch and
+      described above has been enhanced to accept entries of the form
+      @listname to auto approve members of another list.  (LP: #1417093)
+
+    - There is a new list attribute dmarc_wrapped_message_text and a
+      DEFAULT_DMARC_WRAPPED_MESSAGE_TEXT setting to set the default for new
+      lists.  This text is added to a message which is wrapped because of
+      dmarc_moderation_action in a separate text/plain part that precedes the
+      message/rfc822 part containing the original message.  It can be used to
+      provide an explanation of why the message was wrapped or similar info.
+
+    - There is a new list attribute equivalent_domains and a
+      DEFAULT_EQUIVALENT_DOMAINS setting to set the default for new lists which
+      in turn defaults to the empty string.  This provides a way to specify one
+      or more groups of domains, e.g., mac.com, me.com, icloud.com, which are
+      considered equivalent for validating list membership for posting and
+      moderation purposes.
+
+    - There is a new WEB_HEAD_ADD setting to specify text to be added to the
+      <HEAD> section of Mailman's internally generated web pages.  This doesn't
+      apply to pages built from templates, but in those cases, custom templates
+      can be created.  (LP: #1409396)
+
+    - There is a new DEFAULT_SUBSCRIBE_OR_INVITE setting.  Set this to Yes
+      to make the default selection on the admin Mass Subscriptions page
+      Invite rather than Subscribe.  (LP: #1404511)
 
     - There is a new list attribute in the Bounce processing section.
       bounce_notify_owner_on_bounce_increment if set to Yes will cause
@@ -26,12 +161,101 @@ Here is a history of user visible changes to Mailman.
       have a logrotate process that creates new log files instead of letting
       Mailman create them, you will need to address that.  (LP: #1327404)
 
+  Other changes
+
+    - The Python Powered logo image has been replaced in the misc/ directory
+      in the source distribution.  Depending on how you've installed these
+      images, you may need to copy PythonPowered.png from the misc/ directory
+      in the source or from the $prefix/icons/ installed directory to another
+      location for your web server.  (LP: #1408575)
+
   i18n
+
+    - The Polish translation has been updated by Stefan Plewako.
+
+    - The Interlingua translation has been updated by Martijn Dekker.
+
+    - The Japanese message catalog has been updated by SATOH Fumiyasu.
+
+    - Mailman's character set for Romanian has been changed from iso-8859-2
+      to utf-8 and the templates and messages recoded.  This change will
+      require running 'bin/arch --wipe' on any existing Romanian language
+      lists in order to recode the list's archives, and will require recoding
+      any edited templates in lists/LISTNAME/ro/*, templates/DOMAIN/ro/* and
+      templates/site/ro/*.  It may also require recoding any existing
+      iso-8859-2 text in list attributes.  (LP: #1418735)
+
+    - Mailman's character set for Russian has been changed from koi8-r to
+      utf-8 and the templates and messages recoded.  This change will
+      require running 'bin/arch --wipe' on any existing Russian language
+      lists in order to recode the list's archives, and will require recoding
+      any edited templates in lists/LISTNAME/ru/*, templates/DOMAIN/ru/* and
+      templates/site/ru/*.  It may also require recoding any existing koi8-r
+      text in list attributes.  (LP: #1418448)
+
+    - Mailman's versions.py has been augmented to help with the above two
+      character set changes.  The first time a list with preferred_language
+      of Romanian or Russian is accessed or upon upgrade to this release,
+      any list attributes which have string values such as description, info,
+      welcome_msg, etc. that appear to be in the old character set will be
+      converted to utf-8.  This is done recursively for the values (but not
+      the keys) of dictionary attributes and the elements of list and tuple
+      attributes.
+
+    - The Russian message catalog and templates have been further updated by
+      Danil Smirnov.
+
+    - The Romanian message catalog has been updated.  (LP: #1415489)
+
+    - The Russian templates have been updated by Danil Smirnov.  (LP: #1403462)
+
+    - The Japanese translation has been updated by SATOH Fumiyasu.
+      (LP: #1402989)
 
     - A minor change in the French translation of a listinfo subscribe form
       message has been made.  (LP: #1331194)
 
   Bug fixes and other patches
+
+    - Because of privacy concerns with the 2.2 backport adding real name to
+      list rosters, this is controlled by a new ROSTER_DISPLAY_REALNAME
+      setting that defaults to No.  You may wish to set this to Yes in
+      mm_cfg.py.
+
+    - Organization: headers are now unconditionally removed from posts to
+      anonymous lists.  Regexps in ANONYMOUS_LIST_KEEP_HEADERS weren't kept
+      if the regexp included the trailing ':'.  This is fixed too.
+      (LP: #1419132)
+
+    - The admindb interface has been fixed so the the detail message body
+      display doesn't lose part of a multi-byte character, and characters which
+      are invalid in the message's charset are replaced rather than the whole
+      body not being converted to the display charset.  (LP: #1415406)
+
+    - Fixed a bug in bin/rmlist that would throw an exception or just fail to
+      remove held message files for a list with regexp special characters in
+      its name.  (LP:#1414864)
+
+    - When applying DMARC mitigations, CookHeaders now adds the original From:
+      to Cc: rather than Reply-To: in some cases to make MUA 'reply' and
+      'reply all' more consistent with the non-DMARC cases.  (LP: #1407098)
+
+    - The Subject: of the list welcome message wasn't always in the user's
+      preferred language.  Fixed.  (LP: #1400988)
+
+    - Accept email command in Subject: prefixed with Re: or similar with no
+      intervening space.  (LP: #1400200)
+
+    - Fixed a UnicodeDecodeError that could occur in the web admin interface
+      if 'text' valued attributes have unicode values.  (LP: #1397170)
+
+    - We now catch the NotAMemberError exception thrown if an authenticated
+      unsubscribe is submitted from the user options page for a nonmember.
+      (LP: #1390653)
+
+    - Fixed an archiving bug that would cause messages with 'Subject: Re:'
+      only to be indexed in the archives without a link to the message.
+      (LP: #1388614)
 
     - The vette log entry for a message discarded by a handler now includes
       the list name and the name of the handler.  (LP: #558096)

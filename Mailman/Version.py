@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,7 +16,7 @@
 # USA.
 
 # Mailman version
-VERSION = '2.1.18-1'
+VERSION = '2.1.20'
 
 # And as a hex number in the manner of PY_VERSION_HEX
 ALPHA = 0xa
@@ -28,16 +28,16 @@ FINAL = 0xf
 
 MAJOR_REV = 2
 MINOR_REV = 1
-MICRO_REV = 18
+MICRO_REV = 20
 REL_LEVEL = FINAL
 # at most 15 beta releases!
-REL_SERIAL = 1
+REL_SERIAL = 0
 
 HEX_VERSION = ((MAJOR_REV << 24) | (MINOR_REV << 16) | (MICRO_REV << 8) |
                (REL_LEVEL << 4)  | (REL_SERIAL << 0))
 
 # config.pck schema version number
-DATA_FILE_VERSION = 105
+DATA_FILE_VERSION = 108
 
 # qfile/*.db schema version number
 QFILE_SCHEMA_VERSION = 3

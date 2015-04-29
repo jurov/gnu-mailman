@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 2002-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -49,9 +49,9 @@ def process(res, args):
         days = int(mm_cfg.PENDING_REQUEST_LIFE / mm_cfg.days(1) + 0.5)
         res.results.append(_("""\
 Invalid confirmation string.  Note that confirmation strings expire
-approximately %(days)s days after the initial subscription request.  If your
-confirmation has expired, please try to re-submit your original request or
-message."""))
+approximately %(days)s days after the initial request.  They also expire if
+the request has already been handled in some way.  If your confirmation has
+expired, please try to re-submit your original request or message."""))
     except Errors.MMNeedApproval:
         res.results.append(_("""\
 Your request has been forwarded to the list moderator for approval."""))

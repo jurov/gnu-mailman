@@ -49,14 +49,15 @@
 </div>
 <!--End of Navigation Panel-->
 
-<h3><a name="SECTION002272000000000000000">
-2.7.2 Sender filters</a>
+<h3><a name="SECTION002272000000000000000"></a><a name="sender-filters"></a>
+<br>
+2.7.2 Sender filters
 </h3>
 
 <p>
-When a message is posted to the list, a series of moderation criteria are
+When a message is posted to the list, a series of moderation criteria is
 applied to determine the disposition of the message.  This section
-contains the modeation controls for postings from both members and
+contains the moderation controls for postings from both members and
 non-members.
 
 <p>
@@ -115,12 +116,42 @@ Note that when a moderated member posts to your list, and the
 </dl>
 
 <p>
+The next group of settings control messages whose <span class="mailheader">From:</span>
+domain publishes a DMARC <code>p=reject</code> or <code>p=quarantine</code> policy.
+
+<p>
+<dl>
+<dt><strong>dmarc_moderation_action</strong></dt>
+<dd>These actions, <em>Accept</em>, <em>Munge From</em>, <em>Wrap Message</em>,
+    <em>Reject</em> and <em>Discard</em> apply only to messages whose
+    <span class="mailheader">From:</span> domain publishes a DMARC <code>p=reject</code> or optionally
+    (see the next setting) <code>p=quarantine</code> policy.  If the message is
+    <span class="mailheader">From:</span> such a domain and this action is other than
+    <em>Accept</em>, this action applies to the message.  Otherwise the
+    <code>from_is_list</code> setting in section <a href="general-personality.html#general-personality">2.1</a>
+    applies.  See the <code>from_is_list</code> setting in section
+    <a href="general-personality.html#general-personality">2.1</a> for a description of the <em>Munge From</em>
+    and <em>Wrap Message</em> actions.
+</dd>
+<dt><strong>dmarc_quarantine_moderation_action</strong></dt>
+<dd>If this is set to <em>Yes</em>, the above <code>dmarc_moderation_action</code>
+    applies to messages with <span class="mailheader">From:</span> domain DMARC policy
+    <code>p=quarantine</code> as well as <code>p=reject</code>.
+</dd>
+<dt><strong>dmarc_moderation_notice</strong></dt>
+<dd>When <code>dmarc_moderation_action</code> applies and is <em>Reject</em>,
+    this variable contains the text sent in the rejection notice.  If
+    empty, a generic notice mentioning DMARC is sent.
+</dd>
+</dl>
+
+<p>
 The next batch of variables controls what happens when non-members
 post messages to the list.  Each of these accepts one email address
 per line; regular expressions are allowed if the line starts with the
-(caret) character.  These address lists are always consulted in the
-order in which they're presented on this page (i.e. accepts first,
-followed by holds, rejections, and discards).
+^ (caret) character.  These address lists are always
+consulted in the order in which they're presented on this page (i.e.
+accepts first, followed by holds, rejections, and discards).
 
 <p>
 <dl>
@@ -141,7 +172,7 @@ followed by holds, rejections, and discards).
 <dt><strong>reject_these_nonmembers</strong></dt>
 <dd>Postings from non-members whose addresses match this list are
     rejected, i.e. bounced back to the original sender.  There
-    currently is no way to add additional text to the rejection
+    is currently no way to add additional text to the rejection
     message.
 
 <p>
@@ -167,7 +198,7 @@ followed by holds, rejections, and discards).
 <dd>When messages from non-members are discarded, either because the
     sender address matched <code>discard_these_nonmembers</code>, or because
     <code>generic_nonmember_action</code> is <em>Discard</em>, you can choose
-    whether such messages are forwarded to the lsit administrators or
+    whether such messages are forwarded to the list administrators or
     not.
 </dd>
 </dl>
@@ -207,7 +238,7 @@ followed by holds, rejections, and discards).
 </div>
 </div>
 <hr />
-<span class="release-info">Release 2.1, documentation updated on September 28, 2013.</span>
+<span class="release-info">Release 2.1, documentation updated on March 2, 2015.</span>
 </div>
 <!--End of Navigation Panel-->
 

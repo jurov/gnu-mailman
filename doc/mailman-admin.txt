@@ -10,7 +10,7 @@ GNU Mailman - List Administration Manual
    Barry A. Warsaw
 
    Release 2.1
-   September 28, 2013
+   March 2, 2015
 
                                   Front Matter
 
@@ -98,7 +98,7 @@ Contents
        which processes email commands that can be used to set member
        subscription options, as well as process other commands.
      * mylist-bounces@example.com - This address receives bounces from
-       members who's addresses have become either temporarily or
+       members whose addresses have become either temporarily or
        permanently inactive. The -bounces address is also a mail robot
        that processes bounces and automatically disables or removes
        members as configured in the bounce processing settings. Any bounce
@@ -143,7 +143,7 @@ Contents
 1.3 A List's Web Pages
 
    Every mailing list is also accessible by a number of web pages. Note
-   that the exact urls is configurable by the site administrator, so they
+   that the exact urls are configurable by the site administrator, so they
    may be different than what's described below. We'll describe the most
    common default configuration, but check with your site administrator or
    hosting service for details.
@@ -200,8 +200,8 @@ Contents
    ``qrunner'') that processes messages in the queue. The qrunners are
    idle when there are no messages to process.
 
-   Every message in the queues are represented by two files, a message
-   file and a metadata file. Both of these files share the same base name,
+   Every message in the queues is represented by two files, a message file
+   and a metadata file. Both of these files share the same base name,
    which is a combination of a unique hash and the Unix time that the
    message was received. The metadata file has a suffix of .db and the
    message file has a suffix of either .msg if stored in plain text, or
@@ -326,13 +326,23 @@ Contents
           the Subject:. Mailman is careful not to add a prefix when the
           header already has one, as is the case in replies for example.
           The prefix can also contain characters in the list's preferred
-          language. In this case, because of vagarities of the email
+          language. In this case, because of the vagaries of the email
           standards, you may or may not want to add a trailing space.
 
    from_is_list
-          Setting this variable to Yes causes the From: address to be
-          replaced by the list address so that policies like ADSP or DMARC
-          can be applied.
+          This applies to all non-digest messages sent by the list. For
+          settings that apply only to messages whose From: domain
+          publishes a DMARC p=reject or p=quarantine policy, see the
+          dmarc_moderation_action description in section 2.7.
+
+          If set to Munge From, it replaces the From: header address with
+          the list's posting address to mitigate issues stemming from the
+          original From: domain's DMARC or similar policies and puts the
+          original From: address in a Reply-To: header.
+
+          If set to Wrap Message it wraps the original message as a MIME
+          subpart of an outer message with From: and Reply-To: headers as
+          above.
 
    anonymous_list
           This variable allows you to turn on some simple anonymizing
@@ -357,7 +367,7 @@ Contents
    possible, but our biases may still peak through.
 
    Reply-To: is a header that is commonly used to redirect replies to
-   messages. Exactly what happens when your uses reply to such a message
+   messages. Exactly what happens when your users reply to such a message
    depends on the mail readers your users use, and what functions they
    provide. Usually, there is both a ``reply to sender'' button and a
    ``reply to all'' button. If people use these buttons correctly, you
@@ -418,8 +428,8 @@ Contents
 
   2.1.3 Umbrella list settings
 
-   TBD. Note that umbrella lists are deprecated and will be replace with a
-   better mechanism for Mailman 3.0.
+   TBD. Note that umbrella lists are deprecated and will be replaced with
+   a better mechanism for Mailman 3.0.
 
   2.1.4 Notifications
 
@@ -547,7 +557,7 @@ Contents
           It's generally not a good idea to change this value, since its
           default value is specified when the mailing list is created.
           Changing this to an incorrect value could make it difficult to
-          contact your mailing list. Also not that the url used to visit
+          contact your mailing list. Also note that the url used to visit
           the list's pages is not configurable through the web interface.
           This is because if you messed it up, you'd have to have the site
           administrator fix it.
@@ -626,7 +636,7 @@ Contents
           that the list administrative pages will be displayed in. Also
           any messages sent to the list owners by Mailman will be sent in
           this language. This option is presented as a drop-down list
-          containing the language enabled in the available_languages
+          containing the languages enabled in the available_languages
           variable.
 
    available_languages
@@ -661,7 +671,7 @@ Contents
    The Membership Management category is unlike the other administrative
    categories. It doesn't contain configuration variables or list
    settings. Instead, it presents a number of pages that allow you to
-   manage the membership of you list. This includes pages for subscribing
+   manage the membership of your list. This includes pages for subscribing
    and unsubscribing members, and for searching for members, and for
    changing various member-specific settings.
 
@@ -671,8 +681,8 @@ Contents
 2.5 The Non-digest Options Category
 
    Mailman delivers messages to users via two modes. List members can
-   elect to receive postings in bundles call digests one or a few times a
-   day, or they can receive messages immediately whenever the message is
+   elect to receive postings in bundles called digests one or a few times
+   a day, or they can receive messages immediately whenever the message is
    posted to the list. This latter delivery mode is also called non-digest
    delivery. There are two administrative categories available for
    separately controlling digest and non-digest delivery. You can even
@@ -817,7 +827,7 @@ Description: An example of Mailman mailing lists
 
    The second type is called ``plaintext'' digests because they are
    readable in mail readers that don't support MIME. Actually, they adhere
-   to the RFC 1153 digest standard. The retain some, but not all of the
+   to the RFC 1153 digest standard. They retain some, but not all of the
    original messages, but can also include a summary and headers and
    footers.
 
@@ -933,11 +943,11 @@ Description: An example of Mailman mailing lists
    Many of the fields in this section are text boxes accepting addresses,
    one per line. Unless otherwise noted, these also accept regular
    expressions which will be matched against an address, if the line
-   begins with a (caret) character.
+   begins with a ^ (caret) character.
 
   2.7.1 Subscription rules
 
-   This subcategory controls the rules for exposing the existance of this
+   This subcategory controls the rules for exposing the existence of this
    list, and for what new members must do in order to subscribe to the
    list.
 
@@ -990,7 +1000,7 @@ Description: An example of Mailman mailing lists
           to unsubscribe from the company newsletter.
 
    ban_list
-          This contains a list of addresses (or regular expressiosn), one
+          This contains a list of addresses (or regular expressions), one
           per line, that are banned from ever subscribing to your mailing
           list. If a match occurs during the subscription process, the
           request will be automatically rejected, and the requester will
@@ -1004,7 +1014,7 @@ Description: An example of Mailman mailing lists
           list members, or just to the list administrators. In the former
           case, a user must enter a valid member's address and password
           before they can view the roster. In the latter case, a list
-          administrator's password must be enter; if a matching admin
+          administrator's password must be entered; if a matching admin
           password is entered, address field is ignored.
 
    obscure_addresses
@@ -1016,8 +1026,8 @@ Description: An example of Mailman mailing lists
   2.7.2 Sender filters
 
    When a message is posted to the list, a series of moderation criteria
-   are applied to determine the disposition of the message. This section
-   contains the modeation controls for postings from both members and
+   is applied to determine the disposition of the message. This section
+   contains the moderation controls for postings from both members and
    non-members.
 
    default_member_moderation
@@ -1065,9 +1075,32 @@ Description: An example of Mailman mailing lists
           member_moderation_action is Reject, this variable contains the
           text sent in the rejection notice.
 
+   The next group of settings control messages whose From: domain
+   publishes a DMARC p=reject or p=quarantine policy.
+
+   dmarc_moderation_action
+          These actions, Accept, Munge From, Wrap Message, Reject and
+          Discard apply only to messages whose From: domain publishes a
+          DMARC p=reject or optionally (see the next setting) p=quarantine
+          policy. If the message is From: such a domain and this action is
+          other than Accept, this action applies to the message. Otherwise
+          the from_is_list setting in section 2.1 applies. See the
+          from_is_list setting in section 2.1 for a description of the
+          Munge From and Wrap Message actions.
+
+   dmarc_quarantine_moderation_action
+          If this is set to Yes, the above dmarc_moderation_action applies
+          to messages with From: domain DMARC policy p=quarantine as well
+          as p=reject.
+
+   dmarc_moderation_notice
+          When dmarc_moderation_action applies and is Reject, this
+          variable contains the text sent in the rejection notice. If
+          empty, a generic notice mentioning DMARC is sent.
+
    The next batch of variables controls what happens when non-members post
    messages to the list. Each of these accepts one email address per line;
-   regular expressions are allowed if the line starts with the (caret)
+   regular expressions are allowed if the line starts with the ^ (caret)
    character. These address lists are always consulted in the order in
    which they're presented on this page (i.e. accepts first, followed by
    holds, rejections, and discards).
@@ -1084,8 +1117,8 @@ Description: An example of Mailman mailing lists
 
    reject_these_nonmembers
           Postings from non-members whose addresses match this list are
-          rejected, i.e. bounced back to the original sender. There
-          currently is no way to add additional text to the rejection
+          rejected, i.e. bounced back to the original sender. There is
+          currently no way to add additional text to the rejection
           message.
 
    discard_these_nonmembers
@@ -1105,7 +1138,7 @@ Description: An example of Mailman mailing lists
           When messages from non-members are discarded, either because the
           sender address matched discard_these_nonmembers, or because
           generic_nonmember_action is Discard, you can choose whether such
-          messages are forwarded to the lsit administrators or not.
+          messages are forwarded to the list administrators or not.
 
   2.7.3 Recipient Filters
 
@@ -1139,7 +1172,7 @@ Description: An example of Mailman mailing lists
   2.7.4 Spam Filters
 
    This section provides some adjuncts to spam fighting tools; it doesn't
-   replace dedicated anti-spam tools such as SpamAssassin or Spambayes.
+   replace dedicated anti-spam tools such as SpamAssassin or SpamBayes.
 
    bounce_matching_headers
           This variable contains header regular expressions, one per line,
@@ -1209,9 +1242,9 @@ Description: An example of Mailman mailing lists
           can be a floating point number.
 
    bounce_info_stale_after
-          Thenumber of days after which a member's bounce information is
+          The number of days after which a member's bounce information is
           considered stale. If no new bounces have been received in the
-          interrim, the bounce score is reset to zero. This value must be
+          interim, the bounce score is reset to zero. This value must be
           an integer.
 
    bounce_you_are_disabled_warnings
@@ -1311,8 +1344,7 @@ Just add another \section{}, but don't say \appendix again.
 
                             About this document ...
 
-   GNU Mailman - List Administration Manual, September 28, 2013, Release
-   2.1
+   GNU Mailman - List Administration Manual, March 2, 2015, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1335,7 +1367,7 @@ Just add another \section{}, but don't say \appendix again.
           The site administrator can configure lists to use a simpler
           interpolation format, where $list_name or ${list_name} would be
           substituted with the mailing list's name. Ask your site
-          administrator if the've configured your list this way.
+          administrator if they've configured your list this way.
 
    ... list^3
           For backward compatibility, the variable _internal_name is
@@ -1357,4 +1389,4 @@ Just add another \section{}, but don't say \appendix again.
                                                      Manual
      __________________________________________________________________
 
-   Release 2.1, documentation updated on September 28, 2013.
+   Release 2.1, documentation updated on March 2, 2015.

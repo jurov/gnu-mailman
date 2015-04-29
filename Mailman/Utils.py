@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -80,6 +80,7 @@ except ImportError:
 
 EMPTYSTRING = ''
 UEMPTYSTRING = u''
+CR = '\r'
 NL = '\n'
 DOT = '.'
 IDENTCHARS = ascii_letters + digits + '_'
@@ -99,6 +100,12 @@ def list_exists(listname):
     #
     # The former two are for 2.1alpha3 and beyond, while the latter two are
     # for all earlier versions.
+    #
+    # But first ensure the list name doesn't contain a path traversal
+    # attack.
+    if len(re.sub(mm_cfg.ACCEPTABLE_LISTNAME_CHARACTERS, '', listname)) > 0:
+        syslog('mischief', 'Hostile listname: %s', listname)
+        return False
     basepath = Site.get_listpath(listname)
     for ext in ('.pck', '.pck.last', '.db', '.db.last'):
         dbfile = os.path.join(basepath, 'config' + ext)
@@ -918,6 +925,61 @@ def oneline(s, cset):
         return EMPTYSTRING.join(s.splitlines())
 
 
+def strip_verbose_pattern(pattern):
+    # Remove white space and comments from a verbose pattern and return a
+    # non-verbose, equivalent pattern.  Replace CR and NL in the result
+    # with '\\r' and '\\n' respectively to avoid multi-line results.
+    if not isinstance(pattern, str):
+        return pattern
+    newpattern = ''
+    i = 0
+    inclass = False
+    skiptoeol = False
+    copynext = False
+    while i < len(pattern):
+        c = pattern[i]
+        if copynext:
+            if c == NL:
+                newpattern += '\\n'
+            elif c == CR:
+                newpattern += '\\r'
+            else:
+                newpattern += c
+            copynext = False
+        elif skiptoeol:
+            if c == NL:
+                skiptoeol = False
+        elif c == '#' and not inclass:
+            skiptoeol = True
+        elif c == '[' and not inclass:
+            inclass = True
+            newpattern += c
+            copynext = True
+        elif c == ']' and inclass:
+            inclass = False
+            newpattern += c
+        elif re.search('\s', c):
+            if inclass:
+                if c == NL:
+                    newpattern += '\\n'
+                elif c == CR:
+                    newpattern += '\\r'
+                else:
+                    newpattern += c
+        elif c == '\\' and not inclass:
+            newpattern += c
+            copynext = True
+        else:
+            if c == NL:
+                newpattern += '\\n'
+            elif c == CR:
+                newpattern += '\\r'
+            else:
+                newpattern += c
+        i += 1
+    return newpattern
+
+
 # Patterns and functions to flag possible XSS attacks in HTML.
 # This list is compiled from information at http://ha.ckers.org/xss.html,
 # http://www.quirksmode.org/js/events_compinfo.html,
@@ -1159,4 +1221,38 @@ def IsDMARCProhibited(mlist, email):
                     return True
 
     return False
+
+
+def check_eq_domains(email, domains_list):
+    """The arguments are an email address and a string representing a
+    list of lists in a form like 'a,b,c;1,2' representing [['a', 'b',
+    'c'],['1', '2']].  The inner lists are domains which are
+    equivalent in some sense.  The return is an empty list or a list
+    of email addresses equivalent to the first argument.
+    For example, given
+
+    email = 'user@me.com'
+    domains_list = '''domain1, domain2; mac.com, me.com, icloud.com;
+                   domaina, domainb
+                   '''
+
+    check_eq_domains(email, domains_list) will return
+    ['user@mac.com', 'user@icloud.com']
+    """
+    if not domains_list:
+        return []
+    try:
+        local, domain = email.rsplit('@', 1)
+    except ValueError:
+        return []
+    domain = domain.lower()
+    domains_list = re.sub('\s', '', domains_list).lower()
+    domains = domains_list.split(';')
+    domains_list = []
+    for d in domains:
+        domains_list.append(d.split(','))
+    for domains in domains_list:
+        if domain in domains:
+            return [local + '@' + x for x in domains if x != domain]
+    return []
 

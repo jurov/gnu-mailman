@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 # Copyright (C) 2005 by Stefan Schlott <stefan.schlott informatik.uni-ulm.de>
 # Copyright (C) 2005 by Tilburg University, http://www.uvt.nl/.
 #
@@ -419,6 +419,12 @@ def process(mlist, msg, msgdata):
     for sender in msg.get_senders():
         if mlist.isMember(sender):
             break
+        for sender in Utils.check_eq_domains(sender,
+                          mlist.equivalent_domains):
+            if mlist.isMember(sender):
+                break
+        if mlist.isMember(sender):
+            break
     else:
         sender = None
     if sender:
@@ -535,9 +541,10 @@ def do_reject(mlist):
               Utils.wrap(_(mlist.nonmember_rejection_notice))
     else:
         raise Errors.RejectMessage, Utils.wrap(_("""\
-You are not allowed to post to this mailing list, and your message has been
-automatically rejected.  If you think that your messages are being rejected in
-error, contact the mailing list owner at %(listowner)s."""))
+Your message has been rejected, probably because you are not subscribed to the
+mailing list and the list's policy is to prohibit non-members from posting to
+it.  If you think that your messages are being rejected in error, contact the
+mailing list owner at %(listowner)s."""))
 
 
 

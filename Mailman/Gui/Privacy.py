@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -117,6 +117,18 @@ class Privacy(GUIBase):
              machine?''')),
 
             sub_cfentry,
+
+            ('subscribe_auto_approval', mm_cfg.EmailListEx, (10, WIDTH), 1,
+             _("""List of addresses (or regexps) whose subscriptions do not
+             require approval."""),
+
+             (_("""When subscription requires approval, addresses in this list
+             are allowed to subscribe without administrator approval. Add
+             addresses one per line. You may begin a line with a ^ character
+             to designate a (case insensitive) regular expression match.""")
+             + ' ' +
+             _("""You may also use the @listname notation to designate the
+             members of another list in this installation."""))),
 
             ('unsubscribe_policy', mm_cfg.Radio, (_('No'), _('Yes')), 0,
              _("""Is the list moderator's approval required for unsubscription
@@ -297,6 +309,47 @@ class Privacy(GUIBase):
              >rejection notice</a> to
              be sent to anyone who posts to this list from a domain
              with a DMARC Reject%(quarantine)s Policy.""")),
+             
+            ('dmarc_wrapped_message_text', mm_cfg.Text, (10, WIDTH), 1,
+             _("""If dmarc_moderation_action applies and is Wrap Message,
+             and this text is provided, the text will be placed in a
+             separate text/plain MIME part preceding the original message
+             part in the wrapped message."""),
+             
+             _("""A wrapped message will either be a multipart/mixed message
+             with up to four sub-parts; a text/plain part containing
+             msg_header, a text/plain part containing 
+             dmarc_wrapped_message_text, a message/rfc822 part containing the
+             original message and a text/plain part containing msg_footer, or
+             a message/rfc822 message containing only the original message if
+             none of the other parts are applicable.""")),
+
+            ('equivalent_domains', mm_cfg.Text, (10, WIDTH), 1,
+             _("""A 'two dimensional' list of email address domains which are
+               considered equivalent when checking if a post is from a list
+               member."""),
+
+             _("""If two poster addresses with the same local part but
+               different domains are to be considered equivalents for list
+               membership tests, the domains are put here.  The format is
+               one or more groups of equivalent domains.  Within a group,
+               the domains are separated by commas and multiple groups are
+               separated by semicolons. White space is ignored.
+               <p>For example:<pre>
+               example.com,mail.example.com;mac.com,me.com,icloud.com
+               </pre>
+               <p>In this example, if user@example.com is a list member,
+               a post from user@mail.example.com will be treated as if it is
+               from user@example.com for list membership/moderation purposes,
+               and likewise, if user@me.com is a list member, posts from
+               user@mac.com or user@icloud.com will be treated as if from
+               user@me.com.
+               <p>Note that the poster's address is first tested for list
+               membership, and the equivalent domain addresses are only tested
+               if the poster's address is not that of a member.
+               <p>Also note that moderation of the equivalent domain address
+               will apply to the post, but other options such as 'ack' or
+               'not&nbsp;metoo' will not.""")),
 
             _('Non-member filters'),
 

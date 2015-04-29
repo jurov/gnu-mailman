@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2010 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -90,6 +90,9 @@ class HTMLFormatter:
                 showing = Utils.ObscureEmail(person, for_text=1)
             else:
                 showing = person
+            realname = Utils.uncanonstr(self.getMemberName(person), lang)
+            if realname and mm_cfg.ROSTER_DISPLAY_REALNAME:
+                showing += " (%s)" % Utils.websafe(realname)
             got = Link(url, showing)
             if self.getDeliveryStatus(person) <> MemberAdaptor.ENABLED:
                 got = Italic('(', got, ')')

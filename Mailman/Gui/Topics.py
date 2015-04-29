@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2009 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,6 +28,8 @@ try:
 except NameError:
     True = 1
     False = 0
+
+OR = '|'
 
 
 
@@ -126,10 +128,10 @@ class Topics(GUIBase):
             # Make sure the pattern was a legal regular expression
             name = Utils.websafe(name)
             try:
-                # Tagger compiles in verbose mode so we do too.
-                re.compile(pattern, re.VERBOSE)
+                orpattern = OR.join(pattern.splitlines())
+                re.compile(orpattern)
             except (re.error, TypeError):
-                safepattern = Utils.websafe(pattern)
+                safepattern = Utils.websafe(orpattern)
                 doc.addError(_("""The topic pattern '%(safepattern)s' is not a
                 legal regular expression.  It will be discarded."""))
                 continue

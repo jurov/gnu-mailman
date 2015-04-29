@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2011 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -12,7 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 """-request robot command queue runner."""
 
@@ -132,22 +133,34 @@ class Results:
             __import__(modname)
             handler = sys.modules[modname]
         # ValueError can be raised if cmd has dots in it.
-        except (ImportError, ValueError):
+        # and KeyError if cmd is otherwise good but ends with a dot.
+        except (ImportError, ValueError, KeyError):
             # If we're on line zero, it was the Subject: header that didn't
             # contain a command.  It's possible there's a Re: prefix (or
             # localized version thereof) on the Subject: line that's messing
             # things up.  Pop the prefix off and try again... once.
             #
+            # At least one MUA (163.com web mail) has been observed that
+            # inserts 'Re:' with no following space, so try to account for
+            # that too.
+            #
             # If that still didn't work it isn't enough to stop processing.
             # BAW: should we include a message that the Subject: was ignored?
-            if not self.subjcmdretried and args:
-                self.subjcmdretried += 1
-                cmd = args.pop(0)
-                return self.do_command(cmd, args)
-            if self.lineno <> 0:
+            #
+            # But first, be sure we're looking at the Subject: and not past
+            # it already.
+            if self.lineno != 0:
                 return BADCMD
-            else:
-                return BADSUBJ
+            if self.subjcmdretried < 1:
+                self.subjcmdretried += 1
+                if re.search('^.*:.+', cmd):
+                    cmd = re.sub('.*:', '', cmd).lower()
+                    return self.do_command(cmd, args)
+            if self.subjcmdretried < 2 and args:
+                self.subjcmdretried += 1
+                cmd = args.pop(0).lower()
+                return self.do_command(cmd, args)
+            return BADSUBJ
         if handler.process(self, args):
             return STOP
         else:

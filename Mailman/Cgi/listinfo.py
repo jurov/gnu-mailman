@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -187,14 +187,24 @@ def list_listinfo(mlist, lang):
         'subscribe')
     if mm_cfg.SUBSCRIBE_FORM_SECRET:
         now = str(int(time.time()))
+        remote = os.environ.get('REMOTE_HOST',
+                                os.environ.get('REMOTE_ADDR',
+                                               'w.x.y.z'))
+        # Try to accept a range in case of load balancers, etc.  (LP: #1447445)
+        if remote.find('.') >= 0:
+            # ipv4 - drop last octet
+            remote = remote.rsplit('.', 1)[0]
+        else:
+            # ipv6 - drop last 16 (could end with :: in which case we just
+            #        drop one : resulting in an invalid format, but it's only
+            #        for our hash so it doesn't matter.
+            remote = remote.rsplit(':', 1)[0]
         replacements['<mm-subscribe-form-start>'] += (
                 '<input type="hidden" name="sub_form_token" value="%s:%s">\n'
                 % (now, Utils.sha_new(mm_cfg.SUBSCRIBE_FORM_SECRET +
                           now +
                           mlist.internal_name() +
-                          os.environ.get('REMOTE_HOST',
-                                         os.environ.get('REMOTE_ADDR',
-                                                        'w.x.y.z'))
+                          remote
                           ).hexdigest()
                     )
                 )

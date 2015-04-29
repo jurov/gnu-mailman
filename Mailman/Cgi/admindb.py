@@ -671,13 +671,11 @@ def show_post_requests(mlist, id, info, total, count, form):
     for line in email.Iterators.body_line_iterator(msg, decode=True):
         lines.append(line)
         chars += len(line)
-        if chars > limit > 0:
+        if chars >= limit > 0:
             break
-    # Negative values mean display the entire message, regardless of size
-    if limit > 0:
-        body = EMPTYSTRING.join(lines)[:mm_cfg.ADMINDB_PAGE_TEXT_LIMIT]
-    else:
-        body = EMPTYSTRING.join(lines)
+    # We may have gone over the limit on the last line, but keep the full line
+    # anyway to avoid losing part of a multibyte character.
+    body = EMPTYSTRING.join(lines)
     # Get message charset and try encode in list charset
     # We get it from the first text part.
     # We need to replace invalid characters here or we can throw an uncaught
@@ -692,7 +690,7 @@ def show_post_requests(mlist, id, info, total, count, form):
     lcset = Utils.GetCharSet(mlist.preferred_language)
     if mcset <> lcset:
         try:
-            body = unicode(body, mcset).encode(lcset, 'replace')
+            body = unicode(body, mcset, 'replace').encode(lcset, 'replace')
         except (LookupError, UnicodeError, ValueError):
             pass
     hdrtxt = NL.join(['%s: %s' % (k, v) for k, v in msg.items()])

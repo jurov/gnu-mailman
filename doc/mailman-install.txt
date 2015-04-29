@@ -11,7 +11,7 @@ GNU Mailman - Installation Manual
    barry (at) list dot org
 
    Release 2.1
-   September 28, 2013
+   March 7, 2015
 
                                   Front Matter
 
@@ -70,7 +70,7 @@ GNU Mailman - Installation Manual
    accounts. Check your system's manual pages for details:
 
     % groupadd mailman
-    % useradd -c''GNU Mailman'' -s /no/shell -d /no/home -g mailman mailman
+    % useradd -c"GNU Mailman" -s /no/shell -d /no/home -g mailman mailman
 
 2.2 Create the installation directory
 
@@ -325,6 +325,20 @@ GNU Mailman - Installation Manual
     <Directory "/usr/local/mailman/archives/public/">
         AddDefaultCharset Off
     </Directory>
+
+   Also, you may need to specifically allow access to Mailman's
+   directories. For example, in Apache, the above Directory block may need
+   something like
+
+        Require all granted
+
+   or
+
+        Order allow,deny
+        Allow from all
+
+   depending on the Apache version and similarly for the $prefix/cgi-bin/
+   directory.
 
    Now restart your web server.
 
@@ -1110,10 +1124,6 @@ fi
    valid Python syntax must be maintained or your Mailman installation
    will break.
 
-   Note: Do not change the HOME_DIR or MAILMAN_DIR variables. These are
-   set automatically by the configure script, and you will break your
-   Mailman installation by if you change these.
-
    You should make any changes to mm_cfg.py using the account you
    installed Mailman under in the 3 section.
 
@@ -1441,6 +1451,10 @@ fi
 
 15.3 MacOSX issues
 
+   Much of the following is no longer applicable to more recent versions
+   of MacOSX. See the FAQ at http://wiki.list.org/x/O4A9 for links to more
+   recent information.
+
    Many people run Mailman on MacOSX. Here are some pointers that have
    been collected on getting Mailman to run on MacOSX.
 
@@ -1545,7 +1559,7 @@ tar xvf MailmanStartup.tar
 
                             About this document ...
 
-   GNU Mailman - Installation Manual, September 28, 2013, Release 2.1
+   GNU Mailman - Installation Manual, March 7, 2015, Release 2.1
 
    This document was generated using the LaTeX2HTML translator.
 
@@ -1599,4 +1613,4 @@ tar xvf MailmanStartup.tar
    Previous Page Up one Level Next Page GNU Mailman - Installation Manual
      __________________________________________________________________
 
-   Release 2.1, documentation updated on September 28, 2013.
+   Release 2.1, documentation updated on March 7, 2015.

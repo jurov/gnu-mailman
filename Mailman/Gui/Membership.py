@@ -30,5 +30,6 @@ class Membership:
             return [('list',   _('Membership&nbsp;List')),
                     ('add',    _('Mass&nbsp;Subscription')),
                     ('remove', _('Mass&nbsp;Removal')),
+                    ('change', _('Address&nbsp;Change')),
                     ]
         return None

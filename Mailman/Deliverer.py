@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -42,6 +42,8 @@ except NameError:
 class Deliverer:
     def SendSubscribeAck(self, name, password, digest, text=''):
         pluser = self.getMemberLanguage(name)
+        # Need to set this here to get the proper l10n of the Subject:
+        i18n.set_language(pluser)
         if self.welcome_msg:
             welcome = Utils.wrap(self.welcome_msg) + '\n'
         else:

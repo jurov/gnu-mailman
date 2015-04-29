@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2013 by the Free Software Foundation, Inc.
+# Copyright (C) 2001-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,6 +29,7 @@ from Mailman import Utils
 from Mailman.Logging.Syslog import syslog
 from Mailman.Handlers.CookHeaders import change_header
 
+OR = '|'
 CRNL = '\r\n'
 EMPTYSTRING = ''
 NLTAB = '\n\t'
@@ -63,7 +64,8 @@ def process(mlist, msg, msgdata):
     # added to the specific topics bucket.
     hits = {}
     for name, pattern, desc, emptyflag in mlist.topics:
-        cre = re.compile(pattern, re.IGNORECASE | re.VERBOSE)
+        pattern = OR.join(pattern.splitlines())
+        cre = re.compile(pattern, re.IGNORECASE)
         for line in matchlines:
             if cre.search(line):
                 hits[name] = 1

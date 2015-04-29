@@ -1,4 +1,4 @@
-# Copyright (C) 1998-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 1998-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,6 +32,7 @@ from email.Utils import unquote, parseaddr, formataddr
 
 from Mailman import mm_cfg
 from Mailman import Utils
+from Mailman import Message
 from Mailman import MailList
 from Mailman import Errors
 from Mailman import MemberAdaptor
@@ -523,7 +524,7 @@ def show_results(mlist, doc, category, subcat, cgidata):
     if category == 'members':
         # Figure out which subcategory we should display
         subcat = Utils.GetPathPieces()[-1]
-        if subcat not in ('list', 'add', 'remove'):
+        if subcat not in ('list', 'add', 'remove', 'change'):
             subcat = 'list'
         # Add member category specific tables
         form.AddItem(membership_options(mlist, subcat, cgidata, doc, form))
@@ -877,6 +878,13 @@ def membership_options(mlist, subcat, cgidata, doc, form):
         container.AddItem(header)
         mass_remove(mlist, container)
         return container
+    if subcat == 'change':
+        header.AddRow([Center(Header(2, _('Address Change')))])
+        header.AddCellInfo(header.GetCurrentRowIndex(), 0, colspan=2,
+                           bgcolor=mm_cfg.WEB_HEADER_COLOR)
+        container.AddItem(header)
+        address_change(mlist, container)
+        return container
     # Otherwise...
     header.AddRow([Center(Header(2, _('Membership List')))])
     header.AddCellInfo(header.GetCurrentRowIndex(), 0, colspan=2,
@@ -903,6 +911,15 @@ def membership_options(mlist, subcat, cgidata, doc, form):
     all.sort(lambda x, y: cmp(x.lower(), y.lower()))
     # See if the query has a regular expression
     regexp = cgidata.getvalue('findmember', '').strip()
+    try:
+        regexp = regexp.decode(Utils.GetCharSet(mlist.preferred_language))
+    except UnicodeDecodeError:
+        # This is probably a non-ascii character and an English language
+        # (ascii) list.  Even if we didn't throw the UnicodeDecodeError,
+        # the input may have contained mnemonic or numeric HTML entites mixed
+        # with other characters.  Trying to grok the real meaning out of that
+        # is complex and error prone, so we don't try.
+        pass
     if regexp:
         try:
             cre = re.compile(regexp, re.IGNORECASE)
@@ -1169,7 +1186,8 @@ def mass_subscribe(mlist, container):
         Label(_('Subscribe these users now or invite them?')),
         RadioButtonArray('subscribe_or_invite',
                          (_('Subscribe'), _('Invite')),
-                         0, values=(0, 1))
+                         mm_cfg.DEFAULT_SUBSCRIBE_OR_INVITE,
+                         values=(0, 1))
         ])
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
     table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
@@ -1239,6 +1257,38 @@ def mass_remove(mlist, container):
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=2)
     table.AddRow([Italic(Label(_('...or specify a file to upload:'))),
                   FileUpload('unsubscribees_upload', cols='50')])
+    container.AddItem(Center(table))
+
+
+
+def address_change(mlist, container):
+    # ADDRESS CHANGE
+    GREY = mm_cfg.WEB_ADMINITEM_COLOR
+    table = Table(width='90%')
+    table.AddRow([Italic(_("""To change a list member's address, enter the
+    member's current and new addresses below. Use the check boxes to send
+    notice of the change to the old and/or new address(es)."""))])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=3)
+    table.AddRow([
+        Label(_("Member's current address")),
+        TextBox(name='change_from'),
+        CheckBox('notice_old', 'yes', 0).Format() +
+            '&nbsp;' +
+            _('Send notice')
+        ])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 2, bgcolor=GREY)
+    table.AddRow([
+        Label(_('Address to change to')),
+        TextBox(name='change_to'),
+        CheckBox('notice_new', 'yes', 0).Format() +
+            '&nbsp;' +
+            _('Send notice')
+        ])
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 1, bgcolor=GREY)
+    table.AddCellInfo(table.GetCurrentRowIndex(), 2, bgcolor=GREY)
     container.AddItem(Center(table))
 
 
@@ -1465,6 +1515,74 @@ def change_options(mlist, category, subcat, cgidata, doc):
                 color='#ff0000', size='+2')).Format()))
             doc.AddItem(UnorderedList(*unsubscribe_errors))
             doc.AddItem('<p>')
+    # Address Changes
+    if cgidata.has_key('change_from'):
+        change_from = cgidata.getvalue('change_from', '')
+        change_to = cgidata.getvalue('change_to', '')
+        schange_from = Utils.websafe(change_from)
+        schange_to = Utils.websafe(change_to)
+        success = False
+        msg = None
+        if not (change_from and change_to):
+            msg = _('You must provide both current and new addresses.')
+        elif change_from == change_to:
+            msg = _('Current and new addresses must be different.')
+        elif mlist.isMember(change_to):
+            # ApprovedChangeMemberAddress will just delete the old address
+            # and we don't want that here.
+            msg = _('%(schange_to)s is already a list member.')
+        else:
+            try:
+                Utils.ValidateEmail(change_to)
+            except (Errors.MMBadEmailError, Errors.MMHostileAddress):
+                msg = _('%(schange_to)s is not a valid email address.')
+        if msg:
+            doc.AddItem(Header(3, msg))
+            doc.AddItem('<p>')
+            return
+        try:
+            mlist.ApprovedChangeMemberAddress(change_from, change_to, False)
+        except Errors.NotAMemberError:
+            msg = _('%(schange_from)s is not a member')
+        except Errors.MMAlreadyAMember:
+            msg = _('%(schange_to)s is already a member')
+        except Errors.MembershipIsBanned, pat:
+            spat = Utils.websafe(str(pat))
+            msg = _('%(schange_to)s matches banned pattern %(spat)s')
+        else:
+            msg = _('Address %(schange_from)s changed to %(schange_to)s')
+            success = True
+        doc.AddItem(Header(3, msg))
+        lang = mlist.getMemberLanguage(change_to)
+        otrans = i18n.get_translation()
+        i18n.set_language(lang)
+        list_name = mlist.getListAddress()
+        text = Utils.wrap(_("""The member address %(change_from)s on the
+%(list_name)s list has been changed to %(change_to)s.
+"""))
+        subject = _('%(list_name)s address change notice.')
+        i18n.set_translation(otrans)
+        if success and cgidata.getvalue('notice_old', '') == 'yes':
+            # Send notice to old address.
+            msg = Message.UserNotification(change_from,
+                mlist.GetOwnerEmail(),
+                text=text,
+                subject=subject,
+                lang=lang
+                )
+            msg.send(mlist)
+            doc.AddItem(Header(3, _('Notification sent to %(schange_from)s.')))
+        if success and cgidata.getvalue('notice_new', '') == 'yes':
+            # Send notice to new address.
+            msg = Message.UserNotification(change_to,
+                mlist.GetOwnerEmail(),
+                text=text,
+                subject=subject,
+                lang=lang
+                )
+            msg.send(mlist)
+            doc.AddItem(Header(3, _('Notification sent to %(schange_to)s.')))
+        doc.AddItem('<p>')
     # See if this was a moderation bit operation
     if cgidata.has_key('allmodbit_btn'):
         val = safeint('allmodbit_val')

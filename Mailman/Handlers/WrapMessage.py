@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2013-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,11 +18,14 @@
 """Wrap the message in an outer message/rfc822 part and transfer/add
 some headers from the original.
 
-Also, in the case of Munge From, replace the From: and Reply-To: in the
+Also, in the case of Munge From, replace the From:, Reply-To: and Cc: in the
 original message.
 """
 
 import copy
+
+from email.MIMEMessage import MIMEMessage
+from email.MIMEText import MIMEText
 
 from Mailman import Utils
 
@@ -40,7 +43,8 @@ def process(mlist, msg, msgdata):
     # is wrap this message or from_is_list applies and is wrap.
     if not (msgdata.get('from_is_list') == 2 or
             (mlist.from_is_list == 2 and msgdata.get('from_is_list') == 0)):
-        # Now see if we need to add a From: and/or Reply-To: without wrapping.
+        # Now see if we need to add a From:, Reply-To: or Cc: without wrapping.
+        # See comments in CookHeaders.change_header for why we do this here.
         a_h = msgdata.get('add_header')
         if a_h:
             if a_h.get('From'):
@@ -49,6 +53,9 @@ def process(mlist, msg, msgdata):
             if a_h.get('Reply-To'):
                 del msg['reply-to']
                 msg['Reply-To'] = a_h.get('Reply-To')
+            if a_h.get('Cc'):
+                del msg['cc']
+                msg['Cc'] = a_h.get('Cc')
         return
 
     # There are various headers in msg that we don't want, so we basically
@@ -59,12 +66,23 @@ def process(mlist, msg, msgdata):
         if key.lower() not in KEEPERS:
             del msg[key]
     msg['MIME-Version'] = '1.0'
-    msg['Content-Type'] = 'message/rfc822'
-    msg['Content-Disposition'] = 'inline'
     msg['Message-ID'] = Utils.unique_message_id(mlist)
     # Add the headers from CookHeaders.
     for k, v in msgdata['add_header'].items():
         msg[k] = v
-    # And set the payload the way email parses it.
-    msg.set_payload([omsg])
+    # Are we including dmarc_wrapped_message_text?  I.e., do we have text and
+    # are we wrapping because of dmarc_moderation_action?
+    if mlist.dmarc_wrapped_message_text and msgdata.get('from_is_list') == 2:
+        part1 = MIMEText(Utils.wrap(mlist.dmarc_wrapped_message_text),
+                         'plain',
+                         Utils.GetCharSet(mlist.preferred_language))
+        part1['Content-Disposition'] = 'inline'
+        part2 = MIMEMessage(omsg)
+        part2['Content-Disposition'] = 'inline'
+        msg['Content-Type'] = 'multipart/mixed'
+        msg.set_payload([part1, part2])
+    else:
+        msg['Content-Type'] = 'message/rfc822'
+        msg['Content-Disposition'] = 'inline'
+        msg.set_payload([omsg])
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2006-2014 by the Free Software Foundation, Inc.
+# Copyright (C) 2006-2015 by the Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,9 +29,15 @@ from Mailman import mm_cfg
 
 
 def process(mlist, msg, msgdata):
-    if not mm_cfg.REMOVE_DKIM_HEADERS:
+    if not (mm_cfg.REMOVE_DKIM_HEADERS or mlist.anonymous_list):
+        # We want to remove these headers from posts to anonymous lists.
+        # There can be interaction with the next test, but anonymous_list
+        # and Munge From are not compatible anyway, so don't worry.
         return
     if (mm_cfg.REMOVE_DKIM_HEADERS == 1 and not
+           # The following means 'Munge From' applies to this message.
+           # So this whole stanza means if RDH is 1 and we're not Munging,
+           # return and don't remove the headers.  See Defaults.py.
            (msgdata.get('from_is_list') == 1 or
             (mlist.from_is_list == 1 and msgdata.get('from_is_list') != 2)
            )
