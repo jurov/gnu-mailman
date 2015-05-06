@@ -172,8 +172,8 @@ def process(mlist, msg, msgdata=None):
         # check if the list owner want to scrub regular delivery
         if not mlist.scrub_nondigest:
             return
-    patches = {}
-    sigs = {}
+    patches = []
+    sigs = []
     dir = calculate_attachments_dir(mlist, msg, msgdata)
     charset = None
     lcset = Utils.GetCharSet(mlist.preferred_language)
@@ -408,7 +408,23 @@ URL: %(url)s
             msg.set_param('Format', format)
         if delsp:
             msg.set_param('DelSp', delsp)
-    process_signatures(mlist,patches,sigs)
+    (patches,sigs) = process_signatures(mlist,patches,sigs)
+    if patches:
+        # X-Patches-Received: PatchID1=filename; PatchID2=filename
+        processed = {}
+        for (k,v) in patches:
+            processed[k] = v
+        msg.add_header('X-Patches-Received', None, **processed)
+    if sigs:
+        # output header in RFC compliant way, if multiple sigs with multiple keys per one patch, then delimited by dot, like:
+        # X-Sigs-Received: PatchID1=KeyID1; PatchID2=KeyID2.KeyID3
+        processed = {}
+        for (k,v) in sigs:
+            processed[k] = processed.get(k,[]).append(v)
+        for k in processed.keys():
+            #dot does not need escaping
+            processed[k] ='.'.join(processed[k])
+        msg.add_header('X-Sigs-Received',None,**processed)
     return msg
 
 
@@ -519,6 +535,7 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     finally:
         lock.unlock()
     if do_write_file:
+        filename = filebase + extra + ext
         # `path' now contains the unique filename for the attachment.  There's
         # just one more step we need to do.  If the part is text/html and
         # ARCHIVE_HTML_SANITIZER is a string (which it must be or we wouldn't be
@@ -562,9 +579,10 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     url = baseurl + '%s/%s%s%s' % (dir, filebase, extra, ext)
 
     if sigs is not None and (ext.endswith('.sig') or ctype == 'application/pgp-signature'):
-        sigs [os.path.join(dir , filename + extra + ext)] = url
+        sigs.append({'id': extra[1:], 'name' : filebase, 'file':os.path.join(dir , filename), 'url': url})
     elif patches is not None and ctype != 'text/html' and ctype != 'message/rfc822':
-        patches [os.path.join(dir, filename + extra + ext)] = url
+        patches.append({'id': extra[1:], 'name' : filebase, 'file': os.path.join(dir, filename), 'url': url})
+
     # A trailing space in url string may save users who are using
     # RFC-1738 compliant MUA (Not Mozilla).
     # Trailing space will definitely be a problem with format=flowed.
@@ -575,14 +593,19 @@ def process_signatures(mlist, newpatches, newsigs):
     rootdir = mlist.archive_dir()
     db_updated = False
     conn = db_conn(mlist)
+    #IDs of new patches from this msg (patch ID: filename)
+    validpatches = []
+    #list of new signatures for any patches (patch ID:key ID)
+    validsigs = []
     with conn:
         gh = GPGUtils.GPGHelper(mlist)
         #find newpatches name
-        for sigfile in newsigs.keys():
+        for sig in newsigs:
+            sigfile = sig['file']
             syslog('gpg',"Processing signature attachment %s" % sigfile)
-            sname = os.path.basename(sigfile)
-            sname = sname.split('.')[0]
-            (sname,shash) = sname.rsplit('_',1) #hash of signature itself
+            shash = sig['id']
+            sname = sig['name']
+
             if db_have_sig(conn,shash):
                 continue #already seen sig
             phash = None
@@ -603,13 +626,14 @@ def process_signatures(mlist, newpatches, newsigs):
                         else:
                             key = keyids[0].upper()
                         db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile]) #TODO multiple sigs
+                        validsigs.append({phash:key})
                         db_updated = True
                     continue #hash in the name was ok but sig is prolly corrupted, ignore it
             #existing patch not found, check attachments for a new one
-            for pfile in newpatches.keys():
-                pname = os.path.basename(pfile)
-                pname = pname.split('.')[0]
-                (pname,phash) = pname.rsplit('_',1)
+            for patch in newpatches:
+                pfile = patch['file']
+                pname = patch['name']
+                phash = patch['id']
                 if sname == pname:
                     if db_get_patchfile(conn,phash):
                         break # we saw this patch/signature already
@@ -623,12 +647,15 @@ def process_signatures(mlist, newpatches, newsigs):
                         else:
                             key = keyids[0].upper()
                         db_add_patch(conn, phash, pfile, key, pname, newpatches[pfile])
+                        validpatches.append((phash,pfile))
                         db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile])
+                        validsigs.append((phash,key))
                         db_updated = True
                     break
         conn.commit()
         if db_updated:
             db_export(conn,rootdir)
+    return (validpatches,validsigs)
 
 def db_conn(mlist, override_db = None):
     if override_db is None:
@@ -675,12 +702,14 @@ def db_add_patch(conn, phash, pfile, keyid, name, atturl):
     cur = conn.cursor()
     cur.execute('insert into Patches(phash, pfilename, submitter, name, plink) values (:phash, :pfile, :keyid, :name, :atturl)',
                 dict(phash=phash, pfile=pfile, keyid=keyid, name=name, atturl=atturl))
+    return 1 #TODO if succeeded
 
 
 def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl):
     cur = conn.cursor()
     cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, siglink) values (:shash, :phash, :sigfile, :keyid, :sigurl)",
                 dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl))
+    return 1 #TODO if succeeded
 
 def db_export(conn, archive_dir):
     cur = conn.cursor()
