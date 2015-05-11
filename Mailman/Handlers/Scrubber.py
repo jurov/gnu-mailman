@@ -164,16 +164,22 @@ def replace_payload_by_text(msg, text, charset):
 def process(mlist, msg, msgdata=None):
     sanitize = mm_cfg.ARCHIVE_HTML_SANITIZER
     outer = True
+    in_pipeline = False
+    patches = None
+    sigs = None
     if msgdata is None:
         msgdata = {}
     if msgdata:
         # msgdata is available if it is in GLOBAL_PIPELINE
         # ie. not in digest or archiver
         # check if the list owner want to scrub regular delivery
-        if not mlist.scrub_nondigest:
-            return
-    patches = []
-    sigs = []
+        # Disabled - function split, attachments saved in pipeline,
+        #if not mlist.scrub_nondigest:
+        #    return
+        in_pipeline = True
+        patches = []
+        sigs = []
+
     dir = calculate_attachments_dir(mlist, msg, msgdata)
     charset = None
     lcset = Utils.GetCharSet(mlist.preferred_language)
@@ -205,14 +211,18 @@ def process(mlist, msg, msgdata=None):
             # TK: if part is attached then check charset and scrub if none
             if part.get('content-disposition') and \
                not part.get_content_charset():
-                omask = os.umask(002)
-                try:
-                    url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
-                finally:
-                    os.umask(omask)
-                filename = part.get_filename(_('not available'))
-                filename = Utils.oneline(filename, lcset)
-                replace_payload_by_text(part, _("""\
+                if in_pipeline:
+                    omask = os.umask(002)
+                    try:
+                        url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
+                        part['x-att-url'] = url
+                    finally:
+                        os.umask(omask)
+                else:
+                    url = '<' + part['x-att-url'] + '>'
+                    filename = part.get_filename(_('not available'))
+                    filename = Utils.oneline(filename, lcset)
+                    replace_payload_by_text(part, _("""\
 An embedded and charset-unspecified text was scrubbed...
 Name: %(filename)s
 URL: %(url)s
@@ -230,57 +240,70 @@ URL: %(url)s
                 # By leaving it alone, Pipermail will automatically escape it
                 pass
             elif sanitize == 3:
-                # Pull it out as an attachment but leave it unescaped.  This
-                # is dangerous, but perhaps useful for heavily moderated
-                # lists.
-                omask = os.umask(002)
-                try:
-                    url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
-                finally:
-                    os.umask(omask)
-                replace_payload_by_text(part, _("""\
+                if in_pipeline:
+                    # Pull it out as an attachment but leave it unescaped.  This
+                    # is dangerous, but perhaps useful for heavily moderated
+                    # lists.
+                    omask = os.umask(002)
+                    try:
+                        url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
+                        part['x-att-url'] = url
+                    finally:
+                        os.umask(omask)
+                else:
+                    url = '<' + part['x-att-url'] + '>'
+                    replace_payload_by_text(part, _("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
 """), lcset)
             else:
-                # HTML-escape it and store it as an attachment, but make it
-                # look a /little/ bit prettier. :(
-                payload = Utils.websafe(part.get_payload(decode=True))
-                # For whitespace in the margin, change spaces into
-                # non-breaking spaces, and tabs into 8 of those.  Then use a
-                # mono-space font.  Still looks hideous to me, but then I'd
-                # just as soon discard them.
-                def doreplace(s):
-                    return s.expandtabs(8).replace(' ', '&nbsp;')
-                lines = [doreplace(s) for s in payload.split('\n')]
-                payload = '<tt>\n' + BR.join(lines) + '\n</tt>\n'
-                part.set_payload(payload)
-                # We're replacing the payload with the decoded payload so this
-                # will just get in the way.
-                del part['content-transfer-encoding']
-                omask = os.umask(002)
-                try:
-                    url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
-                finally:
-                    os.umask(omask)
-                replace_payload_by_text(part, _("""\
+                if in_pipeline:
+                    # TODO if in_pipeline should preserve original attachment. but no biggie
+                    # HTML-escape it and store it as an attachment, but make it
+                    # look a /little/ bit prettier. :(
+                    payload = Utils.websafe(part.get_payload(decode=True))
+                    # For whitespace in the margin, change spaces into
+                    # non-breaking spaces, and tabs into 8 of those.  Then use a
+                    # mono-space font.  Still looks hideous to me, but then I'd
+                    # just as soon discard them.
+                    def doreplace(s):
+                        return s.expandtabs(8).replace(' ', '&nbsp;')
+                    lines = [doreplace(s) for s in payload.split('\n')]
+                    payload = '<tt>\n' + BR.join(lines) + '\n</tt>\n'
+                    part.set_payload(payload)
+                    # We're replacing the payload with the decoded payload so this
+                    # will just get in the way.
+                    del part['content-transfer-encoding']
+                    omask = os.umask(002)
+                    try:
+                        url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
+                        part['x-att-url'] = url
+                    finally:
+                        os.umask(omask)
+                else:
+                    url = '<' + part['x-att-url'] + '>'
+                    replace_payload_by_text(part, _("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
 """), lcset)
         elif ctype == 'message/rfc822':
-            # This part contains a submessage, so it too needs scrubbing
-            submsg = part.get_payload(0)
-            omask = os.umask(002)
-            try:
-                url = save_attachment(mlist, part, dir)
-            finally:
-                os.umask(omask)
-            subject = submsg.get('subject', _('no subject'))
-            subject = Utils.oneline(subject, lcset)
-            date = submsg.get('date', _('no date'))
-            who = submsg.get('from', _('unknown sender'))
-            size = len(str(submsg))
-            replace_payload_by_text(part, _("""\
+            if in_pipeline:
+                omask = os.umask(002)
+                try:
+                    url = save_attachment(mlist, part, dir)
+                    part['x-att-url'] = url
+                finally:
+                    os.umask(omask)
+            else:
+                # This part contains a submessage, so it too needs scrubbing
+                submsg = part.get_payload(0)
+                url = '<' + part['x-att-url'] + '>'
+                subject = submsg.get('subject', _('no subject'))
+                subject = Utils.oneline(subject, lcset)
+                date = submsg.get('date', _('no date'))
+                who = submsg.get('from', _('unknown sender'))
+                size = len(str(submsg))
+                replace_payload_by_text(part, _("""\
 An embedded message was scrubbed...
 From: %(who)s
 Subject: %(subject)s
@@ -293,7 +316,6 @@ URL: %(url)s
         # will transform the url into a hyperlink.
         elif part.get_payload() and not part.is_multipart():
             payload = part.get_payload(decode=True)
-            ctype = part.get_content_type()
             # XXX Under email 2.5, it is possible that payload will be None.
             # This can happen when you have a Content-Type: multipart/* with
             # only one part and that part has two blank lines between the
@@ -302,17 +324,22 @@ URL: %(url)s
             # ignore the part.
             if payload is None or payload.strip() == '':
                 continue
-            size = len(payload)
-            omask = os.umask(002)
-            try:
-                url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
-            finally:
-                os.umask(omask)
-            desc = part.get('content-description', _('not available'))
-            desc = Utils.oneline(desc, lcset)
-            filename = part.get_filename(_('not available'))
-            filename = Utils.oneline(filename, lcset)
-            replace_payload_by_text(part, _("""\
+            if in_pipeline:
+                omask = os.umask(002)
+                try:
+                    url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
+                    part['x-att-url'] = url
+                finally:
+                    os.umask(omask)
+            else:
+                ctype = part.get_content_type()
+                size = len(payload)
+                url = '<' + part['x-att-url'] + '>'
+                desc = part.get('content-description', _('not available'))
+                desc = Utils.oneline(desc, lcset)
+                filename = part.get_filename(_('not available'))
+                filename = Utils.oneline(filename, lcset)
+                replace_payload_by_text(part, _("""\
 A non-text attachment was scrubbed...
 Name: %(filename)s
 Type: %(ctype)s
@@ -324,7 +351,7 @@ URL: %(url)s
     # We still have to sanitize multipart messages to flat text because
     # Pipermail can't handle messages with list payloads.  This is a kludge;
     # def (n) clever hack ;).
-    if msg.is_multipart():
+    if msg.is_multipart() and not in_pipeline:
         # By default we take the charset of the first text/plain part in the
         # message, but if there was none, we'll use the list's preferred
         # language's charset.
@@ -408,23 +435,24 @@ URL: %(url)s
             msg.set_param('Format', format)
         if delsp:
             msg.set_param('DelSp', delsp)
-    (patches,sigs) = process_signatures(mlist,patches,sigs)
-    if patches:
-        # X-Patches-Received: PatchID1=filename; PatchID2=filename
-        processed = {}
-        for (k,v) in patches:
-            processed[k] = v
-        msg.add_header('X-Patches-Received', None, **processed)
-    if sigs:
-        # output header in RFC compliant way, if multiple sigs with multiple keys per one patch, then delimited by dot, like:
-        # X-Sigs-Received: PatchID1=KeyID1; PatchID2=KeyID2.KeyID3
-        processed = {}
-        for (k,v) in sigs:
-            processed[k] = processed.get(k,[]).append(v)
-        for k in processed.keys():
-            #dot does not need escaping
-            processed[k] ='.'.join(processed[k])
-        msg.add_header('X-Sigs-Received',None,**processed)
+    if in_pipeline:
+        (patches,sigs) = process_signatures(mlist,patches,sigs)
+        if patches:
+            # X-Patches-Received: PatchID1=filename; PatchID2=filename
+            processed = {}
+            for p in patches:
+                processed[p['id']] = p['file']
+            msg.add_header('X-Patches-Received', None, **processed)
+        if sigs:
+            # output header in RFC compliant way, if multiple sigs with multiple keys per one patch, then delimited by dot, like:
+            # X-Sigs-Received: PatchID1=KeyID1; PatchID2=KeyID2.KeyID3
+            processed = {}
+            for s in sigs:
+                processed[s['phash']] = processed.get(s['phash'],[]) + [s['key']]
+            for k in processed.keys():
+                #dot does not need escaping
+                processed[k] ='.'.join(processed[k])
+            msg.add_header('X-Sigs-Received',None,**processed)
     return msg
 
 
@@ -532,10 +560,10 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
                     extra = '-%04d' % counter
             else:
                 break
+        filename = filebase + extra + ext
     finally:
         lock.unlock()
     if do_write_file:
-        filename = filebase + extra + ext
         # `path' now contains the unique filename for the attachment.  There's
         # just one more step we need to do.  If the part is text/html and
         # ARCHIVE_HTML_SANITIZER is a string (which it must be or we wouldn't be
@@ -587,15 +615,16 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     # RFC-1738 compliant MUA (Not Mozilla).
     # Trailing space will definitely be a problem with format=flowed.
     # Bracket the URL instead.
-    return '<' + url + '>'
+    # '<' + url + '>' Done by caller instead.
+    return url
 
 def process_signatures(mlist, newpatches, newsigs):
     rootdir = mlist.archive_dir()
     db_updated = False
     conn = db_conn(mlist)
-    #IDs of new patches from this msg (patch ID: filename)
+    #filtered new patches from this msg (same structure as newpatches)
     validpatches = []
-    #list of new signatures for any patches (patch ID:key ID)
+    #filtered new signatures for any patches (same structure as newsigs + 'phash' patch hash + key )
     validsigs = []
     with conn:
         gh = GPGUtils.GPGHelper(mlist)
@@ -625,7 +654,7 @@ def process_signatures(mlist, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile]) #TODO multiple sigs
+                        db_add_sig(conn, shash, phash, sigfile, key, sig['url']) #TODO multiple sigs
                         validsigs.append({phash:key})
                         db_updated = True
                     continue #hash in the name was ok but sig is prolly corrupted, ignore it
@@ -646,10 +675,12 @@ def process_signatures(mlist, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_patch(conn, phash, pfile, key, pname, newpatches[pfile])
-                        validpatches.append((phash,pfile))
-                        db_add_sig(conn, shash, phash, sigfile, key, newsigs[sigfile])
-                        validsigs.append((phash,key))
+                        db_add_patch(conn, phash, pfile, key, pname, patch['url'])
+                        validpatches.append(patch)
+                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'])
+                        sig['phash'] = phash
+                        sig['key'] = key
+                        validsigs.append(sig)
                         db_updated = True
                     break
         conn.commit()
