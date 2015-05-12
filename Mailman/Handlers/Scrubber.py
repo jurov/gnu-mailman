@@ -216,7 +216,7 @@ def process(mlist, msg, msgdata=None):
                     finally:
                         os.umask(omask)
                 else:
-                    url = '<' + part['x-att-url'] + '>'
+                    url = '<' + part.get('x-att-url','N/A') + '>'
                     filename = part.get_filename(_('not available'))
                     filename = Utils.oneline(filename, lcset)
                     replace_payload_by_text(part, _("""\
@@ -248,7 +248,7 @@ URL: %(url)s
                     finally:
                         os.umask(omask)
                 else:
-                    url = '<' + part['x-att-url'] + '>'
+                    url = '<' + part.get('x-att-url','N/A') + '>'
                     replace_payload_by_text(part, _("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
@@ -278,7 +278,7 @@ URL: %(url)s
                     finally:
                         os.umask(omask)
                 else:
-                    url = '<' + part['x-att-url'] + '>'
+                    url = '<' + part.get('x-att-url','N/A') + '>'
                     replace_payload_by_text(part, _("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
@@ -294,7 +294,7 @@ URL: %(url)s
             else:
                 # This part contains a submessage, so it too needs scrubbing
                 submsg = part.get_payload(0)
-                url = '<' + part['x-att-url'] + '>'
+                url = '<' + part.get('x-att-url','N/A') + '>'
                 subject = submsg.get('subject', _('no subject'))
                 subject = Utils.oneline(subject, lcset)
                 date = submsg.get('date', _('no date'))
@@ -331,7 +331,7 @@ URL: %(url)s
             else:
                 ctype = part.get_content_type()
                 size = len(payload)
-                url = '<' + part['x-att-url'] + '>'
+                url = '<' + part.get('x-att-url','N/A') + '>'
                 desc = part.get('content-description', _('not available'))
                 desc = Utils.oneline(desc, lcset)
                 filename = part.get_filename(_('not available'))
