@@ -382,7 +382,9 @@ class GPGHelper:
         key_ids = []
         for line in status.splitlines():
             # we are using short keyid to pinpoint keys: last 8 hexbytes of long key id
-            g = re.search('^\[GNUPG:\] GOODSIG [0-9A-F]{8}([0-9A-F]{8}) ',line)
+            # g = re.search('^\[GNUPG:\] GOODSIG [0-9A-F]{8}([0-9A-F]{8}) ',line)
+            # no, we want full key fingerprint. the last one seems the right
+            g = re.search('^\[GNUPG:\] VALIDSIG .* ([0-9A-F]{40})$',line)
             if g!=None:
                 key_ids.append('0x%s' % g.groups()[0].lower())
 
