@@ -11,6 +11,7 @@ from email.Utils import parseaddr, parsedate_tz, mktime_tz, formatdate
 import cPickle as pickle
 from cStringIO import StringIO
 from string import lowercase
+from Mailman.PatchDB import db_add_archive_info, db_export
 
 __version__ = '0.09 (Mailman edition)'
 VERSION = __version__
@@ -564,6 +565,7 @@ class T:
             counter += 1
         if start:
             mbox.skipping(False)
+        patch_export = False
         while 1:
             try:
                 pos = input.tell()
@@ -584,9 +586,18 @@ class T:
             a = self._makeArticle(m, self.sequence)
             self.sequence += 1
             self.add_article(a)
+
+            url = '/'.join((self.maillist.GetBaseArchiveURL(), self.archive, a.filename))
+            if db_add_archive_info(self.maillist, m, url):
+                patch_export = True
+
             if end is not None and counter >= end:
                break
             counter += 1
+
+        if patch_export:
+            db_export(self.maillist)
+
 
     def new_archive(self, archive, archivedir):
         self.archives.append(archive)

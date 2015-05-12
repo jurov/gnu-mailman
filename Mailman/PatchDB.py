@@ -74,8 +74,8 @@ def process_signatures(mlist, newpatches, newsigs):
                         db_updated = True
                     break
         conn.commit()
-        if db_updated:
-            db_export(conn,rootdir)
+        #if db_updated:
+        #    db_export(conn,rootdir)
     return (validpatches,validsigs)
 
 def db_conn(mlist, override_db = None):
@@ -132,7 +132,12 @@ def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl):
                 dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl))
     return 1 #TODO if succeeded
 
-def db_export(conn, archive_dir):
+def db_export(mlist):
+    rootdir = mlist.archive_dir()
+    conn = db_conn(mlist)
+    return _db_export(conn,rootdir)
+
+def _db_export(conn, archive_dir):
     cur = conn.cursor()
     cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink from Patches p join Sigs s order by p.phash')
     #                   0           1       2       3           4           5       6
@@ -159,10 +164,35 @@ def db_export(conn, archive_dir):
             htmlrow = None
 
     tmpfilename=os.path.join(archive_dir,'.patches.html.tmp')
-    f = open(tmpfilename,'w')
-    with f:
-        f.write('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><body>')
-        f.write(table.Format())
-        f.write('</body></html>')
-    os.chmod(tmpfilename,stat.S_IRUSR | stat.S_IWUSR| stat.S_IRGRP| stat.S_IWGRP| stat.S_IROTH)
-    os.rename(tmpfilename, os.path.join(archive_dir,'patches.html'))
+    omask = os.umask(002)
+    try:
+        f = open(tmpfilename,'w')
+        with f:
+            f.write('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><body>')
+            f.write(table.Format())
+            f.write('</body></html>')
+        #os.chmod(tmpfilename,stat.S_IRUSR | stat.S_IWUSR| stat.S_IRGRP| stat.S_IWGRP| stat.S_IROTH)
+        os.rename(tmpfilename, os.path.join(archive_dir,'patches.html'))
+    finally:
+        os.umask(omask)
+
+def db_add_archive_info(mlist, msg,  archive_url):
+    sigs = msg.get_params(header='X-Sigs-Received')
+    if not sigs:
+        return
+    conn = db_conn(mlist)
+    with conn:
+        c = conn.cursor()
+        for (patch,keyids) in sigs:
+            keyids = keyids.split('.')
+            for keyid in keyids:
+                c.execute("update Sigs set msglink = :msglink where keyid=:keyid and shash=:shash",
+                          dict(msglink=archive_url,keyid=keyid, shash=patch))
+
+        patches = msg.get_params(header='X-Patches-Received')
+        if patches:
+            for (patch,name) in patches:
+                c.execute("update Patches set plink = :plink where phash = :phash", dict(plink=archive_url, phash=patch))
+        conn.commit()
+    return True
+
