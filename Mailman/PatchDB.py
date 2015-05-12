@@ -45,7 +45,9 @@ def process_signatures(mlist, newpatches, newsigs):
                         else:
                             key = keyids[0].upper()
                         db_add_sig(conn, shash, phash, sigfile, key, sig['url']) #TODO multiple sigs
-                        validsigs.append({phash:key})
+                        sig['phash'] = phash
+                        sig['key'] = key
+                        validsigs.append(sig)
                         db_updated = True
                     continue #hash in the name was ok but sig is prolly corrupted, ignore it
             #existing patch not found, check attachments for a new one
@@ -93,7 +95,10 @@ def db_conn(mlist, override_db = None):
     if version < 3:
         cur.execute("ALTER TABLE Patches ADD COLUMN plink text")
         cur.execute("ALTER TABLE Sigs ADD COLUMN siglink text")
-        cur.execute("PRAGMA user_version = 3;")
+    if version < 4:
+        cur.execute("ALTER TABLE Patches ADD COLUMN released text")
+        cur.execute("ALTER TABLE Patches ADD COLUMN baseline text")
+        cur.execute("PRAGMA user_version = 4;")
 
     conn.commit()
     return conn
@@ -139,13 +144,14 @@ def db_export(mlist):
 
 def _db_export(conn, archive_dir):
     cur = conn.cursor()
-    cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink from Patches p join Sigs s order by p.phash')
-    #                   0           1       2       3           4           5       6
+    cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink, s.siglink, p.released, p.baseline'
+    #                   0           1       2       3           4           5       6           7           8       9
+                ' from Patches p join Sigs s order by p.phash')
     table = Table(width="100%")
     table.AddRow([Center(Header(4, "Received patches"))])
-    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=4,
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=5,
                       bgcolor=mm_cfg.WEB_HEADER_COLOR)
-    table.AddRow(['Patch ID', 'Patch name', 'Submitted by', 'Signed by'])
+    table.AddRow(['Patch', 'Patch name', 'Signatures', 'Released in', 'Based on'])
     row = cur.fetchone()
     htmlrow = None
     currentid = None
@@ -153,26 +159,34 @@ def _db_export(conn, archive_dir):
         if htmlrow is None:
             currentid = row[0]
             htmlrow = [Link(row[2],row[0]) if row[2] else row[0],
-                      row[1],
-                      Link(row[3],row[4]) if row[3] else row[4],[]]
-        if row[4] != row[5]:
-            htmlrow[3].append(Link(row[6],row[5]) if row[6] else row[5])
+                      row[1],[], row[8], row[9]]
+
+        signedby = [Link(row[5], 'WoT') if row[5] else '',
+                 Link(row[7], ' Sig') if row[7] else '',
+                 Link(row[6],' Message') if row[6] else '',
+                 ]
+        if row[4] == row[5]:
+            signedby.insert(0,'Author ')
+
+        signedby = (row[5][-8:], Container(*signedby))
+        htmlrow[2].append(signedby)
+
         row = cur.fetchone()
         if row is None or row[0] != currentid:
-            htmlrow[3] = UnorderedList(*tuple(htmlrow[3]))
+            htmlrow[2] = DefinitionList(*(htmlrow[2]))
             table.AddRow(htmlrow)
             htmlrow = None
 
-    tmpfilename=os.path.join(archive_dir,'.patches.html.tmp')
+    tmphtml=os.path.join(archive_dir,'.patches.html.tmp')
     omask = os.umask(002)
     try:
-        f = open(tmpfilename,'w')
+        f = open(tmphtml,'w')
         with f:
             f.write('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><body>')
             f.write(table.Format())
             f.write('</body></html>')
         #os.chmod(tmpfilename,stat.S_IRUSR | stat.S_IWUSR| stat.S_IRGRP| stat.S_IWGRP| stat.S_IROTH)
-        os.rename(tmpfilename, os.path.join(archive_dir,'patches.html'))
+        os.rename(tmphtml, os.path.join(archive_dir,'patches.html'))
     finally:
         os.umask(omask)
 
@@ -186,8 +200,8 @@ def db_add_archive_info(mlist, msg,  archive_url):
         for (patch,keyids) in sigs:
             keyids = keyids.split('.')
             for keyid in keyids:
-                c.execute("update Sigs set msglink = :msglink where keyid=:keyid and shash=:shash",
-                          dict(msglink=archive_url,keyid=keyid, shash=patch))
+                c.execute("update Sigs set msglink = :msglink where keyid=:keyid and phash=:phash",
+                          dict(msglink=archive_url, keyid=keyid, phash=patch))
 
         patches = msg.get_params(header='X-Patches-Received')
         if patches:

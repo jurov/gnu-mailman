@@ -587,7 +587,7 @@ class T:
             self.sequence += 1
             self.add_article(a)
 
-            url = '/'.join((self.maillist.GetBaseArchiveURL(), self.archive, a.filename))
+            url = self.maillist.GetBaseArchiveURL() + self.archive + '/' + a.filename
             if db_add_archive_info(self.maillist, m, url):
                 patch_export = True
 
