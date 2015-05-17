@@ -138,15 +138,20 @@ def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl):
     return 1 #TODO if succeeded
 
 def db_export(mlist):
-    rootdir = mlist.archive_dir()
-    conn = db_conn(mlist)
-    return _db_export(conn,rootdir)
+    try:
+        rootdir = mlist.archive_dir()
+        conn = db_conn(mlist)
+        return _db_export(conn,rootdir)
+    except Exception,e:
+        syslog('gpg','%s' % e)
+    return False
+
 
 def _db_export(conn, archive_dir):
     cur = conn.cursor()
     cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink, s.siglink, p.released, p.baseline'
     #                   0           1       2       3           4           5       6           7           8       9
-                ' from Patches p join Sigs s order by p.phash')
+                ' from Patches p join Sigs s on s.phash = p.phash order by p.phash')
     table = Table(width="100%")
     table.AddRow([Center(Header(4, "Received patches"))])
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=5,
