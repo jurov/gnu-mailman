@@ -334,9 +334,10 @@ def process(mlist, msg, msgdata):
                     if payload.lstrip().startswith('-----BEGIN PGP '):
                         signatures = [None]
                         break
-                elif submsg.get_content_type()=='application/pgp-encrypted':
+                elif submsg.get_content_type() in set(['application/pgp-encrypted', 'application/pgp']):
                     signatures = [None]
                     payload = submsg.get_payload(decode=True)
+                    submsg.set_type('text/plain; charset="utf-8"')
                     break
                 elif submsg.get_content_type()=='multipart/alternative' and submsg.is_multipart():
                     #GPG signed plaintext with HTML version
