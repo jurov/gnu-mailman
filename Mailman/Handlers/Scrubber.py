@@ -224,6 +224,16 @@ An embedded and charset-unspecified text was scrubbed...
 Name: %(filename)s
 URL: %(url)s
 """), lcset)
+            elif mm_cfg.SCRUBBER_ARCHIVE_ALL_TEXT and in_pipeline:
+                # clearsigned or attached plaintext that will be shown, still archive the copy
+                omask = os.umask(002)
+                try:
+                    url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
+                    part['x-att-url'] = url
+                finally:
+                    os.umask(omask)
+
+
         elif ctype == 'text/html' and isinstance(sanitize, IntType):
             if sanitize == 0:
                 if outer:
@@ -416,6 +426,17 @@ URL: %(url)s
                 if t.strip() != '' :
                     if not t.endswith('\n'):
                         t += '\n'
+                    if mm_cfg.SCRUBBER_ARCHIVE_ALL_TEXT:
+                        # Add link to archived part if it wasn't archived already
+                        url = 'URL: <' + part.get('x-att-url','N/A') + '>\n'
+                        if not t.endswith(url):
+                            t = url + t
+                            filename = part.get_filename()
+                            if filename:
+                                filename = Utils.oneline(filename, lcset)
+                                t = "Name: " + filename + "\n" + t
+
+
                     text.append(t)
         # Now join the text and set the payload
         sep = _('-------------- next part --------------\n')
@@ -494,7 +515,8 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     # but we can use fnext if we introduce fnext filtering
     if mm_cfg.SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION:
         # HTML message doesn't have filename :-(
-        ext = fnext or guess_extension(ctype, fnext)
+        # if it's text/plain, use '.txt', otherwise we'd end with '.ksh' or so
+        ext = fnext or guess_extension(ctype, '.txt')
     else:
         ext = guess_extension(ctype, fnext)
     if not ext:
