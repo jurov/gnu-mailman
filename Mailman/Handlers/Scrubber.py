@@ -224,15 +224,22 @@ An embedded and charset-unspecified text was scrubbed...
 Name: %(filename)s
 URL: %(url)s
 """), lcset)
-            elif mm_cfg.SCRUBBER_ARCHIVE_ALL_TEXT and in_pipeline:
-                # clearsigned or attached plaintext that will be shown, still archive the copy
-                omask = os.umask(002)
-                try:
-                    url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
-                    part['x-att-url'] = url
-                finally:
-                    os.umask(omask)
-
+            elif mm_cfg.SCRUBBER_ARCHIVE_ALL_TEXT:
+                if in_pipeline:
+                    # clearsigned or attached plaintext that will be shown, still archive the copy
+                    omask = os.umask(002)
+                    try:
+                        url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
+                        part['x-att-url'] = url
+                    finally:
+                        os.umask(omask)
+                elif outer and not msg.is_multipart():
+                    #whole email is only one plaintext. add URL here
+                    payload = msg.get_payload(decode=True)
+                    del msg['content-type']
+                    del msg['content-transfer-encoding']
+                    payload = 'URL: <' + part.get('x-att-url','N/A') + '>\n' + payload
+                    msg.set_payload(payload)
 
         elif ctype == 'text/html' and isinstance(sanitize, IntType):
             if sanitize == 0:
