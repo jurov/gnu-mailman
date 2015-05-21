@@ -243,6 +243,7 @@ def process(mlist, msg, msgdata):
         # PGP signature matters, we have not checked while decrypting
         gh = GPGUtils.GPGHelper(mlist)
         payload = ''
+        payloadmsg = None
         signatures = []
         if msg.get_content_type()=='multipart/signed' and msg.get_param('protocol')=='application/pgp-signature' and msg.is_multipart():
             # handle detached signatures, these look like:
@@ -312,6 +313,7 @@ def process(mlist, msg, msgdata):
              # -----END PGP SIGNATURE-----
              signatures = [None]
              payload = msg.get_payload(decode=True)
+             payloadmsg = msg
         elif msg.get_content_type()=='multipart/alternative' and msg.is_multipart():
             #GPG signed plaintext with HTML version
             for submsg in msg.get_payload():
@@ -320,6 +322,7 @@ def process(mlist, msg, msgdata):
                         # text without headers
                         signatures = [None]
                         payload = submsg.get_payload(decode=True)
+                        payloadmsg = submsg
                     else:
                         # we only deal with exactly one payload part
                         syslog('gpg','multipart/alternative message with more than one plaintext')
@@ -331,12 +334,14 @@ def process(mlist, msg, msgdata):
                 if submsg.get_content_type()=='text/plain':
                     # text without headers
                     payload = submsg.get_payload(decode=True)
+                    payloadmsg = submsg
                     if payload.lstrip().startswith('-----BEGIN PGP '):
                         signatures = [None]
                         break
                 elif submsg.get_content_type() in set(['application/pgp-encrypted', 'application/pgp']):
                     signatures = [None]
                     payload = submsg.get_payload(decode=True)
+                    payloadmsg = submsg
                     submsg.set_type('text/plain; charset="utf-8"')
                     break
                 elif submsg.get_content_type()=='multipart/alternative' and submsg.is_multipart():
@@ -348,19 +353,23 @@ def process(mlist, msg, msgdata):
                                 payload = subsubmsg.get_payload(decode=True)
                                 if payload.lstrip().startswith('-----BEGIN PGP '):
                                     signatures = [None]
+                                    payloadmsg = subsubmsg
                             else:
                                 # we only deal with exactly one payload part
                                 syslog('gpg','multipart/alternative message with more than one plaintext')
                                 do_discard(mlist, msg)
                     if len(signatures) == 0:
                         payload = None
+                        payloadmsg = None
                     elif payload:
                         break
 
-        for signature in signatures:
-             syslog('gpg', "gonna verify payload with signature '%s'", signature)
-             key_ids.extend(gh.verifyMessage(payload, signature))
-
+        #TODO S/MIME broken atm
+        #for signature in signatures:
+        if signatures:
+             syslog('gpg', "gonna verify payload with signature '%s'", signatures[0])
+             key_ids.extend(gh.verifyMessage(payload, signatures[0],
+                                             decrypted_checksum=mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME))
 
     if mlist.sign_policy!=0 and not signedByMember:
         # S/MIME signature matters, we have not checked while decrypting
@@ -377,6 +386,11 @@ def process(mlist, msg, msgdata):
         msgdata['signed_smime'] = True
     if key_ids:
         msgdata['signed_gpg'] = True
+        if payloadmsg and mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
+            #TODO Kill the message if such text was already posted
+            payloadmsg.add_header('x-shasum', key_ids.pop(0))
+            payloadmsg.add_header('x-clearsigned-by', key_ids[0])
+
 
     if mlist.sign_policy!=0:
         if not key_ids and not signedByMember and mlist.sign_policy==2:

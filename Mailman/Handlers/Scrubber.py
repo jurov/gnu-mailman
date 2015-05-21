@@ -541,8 +541,14 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     extra = ''
     do_write_file = True
     if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
+        sha = msg.get('x-shasum')
+        if sha:
+            #no need to clutter headers
+            del msg['x-shasum']
+        else:
+            sha = sha_new(decodedpayload).hexdigest()
         # compute SHA-1 hash for filename
-        extra = '_' + sha_new(decodedpayload).hexdigest()
+        extra = '_' + sha
     # We need a lock to calculate the next attachment number
     lockfile = os.path.join(fsdir, 'attachments.lock')
     lock = LockFile.LockFile(lockfile)

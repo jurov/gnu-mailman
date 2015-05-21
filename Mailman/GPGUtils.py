@@ -29,6 +29,7 @@ import threading
 from Mailman import Errors
 from Mailman.Logging.Syslog import syslog
 from Mailman import mm_cfg
+from Mailman.Utils import sha_new
 import GnuPGInterface
 
 
@@ -321,7 +322,7 @@ class GPGHelper:
         return ciphertext
 
 
-    def verifyMessage(self,msg,signature,both_are_filenames = False):
+    def verifyMessage(self,msg,signature,both_are_filenames = False, decrypted_checksum = False):
         gpg = self.getGPGObject()
 
         sigfilename = None
@@ -342,16 +343,19 @@ class GPGHelper:
                args = [signature, msg]
            else:
                (fd, sigfilename) = tempfile.mkstemp('.GPGUtils')
-
                os.write(fd, signature)
                os.close(fd)
                args = [sigfilename, '-']
+
         else:
            # signature == None in case complete signature
            #  no args to gpg call, read from stdin
            args = []
 
-        params = ['--verify','--always-trust','--batch','--no-permission-warning']
+        cmd = '--verify'
+        if decrypted_checksum:
+           cmd = '--decrypt'
+        params = [cmd,'--always-trust','--batch','--no-permission-warning']
         # specify stdout too: we don't want to clutter this proces's stdout
         p = gpg.run(params, args=args, create_fhs=['stdin', 'stdout','stderr','status'])
         # see gnupg/DETAILS in the gnupg package for info on status fd
@@ -391,6 +395,8 @@ class GPGHelper:
         if not key_ids:
             syslog('gpg',"No good signature found on message: %s (%s)",status,result)
         else:
+            if decrypted_checksum:
+                key_ids.insert(0,sha_new(t_out.data).hexdigest())
             syslog('gpg',"Valid signature from key(s) %s found on message",key_ids)
         return key_ids
 
