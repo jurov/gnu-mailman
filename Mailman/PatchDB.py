@@ -7,17 +7,21 @@ from Mailman.Logging.Syslog import syslog
 from Mailman import mm_cfg
 from Mailman.htmlformat import *
 
+WOTURL="http://www.btcalpha.com/wot/user/"
 
 def process_signatures(mlist, newpatches, newsigs):
     rootdir = mlist.archive_dir()
-    db_updated = False
     conn = db_conn(mlist)
+    gh = GPGUtils.GPGHelper(mlist)
+    return _process_signatures(conn, gh, rootdir, newpatches, newsigs)
+
+def _process_signatures(conn, gh, rootdir, newpatches, newsigs):
+    db_updated = False
     #filtered new patches from this msg (same structure as newpatches)
     validpatches = []
     #filtered new signatures for any patches (same structure as newsigs + 'phash' patch hash + key )
     validsigs = []
     with conn:
-        gh = GPGUtils.GPGHelper(mlist)
         #find newpatches name
         for sig in newsigs:
             sigfile = sig['file']
@@ -44,7 +48,7 @@ def process_signatures(mlist, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_sig(conn, shash, phash, sigfile, key, sig['url']) #TODO multiple sigs
+                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'], sig.get('msg')) #TODO multiple sigs
                         sig['phash'] = phash
                         sig['key'] = key
                         validsigs.append(sig)
@@ -67,9 +71,9 @@ def process_signatures(mlist, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_patch(conn, phash, pfile, key, pname, patch['url'])
+                        db_add_patch(conn, phash, pfile, key, pname, patch['url'], patch.get('msg'))
                         validpatches.append(patch)
-                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'])
+                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'], sig.get('msg'))
                         sig['phash'] = phash
                         sig['key'] = key
                         validsigs.append(sig)
@@ -124,17 +128,17 @@ def db_have_sig(conn, shash):
 
 
 
-def db_add_patch(conn, phash, pfile, keyid, name, atturl):
+def db_add_patch(conn, phash, pfile, keyid, name, atturl, msg):
     cur = conn.cursor()
-    cur.execute('insert into Patches(phash, pfilename, submitter, name, plink) values (:phash, :pfile, :keyid, :name, :atturl)',
-                dict(phash=phash, pfile=pfile, keyid=keyid, name=name, atturl=atturl))
+    cur.execute('insert into Patches(phash, pfilename, submitter, name, plink, msglink) values (:phash, :pfile, :keyid, :name, :atturl, :msg)',
+                dict(phash=phash, pfile=pfile, keyid=keyid, name=name, atturl=atturl, msg=msg))
     return 1 #TODO if succeeded
 
 
-def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl):
+def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl, msg):
     cur = conn.cursor()
-    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, siglink) values (:shash, :phash, :sigfile, :keyid, :sigurl)",
-                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl))
+    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, siglink, msglink) values (:shash, :phash, :sigfile, :keyid, :sigurl, :msg)",
+                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl, msg=msg))
     return 1 #TODO if succeeded
 
 def db_export(mlist):
@@ -166,7 +170,7 @@ def _db_export(conn, archive_dir):
             htmlrow = [Link(row[2],row[0]) if row[2] else row[0],
                       row[1],[], row[8], row[9]]
 
-        signedby = [Link(row[5], 'WoT') if row[5] else '',
+        signedby = [Link(WOTURL + row[5], 'WoT') if row[5] else '',
                  Link(row[7], ' Sig') if row[7] else '',
                  Link(row[6],' Message') if row[6] else '',
                  ]
@@ -194,24 +198,30 @@ def _db_export(conn, archive_dir):
         os.rename(tmphtml, os.path.join(archive_dir,'patches.html'))
     finally:
         os.umask(omask)
+    return True
 
 def db_add_archive_info(mlist, msg,  archive_url):
-    sigs = msg.get_params(header='X-Sigs-Received')
-    if not sigs:
-        return
-    conn = db_conn(mlist)
-    with conn:
-        c = conn.cursor()
-        for (patch,keyids) in sigs:
-            keyids = keyids.split('.')
-            for keyid in keyids:
-                c.execute("update Sigs set msglink = :msglink where keyid=:keyid and phash=:phash",
-                          dict(msglink=archive_url, keyid=keyid, phash=patch))
+    try:
+        sigs = msg.get_params(header='X-Sigs-Received')
+        if not sigs:
+            return False
+        conn = db_conn(mlist)
+        with conn:
+            c = conn.cursor()
+            for (patch,keyids) in sigs:
+                keyids = keyids.split('.')
+                for keyid in keyids:
+                    c.execute("update Sigs set msglink = :msglink where keyid=:keyid and phash=:phash",
+                              dict(msglink=archive_url, keyid=keyid, phash=patch))
 
-        patches = msg.get_params(header='X-Patches-Received')
-        if patches:
-            for (patch,name) in patches:
-                c.execute("update Patches set plink = :plink where phash = :phash", dict(plink=archive_url, phash=patch))
+            patches = msg.get_params(header='X-Patches-Received')
+            if patches:
+                for (patch,name) in patches:
+                    c.execute("update Patches set msglink = :msglink where phash = :phash", dict(msglink=archive_url, phash=patch))
         conn.commit()
-    return True
+        return True
+    except Exception,e:
+        syslog('gpg','%s' % e)
+    return False
+
 
