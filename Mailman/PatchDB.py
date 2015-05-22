@@ -6,6 +6,7 @@ from Mailman import GPGUtils
 from Mailman.Logging.Syslog import syslog
 from Mailman import mm_cfg
 from Mailman.htmlformat import *
+from datetime import datetime
 
 WOTURL="http://www.btcalpha.com/wot/user/"
 
@@ -13,9 +14,10 @@ def process_signatures(mlist, newpatches, newsigs):
     rootdir = mlist.archive_dir()
     conn = db_conn(mlist)
     gh = GPGUtils.GPGHelper(mlist)
-    return _process_signatures(conn, gh, rootdir, newpatches, newsigs)
+    recvd = datetime.utcnow()
+    return _process_signatures(conn, gh, rootdir, newpatches, newsigs, recvd)
 
-def _process_signatures(conn, gh, rootdir, newpatches, newsigs):
+def _process_signatures(conn, gh, rootdir, newpatches, newsigs, recvd = None):
     db_updated = False
     #filtered new patches from this msg (same structure as newpatches)
     validpatches = []
@@ -48,7 +50,7 @@ def _process_signatures(conn, gh, rootdir, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'], sig.get('msg')) #TODO multiple sigs
+                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'], sig.get('msg'), recvd) #TODO multiple sigs
                         sig['phash'] = phash
                         sig['key'] = key
                         validsigs.append(sig)
@@ -71,9 +73,9 @@ def _process_signatures(conn, gh, rootdir, newpatches, newsigs):
                             key = keyids[0][2:].upper()
                         else:
                             key = keyids[0].upper()
-                        db_add_patch(conn, phash, pfile, key, pname, patch['url'], patch.get('msg'))
+                        db_add_patch(conn, phash, pfile, key, pname, patch['url'], patch.get('msg'), recvd)
                         validpatches.append(patch)
-                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'], sig.get('msg'))
+                        db_add_sig(conn, shash, phash, sigfile, key, sig['url'], sig.get('msg'), recvd)
                         sig['phash'] = phash
                         sig['key'] = key
                         validsigs.append(sig)
@@ -102,7 +104,10 @@ def db_conn(mlist, override_db = None):
     if version < 4:
         cur.execute("ALTER TABLE Patches ADD COLUMN released text")
         cur.execute("ALTER TABLE Patches ADD COLUMN baseline text")
-        cur.execute("PRAGMA user_version = 4;")
+    if version < 5:
+        cur.execute("ALTER TABLE Patches ADD COLUMN received text")
+        cur.execute("ALTER TABLE Sigs ADD COLUMN received text")
+        cur.execute("PRAGMA user_version = 5;")
 
     conn.commit()
     return conn
@@ -128,17 +133,23 @@ def db_have_sig(conn, shash):
 
 
 
-def db_add_patch(conn, phash, pfile, keyid, name, atturl, msg):
+def db_add_patch(conn, phash, pfile, keyid, name, atturl, msg, received):
+    if received:
+        received = received.replace(microsecond=0).isoformat()
     cur = conn.cursor()
-    cur.execute('insert into Patches(phash, pfilename, submitter, name, plink, msglink) values (:phash, :pfile, :keyid, :name, :atturl, :msg)',
-                dict(phash=phash, pfile=pfile, keyid=keyid, name=name, atturl=atturl, msg=msg))
+    cur.execute('insert into Patches(phash, pfilename, submitter, name, plink, msglink, received) '
+                'values (:phash, :pfile, :keyid, :name, :atturl, :msg, :received)',
+                dict(phash=phash, pfile=pfile, keyid=keyid, name=name, atturl=atturl, msg=msg, received=received))
     return 1 #TODO if succeeded
 
 
-def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl, msg):
+def db_add_sig(conn, shash, phash, sigfile, keyid, sigurl, msg, received):
+    if received:
+        received = received.replace(microsecond=0).isoformat()
     cur = conn.cursor()
-    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, siglink, msglink) values (:shash, :phash, :sigfile, :keyid, :sigurl, :msg)",
-                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl, msg=msg))
+    cur.execute("insert into Sigs (shash, phash, sigfilename, keyid, siglink, msglink, received) "
+                "values (:shash, :phash, :sigfile, :keyid, :sigurl, :msg, :received)",
+                dict(shash=shash, phash=phash,sigfile=sigfile, keyid = keyid, sigurl=sigurl, msg=msg, received=received))
     return 1 #TODO if succeeded
 
 def db_export(mlist):
@@ -152,37 +163,51 @@ def db_export(mlist):
 
 
 def _db_export(conn, archive_dir):
+    wot = {}
     cur = conn.cursor()
-    cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink, s.siglink, p.released, p.baseline'
-    #                   0           1       2       3           4           5       6           7           8       9
-                ' from Patches p join Sigs s on s.phash = p.phash order by p.phash')
-    table = Table(width="100%")
+    try:
+        cur.execute('select keyid, nick from WoT')
+        wot = dict(cur.fetchall())
+    except:
+        pass
+    cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink, s.siglink, p.released, p.baseline, p.received'
+    #                   0           1       2       3           4           5       6           7           8       9           10
+                ' from Patches p join Sigs s on s.phash = p.phash order by p.phash, s.received')
+    table = Table(width="100%", border="3")
     table.AddRow([Center(Header(4, "Received patches"))])
-    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=5,
+    table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=6,
                       bgcolor=mm_cfg.WEB_HEADER_COLOR)
-    table.AddRow(['Patch', 'Patch name', 'Signatures', 'Released in', 'Based on'])
+    table.AddRow(['Patch', 'Patch name', 'Received UTC', 'Signatures', 'Released in', 'Based on'])
     row = cur.fetchone()
     htmlrow = None
     currentid = None
+    sigs = None
     while row is not None:
+        (phash,pname,plink,pmsglink, psubmitter, skeyid, smsglink, siglink, preleased, pbaseline, preceived) = row
         if htmlrow is None:
-            currentid = row[0]
-            htmlrow = [Link(row[2],row[0]) if row[2] else row[0],
-                      row[1],[], row[8], row[9]]
+            currentid = phash
+            sigs = []
+            htmlrow = [Link(plink,phash) if plink else phash,
+                      pname, preceived, 'SIGS', preleased, pbaseline]
 
-        signedby = [Link(WOTURL + row[5], 'WoT') if row[5] else '',
-                 Link(row[7], ' Sig') if row[7] else '',
-                 Link(row[6],' Message') if row[6] else '',
+        signedby = [Link(WOTURL + skeyid,  'WoT ' + skeyid[-8:]),' ',
+                 Link(siglink, 'Sig') if siglink else '',' ',
+                 Link(smsglink,'Message') if smsglink else '',
                  ]
-        if row[4] == row[5]:
-            signedby.insert(0,'Author ')
 
-        signedby = (row[5][-8:], Container(*signedby))
-        htmlrow[2].append(signedby)
+        if psubmitter == skeyid:
+            signedby.append(' (author)')
+
+        nick = wot.get(skeyid)
+        if not nick:
+            nick = '0x' + skeyid[-8:]
+
+        signedby = (nick, Container(*signedby))
+        sigs.append(signedby)
 
         row = cur.fetchone()
         if row is None or row[0] != currentid:
-            htmlrow[2] = DefinitionList(*(htmlrow[2]))
+            htmlrow[3] = DefinitionList(*(sigs))
             table.AddRow(htmlrow)
             htmlrow = None
 
