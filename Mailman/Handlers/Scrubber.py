@@ -212,11 +212,11 @@ def process(mlist, msg, msgdata=None):
                     omask = os.umask(002)
                     try:
                         url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
-                        part['x-att-url'] = url
+                        part[mm_cfg.SCRUBBER_URL_HEADER] = url
                     finally:
                         os.umask(omask)
                 else:
-                    url = '<' + part.get('x-att-url','N/A') + '>'
+                    url = '<' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>'
                     filename = part.get_filename(_('not available'))
                     filename = Utils.oneline(filename, lcset)
                     replace_payload_by_text(part, _("""\
@@ -230,7 +230,7 @@ URL: %(url)s
                     omask = os.umask(002)
                     try:
                         url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
-                        part['x-att-url'] = url
+                        part[mm_cfg.SCRUBBER_URL_HEADER] = url
                     finally:
                         os.umask(omask)
                 elif outer and not msg.is_multipart():
@@ -238,7 +238,7 @@ URL: %(url)s
                     payload = msg.get_payload(decode=True)
                     del msg['content-type']
                     del msg['content-transfer-encoding']
-                    payload = 'URL: <' + part.get('x-att-url','N/A') + '>\n' + payload
+                    payload = 'URL: <' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>\n' + payload
                     msg.set_payload(payload)
 
         elif ctype == 'text/html' and isinstance(sanitize, IntType):
@@ -261,11 +261,11 @@ URL: %(url)s
                     omask = os.umask(002)
                     try:
                         url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
-                        part['x-att-url'] = url
+                        part[mm_cfg.SCRUBBER_URL_HEADER] = url
                     finally:
                         os.umask(omask)
                 else:
-                    url = '<' + part.get('x-att-url','N/A') + '>'
+                    url = '<' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>'
                     replace_payload_by_text(part, _("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
@@ -291,11 +291,11 @@ URL: %(url)s
                     omask = os.umask(002)
                     try:
                         url = save_attachment(mlist, part, dir, filter_html=False, patches=patches, sigs=sigs)
-                        part['x-att-url'] = url
+                        part[mm_cfg.SCRUBBER_URL_HEADER] = url
                     finally:
                         os.umask(omask)
                 else:
-                    url = '<' + part.get('x-att-url','N/A') + '>'
+                    url = '<' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>'
                     replace_payload_by_text(part, _("""\
 An HTML attachment was scrubbed...
 URL: %(url)s
@@ -305,13 +305,13 @@ URL: %(url)s
                 omask = os.umask(002)
                 try:
                     url = save_attachment(mlist, part, dir)
-                    part['x-att-url'] = url
+                    part[mm_cfg.SCRUBBER_URL_HEADER] = url
                 finally:
                     os.umask(omask)
             else:
                 # This part contains a submessage, so it too needs scrubbing
                 submsg = part.get_payload(0)
-                url = '<' + part.get('x-att-url','N/A') + '>'
+                url = '<' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>'
                 subject = submsg.get('subject', _('no subject'))
                 subject = Utils.oneline(subject, lcset)
                 date = submsg.get('date', _('no date'))
@@ -342,13 +342,13 @@ URL: %(url)s
                 omask = os.umask(002)
                 try:
                     url = save_attachment(mlist, part, dir, patches=patches, sigs=sigs)
-                    part['x-att-url'] = url
+                    part[mm_cfg.SCRUBBER_URL_HEADER] = url
                 finally:
                     os.umask(omask)
             else:
                 ctype = part.get_content_type()
                 size = len(payload)
-                url = '<' + part.get('x-att-url','N/A') + '>'
+                url = '<' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>'
                 desc = part.get('content-description', _('not available'))
                 desc = Utils.oneline(desc, lcset)
                 filename = part.get_filename(_('not available'))
@@ -435,7 +435,7 @@ URL: %(url)s
                         t += '\n'
                     if mm_cfg.SCRUBBER_ARCHIVE_ALL_TEXT:
                         # Add link to archived part if it wasn't archived already
-                        url = 'URL: <' + part.get('x-att-url','N/A') + '>\n'
+                        url = 'URL: <' + part.get(mm_cfg.SCRUBBER_URL_HEADER,'N/A') + '>\n'
                         if not t.endswith(url):
                             t = url + t
                             filename = part.get_filename()
@@ -540,11 +540,11 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     path = None
     extra = ''
     do_write_file = True
-    if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
-        sha = msg.get('x-shasum')
+    if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME or not filename:
+        sha = msg.get(mm_cfg.SCRUBBER_SHA1SUM_HEADER)
         if sha:
             #no need to clutter headers
-            del msg['x-shasum']
+            del msg[mm_cfg.SCRUBBER_SHA1SUM_HEADER]
         else:
             sha = sha_new(decodedpayload).hexdigest()
         # compute SHA-1 hash for filename

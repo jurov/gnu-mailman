@@ -369,6 +369,10 @@ SCRUBBER_USE_ATTACHMENT_FILENAME_EXTENSION = False
 # in addition to normal scrubbing rules, too.
 SCRUBBER_ARCHIVE_ALL_TEXT = False
 
+SCRUBBER_SHA1SUM_HEADER = "x-shasum"
+SCRUBBER_URL_HEADER="x-att-url"
+SCRUBBER_SIGNEDBY_HEADER="x-clearsigned-by"
+
 # This variable defines what happens to text/html subparts.  They can be
 # stripped completely, escaped, or filtered through an external program.  The
 # legal values are:

@@ -388,8 +388,8 @@ def process(mlist, msg, msgdata):
         msgdata['signed_gpg'] = True
         if payloadmsg and mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
             #TODO Kill the message if such text was already posted
-            payloadmsg.add_header('x-shasum', key_ids.pop(0))
-            payloadmsg.add_header('x-clearsigned-by', key_ids[0])
+            payloadmsg.add_header(mm_cfg.SCRUBBER_SHA1SUM_HEADER, key_ids.pop(0))
+            payloadmsg.add_header(mm_cfg.SCRUBBER_SIGNEDBY_HEADER, key_ids[0])
 
 
     if mlist.sign_policy!=0:
