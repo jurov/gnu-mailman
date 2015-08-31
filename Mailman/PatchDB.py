@@ -172,7 +172,7 @@ def _db_export(conn, archive_dir):
         pass
     cur.execute('select p.phash, p.name, p.plink, p.msglink, p.submitter, s.keyid, s.msglink, s.siglink, p.released, p.baseline, p.received'
     #                   0           1       2       3           4           5       6           7           8       9           10
-                ' from Patches p join Sigs s on s.phash = p.phash order by p.phash, s.received')
+                ' from Patches p join Sigs s on s.phash = p.phash order by p.received desc ')
     table = Table(width="100%", border="3")
     table.AddRow([Center(Header(4, "Received patches"))])
     table.AddCellInfo(table.GetCurrentRowIndex(), 0, colspan=6,
