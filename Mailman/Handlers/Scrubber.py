@@ -430,7 +430,7 @@ URL: %(url)s
             # Separation is useful
             if isinstance(t, StringType):
                 #omit empty parts
-                if t.strip() != '' :
+                if t.strip(' \t\r\n') != '' :
                     if not t.endswith('\n'):
                         t += '\n'
                     if mm_cfg.SCRUBBER_ARCHIVE_ALL_TEXT:
@@ -539,16 +539,17 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     ext = sre.sub('', ext)
     path = None
     extra = ''
+    sha = ''
+    msgfrom = ''
     do_write_file = True
     if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME or not filename:
         sha = msg.get(mm_cfg.SCRUBBER_SHA1SUM_HEADER)
         if sha:
             #no need to clutter headers
             del msg[mm_cfg.SCRUBBER_SHA1SUM_HEADER]
+            msgfrom = msg[mm_cfg.SCRUBBER_SIGNEDBY_HEADER]
         else:
             sha = sha_new(decodedpayload).hexdigest()
-        # compute SHA-1 hash for filename
-        extra = '_' + sha
     # We need a lock to calculate the next attachment number
     lockfile = os.path.join(fsdir, 'attachments.lock')
     lock = LockFile.LockFile(lockfile)
@@ -572,6 +573,7 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
             # filename /has/ no extension, then tack on the one we guessed.
             # The extension was removed from the name above.
             filebase = filename
+
         # Now we're looking for a unique name for this file on the file
         # system.  If msgdir/filebase.ext isn't unique, we'll add a counter
         # after filebase, e.g. msgdir/filebase-cnt.ext
@@ -584,15 +586,29 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
             # NFS-safe).  Besides, we have an exclusive lock now, so we're
             # guaranteed that no other process will be racing with us.
             if os.path.exists(path):
-                if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
-                    do_write_file = False
-                    break
-                else:
-                    counter += 1
-                    extra = '-%04d' % counter
+                counter += 1
+                extra = '-%04d' % counter
             else:
                 break
         filename = filebase + extra + ext
+
+        if mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
+            #Make content hash to attachment
+            linkdir = os.path.join(fsdir,'..','links')
+            makedirs(linkdir)
+            if msgfrom:
+                dst = os.path.join(linkdir, msgfrom + '_' + sha)
+            else:
+                dst = os.path.join(linkdir, sha)
+            src = os.path.join(fsdir, filename)
+            try:
+                os.symlink(src, dst)
+            except:
+                syslog('gpg','Duplicate attachment: %s/%s msgfrom: %s sha1: %s' % (fsdir, filename,msgfrom, sha))
+                #To deduplicate would need to parse, etc.
+                #filename = os.readlink(dst)
+                #do_write_file = False
+
     finally:
         lock.unlock()
     if do_write_file:
@@ -637,11 +653,13 @@ def save_attachment(mlist, msg, dir, filter_html=True, patches = None, sigs = No
     if baseurl[-1] <> '/':
         baseurl += '/'
     url = baseurl + '%s/%s%s%s' % (dir, filebase, extra, ext)
+    if sha:
+        url += '?sha1=' + sha
 
     if sigs is not None and (ext.endswith('.sig') or ctype == 'application/pgp-signature'):
-        sigs.append({'id': extra[1:], 'name' : filebase, 'file':os.path.join(dir , filename), 'url': url})
+        sigs.append({'id': sha, 'name' : filebase, 'file':os.path.join(dir , filename), 'url': url})
     elif patches is not None and ctype != 'text/html' and ctype != 'message/rfc822':
-        patches.append({'id': extra[1:], 'name' : filebase, 'file': os.path.join(dir, filename), 'url': url})
+        patches.append({'id': sha, 'name' : filebase, 'file': os.path.join(dir, filename), 'url': url})
 
     # A trailing space in url string may save users who are using
     # RFC-1738 compliant MUA (Not Mozilla).

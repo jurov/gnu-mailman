@@ -19,7 +19,7 @@
 
 """Posting moderation filter, if appropriate takes care of decrypting using list key
 """
-
+from os import path as ospath
 import re
 from email.Parser import Parser
 from email.MIMEMessage import MIMEMessage
@@ -387,9 +387,16 @@ def process(mlist, msg, msgdata):
     if key_ids:
         msgdata['signed_gpg'] = True
         if payloadmsg and mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME:
-            #TODO Kill the message if such text was already posted
-            payloadmsg.add_header(mm_cfg.SCRUBBER_SHA1SUM_HEADER, key_ids.pop(0))
-            payloadmsg.add_header(mm_cfg.SCRUBBER_SIGNEDBY_HEADER, key_ids[0])
+            sha = key_ids.pop(0)
+            msgfrom = key_ids[0]
+            #Kill the message if such text+signature was already posted.
+            #Payload(spaces, newlines) is normalized by gpg decryption before hashing.
+            if ospath.join(mlist.archive_dir(),'links', msgfrom + '_' + sha).exists():
+                syslog('gpg','Attempt to pass clearsigned duplicate fp: %s sha1: %s' % (msgfrom, sha))
+                do_discard(mlist, msg)
+
+            payloadmsg.add_header(mm_cfg.SCRUBBER_SHA1SUM_HEADER, sha)
+            payloadmsg.add_header(mm_cfg.SCRUBBER_SIGNEDBY_HEADER, msgfrom)
 
 
     if mlist.sign_policy!=0:
