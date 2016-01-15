@@ -391,7 +391,7 @@ def process(mlist, msg, msgdata):
             msgfrom = key_ids[0]
             #Kill the message if such text+signature was already posted.
             #Payload(spaces, newlines) is normalized by gpg decryption before hashing.
-            if ospath.join(mlist.archive_dir(),'links', msgfrom + '_' + sha).exists():
+            if ospath.exists(ospath.join(mlist.archive_dir(),'attachments','links', msgfrom + '_' + sha)):
                 syslog('gpg','Attempt to pass clearsigned duplicate fp: %s sha1: %s' % (msgfrom, sha))
                 do_discard(mlist, msg)
 
