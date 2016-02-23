@@ -13,6 +13,10 @@ from Mailman.Logging.Syslog import syslog
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
+from email.mime.image import MIMEImage
+from email.mime.audio import MIMEAudio
+from email.Utils import formatdate
+from email.header import Header
 from Mailman import Post
 
 from email import Message
@@ -101,8 +105,8 @@ def showpost(mlist, lang, message = ''):
     replacements = mlist.GetStandardReplacements(lang)
     replacements['<mm-post-form-start>'] = mlist.FormatFormStart(
         'post')[:-1] + ' enctype="multipart/form-data">'
-    replacements['<mm-post-sender-box>'] = mlist.FormatBox('sender', size=60)
-    replacements['<mm-post-subject-box>'] = mlist.FormatBox('subject', size=160)
+    replacements['<mm-post-sender-box>'] = mlist.FormatBox('sender', size=100)
+    replacements['<mm-post-subject-box>'] = mlist.FormatBox('subject', size=150)
     replacements['<mm-post-text-box>'] = """
     <textarea rows="12" style="width:100%;" name="text"></textarea>
     """
@@ -135,8 +139,14 @@ def main():
         syslog('error', 'listinfo: No such list "%s": %s', listname, e)
         return
 
+    cgi.maxlen = mlist.max_message_size;
+    try:
+        cgidata = cgi.FieldStorage()
+    except:
+        showpost(mlist,mm_cfg.DEFAULT_SERVER_LANGUAGE,
+                 'Maximal message length exceeded or parse error!')
+        return
     # See if the user want to see this page in other language
-    cgidata = cgi.FieldStorage()
     language = cgidata.getvalue('language')
     if not Utils.IsLanguage(language):
         language = mlist.preferred_language
@@ -148,33 +158,51 @@ def main():
     subj = cgidata.getvalue('subject','').strip()
     body = cgidata.getvalue('text','').strip()
     if not ('.' in addr and '@' in addr ):
-        showpost(mlist,language,'Please put your email address into Sender field. "Full Name &lt;e@mail.to&gt;" is accepted too.')
+        showpost(mlist,language,'Please put your email address into Sender field. "Full Name &lt;name@example.com&gt;" is accepted too, max. 100 chars.')
         return
-    if not body.startswith('-----BEGIN PGP SIGNED MESSAGE-----'):
-        showpost(mlist,language,'Whole body text must be clearsigned.')
-        return
-
 
     msg = MIMEMultipart('mixed')
-    msg['From'] = addr
-    msg['Subject'] = subj if subj else '(No subject)'
+    try:
+        msg['From'] = Header(addr,'ascii')
+        msg['Subject'] = Header(subj,'ascii') if subj else '(No subject)'
+    except:
+        showpost(mlist,language,'Only ASCII chars are supported in sender and subject!')
+        return
+        
+    msg['To'] = mlist.getListAddress('web')
     msgid = unique_message_id(mlist)
     msg['Message-ID'] = msgid;
-    #TODO add Received header?
-    part = MIMEText(body, 'plain', 'utf-8')
-    msg.attach(part)
+    msg['Date'] = formatdate(localtime=True)
+    if body:
+        part = MIMEText(body, 'plain', 'utf-8')
+        msg.attach(part)
     attnum = 1
     while attnum < 99:
-        att =  cgidata.getvalue("attachment%0d" % attnum)
-        if att and att.file:
-            if att.file.type.startswith('text/'):#TODO check if browser sends anything useful
-                part = MIMEText(att.value, "plain", 'utf-8')
-            else: #TODO detect gpg signatures and text uploads
-                part = MIMEApplication(att.value)
-            if att.file.filename:#TODO encode the filename
-                part["Content-Disposition"] = "attachment; filename=" + att.file.filename
+        try:
+            att = cgidata["attachment%02d" % attnum]
+        except KeyError:
+            break
+        if att.filename:
+            #Browser should send right mimetypes
+            (maintype, subtype) = att.type.split('/')
+            opt = att.type_options;
+            data = att.file.read()
+            if maintype == 'text':
+                if 'encoding' not in opt:
+                    opt['encoding'] = 'utf-8'
+                part = MIMEText(data, subtype, opt['encoding'])
+            elif maintype == 'image':
+                part = MIMEImage(data, subtype)
+            elif maintype == 'audio':
+                part = MIMEAudio(data, subtype)
+            elif maintype == 'application':
+                part = MIMEApplication(data, subtype)
+            else:
+                part = MIMEApplication(data)
+                
+            part["Content-Disposition"] = "attachment; filename=" + att.filename
             msg.attach(part)
         attnum+=1;
     Post.inject(listname,msg)
-    url = report_submission(msgid, 'Processing the message...', True)
+    url = report_submission(msgid, 'Processing...', True)
     print "Status: 303 \nLocation: " + url +"\n"

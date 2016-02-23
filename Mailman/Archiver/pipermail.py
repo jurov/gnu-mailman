@@ -21,6 +21,7 @@ from Mailman import Errors
 from Mailman.Mailbox import ArchiverMailbox
 from Mailman.Logging.Syslog import syslog
 from Mailman.i18n import _
+from Mailman.Utils import report_submission
 
 # True/False
 try:
@@ -588,6 +589,8 @@ class T:
             self.add_article(a)
 
             url = self.maillist.GetBaseArchiveURL() + self.archive + '/' + a.filename
+            
+            report_submission(msgid, 'Post accepted and <a href="%s">published</a>!' % url)
             if db_add_archive_info(self.maillist, m, url):
                 patch_export = True
 

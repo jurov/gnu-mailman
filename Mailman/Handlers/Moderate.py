@@ -325,7 +325,8 @@ def process(mlist, msg, msgdata):
                         payloadmsg = submsg
                     else:
                         # we only deal with exactly one payload part
-                        syslog('gpg','multipart/alternative message with more than one plaintext')
+                        Utils.report_submission(msg['Message-ID'],'Confused by MIME message structure, discarding.')
+                        syslog('gpg','multipart/alternative message with more than one plaintext')                        
                         do_discard(mlist, msg)
         elif msg.get_content_type()=='multipart/mixed' and msg.is_multipart():
             #GPG signed plaintext with attachments. Use first plaintext part (more text attachments are perfectly valid here)
@@ -357,6 +358,7 @@ def process(mlist, msg, msgdata):
                             else:
                                 # we only deal with exactly one payload part
                                 syslog('gpg','multipart/alternative message with more than one plaintext')
+                                Utils.report_submission(msg['Message-ID'],'Confused by MIME message structure, discarding.')
                                 do_discard(mlist, msg)
                     if len(signatures) == 0:
                         payload = None
@@ -370,6 +372,9 @@ def process(mlist, msg, msgdata):
              syslog('gpg', "gonna verify payload with signature '%s'", signatures[0])
              key_ids.extend(gh.verifyMessage(payload, signatures[0],
                                              decrypted_checksum=mm_cfg.SCRUBBER_ADD_PAYLOAD_HASH_FILENAME))
+        else:
+            Utils.report_submission(msg['Message-ID'],'No clearsigned text part found, discarding.')
+
 
     if mlist.sign_policy!=0 and not signedByMember:
         # S/MIME signature matters, we have not checked while decrypting
@@ -392,6 +397,7 @@ def process(mlist, msg, msgdata):
             #Kill the message if such text+signature was already posted.
             #Payload(spaces, newlines) is normalized by gpg decryption before hashing.
             if ospath.exists(ospath.join(mlist.archive_dir(),'attachments','links', msgfrom + '_' + sha)):
+                Utils.report_submission(msg['Message-ID'],'Detected attempt to resubmit duplicate clearsigned text, discarding.')
                 syslog('gpg','Attempt to pass clearsigned duplicate fp: %s sha1: %s' % (msgfrom, sha))
                 do_discard(mlist, msg)
 
@@ -401,6 +407,7 @@ def process(mlist, msg, msgdata):
 
     if mlist.sign_policy!=0:
         if not key_ids and not signedByMember and mlist.sign_policy==2:
+            Utils.report_submission(msg['Message-ID'],'Signature verification on clearsigned text failed, discarding. Review the message in your sent mail folder for wordwrap or similar mutilations of clearsigned text.')
             syslog('gpg','No valid signatures on message')
             do_discard(mlist, msg)
 

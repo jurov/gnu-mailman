@@ -93,6 +93,8 @@ dre = re.compile(r'(\${2})|\$([_a-z]\w*)|\${([_a-z]\w*)}', re.IGNORECASE)
 
 
 
+
+
 def list_exists(listname):
     """Return true iff list `listname' exists."""
     # The existance of any of the following file proves the list exists
@@ -121,6 +123,8 @@ def list_names():
 
 
 
+
+
 # a much more naive implementation than say, Emacs's fill-paragraph!
 def wrap(text, column=70, honor_leading_ws=True):
     """Wrap and fill the text to the specified column.
@@ -197,6 +201,8 @@ def wrap(text, column=70, honor_leading_ws=True):
 
 
 
+
+
 def QuotePeriods(text):
     JOINER = '\n .\n'
     SEP = '\n.\n'
@@ -253,6 +259,8 @@ def ValidateEmail(s):
 
 
 
+
+
 # Patterns which may be used to form malicious path to inject a new
 # line in the mailman error log. (TK: advisory by Moritz Naumann)
 CRNLpat = re.compile(r'[^\x21-\x7e]')
@@ -268,11 +276,15 @@ def GetPathPieces(envar='PATH_INFO'):
 
 
 
+
+
 def GetRequestMethod():
     return os.environ.get('REQUEST_METHOD')
 
 
 
+
+
 def ScriptURL(target, web_page_url=None, absolute=False):
     """target - scriptname only, nothing extra
     web_page_url - the list's configvar of the same name
@@ -302,6 +314,8 @@ def ScriptURL(target, web_page_url=None, absolute=False):
 
 
 
+
+
 def GetPossibleMatchingAddrs(name):
     """returns a sorted list of addresses that could possibly match
     a given name.
@@ -322,6 +336,8 @@ def GetPossibleMatchingAddrs(name):
 
 
 
+
+
 def List2Dict(L, foldcase=False):
     """Return a dict keyed by the entries in the list passed to it."""
     d = {}
@@ -335,6 +351,8 @@ def List2Dict(L, foldcase=False):
 
 
 
+
+
 _vowels = ('a', 'e', 'i', 'o', 'u')
 _consonants = ('b', 'c', 'd', 'f', 'g', 'h', 'k', 'm', 'n',
                'p', 'r', 's', 't', 'v', 'w', 'x', 'z')
@@ -406,6 +424,8 @@ def GetRandomSeed():
 
 
 
+
+
 def set_global_password(pw, siteadmin=True):
     if siteadmin:
         filename = mm_cfg.SITE_PW_FILE
@@ -445,6 +465,8 @@ def check_global_password(response, siteadmin=True):
 
 
 
+
+
 _ampre = re.compile('&amp;((?:#[0-9]+|[a-z]+);)', re.IGNORECASE)
 def websafe(s):
     if mm_cfg.BROKEN_BROWSER_WORKAROUND:
@@ -469,6 +491,8 @@ def nntpsplit(s):
 
 
 
+
+
 # Just changing these two functions should be enough to control the way
 # that email address obscuring is handled.
 def ObscureEmail(addr, for_text=False):
@@ -489,6 +513,8 @@ def UnobscureEmail(addr):
 
 
 
+
+
 class OuterExit(Exception):
     pass
 
@@ -608,6 +634,8 @@ def maketext(templatefile, dict=None, raw=False, lang=None, mlist=None):
 
 
 
+
+
 ADMINDATA = {
     # admin keyword: (minimum #args, maximum #args)
     'confirm':     (1, 1),
@@ -665,6 +693,8 @@ def is_administrivia(msg):
 
 
 
+
+
 def GetRequestURI(fallback=None, escape=True):
     """Return the full virtual path this CGI script was invoked with.
 
@@ -690,6 +720,8 @@ def GetRequestURI(fallback=None, escape=True):
 
 
 
+
+
 # Wait on a dictionary of child pids
 def reap(kids, func=None, once=False):
     while kids:
@@ -713,6 +745,8 @@ def reap(kids, func=None, once=False):
             break
 
 
+
+
 def GetLanguageDescr(lang):
     return mm_cfg.LC_DESCRIPTIONS[lang][0]
 
@@ -728,6 +762,8 @@ def IsLanguage(lang):
 
 
 
+
+
 def get_domain():
     host = os.environ.get('HTTP_HOST', os.environ.get('SERVER_NAME'))
     port = os.environ.get('SERVER_PORT')
@@ -754,6 +790,8 @@ def get_site_email(hostname=None, extra=None):
 
 
 
+
+
 # This algorithm crafts a guaranteed unique message-id.  The theory here is
 # that pid+listname+host will distinguish the message-id for every process on
 # the system, except when process ids wrap around.  To further distinguish
@@ -781,6 +819,8 @@ def midnight(date=None):
 
 
 
+
+
 # Utilities to convert from simplified $identifier substitutions to/from
 # standard Python $(identifier)s substititions.  The "Guido rules" for the
 # former are:
@@ -831,6 +871,8 @@ def percent_identifiers(s):
 
 
 
+
+
 # Utilities to canonicalize a string, which means un-HTML-ifying the string to
 # produce a Unicode string or an 8-bit string if all the characters are ASCII.
 def canonstr(s, lang=None):
@@ -1262,18 +1304,30 @@ def report_submission(msgid, message, inprogress = False):
     """
     if not mm_cfg.POST_TRACKING_URLBASE or not mm_cfg.POST_TRACKING_PATH:
         return ''
-    fname = "%s.html" % sha_new(msgid).hexdigest()
-    fullfname = os.path.join(mm_cfg.SUBMISSION_REPORTS_PATH, fname)
-    doc = """<html><head>%s</head><body>
+    sha1hex = sha_new(msgid).hexdigest()
+    fname = "%s.html" % sha1hex
+    tmpname = ".%s.tmp" % sha1hex
+    fullfname = os.path.join(mm_cfg.POST_TRACKING_PATH, fname)
+    tmpname = os.path.join(mm_cfg.POST_TRACKING_PATH, tmpname)
+    doc = """<html><head><title>Mailman tracker</title>%s</head><body>
+    <h3>Message ID %s</h3>
+    <p>
     %s
-    </body>
+    </p>
+    </body></html>
     """
-    meta = '<meta http-equiv="refresh" content="30">' if inprogress else ''
-
-    with open(fullfname,'w') as reportfile:
-        reportfile.write(doc % (meta, message))
-
-    url = mm_cfg.SUBMISSION_REPORTS_URLBASE
+    meta = '<meta http-equiv="refresh" content="30"/>' if inprogress else ''
+    
+    try:
+        with open(tmpname,'w') as reportfile:
+            reportfile.write(doc % (meta, websafe(msgid), message))
+        os.rename(tmpname, fullfname)
+    except OSError, e:
+        syslog('error', 'report_submission failed: %s', e)
+        return ''
+        
+    url = mm_cfg.POST_TRACKING_URLBASE
     if not url.endswith('/'):
         url += '/'
     return url + fname
+    
