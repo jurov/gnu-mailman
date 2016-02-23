@@ -1256,3 +1256,24 @@ def check_eq_domains(email, domains_list):
             return [local + '@' + x for x in domains if x != domain]
     return []
 
+def report_submission(msgid, message, inprogress = False):
+    """
+    :return: URL of the HTML document
+    """
+    if not mm_cfg.POST_TRACKING_URLBASE or not mm_cfg.POST_TRACKING_PATH:
+        return ''
+    fname = "%s.html" % sha_new(msgid).hexdigest()
+    fullfname = os.path.join(mm_cfg.SUBMISSION_REPORTS_PATH, fname)
+    doc = """<html><head>%s</head><body>
+    %s
+    </body>
+    """
+    meta = '<meta http-equiv="refresh" content="30">' if inprogress else ''
+
+    with open(fullfname,'w') as reportfile:
+        reportfile.write(doc % (meta, message))
+
+    url = mm_cfg.SUBMISSION_REPORTS_URLBASE
+    if not url.endswith('/'):
+        url += '/'
+    return url + fname

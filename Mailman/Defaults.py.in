@@ -1629,6 +1629,12 @@ BADQUEUE_DIR    = os.path.join(QUEUE_DIR, 'bad')
 RETRYQUEUE_DIR  = os.path.join(QUEUE_DIR, 'retry')
 MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
 
+#Directory and corresponding URL for tracking of submissions.
+#Both must be set to enable tracking.
+#Directory must exist and be writable both to mailman and CGI scripts.
+POST_TRACKING_URLBASE = ''
+POST_TRACKING_PATH = ''
+
 # Other useful files
 PIDFILE = os.path.join(DATA_DIR, 'master-qrunner.pid')
 SITE_PW_FILE = os.path.join(DATA_DIR, 'adm.pw')
