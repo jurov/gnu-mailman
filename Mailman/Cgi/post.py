@@ -169,7 +169,7 @@ def main():
         showpost(mlist,language,'Only ASCII chars are supported in sender and subject!')
         return
         
-    msg['To'] = mlist.getListAddress('web')
+    msg['To'] = mlist.getListAddress()
     msgid = unique_message_id(mlist)
     msg['Message-ID'] = msgid;
     msg['Date'] = formatdate(localtime=True)
