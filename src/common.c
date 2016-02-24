@@ -268,7 +268,7 @@ run_script(const char* script, int argc, char** argv, char** env)
         newargv = (char**)malloc(sizeof(char*) * (argc + 3));
         j = 0;
         newargv[j++] = python;
-        newargv[j++] = "-S";
+        /* -newargv[j++] = "-S" Causes problems with virtualenv*/
         newargv[j] = (char*)malloc(sizeof(char) * (
                 strlen(scriptdir) +
                 strlen(script) +
